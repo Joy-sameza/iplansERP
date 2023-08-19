@@ -22,4 +22,7 @@ $uri = str_replace("//", "/", $uri);
 if ('/accueil' == $uri || empty($uri) || $uri == "/") {
     see_dashboard();
 }
+if ('/accueil' == $uri) {
+    pannel();
+}
 

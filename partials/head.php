@@ -1,14 +1,14 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>Acceuil -linkpay</title>
+<title>IplansERP</title>
 <meta content="" name="description">
 <meta content="" name="keywords">
 
 <!-- Favicons -->
 <link href="<?=SITE_URL?>/assets/img/iplans favicon 1.png" rel="icon">
 <link href="<?=SITE_URL?>/assets/img/iplans favicon.png" rel="apple-touch-icon">
-
+<link rel="shortcut icon" href="<?=SITE_URL?>/assets/img/iplans favicon.png" type="image/x-icon" />
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i,900" rel="stylesheet">
 
