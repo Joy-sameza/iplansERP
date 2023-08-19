@@ -21,7 +21,7 @@ Remplacez `<username>` par le nom d'utilisateur de la personne qui possède le r
 3. Pour créer une branche pour vos modifications, exécutez la commande suivante :
 
 ```
-git checkout -b <nom de la branche>
+git checkout -b <branch-name>
 ```
 
 Remplacez `<branch-name>` par le nom de votre branche.
@@ -40,7 +40,7 @@ Remplacez `<commit-message>` par un message décrivant vos modifications.
 6. Pour envoyer vos modifications au référentiel distant, exécutez la commande suivante :
 
 ```
-git push origin <nom de la branche>
+git push origin <branch-name>
 ```
 
 Remplacez `<branch-name>` par le nom de votre branche.
