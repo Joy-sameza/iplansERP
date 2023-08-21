@@ -25,19 +25,27 @@ if ($query == "lang=en") {
 ob_start();
 ?>
 
-<!---------------- Main section ------------------------>
+    <!---------------- Main section ------------------------>
 
-<main> <!--  Main start -->
+    <main>
+      <!--  Main start -->
 
-
-    <div class="pictures">
+      <div class="pictures">
         <figcaption>
-            <h2>RACCOURCIS</h2>
+          <h2>RACCOURCIS</h2>
         </figcaption>
 
-        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 517 515" preserveAspectRatio="xMidYMid meet">
-            <g transform="translate(0.000000,515.000000) scale(0.100000,-0.100000)">
-                <path d="M2510 4354 c-128 -25 -256 -74 -320 -124 -19 -14 -64 -41 -100 -59
+        <svg
+          version="1.0"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 517 515"
+          preserveAspectRatio="xMidYMid meet"
+        >
+          <g
+            transform="translate(0.000000,515.000000) scale(0.100000,-0.100000)"
+          >
+            <path
+              d="M2510 4354 c-128 -25 -256 -74 -320 -124 -19 -14 -64 -41 -100 -59
             -113 -58 -180 -104 -256 -175 -60 -56 -83 -87 -124 -167 -28 -54 -55 -117 -60
             -141 -5 -24 -13 -61 -19 -83 -5 -22 -15 -95 -21 -162 -11 -108 -9 -143 11
             -321 12 -110 19 -207 16 -217 -4 -9 -22 -22 -40 -30 -37 -15 -48 -34 -73 -135
@@ -54,36 +62,52 @@ ob_start();
             -6 68 -16 142 -21 164 -6 22 -14 59 -19 82 -5 23 -20 64 -33 90 -13 26 -30 66
             -37 88 -15 46 -123 156 -207 211 -28 19 -54 38 -57 42 -3 5 -32 19 -66 33 -33
             13 -60 27 -60 31 0 5 -6 8 -14 8 -7 0 -31 14 -52 31 -99 79 -258 129 -424 134
-            -63 2 -126 1 -140 -1z" />
-            </g>
+            -63 2 -126 1 -140 -1z"
+            />
+          </g>
         </svg>
 
         <div class="icons">
-            <span><a href="#">img</a></span>
-            <span><a href="#">img</a></span>
-            <span><a href="#">img</a></span>
-            <span><a href="#">img</a></span>
-            <span><a href="#">img</a></span>
-            <span><a href="#">img</a></span>
-            <span><a href="#">img</a></span>
-            <span><a href="#">img</a></span>
-            <span><a href="#">img</a></span>
-            <span><a href="#">img</a></span>
+          <span><a href="#">img</a></span>
+          <span><a href="#">img</a></span>
+          <span><a href="#">img</a></span>
+          <span><a href="#">img</a></span>
+          <span><a href="#">img</a></span>
+          <span><a href="#">img</a></span>
+          <span><a href="#">img</a></span>
+          <span><a href="#">img</a></span>
+          <span><a href="#">img</a></span>
+          <span><a href="#">img</a></span>
         </div>
-    </div>
+      </div>
 
+      <button type="button" class="func">Accueil</button>
+      <button type="button" class="func">
+        Communication personnelle
+      </button>
+      <button type="button" class="func">
+        Messagerie
+      </button>
+      <button type="button" class="func">
+        Courrier&nbsp;E/S
+      </button>
+      <button type="button" class="func">
+        Réception/Accueil
+      </button>
+      <button type="button" class="func">
+        Paramètres
+      </button>
+      <button type="button" class="func">
+        Médiathèque
+      </button>
+      <button type="button" class="func">GED</button>
+      <button type="button" class="func">GRH</button>
+      <button type="button" class="func">
+        Gestion Administrative
+      </button>
+    </main>
+    <!--  main end -->
 
-    <button type="button" data-disabled="true" class="func">Accueil</button>
-    <button type="button" data-disabled="true" class="func">Communication personnelle</button>
-    <button type="button" data-disabled="true" class="func">Messagerie</button>
-    <button type="button" data-disabled="true" class="func">Courrier&nbsp;E/S</button>
-    <button type="button" data-disabled="true" class="func">Réception/Accueil</button>
-    <button type="button" data-disabled="true" class="func">Paramètres</button>
-    <button type="button" data-disabled="true" class="func">Médiathèque</button>
-    <button type="button" data-disabled="true" class="func">GED</button>
-    <button type="button" data-disabled="true" class="func">GRH</button>
-    <button type="button" data-disabled="true" class="func">Gestion Administrative</button>
-</main> <!--  main end -->
 
 
 <?php
