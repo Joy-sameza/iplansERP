@@ -27,7 +27,7 @@ ob_start();
 
     <!---------------- Main section ------------------------>
 
-    <main>
+    <main class="main">
       <!--  Main start -->
 
       <div class="pictures">
@@ -82,29 +82,17 @@ ob_start();
       </div>
 
       <button type="button" class="func">Accueil</button>
-      <button type="button" class="func">
-        Communication personnelle
-      </button>
-      <button type="button" class="func">
-        Messagerie
-      </button>
-      <button type="button" class="func">
+      <button type="button" class="func">Communication personnelle</button>
+      <button type="button" class="func">Messagerie</button>
+      <button type="button" class="func" data-courrier>
         Courrier&nbsp;E/S
       </button>
-      <button type="button" class="func">
-        Réception/Accueil
-      </button>
-      <button type="button" class="func">
-        Paramètres
-      </button>
-      <button type="button" class="func">
-        Médiathèque
-      </button>
+      <button type="button" class="func" data-hotel>Réception/Accueil</button>
+      <button type="button" class="func">Paramètres</button>
+      <button type="button" class="func">Médiathèque</button>
       <button type="button" class="func">GED</button>
       <button type="button" class="func">GRH</button>
-      <button type="button" class="func">
-        Gestion Administrative
-      </button>
+      <button type="button" class="func">Gestion Administrative</button>
     </main>
     <!--  main end -->
 

@@ -21,10 +21,14 @@ if ($query == "lang=en") {
 ?>
 
 <footer id="">
-
-    <div class="">
-        <div class="copyright">
-            <center>    &copy; Copyright <strong><span><?= $lang['linkpay'] ?></span></strong>. <?= $lang['droits'] ?></center>
-        </div>
-
 </footer><!-- End Footer -->
+
+
+<script>
+  const courrier = document
+    .querySelector("[data-courrier]")
+    .addEventListener("click", () => (location.href = "<?= SITE_URL ?>/courrier"));
+  // const hotel = document
+  //   .querySelector("[data-hotel]")
+  //   .addEventListener("click", () => (location.href = "./hotel"));
+</script>

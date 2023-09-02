@@ -25,4 +25,6 @@ if ('/accueil' == $uri || empty($uri) || $uri == "/") {
 if ('/pannel' == $uri) {
     pannel();
 }
-
+if ('/courrier' == $uri) {
+    courrier();
+}

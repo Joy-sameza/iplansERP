@@ -12,5 +12,11 @@ function pannel()
     $dirs=str_replace("controllers", "", $dirs);
     require $dirs.'vues/pannel.php';
 }
+function courrier()
+{
+    $dirs=__DIR__;
+    $dirs=str_replace("controllers", "", $dirs);
+    require $dirs.'vues/courrier.php';
+}
 
 ?>

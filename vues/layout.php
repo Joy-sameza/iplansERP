@@ -12,6 +12,7 @@ require_once $dirs . '/include/config.php'; ?>
 <body>
     <?php require_once $dirs . '/partials/header.php'; ?>
     <?php echo $content ?>
+    <?php require_once $dirs . '/partials/footer.php'; ?>
 </body>
 
 </html>
