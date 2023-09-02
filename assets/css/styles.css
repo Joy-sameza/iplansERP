@@ -57,7 +57,6 @@ svg > g {
   --_background: color-mix(in oklab, #1078bd, #fff 60%);
   height: var(--header-height);
   position: sticky;
-  top: 10;
   background: linear-gradient(var(--_background), transparent);
   z-index: 1;
 }
