@@ -35,7 +35,7 @@ html {
   --header-height: 8em;
   --svg-width: 350px;
   --icons-gap: 0.5em;
-  --font-family: "Cascadia code", Cantarell, "Open Sans", "Helvetica Neue",
+  --font-family: "Cascadia code", "Open Sans", Cantarell, "Helvetica Neue",
     sans-serif;
 }
 
@@ -329,7 +329,6 @@ svg > g {
   position: absolute;
   inset: 0;
   z-index: 1;
-  display: flex;
   justify-content: center;
   align-items: center;
   display: none;
@@ -367,6 +366,9 @@ svg > g {
   text-decoration-thickness: 3px;
   text-align: center;
 }
+.modal > .container > form {
+  margin-block: 0;
+}
 .modal > .container > form > fieldset {
   height: calc(var(--header-height) * 0.5);
   border-color: var(--tertiary-blue);
@@ -378,6 +380,7 @@ svg > g {
 .modal > .container > form > fieldset:last-of-type {
   flex-direction: column;
   justify-content: start;
+  height: calc(var(--svg-width) * 1.7);
   gap: calc(var(--header-padding) * 0.75);
 }
 .modal > .container > form > fieldset:last-of-type > div {
@@ -406,14 +409,16 @@ svg > g {
 }
 .modal > .container > form > fieldset:last-of-type > section {
   width: 100%;
-  display: flex;
+  height: 55%;
+  display: grid;
+  grid-template-columns: 60% 1fr;
+  grid-template-rows: 1fr;
   column-gap: var(--header-padding);
 }
 .modal > .container > form > fieldset:last-of-type > section fieldset:first-of-type {
   display: flex;
   flex-direction: column;
   border-color: var(--tertiary-blue);
-  width: 60%;
 }
 .modal > .container > form > fieldset:last-of-type > section fieldset:first-of-type > table {
   max-width: 100%;
@@ -433,7 +438,8 @@ svg > g {
   text-transform: capitalize;
   height: var(--_large-font-size);
 }
-.modal > .container > form > fieldset:last-of-type > section fieldset:first-of-type > table th, .modal > .container > form > fieldset:last-of-type > section fieldset:first-of-type > table td {
+.modal > .container > form > fieldset:last-of-type > section fieldset:first-of-type > table th,
+.modal > .container > form > fieldset:last-of-type > section fieldset:first-of-type > table td {
   border: 2px solid var(--tertiary-blue);
   padding: 5px 10px;
   height: 2em;
@@ -448,11 +454,57 @@ svg > g {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.modal > .container > form > fieldset:last-of-type > section fieldset:last-of-type {
+.modal > .container > form > fieldset:last-of-type > section fieldset:first-of-type span.icons {
   display: flex;
-  flex-direction: column;
+  justify-content: end;
+  margin-bottom: calc(var(--header-padding) * 0.75);
+}
+.modal > .container > form > fieldset:last-of-type > section fieldset:first-of-type span.icons img {
+  margin: calc(var(--header-padding) * 0.5) !important;
+}
+.modal > .container > form > fieldset:last-of-type > section fieldset:first-of-type span.icons img:is(:hover, :focus, :focus-within) {
+  cursor: pointer;
+  scale: 1.25;
+}
+.modal > .container > form > fieldset:last-of-type > section fieldset:last-of-type {
   border-color: var(--tertiary-blue);
-  width: 40%;
+  display: grid;
+  grid-template-columns: max-content 0.2fr;
+}
+.modal > .container > form > fieldset:last-of-type > section fieldset:last-of-type > .options {
+  display: grid;
+  pointer-events: none;
+}
+.modal > .container > form > fieldset:last-of-type > section fieldset:last-of-type > .range {
+  height: inherit !important;
+  width: 25px;
+}
+.modal > .container > form > fieldset:last-of-type > section fieldset:last-of-type > .range [type=range] {
+  height: 235px;
+  appearance: slider-vertical;
+  -webkit-appearance: slider-vertical;
+}
+.modal > .container > form > .btn {
+  margin-top: 0.5em;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.modal > .container > form > .btn button {
+  background: var(--secondary-white);
+  color: var(--secondary-blue);
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  width: 3rem;
+  padding: calc(var(--header-padding) * 0.5);
+}
+.modal > .container > form > .btn button:is(:hover, :focus-within, :focus, :active) {
+  background: var(--primary-blue);
+  color: var(--secondary-white);
+}
+.modal > .container > form > .btn [type=submit] {
+  border: 2px solid var(--primary-blue);
 }
 
 .open {
@@ -584,6 +636,12 @@ svg > g {
     rotate: 0deg !important;
     max-height: none;
   }
+}
+.hidden {
+  display: block;
+  appearance: none;
+  width: 0;
+  height: 0;
 }
 
 /*# sourceMappingURL=style.css.map */
