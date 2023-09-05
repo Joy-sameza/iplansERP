@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a102b2f4-e0c7-4692-a965-1e4e5d27d44a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/assets/css/styles.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/iplans.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/home_controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/home_controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/partials/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/partials/footer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/partials/head.php" beforeDir="false" afterPath="$PROJECT_DIR$/partials/head.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vues/courrier.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/courrier.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vues/courriers.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vues/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/home.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vues/pannel.php" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2UvF1GCDJ8EQNyCGudGPEK2mvPD" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a102b2f4-e0c7-4692-a965-1e4e5d27d44a" name="Changes" comment="" />
+      <created>1693811941256</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1693811941256</updated>
+      <workItem from="1693811957763" duration="499000" />
+      <workItem from="1693812505070" duration="714000" />
+      <workItem from="1693832853299" duration="199000" />
+      <workItem from="1693833103001" duration="120000" />
+    </task>
+    <servers />
+  </component>
+</project>

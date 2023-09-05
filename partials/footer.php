@@ -23,12 +23,16 @@ if ($query == "lang=en") {
 <footer id="">
 </footer><!-- End Footer -->
 
+<?php
+require_once './include/functions.php';
 
+$insert_string = '
 <script>
   const courrier = document
     .querySelector("[data-courrier]")
-    .addEventListener("click", () => (location.href = "<?= SITE_URL ?>/courrier"));
-  // const hotel = document
-  //   .querySelector("[data-hotel]")
-  //   .addEventListener("click", () => (location.href = "./hotel"));
-</script>
+    ?.addEventListener("click", () => (location.href = "' . SITE_URL . '/courrier"));
+</script>';
+__add__($url, '', $insert_string);
+__add__($url, '/', $insert_string);
+__add__($url, 'home', $insert_string);
+?>
