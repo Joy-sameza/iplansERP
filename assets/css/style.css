@@ -419,6 +419,7 @@ svg > g {
   display: flex;
   flex-direction: column;
   border-color: var(--tertiary-blue);
+  overflow-y: auto;
 }
 .modal > .container > form > fieldset:last-of-type > section fieldset:first-of-type > table {
   max-width: 100%;

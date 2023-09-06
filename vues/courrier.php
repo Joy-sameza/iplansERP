@@ -67,29 +67,29 @@ ob_start();
   <div class="container">
     <button data-close>&times;</button>
     <h3 class="title">Nouveau Courrier</h3>
-    <form method="post">
+    <form data-form enctype="multipart/form-data" method="post" action="<?= SITE_URL ?>/forms/formdata.php">
       <fieldset>
         <legend>Type de courrier</legend>
-        <label for="entrant"><input type="radio" name="type" id="entrant" value="entrant" />Courrier Entrant</label>
-        <label for="sortant"><input type="radio" name="type" id="sortant" value="sortant" />Courrier Sortant</label>
+        <label for="entrant"><input type="radio" name="type" id="entrant" value="entrant" required />Courrier Entrant</label>
+        <label for="sortant"><input type="radio" name="type" id="sortant" value="sortant" required />Courrier Sortant</label>
       </fieldset>
       <fieldset>
         <legend>Info Courrier</legend>
         <div class="group">
           <label for="ref">Reference</label>
-          <input type="text" autocomplete="off" name="ref" id="ref" required />
+          <input type="text" name="ref" id="ref" required />
         </div>
         <div class="group">
           <label for="objet">Objet</label>
-          <input type="text" autocomplete="off" name="objet" id="objet" required />
+          <input type="text" name="objet" id="objet" required />
         </div>
         <div class="group">
           <label for="source">Source</label>
-          <input type="text" autocomplete="off" name="source" id="source" required />
+          <input type="text" name="source" id="source" required />
         </div>
         <div class="group">
           <label for="desti">Destinataires</label>
-          <input type="text" autocomplete="off" name="desti" id="desti" required />
+          <input type="text" name="desti" id="desti" required />
         </div>
         <div class="group">
           <label for="date">Date de depot</label>
@@ -104,7 +104,7 @@ ob_start();
             <legend>Pièces jointes</legend>
             <span class="icons">
               <a title="pièces jointes" data-firstPiece>
-                <input type="file" name="file" data-Rupload multiple id="file" class="hidden">
+                <input type="file" name="files" data-Rupload multiple id="files" class="hidden">
                 <img data-upload src="<?= SITE_URL ?>/assets/img/icons/solid/paperclip.svg" height="16">
               </a>
               <a title="ajouter une pièces jointes" data-addPiece><img src="<?= SITE_URL ?>/assets/img/icons/solid/plus.svg" height="16"></a>
@@ -117,8 +117,7 @@ ob_start();
                 <th>Pièces jointes</th>
                 <th>Taille</th>
               </thead>
-              <tbody data-tbody>
-              </tbody>
+              <tbody data-tbody></tbody>
             </table>
           </fieldset>
           <fieldset>
@@ -161,5 +160,5 @@ ob_start();
 
 <?php
 $content = ob_get_clean();
-include 'layout.php'
+include 'layout.php';
 ?>

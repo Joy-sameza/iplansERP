@@ -449,6 +449,7 @@ svg {
               display: flex;
               flex-direction: column;
               border-color: var(--tertiary-blue);
+              overflow-y: auto;
               & > table {
                 max-width: 100%;
                 text-align: center;

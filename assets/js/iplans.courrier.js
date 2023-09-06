@@ -5,6 +5,9 @@ const range = document.querySelector("[data-range]");
 const select = document.querySelectorAll("[data-select]");
 const reset = document.querySelector("[data-reset]");
 const upload = document.querySelector("[data-upload]");
+const removeAll = document.querySelector("[data-removeAll]");
+const addPiece = document.querySelector("[data-addPiece]");
+const removePiece = document.querySelector("[data-removePiece]");
 const entrant = document.querySelector(".entrant");
 const Rupload = document.querySelector("[data-Rupload]");
 const rowInfoTemplate = document.querySelector("[data-template-row-info]");
@@ -26,8 +29,9 @@ function addBorderRadius() {
 onresize = addBorderRadius();
 
 range.onchange = adjustSelectedOption;
-reset.onclick = adjustSelectedOption;
-
+reset.addEventListener("click", () => {
+  removeAll.click();
+});
 function adjustSelectedOption(event) {
   const val = parseInt(event.target.value);
   const a = val / 5;
@@ -44,16 +48,37 @@ Rupload.addEventListener("change", function () {
   for (let i = 0; i < files.length; i++) {
     const filename = files[i].name;
     const size = (files[i].size / 1024).toFixed(2);
-    let type = filename.split["."];
-    console.log(type ?? "?", size, filename);
+    const fileExtension = filename.lastIndexOf(".");
+    let type;
+    fileExtension !== -1
+      ? (type = filename.substring(fileExtension, filename.length))
+      : undefined;
+    type = type?.split(".").pop().toUpperCase();
     updateTable(
-      type,
+      type ?? "???",
       filename,
       size >= 1024 ? (size / 1024).toFixed(2) + " MB" : size + " KB"
     );
   }
 });
 
+removeAll.addEventListener("click", () => {
+  tableBody.innerHTML = "";
+  Rupload.value = "";
+});
+
+addPiece.addEventListener("click", () => Rupload.click());
+
+removePiece.addEventListener("click", () => {
+  tableBody.removeChild(tableBody.lastChild);
+});
+
+/**
+ * Append rows to the table containing information about each file.
+ * @param {string} type file type
+ * @param {string} doc_name file name
+ * @param {string} size file size
+ */
 function updateTable(type, doc_name, size) {
   const element = rowInfoTemplate.content.cloneNode(true);
   setValue("type", type, { parent: element });
@@ -65,3 +90,24 @@ function updateTable(type, doc_name, size) {
 function setValue(input, value, { parent = document } = {}) {
   parent.querySelector(`[data-${input}]`).textContent = value;
 }
+
+window.addEventListener("DOMContentLoaded", () =>
+  setInterval(() => {
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const hour = date.getHours();
+    const minute = date.getMinutes();
+
+    let mm, dd, hh, mins;
+
+    mm = month < 10 ? "0" + month : "" + month;
+    dd = day < 10 ? "0" + day : "" + day;
+    hh = hour < 10 ? "0" + hour : "" + hour;
+    mins = minute < 10 ? "0" + minute : "" + minute;
+
+    modal.querySelector("#date").value = `${year}-${mm}-${dd}`;
+    modal.querySelector("#heure").value = `${hh}:${mins}`;
+  }, 1_000)
+);
