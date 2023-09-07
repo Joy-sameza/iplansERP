@@ -104,7 +104,7 @@ ob_start();
             <legend>Pièces jointes</legend>
             <span class="icons">
               <a title="pièces jointes" data-firstPiece>
-                <input type="file" name="files" data-Rupload multiple id="files" class="hidden">
+                <input type="file" name="userfiles" data-Rupload id="files" class="hidden">
                 <img data-upload src="<?= SITE_URL ?>/assets/img/icons/solid/paperclip.svg" height="16">
               </a>
               <a title="ajouter une pièces jointes" data-addPiece><img src="<?= SITE_URL ?>/assets/img/icons/solid/plus.svg" height="16"></a>
@@ -145,7 +145,7 @@ ob_start();
       </fieldset>
       <div class="btn">
         <button type="reset" title="Annuler" data-reset><img src="<?= SITE_URL ?>/assets/img/icons/solid/xmark.svg" height="32px"></button>
-        <button type="submit" title="Envoyer"><img src="<?= SITE_URL ?>/assets/img/icons/solid/paper-plane.svg" height="32px"></button>
+        <button type="submit" title="Envoyer" name="iplans_submit"><img src="<?= SITE_URL ?>/assets/img/icons/solid/paper-plane.svg" height="32px"></button>
       </div>
     </form>
   </div>
@@ -157,6 +157,11 @@ ob_start();
     <td data-size></td>
   </tr>
 </template>
+
+<?php
+$d = parse_url($_SERVER["REQUEST_URI"], PHP_URL_QUERY);
+var_dump($d);
+?>
 
 <?php
 $content = ob_get_clean();

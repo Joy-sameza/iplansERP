@@ -3,3 +3,6 @@
 
 #Ignore all uploaded files
 uploads
+
+#Ignore all database files
+*.sql

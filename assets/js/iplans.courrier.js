@@ -26,9 +26,11 @@ function addBorderRadius() {
   entrant.style.borderRadius = borr;
   entrant.nextElementSibling.style.borderRadius = borr;
 }
-onresize = addBorderRadius();
 
-range.onchange = adjustSelectedOption;
+window.addEventListener("resize", addBorderRadius);
+addBorderRadius();
+
+range.addEventListener("change", adjustSelectedOption);
 reset.addEventListener("click", () => {
   removeAll.click();
 });
@@ -90,24 +92,21 @@ function updateTable(type, doc_name, size) {
 function setValue(input, value, { parent = document } = {}) {
   parent.querySelector(`[data-${input}]`).textContent = value;
 }
+window.addEventListener("DOMContentLoaded", () => {
+  const date = new Date();
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  const hour = date.getHours();
+  const minute = date.getMinutes();
 
-window.addEventListener("DOMContentLoaded", () =>
-  setInterval(() => {
-    const date = new Date();
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-    const hour = date.getHours();
-    const minute = date.getMinutes();
+  let mm, dd, hh, mins;
 
-    let mm, dd, hh, mins;
+  mm = month < 10 ? "0" + month : "" + month;
+  dd = day < 10 ? "0" + day : "" + day;
+  hh = hour < 10 ? "0" + hour : "" + hour;
+  mins = minute < 10 ? "0" + minute : "" + minute;
 
-    mm = month < 10 ? "0" + month : "" + month;
-    dd = day < 10 ? "0" + day : "" + day;
-    hh = hour < 10 ? "0" + hour : "" + hour;
-    mins = minute < 10 ? "0" + minute : "" + minute;
-
-    modal.querySelector("#date").value = `${year}-${mm}-${dd}`;
-    modal.querySelector("#heure").value = `${hh}:${mins}`;
-  }, 1_000)
-);
+  modal.querySelector("#date").value = `${year}-${mm}-${dd}`;
+  modal.querySelector("#heure").value = `${hh}:${mins}`;
+});
