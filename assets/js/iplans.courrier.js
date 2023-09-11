@@ -1,6 +1,8 @@
 const newcourrier = document.querySelector("[data-newcourrier]");
-const modal = document.querySelector("[data-modal]");
+const modal1 = document.querySelector("[data-modal1]");
+const modal2 = document.querySelector("[data-modal2]");
 const close = document.querySelector("[data-close]");
+const close2 = document.querySelector("[data-close2]");
 const range = document.querySelector("[data-range]");
 const select = document.querySelectorAll("[data-select]");
 const reset = document.querySelector("[data-reset]");
@@ -12,12 +14,14 @@ const entrant = document.querySelector(".entrant");
 const Rupload = document.querySelector("[data-Rupload]");
 const rowInfoTemplate = document.querySelector("[data-template-row-info]");
 const tableBody = document.querySelector("[data-tbody]");
+const ouvrirCourrier = document.querySelector("[data-ouvrirCourrier]");
 
-newcourrier.addEventListener("click", () => modal.classList.add("open"));
-close.addEventListener("click", () => modal.classList?.remove("open"));
+newcourrier.addEventListener("click", () => modal1.classList.add("open"));
+close.addEventListener("click", () => modal1.classList?.remove("open"));
+close2.addEventListener("click", () => modal2.classList?.remove("open"));
 window.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && modal.classList.contains("open")) {
-    modal.classList?.remove("open");
+  if (e.key === "Escape" && modal1.classList.contains("open")) {
+    modal1.classList?.remove("open");
   }
 });
 
@@ -107,6 +111,8 @@ window.addEventListener("DOMContentLoaded", () => {
   hh = hour < 10 ? "0" + hour : "" + hour;
   mins = minute < 10 ? "0" + minute : "" + minute;
 
-  modal.querySelector("#date").value = `${year}-${mm}-${dd}`;
-  modal.querySelector("#heure").value = `${hh}:${mins}`;
+  modal1.querySelector("#date").value = `${year}-${mm}-${dd}`;
+  modal1.querySelector("#heure").value = `${hh}:${mins}`;
 });
+
+ouvrirCourrier.addEventListener("click", () => modal2.classList.add("open"));

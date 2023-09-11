@@ -24,54 +24,152 @@ if ($query == "lang=en") {
 }
 ob_start();
 ?>
+
+<?php
+require_once "./include/config.php";
+
+$curl = curl_init();
+
+curl_setopt_array($curl, [
+  CURLOPT_URL => COURRIER_API_URL,
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => "",
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 30,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => "GET",
+]);
+
+$response = curl_exec($curl);
+$err = curl_error($curl);
+$data = [];
+
+curl_close($curl);
+
+if ($err) {
+  echo "cURL Error #:" . $err;
+  exit;
+}
+$d = (array)json_decode($response, true);
+//$data['num'] = count($d);
+$dd = (array)$d[0];
+$a = $b = $c = $de = $e = $u = $ent_auj = 0;
+$f = $g = $h = $z = $k = $v = $sor_auj = 0;
+
+$j = 0;
+$i = 0;
+
+foreach ($d as $pack) {
+
+  if ($pack['InOutCourier'] == "Entrant") {
+    $i++;
+
+    if ($pack['NiveauImportance'] == "Haute") {
+      $a++;
+    }
+    if ($pack['NiveauImportance'] == "Très haute") {
+      $b++;
+    }
+    if ($pack['NiveauImportance'] == "Moyenne") {
+      $c++;
+    }
+    if ($pack['NiveauImportance'] == "Basse") {
+
+      $de++;
+    }
+    if ($pack['NiveauImportance'] == "Exceptionel") {
+
+      $e++;
+    }
+    if ($pack['DateDepot'] == date("Y/m/d")) {
+      $ent_auj++;
+    }
+    if ($pack['Statut'] == "Archivé") {
+      $u++;
+    }
+    if ($pack['Statut'] == "Traité") {
+      $u++;
+    }
+  }
+  if ($pack['InOutCourier'] == "Sortant") {
+    $j++;
+    if ($pack['NiveauImportance'] == "Haute") {
+      $f++;
+    }
+    if ($pack['NiveauImportance'] == "Très haute") {
+      $g++;
+    }
+    if ($pack['NiveauImportance'] == "Moyenne") {
+      $h++;
+    }
+    if ($pack['NiveauImportance'] == "Basse") {
+      $z++;
+    }
+    if ($pack['NiveauImportance'] == "Exceptionel") {
+      $k++;
+    }
+    if ($pack['DateDepot'] == date("Y/m/d")) {
+      $sor_auj++;
+    }
+    if ($pack['Statut'] == "Traité") {
+      $v++;
+    }
+    if ($pack['Statut'] == "Archivé") {
+      $v++;
+    }
+  }
+}
+?>
+
+
 <main class="main corrier">
   <div class="entrant">
     <h2>Courrier Entrant</h2>
     <section>
-      <button>Nbre total de Courrier : <strong>2</strong></button>
-      <button>Aujourd'hui : <strong>0</strong></button>
-      <button>Ancien Courrier : <strong>0</strong></button>
-      <button>Traités/Archivées : <strong>0</strong></button>
+      <button>Nbre total de Courrier : <strong><?= $i ?? '0' ?></strong></button>
+      <button>Aujourd'hui : <strong><?= $ent_auj ?? '0' ?></strong></button>
+      <button>Ancien Courrier : <strong><?= $i - $ent_auj ?? '0' ?></strong></button>
+      <button>Traités/Archivées : <strong><?= $u ?? '0' ?></strong></button>
     </section>
     <section>
       <h4>Niveau d'importance</h4>
-      <span><strong>Exceptionel</strong><strong>0</strong></span>
-      <span><strong>Très haute</strong><strong>2</strong></span>
-      <span><strong>haute</strong><strong>1</strong></span>
-      <span><strong>moyenne</strong><strong>0</strong></span>
-      <span><strong>Basse</strong><strong>0</strong></span>
+      <span><strong>Exceptionel</strong><strong><?= $e ?? '0' ?></strong></span>
+      <span><strong>Très haute</strong><strong><?= $b ?? '0' ?></strong></span>
+      <span><strong>haute</strong><strong><?= $a ?? '0' ?></strong></span>
+      <span><strong>moyenne</strong><strong><?= $c ?? '0' ?></strong></span>
+      <span><strong>Basse</strong><strong><?= $de ?? '0' ?></strong></span>
     </section>
     <button class="btn" data-newcourrier>Nouveau courrier</button>
   </div>
   <div class="sortant">
     <h2>Courrier Sortant</h2>
     <section>
-      <button>Nbre total de Courrier : <strong>2</strong></button>
-      <button>Aujourd'hui : <strong>0</strong></button>
-      <button>Ancien Courrier : <strong>0</strong></button>
-      <button>Traités/Archivées : <strong>0</strong></button>
+      <button>Nbre total de Courrier : <strong><?= $j ?? '0' ?></strong></button>
+      <button>Aujourd'hui : <strong><?= $sor_auj ?></strong></button>
+      <button>Ancien Courrier : <strong><?= $j - $sor_auj ?? '0' ?></strong></button>
+      <button>Traités/Archivées : <strong><?= $v ?? '0' ?></strong></button>
     </section>
     <section>
       <h4>Niveau d'importance</h4>
-      <span><strong>Exceptionel</strong><strong>0</strong></span>
-      <span><strong>Très haute</strong><strong>2</strong></span>
-      <span><strong>haute</strong><strong>1</strong></span>
-      <span><strong>moyenne</strong><strong>0</strong></span>
-      <span><strong>Basse</strong><strong>0</strong></span>
+      <span><strong>Exceptionel</strong><strong><?= $k ?? '0' ?></strong></span>
+      <span><strong>Très haute</strong><strong><?= $g ?? '0' ?></strong></span>
+      <span><strong>haute</strong><strong><?= $f ?? '0' ?></strong></span>
+      <span><strong>moyenne</strong><strong><?= $h ?? '0' ?></strong></span>
+      <span><strong>Basse</strong><strong><?= $z ?? '0' ?></strong></span>
     </section>
-    <button class="btn">Ouvrir un courrier</button>
+    <button class="btn" data-ouvrirCourrier>Ouvrir un courrier</button>
   </div>
 </main>
 
-<div class="modal" data-modal>
+<div class="modal" data-modal1>
   <div class="container">
     <button data-close>&times;</button>
     <h3 class="title">Nouveau Courrier</h3>
     <form data-form enctype="multipart/form-data" method="post" action="<?= SITE_URL ?>/forms/formdata.php">
       <fieldset>
         <legend>Type de courrier</legend>
-        <label for="entrant"><input type="radio" name="type" id="entrant" value="entrant" required />Courrier Entrant</label>
-        <label for="sortant"><input type="radio" name="type" id="sortant" value="sortant" required />Courrier Sortant</label>
+        <label for="entrant"><input type="radio" name="type" id="entrant" value="Entrant" required />Courrier Entrant</label>
+        <label for="sortant"><input type="radio" name="type" id="sortant" value="Sortant" required />Courrier Sortant</label>
       </fieldset>
       <fieldset>
         <legend>Info Courrier</legend>
@@ -123,11 +221,11 @@ ob_start();
           <fieldset>
             <legend>Niveau d'importance</legend>
             <div class="options">
-              <label for="exceptionnel"><input required data-select type="radio" name="niveau" id="exceptionnel"> Exceptionnel</label>
-              <label for="tres_haut"><input required data-select type="radio" name="niveau" id="tres_haut"> Très haut</label>
-              <label for="haute"><input required data-select checked type="radio" name="niveau" id="haute"> Haute</label>
-              <label for="moyenne"><input required data-select type="radio" name="niveau" id="moyenne"> Moyenne</label>
-              <label for="basse"><input required data-select type="radio" name="niveau" id="basse"> Basse</label>
+              <label for="exceptionnel"><input required data-select type="radio" name="niveau" id="exceptionnel" value="Exceptionnel"> Exceptionnel</label>
+              <label for="tres_haut"><input required data-select type="radio" name="niveau" id="tres_haut" value="Très haute"> Très haut</label>
+              <label for="haute"><input required data-select checked type="radio" name="niveau" id="haute" value="Haute"> Haute</label>
+              <label for="moyenne"><input required data-select type="radio" name="niveau" id="moyenne" value="Moyenne"> Moyenne</label>
+              <label for="basse"><input required data-select type="radio" name="niveau" id="basse" value="Basse"> Basse</label>
             </div>
             <div class="range">
               <input type="range" step="5" min="0" max="20" list="options" data-range>
@@ -150,6 +248,17 @@ ob_start();
     </form>
   </div>
 </div>
+<div class="modal" data-modal2>
+  <div class="container" id="modal2-container">
+    <button data-close2>&times;</button>
+    <h3 class="title">Liste des courier arrivé/départ</h3>
+    <div class="table">
+      <table class="list">
+        
+      </table>
+    </div>
+  </div>
+</div>
 <template data-template-row-info>
   <tr>
     <td data-type></td>
@@ -157,11 +266,6 @@ ob_start();
     <td data-size></td>
   </tr>
 </template>
-
-<?php
-$d = parse_url($_SERVER["REQUEST_URI"], PHP_URL_QUERY);
-var_dump($d);
-?>
 
 <?php
 $content = ob_get_clean();

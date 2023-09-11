@@ -341,7 +341,12 @@ svg > g {
   background-color: var(--main-white);
   box-shadow: 5px 5px 8px var(--shadow-color);
 }
-.modal > .container > [data-close] {
+.modal > .container#modal2-container {
+  width: 80%;
+  max-width: 80%;
+  aspect-ratio: 16/9;
+}
+.modal > .container > :is([data-close], [data-close2]) {
   background: none;
   outline: none;
   border: none;
@@ -352,7 +357,7 @@ svg > g {
   transition: all 0.25s;
   padding: 0;
 }
-.modal > .container > [data-close]:hover {
+.modal > .container > :is([data-close], [data-close2]):hover {
   cursor: pointer;
   color: rgb(255, 54, 94);
   font-weight: 500;
@@ -636,6 +641,10 @@ svg > g {
   .corrier > div {
     rotate: 0deg !important;
     max-height: none;
+  }
+  .modal > .container#modal2-container {
+    height: 90%;
+    aspect-ratio: 16/10 !important;
   }
 }
 .hidden {

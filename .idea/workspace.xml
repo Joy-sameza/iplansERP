@@ -2,16 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a102b2f4-e0c7-4692-a965-1e4e5d27d44a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/assets/css/styles.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/iplans.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/home_controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/home_controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/partials/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/partials/footer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/partials/head.php" beforeDir="false" afterPath="$PROJECT_DIR$/partials/head.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/Controller.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/Courrier.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/Database.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/ErrorHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/custom-selectbox.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/forms/formdata.php" beforeDir="false" afterPath="$PROJECT_DIR$/forms/formdata.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/config.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vues/courrier.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/courrier.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vues/courriers.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vues/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/home.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vues/pannel.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +24,16 @@
   <component name="ComposerSettings">
     <execution />
   </component>
+  <component name="DatabaseLocalColorSettings">
+    <colors>
+      <entry key="4b24e53f-33e8-4a14-bdcc-117f7683d7ec" value="Orange" />
+    </colors>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/api/index.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -33,12 +44,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
+  }
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -51,7 +70,22 @@
       <workItem from="1693812505070" duration="714000" />
       <workItem from="1693832853299" duration="199000" />
       <workItem from="1693833103001" duration="120000" />
+      <workItem from="1694258148330" duration="1454000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
