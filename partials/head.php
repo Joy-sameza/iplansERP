@@ -23,3 +23,7 @@ $url = $_SERVER["REQUEST_URI"];
 $insert_string = '<script src="' . SITE_URL . '/assets/js/iplans.courrier.js" defer></script>';
 __add__($url, 'courrier', $insert_string);
 ?>
+
+<script>
+    const API_URL = "<?= COURRIER_API_URL ?>";
+</script>

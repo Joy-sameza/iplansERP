@@ -34,6 +34,8 @@ if (array_key_exists(2, $part)) {
     }
 }
 
+ini_set("date.timezone", "Africa/Douala");
+
 $database = new Database("localhost", "root", "12345", "demo");
 
 $courrier = new Courrier($database);

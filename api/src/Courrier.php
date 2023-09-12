@@ -138,11 +138,12 @@ class Courrier
         $this->desti = htmlspecialchars(strip_tags($data['Destinataire']));
         $this->niveau = htmlspecialchars(strip_tags($data['NiveauImportance']));
         // $this->status = htmlspecialchars(strip_tags($data['status']));
+        
         $this->date = htmlspecialchars(strip_tags($data['DateDepot'] ?? date('Y/m/d')));
 
-        $this->heure = htmlspecialchars(strip_tags($data['HeureDepot'] ?? date('H:i', time() - 1 * 60 * 60)));
+        $this->heure = htmlspecialchars(strip_tags($data['HeureDepot'] ?? date('H:i')));
 
-        // return ($this->date);
+        return ($this->heure) ;
 
         $i = 0;
         $tmp = mt_rand(0, 9);
@@ -292,31 +293,6 @@ class Courrier
             return false;
         }
 
-
-        // Bind the courier ID parameter
-        $stmt->bindParam(':courierId', $courierId, PDO::PARAM_INT);
-
-        // Execute the SQL statement
-        $stmt->execute();
-
-        // Return the number of rows affected by the delete operation
-        return $stmt->rowCount();
-    }
-    /**
-     * Delete all couriers from the database.
-     *
-     * @return int The number of rows affected by the delete operation.
-     */
-    public function deleteAll(): int
-    {
-        // Define the query to delete the couriers by ID
-        $query = "DELETE FROM {$this->table} WHERE NEng >= :courierId";
-
-        // Sanitize and assign the courier ID
-        $courierId = htmlspecialchars(strip_tags("1"));
-
-        // Prepare the SQL statement
-        $stmt = $this->conn->prepare($query);
 
         // Bind the courier ID parameter
         $stmt->bindParam(':courierId', $courierId, PDO::PARAM_INT);

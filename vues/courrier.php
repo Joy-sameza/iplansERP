@@ -27,7 +27,7 @@ ob_start();
 
 <?php
 require_once "./include/config.php";
-
+ini_set("date.timezone", "Africa/Douala");
 $curl = curl_init();
 
 curl_setopt_array($curl, [
@@ -191,11 +191,11 @@ foreach ($d as $pack) {
         </div>
         <div class="group">
           <label for="date">Date de depot</label>
-          <input type="date" name="date" id="date" required />
+          <input type="date" name="date" id="date" value="<?= date('Y-m-d') ?>" required />
         </div>
         <div class="group">
           <label for="heure">Heure de depot</label>
-          <input type="time" name="heure" id="heure" required />
+          <input type="time" name="heure" id="heure" value="<?= date('H:i') ?>" required />
         </div>
         <section>
           <fieldset>
@@ -252,10 +252,76 @@ foreach ($d as $pack) {
   <div class="container" id="modal2-container">
     <button data-close2>&times;</button>
     <h3 class="title">Liste des courier arrivé/départ</h3>
+    <div class="heading">
+      <form id="formOuvrirCourrier">
+        <fieldset>
+          <legend>Recherche</legend>
+          <div class="form-group">
+            <label>Date de debut <input type="date" name="date_debut" id="date_debut" value="<?= date('Y-m-d') ?>"></label>
+            <input type="checkbox" name="filtre" id="filtre"><label> Filtre</label>
+            <label>Date de fin <input type="date" name="date_fin" id="date_fin" value="<?= date('Y-m-d') ?>"></label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <label>
+            site (Agence)
+            <select name="site" id="site">
+              <option value="tous">Tous</option>
+              <?php
+              // Get site from database through API
+              ?>
+            </select>
+          </label>
+        </fieldset>
+        <fieldset>
+          <legend>Niveau d'importance</legend>
+          <label for=""><input type="checkbox" name="exceptionnel_filtre" id=""> Exceptionel</label>
+          <label for=""><input type="checkbox" name="tres_haute_filtre" id=""> Très haute</label>
+          <label for=""><input type="checkbox" name="haute_filtre" id=""> Haute</label>
+          <label for=""><input type="checkbox" name="moyenne_filtre" id=""> Moyenne</label>
+          <label for=""><input type="checkbox" name="basse_filtre" id=""> Basse</label>
+          <label for=""><input type="checkbox" name="tous_importance_filtre" id=""> Tous</label>
+        </fieldset>
+        <fieldset>
+          <legend>Etat des couriers</legend>
+          <label for=""><input type="checkbox" name="archive_filtre" id=""> Archivés</label>
+          <label for=""><input type="checkbox" name="non_archive_filtre" id=""> Non Archivés</label>
+          <label for=""><input type="checkbox" name="tous_archive_filtre" id=""> Tous</label>
+        </fieldset>
+        <fieldset>
+          <legend>Type de courier</legend>
+          <label for=""><input type="checkbox" name="entrant_filtre" id=""> Courier Entrant</label>
+          <label for=""><input type="checkbox" name="sortant_filtre" id=""> Courier Sortant</label>
+          <label for=""><input type="checkbox" name="tous_type_filtre" id=""> Tous</label>
+        </fieldset>
+      </form>
+    </div>
     <div class="table">
-      <table class="list">
-        
+      <table>
+        <thead>
+          <th>References</th>
+          <th>Objet</th>
+          <th>Date depot</th>
+          <th>Heure depot</th>
+          <th>Source</th>
+          <th>Destinataire</th>
+          <th>Importance</th>
+          <th>Type de courrier</th>
+          <th>Statut</th>
+        </thead>
+        <tbody class="list">
+
+        </tbody>
       </table>
+    </div>
+    <div class="footing">
+      <div class="btns">
+        <button>Modifier </button>
+        <button>Supprimer</button>
+        <button>Archiver</button>
+        <button>Imprimer Liste</button>
+      </div>
+      <span>Liste des couriers arrivés/départ</span>
     </div>
   </div>
 </div>
@@ -266,6 +332,20 @@ foreach ($d as $pack) {
     <td data-size></td>
   </tr>
 </template>
+<template data-list-template-info>
+  <tr>
+    <td data-ref></td>
+    <td data-objet></td>
+    <td data-date></td>
+    <td data-heure></td>
+    <td data-source></td>
+    <td data-destinataire></td>
+    <td data-niveau></td>
+    <td data-type></td>
+    <td data-statut></td>
+  </tr>
+</template>
+
 
 <?php
 $content = ob_get_clean();
