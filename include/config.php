@@ -1,6 +1,6 @@
 <?php
 @define("HOST_NAME", "localhost");
-@define("DB_NAME", "portail_captif");
+@define("DB_NAME", "demo");
 @define("USER_NAME", "root");
 @define("USER_PASSWORD", "");
 @define("MAX_UPLOAD_SIZE", 50);
