@@ -1,17 +1,20 @@
 <?php
-include "include/config.php";
-$servername=HOST_NAME;
-$username=USER_NAME;
-$password=USER_PASSWORD;
-$myDB=DB_NAME;
+class connexion{
+    public $access;
+    public function __construct()
+    {
+        try{
 
-try{
-    $conn=new PDO("mysql:host=$servername;dbname=$myDB",$username, $password);
-    $conn->SetAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->access=new pdo("mysql:host=localhost;port=5785;dbname=demo;charset=utf8",
+                "administrator","system");
+            $this->access->setAttribute(pdo::ATTR_ERRMODE,pdo::ERRMODE_WARNING);
+        } catch (Exception $e){
+            echo  $e->getMessage();
+            die();
+        }
 
-} catch(PDOException $e){
-    echo "Impossible de se connecter a la base de données :" .$e->getMessage();
-    exit();
-
+    }
 }
+
+
 ?>

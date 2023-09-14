@@ -22,6 +22,8 @@ if ($query == "lang=en") {
     include_once "./lang/fr.php";
   }
 }
+
+
 ob_start();
 ?>
 
@@ -52,7 +54,7 @@ if ($err) {
 }
 $d = (array)json_decode($response, true);
 //$data['num'] = count($d);
-$dd = (array)$d[0];
+
 $a = $b = $c = $de = $e = $u = $ent_auj = 0;
 $f = $g = $h = $z = $k = $v = $sor_auj = 0;
 

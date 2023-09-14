@@ -1,20 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a102b2f4-e0c7-4692-a965-1e4e5d27d44a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/api/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Controller.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Courrier.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Database.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/ErrorHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="a102b2f4-e0c7-4692-a965-1e4e5d27d44a" name="Changes" comment="test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/custom-selectbox.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/main.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/forms/formdata.php" beforeDir="false" afterPath="$PROJECT_DIR$/forms/formdata.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vues/courrier.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/courrier.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Courrier.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Courrier.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +39,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/xampp/htdocs/Iplans/include",
     "run.code.analysis.last.selected.profile": "pProject Default",
     "vue.rearranger.settings.migration": "true"
   },
@@ -58,6 +49,15 @@
     ]
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Iplans\include" />
+      <recent name="C:\xampp\htdocs\Iplans\assets\js" />
+      <recent name="C:\xampp\htdocs\Iplans\assets\img" />
+      <recent name="C:\xampp\htdocs\Iplans\assets\css" />
+      <recent name="C:\xampp\htdocs\Iplans\vues" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -71,7 +71,16 @@
       <workItem from="1693832853299" duration="199000" />
       <workItem from="1693833103001" duration="120000" />
       <workItem from="1694258148330" duration="1454000" />
+      <workItem from="1694656228477" duration="9386000" />
     </task>
+    <task id="LOCAL-00001" summary="test">
+      <created>1694688403854</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1694688403854</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -87,5 +96,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="test" />
+    <option name="LAST_COMMIT_MESSAGE" value="test" />
   </component>
 </project>

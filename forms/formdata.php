@@ -1,4 +1,7 @@
 <?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 require_once './../include/config.php';
 // Check if the request method is POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -25,7 +28,10 @@ $bytes = 1024 * 1024; //Convert Megabytes to bytes
 $done = false;
 $fileDestination = "";
 // Get the file data
-if (array_key_exists("userfiles", $_FILES)) {
+
+//var_dump(empty($_FILES["userfiles"]['name']));
+//exit();
+if (array_key_exists("userfiles", $_FILES) and !empty($_FILES["userfiles"]['name'])) {
   $files = $_FILES["userfiles"];
 
   if (empty($_FILES)) {
@@ -94,20 +100,25 @@ if ($done) {
   $output = sendData($data, $fileDestination);
 
   if (array_key_exists("message", $output) && array_key_exists("id", $output)) {
-    header("Location: " . SITE_URL . "/courrier?sucess");
+      $_SESSION['save']=true;
+    header("Location: " . SITE_URL . "/courrier");
+
   } else {
     unlink($fileDestination);
     http_response_code(500);
-    header("Location: " . SITE_URL . "/courrier?failed");
+      $_SESSION['error']=true;
+    header("Location: " . SITE_URL . "/courrier");
   }
 } else {
   $output = sendData($data, $fileDestination);
 
   if (array_key_exists("message", $output) && array_key_exists("id", $output)) {
-    header("Location: " . SITE_URL . "/courrier?sucess");
+      $_SESSION['save']=true;
+    header("Location: " . SITE_URL . "/courrier");
   } else {
     http_response_code(500);
-    header("Location: " . SITE_URL . "/courrier?failed");
+      $_SESSION['error']=true;
+    header("Location: " . SITE_URL . "/courrier");
   }
 }
 
