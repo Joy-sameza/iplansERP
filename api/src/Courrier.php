@@ -139,11 +139,11 @@ class Courrier
         $this->niveau = htmlspecialchars(strip_tags($data['NiveauImportance']));
         // $this->status = htmlspecialchars(strip_tags($data['status']));
         
-        $this->date = htmlspecialchars(strip_tags($data['DateDepot'] ?? date('Y/m/d')));
+        $this->date = htmlspecialchars(strip_tags(implode("/", explode('-', $data['DateDepot'])) ?? date('Y/m/d')));
 
         $this->heure = htmlspecialchars(strip_tags($data['HeureDepot'] ?? date('H:i')));
 
-        return ($this->heure) ;
+        // return ($this->heure) ;
 
         $i = 0;
         $tmp = mt_rand(0, 9);

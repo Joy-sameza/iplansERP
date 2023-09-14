@@ -28,7 +28,10 @@ $bytes = 1024 * 1024; //Convert Megabytes to bytes
 $done = false;
 $fileDestination = "";
 // Get the file data
-if (array_key_exists("userfiles", $_FILES)) {
+
+//var_dump(empty($_FILES["userfiles"]['name']));
+//exit();
+if (array_key_exists("userfiles", $_FILES) and !empty($_FILES["userfiles"]['name'])) {
   $files = $_FILES["userfiles"];
 
   if (empty($_FILES)) {

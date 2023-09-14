@@ -18,12 +18,13 @@
 <script type="text/javascript" src="<?=SITE_URL?>/assets/js/jquery.min.js"></script>
 <script type="text/javascript" src="<?=SITE_URL?>/assets/js/sweetalert2.js"></script>
 
-<!-- Scripts -->
+<script src="<?=SITE_URL?>/assets/js/iplans.courrier.js" defer></script>
+
 <?php
-require_once './include/functions.php';
-$url = $_SERVER["REQUEST_URI"];
-$insert_string = '<script src="' . SITE_URL . '/assets/js/iplans.courrier.js" defer></script>';
-__add__($url, 'courrier', $insert_string);
+//require_once './include/functions.php';
+//$url = $_SERVER["REQUEST_URI"];
+//$insert_string = '';
+//__add__($url, 'courrier', $insert_string);
 ?>
 
 <script>

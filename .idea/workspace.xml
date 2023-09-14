@@ -1,29 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a102b2f4-e0c7-4692-a965-1e4e5d27d44a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/css/accueil.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/css/login.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/css/sweetalert2.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/img/france-20.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/img/great-britain-20.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/img/logo_minesec.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/img/logo_minesec2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/js/jquery-3.1.1.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/js/jquery.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/js/sweetalert2.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vues/accueil.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vues/login.php" afterDir="false" />
+    <list default="true" id="a102b2f4-e0c7-4692-a965-1e4e5d27d44a" name="Changes" comment="test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/home_controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/home_controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forms/formdata.php" beforeDir="false" afterPath="$PROJECT_DIR$/forms/formdata.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/connexion.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/connexion.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/partials/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/partials/footer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/partials/head.php" beforeDir="false" afterPath="$PROJECT_DIR$/partials/head.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vues/courrier.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/courrier.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Courrier.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Courrier.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,8 +71,16 @@
       <workItem from="1693832853299" duration="199000" />
       <workItem from="1693833103001" duration="120000" />
       <workItem from="1694258148330" duration="1454000" />
-      <workItem from="1694656228477" duration="6769000" />
+      <workItem from="1694656228477" duration="9386000" />
     </task>
+    <task id="LOCAL-00001" summary="test">
+      <created>1694688403854</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1694688403854</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -107,5 +96,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="test" />
+    <option name="LAST_COMMIT_MESSAGE" value="test" />
   </component>
 </project>

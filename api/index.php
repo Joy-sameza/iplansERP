@@ -36,7 +36,7 @@ if (array_key_exists(2, $part)) {
 
 ini_set("date.timezone", "Africa/Douala");
 
-$database = new Database("localhost", "administrator", "system", "demo","5785");
+$database = new Database("localhost", "administrator", "system", "demo",'5785');
 
 $courrier = new Courrier($database);
 
