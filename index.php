@@ -25,3 +25,9 @@ if ('/accueil' == $uri || empty($uri) || $uri == "/") {
 if ('/courrier' == $uri) {
     courrier();
 }
+if ('/login' == $uri) {
+    loginlogin();
+}
+if ('/spider' == $uri) {
+    spider();
+}

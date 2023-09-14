@@ -14,7 +14,9 @@
 
 <!-- Template Main CSS File -->
 <link href="<?= SITE_URL ?>/assets/css/style.css" rel="stylesheet">
-
+<link rel="stylesheet" href="<?=SITE_URL?>/assets/js/jquery-3.1.1.min.js">
+<script type="text/javascript" src="<?=SITE_URL?>/assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="<?=SITE_URL?>/assets/js/sweetalert2.js"></script>
 
 <!-- Scripts -->
 <?php

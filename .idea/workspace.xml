@@ -2,18 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a102b2f4-e0c7-4692-a965-1e4e5d27d44a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/api/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Controller.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Courrier.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Database.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/ErrorHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/css/accueil.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/css/login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/css/sweetalert2.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/img/france-20.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/img/great-britain-20.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/img/logo_minesec.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/img/logo_minesec2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/js/jquery-3.1.1.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/js/jquery.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/js/sweetalert2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vues/accueil.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vues/login.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/custom-selectbox.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/home_controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/home_controller.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/forms/formdata.php" beforeDir="false" afterPath="$PROJECT_DIR$/forms/formdata.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/connexion.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/connexion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/partials/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/partials/footer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/partials/head.php" beforeDir="false" afterPath="$PROJECT_DIR$/partials/head.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vues/courrier.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/courrier.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,6 +58,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/xampp/htdocs/Iplans/include",
     "run.code.analysis.last.selected.profile": "pProject Default",
     "vue.rearranger.settings.migration": "true"
   },
@@ -58,6 +68,15 @@
     ]
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Iplans\include" />
+      <recent name="C:\xampp\htdocs\Iplans\assets\js" />
+      <recent name="C:\xampp\htdocs\Iplans\assets\img" />
+      <recent name="C:\xampp\htdocs\Iplans\assets\css" />
+      <recent name="C:\xampp\htdocs\Iplans\vues" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -71,6 +90,7 @@
       <workItem from="1693832853299" duration="199000" />
       <workItem from="1693833103001" duration="120000" />
       <workItem from="1694258148330" duration="1454000" />
+      <workItem from="1694656228477" duration="6769000" />
     </task>
     <servers />
   </component>

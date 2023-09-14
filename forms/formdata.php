@@ -1,4 +1,7 @@
 <?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 require_once './../include/config.php';
 // Check if the request method is POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -94,20 +97,25 @@ if ($done) {
   $output = sendData($data, $fileDestination);
 
   if (array_key_exists("message", $output) && array_key_exists("id", $output)) {
-    header("Location: " . SITE_URL . "/courrier?sucess");
+      $_SESSION['save']=true;
+    header("Location: " . SITE_URL . "/courrier");
+
   } else {
     unlink($fileDestination);
     http_response_code(500);
-    header("Location: " . SITE_URL . "/courrier?failed");
+      $_SESSION['error']=true;
+    header("Location: " . SITE_URL . "/courrier");
   }
 } else {
   $output = sendData($data, $fileDestination);
 
   if (array_key_exists("message", $output) && array_key_exists("id", $output)) {
-    header("Location: " . SITE_URL . "/courrier?sucess");
+      $_SESSION['save']=true;
+    header("Location: " . SITE_URL . "/courrier");
   } else {
     http_response_code(500);
-    header("Location: " . SITE_URL . "/courrier?failed");
+      $_SESSION['error']=true;
+    header("Location: " . SITE_URL . "/courrier");
   }
 }
 
