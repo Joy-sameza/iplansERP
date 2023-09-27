@@ -11,6 +11,7 @@ require_once $dirs . '/include/config.php'; ?>
 </head>
 
 <body>
+    <noscript><h1>You need to enable JavaScript to run this app.</h1></noscript>
     <?php require_once $dirs . '/partials/header.php'; ?>
     <?php echo $content ?>
     <?php require_once $dirs . '/partials/footer.php'; ?>

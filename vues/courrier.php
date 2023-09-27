@@ -161,6 +161,24 @@ foreach ($d as $pack) {
     </section>
     <button class="btn" data-ouvrirCourrier>Ouvrir un courrier</button>
   </div>
+  <div class="encours">
+    <h2>Courrier en cours</h2>
+    <section>
+      <button>Nbre total de Courrier : <strong><?= $j ?? '0' ?></strong></button>
+      <button>Aujourd'hui : <strong><?= $sor_auj ?></strong></button>
+      <button>Ancien Courrier : <strong><?= $j - $sor_auj ?? '0' ?></strong></button>
+      <button>Traités/Archivées : <strong><?= $v ?? '0' ?></strong></button>
+    </section>
+    <section>
+      <h4>Niveau d'importance</h4>
+      <span><strong>Exceptionel</strong><strong><?= $k ?? '0' ?></strong></span>
+      <span><strong>Très haute</strong><strong><?= $g ?? '0' ?></strong></span>
+      <span><strong>haute</strong><strong><?= $f ?? '0' ?></strong></span>
+      <span><strong>moyenne</strong><strong><?= $h ?? '0' ?></strong></span>
+      <span><strong>Basse</strong><strong><?= $z ?? '0' ?></strong></span>
+    </section>
+    <button class="btn" data-nouvelleRedaction>Nouvelle Redaction</button>
+  </div>
 </main>
 
 <div class="modal" data-modal1>
@@ -316,6 +334,7 @@ foreach ($d as $pack) {
           <legend>Type de courier</legend>
           <label for=""><input type="radio" name="type_filtre" value="entrant_filtre" id=""> Courier Entrant</label>
           <label for=""><input type="radio" name="type_filtre" value="sortant_filtre" id=""> Courier Sortant</label>
+          <label for=""><input type="radio" name="type_filtre" value="encours_filtre" id=""> Courier en cours</label>
           <label for=""><input type="radio" name="type_filtre" value="tous_type_filtre" id="" checked> Tous</label>
         </fieldset>
       </form>
@@ -364,6 +383,108 @@ foreach ($d as $pack) {
       </div>
       <span>Liste des couriers arrivés/départ</span>
     </div>
+  </div>
+</div>
+<div class="modal" data-modal3>
+  <div class="container">
+    <button data-close3>&times;</button>
+    <h3 class="title">Nouveau Courrier en cours</h3>
+    <form data-form enctype="multipart/form-data" method="post" action="<?= SITE_URL ?>/forms/formdata.php">
+      <fieldset>
+        <legend>Utilisez un template</legend>
+        <div class="template" style="display: flex; flex-direction:column;">
+          <span>
+            <img src="<?= SITE_URL ?>/assets/downloads/template.jpg">
+          </span>
+          <a href="<?= SITE_URL ?>/assets/downloads/template.docx" download>
+            <button type="button">Télécharger</button>
+          </a>
+        </div>
+        <div class="template" style="display: flex; flex-direction:column;">
+          <span>
+            <img src="<?= SITE_URL ?>/assets/downloads/template.jpg">
+          </span>
+          <a href="<?= SITE_URL ?>/assets/downloads/template.docx" download>
+            <button type="button">Télécharger</button>
+          </a>
+        </div>
+        <input type="radio" name="type" id="en_cours" value="En cours" checked style="display: none;" required>
+      </fieldset>
+      <fieldset>
+        <legend>Info Courrier</legend>
+        <div class="group">
+          <label for="ref">Reference</label>
+          <input type="text" name="ref" id="ref" required />
+        </div>
+        <div class="group">
+          <label for="objet">Objet</label>
+          <input type="text" name="objet" id="objet" required />
+        </div>
+        <div class="group">
+          <label for="source">Source</label>
+          <input type="text" name="source" id="source" required />
+        </div>
+        <div class="group">
+          <label for="desti">Destinataires</label>
+          <input type="text" name="desti" id="desti" required />
+        </div>
+        <div class="group">
+          <label for="date">Date de depot</label>
+          <input type="date" name="date" id="date" value="<?= date('Y-m-d') ?>" required />
+        </div>
+        <div class="group">
+          <label for="heure">Heure de depot</label>
+          <input type="time" name="heure" id="heure" value="<?= date('H:i') ?>" required />
+        </div>
+        <section>
+          <fieldset>
+            <legend>Pièces jointes</legend>
+            <span class="icons">
+              <a title="pièces jointes" data-firstPiece>
+                <input type="file" name="userfiles" data-Rupload id="files" class="hidden">
+                <img data-upload src="<?= SITE_URL ?>/assets/img/icons/solid/paperclip.svg" height="16">
+              </a>
+              <a title="ajouter une pièces jointes" data-addPiece><img src="<?= SITE_URL ?>/assets/img/icons/solid/plus.svg" height="16"></a>
+              <a title="retirer une pièces jointes" data-removePiece><img src="<?= SITE_URL ?>/assets/img/icons/solid/minus.svg" height="16"></a>
+              <a title="retirer toutes les pièces jointes" data-removeAll><img src="<?= SITE_URL ?>/assets/img/icons/solid/xmark.svg" height="16"></a>
+            </span>
+            <table>
+              <thead>
+                <th>T</th>
+                <th>Pièces jointes</th>
+                <th>Taille</th>
+              </thead>
+              <tbody data-tbody></tbody>
+            </table>
+          </fieldset>
+          <fieldset>
+            <legend>Niveau d'importance</legend>
+            <div class="options">
+              <label for="exceptionnel"><input required data-select type="radio" name="niveau" id="exceptionnel" value="Exceptionnel"> Exceptionnel</label>
+              <label for="tres_haut"><input required data-select type="radio" name="niveau" id="tres_haut" value="Très haute"> Très haut</label>
+              <label for="haute"><input required data-select checked type="radio" name="niveau" id="haute" value="Haute"> Haute</label>
+              <label for="moyenne"><input required data-select type="radio" name="niveau" id="moyenne" value="Moyenne"> Moyenne</label>
+              <label for="basse"><input required data-select type="radio" name="niveau" id="basse" value="Basse"> Basse</label>
+            </div>
+            <div class="range">
+              <input type="range" step="5" min="0" max="20" list="options" data-range>
+              <datalist id="options">
+                <option value="0"></option>
+                <option value="5"></option>
+                <option value="10"></option>
+                <option value="15"></option>
+                <option value="20"></option>
+                <option value="25"></option>
+              </datalist>
+            </div>
+          </fieldset>
+        </section>
+      </fieldset>
+      <div class="btn">
+        <button type="reset" title="Annuler" data-reset><img src="<?= SITE_URL ?>/assets/img/icons/solid/xmark.svg" height="32px"></button>
+        <button type="submit" title="Envoyer" name="iplans_submit"><img src="<?= SITE_URL ?>/assets/img/icons/solid/paper-plane.svg" height="32px"></button>
+      </div>
+    </form>
   </div>
 </div>
 <template data-template-row-info>

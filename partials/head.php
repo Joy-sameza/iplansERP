@@ -14,19 +14,21 @@
 
 <!-- Template Main CSS File -->
 <link href="<?= SITE_URL ?>/assets/css/style.css" rel="stylesheet">
-<!-- <link rel="stylesheet" href="<?=SITE_URL?>/assets/js/jquery-3.1.1.min.js"> -->
-<script type="text/javascript" src="<?=SITE_URL?>/assets/js/jquery.min.js" defer></script>
-<script type="text/javascript" src="<?=SITE_URL?>/assets/js/sweetalert2.js" defer></script>
+<!-- <link rel="stylesheet" href="<?= SITE_URL ?>/assets/js/jquery-3.1.1.min.js"> -->
+<script type="text/javascript" src="<?= SITE_URL ?>/assets/js/jquery.min.js" defer></script>
+<script type="text/javascript" src="<?= SITE_URL ?>/assets/js/sweetalert2.js" defer></script>
 
-<script src="<?=SITE_URL?>/assets/js/iplans.courrier.js" defer></script>
+<script src="<?= SITE_URL ?>/assets/js/iplans.courrier.js" defer></script>
 
 <?php
 //require_once './include/functions.php';
 //$url = $_SERVER["REQUEST_URI"];
 //$insert_string = '';
 //__add__($url, 'courrier', $insert_string);
-header('Accept-Encoding: gzip, compress, br');
-header("Content-Encoding: compress");
+header('Accept-Encoding: gzip, compress, br', true);
+header("Content-Encoding: compress", true);
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0", true);
+header("Expires: Thu, 01 Jan 1970 00:00:00 GMT", true);
 ?>
 
 <script>

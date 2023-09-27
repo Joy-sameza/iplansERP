@@ -1,8 +1,10 @@
 const newcourrier = document.querySelector("[data-newcourrier]");
 const modal1 = document.querySelector("[data-modal1]");
 const modal2 = document.querySelector("[data-modal2]");
+const modal3 = document.querySelector("[data-modal3]");
 const close1 = document.querySelector("[data-close]");
 const close2 = document.querySelector("[data-close2]");
+const close3 = document.querySelector("[data-close3]");
 const range = document.querySelector("[data-range]");
 const select = document.querySelectorAll("[data-select]");
 const reset = document.querySelector("[data-reset]");
@@ -23,6 +25,7 @@ const deletebtn = modal2.querySelector("#delete");
 const archivebtn = modal2.querySelector("#archive");
 const printbtn = modal2.querySelector("#print");
 const listTableRows = modal2.getElementsByTagName("tr");
+const nouvelleRedaction = document.querySelector("[data-nouvelleRedaction]");
 
 let modal1ref, modal2ref;
 modal1ref = false;
@@ -64,10 +67,12 @@ const closeModals = (modals) => {
 openModals([
   { triggerButton: newcourrier, modal: modal1 },
   { triggerButton: ouvrirCourrier, modal: modal2 },
+  { triggerButton: nouvelleRedaction, modal: modal3 },
 ]);
 closeModals([
   { triggerButton: close1, modal: modal1 },
   { triggerButton: close2, modal: modal2 },
+  { triggerButton: close3, modal: modal3 },
 ]);
 window.addEventListener("keydown", (e) => {
   if (
@@ -109,6 +114,8 @@ function addBorderRadius() {
   const borderRadius = entrant.clientWidth * 0.025 + "px";
   entrant.style.borderRadius = borderRadius;
   entrant.nextElementSibling.style.borderRadius = borderRadius;
+  entrant.nextElementSibling.nextElementSibling.style.borderRadius =
+    borderRadius;
 }
 
 window.addEventListener("resize", addBorderRadius);
@@ -402,6 +409,9 @@ function useTypefilters(type, data) {
     case "sortant_filtre":
       // Filter for "Sortant" type
       return data.filter((item) => item.InOutCourier === "Sortant");
+    case "encours_filtre":
+      // Filter for "Sortant" type
+      return data.filter((item) => item.InOutCourier === "En cours");
     default:
       // Return the original data for unknown type
       return data;
@@ -529,20 +539,20 @@ async function archiveData(id) {
 async function deleteData(id) {
   const val = await swal({
     icon: "warning",
-    title: "Etes-vous sûr de vouloir archiver ce courier ?",
+    title: "Etes-vous sûr de vouloir supprimer ce courier ?",
     dangerMode: true,
     closeOnClickOutside: false,
     closeOnEsc: false,
     buttons: {
       cancel: {
-        text: "Non, ne pas archiver!",
+        text: "Non, ne pas supprimer!",
         value: false,
         visible: true,
         className: "",
         closeModal: true,
       },
       confirm: {
-        text: "Oui, archiver!",
+        text: "Oui, supprimer!",
         value: true,
         className: "",
         closeModal: true,
@@ -552,6 +562,9 @@ async function deleteData(id) {
   if (!val) return;
   const url = SITE_URL + "/forms/formdatadelete.php";
   const response = await postData(url, {}, id);
+  if (response["rows"] === 1 && response["message"])
+    return showAlert("Le courrier a été supprimé avec succès", "success");
+  return showAlert("Le courrier n'a pas pu être supprimé", "error");
 }
 /**
  * Send a POST request to the server with data
@@ -592,7 +605,7 @@ async function postData(action, data, id) {
 function triggerEvent(ev, { parent = window } = {}) {
   const event = new Event(ev, {
     bubbles: true,
-    cancelable: true,
+    cancelable: false,
   });
   return parent.dispatchEvent(event);
 }
