@@ -391,7 +391,7 @@ foreach ($d as $pack) {
     <h3 class="title">Nouveau Courrier en cours</h3>
     <form data-form enctype="multipart/form-data" method="post" action="<?= SITE_URL ?>/forms/formdata.php">
       <fieldset>
-        <legend>Utilisez un template</legend>
+        <legend>Utilisez un des templates</legend>
         <div class="template" style="display: flex; flex-direction:column;">
           <span>
             <img src="<?= SITE_URL ?>/assets/downloads/template.jpg">
