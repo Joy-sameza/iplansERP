@@ -75,12 +75,13 @@ class Controller
                 if ($rows === false) {
                     echo json_encode(["message" => "Le courrier ne peut pas être modifier"]);
                     break;
-                }
+                } else {
 
-                echo json_encode([
-                    "message" => "Courrier $id à été mis à jour",
-                    "rows" => $rows
-                ]);
+                    echo json_encode([
+                        "message" => "Courrier $id à été mis à jour",
+                        "rows" => $rows
+                    ]);
+                }
                 break;
 
             case "DELETE":
@@ -116,6 +117,10 @@ class Controller
             case "GET":
                 if ($path === '') {
                     echo json_encode($this->cour->getAll());
+                    break;
+                }
+                if ($path === 'site') {
+                    echo json_encode($this->cour->getAllSite());
                     break;
                 }
                 http_response_code(404);

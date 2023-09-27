@@ -17,17 +17,33 @@ const tableBody = document.querySelector("[data-tbody]");
 const ouvrirCourrier = document.querySelector("[data-ouvrirCourrier]");
 const dataList = document.querySelector(".list");
 const listRowTemplate = document.querySelector("[data-list-template-info]");
-
 const formOuvrirCourrier = document.querySelector("#formOuvrirCourrier");
+const modifybtn = modal2.querySelector("#modify");
+const deletebtn = modal2.querySelector("#delete");
+const archivebtn = modal2.querySelector("#archive");
+const printbtn = modal2.querySelector("#print");
+const listTableRows = modal2.getElementsByTagName("tr");
 
+let modal1ref, modal2ref;
+modal1ref = false;
+modal2ref = false;
+/**
+ * Opens the specified modals when their respective trigger buttons are clicked.
+ *
+ * @param {Array} modals - An array of objects representing the modals and their trigger buttons.
+ * @param {HTMLElement} modals[].triggerButton - The trigger button for the modal.
+ * @param {HTMLElement} modals[].modal - The modal element to be opened.
+ */
 const openModals = (modals) => {
   modals.forEach(({ triggerButton, modal }) => {
-    triggerButton.addEventListener("click", () => {
+    triggerButton.addEventListener("click", (e) => {
       modal.classList.add("open");
+      if (modal === modal1) modal1ref = "btn";
+      if (modal === modal2) modal2ref = "btn";
+      triggerEvent("change");
     });
   });
 };
-
 
 /**
  * Closes the specified modals when their respective trigger buttons are clicked.
@@ -37,11 +53,12 @@ const openModals = (modals) => {
  * @param {HTMLElement} modals[].modal - The modal element to be closed.
  */
 const closeModals = (modals) => {
-  modals.forEach(({ triggerButton, modal }) =>
-    triggerButton.addEventListener("click", () =>
-      modal.classList?.remove("open")
-    )
-  );
+  modals.forEach(({ triggerButton, modal }) => {
+    triggerButton.addEventListener("click", () => {
+      modal.classList?.remove("open");
+      modal1ref = modal2ref = false;
+    });
+  });
 };
 
 openModals([
@@ -59,6 +76,26 @@ window.addEventListener("keydown", (e) => {
   ) {
     modal1.classList?.remove("open");
     modal2.classList?.remove("open");
+    modal1ref = modal2ref = false;
+  }
+});
+
+window.addEventListener("change", (e) => {
+  let imps = modal1.querySelectorAll("[type='radio'][name='niveau']");
+  if (modal1ref === false) {
+    modal1.querySelector("form").action =
+      SITE_URL + "/forms/formdataupdate.php";
+    imps[0].parentNode.parentNode.style.pointerEvents = "auto";
+    modal1.querySelector(
+      "[type='range'][list='options']"
+    ).parentNode.style.display = "none";
+  } else {
+    modal1.querySelector("form").action = SITE_URL + "/forms/formdata.php";
+    imps[0].parentNode.parentNode.style.pointerEvents = "none";
+    modal1
+      .querySelector("[type='range'][list='options']")
+      .parentNode.style.removeProperty("display");
+    // reset.click();
   }
 });
 
@@ -67,7 +104,6 @@ window.addEventListener("keydown", (e) => {
  *
  * @param {type} entrant - The element to set the border radius on.
  * @return {void}
- * @link [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius)
  */
 function addBorderRadius() {
   const borderRadius = entrant.clientWidth * 0.025 + "px";
@@ -132,6 +168,7 @@ addPiece.addEventListener("click", () => Rupload.click());
 
 removePiece.addEventListener("click", () => {
   tableBody.removeChild(tableBody.lastChild);
+  Rupload.value = "";
 });
 
 /**
@@ -157,6 +194,7 @@ function updateTable(table, data = {}, elementClone) {
     NiveauImportance: "niveau",
     InOutCourier: "type",
     Statut: "statut",
+    NEng: "neng",
   };
 
   Object.entries(data).forEach(([key, value]) => {
@@ -169,41 +207,432 @@ function updateTable(table, data = {}, elementClone) {
 }
 
 /**
- * Sets the value of an element with the specified data attribute.
+ * Sets the value of an element with a specific data attribute.
  *
- * @param {string} input - The data attribute of the element to set the value for.
- * @param {string} value - The value to set.
+ * @param {string} dataAttribute - The data attribute to search for.
+ * @param {any} value - The value to set on the element.
  * @param {Object} options - The options object.
- * @param {HTMLElement} [options.parent=document] - The parent element to query for the element with the specified data attribute.
+ * @param {HTMLElement} options.parent - The parent element to search within (default: document).
  */
-function setValue(input, value, { parent = document } = {}) {
-  // Find the element with the specified data attribute
-  const element = parent.querySelector(`[data-${input}]`);
-
-  // Set the text content of the element to the specified value
+function setValue(dataAttribute, value, { parent = document } = {}) {
+  const element = parent.querySelector(`[data-${dataAttribute}]`);
   if (element) {
     element.textContent = value;
   }
 }
 
-formOuvrirCourrier.addEventListener("change", () => {
-  // do
-  const data = fetchData();
+let data;
+window.addEventListener("DOMContentLoaded", () => {
+  data = fetchData();
+});
+
+let niveauFiltre, etatFiltre, typeFiltre, filtre;
+formOuvrirCourrier.addEventListener("change", (e) => {
+  const start = formOuvrirCourrier.querySelector("#date_debut").value;
+  const end = formOuvrirCourrier.querySelector("#date_fin").value;
+
+  if (e.target.name === "date_debut" || e.target.name === "date_fin") return;
+  if (e.target.name === "etat_filtre") etatFiltre = e.target.value;
+  if (e.target.name === "niveau_filtre") niveauFiltre = e.target.value;
+  if (e.target.name === "type_filtre") typeFiltre = e.target.value;
+  if (e.target.name === "filtre") filtre = e.target.checked;
 
   data.then((rows) => {
-    if (rows.length === 0) {
+    let output = rows;
+    if (filtre) output = useDatefilters(start, end, output);
+    if (niveauFiltre) output = useNiveaufilters(niveauFiltre, output);
+    if (etatFiltre) output = useEtatfilters(etatFiltre, output);
+    if (typeFiltre) output = useTypefilters(typeFiltre, output);
+    if (output.length === 0) {
+      dataList.innerHTML = "";
       return;
     }
     dataList.innerHTML = "";
-    rows.forEach((row) => {
-      updateTable(dataList, row, listRowTemplate);
+    output.forEach((row) => updateTable(dataList, row, listRowTemplate));
+    let action = "";
+    modifybtn.addEventListener("click", () => (action = "modify"));
+    deletebtn.addEventListener("click", () => (action = "delete"));
+    archivebtn.addEventListener("click", () => (action = "archive"));
+    Array.from(listTableRows).forEach((row) => {
+      row.addEventListener("click", async (e) => {
+        const tableRow = e.target.parentNode;
+        const id = parseInt(extractDataFromRow(tableRow).neng);
+        switch (action) {
+          case "modify":
+            action = "";
+            modifyData(tableRow, id);
+            break;
+          case "archive":
+            action = "";
+            await archiveData(id);
+            break;
+          case "delete":
+            action = "";
+            await deleteData(id);
+            break;
+          default:
+            break;
+        }
+      });
     });
   });
 });
 
-
-const fetchData = async () => {
+/**
+ * Fetches data from the API URL.
+ *
+ * @return {Promise} A promise that resolves to the fetched data.
+ */
+async function fetchData() {
   const response = await fetch(API_URL);
   const data = await response.json();
-  return await data;
-};
+  return data;
+}
+
+/**
+ *
+ * @param {string} start The starting date to apply the filters
+ * @param {string} end The ending date to apply the filters
+ * @param {Array} data List of data to be filtered
+ * @returns {Array} List of filtered data
+ */
+function useDatefilters(start, end, data) {
+  const startDate = new Date(start);
+  const endDate = new Date(end);
+
+  const diff = endDate - startDate;
+  if (diff <= 0) {
+    swal({
+      icon: "error",
+      closeOnClickOutside: true,
+      text: "Date de debut dois être plus petit que la Date de fin.",
+      dangerMode: true,
+      timer: 3000,
+      onOpen: function () {
+        swal.showLoading();
+      },
+    });
+    return [];
+  }
+  if (data.length <= 0) return [];
+  return data.filter((d) => {
+    let dt = d.DateDepot;
+    if (dt.includes("/")) {
+      dt = new Date(dt.split("/").join("-"));
+    } else {
+      dt = new Date(dt);
+    }
+    return startDate <= dt && dt <= endDate;
+  });
+}
+
+/**
+ * Filter data based on the level
+ * @param {string} niveau The level to filter out
+ * @param {Array} data List of data to filter
+ * @returns {Array} List of filtered data
+ */
+function useNiveaufilters(niveau, data) {
+  if (data.length === 0) {
+    return [];
+  }
+
+  if (!niveau) {
+    return data;
+  }
+
+  const filters = {
+    exceptionnel_filtre: "Exceptionnel",
+    tres_haute_filtre: "Très haute",
+    haute_filtre: "Haute",
+    moyenne_filtre: "Moyenne",
+    basse_filtre: "Basse",
+  };
+
+  const filteredData = data.filter((d) => {
+    return d.NiveauImportance === filters[niveau];
+  });
+
+  return filteredData.length > 0 ? filteredData : data;
+}
+
+/**
+ *
+ * @param {string} etat The state to filter
+ * @param {Array} data List of data to filter
+ * @returns {Array} List of filtered data
+ */
+function useEtatfilters(etat, data) {
+  if (data.length <= 0) return [];
+  if (!etat) return data;
+  switch (etat) {
+    case "archive_filtre":
+      return data.filter(
+        (d) =>
+          d.Statut === "Archivé" ||
+          d.Statut === "Traité" ||
+          d.Statut === "Archivé/Traité" ||
+          d.Statut === "Traité/Archivé"
+      );
+    case "non_archive_filtre":
+      return data.filter((d) => d.Statut === "");
+    default:
+      return data;
+  }
+}
+
+/**
+ * Filters the data based on the given type.
+ * @param {string} type - The type to filter
+ * @param {Array} data - List of data to filter
+ * @returns {Array} - List of filtered data
+ */
+function useTypefilters(type, data) {
+  // If data is empty, return an empty array
+  if (data.length === 0) return [];
+
+  // If type is falsy, return the original data
+  if (!type) return data;
+
+  // Filter the data based on the type
+  switch (type) {
+    case "entrant_filtre":
+      // Filter for "Entrant" type
+      return data.filter((item) => item.InOutCourier === "Entrant");
+    case "sortant_filtre":
+      // Filter for "Sortant" type
+      return data.filter((item) => item.InOutCourier === "Sortant");
+    default:
+      // Return the original data for unknown type
+      return data;
+  }
+}
+
+/**
+ *
+ * @param {HTMLTableRowElement} tableRow data to modify in database
+ * @param {number} id The id of the data to modify in the database
+ */
+function modifyData(tableRow, id) {
+  modal1.classList.add("open");
+  modal1.style.zIndex = 100;
+  modal2.style.zIndex = 10;
+
+  const data = extractDataFromRow(tableRow);
+
+  const inps = modal1.querySelectorAll("[type='radio'][name='type']");
+  const type = data.inOutCourier;
+  inps[0].checked = type === "Entrant";
+  inps[1].checked = type !== "Entrant";
+
+  modal1.querySelector("#ref").value = data.ref;
+  modal1.querySelector("#objet").value = data.objet;
+  modal1.querySelector("#source").value = data.source;
+  modal1.querySelector("#desti").value = data.desti;
+
+  const d = data.date.replace(/\//g, "-");
+  const pts = d.split("-");
+  const formattedDate =
+    pts.slice(-1)[0].length === 4 ? pts.reverse().join("-") : d;
+  modal1.querySelector("#date").value = formattedDate;
+
+  const time = data.heure
+    .split(":")
+    .map((part) => part.padStart(2, "0"))
+    .join(":");
+  modal1.querySelector("#heure").value = time;
+
+  let imps = modal1.querySelectorAll("[type='radio'][name='niveau']");
+  const level = data.niveau;
+  imps.forEach((imp) => (imp.checked = imp.value === level));
+
+  const frm = modal1.querySelector("form");
+  frm.addEventListener("submit", async (e) => {
+    if (frm.action !== SITE_URL + "/forms/formdataupdate.php") return;
+    e.preventDefault();
+    const dt = {
+      ref: frm.querySelector("#ref").value,
+      objet: frm.querySelector("#objet").value,
+      source: frm.querySelector("#source").value,
+      desti: frm.querySelector("#desti").value,
+      date: frm.querySelector("#date").value,
+      heure: frm.querySelector("#heure").value,
+      type: frm.querySelector("[name='type']").value,
+      userfiles: frm.querySelector("[name='userfiles'][type='file']").files[0],
+    };
+    const response = await postData(frm.action, dt, id);
+    if (
+      (response["rows"] === undefined && response["message"]) ||
+      response["errors"]
+    )
+      return showAlert(
+        "Le courrier ne peut pas être modifié",
+        "error",
+        "Le courrier est déjà archivé"
+      );
+    showAlert("Courrier archivé avec succès", "success").then(() => {
+      close1.click();
+    });
+    triggerEvent("DOMContentLoaded");
+    triggerEvent("change", { parent: formOuvrirCourrier });
+  });
+}
+/**
+ *
+ * @param {HTMLTableCellElement} data data to archive in database
+ * @param {number} id id of courier
+ */
+async function archiveData(id) {
+  const val = await swal({
+    icon: "warning",
+    title: "Etes-vous sûr de vouloir archiver ce courier ?",
+    dangerMode: true,
+    closeOnClickOutside: false,
+    closeOnEsc: false,
+    buttons: {
+      cancel: {
+        text: "Non, ne pas archiver!",
+        value: false,
+        visible: true,
+        className: "",
+        closeModal: true,
+      },
+      confirm: {
+        text: "Oui, archiver!",
+        value: true,
+        className: "",
+        closeModal: true,
+      },
+    },
+  });
+
+  if (!val) return;
+  const url = SITE_URL + "/forms/formdataupdate.php";
+  const response = await postData(
+    url,
+    {
+      statut: "Archivé",
+    },
+    id
+  );
+
+  if (response["rows"] === undefined && response["message"])
+    return showAlert("Le courrier ne peut plus être archivé", "error");
+  showAlert("Courrier archivé avec succès", "success");
+  triggerEvent("DOMContentLoaded");
+  triggerEvent("change", { parent: formOuvrirCourrier });
+}
+/**
+ *
+ * @param {number} id ID of the data to delete in database
+ */
+async function deleteData(id) {
+  const val = await swal({
+    icon: "warning",
+    title: "Etes-vous sûr de vouloir archiver ce courier ?",
+    dangerMode: true,
+    closeOnClickOutside: false,
+    closeOnEsc: false,
+    buttons: {
+      cancel: {
+        text: "Non, ne pas archiver!",
+        value: false,
+        visible: true,
+        className: "",
+        closeModal: true,
+      },
+      confirm: {
+        text: "Oui, archiver!",
+        value: true,
+        className: "",
+        closeModal: true,
+      },
+    },
+  });
+  if (!val) return;
+  const url = SITE_URL + "/forms/formdatadelete.php";
+  const response = await postData(url, {}, id);
+}
+/**
+ * Send a POST request to the server with data
+ * @param {string} action - Server URI action
+ * @param {object} data - Data to send to the server
+ * @param {number} id - ID of the data to send
+ * @returns {Promise<any>} - Promise that resolves to the response JSON
+ */
+async function postData(action, data, id) {
+  const formData = new FormData();
+
+  for (const key in data) {
+    formData.append(key, data[key]);
+  }
+  formData.append("iplans_submit", "");
+
+  const options = {
+    method: "POST",
+    body: formData,
+  };
+
+  const response = await fetch(`${action}/?id=${id}`, options);
+  if (!response.ok) {
+    return { errors: true };
+  }
+  const responseData = await response.json();
+  return responseData;
+}
+
+/**
+ * Triggers an event on specific HTMLElement or on the Window.
+ *
+ * @param {string} ev - The name of the event to trigger.
+ * @param {object} options - Optional parameters
+ * @param {HTMLElement} options.parent - The element on which to trigger the event
+ * @return {void} This function does not return a value.
+ */
+function triggerEvent(ev, { parent = window } = {}) {
+  const event = new Event(ev, {
+    bubbles: true,
+    cancelable: true,
+  });
+  return parent.dispatchEvent(event);
+}
+
+/**
+ * Extracts data from a given row and returns an object with the extracted data.
+ *
+ * @param {HTMLTableRowElement} row - The row from which to extract the data.
+ * @return {Object} An object containing the extracted data.
+ */
+function extractDataFromRow(row) {
+  return {
+    ref: row.children[0].textContent,
+    objet: row.children[1].textContent,
+    date: row.children[2].textContent,
+    heure: row.children[3].textContent,
+    source: row.children[4].textContent,
+    desti: row.children[5].textContent,
+    niveau: row.children[6].textContent,
+    inOutCourier: row.children[7].textContent,
+    statut: row.children[8].textContent,
+    neng: row.children[9].textContent,
+  };
+}
+
+/**
+ * Displays an alert with a specified title, type, and optional text.
+ *
+ * @param {string} title - The title of the alert.
+ * @param {string} type - The type of the alert.
+ * @param {string} [text=""] - The optional text to display in the alert.
+ * @return {Promise} - A promise that resolves after the alert is displayed.
+ */
+async function showAlert(title, type, text = "") {
+  swal({
+    icon: type,
+    closeOnClickOutside: true,
+    text: text,
+    title: title,
+    dangerMode: true,
+    timer: type === "error" ? 3500 : 3000,
+  });
+}

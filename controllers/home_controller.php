@@ -5,7 +5,8 @@
 
 // session_set_cookie_params([
 //     "lifetime" => 1800,  // cookie will expire in 30 minutes
-//     "secure" => "htt"    // cookie will only be sent over https
+//     "secure" => "https", // cookie will only be sent over https
+//     "https_only" => 1,    
 // ]);
 
 function see_dashboard()

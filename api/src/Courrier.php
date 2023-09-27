@@ -54,6 +54,30 @@ class Courrier
         return $data;
     }
 
+    public function getAllSite(): array
+    {
+        // Build the SQL query to select all rows from the table
+        $query = 'SELECT `Site` FROM siteiplans';
+
+        // Execute the query and retrieve the result set
+        $stmt = $this->conn->query($query);
+
+        // Initialize an empty array to store the retrieved data
+        $data = $formatter  = [];
+
+        // Loop through each row in the result set
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            // Add the row to the data array
+            array_push($data, $row);
+        }
+
+        foreach ($data as $d) {
+            array_push($formatter, $d["Site"]);
+        }
+        // Return the data array
+        return $formatter;
+    }
+
     /**
      * Retrieve a specific courier from the database.
      *
@@ -109,18 +133,18 @@ class Courrier
                         Synchronization = :synchronization,
                         LastUpDateTime = :lastupdatetime,
                         IDLastUpDate = :idlastupdate,
-                        UserDateTime = :userdatetime
+                        UserDateTime = :userdatetime,
+                        NomPieceJointe = :nompiecejointe,
+                        DestiPieceJointe = :destipiecejointe
                         -- Statut = :status
                 ";
         $stmt = $this->conn->prepare($query);
-
-
 
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
 
-        $login = $_SESSION["login"] ?? "NONO";
+        $login = $_SESSION["login"]["nom"] ?? "NONO";
 
         $setting_query = "SELECT Site FROM utilisateurs WHERE nom = '{$login}'";
         $setting_stmt = $this->conn->query($setting_query);
@@ -137,8 +161,11 @@ class Courrier
         $this->source = htmlspecialchars(strip_tags($data['SourceCourier']));
         $this->desti = htmlspecialchars(strip_tags($data['Destinataire']));
         $this->niveau = htmlspecialchars(strip_tags($data['NiveauImportance']));
+        $nompiecejointe = htmlspecialchars(strip_tags($data['NomPieceJointe']));
+        $destipiecejointe = htmlspecialchars(strip_tags($data['DestiPieceJointe']));
+
         // $this->status = htmlspecialchars(strip_tags($data['status']));
-        
+
         $this->date = htmlspecialchars(strip_tags(implode("/", explode('-', $data['DateDepot'])) ?? date('Y/m/d')));
 
         $this->heure = htmlspecialchars(strip_tags($data['HeureDepot'] ?? date('H:i')));
@@ -162,6 +189,7 @@ class Courrier
         $idlastupdate = $iddatetime;
         $userdatetime = $login;
 
+
         //Bind data
         $stmt->bindParam(':site', $site['Site'], PDO::PARAM_STR);
         $stmt->bindParam(':type', $this->type, PDO::PARAM_STR);
@@ -182,6 +210,8 @@ class Courrier
         $stmt->bindParam(':lastupdatetime', $lastupdatetime, PDO::PARAM_STR);
         $stmt->bindParam(':idlastupdate', $idlastupdate, PDO::PARAM_INT);
         $stmt->bindParam(':userdatetime', $userdatetime, PDO::PARAM_STR);
+        $stmt->bindParam(':nompiecejointe', $nompiecejointe, PDO::PARAM_STR);
+        $stmt->bindParam(':destipiecejointe', $destipiecejointe, PDO::PARAM_STR);
         // $stmt->bindParam(':status', $this->status, PDO::PARAM_STR);
 
         //Execute statement
@@ -207,8 +237,10 @@ class Courrier
             Synchronization = :synchronization,
             LastUpDateTime = :lastupdatetime,
             IDLastUpDate = :idlastupdate,
-            UserLastUpDateTime = :userlastupdatetime
-            -- Statut = :statut
+            UserLastUpDateTime = :userlastupdatetime,
+            NomPieceJointe = :nompiecejointe,
+            DestiPieceJointe = :destipiecejointe,
+            Statut = :statut
         WHERE NEng = :courrierId";
         $stmt = $this->conn->prepare($query);
 
@@ -222,7 +254,10 @@ class Courrier
         $this->date = htmlspecialchars(strip_tags($new_data['DateDepot'] ?? $current['DateDepot']));
         $this->heure = htmlspecialchars(strip_tags($new_data['HeureDepot'] ?? $current['HeureDepot']));
         $this->niveau = htmlspecialchars(strip_tags($new_data['NiveauImportance'] ?? $current['NiveauImportance']));
+        $this->status = htmlspecialchars(strip_tags($new_data['Statut'] ?? $current['Statut']));
         $this->courrierId = htmlspecialchars(strip_tags($current["NEng"]));
+        $nompiecejointe = htmlspecialchars(strip_tags($new_data['NomPieceJointe'] ?? $current['NomPieceJointe']));
+        $destipiecejointe = htmlspecialchars(strip_tags($new_data['DestiPieceJointe'] ?? $current['DestiPieceJointe']));
 
         if ($current['Statut'] == 'Archivé') {
             return false;
@@ -254,6 +289,9 @@ class Courrier
         $stmt->bindParam(':lastupdatetime', $lastupdatetime, PDO::PARAM_STR);
         $stmt->bindParam(':idlastupdate', $idlastupdate, PDO::PARAM_INT);
         $stmt->bindParam(':userlastupdatetime', $userlastupdatetime, PDO::PARAM_STR);
+        $stmt->bindParam(':nompiecejointe', $nompiecejointe, PDO::PARAM_STR);
+        $stmt->bindParam(':destipiecejointe', $destipiecejointe, PDO::PARAM_STR);
+        $stmt->bindParam(':statut', $this->status, PDO::PARAM_STR);
 
         //Execute statement
         $stmt->execute();

@@ -14,9 +14,9 @@
 
 <!-- Template Main CSS File -->
 <link href="<?= SITE_URL ?>/assets/css/style.css" rel="stylesheet">
-<link rel="stylesheet" href="<?=SITE_URL?>/assets/js/jquery-3.1.1.min.js">
-<script type="text/javascript" src="<?=SITE_URL?>/assets/js/jquery.min.js"></script>
-<script type="text/javascript" src="<?=SITE_URL?>/assets/js/sweetalert2.js"></script>
+<!-- <link rel="stylesheet" href="<?=SITE_URL?>/assets/js/jquery-3.1.1.min.js"> -->
+<script type="text/javascript" src="<?=SITE_URL?>/assets/js/jquery.min.js" defer></script>
+<script type="text/javascript" src="<?=SITE_URL?>/assets/js/sweetalert2.js" defer></script>
 
 <script src="<?=SITE_URL?>/assets/js/iplans.courrier.js" defer></script>
 
@@ -25,8 +25,11 @@
 //$url = $_SERVER["REQUEST_URI"];
 //$insert_string = '';
 //__add__($url, 'courrier', $insert_string);
+header('Accept-Encoding: gzip, compress, br');
+header("Content-Encoding: compress");
 ?>
 
 <script>
     const API_URL = "<?= COURRIER_API_URL ?>";
+    const SITE_URL = "<?= SITE_URL ?>";
 </script>

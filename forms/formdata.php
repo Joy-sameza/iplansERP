@@ -1,6 +1,6 @@
 <?php
 if (session_status() == PHP_SESSION_NONE) {
-    session_start();
+  session_start();
 }
 require_once './../include/config.php';
 // Check if the request method is POST
@@ -26,11 +26,9 @@ $niveau = $_POST['niveau'];
 
 $bytes = 1024 * 1024; //Convert Megabytes to bytes
 $done = false;
-$fileDestination = "";
-// Get the file data
+$fileDestination = $fileName = "";
 
-//var_dump(empty($_FILES["userfiles"]['name']));
-//exit();
+
 if (array_key_exists("userfiles", $_FILES) and !empty($_FILES["userfiles"]['name'])) {
   $files = $_FILES["userfiles"];
 
@@ -43,12 +41,6 @@ if (array_key_exists("userfiles", $_FILES) and !empty($_FILES["userfiles"]['name
     switch ($files["error"]) {
       case UPLOAD_ERR_PARTIAL:
         exit('File only partially uploaded');
-        break;
-      case UPLOAD_ERR_NO_FILE:
-        exit('No file was uploaded');
-        break;
-      case UPLOAD_ERR_EXTENSION:
-        exit('File upload stopped by a PHP extension');
         break;
       case UPLOAD_ERR_FORM_SIZE:
         exit('File exceeds MAX_FILE_SIZE in the HTML form');
@@ -75,11 +67,11 @@ if (array_key_exists("userfiles", $_FILES) and !empty($_FILES["userfiles"]['name
 
   $fileExt = explode(".", $files["name"]);
   $fileActualExt = strtolower(end($fileExt));
-
-  $newfileName = uniqid("", true) . "." . $fileActualExt;
+  $fileName = $files["name"];
+  $newfile = uniqid("", true) . "." . $fileActualExt;
   $dest = str_replace("forms", "uploads\\", __DIR__);
 
-  $fileDestination = $dest . $newfileName;
+  $fileDestination = $dest . $newfile;
 
   $done = move_uploaded_file($files["tmp_name"], $fileDestination);
 }
@@ -93,31 +85,32 @@ $data = json_encode([
   "NiveauImportance" => $niveau,
   "Destinataire" => $desti,
   "DateDepot" => $date,
-  "HeureDepot" => $heure
+  "HeureDepot" => $heure,
+  "NomPieceJointe" => $fileName,
+  "DestiPieceJointe" => $fileDestination
 ]);
 
 if ($done) {
   $output = sendData($data, $fileDestination);
 
   if (array_key_exists("message", $output) && array_key_exists("id", $output)) {
-      $_SESSION['save']=true;
+    $_SESSION['save'] = true;
     header("Location: " . SITE_URL . "/courrier");
-
   } else {
     unlink($fileDestination);
     http_response_code(500);
-      $_SESSION['error']=true;
+    $_SESSION['error'] = true;
     header("Location: " . SITE_URL . "/courrier");
   }
 } else {
   $output = sendData($data, $fileDestination);
 
   if (array_key_exists("message", $output) && array_key_exists("id", $output)) {
-      $_SESSION['save']=true;
+    $_SESSION['save'] = true;
     header("Location: " . SITE_URL . "/courrier");
   } else {
     http_response_code(500);
-      $_SESSION['error']=true;
+    $_SESSION['error'] = true;
     header("Location: " . SITE_URL . "/courrier");
   }
 }
@@ -151,6 +144,6 @@ function sendData(string $data, string $fileDestination): array
     return ["errors" => $err];
     unlink($fileDestination);
   } else {
-    return json_decode($response, true);
+    return (array)json_decode($response, true);
   }
 }

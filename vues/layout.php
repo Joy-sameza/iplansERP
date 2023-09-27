@@ -2,6 +2,7 @@
 $dirs = __DIR__;
 $dirs = str_replace("vues", "", $dirs);
 require_once $dirs . '/include/config.php'; ?>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>

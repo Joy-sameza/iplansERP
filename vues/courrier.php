@@ -49,8 +49,8 @@ $data = [];
 curl_close($curl);
 
 if ($err) {
-  echo "cURL Error #:" . $err;
-  exit;
+  $_SESSION['error'] = true;
+  return;
 }
 $d = (array)json_decode($response, true);
 //$data['num'] = count($d);
@@ -268,39 +268,61 @@ foreach ($d as $pack) {
           <label>
             site (Agence)
             <select name="site" id="site">
-              <option value="tous">Tous</option>
+              <option value="tous" selected>TOUS</option>
               <?php
               // Get site from database through API
+              curl_setopt_array($curl, [
+                CURLOPT_URL => "http://localhost/courrier/site",
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => "",
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 30,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => "GET",
+                CURLOPT_HTTPHEADER => [
+                  "Accept: application/javascript"
+                ],
+              ]);
+
+              $response = curl_exec($curl);
+              curl_close($curl);
+
+              $datas = (array)json_decode($response);
+              foreach ($datas as $dt) {
+              ?>
+                <option value="<?= $dt ?>"><?= $dt ?></option>
+              <?php
+              }
               ?>
             </select>
           </label>
         </fieldset>
         <fieldset>
           <legend>Niveau d'importance</legend>
-          <label for=""><input type="checkbox" name="exceptionnel_filtre" id=""> Exceptionel</label>
-          <label for=""><input type="checkbox" name="tres_haute_filtre" id=""> Très haute</label>
-          <label for=""><input type="checkbox" name="haute_filtre" id=""> Haute</label>
-          <label for=""><input type="checkbox" name="moyenne_filtre" id=""> Moyenne</label>
-          <label for=""><input type="checkbox" name="basse_filtre" id=""> Basse</label>
-          <label for=""><input type="checkbox" name="tous_importance_filtre" id=""> Tous</label>
+          <label for=""><input type="radio" name="niveau_filtre" value="exceptionnel_filtre" id=""> Exceptionel</label>
+          <label for=""><input type="radio" name="niveau_filtre" value="tres_haute_filtre" id=""> Très haute</label>
+          <label for=""><input type="radio" name="niveau_filtre" value="haute_filtre" id=""> Haute</label>
+          <label for=""><input type="radio" name="niveau_filtre" value="moyenne_filtre" id=""> Moyenne</label>
+          <label for=""><input type="radio" name="niveau_filtre" value="basse_filtre" id=""> Basse</label>
+          <label for=""><input type="radio" name="niveau_filtre" value="tous_importance_filtre" id="" checked> Tous</label>
         </fieldset>
         <fieldset>
           <legend>Etat des couriers</legend>
-          <label for=""><input type="checkbox" name="archive_filtre" id=""> Archivés</label>
-          <label for=""><input type="checkbox" name="non_archive_filtre" id=""> Non Archivés</label>
-          <label for=""><input type="checkbox" name="tous_archive_filtre" id=""> Tous</label>
+          <label for=""><input type="radio" name="etat_filtre" value="archive_filtre" id=""> Archivés</label>
+          <label for=""><input type="radio" name="etat_filtre" value="non_archive_filtre" id=""> Non Archivés</label>
+          <label for=""><input type="radio" name="etat_filtre" value="tous_archive_filtre" id="" checked> Tous</label>
         </fieldset>
         <fieldset>
           <legend>Type de courier</legend>
-          <label for=""><input type="checkbox" name="entrant_filtre" id=""> Courier Entrant</label>
-          <label for=""><input type="checkbox" name="sortant_filtre" id=""> Courier Sortant</label>
-          <label for=""><input type="checkbox" name="tous_type_filtre" id=""> Tous</label>
+          <label for=""><input type="radio" name="type_filtre" value="entrant_filtre" id=""> Courier Entrant</label>
+          <label for=""><input type="radio" name="type_filtre" value="sortant_filtre" id=""> Courier Sortant</label>
+          <label for=""><input type="radio" name="type_filtre" value="tous_type_filtre" id="" checked> Tous</label>
         </fieldset>
       </form>
     </div>
     <div class="table">
-      <table>
-        <thead>
+      <table style="position: relative;">
+        <thead style="position: sticky; top: 0;">
           <th>References</th>
           <th>Objet</th>
           <th>Date depot</th>
@@ -312,16 +334,33 @@ foreach ($d as $pack) {
           <th>Statut</th>
         </thead>
         <tbody class="list">
-
+          <?php
+          foreach ($d as $pack) {
+          ?>
+            <tr>
+              <td data-ref><?= $pack['ReferenceCourier'] ?></td>
+              <td data-objet><?= $pack['ObjetCourier'] ?></td>
+              <td data-date><?= $pack['DateDepot'] ?></td>
+              <td data-heure><?= $pack['HeureDepot'] ?></td>
+              <td data-source><?= $pack['SourceCourier'] ?></td>
+              <td data-destinataire><?= $pack['Destinataire'] ?></td>
+              <td data-niveau><?= $pack['NiveauImportance'] ?></td>
+              <td data-type><?= $pack['InOutCourier'] ?></td>
+              <td data-statut><?= $pack['Statut'] ?></td>
+              <td data-neng style="display: none;"><?= $pack['NEng'] ?></td>
+            </tr>
+          <?php
+          }
+          ?>
         </tbody>
       </table>
     </div>
     <div class="footing">
       <div class="btns">
-        <button>Modifier </button>
-        <button>Supprimer</button>
-        <button>Archiver</button>
-        <button>Imprimer Liste</button>
+        <button id="modify">Modifier </button>
+        <button id="delete">Supprimer</button>
+        <button id="archive">Archiver</button>
+        <button id="print">Imprimer Liste</button>
       </div>
       <span>Liste des couriers arrivés/départ</span>
     </div>
@@ -345,6 +384,7 @@ foreach ($d as $pack) {
     <td data-niveau></td>
     <td data-type></td>
     <td data-statut></td>
+    <td data-neng style="display: none;"></td>
   </tr>
 </template>
 

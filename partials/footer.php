@@ -22,31 +22,47 @@ if ($query == "lang=en") {
     }
 }
 
-if( array_key_exists( 'save', $_SESSION) and$_SESSION['save']){
+if (array_key_exists('save', $_SESSION) and $_SESSION['save']) {
     echo "<script>
           swal({
-          type: 'success',
-          text: 'courrier enregistre...',
+          icon: 'success',
+          closeOnClickOutside: true,
+          text: 'Courrier enregistré...',
           timer: 3000,
           onOpen: function(){
           swal.showLoading()
           }
           });
         </script>";
-    $_SESSION['save']=false;
+    $_SESSION['save'] = false;
 }
-if( array_key_exists( 'error', $_SESSION) and $_SESSION['error']){
+if (array_key_exists('update', $_SESSION) and $_SESSION['update']) {
     echo "<script>
           swal({
-          type: 'success',
-          text: 'une erreur est survenue. Ressayez!',
+          icon: 'success',
+          closeOnClickOutside: true,
+          text: 'Courrier a été modifier...',
           timer: 3000,
           onOpen: function(){
           swal.showLoading()
           }
           });
         </script>";
-    $_SESSION['error']=false;
+    $_SESSION['save'] = false;
+}
+if (array_key_exists('error', $_SESSION) and $_SESSION['error']) {
+    echo "<script>
+          swal({
+          icon: 'warning',
+          closeOnClickOutside: true,
+          text: 'Une erreur est survenue. Ressayez!',
+          timer: 3000,
+          onOpen: function(){
+          swal.showLoading()
+          }
+          });
+        </script>";
+    $_SESSION['error'] = false;
 }
 ?>
 
@@ -55,6 +71,5 @@ if( array_key_exists( 'error', $_SESSION) and $_SESSION['error']){
 <script>
     const courrier = document
         .querySelector("[data-courrier]")
-        ?.addEventListener("click", () => (location.href = "<?=SITE_URL?>/courrier"));
+        ?.addEventListener("click", () => (location.href = "<?= SITE_URL ?>/courrier"));
 </script>
-

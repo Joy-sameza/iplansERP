@@ -2,7 +2,7 @@
 session_start();
 require_once("./include/commandes.php");
 require_once("./include/config.php");
-$db=new Commandes();
+$db = new Commandes();
 
 $title = 'accueil';
 if (session_status() == PHP_SESSION_NONE) {
@@ -29,59 +29,59 @@ if ($query == "lang=en") {
 }
 ob_start();
 ?>
-	<link rel="stylesheet" type="text/css" href="<?= SITE_URL ?>/assets/css/login.css">
+<link rel="stylesheet" type="text/css" href="<?= SITE_URL ?>/assets/css/login.css">
 
 <main>
-	<h1><u>CONNEXION</u></h1>
-	<form method="post" action="">
-<div  class="interface">
-	<p>Login <input type="text" name="email" required></p>
-	<p>Password <input type="password" name="motdepasse" required ></p><br>
-</div>
-<div class="envoie">	
-	<p>
-		<input type="reset" value="Annuler">
-		<input type="submit" name="send1" value="Se Connecter">
-	</p>
-</div>
-</form>
+    <h1><u>CONNEXION</u></h1>
+    <form method="post" action="">
+        <div class="interface">
+            <p>Login <input type="text" name="email" required></p>
+            <p>Password <input type="password" name="motdepasse" required></p><br>
+        </div>
+        <div class="envoie">
+            <p>
+                <input type="reset" value="Annuler">
+                <input type="submit" name="send1" value="Se Connecter">
+            </p>
+        </div>
+    </form>
 </main>
 <?php
-if(isset($_POST['send1']))
-{
-    if(!empty(($_POST['email']) and ($_POST['motdepasse'])))
-    {
-        $email=htmlspecialchars(($_POST['email'])) ;
-        $motdepasse=htmlspecialchars(($_POST['motdepasse'])) ;
-        $admin=$db->getAdmin($email,$motdepasse);
-        if ($admin)
-        {
+if (isset($_POST['send1'])) {
+    if (!empty(($_POST['email']) and ($_POST['motdepasse']))) {
+        $email = htmlspecialchars(($_POST['email']));
+        $motdepasse = htmlspecialchars(($_POST['motdepasse']));
+        $admin = $db->getAdmin($email, $motdepasse);
+        // header("Location: " . SITE_URL . "/spider");
+        // print_r($admin);
+        // exit();
 
-            $_SESSION['login']=$admin;
+
+        if ($admin != false) {
+
+            $_SESSION['login'] = $admin;
+            // echo "<script>
+            // swal({
+            // type: 'success',
+            // text: 'Connexion avec succès...',
+            // timer: 1000,
+            // onOpen: function(){
+            // swal.showLoading()
+            // }
+            // }).then(function(){
+            //     window.open('" . SITE_URL . "/spider','_self');
+            // });
+            // </script>";
+            header("Location: " . SITE_URL . "/spider");
+        } else {
             echo "<script>
-          swal({
-          type: 'success',
-          text: 'Connexion avec succès...',
-          timer: 1000,
-          onOpen: function(){
-          swal.showLoading()
-          }
-          }).then(function(){
-            window.open('".SITE_URL."/spider','_self');
-          });
-        </script>";
-
-
-        }else{
-            echo "<script>
-      swal({
-         type: 'warning',
-         text: 'Désolé! Le mot de passe ou le login sont incorrects',
-      });
-    </script>";
+                    swal({
+                        type: 'warning',
+                        text: 'Désolé! Le mot de passe ou le login est incorrects',
+                    });
+                </script>";
         }
     }
-
 }
 ?>
 

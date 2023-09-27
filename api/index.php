@@ -7,7 +7,9 @@ spl_autoload_register(function ($class) {
     require __DIR__ . "/src/$class.php";
 });
 
-header('Access-Control-Allow-Origin: *');
+require_once "./../include/config.php";
+
+header('Access-Control-Allow-Origin: ' . SITE_URL);
 header("Content-Type: application/json; charset=UTF-8");
 
 // Handle errors and exceptions
@@ -22,8 +24,8 @@ $part = explode("/", $request);
 if ($part[1] != 'courrier')
     return http_response_code(404);
 
-$id = null; 
-$path = null; 
+$id = null;
+$path = null;
 if (array_key_exists(2, $part)) {
     if (is_numeric($part[2])) {
         $id = $part[2];
@@ -36,7 +38,7 @@ if (array_key_exists(2, $part)) {
 
 ini_set("date.timezone", "Africa/Douala");
 
-$database = new Database("localhost", "administrator", "system", "demo",'5785');
+$database = new Database("localhost", "root", "12345", "demo", "3306");
 
 $courrier = new Courrier($database);
 
