@@ -53,13 +53,14 @@ if ($err) {
   return;
 }
 $d = (array)json_decode($response, true);
-//$data['num'] = count($d);
 
 $a = $b = $c = $de = $e = $u = $ent_auj = 0;
 $f = $g = $h = $z = $k = $v = $sor_auj = 0;
+$enc1 = $enc2 = $enc3 = $enc4 = $enc5 = $enc6 = $enc_auj = 0;
 
 $j = 0;
 $i = 0;
+$enc = 0;
 
 foreach ($d as $pack) {
 
@@ -120,6 +121,33 @@ foreach ($d as $pack) {
       $v++;
     }
   }
+  if ($pack['InOutCourier'] == "En cours") {
+    $enc++;
+    if ($pack['NiveauImportance'] == "Haute") {
+      $enc1++;
+    }
+    if ($pack['NiveauImportance'] == "Très haute") {
+      $enc2++;
+    }
+    if ($pack['NiveauImportance'] == "Moyenne") {
+      $enc3++;
+    }
+    if ($pack['NiveauImportance'] == "Basse") {
+      $enc4++;
+    }
+    if ($pack['NiveauImportance'] == "Exceptionel") {
+      $enc5++;
+    }
+    if ($pack['DateDepot'] == date("Y/m/d")) {
+      $enc_auj++;
+    }
+    if ($pack['Statut'] == "Traité") {
+      $enc6++;
+    }
+    if ($pack['Statut'] == "Archivé") {
+      $enc6++;
+    }
+  }
 }
 ?>
 
@@ -164,18 +192,18 @@ foreach ($d as $pack) {
   <div class="encours">
     <h2>Courrier en cours</h2>
     <section>
-      <button>Nbre total de Courrier : <strong><?= $j ?? '0' ?></strong></button>
-      <button>Aujourd'hui : <strong><?= $sor_auj ?></strong></button>
-      <button>Ancien Courrier : <strong><?= $j - $sor_auj ?? '0' ?></strong></button>
-      <button>Traités/Archivées : <strong><?= $v ?? '0' ?></strong></button>
+      <button>Nbre total de Courrier : <strong><?= $enc ?? '0' ?></strong></button>
+      <button>Aujourd'hui : <strong><?= $enc_auj ?></strong></button>
+      <button>Ancien Courrier : <strong><?= $enc - $enc_auj ?? '0' ?></strong></button>
+      <button>Traités/Archivées : <strong><?= $enc6 ?? '0' ?></strong></button>
     </section>
     <section>
       <h4>Niveau d'importance</h4>
-      <span><strong>Exceptionel</strong><strong><?= $k ?? '0' ?></strong></span>
-      <span><strong>Très haute</strong><strong><?= $g ?? '0' ?></strong></span>
-      <span><strong>haute</strong><strong><?= $f ?? '0' ?></strong></span>
-      <span><strong>moyenne</strong><strong><?= $h ?? '0' ?></strong></span>
-      <span><strong>Basse</strong><strong><?= $z ?? '0' ?></strong></span>
+      <span><strong>Exceptionel</strong><strong><?= $enc5 ?? '0' ?></strong></span>
+      <span><strong>Très haute</strong><strong><?= $enc2 ?? '0' ?></strong></span>
+      <span><strong>haute</strong><strong><?= $enc1 ?? '0' ?></strong></span>
+      <span><strong>moyenne</strong><strong><?= $enc3 ?? '0' ?></strong></span>
+      <span><strong>Basse</strong><strong><?= $enc4 ?? '0' ?></strong></span>
     </section>
     <button class="btn" data-nouvelleRedaction>Nouvelle Redaction</button>
   </div>
@@ -353,24 +381,7 @@ foreach ($d as $pack) {
           <th>Statut</th>
         </thead>
         <tbody class="list">
-          <?php
-          foreach ($d as $pack) {
-          ?>
-            <tr>
-              <td data-ref><?= $pack['ReferenceCourier'] ?></td>
-              <td data-objet><?= $pack['ObjetCourier'] ?></td>
-              <td data-date><?= $pack['DateDepot'] ?></td>
-              <td data-heure><?= $pack['HeureDepot'] ?></td>
-              <td data-source><?= $pack['SourceCourier'] ?></td>
-              <td data-destinataire><?= $pack['Destinataire'] ?></td>
-              <td data-niveau><?= $pack['NiveauImportance'] ?></td>
-              <td data-type><?= $pack['InOutCourier'] ?></td>
-              <td data-statut><?= $pack['Statut'] ?></td>
-              <td data-neng style="display: none;"><?= $pack['NEng'] ?></td>
-            </tr>
-          <?php
-          }
-          ?>
+
         </tbody>
       </table>
     </div>
@@ -392,19 +403,19 @@ foreach ($d as $pack) {
     <form data-form enctype="multipart/form-data" method="post" action="<?= SITE_URL ?>/forms/formdata.php">
       <fieldset>
         <legend>Utilisez un des templates</legend>
-        <div class="template" style="display: flex; flex-direction:column;">
-          <span>
+        <div class="template">
+          <span data-text="Gestion fiscale">
             <img src="<?= SITE_URL ?>/assets/downloads/template.jpg">
           </span>
           <a href="<?= SITE_URL ?>/assets/downloads/template.docx" download>
             <button type="button">Télécharger</button>
           </a>
         </div>
-        <div class="template" style="display: flex; flex-direction:column;">
-          <span>
-            <img src="<?= SITE_URL ?>/assets/downloads/template.jpg">
+        <div class="template">
+          <span data-text="Gestion finance">
+            <img src="<?= SITE_URL ?>/assets/downloads/template2.jpg">
           </span>
-          <a href="<?= SITE_URL ?>/assets/downloads/template.docx" download>
+          <a href="<?= SITE_URL ?>/assets/downloads/template2.docx" download>
             <button type="button">Télécharger</button>
           </a>
         </div>
@@ -508,7 +519,6 @@ foreach ($d as $pack) {
     <td data-neng style="display: none;"></td>
   </tr>
 </template>
-
 
 <?php
 $content = ob_get_clean();

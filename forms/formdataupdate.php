@@ -110,9 +110,8 @@ if ($done) {
 
     if ($err) {
         unlink($fileDestination);
-        http_response_code(500);
         echo json_encode(["errors" => $err]);
-        return;
+        exit;
     }
 
     $result = (array)json_decode($response, true);
@@ -126,7 +125,6 @@ if ($done) {
         echo $output;
     } else {
         unlink($fileDestination);
-        http_response_code(500);
         echo json_encode(["errors" => "An error occurred"]);
     }
 } else {
@@ -136,7 +134,6 @@ if ($done) {
     if (array_key_exists("message", $dtd) && array_key_exists("rows", $dtd)) {
         echo $output;
     } else {
-        http_response_code(500);
         echo json_encode(["errors" => "An error occurred"]);
     }
 }

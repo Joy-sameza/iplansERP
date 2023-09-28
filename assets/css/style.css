@@ -327,9 +327,9 @@ svg > g {
   font-weight: 600;
   color: var(--primary-blue);
 }
-.main > .main-content > .content > h1 { 
-  font-size: 8em; 
-  text-transform: uppercase;  
+.main > .main-content > .content > h1 {
+  font-size: 8em;
+  text-transform: uppercase;
 }
 
 .modal {
@@ -355,7 +355,7 @@ svg > g {
   min-width: 1099px;
   aspect-ratio: 16/9;
 }
-.modal > .container > :is([data-close], [data-close2]) {
+.modal > .container > :is([data-close], [data-close2], [data-close3]) {
   background: none;
   outline: none;
   border: none;
@@ -366,7 +366,7 @@ svg > g {
   transition: all 0.25s;
   padding: 0;
 }
-.modal > .container > :is([data-close], [data-close2]):hover {
+.modal > .container > :is([data-close], [data-close2], [data-close3]):hover {
   cursor: pointer;
   color: rgb(255, 54, 94);
   font-weight: 500;
@@ -394,6 +394,45 @@ svg > g {
   align-items: center;
   justify-content: space-between;
   height: fit-content;
+}
+.template {
+  max-width: 35%;
+  display: flex;
+  flex-direction: column;
+  & > span {
+    border: 1px solid var(--secondary-blue);
+    padding: 0;
+    position: relative;
+    & > img {
+      margin: 0;
+      width: 100%;
+    }
+    &::after {
+      position: absolute;
+      width: 100%;
+      height: 25%;
+      content: attr(data-text);
+      bottom: 0;
+      left: 0;
+      background: linear-gradient(to bottom, transparent 1%, var(--tertiary-blue));
+      color: var(--main-white);
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: end;
+    }
+  }
+  & > a {
+    display: grid;
+    font-family: inherit;
+    > button {
+      font-family: inherit;
+      border-radius: 0;
+      border: 0;
+      background: none;
+      cursor: pointer;
+    }
+  }
 }
 .modal > .container > form > fieldset:last-of-type {
   flex-direction: column;

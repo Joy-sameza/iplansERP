@@ -5,17 +5,17 @@ const modal3 = document.querySelector("[data-modal3]");
 const close1 = document.querySelector("[data-close]");
 const close2 = document.querySelector("[data-close2]");
 const close3 = document.querySelector("[data-close3]");
-const range = document.querySelector("[data-range]");
+const range = document.querySelectorAll("[data-range]");
 const select = document.querySelectorAll("[data-select]");
-const reset = document.querySelector("[data-reset]");
-const upload = document.querySelector("[data-upload]");
-const removeAll = document.querySelector("[data-removeAll]");
-const addPiece = document.querySelector("[data-addPiece]");
-const removePiece = document.querySelector("[data-removePiece]");
+const reset = document.querySelectorAll("[data-reset]");
+const upload = document.querySelectorAll("[data-upload]");
+const Rupload = document.querySelectorAll("[data-Rupload]");
+const removeAll = document.querySelectorAll("[data-removeAll]");
+const addPiece = document.querySelectorAll("[data-addPiece]");
+const removePiece = document.querySelectorAll("[data-removePiece]");
 const entrant = document.querySelector(".entrant");
-const Rupload = document.querySelector("[data-Rupload]");
 const rowInfoTemplate = document.querySelector("[data-template-row-info]");
-const tableBody = document.querySelector("[data-tbody]");
+const tableBody = document.querySelectorAll("[data-tbody]");
 const ouvrirCourrier = document.querySelector("[data-ouvrirCourrier]");
 const dataList = document.querySelector(".list");
 const listRowTemplate = document.querySelector("[data-list-template-info]");
@@ -43,7 +43,7 @@ const openModals = (modals) => {
       modal.classList.add("open");
       if (modal === modal1) modal1ref = "btn";
       if (modal === modal2) modal2ref = "btn";
-      triggerEvent("change");
+      window.dispatchEvent(new Event("change"));
     });
   });
 };
@@ -77,10 +77,13 @@ closeModals([
 window.addEventListener("keydown", (e) => {
   if (
     e.key === "Escape" &&
-    (modal1.classList.contains("open") || modal2.classList.contains("open"))
+    (modal1.classList.contains("open") ||
+      modal2.classList.contains("open") ||
+      modal3.classList.contains("open"))
   ) {
     modal1.classList?.remove("open");
     modal2.classList?.remove("open");
+    modal3.classList?.remove("open");
     modal1ref = modal2ref = false;
   }
 });
@@ -121,62 +124,86 @@ function addBorderRadius() {
 window.addEventListener("resize", addBorderRadius);
 addBorderRadius();
 
-range.addEventListener("change", adjustSelectedOption);
-reset.addEventListener("click", () => {
-  removeAll.click();
-});
-/**
- * Adjusts the selected option based on the value of the event target.
- *
- * @param {Event} event - The event object that triggered the function.
- * @return {void} This function does not return a value.
- */
-function adjustSelectedOption(event) {
-  const selectedValue = parseInt(event.target.value);
-  const selectedOptionIndex = Math.floor(selectedValue / 5);
+range.forEach((r, i) =>
+  r.addEventListener("change", function (event) {
+    const selectedValue = parseInt(event.target.value);
+    const selectedOptionIndex = Math.floor(selectedValue / 5);
 
-  select.forEach((option) => option.removeAttribute("checked"));
-  select[4 - selectedOptionIndex].setAttribute("checked", "checked");
-}
-upload.addEventListener("click", function () {
-  Rupload.click();
-});
-
-Rupload.addEventListener("change", function () {
-  const files = this.files;
-
-  for (let i = 0; i < files.length; i++) {
-    const filename = files[i].name;
-    const size = (files[i].size / 1024).toFixed(2);
-    const fileExtension = filename.lastIndexOf(".");
-    let type;
-    fileExtension !== -1
-      ? (type = filename.substring(fileExtension, filename.length))
-      : undefined;
-    type = type?.split(".").pop().toUpperCase();
-    updateTable(
-      tableBody,
-      {
-        type: type ?? "???",
-        doc_name: filename,
-        size: size >= 1024 ? (size / 1024).toFixed(2) + " MB" : size + " KB",
-      },
-      rowInfoTemplate
+    select.forEach((option) => option.removeAttribute("checked"));
+    select[4 - selectedOptionIndex].setAttribute("checked", "checked");
+    select[(4 - selectedOptionIndex) * 2 + 2]?.setAttribute(
+      "checked",
+      "checked"
     );
-  }
-});
+  })
+);
+reset.forEach((r, i) =>
+  r.addEventListener("click", () => {
+    removeAll[i].click();
+  })
+);
+// /**
+//  * Adjusts the selected option based on the value of the event target.
+//  *
+//  * @param {Event} event - The event object that triggered the function.
+//  * @return {void} This function does not return a value.
+//  */
+// function adjustSelectedOption(event) {
+//   const selectedValue = parseInt(event.target.value);
+//   const selectedOptionIndex = Math.floor(selectedValue / 5);
 
-removeAll.addEventListener("click", () => {
-  tableBody.innerHTML = "";
-  Rupload.value = "";
-});
+//   select.forEach((option) => option.removeAttribute("checked"));
+//   select[4 - selectedOptionIndex].setAttribute("checked", "checked");
+// }
+upload.forEach((u, i) =>
+  u.addEventListener("click", function () {
+    Rupload[i].click();
+  })
+);
 
-addPiece.addEventListener("click", () => Rupload.click());
+Rupload.forEach((u, index) =>
+  u.addEventListener("change", function () {
+    const files = this.files;
 
-removePiece.addEventListener("click", () => {
-  tableBody.removeChild(tableBody.lastChild);
-  Rupload.value = "";
-});
+    for (let i = 0; i < files.length; i++) {
+      const filename = files[i].name;
+      const size = (files[i].size / 1024).toFixed(2);
+      const fileExtension = filename.lastIndexOf(".");
+      let type;
+      fileExtension !== -1
+        ? (type = filename.substring(fileExtension, filename.length))
+        : undefined;
+      type = type?.split(".").pop().toUpperCase();
+      updateTable(
+        tableBody[index],
+        {
+          type: type ?? "???",
+          doc_name: filename,
+          size: size >= 1024 ? (size / 1024).toFixed(2) + " MB" : size + " KB",
+        },
+        rowInfoTemplate
+      );
+    }
+  })
+);
+
+removeAll.forEach((re, i) =>
+  re.addEventListener("click", () => {
+    tableBody[i].innerHTML = "";
+    Rupload[i].value = "";
+  })
+);
+
+addPiece.forEach((a, i) =>
+  a.addEventListener("click", () => Rupload[i].click())
+);
+
+removePiece.forEach((r, i) =>
+  r.addEventListener("click", () => {
+    tableBody[i].removeChild(tableBody[i].lastChild);
+    Rupload[i].value = "";
+  })
+);
 
 /**
  * Updates the table with the given data by cloning an element and setting its values.
@@ -229,8 +256,9 @@ function setValue(dataAttribute, value, { parent = document } = {}) {
 }
 
 let data;
-window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("DOMContentLoaded", async () => {
   data = fetchData();
+  formOuvrirCourrier.dispatchEvent(new Event("change"));
 });
 
 let niveauFiltre, etatFiltre, typeFiltre, filtre;
@@ -433,7 +461,7 @@ function modifyData(tableRow, id) {
   const inps = modal1.querySelectorAll("[type='radio'][name='type']");
   const type = data.inOutCourier;
   inps[0].checked = type === "Entrant";
-  inps[1].checked = type !== "Entrant";
+  inps[1].checked = type === "Sortant";
 
   modal1.querySelector("#ref").value = data.ref;
   modal1.querySelector("#objet").value = data.objet;
@@ -467,7 +495,8 @@ function modifyData(tableRow, id) {
       desti: frm.querySelector("#desti").value,
       date: frm.querySelector("#date").value,
       heure: frm.querySelector("#heure").value,
-      type: frm.querySelector("[name='type']").value,
+      type: getRadioInputValue("type", frm),
+      niveau: getRadioInputValue("niveau", frm),
       userfiles: frm.querySelector("[name='userfiles'][type='file']").files[0],
     };
     const response = await postData(frm.action, dt, id);
@@ -480,13 +509,34 @@ function modifyData(tableRow, id) {
         "error",
         "Le courrier est déjà archivé"
       );
-    showAlert("Courrier archivé avec succès", "success").then(() => {
+    showAlert("Courrier modifié avec succès", "success").then(() => {
       close1.click();
     });
-    triggerEvent("DOMContentLoaded");
-    triggerEvent("change", { parent: formOuvrirCourrier });
+    window.dispatchEvent(new Event("DOMContentLoaded"));
+    formOuvrirCourrier.dispatchEvent(
+      new Event("change", { bubbles: true, cancelable: true })
+    );
+    // formOuvrirCourrier.dispatchEvent(new Event("change"));
   });
 }
+
+/**
+ * Retrieves the value of a checked radio input by name within a specified form.
+ *
+ * @param {string} name - The name of the radio input.
+ * @param {HTMLFormElement} parentForm - The parent form element.
+ * @return {string|undefined} The value of the checked radio input, or undefined if no input is checked.
+ */
+function getRadioInputValue(name, parentForm) {
+  const radioInputs = Array.from(
+    parentForm.querySelectorAll(`input[name="${name}"]`)
+  );
+  const checkedRadioInput = radioInputs.find(
+    (radioInput) => radioInput.checked
+  );
+  return checkedRadioInput?.value;
+}
+
 /**
  *
  * @param {HTMLTableCellElement} data data to archive in database
@@ -526,11 +576,14 @@ async function archiveData(id) {
     id
   );
 
-  if (response["rows"] === undefined && response["message"])
+  if (
+    (response["rows"] === undefined && response["message"]) ||
+    response["errors"]
+  )
     return showAlert("Le courrier ne peut plus être archivé", "error");
   showAlert("Courrier archivé avec succès", "success");
-  triggerEvent("DOMContentLoaded");
-  triggerEvent("change", { parent: formOuvrirCourrier });
+  window.dispatchEvent(new Event("DOMContentLoaded"));
+  formOuvrirCourrier.dispatchEvent(new Event("change"));
 }
 /**
  *
@@ -582,32 +635,17 @@ async function postData(action, data, id) {
   formData.append("iplans_submit", "");
 
   const options = {
+    cache: "reload",
     method: "POST",
     body: formData,
   };
 
   const response = await fetch(`${action}/?id=${id}`, options);
-  if (!response.ok) {
+  if (!response.ok && response.status !== 200) {
     return { errors: true };
   }
   const responseData = await response.json();
   return responseData;
-}
-
-/**
- * Triggers an event on specific HTMLElement or on the Window.
- *
- * @param {string} ev - The name of the event to trigger.
- * @param {object} options - Optional parameters
- * @param {HTMLElement} options.parent - The element on which to trigger the event
- * @return {void} This function does not return a value.
- */
-function triggerEvent(ev, { parent = window } = {}) {
-  const event = new Event(ev, {
-    bubbles: true,
-    cancelable: false,
-  });
-  return parent.dispatchEvent(event);
 }
 
 /**
@@ -649,3 +687,5 @@ async function showAlert(title, type, text = "") {
     timer: type === "error" ? 3500 : 3000,
   });
 }
+
+if (SAVE) showAlert("Courrier enregistré avec succès", "success");
