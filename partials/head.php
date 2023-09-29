@@ -19,6 +19,8 @@
 <script type="text/javascript" src="<?= SITE_URL ?>/assets/js/sweetalert2.js" defer></script>
 
 <script src="<?= SITE_URL ?>/assets/js/iplans.courrier.js" defer></script>
+<script src="<?= SITE_URL ?>/assets/js/jspdf.umd.min.js" defer></script>
+<script src="<?= SITE_URL ?>/assets/js/jspdf.plugin.autotable.min.js" defer></script>
 
 <?php
 //require_once './include/functions.php';
@@ -34,7 +36,7 @@ header("Expires: Thu, 01 Jan 1970 00:00:00 GMT", true);
 <script>
     const API_URL = "<?= COURRIER_API_URL ?>";
     const SITE_URL = "<?= SITE_URL ?>";
-    let SAVE = false;
+    let SAVE = false, lang = "en";
 </script>
 <?php
 if (array_key_exists('save', $_SESSION) and $_SESSION['save']) {

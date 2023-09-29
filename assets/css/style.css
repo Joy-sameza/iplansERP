@@ -1,12 +1,7 @@
 @font-face {
-  font-family: "Font Awesome 6 Brands-Regular-400";
-  src: url(./fontawesome-free-6.4.2-desktop/otfs/Font\ Awesome\ 6\ Brands-Regular-400.otf);
-  font-weight: 900;
-}
-@font-face {
-  font-family: "Font Awesome 6 Free-Regular-400";
-  src: url(./fontawesome-free-6.4.2-desktop/otfs/Font\ Awesome\ 6\ Free-Regular-400.otf);
-  font-weight: 900;
+  font-family: "Fira Code";
+  src: url(./../fonts/FiraCode-VariableFont_wght.ttf);
+  font-weight: 0, 900;
 }
 *,
 ::before,
@@ -35,8 +30,8 @@ html {
   --header-height: 8em;
   --svg-width: 350px;
   --icons-gap: 0.5em;
-  --font-family: "Cascadia code", "Open Sans", Cantarell, "Helvetica Neue",
-    sans-serif;
+  --font-family: "Cascadia code", "Fira Code", "Open Sans", Cantarell,
+    "Helvetica Neue", sans-serif;
 }
 
 body {
@@ -348,6 +343,7 @@ svg > g {
   position: relative;
   background-color: var(--main-white);
   box-shadow: 5px 5px 8px var(--shadow-color);
+  /* overflow-x: hidden; */
 }
 .modal > .container#modal2-container {
   width: min-content;
@@ -396,7 +392,7 @@ svg > g {
   height: fit-content;
 }
 .template {
-  max-width: 35%;
+  width: 150px;
   display: flex;
   flex-direction: column;
   & > span {
@@ -414,7 +410,11 @@ svg > g {
       content: attr(data-text);
       bottom: 0;
       left: 0;
-      background: linear-gradient(to bottom, transparent 1%, var(--tertiary-blue));
+      background: linear-gradient(
+        to bottom,
+        transparent 1%,
+        var(--tertiary-blue)
+      );
       color: var(--main-white);
       text-align: center;
       display: flex;
@@ -433,6 +433,13 @@ svg > g {
       cursor: pointer;
     }
   }
+}
+.modal.modal3 > .container > form > fieldset:first-of-type {
+  justify-content: unset;
+  column-gap: calc(var(--header-padding) * 0.75);
+  overflow: auto hidden;
+  max-width: 560px;
+  width: 560px;
 }
 .modal > .container > form > fieldset:last-of-type {
   flex-direction: column;

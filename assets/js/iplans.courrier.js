@@ -1,3 +1,5 @@
+const pdfLang = lang === "fr" ? "fr-FR" : "en-UK";
+
 const newcourrier = document.querySelector("[data-newcourrier]");
 const modal1 = document.querySelector("[data-modal1]");
 const modal2 = document.querySelector("[data-modal2]");
@@ -6,7 +8,6 @@ const close1 = document.querySelector("[data-close]");
 const close2 = document.querySelector("[data-close2]");
 const close3 = document.querySelector("[data-close3]");
 const range = document.querySelectorAll("[data-range]");
-const select = document.querySelectorAll("[data-select]");
 const reset = document.querySelectorAll("[data-reset]");
 const upload = document.querySelectorAll("[data-upload]");
 const Rupload = document.querySelectorAll("[data-Rupload]");
@@ -126,15 +127,14 @@ addBorderRadius();
 
 range.forEach((r, i) =>
   r.addEventListener("change", function (event) {
+    let select;
+    if (i ===0) {select = modal1.querySelectorAll("[data-select]");}
+    if (i ===1) {select = modal3.querySelectorAll("[data-select]");}
     const selectedValue = parseInt(event.target.value);
     const selectedOptionIndex = Math.floor(selectedValue / 5);
 
-    select.forEach((option) => option.removeAttribute("checked"));
+    select?.forEach((option) => option.removeAttribute("checked"));
     select[4 - selectedOptionIndex].setAttribute("checked", "checked");
-    select[(4 - selectedOptionIndex) * 2 + 2]?.setAttribute(
-      "checked",
-      "checked"
-    );
   })
 );
 reset.forEach((r, i) =>
@@ -142,19 +142,6 @@ reset.forEach((r, i) =>
     removeAll[i].click();
   })
 );
-// /**
-//  * Adjusts the selected option based on the value of the event target.
-//  *
-//  * @param {Event} event - The event object that triggered the function.
-//  * @return {void} This function does not return a value.
-//  */
-// function adjustSelectedOption(event) {
-//   const selectedValue = parseInt(event.target.value);
-//   const selectedOptionIndex = Math.floor(selectedValue / 5);
-
-//   select.forEach((option) => option.removeAttribute("checked"));
-//   select[4 - selectedOptionIndex].setAttribute("checked", "checked");
-// }
 upload.forEach((u, i) =>
   u.addEventListener("click", function () {
     Rupload[i].click();
@@ -288,6 +275,7 @@ formOuvrirCourrier.addEventListener("change", (e) => {
     modifybtn.addEventListener("click", () => (action = "modify"));
     deletebtn.addEventListener("click", () => (action = "delete"));
     archivebtn.addEventListener("click", () => (action = "archive"));
+    printbtn.addEventListener("click", () => printTable());
     Array.from(listTableRows).forEach((row) => {
       row.addEventListener("click", async (e) => {
         const tableRow = e.target.parentNode;
@@ -312,6 +300,28 @@ formOuvrirCourrier.addEventListener("change", (e) => {
     });
   });
 });
+
+function printTable() {
+  const pdf = new jspdf.jsPDF({ orientation: "landscape" });
+
+  const displayDateTime = new Date().toLocaleDateString(pdfLang, {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+  });
+  pdf.setFontSize(11);
+  pdf.text(displayDateTime, 10, 10);
+  pdf.autoTable({
+    html: "#printable",
+    startX: 10,
+    margin: { top: 20 },
+  });
+  pdf.save("table.pdf");
+  return;
+}
 
 /**
  * Fetches data from the API URL.

@@ -368,7 +368,7 @@ foreach ($d as $pack) {
       </form>
     </div>
     <div class="table">
-      <table style="position: relative;">
+      <table id="printable" style="position: relative;">
         <thead style="position: sticky; top: 0;">
           <th>References</th>
           <th>Objet</th>
@@ -408,6 +408,22 @@ foreach ($d as $pack) {
             <img src="<?= SITE_URL ?>/assets/downloads/template.jpg">
           </span>
           <a href="<?= SITE_URL ?>/assets/downloads/template.docx" download>
+            <button type="button">Télécharger</button>
+          </a>
+        </div>
+        <div class="template">
+          <span data-text="Gestion finance">
+            <img src="<?= SITE_URL ?>/assets/downloads/template2.jpg">
+          </span>
+          <a href="<?= SITE_URL ?>/assets/downloads/template2.docx" download>
+            <button type="button">Télécharger</button>
+          </a>
+        </div>
+        <div class="template">
+          <span data-text="Gestion finance">
+            <img src="<?= SITE_URL ?>/assets/downloads/template2.jpg">
+          </span>
+          <a href="<?= SITE_URL ?>/assets/downloads/template2.docx" download>
             <button type="button">Télécharger</button>
           </a>
         </div>
