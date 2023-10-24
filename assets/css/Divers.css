@@ -1,0 +1,352 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Poppins';
+    outline: none;
+    
+}
+html{
+    width: 100%;
+    height: 100%;
+}
+body{
+    width: 100%;
+    height: 100%;
+}
+main{
+    width: 100%;
+    height: 100%;
+}
+   /**************employers*******/
+   .ico_emplye{
+    width: 20px;
+    height: 20px;
+  }
+  .cont_titre{
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+   
+  }
+  .cont_employer{
+    background-color: rgba(0, 0, 0, 0.527);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+  }
+  .contenue_employers{
+    width: 80%;
+    height:670px;
+   background: linear-gradient(hsl(208, 45%, 69%), hsl(208, 45%, 69%), white);
+    padding: 10px;
+    border-radius: 10px;
+  }
+  .cont_employer2{
+   background-color: white;
+    width: 100%;
+    height: 90%;display: flex;
+  }
+  .fiche_sala{
+    font-size: 15px;
+  }
+  .list_gauche{
+    writing-mode: vertical-rl; /* Indique l'orientation verticale du texte */
+  transform: rotate(180deg); /* Inverse le sens de lecture du texte */
+  white-space: nowrap; /* Évite que le texte ne soit coupé en plusieurs lignes */
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  height: 100%;
+ background-color: #2169ec;
+  }
+  .se1{
+    writing-mode: vertical-rl; /* Indique l'orientation verticale du texte */
+    white-space: nowrap; /* Évite que le texte ne soit coupé en plusieurs lignes */
+    display: flex;
+    justify-content: space-around;
+  }
+  .se1 p{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .acti{
+    background-color: #fff;
+  }
+  .option{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 7%;
+   
+  }
+  .option button{
+    width: 100px;
+    background-color: #2169ec;
+    border: none;
+    color: white;
+    transition: all 0.5s;
+
+  }
+  .option button:hover{
+    background-color: white ; color: #2169ec; border: 1px solid #2169ec;
+  }
+  .btn1{
+    width: 40px !important;
+  }
+  .btn2{
+    width: 40px !important;
+  }
+  .econte{
+    width: 100%;
+   
+    display: flex;
+    
+  }
+  .econte1{
+   
+    width: 100%;
+    height: 100%;
+    zoom: 79%;
+  }
+  .econte1 h1{
+    width: 100%;
+    text-align: center;
+    font-size: 25px;
+  
+    color: white;
+    font-weight: 400;
+  }
+  .econte1 div{
+    width: 100%;
+    
+    padding-left: 5px;
+    padding-right: 5px;
+    
+  }
+  .div_1{
+    height: auto; 
+    
+  }
+  .div_1 div{
+    width: 100%;
+  
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+  }
+  .div_1 div input{
+    width: 100%;
+    height: 25px;
+    float: right;
+  }
+  label{
+    
+  }
+  select{
+    width: 20%;
+  }
+
+
+
+  .div_2 {
+    font-size: 12px;
+  }
+ 
+  .div_2 div div{
+    display: flex;
+    justify-content: left;
+
+  }
+  .div_2 div  input{
+    width: 80%;
+    height: 25px;
+    float: right;
+    margin-right: 30%;
+    
+  }
+  .div_2 div div label{
+    width: 30%;
+  }
+
+  .situation{
+    flex-direction: column;
+    display: flex;
+  }
+
+
+
+
+  .econte2{
+  
+    width: 100%;
+    zoom: 79%;
+
+  }
+  .class1{
+    width: 100%;
+    height: 50%;
+ display: flex;
+    justify-content: space-between;
+    padding: 10px;
+  }
+  .spec1{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .class2{
+    width: 100%;
+  }
+  .class3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 50%;
+  
+  }
+  .class4{
+ 
+  }
+  .spec2{      
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: flex-end;
+    padding: 10px;
+    gap: 5px;
+  }
+  .class5{
+    width: 100%;
+    height: 50%;
+   
+  }
+  .class6{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+  }
+  .class6 button{
+    width: 100%;
+    height: 25px;
+    border: none;
+    background-color: white;
+    border-radius: 0px;
+    transition: all 0.5s;
+  }
+  .class6 button:hover{
+    background-color: crimson !important ;
+    color: white;
+  }
+  .clicked{
+    background-color:crimson !important;
+    color: white;
+  }
+  .class7{
+    display: flex;
+    justify-content: space-between;
+    
+    width: 100%;
+    height: 100%;
+  }
+  .class8{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 90%;
+  }
+ .qwe1{
+  width: 100%;
+  height: 150%;
+
+ }
+ .qwe2{
+  width: 100%;
+  height: 100%;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+ }
+  .ligne{
+    width: 100%;
+    background-color: #2169ec !important;
+    height: 40px;
+
+  }
+  .activer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .class9{
+    width: 50%;
+    height: 80%;
+    
+    padding-left: 20px ;
+    gap: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .class9 div{
+    display: flex;
+  }
+  .opt{
+    display: flex;
+    flex-direction: column;
+  }
+  .option_debut{
+    width: 140%;
+    height: 40px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .Option_fin{
+    width: 140%;
+    height: 40px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+   
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .btn_bas{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding-top: 20px;
+  }
+  .btn_bas button{
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    height: 35px;
+  }

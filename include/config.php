@@ -4,5 +4,5 @@
 @define("USER_NAME", "root");
 @define("USER_PASSWORD", "");
 @define("MAX_UPLOAD_SIZE", 50);
-@define("SITE_URL", "http://localhost/Iplans");
+@define("SITE_URL", "http://localhost/Iplanss");
 @define("COURRIER_API_URL", "http://localhost/courrier/");

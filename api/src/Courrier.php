@@ -36,7 +36,7 @@ class Courrier
     public function getAll(): array
     {
         // Build the SQL query to select all rows from the table
-        $query = 'SELECT * FROM ' . $this->table;
+        $query = "SELECT * FROM  {$this->table} where supprimer=0";
 
         // Execute the query and retrieve the result set
         $stmt = $this->conn->query($query);
@@ -88,7 +88,7 @@ class Courrier
     public function get($courierId): array | false
     {
         // Prepare the SQL query
-        $query = "SELECT * FROM {$this->table} WHERE NEng = :courierId";
+        $query = "SELECT * FROM {$this->table} WHERE NEng = :courierId and supprimer !=1";
 
         // Prepare the statement
         $stmt = $this->conn->prepare($query);
@@ -308,7 +308,9 @@ class Courrier
     public function delete($id): int | false
     {
         // Define the query to delete the courier by ID
-        $query = "DELETE FROM {$this->table} WHERE NEng = :courierId";
+        $query = "UPDATE {$this->table} 
+        SET supprimer=1
+        WHERE NEng = :courierId";
 
         // Sanitize and assign the courier ID
         $courierId = htmlspecialchars(strip_tags($id));
@@ -318,18 +320,7 @@ class Courrier
 
 
         // make a backup in table `backupcourrier`
-        $backup_query = "INSERT INTO backupcourier
-                        SELECT *
-                        FROM {$this->table} 
-                        WHERE `NEng` = {$courierId}";
-        $backup_stmt = $this->conn->prepare($backup_query);
-        $backup_stmt->execute();
 
-        $done = $backup_stmt->rowCount();
-
-        if ($done != 1) {
-            return false;
-        }
 
 
         // Bind the courier ID parameter

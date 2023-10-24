@@ -21,7 +21,7 @@ $method = $_SERVER['REQUEST_METHOD'];
 
 $part = explode("/", $request);
 
-if ($part[1] != 'courrier')
+if ($part[1] != 'pers')
     return http_response_code(404);
 
 $id = null;
@@ -40,8 +40,8 @@ ini_set("date.timezone", "Africa/Douala");
 
 $database = new Database("localhost", "administrator", "system", "demo", "5785");
 
-$courrier = new Courrier($database);
+$personne = new Personne($database);
 
-$controller = new Controller($courrier);
+$controller = new Controller($personne);
 
 $controller->processRequest($method, $id, $path);

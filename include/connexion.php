@@ -5,8 +5,8 @@ class connexion{
     {
         try{
 
-            $this->access=new pdo("mysql:host=localhost;dbname=demo;charset=utf8",
-                "root","12345");
+            $this->access=new pdo("mysql:host=localhost;port=5785;dbname=demo;charset=utf8",
+                "administrator","system");
             $this->access->setAttribute(pdo::ATTR_ERRMODE,pdo::ERRMODE_WARNING);
         } catch (Exception $e){
             echo  $e->getMessage();

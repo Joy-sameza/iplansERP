@@ -14,6 +14,10 @@
 
 <!-- Template Main CSS File -->
 <link href="<?= SITE_URL ?>/assets/css/style.css" rel="stylesheet">
+<link href="<?= SITE_URL ?>/assets/css/Divers.css" rel="stylesheet">
+<link href="<?= SITE_URL ?>/assets/css/index5.css" rel="stylesheet">
+<link href="<?= SITE_URL ?>/assets/css/portrait.css" rel="stylesheet">
+<link href="<?= SITE_URL ?>/assets/css/tableau.css" rel="stylesheet">
 <!-- <link rel="stylesheet" href="<?= SITE_URL ?>/assets/js/jquery-3.1.1.min.js"> -->
 <script type="text/javascript" src="<?= SITE_URL ?>/assets/js/jquery.min.js" defer></script>
 <script type="text/javascript" src="<?= SITE_URL ?>/assets/js/sweetalert2.js" defer></script>
