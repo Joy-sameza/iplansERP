@@ -1,5 +1,5 @@
 <?php
-class Controller
+class controllerP
 {
     /**
      * Constructs a new instance of the class.

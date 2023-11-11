@@ -6,3 +6,4 @@
 @define("MAX_UPLOAD_SIZE", 50);
 @define("SITE_URL", "http://localhost/Iplanss");
 @define("COURRIER_API_URL", "http://localhost/courrier/");
+@define("PERS_API_URL", "http://localhost/pers/");

@@ -1,23 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5ee32c0a-3f2a-4416-ab0f-326e0d4d5af1" name="Changes" comment="test">
-      <change afterPath="$PROJECT_DIR$/.idea/iplanss.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/css/Divers.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/css/index5.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/css/portrait.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/css/tableau.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+    <list default="true" id="5ee32c0a-3f2a-4416-ab0f-326e0d4d5af1" name="Changes" comment="ajout de l api personne">
+      <change afterPath="$PROJECT_DIR$/api/src/ControllerP.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/Personne.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/image/Helena.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/image/JACK.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/image/SAV 2.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/image/SAV.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/image/foncd.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/image/fond 2.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/image/id.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/image/la terre.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/image/licence activé.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/image/merveille.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/image/passerelle.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/image/recycle.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/image/tablette restaurants.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/image/user_names.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vues/RH.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vues/tableau.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/4b24e53f-33e8-4a14-bdcc-117f7683d7ec.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4b24e53f-33e8-4a14-bdcc-117f7683d7ec.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Courrier.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Courrier.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api_pers/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api_pers/index.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api_pers/src/Controller.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api_pers/src/Database.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api_pers/src/ErrorHandler.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api_pers/src/Personne.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/index5.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/index5.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/portrait.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/portrait.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/tableau.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/tableau.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/home_controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/home_controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forms/formdata.php" beforeDir="false" afterPath="$PROJECT_DIR$/forms/formdata.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/connexion.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/connexion.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/functions.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/partials/head.php" beforeDir="false" afterPath="$PROJECT_DIR$/partials/head.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vues/courrier.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/courrier.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +79,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/xampp/htdocs/iplanss/assets/css",
+    "last_opened_file_path": "C:/xampp/htdocs/mcsV0",
     "nodejs_package_manager_path": "npm",
     "run.code.analysis.last.selected.profile": "pProject Default",
     "vue.rearranger.settings.migration": "true"
@@ -72,11 +92,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\iplanss\api\src" />
+      <recent name="C:\xampp\htdocs\iplanss\api" />
       <recent name="C:\xampp\htdocs\iplanss\assets\css" />
+      <recent name="C:\xampp\htdocs\iplanss\assets" />
       <recent name="C:\xampp\htdocs\Iplans\include" />
-      <recent name="C:\xampp\htdocs\Iplans\assets\js" />
-      <recent name="C:\xampp\htdocs\Iplans\assets\img" />
-      <recent name="C:\xampp\htdocs\Iplans\assets\css" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -93,7 +113,8 @@
       <workItem from="1693833103001" duration="120000" />
       <workItem from="1694258148330" duration="1454000" />
       <workItem from="1694656228477" duration="9386000" />
-      <workItem from="1695828914561" duration="67371000" />
+      <workItem from="1695828914561" duration="113479000" />
+      <workItem from="1699177921087" duration="31172000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1694688403854</created>
@@ -102,7 +123,14 @@
       <option name="project" value="LOCAL" />
       <updated>1694688403854</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="ajout de l api personne">
+      <created>1698121136683</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1698121136683</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -121,6 +149,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="test" />
-    <option name="LAST_COMMIT_MESSAGE" value="test" />
+    <MESSAGE value="ajout de l api personne" />
+    <option name="LAST_COMMIT_MESSAGE" value="ajout de l api personne" />
   </component>
 </project>

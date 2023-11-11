@@ -33,5 +33,16 @@ function spider()
     $dirs=str_replace("controllers", "", $dirs);
     require $dirs.'vues/home.php';
 }
-
+function rhrhrh()
+{
+    $dirs=__DIR__;
+    $dirs=str_replace("controllers", "", $dirs);
+    require $dirs.'vues/RH.php';
+}
+function tableau()
+{
+    $dirs=__DIR__;
+    $dirs=str_replace("controllers", "", $dirs);
+    require $dirs.'vues/tableau.php';
+}
 ?>

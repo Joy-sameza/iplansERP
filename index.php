@@ -31,3 +31,9 @@ if ('/login' == $uri) {
 if ('/spider' == $uri) {
     spider();
 }
+if ('/rhumain' == $uri) {
+ rhrhrh();
+}
+if ('/tableau' == $uri) {
+    tableau();
+}
