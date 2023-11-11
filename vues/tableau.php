@@ -61,6 +61,7 @@ $d = (array)json_decode($response, true);
 
 <link href="<?= SITE_URL ?>/assets/css/portrait.css" rel="stylesheet">
 <link href="<?= SITE_URL ?>/assets/css/tableau.css" rel="stylesheet">
+<link href="<?= SITE_URL ?>/assets/css/styleRH.css" rel="stylesheet">
 
 <main>
     <div class="haut_avec_label" >  <!--le haut avec les label-->
@@ -226,33 +227,77 @@ $d = (array)json_decode($response, true);
             <div class="zone">
                 <label for="">Direction</label>
                 <select name="" id="">
+                    <option value="">MEDICALE</option>
                     <option value="">TOUTES</option>
                 </select>
                 <label for="">Sous Dir~</label>
                 <select name="" id="">
+                    <option value="">MEDICALE</option>
                     <option value="">TOUTES</option>
                 </select>
                 <label for="">Services</label>
                 <select name="" id="">
+                    <option value="">SSMEDICALE</option>
                     <option value="">TOUS</option>
                 </select>
             </div>
             <div class="zone">
                 <label for="">Grade</label>
                 <select name="" id="">
+                    <option value="">CADRE SUPERIEUR</option>
                     <option value="">TOUS</option>
                 </select>
                 <label for="">Convention</label>
                 <select name="" id="">
+                    <option value="">FONCTION</option>
                     <option value="">TOUTES</option>
                 </select>
                 <label for="">Categ~</label>
                 <select name="" id="">
+
+                    <option value="">0</option>
+                    <option value="">03</option>
+                    <option value="">4</option>
+                    <option value="">6</option>
+                    <option value="">8</option>
+                    <option value="">A</option>
+                    <option value="">I</option>
+                    <option value="">IX</option>
+                    <option value="">VI</option>
+                    <option value="">XII</option>
                     <option value="">TOUTES</option>
+
+
                 </select>
                 <label for="">Fontion</label>
                 <select name="" id="">
-                    <option value="">TOUTES</option>
+                    <option value="">AGENT D'ENTRETIEN</option>
+                    <option value="">AIDE MAGSINIER</option>
+                    <option value="">ASSISTANCE TECHNIQUE</option>
+                    <option value="">CHAUFFEUR/COURRIER </option>
+                    <option value="">COMMERCIAL</option>
+                    <option value="">COMPTABLE</option>
+                    <option value="">CHAUFFEUR/LIVREUR</option>
+                    <option value="">CONTROLLEUR DE GESTION</option>
+                    <option value="">DIRECTEUR COMMERCIAL</option>
+                    <option value="">DIRECTEUR GENERAL</option>
+                    <option value="">DIRECTEICE GENERALE ADJOINTE</option>
+                    <option value="">FACTURIERE</option>
+                    <option value="">GARDIEND DE NUIT</option>
+
+                    <option value="">HOETESSE DE VENTES</option>
+                    <option value="">IT </option>
+                    <option value="">MAGASINIER</option>
+                    <option value="">PEDIATRE</option>
+                    <option value="">PRESTATAIRE</option>
+                    <option value="">PROJECT MANAGER</option>
+
+
+                    <option value="">RECEPTIONNISTE</option>
+                    <option value="">RESPONSABLE DU PERSONNEL</option>
+                    <option value="">RESPONSABLE D ENTREPOT</option>
+                    <option value="">PRESTATAIRE</option>
+                    <option value="">RESPONSABLE PROMO</option>
                 </select>
             </div>
         </div>
@@ -317,15 +362,15 @@ $d = (array)json_decode($response, true);
                 </p>
                 <div>
                     <label for="">Debut</label>
-                    <input type="radio" name="" id="">
+                    <input type="radio" name="" id="" >
 
                 </div>
                 <div>
-                    <input type="date" name="" id="">
+                    <input type="date" name="" id="" value="<?= date('Y-m-d') ?>">
                     <label for="">Fin</label>
                 </div>
                 <div>
-                    <input type="date" name="" id="">
+                    <input type="date" name="" id="" value="<?= date('Y-m-d') ?>">
                     <label for="">Actif</label>
                 </div>
             </div>

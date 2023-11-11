@@ -35,12 +35,29 @@ class Commandes extends connexion
        WHERE id=?
         ");
     }
-    function getAdmin($email, $password): array | false
-    {
-        $statement = $this->access->prepare("SELECT * FROM utilisateurs WHERE nom = ? AND passwords = ?");
-        $statement->execute([$email, $password]);
-        $data = $statement->fetch(PDO::FETCH_ASSOC);
+//    function getAdmin($email, $password): array | false
+//    {
+//        $statement = $this->access->prepare("SELECT * FROM utilisateurs WHERE nom = ? AND passwords = ?");
+//        $statement->execute([$email, $password]);
+//        $data = $statement->fetch(PDO::FETCH_ASSOC);
+//
+//        return [$data['nom'], $data['passwords']] ?: false;
+//    }
 
-        return [$data['nom'], $data['passwords']] ?: false;
+    function getAdmin($email,$password)
+    {
+
+        $req=$this->access->prepare("SELECT * FROM utilisateurs WHERE nom = ? AND passwords = ?");
+        $req->execute(array($email,$password));
+        if ($req->rowCount()==1)
+        {
+            $data=$req->fetch();
+            return $data;
+        }else{
+            return false;
+        }
+        $req->closeCursor();
+
     }
+
 }

@@ -152,7 +152,7 @@ foreach ($d as $pack) {
 }
 ?>
 
-
+    <link href="<?= SITE_URL ?>/assets/css/style.css" rel="stylesheet">
 <main class="main corrier">
   <div class="entrant">
     <h2>Courrier Entrant/Sortant</h2>

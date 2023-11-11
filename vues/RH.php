@@ -28,8 +28,9 @@ if ($query == "lang=en") {
 ob_start();
 ?>
 
-<link href="<?= SITE_URL ?>/assets/css/index5.css" rel="stylesheet">
 
+<link href="<?= SITE_URL ?>/assets/css/index5.css" rel="stylesheet">
+<link href="<?= SITE_URL ?>/assets/css/styleRH.css" rel="stylesheet">
 
 <main>
     <div class="cont">
