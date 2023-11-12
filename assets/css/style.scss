@@ -41,9 +41,9 @@
   text-transform: capitalize;
   text-decoration: underline;
   text-decoration-color: color-mix(
-    in oklch,
-    var(--tertiary-blue),
-    var(--primary-blue) 60%
+                  in oklch,
+                  var(--tertiary-blue),
+                  var(--primary-blue) 60%
   );
   text-underline-offset: 0.75rem;
   text-decoration-thickness: 3px;
@@ -105,7 +105,7 @@ html {
 
   // font falmily
   --font-family: "Cascadia code", "Open Sans", Cantarell, "Helvetica Neue",
-    sans-serif;
+  sans-serif;
 }
 body {
   font-family: var(--font-family);

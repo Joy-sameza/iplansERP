@@ -19,12 +19,9 @@ $request = $_SERVER['REQUEST_URI'];
 $method = $_SERVER['REQUEST_METHOD'];
 
 $part = explode("/", $request);
-
-if ($part[1] != 'courrier')
-    return http_response_code(404);
-
 $id = null;
 $path = null;
+
 if (array_key_exists(2, $part)) {
     if (is_numeric($part[2])) {
         $id = $part[2];
@@ -34,13 +31,30 @@ if (array_key_exists(2, $part)) {
         }
     }
 }
+//api personne
+if ($part[1] == 'pers') {
+    ini_set("date.timezone", "Africa/Douala");
 
-ini_set("date.timezone", "Africa/Douala");
+    $database = new Database("localhost", "administrator", "system", "demo", "5785");
 
-$database = new Database("localhost", "root", "12345", "demo", "3306");
+    $personne = new Personne($database);
 
-$courrier = new Courrier($database);
+    $controllerP = new controllerP($personne);
 
-$controller = new Controller($courrier);
+    $controllerP->processRequest($method, $id, $path);
+}
 
-$controller->processRequest($method, $id, $path);
+//api courrier
+if ($part[1] == 'courrier') {
+    ini_set("date.timezone", "Africa/Douala");
+
+    $database = new Database("localhost", "administrator", "system", "demo", "5785");
+
+    $courrier = new Courrier($database);
+
+    $controller = new Controller($courrier);
+
+    $controller->processRequest($method, $id, $path);
+}
+
+

@@ -30,7 +30,7 @@ if ($query == "lang=en") {
 ob_start();
 ?>
 <link rel="stylesheet" type="text/css" href="<?= SITE_URL ?>/assets/css/login.css">
-
+    <link href="<?= SITE_URL ?>/assets/css/style.css" rel="stylesheet">
 <main>
     <h1><u>CONNEXION</u></h1>
     <form method="post" action="">
@@ -55,28 +55,24 @@ if (isset($_POST['send1'])) {
         // header("Location: " . SITE_URL . "/spider");
         // print_r($admin);
         // exit();
-
-
-        if ($admin != false) {
-
+        if ($admin) {
             $_SESSION['login'] = $admin;
-            // echo "<script>
-            // swal({
-            // type: 'success',
-            // text: 'Connexion avec succès...',
-            // timer: 1000,
-            // onOpen: function(){
-            // swal.showLoading()
-            // }
-            // }).then(function(){
-            //     window.open('" . SITE_URL . "/spider','_self');
-            // });
-            // </script>";
-            header("Location: " . SITE_URL . "/spider");
+            echo "<script>
+             swal({
+             icon: 'success',
+             text: 'Connexion avec succès...',
+             timer: 1000,
+             onOpen: function(){
+             swal.showLoading()
+             }
+             }).then(function(){
+                 window.open('" . SITE_URL . "/spider','_self');
+             });
+            </script>";
         } else {
             echo "<script>
                     swal({
-                        type: 'warning',
+                        icon: 'warning',
                         text: 'Désolé! Le mot de passe ou le login est incorrects',
                     });
                 </script>";

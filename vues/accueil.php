@@ -26,6 +26,7 @@ ob_start();
 
 ?>
     <link rel="stylesheet" type="text/css" href="<?= SITE_URL ?>/assets/css/accueil.css">
+    <link href="<?= SITE_URL ?>/assets/css/style.css" rel="stylesheet">
 
 
 <main>

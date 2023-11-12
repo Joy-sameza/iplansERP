@@ -13,11 +13,13 @@
 <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i,900" rel="stylesheet"> -->
 
 <!-- Template Main CSS File -->
-<link href="<?= SITE_URL ?>/assets/css/style.css" rel="stylesheet">
-<!-- <link rel="stylesheet" href="<?= SITE_URL ?>/assets/js/jquery-3.1.1.min.js"> -->
-<script type="text/javascript" src="<?= SITE_URL ?>/assets/js/jquery.min.js" defer></script>
-<script type="text/javascript" src="<?= SITE_URL ?>/assets/js/sweetalert2.js" defer></script>
 
+
+<link rel="stylesheet" href="<?=SITE_URL?>/assets/js/jquery-3.1.1.min.js">
+<link rel="stylesheet" href="<?=SITE_URL?>/assets/css/sweetalert2.css">
+<script type="text/javascript" src="<?=SITE_URL?>/assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="<?=SITE_URL?>/assets/js/jquery-ui.js"></script>
+<script type="text/javascript" src="<?=SITE_URL?>/assets/js/sweetalert2.js"></script>
 <script src="<?= SITE_URL ?>/assets/js/iplans.courrier.js" defer></script>
 <script src="<?= SITE_URL ?>/assets/js/jspdf.umd.min.js" defer></script>
 <script src="<?= SITE_URL ?>/assets/js/jspdf.plugin.autotable.min.js" defer></script>
@@ -35,8 +37,7 @@ header("Expires: Thu, 01 Jan 1970 00:00:00 GMT", true);
 
 <script>
     const API_URL = "<?= COURRIER_API_URL ?>";
-    const SITE_URL = "<?= SITE_URL ?>";
-    let SAVE = false, lang = "en";
+    var api_url_pers= "<?php echo PERS_API_URL; ?>";
 </script>
 <?php
 if (array_key_exists('save', $_SESSION) and $_SESSION['save']) {

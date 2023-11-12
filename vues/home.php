@@ -26,11 +26,11 @@ ob_start();
 ?>
 
     <!---------------- Main section ------------------------>
-
+    <link href="<?= SITE_URL ?>/assets/css/style.css" rel="stylesheet">
     <main class="main">
       <!--  Main start -->
 
-      <div class="pictures">
+      <div class="pictures" style="height: 62%;">
         <figcaption>
           <h2>RACCOURCIS</h2>
         </figcaption>
@@ -91,7 +91,8 @@ ob_start();
       <button type="button" class="func">Paramètres</button>
       <button type="button" class="func">Médiathèque</button>
       <button type="button" class="func">GED</button>
-      <button type="button" class="func">GRH</button>
+        <button type="button" class="func" id="rhumain"><a href="<?= SITE_URL ?>/rhumain" style="    text-decoration: none;
+    color: black">GRH</a></button>
       <button type="button" class="func">Gestion Administrative</button>
     </main>
     <!--  main end -->

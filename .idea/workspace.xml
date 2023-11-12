@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a102b2f4-e0c7-4692-a965-1e4e5d27d44a" name="Changes" comment="test">
+    <list default="true" id="5ee32c0a-3f2a-4416-ab0f-326e0d4d5af1" name="Changes" comment="TRAIVAIL AVEC 47">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Courrier.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Courrier.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/iplans.courrier.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/iplans.courrier.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/partials/head.php" beforeDir="false" afterPath="$PROJECT_DIR$/partials/head.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/partials/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/partials/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vues/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/home.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vues/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vues/tableau.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/tableau.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,7 +23,19 @@
       <entry key="4b24e53f-33e8-4a14-bdcc-117f7683d7ec" value="Orange" />
     </colors>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
@@ -29,7 +45,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2UvF1GCDJ8EQNyCGudGPEK2mvPD" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -39,7 +57,9 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/xampp/htdocs/Iplans/include",
+    "last_opened_file_path": "C:/xampp/htdocs/mcsV0",
+    "list.type.of.created.stylesheet": "CSS",
+    "nodejs_package_manager_path": "npm",
     "run.code.analysis.last.selected.profile": "pProject Default",
     "vue.rearranger.settings.migration": "true"
   },
@@ -51,17 +71,17 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\iplanss\api\src" />
+      <recent name="C:\xampp\htdocs\iplanss\api" />
+      <recent name="C:\xampp\htdocs\iplanss\assets\css" />
+      <recent name="C:\xampp\htdocs\iplanss\assets" />
       <recent name="C:\xampp\htdocs\Iplans\include" />
-      <recent name="C:\xampp\htdocs\Iplans\assets\js" />
-      <recent name="C:\xampp\htdocs\Iplans\assets\img" />
-      <recent name="C:\xampp\htdocs\Iplans\assets\css" />
-      <recent name="C:\xampp\htdocs\Iplans\vues" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="a102b2f4-e0c7-4692-a965-1e4e5d27d44a" name="Changes" comment="" />
+      <changelist id="5ee32c0a-3f2a-4416-ab0f-326e0d4d5af1" name="Changes" comment="test" />
       <created>1693811941256</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -72,6 +92,8 @@
       <workItem from="1693833103001" duration="120000" />
       <workItem from="1694258148330" duration="1454000" />
       <workItem from="1694656228477" duration="9386000" />
+      <workItem from="1695828914561" duration="113479000" />
+      <workItem from="1699177921087" duration="49775000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1694688403854</created>
@@ -80,7 +102,28 @@
       <option name="project" value="LOCAL" />
       <updated>1694688403854</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="ajout de l api personne">
+      <created>1698121136683</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1698121136683</updated>
+    </task>
+    <task id="LOCAL-00003" summary="creation du tableau">
+      <created>1699696695401</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1699696695401</updated>
+    </task>
+    <task id="LOCAL-00004" summary="TRAIVAIL AVEC 47">
+      <created>1699712346583</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1699712346583</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -99,6 +142,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="test" />
-    <option name="LAST_COMMIT_MESSAGE" value="test" />
+    <MESSAGE value="ajout de l api personne" />
+    <MESSAGE value="creation du tableau" />
+    <MESSAGE value="TRAIVAIL AVEC 47" />
+    <option name="LAST_COMMIT_MESSAGE" value="TRAIVAIL AVEC 47" />
   </component>
 </project>
