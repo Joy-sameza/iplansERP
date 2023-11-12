@@ -1,7 +1,7 @@
     <!---------------- Header ------------------------>
 
     <header class="header"> <!--  header start -->
-        <div class="logo">
+        <div class="logo" id="">
             <img src="<?=SITE_URL?>/assets/img/iplans logo.png" alt="" width="80px" />
         </div>
         <div class="language">

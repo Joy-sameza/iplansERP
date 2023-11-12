@@ -37,8 +37,7 @@ header("Expires: Thu, 01 Jan 1970 00:00:00 GMT", true);
 
 <script>
     const API_URL = "<?= COURRIER_API_URL ?>";
-    const SITE_URL = "<?= SITE_URL ?>";
-    let SAVE = false, lang = "en";
+    var api_url_pers= "<?php echo PERS_API_URL; ?>";
 </script>
 <?php
 if (array_key_exists('save', $_SESSION) and $_SESSION['save']) {

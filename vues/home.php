@@ -91,7 +91,7 @@ ob_start();
       <button type="button" class="func">Paramètres</button>
       <button type="button" class="func">Médiathèque</button>
       <button type="button" class="func">GED</button>
-        <button type="button" class="func"><a href="<?= SITE_URL ?>/rhumain" style="    text-decoration: none;
+        <button type="button" class="func" id="rhumain"><a href="<?= SITE_URL ?>/rhumain" style="    text-decoration: none;
     color: black">GRH</a></button>
       <button type="button" class="func">Gestion Administrative</button>
     </main>

@@ -171,51 +171,51 @@ $d = (array)json_decode($response, true);
                     <?php
 
                     foreach ($d as $pack) {
-                    ?>
-                    <tbody>
-                    <td><?=$pack['civilite']?></td>
-                    <td><?=$pack['nom']?></td>
-                    <td><?=$pack['prenom']?></td>
-                    <td><?=$pack['Fonction']?></td>
-                    <td><?=$pack['phone']?></td>
-                    <td><?=$pack['PSeudo']?></td>
-                    <td><?=$pack['Matricule']?></td>
-                    <td><?=$pack['MatriculeInterne']?></td>
-                    <td><?=$pack['cni']?></td>
-                    <td><?=$pack['Email']?></td>
-                    <td><?=$pack['dnais']?></td>
-                    <td><?=$pack['npere']?></td>
-                    <td><?=$pack['nmere']?></td>
-                    <td><?=$pack['vnais']?></td>
-                    <td><?=$pack['nurg']?></td>
-                    <td><?=$pack['nuurg']?></td>
-                    <td><?=$pack['AgenceBanque']?></td>
-                    <td><?=$pack['CodeBanque']?></td>
-                    <td><?=$pack['CodeGuichetBanque']?></td>
-                    <td><?=$pack['NumeroCompteBanque']?></td>
-                    <td><?=$pack['CleRibBanque']?></td>
-                    <td><?=$pack['CodeSwiftBanque']?></td>
-                    <td><?=$pack['CodeUtilisateur']?></td>
-                    <td><?=$pack['categorie']?></td>
-                    <td><?=$pack['Grade']?> </td>
-                    <td><?=$pack['Convention']?></td>
-                    <td><?=$pack['departement1']?></td>
-                    <td><?=$pack['Direction']?></td>
-                    <td><?=$pack['SousDirection']?></td>
-                    <td><?=$pack['Service']?></td>
-                    <td><?=$pack['motif_depart']?></td>
-                    <td><?=$pack['date_sortie']?></td>
-                    <td><?=$pack['date_entree']?></td>
-                    <td><?=$pack['genre_salarie']?></td>
-                    <td><?=$pack['type_contrat']?></td>
-                    <td><?=$pack['IDDate_Contrat']?></td>
-                    <td><?=$pack['IDDate_Sortie']?></td>
-                    <td><?=$pack['LieuDelivranceCNI']?></td>
-                    <td><?=$pack['DateExpirationCNI']?></td>
-                    <td><?=$pack['IDDateExpirationCNI']?></td>
+                        ?>
+                        <tbody>
+                        <td><?=$pack['civilite']?></td>
+                        <td><?=$pack['nom']?></td>
+                        <td><?=$pack['prenom']?></td>
+                        <td><?=$pack['Fonction']?></td>
+                        <td><?=$pack['phone']?></td>
+                        <td><?=$pack['PSeudo']?></td>
+                        <td><?=$pack['Matricule']?></td>
+                        <td><?=$pack['MatriculeInterne']?></td>
+                        <td><?=$pack['cni']?></td>
+                        <td><?=$pack['Email']?></td>
+                        <td><?=$pack['dnais']?></td>
+                        <td><?=$pack['npere']?></td>
+                        <td><?=$pack['nmere']?></td>
+                        <td><?=$pack['vnais']?></td>
+                        <td><?=$pack['nurg']?></td>
+                        <td><?=$pack['nuurg']?></td>
+                        <td><?=$pack['AgenceBanque']?></td>
+                        <td><?=$pack['CodeBanque']?></td>
+                        <td><?=$pack['CodeGuichetBanque']?></td>
+                        <td><?=$pack['NumeroCompteBanque']?></td>
+                        <td><?=$pack['CleRibBanque']?></td>
+                        <td><?=$pack['CodeSwiftBanque']?></td>
+                        <td><?=$pack['CodeUtilisateur']?></td>
+                        <td><?=$pack['categorie']?></td>
+                        <td><?=$pack['Grade']?> </td>
+                        <td><?=$pack['Convention']?></td>
+                        <td><?=$pack['departement1']?></td>
+                        <td><?=$pack['Direction']?></td>
+                        <td><?=$pack['SousDirection']?></td>
+                        <td><?=$pack['Service']?></td>
+                        <td><?=$pack['motif_depart']?></td>
+                        <td><?=$pack['date_sortie']?></td>
+                        <td><?=$pack['date_entree']?></td>
+                        <td><?=$pack['genre_salarie']?></td>
+                        <td><?=$pack['type_contrat']?></td>
+                        <td><?=$pack['IDDate_Contrat']?></td>
+                        <td><?=$pack['IDDate_Sortie']?></td>
+                        <td><?=$pack['LieuDelivranceCNI']?></td>
+                        <td><?=$pack['DateExpirationCNI']?></td>
+                        <td><?=$pack['IDDateExpirationCNI']?></td>
 
 
-                    </tbody>
+                        </tbody>
                     <?php } ?>
                 </table>
 
@@ -470,7 +470,7 @@ $d = (array)json_decode($response, true);
                             <label for="" style="width: 25%">Fait a</label>
                             <input type="text" name="fait">
                             <label for="" style="width: 50%">Expire le</label>
-                            <input type="date" name="expire" value="<?= date('Y/m/d') ?>">
+                            <input type="date" name="expire" value="<?= date('Y-m-d') ?>">
                         </div>
                         <div class="idntite5">
                             <label for="">Adresse</label>
@@ -1207,15 +1207,7 @@ $d = (array)json_decode($response, true);
         Diver_contr2.style.display = "none";
     });
 </script>
-<script>
-    const fermer = document.querySelector(".Fermerr");
-    const cont_employerr = document.querySelector(".cont_employer");
-    const Diver_contr = document.querySelector(".divers_cont");
-    fermer.addEventListener("click", () => {
-        cont_employer.style.display = "none";
-        Diver_cont.style.display = "none";
-    });
-</script>
+
 
 
 

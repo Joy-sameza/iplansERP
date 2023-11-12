@@ -303,7 +303,7 @@ formOuvrirCourrier.addEventListener("change", (e) => {
 
 function printTable() {
   const pdf = new jspdf.jsPDF({ orientation: "landscape" });
-
+  const iplans ="\nLISTE DES COURRIERS";
   const displayDateTime = new Date().toLocaleDateString(pdfLang, {
     weekday: "long",
     year: "numeric",
@@ -313,7 +313,7 @@ function printTable() {
     minute: "numeric",
   });
   pdf.setFontSize(11);
-  pdf.text(displayDateTime, 10, 10);
+  pdf.text(displayDateTime+iplans,10, 10);
   pdf.autoTable({
     html: "#printable",
     startX: 10,

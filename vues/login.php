@@ -59,7 +59,7 @@ if (isset($_POST['send1'])) {
             $_SESSION['login'] = $admin;
             echo "<script>
              swal({
-             type: 'success',
+             icon: 'success',
              text: 'Connexion avec succès...',
              timer: 1000,
              onOpen: function(){
@@ -72,7 +72,7 @@ if (isset($_POST['send1'])) {
         } else {
             echo "<script>
                     swal({
-                        type: 'warning',
+                        icon: 'warning',
                         text: 'Désolé! Le mot de passe ou le login est incorrects',
                     });
                 </script>";
