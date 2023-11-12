@@ -33,5 +33,11 @@ function spider()
     $dirs=str_replace("controllers", "", $dirs);
     require $dirs.'vues/home.php';
 }
+function api()
+{
+    $dirs=__DIR__;
+    $dirs=str_replace("controllers", "", $dirs);
+    require $dirs.'api/index.php';
+}
 
 ?>

@@ -434,12 +434,13 @@ svg > g {
     }
   }
 }
-.modal.modal3 > .container > form > fieldset:first-of-type {
-  justify-content: unset;
+.scroller {
   column-gap: calc(var(--header-padding) * 0.75);
   overflow: auto hidden;
-  max-width: 560px;
-  width: 560px;
+  max-width: 100%;
+  width: 100%;
+  display: grid;
+  grid-auto-flow: row;
 }
 .modal > .container > form > fieldset:last-of-type {
   flex-direction: column;

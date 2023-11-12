@@ -7,9 +7,7 @@ spl_autoload_register(function ($class) {
     require __DIR__ . "/src/$class.php";
 });
 
-header('Access-Control-Allow-Origin: *');
 header("Content-Type: application/json; charset=UTF-8");
-header("Cache-Control: max-age=0");
 
 // Handle errors and exceptions
 set_error_handler("ErrorHandler::handleError");
@@ -20,7 +18,7 @@ $method = $_SERVER['REQUEST_METHOD'];
 
 $part = explode("/", $request);
 
-if ($part[1] != 'courrier')
+if ($part[1] != 'pers')
     return http_response_code(404);
 
 $id = null;
@@ -39,8 +37,8 @@ ini_set("date.timezone", "Africa/Douala");
 
 $database = new Database("localhost", "root", "12345", "demo", "3306");
 
-$courrier = new Courrier($database);
+$personne = new Personne($database);
 
-$controller = new Controller($courrier);
+$controller = new Controller($personne);
 
 $controller->processRequest($method, $id, $path);

@@ -31,3 +31,6 @@ if ('/login' == $uri) {
 if ('/spider' == $uri) {
     spider();
 }
+if ('/api' == $uri) {
+    api();
+}

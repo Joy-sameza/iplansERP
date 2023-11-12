@@ -8,17 +8,12 @@
 - <http://localhost/products/{id}>
 - <http://localhost/products/{name}>
 
-## Get all products
+## Get all products  
 
 ### Request a list of products
 
-```sh
-curl http://localhost/courrier
-```
-
-```sh
-curl http://localhost/products
-
+```http
+GET http://localhost/products
 ```
 
 ### response
@@ -56,7 +51,6 @@ curl http://localhost/products
   }
 ]
 
-
 ```
 
 ## Get product by id
@@ -65,7 +59,6 @@ curl http://localhost/products
 
 ```http
 GET http://localhost/products/1
-
 ```
 
 ### Response
@@ -78,7 +71,6 @@ GET http://localhost/products/1
   "quantite": 100,
   "description": "The latest and greatest iPhone"
 }
-
 ```
 
 ## Get product by name
@@ -87,7 +79,6 @@ GET http://localhost/products/1
 
 ```http
 GET http://localhost/products/TV
-
 ```
 
 ### Response
@@ -100,7 +91,6 @@ GET http://localhost/products/TV
   "quantite": 100,
   "description": "42\" wide smart screen"
 }
-
 ```
 
 ## Create a  product
@@ -116,17 +106,15 @@ POST http://localhost/products
   "quntite": 50,
   "description": "The latest iPhone on the market"
 }
-
 ```
 
-### Response
+### Response 
 
 ```json
 {
   "message": "Product created",
   "id": "5"
 }
-
 ```
 
 ## Update a product
@@ -140,7 +128,6 @@ PATCH http://localhost/products/5
   "prix": 1750,
   "quntite": 80
 }
-
 ```
 
 ### Response
@@ -150,7 +137,6 @@ PATCH http://localhost/products/5
   "message": "Product 5 updated",
   "rows": 1
 }
-
 ```
 
 ## Delete a product
@@ -159,7 +145,6 @@ PATCH http://localhost/products/5
 
 ```http
 DELETE http://localhost/products/5
-
 ```
 
 ### Response
@@ -169,5 +154,4 @@ DELETE http://localhost/products/5
     "message": "Product 5 deleted",
     "rows": 1
 }
-
 ```

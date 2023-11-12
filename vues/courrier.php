@@ -403,37 +403,39 @@ foreach ($d as $pack) {
     <form data-form enctype="multipart/form-data" method="post" action="<?= SITE_URL ?>/forms/formdata.php">
       <fieldset>
         <legend>Utilisez un des templates</legend>
-        <div class="template">
-          <span data-text="Gestion fiscale">
-            <img src="<?= SITE_URL ?>/assets/downloads/template.jpg">
-          </span>
-          <a href="<?= SITE_URL ?>/assets/downloads/template.docx" download>
-            <button type="button">Télécharger</button>
-          </a>
-        </div>
-        <div class="template">
-          <span data-text="Gestion finance">
-            <img src="<?= SITE_URL ?>/assets/downloads/template2.jpg">
-          </span>
-          <a href="<?= SITE_URL ?>/assets/downloads/template2.docx" download>
-            <button type="button">Télécharger</button>
-          </a>
-        </div>
-        <div class="template">
-          <span data-text="Gestion finance">
-            <img src="<?= SITE_URL ?>/assets/downloads/template2.jpg">
-          </span>
-          <a href="<?= SITE_URL ?>/assets/downloads/template2.docx" download>
-            <button type="button">Télécharger</button>
-          </a>
-        </div>
-        <div class="template">
-          <span data-text="Gestion finance">
-            <img src="<?= SITE_URL ?>/assets/downloads/template2.jpg">
-          </span>
-          <a href="<?= SITE_URL ?>/assets/downloads/template2.docx" download>
-            <button type="button">Télécharger</button>
-          </a>
+        <div class="scroller">
+          <div class="template">
+            <span data-text="Gestion fiscale">
+              <img src="<?= SITE_URL ?>/assets/downloads/template.jpg">
+            </span>
+            <a href="<?= SITE_URL ?>/assets/downloads/template.docx" download>
+              <button type="button">Télécharger</button>
+            </a>
+          </div>
+          <div class="template">
+            <span data-text="Gestion finance">
+              <img src="<?= SITE_URL ?>/assets/downloads/template2.jpg">
+            </span>
+            <a href="<?= SITE_URL ?>/assets/downloads/template2.docx" download>
+              <button type="button">Télécharger</button>
+            </a>
+          </div>
+          <div class="template">
+            <span data-text="Gestion finance">
+              <img src="<?= SITE_URL ?>/assets/downloads/template2.jpg">
+            </span>
+            <a href="<?= SITE_URL ?>/assets/downloads/template2.docx" download>
+              <button type="button">Télécharger</button>
+            </a>
+          </div>
+          <div class="template">
+            <span data-text="Gestion finance">
+              <img src="<?= SITE_URL ?>/assets/downloads/template2.jpg">
+            </span>
+            <a href="<?= SITE_URL ?>/assets/downloads/template2.docx" download>
+              <button type="button">Télécharger</button>
+            </a>
+          </div>
         </div>
         <input type="radio" name="type" id="en_cours" value="En cours" checked style="display: none;" required>
       </fieldset>
