@@ -45,4 +45,10 @@ function tableau()
     $dirs=str_replace("controllers", "", $dirs);
     require $dirs.'vues/tableau.php';
 }
+function show404()
+{
+    $dirs=__DIR__;
+    $dirs=str_replace("controllers", "", $dirs);
+    require $dirs.'vues/404.php';
+}
 ?>

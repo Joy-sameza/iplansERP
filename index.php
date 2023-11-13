@@ -36,4 +36,6 @@ if ('/rhumain' == $uri) {
 }
 if ('/tableau' == $uri) {
     tableau();
+} else {
+    show404();
 }

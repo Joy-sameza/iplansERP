@@ -121,51 +121,51 @@ $d = (array)json_decode($response, true);
 
     <div class="debut_tableau"> <!--debut tableau-->
 
-        <table border="1">
+        <table border="1" id="tbl_emp">
             <thead style="position: sticky; top: 0; background-color: #333; color: #eee;">
-                <th>Civilite</th>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>Fonction</th>
-                <th>Telephone</th>
-                <th>Pseudo</th>
-                <th>Matricule</th>
-                <th>Identifiant</th>
-                <th>CNI</th>
-                <th>Email</th>
-                <th>DateNaissance</th>
-                <th>Nom_du_Pere</th>
-                <th>Nom_de_la_mere</th>
-                <th>Ville_de_Naissance</th>
-                <th>Nom_D'urgence</th>
-                <th>Numero_D'urgence</th>
-                <th>AgenceBanque</th>
-                <th>CodeBanque</th>
-                <th>CodeGuichetBanque</th>
-                <th>NumeroCompletBanque</th>
-                <th>CleRibBanque</th>
-                <th>VcodeSwittBanque</th>
-                <th>CodeUtilisateur</th>
-                <th>Categorie</th>
-                <th>Grade </th>
-                <th>Convention</th>
-                <th>Departement</th>
-                <th>GenreSalarie</th>
-                <th>Direction</th>
-                <th>SousDirection</th>
-                <th>Service</th>
-                <th>MotifDepart </th>
-                <th>DateSortie</th>
-                <th>DateEntree</th>
-                <th>GenreSalarie</th>
-                <th>TypeContrat</th>
-                <th>IDDate_Contrat</th>
-                <th>IDDate_Sortie</th>
-                <th>LieuDelivranceCNI</th>
-                <th>DateExpirationCNI</th>
-                <th>IDDateExpirationCNI</th>
-                <th>IDDate_Contrat</th>
-                <th>IDDate_Sortie</th>
+                <th role="columnheader">Civilite</th>
+                <th role="columnheader">Nom</th>
+                <th role="columnheader">Prenom</th>
+                <th role="columnheader">Fonction</th>
+                <th role="columnheader">Telephone</th>
+                <th role="columnheader">Pseudo</th>
+                <th role="columnheader">Matricule</th>
+                <th role="columnheader">Identifiant</th>
+                <th role="columnheader">CNI</th>
+                <th role="columnheader">Email</th>
+                <th role="columnheader">DateNaissance</th>
+                <th role="columnheader">Nom_du_Pere</th>
+                <th role="columnheader">Nom_de_la_mere</th>
+                <th role="columnheader">Ville_de_Naissance</th>
+                <th role="columnheader">Nom_D'urgence</th>
+                <th role="columnheader">Numero_D'urgence</th>
+                <th role="columnheader">AgenceBanque</th>
+                <th role="columnheader">CodeBanque</th>
+                <th role="columnheader">CodeGuichetBanque</th>
+                <th role="columnheader">NumeroCompletBanque</th>
+                <th role="columnheader">CleRibBanque</th>
+                <th role="columnheader">VcodeSwittBanque</th>
+                <th role="columnheader">CodeUtilisateur</th>
+                <th role="columnheader">Categorie</th>
+                <th role="columnheader">Grade </th>
+                <th role="columnheader">Convention</th>
+                <th role="columnheader">Departement</th>
+                <th role="columnheader">GenreSalarie</th>
+                <th role="columnheader">Direction</th>
+                <th role="columnheader">SousDirection</th>
+                <th role="columnheader">Service</th>
+                <th role="columnheader">MotifDepart </th>
+                <th role="columnheader">DateSortie</th>
+                <th role="columnheader">DateEntree</th>
+                <th role="columnheader">GenreSalarie</th>
+                <th role="columnheader">TypeContrat</th>
+                <th role="columnheader">IDDate_Contrat</th>
+                <th role="columnheader">IDDate_Sortie</th>
+                <th role="columnheader">LieuDelivranceCNI</th>
+                <th role="columnheader">DateExpirationCNI</th>
+                <th role="columnheader">IDDateExpirationCNI</th>
+                <th role="columnheader">IDDate_Contrat</th>
+                <th role="columnheader">IDDate_Sortie</th>
             </thead>
             <tbody id="pers_table">
                 <?php
@@ -227,29 +227,29 @@ $d = (array)json_decode($response, true);
                     <label for="direction_filtre">Direction</label>
                     <select name="direction_filtre" id="direction_filtre">
                         <option value="MEDICALE">MEDICALE</option>
-                        <option value="TOUTES">TOUTES</option>
+                        <option value="TOUTES" selected>TOUTES</option>
                     </select>
                     <label for="sous_direction_filtre">Sous Dir~</label>
                     <select name="sous_direction_filtre" id="sous_direction_filtre">
                         <option value="MEDICALE">MEDICALE</option>
-                        <option value="TOUTES">TOUTES</option>
+                        <option value="TOUTES" selected>TOUTES</option>
                     </select>
                     <label for="services_filtre">Services</label>
                     <select name="services_filtre" id="services_filtre">
                         <option value="SSMEDICALE">SSMEDICALE</option>
-                        <option value="TOUS">TOUS</option>
+                        <option value="TOUS" selected>TOUS</option>
                     </select>
                 </div>
                 <div class="zone">
                     <label for="grade_filtre">Grade</label>
                     <select name="grade_filtre" id="grade_filtre">
                         <option value="CADRE_SUPERIEUR">CADRE SUPERIEUR</option>
-                        <option value="TOUS">TOUS</option>
+                        <option value="TOUS" selected>TOUS</option>
                     </select>
                     <label for="convention_filtre">Convention</label>
                     <select name="convention_filtre" id="convention_filtre">
                         <option value="FONCTION">FONCTION</option>
-                        <option value="TOUTES">TOUTES</option>
+                        <option value="TOUTES" selected>TOUTES</option>
                     </select>
                     <label for="categorie_filtre">Categ~</label>
                     <select name="categorie_filtre" id="categorie_filtre">
@@ -263,12 +263,13 @@ $d = (array)json_decode($response, true);
                         <option value="IX">IX</option>
                         <option value="VI">VI</option>
                         <option value="XII">XII</option>
-                        <option value="TOUTES">TOUTES</option>
+                        <option value="TOUTES" selected>TOUTES</option>
 
 
                     </select>
                     <label for="fonction_filtre">Fontion</label>
                     <select name="fonction_filtre" id="fonction_filtre">
+                        <option value="TOUTES" selected>TOUTES</option>
                         <option value="AGENT_D_ENTRETIEN">AGENT D'ENTRETIEN</option>
                         <option value="AIDE_MAGSINIER">AIDE MAGSINIER</option>
                         <option value="ASSISTANCE_TECHNIQUE">ASSISTANCE TECHNIQUE</option>
@@ -291,7 +292,6 @@ $d = (array)json_decode($response, true);
                         <option value="RECEPTIONNISTE">RECEPTIONNISTE</option>
                         <option value="RESPONSABLE_DU_PERSONNEL">RESPONSABLE DU PERSONNEL</option>
                         <option value="RESPONSABLE_D_ENTREPOT">RESPONSABLE D ENTREPOT</option>
-                        <option value="PRESTATAIRE">PRESTATAIRE</option>
                         <option value="RESPONSABLE_PROMO">RESPONSABLE PROMO</option>
                     </select>
                 </div>
@@ -313,7 +313,7 @@ $d = (array)json_decode($response, true);
                         <label for="">F</label>
                     </div>
                     <div>
-                        <input type="radio" name="genre" value="all">
+                        <input type="radio" name="genre" value="all" checked>
                         <label for="">Tous</label>
                     </div>
                 </div>
@@ -330,7 +330,7 @@ $d = (array)json_decode($response, true);
                         <label for="">Oui</label>
                     </div>
                     <div>
-                        <input type="radio" name="prestataire" value="all">
+                        <input type="radio" name="prestataire" value="all" checked>
                         <label for="">Tous</label>
                     </div>
                 </div>
@@ -347,7 +347,7 @@ $d = (array)json_decode($response, true);
                         <label for="">Oui</label>
                     </div>
                     <div>
-                        <input type="radio" name="conforme" value="all">
+                        <input type="radio" name="conforme" value="all" checked>
                         <label for="">Tous</label>
                     </div>
                 </div>
@@ -377,7 +377,7 @@ $d = (array)json_decode($response, true);
             <button class="btn_bass Nouveau" style="padding-top: 0 !important;"><img src="<?= SITE_URL ?>/assets/image/la terre.webp" alt="">Nouveau</button>
             <button class="btn_bass" style="padding-top: 0 !important;"><img src="<?= SITE_URL ?>/assets/image/la terre.webp" alt="">Ouvrir</button>
             <button class="btn_bass" style="padding-top: 0 !important;"><img src="<?= SITE_URL ?>/assets/image/la terre.webp" alt="">Suprimer</button>
-            <button class="btn_bass" style="padding-top: 0 !important;"><img src="<?= SITE_URL ?>/assets/image/la terre.webp" alt="">Imprimer</button>
+            <button class="btn_bass" style="padding-top: 0 !important;" id="print_table"><img src="<?= SITE_URL ?>/assets/image/la terre.webp" alt="">Imprimer</button>
             <button class="btn_bass" style="padding-top: 0 !important;"><img src="<?= SITE_URL ?>/assets/image/la terre.webp" alt="">Pointages</button>
             <button class="btn_bass email" style=" padding-top: 0 !important;"><img src="<?= SITE_URL ?>/assets/image/la terre.webp" alt="">Envoyer un Email </button>
         </div>

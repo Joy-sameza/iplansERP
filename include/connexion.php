@@ -1,5 +1,4 @@
 <?php
-require_once "./include/config.php";
 class connexion
 {
     public $access;

@@ -276,7 +276,7 @@ formOuvrirCourrier.addEventListener("change", (e) => {
     modifybtn.addEventListener("click", () => (action = "modify"));
     deletebtn.addEventListener("click", () => (action = "delete"));
     archivebtn.addEventListener("click", () => (action = "archive"));
-    printbtn.addEventListener("click", () => printTable());
+    printbtn.addEventListener("click", () => printTable);
     Array.from(listTableRows).forEach((row) => {
       row.addEventListener("click", async (e) => {
         const tableRow = e.target.parentNode;
@@ -320,7 +320,7 @@ function printTable() {
     startX: 10,
     margin: { top: 20 },
   });
-  pdf.save("table.pdf");
+  pdf.save("table_courier.pdf");
   return;
 }
 

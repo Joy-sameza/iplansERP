@@ -4,6 +4,7 @@ const categorieForm = document.getElementById("categie_form");
 const genre = categorieForm.querySelectorAll('[name="genre"]');
 const prestataire = categorieForm.querySelectorAll('[name="prestataire"]');
 const conforme = categorieForm.querySelectorAll('[name="conforme"]');
+const printTableEmp = document.getElementById("print_table");
 
 let persData = await fetchData();
 
@@ -12,6 +13,7 @@ for (let rowData of persData)
   updateTable(persTable, rowData, persTableTemplate);
 
 categorieForm.addEventListener("change", handleChangeEvent);
+printTableEmp.addEventListener("click", handlePrintTableClick);
 
 /**
  * Fetches data from the API URL.
@@ -160,6 +162,32 @@ function handleChangeEvent(event) {
     updateTable(persTable, rowData, persTableTemplate);
 }
 /**
+ * Handle the click events of the btn and print the table contents
+ * @param {Event} event The triggering event
+ */
+function handlePrintTableClick() {
+  const pdf = new jspdf.jsPDF({ orientation: "landscape", format: "a0" });
+  pdf.addImage(SITE_URL + "/assets/img/iplans logo.png", "PNG", 10, 10, 2.969 * 50, 1 * 50);
+  const iplans = "\nLISTE DES EMPLOYEE";
+  const displayDateTime = new Date().toLocaleDateString(pdfLang, {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+  });
+  pdf.setFontSize(10);
+  pdf.text(displayDateTime + iplans, 10, 75);
+  pdf.autoTable({
+    html: "#tbl_emp",
+    startX: 10,
+    margin: { top: 90 },
+  });
+  pdf.save("table_employee.pdf");
+  return;
+}
+/**
  * Filter the data according to the specified direction
  * @param {String} direction Direction to filter
  * @param {Array} data Data to be filterd out
@@ -194,11 +222,94 @@ function useSousDirectionFilters(sousDirection, data) {
  * @return {Array} Filtered data
  */
 function useServicesFilters(services, data) {
-  if (services === "TOUTES" || !services) return data;
+  if (services === "TOUS" || !services) return data;
   const serv = {
     SSMEDICALE: "SSMEDICALE",
   };
   return data.filter((element) => element.Service == serv[services]);
+}
+/**
+ * Filter the data according to the specified grade
+ * @param {String} grade Grade to filter
+ * @param {Array} data Data to be filterd out
+ * @return {Array} Filtered data
+ */
+function useGradeFilters(grade, data) {
+  if (grade === "TOUS" || !grade) return data;
+  const grd = {
+    CADRE_SUPERIEUR: "CADRE SUPERIEUR",
+  };
+  return data.filter((element) => element.Grade == grd[grade]);
+}
+/**
+ * Filter the data according to the specified convention
+ * @param {String} convention Convention to filter
+ * @param {Array} data Data to be filterd out
+ * @return {Array} Filtered data
+ */
+function useConventionFilters(convention, data) {
+  if (convention === "TOUTES" || !convention) return data;
+  const conv = {
+    FONCTION: "FONCTION",
+  };
+  return data.filter((element) => element.Convention == conv[convention]);
+}
+/**
+ * Filter the data according to the specified categorie
+ * @param {String} categorie Categorie to filter
+ * @param {Array} data Data to be filterd out
+ * @return {Array} Filtered data
+ */
+function useCategorieFilters(categorie, data) {
+  if (categorie === "TOUTES" || !categorie) return data;
+  const cat = {
+    0: "0",
+    "03": "03",
+    4: "4",
+    6: "6",
+    8: "8",
+    A: "A",
+    I: "I",
+    IX: "IX",
+    VI: "VI",
+    XII: "XII",
+  };
+  return data.filter((element) => element.categorie == cat[categorie]);
+}
+/**
+ * Filter the data according to the specified fonction
+ * @param {String} fonction Fonction to filter
+ * @param {Array} data Data to be filterd out
+ * @return {Array} Filtered data
+ */
+function useFonctionFiltrers(fonction, data) {
+  if (fonction === "TOUTES" || !fonction) return data;
+  const fonc = {
+    AGENT_D_ENTRETIEN: "AGENT D'ENTRETIEN",
+    AIDE_MAGSINIER: "AIDE MAGSINIER",
+    ASSISTANCE_TECHNIQUE: "ASSISTANCE TECHNIQUE",
+    CHAUFFEUR_COURRIER: "CHAUFFEUR COURRIER",
+    COMMERCIAL: "COMMERCIAL",
+    COMPTABLE: "COMPTABLE",
+    CHAUFFEUR_LIVREUR: "CHAUFFEUR/LIVREUR",
+    CONTROLLEUR_DE_GESTION: "CONTROLLEUR DE GESTION",
+    DIRECTEUR_COMMERCIAL: "DIRECTEUR COMMERCIAL",
+    DIRECTEUR_GENERAL: "DIRECTEUR GENERAL",
+    DIRECTRICE_GENERALE_ADJOINTE: "DIRECTRICE GENERALE ADJOINTE",
+    FACTURIERE: "FACTURIERE",
+    GARDIEND_DE_NUIT: "GARDIEND DE NUIT",
+    HOETESSE_DE_VENTES: "HOETESSE DE VENTES",
+    IT: "IT",
+    MAGASINIER: "MAGASINIER",
+    PEDIATRE: "PEDIATRE",
+    PRESTATAIRE: "PRESTATAIRE",
+    PROJECT_MANAGER: "PROJECT MANAGER",
+    RECEPTIONNISTE: "RECEPTIONNISTE",
+    RESPONSABLE_DU_PERSONNEL: "RESPONSABLE DU PERSONNEL",
+    RESPONSABLE_D_ENTREPOT: "RESPONSABLE D ENTREPOT",
+    RESPONSABLE_PROMO: "RESPONSABLE PROMO",
+  };
+  return data.filter((element) => element.Fonction == fonc[fonction]);
 }
 /**
  *
