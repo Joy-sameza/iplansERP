@@ -128,8 +128,12 @@ addBorderRadius();
 range.forEach((r, i) =>
   r.addEventListener("change", function (event) {
     let select;
-    if (i ===0) {select = modal1.querySelectorAll("[data-select]");}
-    if (i ===1) {select = modal3.querySelectorAll("[data-select]");}
+    if (i === 0) {
+      select = modal1.querySelectorAll("[data-select]");
+    }
+    if (i === 1) {
+      select = modal3.querySelectorAll("[data-select]");
+    }
     const selectedValue = parseInt(event.target.value);
     const selectedOptionIndex = Math.floor(selectedValue / 5);
 
@@ -265,11 +269,8 @@ formOuvrirCourrier.addEventListener("change", (e) => {
     if (niveauFiltre) output = useNiveaufilters(niveauFiltre, output);
     if (etatFiltre) output = useEtatfilters(etatFiltre, output);
     if (typeFiltre) output = useTypefilters(typeFiltre, output);
-    if (output.length === 0) {
-      dataList.innerHTML = "";
-      return;
-    }
     dataList.innerHTML = "";
+    if (output.length === 0) return;
     output.forEach((row) => updateTable(dataList, row, listRowTemplate));
     let action = "";
     modifybtn.addEventListener("click", () => (action = "modify"));
@@ -303,7 +304,7 @@ formOuvrirCourrier.addEventListener("change", (e) => {
 
 function printTable() {
   const pdf = new jspdf.jsPDF({ orientation: "landscape" });
-  const iplans ="\nLISTE DES COURRIERS";
+  const iplans = "\nLISTE DES COURRIERS";
   const displayDateTime = new Date().toLocaleDateString(pdfLang, {
     weekday: "long",
     year: "numeric",
@@ -313,7 +314,7 @@ function printTable() {
     minute: "numeric",
   });
   pdf.setFontSize(11);
-  pdf.text(displayDateTime+iplans,10, 10);
+  pdf.text(displayDateTime + iplans, 10, 10);
   pdf.autoTable({
     html: "#printable",
     startX: 10,
@@ -326,7 +327,7 @@ function printTable() {
 /**
  * Fetches data from the API URL.
  *
- * @return {Promise} A promise that resolves to the fetched data.
+ * @return {Promise<object>} A promise that resolves to the fetched data.
  */
 async function fetchData() {
   const response = await fetch(API_URL);

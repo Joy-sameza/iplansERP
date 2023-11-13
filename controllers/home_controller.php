@@ -33,15 +33,6 @@ function spider()
     $dirs=str_replace("controllers", "", $dirs);
     require $dirs.'vues/home.php';
 }
-<<<<<<< HEAD
-function api()
-{
-    $dirs=__DIR__;
-    $dirs=str_replace("controllers", "", $dirs);
-    require $dirs.'api/index.php';
-}
-
-=======
 function rhrhrh()
 {
     $dirs=__DIR__;
@@ -54,5 +45,4 @@ function tableau()
     $dirs=str_replace("controllers", "", $dirs);
     require $dirs.'vues/tableau.php';
 }
->>>>>>> 13e5227bd09c40bec9decfa96eb9422c3f061ee8
 ?>

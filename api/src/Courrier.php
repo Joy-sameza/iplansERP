@@ -36,11 +36,7 @@ class Courrier
     public function getAll(): array
     {
         // Build the SQL query to select all rows from the table
-<<<<<<< HEAD
         $query = "SELECT * FROM {$this->table} WHERE Supprimer = 0";
-=======
-        $query = "SELECT * FROM  {$this->table} where supprimer=0";
->>>>>>> 13e5227bd09c40bec9decfa96eb9422c3f061ee8
 
         // Execute the query and retrieve the result set
         $stmt = $this->conn->query($query);
@@ -92,11 +88,7 @@ class Courrier
     public function get($courierId): array | false
     {
         // Prepare the SQL query
-<<<<<<< HEAD
         $query = "SELECT * FROM {$this->table} WHERE NEng = :courierId AND Supprimer != 1";
-=======
-        $query = "SELECT * FROM {$this->table} WHERE NEng = :courierId and supprimer !=1";
->>>>>>> 13e5227bd09c40bec9decfa96eb9422c3f061ee8
 
         // Prepare the statement
         $stmt = $this->conn->prepare($query);
@@ -316,13 +308,7 @@ class Courrier
     public function delete($id): int | false
     {
         // Define the query to delete the courier by ID
-<<<<<<< HEAD
         $query = "UPDATE {$this->table} SET Supprimer = 1 WHERE NEng = :courierId";
-=======
-        $query = "UPDATE {$this->table} 
-        SET supprimer=1
-        WHERE NEng = :courierId";
->>>>>>> 13e5227bd09c40bec9decfa96eb9422c3f061ee8
 
         // Sanitize and assign the courier ID
         $courierId = htmlspecialchars(strip_tags($id));
@@ -330,14 +316,6 @@ class Courrier
         // Prepare the SQL statement
         $stmt = $this->conn->prepare($query);
 
-<<<<<<< HEAD
-=======
-
-        // make a backup in table `backupcourrier`
-
-
-
->>>>>>> 13e5227bd09c40bec9decfa96eb9422c3f061ee8
         // Bind the courier ID parameter
         $stmt->bindParam(':courierId', $courierId, PDO::PARAM_INT);
 

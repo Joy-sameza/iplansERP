@@ -6,6 +6,7 @@ declare(strict_types=1);
 spl_autoload_register(function ($class) {
     require __DIR__ . "/src/$class.php";
 });
+require "../include/config.php";
 
 header('Access-Control-Allow-Origin: *');
 header("Content-Type: application/json; charset=UTF-8");
@@ -35,7 +36,7 @@ if (array_key_exists(2, $part)) {
 if ($part[1] == 'pers') {
     ini_set("date.timezone", "Africa/Douala");
 
-    $database = new Database("localhost", "administrator", "system", "demo", "5785");
+    $database = new Database(HOST_NAME, USER_NAME, USER_PASSWORD, DB_NAME);
 
     $personne = new Personne($database);
 
@@ -48,7 +49,7 @@ if ($part[1] == 'pers') {
 if ($part[1] == 'courrier') {
     ini_set("date.timezone", "Africa/Douala");
 
-    $database = new Database("localhost", "administrator", "system", "demo", "5785");
+    $database = new Database(HOST_NAME, USER_NAME, USER_PASSWORD, DB_NAME);
 
     $courrier = new Courrier($database);
 
