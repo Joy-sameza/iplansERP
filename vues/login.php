@@ -35,13 +35,13 @@ ob_start();
     <h1><u>CONNEXION</u></h1>
     <form method="post" action="">
         <div class="interface">
-            <p>Login <input type="text" name="email" required></p>
-            <p>Password <input type="password" name="motdepasse" required></p><br>
+            <p><?= $lang['login'] ?> <input type="text" name="email" required></p>
+            <p><?= $lang['pass'] ?> <input type="password" name="motdepasse" required></p><br>
         </div>
         <div class="envoie">
             <p>
-                <input type="reset" value="Annuler">
-                <input type="submit" name="send1" value="Se Connecter">
+                <input type="reset" value="<?= $lang['annuler'] ?>">
+                <input type="submit" name="send1" value="<?= $lang['se_connecter'] ?>">
             </p>
         </div>
     </form>

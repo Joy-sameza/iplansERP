@@ -33,9 +33,9 @@ ob_start();
 	<form method="psot" action="">
 	<div id="etablissemt">
 		<p>
-			<label for="etablissemt">Etablissement</label>
+			<label for="etablissemt"><?= $lang['etablissement'] ?></label>
 				<select name="Etablissement" id="etablissement">
-						<option>Choix de l'etablissement</option>
+						<option><?= $lang['choix1'] ?></option>
 					<option value="nyalla">Lycee bilingue de Nyalla</option>
 					<option value="japoma">Lycee de Japoma</option>
 				</select>
@@ -44,9 +44,9 @@ ob_start();
 
 <div id="specialite">
 	<p>
-		<label for="specialite">Specialite</label>
+		<label for="specialite"><?= $lang['specialite'] ?></label>
 			<select name="specialite" id="specialite">
-				<option>Choix de la spécialité</option>
+				<option><?= $lang['choix2'] ?></option>
 				<option value="ict">GHT</option>
 				
 			</select>
@@ -55,16 +55,16 @@ ob_start();
 
 <div id="cycle">
 	<p>
-		<label for="cycle">Cycle</label>
+		<label for="cycle"><?= $lang['cycle'] ?></label>
 			<select name="cycle" id="cycle">
-				<option>Choix du Cycle</option>
+				<option><?= $lang['choix3'] ?></option>
 				<option value="licence">Premier Cycle</option>
 				<option value="master">Second Cycle</option>
 			</select>
 	</p>
 </div>
 <p>
-<a href="<?= SITE_URL ?>/login"><input type="button" value="Suivant"></a>
+<a href="<?= SITE_URL ?>/login"><input type="button" value="<?= $lang['suivant'] ?>"></a>
 
 
 </p>
