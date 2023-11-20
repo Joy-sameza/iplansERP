@@ -3,11 +3,13 @@
   src: url(./fontawesome-free-6.4.2-desktop/otfs/Font\ Awesome\ 6\ Brands-Regular-400.otf);
   font-weight: 900;
 }
+
 @font-face {
   font-family: "Font Awesome 6 Free-Regular-400";
   src: url(./fontawesome-free-6.4.2-desktop/otfs/Font\ Awesome\ 6\ Free-Regular-400.otf);
   font-weight: 900;
 }
+
 // i {
 //   font-family: 'Font Awesome 6 Free-Regular-400' !important;
 // }
@@ -19,6 +21,7 @@
   row-gap: var(--header-padding);
   background: var(--main-white);
 }
+
 @mixin sidebars {
   --_margin-size: 1.6rem;
   --_large-font-size: 1.6rem;
@@ -30,24 +33,25 @@
   flex-direction: column;
   row-gap: 2%;
 }
+
 @mixin buttonHover {
   &:is(:hover, :focus-within, :focus, :active) {
     background: var(--primary-blue);
     color: var(--secondary-white);
   }
 }
+
 @mixin headingDecorator {
   color: var(--primary-blue);
   text-transform: capitalize;
   text-decoration: underline;
-  text-decoration-color: color-mix(
-                  in oklch,
-                  var(--tertiary-blue),
-                  var(--primary-blue) 60%
-  );
+  text-decoration-color: color-mix(in oklch,
+      var(--tertiary-blue),
+      var(--primary-blue) 60%);
   text-underline-offset: 0.75rem;
   text-decoration-thickness: 3px;
 }
+
 @mixin tab {
   display: flex;
   justify-content: space-between;
@@ -55,32 +59,38 @@
   max-width: inherit;
   height: 2rem;
   padding: calc(var(--header-padding) * 0.3) var(--header-padding);
+
   // overflow: hidden;
-  & > span {
+  &>span {
     display: inline-block;
     width: 100%;
     font-size: calc(var(--_large-font-size) * 0.65);
     font-weight: 400;
   }
-  & > button {
+
+  &>button {
     background: var(--primary-white);
     border: none;
     font-family: inherit;
     transition: all 0.25s;
+
     &:is(:hover, :focus-within, :focus, :active) {
       background: var(--primary-blue);
       color: var(--secondary-white);
     }
   }
 }
+
 *,
 ::before,
 ::after {
   box-sizing: border-box;
 }
+
 html {
   color-scheme: light;
 }
+
 :root {
   /* colors */
   --primary-blue: #238fce;
@@ -100,24 +110,26 @@ html {
   /* sizes */
   --header-padding: 0.75em;
   --header-height: 8em;
-  --svg-width: 350px;
+  --svg-width: 10px;
   --icons-gap: 0.5em;
 
   // font falmily
   --font-family: "Cascadia code", "Open Sans", Cantarell, "Helvetica Neue",
-  sans-serif;
+    sans-serif;
 }
+
 body {
   font-family: var(--font-family);
   margin: 0;
-  height: 100dvh;
+  height: 100vh;
 }
-svg {
-  width: var(--svg-width);
-  & > g {
-    fill: var(--secondary-blue);
-  }
-}
+
+// svg {
+//   width: var(--svg-width);
+//   & > g {
+//     fill: var(--secondary-blue);
+//   }
+// }
 /* Header */
 
 .header {
@@ -126,9 +138,11 @@ svg {
   position: sticky;
   background: linear-gradient(var(--_background), transparent);
   z-index: 1;
-  & > .logo {
+
+  &>.logo {
     background: var(--primary-blue);
-    & > img {
+
+    &>img {
       width: 15rem;
       position: absolute;
       margin-block: auto;
@@ -136,8 +150,9 @@ svg {
       inset: 0;
     }
   }
-  & > .language {
-    & > * > #lang {
+
+  &>.language {
+    &>*>#lang {
       position: absolute;
       right: var(--header-padding);
       top: 50%;
@@ -150,12 +165,14 @@ svg {
       color: var(--secondary-green);
       outline: none;
       border: none;
+
       &:is(:active, :focus-within, :focus) {
         outline: auto;
       }
     }
   }
 }
+
 /* Main */
 .main {
   position: relative;
@@ -163,7 +180,7 @@ svg {
   width: 100%;
   background-color: var(--secondary-white);
 
-  & > .pictures {
+  &>.pictures {
     width: min-content;
     position: absolute;
     display: flex;
@@ -174,10 +191,10 @@ svg {
     border: 1px solid var(--secondary-green);
     background: var(--primary-blue);
 
-    & > figcaption {
+    &>figcaption {
       background-color: var(--main-white);
 
-      & > h2 {
+      &>h2 {
         width: 100%;
         font-weight: 900;
         font-size: xx-large;
@@ -187,7 +204,7 @@ svg {
       }
     }
 
-    & > .icons {
+    &>.icons {
       margin-block-start: var(--header-padding);
       padding: var(--header-padding) calc(var(--header-padding) / 2);
       background: var(--main-white);
@@ -197,26 +214,28 @@ svg {
       gap: var(--icons-gap);
       row-gap: calc(var(--icons-gap) * 2);
 
-      & > span {
+      &>span {
         border: 2px solid var(--tertiary-blue);
         text-align: center;
 
         &:last-of-type {
           grid-column: span 3;
         }
-        & > a {
+
+        &>a {
           text-decoration: none;
           color: initial;
           transition: color 0.25s;
         }
-        &:is(:hover, :focus-within, :focus) > a {
+
+        &:is(:hover, :focus-within, :focus)>a {
           color: var(--primary-blue);
         }
       }
     }
   }
 
-  & > .func {
+  &>.func {
     text-transform: capitalize;
     width: 12.5rem;
     height: 3rem;
@@ -234,46 +253,55 @@ svg {
       left: 50%;
       transform: translateX(-50%);
     }
+
     &:nth-of-type(2) {
       top: 20%;
       left: 25%;
       transform: translate(-50%, -50%);
     }
+
     &:nth-of-type(3) {
       top: 40%;
       left: 25%;
       transform: translate(-50%, -50%);
     }
+
     &:nth-of-type(4) {
       top: 60%;
       left: 25%;
       transform: translate(-50%, -50%);
     }
+
     &:nth-of-type(5) {
       top: 80%;
       left: 25%;
       transform: translate(-50%, -50%);
     }
+
     &:nth-of-type(6) {
       bottom: 5%;
       left: 50%;
       transform: translateX(-50%);
     }
+
     &:nth-of-type(7) {
       top: 80%;
       left: 75%;
       transform: translate(-50%, -50%);
     }
+
     &:nth-of-type(8) {
       top: 60%;
       left: 75%;
       transform: translate(-50%, -50%);
     }
+
     &:nth-of-type(9) {
       top: 40%;
       left: 75%;
       transform: translate(-50%, -50%);
     }
+
     &:nth-of-type(10) {
       top: 20%;
       left: 75%;
@@ -281,13 +309,13 @@ svg {
     }
   }
 
-  & > .main-content {
+  &>.main-content {
     display: flex;
     position: relative;
     display: flex;
 
     /* sidebars */
-    & > .left-sidebar {
+    &>.left-sidebar {
       @include sidebars();
 
       &::before {
@@ -307,12 +335,12 @@ svg {
         align-items: center;
       }
 
-      & > .first {
+      &>.first {
         height: 68%;
         @include normalizeTabs();
       }
 
-      & > .second {
+      &>.second {
         @include normalizeTabs();
         height: 30%;
       }
@@ -326,13 +354,14 @@ svg {
       }
     }
 
-    & > .right-sidebar {
+    &>.right-sidebar {
       @include sidebars();
       position: absolute;
       right: 0;
       top: 0;
       display: grid;
-      & > button {
+
+      &>button {
         font-size: calc(var(--_large-font-size) * 0.65);
         font-weight: 400;
         font-family: inherit;
@@ -344,7 +373,7 @@ svg {
         transition: all 0.25s;
         @include buttonHover();
 
-        & > i {
+        &>i {
           font-size: x-large;
           font-weight: 600;
           color: var(--primary-blue);
@@ -352,14 +381,15 @@ svg {
       }
     }
 
-    & > .content {
-      & > h1 {
+    &>.content {
+      &>h1 {
         font-size: 8em;
         text-transform: uppercase;
       }
     }
   }
 }
+
 .modal {
   position: absolute;
   inset: 0;
@@ -369,7 +399,7 @@ svg {
   display: none;
   // backdrop-filter: blur(1px);
 
-  & > .container {
+  &>.container {
     width: calc(var(--header-height) * 5.5);
     aspect-ratio: 16/18;
     border-radius: calc((var(--header-height) * 6) * 0.03125 * 0.5);
@@ -377,13 +407,14 @@ svg {
     position: relative;
     background-color: var(--main-white);
     box-shadow: 5px 5px 8px var(--shadow-color);
+
     &#modal2-container {
       width: min-content;
       max-width: 80%;
       aspect-ratio: 16/9;
     }
 
-    & > :is([data-close], [data-close2]) {
+    &> :is([data-close], [data-close2]) {
       background: none;
       outline: none;
       border: none;
@@ -393,6 +424,7 @@ svg {
       float: right;
       transition: all 0.25s;
       padding: 0;
+
       &:hover {
         cursor: pointer;
         color: rgb(255, 54, 94);
@@ -400,62 +432,72 @@ svg {
       }
     }
 
-    & > h3 {
+    &>h3 {
       @include headingDecorator();
       text-align: center;
     }
-    & > form {
+
+    &>form {
       margin-block: 0;
-      & > fieldset {
+
+      &>fieldset {
         height: calc(var(--header-height) * 0.5);
         border-color: var(--tertiary-blue);
         display: flex;
         align-items: center;
         justify-content: space-between;
         height: fit-content;
+
         &:last-of-type {
           flex-direction: column;
           justify-content: start;
           height: calc(var(--svg-width) * 1.7);
           gap: calc(var(--header-padding) * 0.75);
-          & > div {
+
+          &>div {
             width: 80%;
             display: grid;
             grid-template-columns: 10rem 1fr;
             column-gap: 0.5rem;
+
             input {
               font: inherit;
               padding: calc(var(--header-padding) * 0.5) var(--header-padding);
               border: none;
               border-bottom: 1px solid var(--shadow-color);
               color: var(--shadow-color);
+
               &:is(:active, :focus-within, :focus) {
                 border-bottom-color: var(--tertiary-blue);
                 color: var(--primary-blue);
                 outline: none;
               }
+
               &:is(:active, :focus-within, :focus):placeholder-shown {
                 color: var(--shadow-color);
               }
+
               &:not(:placeholder-shown) {
                 color: var(--primary-blue);
               }
             }
           }
 
-          & > section {
+          &>section {
             width: 100%;
             height: 55%;
             display: grid;
             grid-template-columns: 60% 1fr;
             grid-template-rows: 1fr;
             column-gap: var(--header-padding);
+
             fieldset:first-of-type {
               display: flex;
               flex-direction: column;
               border-color: var(--tertiary-blue);
               overflow-y: auto;
-              & > table {
+
+              &>table {
                 max-width: 100%;
                 text-align: center;
                 border-collapse: collapse;
@@ -463,26 +505,31 @@ svg {
                 font-size: calc(1.6em * 0.5);
                 overflow-x: hidden;
                 overflow-y: scroll;
+
                 // height: calc(4em * 4);
                 thead {
                   color: var(--secondary-white);
                   background: var(--secondary-blue);
                 }
+
                 & th {
                   font-size: medium;
                   text-transform: capitalize;
                   height: var(--_large-font-size);
                 }
+
                 th,
                 td {
                   border: 2px solid var(--tertiary-blue);
                   padding: 5px 10px;
                   height: 2em;
                 }
+
                 & tr:nth-of-type(2n) {
                   background-color: var(--secondary-green);
                   color: var(--secondary-white);
                 }
+
                 & td {
                   max-width: 25ch;
                   padding-inline: calc(var(--header-padding) * 0.5);
@@ -490,12 +537,15 @@ svg {
                   text-overflow: ellipsis;
                 }
               }
+
               & span.icons {
                 display: flex;
                 justify-content: end;
                 margin-bottom: calc(var(--header-padding) * 0.75);
+
                 & img {
                   margin: calc(var(--header-padding) * 0.5) !important;
+
                   &:is(:hover, :focus, :focus-within) {
                     cursor: pointer;
                     scale: 1.25;
@@ -503,17 +553,21 @@ svg {
                 }
               }
             }
+
             fieldset:last-of-type {
               border-color: var(--tertiary-blue);
               display: grid;
               grid-template-columns: max-content 0.2fr;
-              & > .options {
+
+              &>.options {
                 display: grid;
                 pointer-events: none;
               }
-              & > .range {
+
+              &>.range {
                 height: inherit !important;
                 width: 25px;
+
                 [type="range"] {
                   height: 235px;
                   appearance: slider-vertical;
@@ -524,11 +578,13 @@ svg {
           }
         }
       }
-      & > .btn {
+
+      &>.btn {
         margin-top: 0.5em;
         display: flex;
         justify-content: space-around;
         align-items: center;
+
         button {
           background: var(--secondary-white);
           color: var(--secondary-blue);
@@ -539,16 +595,19 @@ svg {
           padding: calc(var(--header-padding) * 0.5);
           @include buttonHover();
         }
+
         [type="submit"] {
           border: 2px solid var(--primary-blue);
         }
       }
     }
-    & > .heading {
+
+    &>.heading {
       background-color: var(--shadow-color);
       height: min-content;
       padding: calc(var(--header-padding) * 0.35);
-      & > form {
+
+      &>form {
         display: grid;
         margin: 0 !important;
         grid-template-columns: repeat(2, 1fr) 1.5fr repeat(2, 1fr);
@@ -562,25 +621,30 @@ svg {
           justify-content: center;
           align-items: center;
         }
+
         fieldset:nth-of-type(3) {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
         }
+
         fieldset:nth-of-type(4) {
           display: grid;
         }
+
         fieldset:last-of-type {
           display: grid;
         }
       }
     }
-    & > .table {
+
+    &>.table {
       margin-top: var(--header-padding);
       width: 100%;
       border-color: red;
       height: max-content;
       overflow: hidden auto;
-      & > table {
+
+      &>table {
         max-width: 100%;
         text-align: center;
         border-collapse: collapse;
@@ -588,27 +652,32 @@ svg {
         font-size: calc(1.6em * 0.5);
         overflow-x: hidden;
         overflow-y: scroll;
+
         // height: calc(4em * 4);
         thead {
           color: var(--secondary-white);
           background: var(--secondary-blue);
         }
+
         & th {
           font-size: medium;
           text-transform: capitalize;
           height: var(--_large-font-size);
           white-space: nowrap;
         }
+
         th,
         td {
           border: 2px solid var(--tertiary-blue);
           padding: 5px 10px;
           height: 2em;
         }
+
         & tr:nth-of-type(2n) {
           background-color: color-mix(in oklab, black 60%, white);
           color: var(--secondary-white);
         }
+
         & td {
           max-width: 25ch;
           padding-inline: calc(var(--header-padding) * 0.5);
@@ -617,14 +686,16 @@ svg {
         }
       }
     }
-    & > .footing {
+
+    &>.footing {
       position: absolute;
       bottom: 0;
       display: flex;
       justify-content: space-between;
       width: 95%;
-      & > .btns {
-        & > button {
+
+      &>.btns {
+        &>button {
           color: var(--main-white);
           font-family: inherit;
           font-size: large;
@@ -634,10 +705,12 @@ svg {
           padding: calc(var(--header-padding) * 0.5);
           border-radius: 0.25rem;
           margin-bottom: calc(var(--header-padding) * 0.5);
+
           &:is(:focus-within, :focus, :active) {
             background-color: var(--tertiary-blue);
             outline: 2px solid var(--primary-blue);
           }
+
           &:hover {
             background-color: var(--tertiary-blue);
           }
@@ -646,19 +719,22 @@ svg {
     }
   }
 }
+
 .open {
   display: flex;
+
   body:not(.modal) {
     pointer-events: none;
   }
 }
+
 .corrier {
   display: flex;
   justify-content: center;
   align-items: center;
   column-gap: calc(var(--header-padding) * 3);
 
-  & > div {
+  &>div {
     width: 30%;
     aspect-ratio: 2/3;
     max-height: 80%;
@@ -675,45 +751,52 @@ svg {
       --thick-shadow-color: #666;
     }
 
-    & > h2 {
+    &>h2 {
       @include headingDecorator();
     }
 
-    & > section {
+    &>section {
       @include tab();
       width: 85%;
       height: fit-content;
       display: grid;
       justify-content: center;
       row-gap: calc(var(--header-padding) * 0.5);
+
       &:first-of-type {
         padding-bottom: var(--header-padding);
         border-bottom: 2px solid var(--shadow-color);
       }
+
       &:last-of-type {
         padding-bottom: calc(var(--header-padding) * 3);
       }
-      & > button {
+
+      &>button {
         display: block;
         font-size: large;
         padding: var(--header-padding);
       }
-      & > h4 {
+
+      &>h4 {
         font-weight: 500;
         @include headingDecorator();
         text-decoration-thickness: 2px;
         text-underline-offset: 0.5rem;
       }
-      & > span {
+
+      &>span {
         width: 100%;
         display: flex;
         justify-content: space-between;
+
         strong {
           font-weight: 400;
           text-transform: capitalize;
         }
       }
     }
+
     .btn {
       color: var(--main-white);
       font-family: inherit;
@@ -723,36 +806,42 @@ svg {
       outline: none;
       padding: var(--header-padding);
       border-radius: 0.25rem;
+
       &:is(:focus-within, :focus, :active) {
         background-color: var(--tertiary-blue);
         outline: 2px solid var(--primary-blue);
       }
+
       &:hover {
         background-color: var(--tertiary-blue);
       }
     }
   }
+
   .entrant {
     box-shadow: -2px 2px 15px var(--shadow-color);
   }
 }
+
 @media screen and (max-width: 760px) {
   .corrier {
     display: grid;
     padding-bottom: var(--header-padding);
     row-gap: calc(var(--header-padding) * 2);
 
-    & > div {
+    &>div {
       rotate: 0deg !important;
       max-height: none;
     }
   }
-  .modal > .container#modal2-container {
+
+  .modal>.container#modal2-container {
     height: 90%;
     aspect-ratio: 16/10 !important;
     max-width: min-content;
   }
 }
+
 .hidden {
   display: block;
   appearance: none;

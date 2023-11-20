@@ -100,7 +100,7 @@ html {
     /* sizes */
     --header-padding: 0.75em;
     --header-height: 8em;
-    --svg-width: 350px;
+    --svg-width: 10px;
     --icons-gap: 0.5em;
 
 // font falmily
@@ -112,12 +112,12 @@ body {
     margin: 0;
     height: 100dvh;
 }
-svg {
+/* svg {
     width: var(--svg-width);
 & > g {
       fill: var(--secondary-blue);
   }
-}
+} */
 /* Header */
 
 .header {

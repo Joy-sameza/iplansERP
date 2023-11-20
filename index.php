@@ -34,8 +34,21 @@ if ('/spider' == $uri) {
 if ('/rhumain' == $uri) {
     rhrhrh();
 }
+if ('/tester' == $uri) {
+    tester();
+}
+if ('/mission' == $uri) {
+    mission();
+}
+if ('/details_mission' == $uri) {
+   details_mission();
+}
+if ('/list_mission' == $uri) {
+   list_mission();
+}
 if ('/tableau' == $uri) {
     tableau();
-} elseif (!empty($uri) and !in_array($uri, ['/', '/accueil', '/courrier', '/login', '/spider', '/rhumain', '/tableau'])) {
+    
+} elseif (!empty($uri) and !in_array($uri, ['/', '/accueil','/details_mission','/mission', '/list_mission','/courrier', '/login', '/spider', '/rhumain', '/tableau','/tester'])) {
     show404();
 }
