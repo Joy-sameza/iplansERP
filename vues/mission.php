@@ -36,9 +36,9 @@ ob_start();
     <title>Mission</title>
 </head>
 <body>
-  <div class="container-fluid conteneur conteneur0 text-white" style='width:75%;'>
+  <div class="container-fluid conteneur conteneur0  border border-primary border-4" style='width:75%;'>
 
-    <div class="row">
+    <div class="row bg-primary border-1 ">
         <div class="cont_titre d-flex justify-content-between  p-1" style='align-items: center;'>
                 <div style="display: flex;">
                     <img src="<?= SITE_URL ?>/assets/img/iplans-icon.png" alt="" class="ico_emplye">
@@ -52,14 +52,14 @@ ob_start();
         </div>
     </div>
     <div class="row">
-            <div class="col-sm-7 p-2" style='background-color: #3498db ;'>
+            <div class="col-sm-7 p-2" style='background-color: #f4f6f6  ;'>
 
                 <div class="d-flex justify-content-between  mb-3">
                     <div class="zone1" style='width:15%'>
                        <img src="<?= SITE_URL ?>/assets/image/merveille.png" alt="" style='width: 100%'>
                     </div>
                     <div class="zone2  text-center"style='width:70%'>
-                         <h2 class='text-mission mt-3' style='font-weight:bold;'>NOUVELLE MISSION</h2>
+                         <h2 class='text-mission mt-3' style='font-weight:bold; color: #2c3e50; '>NOUVELLE MISSION</h2>
                     </div>
                     <div class="zone3">
                         <img src="<?= SITE_URL ?>/assets/img/avatar.png" alt="" style='width: 100px;height: 100px;' class='border border-secondary border-1' >
@@ -75,8 +75,8 @@ ob_start();
                     </div>
                 </div>
                 
-                        <div style="display: flex; justify-content: center; align-items: center;" class='mt-3'>
-                                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; ">
+                    <div style="display: flex; justify-content: center; align-items: center;" class='mt-3'>
+                                <div style="display: flex;justify-content: space-between;align-items: center;width: 96%;">
                                   
                                     <label for="destination" class="form-label">
                                        Destination
@@ -93,8 +93,8 @@ ob_start();
                                              </select>
                                         </div>
                                 </div>
-                                <div style="width: 39% ; display: flex;   ">
-                                   <label for="via" class="form-label mx-3">Via</label>   
+                                <div style="width: 39%;display: flex;justify-content: space-between;">
+                                   <label for="via" class="form-label " style='margin-left: 16%;'>Via</label>   
                                     <select class="form-select-sm">
                                         <option></option>
                                         <option>EDEA</option>
@@ -106,12 +106,12 @@ ob_start();
                         </div> 
                         <!-- fin premiere ligne -->
                         <div style="display: flex; justify-content: center; align-items: center;" class='mt-3'>
-                           <div  style="display: flex; justify-content:space-between; align-items: center;      width: 100%; ">
+                           <div  style="display: flex; justify-content:space-between; align-items: center;  width: 96%; ">
                              
                                 <label for="deplacement" class="form-label">Mode de  déplacement </label>
                              
                                 <span style='display: flex; justify-content: flex-end;'>
-                                <select class="form-select-sm" style='width:85%'>
+                                <select class="form-select-sm" style='width:91%'>
                                         <option></option>
                                         <option>FDSFDS</option>
                                         <option>CAMION</option>
@@ -138,8 +138,8 @@ ob_start();
                      <div class='mt-3'>   
                         
                         <div>
-                            <label for="cadre" class="form-label" style='width:35%;'>Cadre/Objectif de la Mission  </label>
-                            <select class="form-select-sm" style='width:40%;'>
+                            <label for="cadre" class="form-label" style='width:34%;'>Cadre/Objectif de la Mission  </label>
+                            <select class="form-select-sm" style='width:40%;margin-left:-1px;'>
                                     <option></option>
                                     <option>FDSFDS</option>
                                     <option>INTEGRATION IPLANS</option>
@@ -149,12 +149,12 @@ ob_start();
                             
                         </div>
                      </div>
-                        <div class='mt-3' style=" display: flex;  ">
-                            <div style=" display: flex; width:36% ">
+                        <div class='mt-3' style=" display: flex;  width:100% ">
+                            <div style=" display: flex; width:35% ">
                                 <label for="cadre" class="form-label">Site/Tiers  </label>
                              </div>  
                              <div> 
-                                <select class="form-select-sm" style="display: flex; width:205% ">
+                                <select class="form-select-sm" style="display: flex; width:180% ">
                                         <option></option>
                                         <option>CANALSAT</option>
                                         <option>DEPOT DOUALA</option>
@@ -168,15 +168,16 @@ ob_start();
 
                           <!-- fin 3eme ligne -->
                         <div class='mt-3' style="display: flex; justify-content: space-between; align-items: center;">
-                            <div style="display: flex; justify-content: space-between; align-items: center; width: 60%; ">
+                            <div style="display: flex; justify-content: space-between; align-items: center; width: 57%; ">
                                 <label for="deplacement" class="form-label">Date de départ </label>
-                                    <input type="date" class="form-control-sm" >
+                                    <input type="date" class="form-control-sm" id="dateDebut" onchange="calculerJours()">
                                     
                             </div>    
                              <div style="display: flex; justify-content: right;width: 40%; gap: 7px;">   
                                 <label for="immatriculation" class="form-label">Nombre de jour(s)</label>   
                                     
-                                          <input type="number" class="form-control-sm" style='width:23%' >
+                                          <input type="number" class="form-control-sm" id="joursEcart" placeholder="0"
+                    oninput="modifierDateFin(); calculerJours()" style='width:23%;'>
                                     
                               
                              </div>   
@@ -184,9 +185,9 @@ ob_start();
 
                                <!-- fin 3eme ligne -->
                         <div class='mt-3' style="display: flex; justify-content: space-between; align-items: center;">
-                            <div style="display: flex; justify-content: space-between; align-items: center; width: 60%; ">
+                            <div style="display: flex; justify-content: space-between; align-items: center; width: 57%; ">
                                 <label for="deplacement" class="form-label">Date de rétour</label>
-                                    <input type="date" class="form-control-sm" >
+                                    <input type="date" class="form-control-sm" id="dateFin" onchange="calculerJours()">
                                     
                             </div>    
                              <div style="display: flex; justify-content: right;width: 38%; gap: 7px;">   
@@ -222,11 +223,11 @@ ob_start();
                                 </div>
 
                                 <div style="display: flex; justify-content: right;width: 48%; "> 
-                                        <div class="form-check mt-1" style='width:58%;'>
+                                        <div class="form-check mt-2" style='width:58%;'>
                                                 <input type="checkbox" class="form-check-input" id="check1" name="option1" value="something" checked>
                                                 <label class="form-check-label " id='text-reduire' for="check1" >Bloquer le pointage?</label>
                                        </div>
-                                    <label for="immatriculation" class="form-label  mt-2 " 
+                                    <label for="immatriculation" class="form-label  mt-3 " 
                                     id='text-reduire' style='width:25%;'>No Dossier</label>   
                                     <input type="text" class="form-control"  style='width:15%'>
                                 </div>
@@ -303,7 +304,7 @@ ob_start();
 
 
            <!-- debut de la partie gauche -->
-            <div class="col-sm-5 text-dark" style='background-color: #3498db ;'>
+            <div class="col-sm-5 text-dark" style='background-color:  #f4f6f6  ;'>
 
                  <div class="option-boutton d-flex justify-content-end " >   <!-- boutton gauche -->
                 
@@ -339,7 +340,7 @@ ob_start();
             </div><!--  fin de la partie ou div droite -->
     </div>
     
-      <div class="row d-flex justify-content-between bg-primary bout-bas p-2 mb-2" >
+      <div class="row d-flex justify-content-between bg-primary bout-bas p-2 " >
            <div style='width:10%;' >
 
                <button>Valider<img  src="<?= SITE_URL ?>/assets/img/accept.png" alt="" style="width: max-content; height: 20px;"></button>
@@ -400,9 +401,9 @@ ob_start();
             top: 0%;
             left: 10%;
             transform: translate(-50%, -50%);
-            background-color: #77B5FE;
+            background-color:  #f4f6f6 ;
             padding: 0 10px;
-            font-size: 14px;
+            font-size: 16px;
         }
 
        
@@ -430,9 +431,9 @@ ob_start();
             top: 0%;
             left: 20%;
             transform: translate(-50%, -50%);
-            background-color: #3498DB;
+            background-color:  #f4f6f6 ;
             padding: 0 10px;
-            font-size: 14px;
+            font-size: 16px;
             z-index: 20;
         }
 
@@ -513,9 +514,9 @@ ob_start();
         #text-reduire{
             font-size: 13px;
         }
-        .row{
+        /* .row{
             background-color:#1f34f1;
-        }
+        } */
         .text-mission{
             font-size:37px;
             color:  #f8f9f9  ;
@@ -529,6 +530,9 @@ ob_start();
         .commentaire{
             background-color:  #ebedef ;
             border-radius:7px;
+        }
+         body {
+            background-color: #f4f6f6 ; /* Remplacez cette couleur par celle que vous souhaitez utiliser */
         }
     </style> 
     
@@ -566,6 +570,31 @@ ob_start();
         conteneur0.style.display = "none";
     });
 </script>
+
+
+
+
+  <script>
+        // Fonction pour calculer le nombre de jours d'écart entre deux dates
+        function calculerJours() {
+            const dateDebut = new Date(document.getElementById("dateDebut").value);
+            const dateFin = new Date(document.getElementById("dateFin").value);
+
+            if (!isNaN(dateDebut) && !isNaN(dateFin)) {
+                const difference = Math.ceil((dateFin - dateDebut) / (1000 * 60 * 60 * 24));
+                document.getElementById("joursEcart").value = difference;
+            }
+        }
+
+        // Fonction pour modifier la date de fin en fonction du nombre de jours d'écart
+        function modifierDateFin() {
+            const dateDebut = new Date(document.getElementById("dateDebut").value);
+            const joursEcart = parseInt(document.getElementById("joursEcart").value) || 0;
+            const dateFin = new Date(dateDebut);
+            dateFin.setDate(dateDebut.getDate() + joursEcart);
+            document.getElementById("dateFin").valueAsDate = dateFin;
+        }
+    </script>
 
 </body>
 </html>

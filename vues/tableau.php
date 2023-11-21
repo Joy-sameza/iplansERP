@@ -1416,21 +1416,21 @@ $d = (array)json_decode($response, true);
                                      <button style="height: 25px; height: 25px; padding-top:3px; border:none; background-color:#fff"><img src="<?= SITE_URL ?>/assets/img/search.png" alt="" style="width: 20px;"></button>
                                     </div>
                                     <div style="width: 70%;  display: flex; justify-content: space-between; align-items: center;">
-                                        <label for="">Identifiant Interne</label>
+                                        <label for="" class='text-danger'>Identifiant Interne</label>
                                         <input type="text" class="form-control " style='background-color:#FFFF00 ;' name="identifiantinterne" id="" style=" width: 60%;">
                                     </div>
                                     <div style="width: 70%;  display: flex; justify-content: space-between; align-items: center;">
-                                        <label for="">Matricule Interne</label>
+                                        <label for="" class='text-danger'>Matricule Interne</label>
                                         <input type="text" class="form-control " style='background-color:#238fce;' name="matriculeinterne" id="" style=" width: 60%;">
                                     </div>
                                     <div style="width: 100%;  display: flex; justify-content: space-between; align-items: center;">
-                                        <label for="" style=" width: 30%;">Matricule Social (CNPS)</label>
+                                        <label for="" class='text-danger' style=" width: 40%;">Matricule Social (CNPS)</label>
                                         <input type="text" class="form-control " name="matriculesocial" id="" style=" width: 40%;">
-                                        <label for="" style="width: 20%; padding-left: 10px;">N* Enreg</label>
+                                        <label for="" class='text-danger' style="width: 20%; padding-left: 10px;">N* Enreg</label>
                                         <input type="number" class="form-control " style="width: 15%;" name="numenregistrement">
                                     </div>
                                     <div style="width: 70%;  display: flex; justify-content: space-between; align-items: center;">
-                                        <label for="">NIU (Impots)</label>
+                                        <label for="" class='text-danger'>NIU (Impots)</label>
                                         <input type="text" class="form-control " name="NIU" id="" style=" width: 60%;">
                                     </div>
                                     <div>
