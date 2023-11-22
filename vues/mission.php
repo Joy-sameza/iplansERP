@@ -36,13 +36,13 @@ ob_start();
     <title>Mission</title>
 </head>
 <body>
-  <div class="container-fluid conteneur conteneur0  border border-primary border-4" style='width:75%;'>
+  <div class="container-fluid conteneur conteneur0  border border-primary border-4"  style='width:75%'       >
 
     <div class="row bg-primary border-1 ">
         <div class="cont_titre d-flex justify-content-between  p-1" style='align-items: center;'>
                 <div style="display: flex;">
                     <img src="<?= SITE_URL ?>/assets/img/iplans-icon.png" alt="" class="ico_emplye">
-                    <h6 class="fiche_sala">Fiche Mission</h6>
+                    <h6 class="fiche_sala" style='color:white;'>Fiche Mission</h6>
                     
                 </div>
 
@@ -64,7 +64,7 @@ ob_start();
                     <div class="zone3">
                         <img src="<?= SITE_URL ?>/assets/img/avatar.png" alt="" style='width: 100px;height: 100px;' class='border border-secondary border-1' >
                         <!-- <button type="button" class="bout" display='none'><i class="fas fa-search"></i></button> -->
-                        <select class="form-select-sm" style='width:100%'>
+                        <select class="form-select-sm" style='width:67%'>
                                                  <option></option>
                                                 <option>jordan</option>
                                                 <option>ulrich</option>
@@ -111,7 +111,7 @@ ob_start();
                                 <label for="deplacement" class="form-label">Mode de  déplacement </label>
                              
                                 <span style='display: flex; justify-content: flex-end;'>
-                                <select class="form-select-sm" style='width:91%'>
+                                <select class="form-select-sm" style='width:72%'>
                                         <option></option>
                                         <option>FDSFDS</option>
                                         <option>CAMION</option>
@@ -139,7 +139,7 @@ ob_start();
                         
                         <div>
                             <label for="cadre" class="form-label" style='width:34%;'>Cadre/Objectif de la Mission  </label>
-                            <select class="form-select-sm" style='width:40%;margin-left:-1px;'>
+                            <select class="form-select-sm" style='width:36%;margin-left:1px;'>
                                     <option></option>
                                     <option>FDSFDS</option>
                                     <option>INTEGRATION IPLANS</option>
@@ -168,12 +168,12 @@ ob_start();
 
                           <!-- fin 3eme ligne -->
                         <div class='mt-3' style="display: flex; justify-content: space-between; align-items: center;">
-                            <div style="display: flex; justify-content: space-between; align-items: center; width: 57%; ">
+                            <div style="display: flex; justify-content: space-between; align-items: center; width: 61%; ">
                                 <label for="deplacement" class="form-label">Date de départ </label>
                                     <input type="date" class="form-control-sm" id="dateDebut" onchange="calculerJours()">
                                     
                             </div>    
-                             <div style="display: flex; justify-content: right;width: 40%; gap: 7px;">   
+                             <div style="display: flex; justify-content: right;width: 42%; gap: 7px;">   
                                 <label for="immatriculation" class="form-label">Nombre de jour(s)</label>   
                                     
                                           <input type="number" class="form-control-sm" id="joursEcart" placeholder="0"
@@ -185,12 +185,12 @@ ob_start();
 
                                <!-- fin 3eme ligne -->
                         <div class='mt-3' style="display: flex; justify-content: space-between; align-items: center;">
-                            <div style="display: flex; justify-content: space-between; align-items: center; width: 57%; ">
+                            <div style="display: flex; justify-content: space-between; align-items: center; width: 61%; ">
                                 <label for="deplacement" class="form-label">Date de rétour</label>
                                     <input type="date" class="form-control-sm" id="dateFin" onchange="calculerJours()">
                                     
                             </div>    
-                             <div style="display: flex; justify-content: right;width: 38%; gap: 7px;">   
+                             <div style="display: flex; justify-content: right;width: 42%; gap: 7px;">   
                                 <label for="immatriculation" class="form-label">No BL/LTA</label>   
                                     <select class="form-select-sm">
                                         <option></option>
@@ -518,7 +518,7 @@ ob_start();
             background-color:#1f34f1;
         } */
         .text-mission{
-            font-size:37px;
+            font-size:34px;
             color:  #f8f9f9  ;
   /* text-shadow: 4px 0px 0px rgba(206,202,202,0.79); */
         }

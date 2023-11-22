@@ -75,4 +75,13 @@ function details_mission()
     $dirs=str_replace("controllers", "", $dirs);
     require $dirs.'vues/details_mission.php';
 }
+function list_abscences()
+{
+    $dirs=__DIR__;
+    $dirs=str_replace("controllers", "", $dirs);
+    require $dirs.'vues/list_abscences.php';
+}
 ?>
+
+
+

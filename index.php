@@ -46,9 +46,12 @@ if ('/details_mission' == $uri) {
 if ('/list_mission' == $uri) {
    list_mission();
 }
+if ('/list_abscences' == $uri) {
+   list_abscences();
+}
 if ('/tableau' == $uri) {
     tableau();
     
-} elseif (!empty($uri) and !in_array($uri, ['/', '/accueil','/details_mission','/mission', '/list_mission','/courrier', '/login', '/spider', '/rhumain', '/tableau','/tester'])) {
+} elseif (!empty($uri) and !in_array($uri, ['/', '/accueil','/details_mission','/list_abscences','/mission', '/list_mission','/courrier', '/login', '/spider', '/rhumain', '/tableau','/tester'])) {
     show404();
 }
