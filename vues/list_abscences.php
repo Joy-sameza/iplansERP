@@ -38,7 +38,7 @@ ob_start();
     <title>List Abscences</title>
 </head>
 <body>
-    <div class="container-fluid" style='width:70%;'>
+    <div class="container-fluid border border-2 border-primary" style='width:75%;'>
         
     <div class="row bg-primary border-1 ">
         <div class="cont_titre d-flex justify-content-between  p-1" style='align-items: center;'>
@@ -154,10 +154,15 @@ ob_start();
        </div>
 
        <div  class='englobe1' style='width:16%;padding:0px;margin:0px;position:relative;'>
-        <button class='boutton'>
-           <img  src="<?= SITE_URL ?>/assets/img/padlock.png" alt="" style="width: max-content; height: 20px;">
-           
-       </button>
+            <button class='boutton'>
+            <img  src="<?= SITE_URL ?>/assets/img/padlock.png" alt="" style="width: max-content; height: 20px;">
+            
+            </button>
+             <select class="form-select-sm mt-5 " style='width:95%;margin-left:10px'>
+                                        <option SELECTED>TOUS</option>
+                                        <option>UN SALAIRE</option>
+                                     
+                                    </select>
            
        </div>
     </div>
@@ -165,7 +170,143 @@ ob_start();
     <!-- fin de la div qui suit  -->
 
 
+     <div class="row " style='height:400px;'>
+                   <div class="table-responsive debut_tableau w-100">
 
+                               <table class="table table-bordered  ">
+                                    <thead >
+                                    <tr class="table-secondary text-center table-dark ">
+                                        <th style='font-size:13px; ' class='px-5'>Site</th>
+                                        <th style='font-size:13px;' class='px-5'>Departement</th>
+                                        <th style='font-size:13px;' class='px-5'>Civilite</th>
+                                        <th style='font-size:13px; ' class='px-5'>Nom</th>
+                                        <th style='font-size:13px;' class='px-5'>Prenom</th>
+                                        <th style='font-size:13px;' class='px-5' >Motif</th>
+                                        <th style='font-size:13px;' class='px-5'>Debut</th>
+                                        <th style='font-size:13px;' class='px-5'>Fin</th>
+                                        <th style='font-size:13px;' class='px-5' >justification</th>
+                                        <th style='font-size:13px;' class='px-5'>Block_pointage</th>
+                                        <th style='font-size:13px;' class='px-5'>Recupereble</th>
+                                        <th style='font-size:13px;' class='px-5' >DeduireSurConges</th>
+                                        <th style='font-size:13px;' class='px-5'>AnneeComptable</th>
+                                        <th style='font-size:13px;' class='px-5' >Matricule</th>
+                                        <th style='font-size:13px;' class='px-5'>CreePar</th>
+                                        <th style='font-size:13px;' class='px-5' >AccordeePar</th>
+                                        <th style='font-size:13px;' class='px-5'>Archive</th>
+                                    
+                                       
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    
+                                    <tr class="table-primary custom-row text-white" style='background-color:#0D6EFD;'>
+                                        
+                                        <td  class='text-white' style='background-color:#0D6EFD;' >DEMO</td>
+                                        <td class='text-white' style='background-color:#0D6EFD;' >APPLICATION</td>
+                                        <td class='text-white' style='background-color:#0D6EFD;' >Mademoiselle</td>
+                                        <td class='text-white' style='background-color:#0D6EFD;' >Kamsu Simo </td>
+                                        <td class='text-white' style='background-color:#0D6EFD;' >Liliane Diane</td>
+                                        <td class='text-white' style='background-color:#0D6EFD;' >Repos</td>
+                                        <td class='text-white' style='background-color:#0D6EFD;' >09/10/2023</td>
+                                        <td class='text-white' style='background-color:#0D6EFD;' >09/10/2023</td>
+                                        <td class='text-white' style='background-color:#0D6EFD;' >MEMO</td>
+                                        <td class='text-white' style='background-color:#0D6EFD;' >oui</td>
+                                        <td class='text-white' style='background-color:#0D6EFD;' >oui</td>
+                                        <td class='text-white' style='background-color:#0D6EFD;' ></td>
+                                        <td class='text-white' style='background-color:#0D6EFD;' >2021</td>
+                                        <td class='text-white' style='background-color:#0D6EFD;' >Demo96e973e691</td>
+                                        <td class='text-white' style='background-color:#0D6EFD;' ></td>
+                                        <td class='text-white' style='background-color:#0D6EFD;' ></td>
+                                        <td class='text-white' style='background-color:#0D6EFD;' >2</td>
+                                        
+                                    </tr>
+                                    </tbody>
+                                </table>
+                           </div>
+
+
+            </div>
+
+    <!-- debut de la div tableau -->
+
+ 
+    <style>
+                 .debut_tableau {
+   
+     border-bottom: none;
+     overflow-x: auto;
+
+
+       &::-webkit-scrollbar {
+        height: 15px; /* Ajuster la hauteur de la barre de défilement horizontale */
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #3498db; /* Couleur du curseur de défilement */
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: #ecf0f1; /* Couleur de la piste de défilement */
+    }
+   
+       &:hover {
+        &::-webkit-scrollbar-thumb {
+            background-color: #0b9444; /* Changement de couleur au survol */
+        }
+    }
+ }
+            </style>
+        
+    <!-- fin div tableau  -->
+
+
+  <!-- la div du footer  -->
+       <div class="row d-flex justify-content-between bg-primary bout-bas p-2 " >
+           <div style='width:87%;' class=' d-flex justify-content-between' >
+                <button id='taille_boutton'>
+                     Nouveau
+                     <img  src="<?= SITE_URL ?>/assets/img/add-file.png" alt="" style="width: max-content; height: 20px;">
+                </button>
+                
+                <button id='taille_boutton'>
+                  Modifier
+                       <img  src="<?= SITE_URL ?>/assets/img/set.png" alt="" style="width: max-content; height: 20px;">
+                </button>
+
+               <button>
+                Supprimer
+                      <img  src="<?= SITE_URL ?>/assets/img/bin.png" alt="" style="width: max-content; height: 20px;">
+              </button>
+              <button > 
+                Imprimer Liste
+                     <img  src="<?= SITE_URL ?>/assets/img/printer.png" alt="" style="width: max-content; height: 20px;">
+              </button>
+              <button > 
+                Voir Pointages
+                     <img  src="<?= SITE_URL ?>/assets/img/saving.png" alt="" style="width: max-content; height: 20px;">
+              </button>
+              <button id='taille_boutton'> 
+                Conges
+                     <img  src="<?= SITE_URL ?>/assets/img/question.png" alt="" style="width: max-content; height: 20px;">
+              </button>
+              <button > 
+                Planning
+                     <img  src="<?= SITE_URL ?>/assets/img/pc.png" alt="" style="width: max-content; height: 20px;">
+              </button>
+           </div>
+            <!--  css du haut  -->
+           <div style='width:12%;justify-content:flex-end;' class=' d-flex ' >
+              <button id="fermer">
+                 Fermer
+                    <img  src="<?= SITE_URL ?>/assets/img/close.png" alt="" style="width: max-content; height: 20px;">
+              </button>
+   
+           </div>
+           <!--  css du haut  -->
+      </div>
+
+
+  <!-- fin div footer  -->
 
 
 
@@ -228,8 +369,62 @@ ob_start();
             font-weight:600;
         }
         .boutton{
+            border:1px solid gray;
             position: absolute;
+            top: 0%;
+            left: 77%;
         }
+
+        ::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 5px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #0b9444; 
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #238fce; 
+}
+
+ .bout-bas button{
+            width:125px;
+            height:45px;
+            border-radius:5px;
+            font-size:13px;
+        }
+   .bout-bas #taille_boutton{
+            width:100px;
+            height:45px;
+            border-radius:5px;
+            font-size:13px;
+   }  
+   
+   
+element.style {
+}
+.debut_tableau
+&:hover {
+}
+.debut_tableau {
+    border-bottom: none;
+    overflow-x: auto;
+}
+.w-100 {
+    width: 100%!important;
+}
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.row>*{
+    padding-left:0!important;
+    padding-right:0!important;
+}
 
      </style>
 </html>

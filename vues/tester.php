@@ -1,72 +1,56 @@
-<?php
-$title = 'accueil';
-if (session_status() == PHP_SESSION_NONE) {
-  session_start();
-}
-$url = $_SERVER["REQUEST_URI"];
-$query = parse_url($url, PHP_URL_QUERY);
-if ($query == "lang=en") {
-  $_SESSION["lang"] = "en";
-  include_once "./lang/en.php";
-} else {
-  if ($query == NULL) {
-    $lanuage = $_SESSION['lang'] ?? 'fr';
-    if ($lanuage == 'en') {
-      include_once "./lang/en.php";
-    }
-    if ($lanuage == 'fr') {
-      include_once "./lang/fr.php";
-    }
-  } else {
-    $_SESSION["lang"] = "fr";
-    include_once "./lang/fr.php";
-  }
-}
+ <div class="row " style='height:400px;border:1px solid gray;'>
+                   <div class="table-responsive debut_tableau w-100">
+
+                               <table class="table table-bordered  ">
+                                    <thead >
+                                    <tr class="table-secondary text-center table-dark ">
+                                        <th style='font-size:13px; ' class='px-5'>Site</th>
+                                        <th style='font-size:13px;' class='px-5'>Departement</th>
+                                        <th style='font-size:13px;' class='px-5'>Civilite</th>
+                                        <th style='font-size:13px; ' class='px-5'>Nom</th>
+                                        <th style='font-size:13px;' class='px-5'>Prenom</th>
+                                        <th style='font-size:13px;' class='px-5' >Motif</th>
+                                        <th style='font-size:13px;' class='px-5'>Debut</th>
+                                        <th style='font-size:13px;' class='px-5'>Fin</th>
+                                        <th style='font-size:13px;' class='px-5' >justification</th>
+                                        <th style='font-size:13px;' class='px-5'>Block_pointage</th>
+                                        <th style='font-size:13px;' class='px-5'>Recupereble</th>
+                                        <th style='font-size:13px;' class='px-5' >DeduireSurConges</th>
+                                        <th style='font-size:13px;' class='px-5'>AnneeComptable</th>
+                                        <th style='font-size:13px;' class='px-5' >Matricule</th>
+                                        <th style='font-size:13px;' class='px-5'>CreePar</th>
+                                        <th style='font-size:13px;' class='px-5' >AccordeePar</th>
+                                        <th style='font-size:13px;' class='px-5'>Archive</th>
+                                    
+                                       
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    
+                                    <tr class="table-primary custom-row text-white" style='background-color:#0D6EFD;'>
+                                        
+                                        <td  class='text-white' style='background-color:#0D6EFD;' >DEMO</td>
+                                        <td class='text-white' style='background-color:#0D6EFD;' >APPLICATION</td>
+                                        <td class='text-white' style='background-color:#0D6EFD;' >Mademoiselle</td>
+                                        <td class='text-white' style='background-color:#0D6EFD;' >Kamsu Simo </td>
+                                        <td class='text-white' style='background-color:#0D6EFD;' >Liliane Diane</td>
+                                        <td class='text-white' style='background-color:#0D6EFD;' >Repos</td>
+                                        <td class='text-white' style='background-color:#0D6EFD;' >09/10/2023</td>
+                                        <td class='text-white' style='background-color:#0D6EFD;' >09/10/2023</td>
+                                        <td class='text-white' style='background-color:#0D6EFD;' >MEMO</td>
+                                        <td class='text-white' style='background-color:#0D6EFD;' >oui</td>
+                                        <td class='text-white' style='background-color:#0D6EFD;' >oui</td>
+                                        <td class='text-white' style='background-color:#0D6EFD;' ></td>
+                                        <td class='text-white' style='background-color:#0D6EFD;' >2021</td>
+                                        <td class='text-white' style='background-color:#0D6EFD;' >Demo96e973e691</td>
+                                        <td class='text-white' style='background-color:#0D6EFD;' ></td>
+                                        <td class='text-white' style='background-color:#0D6EFD;' ></td>
+                                        <td class='text-white' style='background-color:#0D6EFD;' >2</td>
+                                        
+                                    </tr>
+                                    </tbody>
+                                </table>
+                           </div>
 
 
-ob_start();
-?>
-
-<body>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-    
-    </style>
-    <title>Tooltip Personnalisé</title>
-</head>
-<body>
-
-    <div class="container mt-4">
-        <!-- Bouton avec Tooltip Personnalisé -->
-        <div class="tooltip">
-            <button type="button" class="btn btn-primary">Survolez-moi</button>
-            <span class="tooltiptext">Mon Tooltip personnalisé</span>
-        </div>
-    </div>
-
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<?php
-$content = ob_get_clean();
-include 'layout.php';
-?>
+            </div>

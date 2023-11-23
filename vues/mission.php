@@ -273,7 +273,7 @@ ob_start();
 
                                <table class="table table-bordered">
                                     <thead>
-                                    <tr class="table-secondary">
+                                    <tr class="table-dark">
                                         <th width=2% class="text-center">T</th>
                                         <th text-center class="text-center">pièce jointe </th>
                                         <th width=20% class="text-center">Taille</th>
@@ -283,9 +283,9 @@ ob_start();
                                     
                                     <tr class="table-primary custom-row">
                                         
-                                        <td ><p></p></td>
-                                        <td ><p></p></td>
-                                        <td ><p></p></td>
+                                        <td style='background-color:#0D6EFD;'><p></p></td>
+                                        <td style='background-color:#0D6EFD;'><p></p></td>
+                                        <td style='background-color:#0D6EFD;'><p></p></td>
                                     </tr>
                                     </tbody>
                                 </table>

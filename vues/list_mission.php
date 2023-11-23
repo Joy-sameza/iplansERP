@@ -93,7 +93,7 @@ ob_start();
                                <table class="table table-bordered  ">
                                     <thead >
                                     <tr class="table-secondary text-center table-dark ">
-                                        <th style='font-size:13px;' class='px-5'>Nom</th>
+                                        <th style='font-size:13px; ' class='px-5'>Nom</th>
                                         <th style='font-size:13px;' class='px-5'>Prenom</th>
                                         <th style='font-size:13px;' class='px-5' >Depart</th>
                                         <th style='font-size:13px;' class='px-5'>Duree</th>
@@ -115,25 +115,25 @@ ob_start();
                                     </thead>
                                     <tbody>
                                     
-                                    <tr class="table-primary custom-row">
+                                    <tr class="table-primary custom-row" style='background-color:#0D6EFD;'>
                                         
-                                        <td ><p></p></td>
-                                        <td ><p></p></td>
-                                        <td ><p></p></td>
-                                        <td ><p></p></td>
-                                        <td ><p></p></td>
-                                        <td ><p></p></td>
-                                        <td ><p></p></td>
-                                        <td ><p></p></td>
-                                        <td ><p></p></td>
-                                        <td ><p></p></td>
-                                        <td ><p></p></td>
-                                        <td ><p></p></td>
-                                        <td ><p></p></td>
-                                        <td ><p></p></td>
-                                        <td ><p></p></td>
-                                        <td ><p></p></td>
-                                        <td ><p></p></td>
+                                        <td  style='background-color:#0D6EFD;' ><p></p></td>
+                                        <td  style='background-color:#0D6EFD;' ><p></p></td>
+                                        <td  style='background-color:#0D6EFD;' ><p></p></td>
+                                        <td  style='background-color:#0D6EFD;' ><p></p></td>
+                                        <td  style='background-color:#0D6EFD;' ><p></p></td>
+                                        <td  style='background-color:#0D6EFD;' ><p></p></td>
+                                        <td  style='background-color:#0D6EFD;' ><p></p></td>
+                                        <td  style='background-color:#0D6EFD;' ><p></p></td>
+                                        <td  style='background-color:#0D6EFD;' ><p></p></td>
+                                        <td  style='background-color:#0D6EFD;' ><p></p></td>
+                                        <td  style='background-color:#0D6EFD;' ><p></p></td>
+                                        <td  style='background-color:#0D6EFD;' ><p></p></td>
+                                        <td  style='background-color:#0D6EFD;' ><p></p></td>
+                                        <td  style='background-color:#0D6EFD;' ><p></p></td>
+                                        <td  style='background-color:#0D6EFD;' ><p></p></td>
+                                        <td  style='background-color:#0D6EFD;' ><p></p></td>
+                                        <td  style='background-color:#0D6EFD;' ><p></p></td>
                                         
                                     </tr>
                                     </tbody>
