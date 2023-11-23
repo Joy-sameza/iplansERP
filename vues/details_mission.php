@@ -286,7 +286,7 @@ Mission à KRIBI Via BONABERI Pour 1 Jour(s) Avec 00:00:00 de travail par jour
 
         <!-- bas de la page -->
          <div class="row d-flex justify-content-between bg-primary bout-bas p-2" >
-           <div style='width:80%;' >
+           <div style='width:82%;' >
 
                <button>Valider<img  src="<?= SITE_URL ?>/assets/img/accept.png" alt="" style="width: max-content; height: 20px;"></button>
          
@@ -302,7 +302,7 @@ Mission à KRIBI Via BONABERI Pour 1 Jour(s) Avec 00:00:00 de travail par jour
               </button>
            </div>
             <!--  css du haut  -->
-           <div style='width:15%;' >
+           <div style='width:18%;' >
               <button id="fermer" class='ferme'>
                   Fermer
                  <img src="<?= SITE_URL ?>/assets/img/close.png" alt="" style="width: max-content; height: 20px;">
@@ -356,7 +356,7 @@ Mission à KRIBI Via BONABERI Pour 1 Jour(s) Avec 00:00:00 de travail par jour
           }
 
             .bout-bas button{
-            width:120px;
+            width:116px;
             height:45px;
             border-radius:5px;
         }
@@ -368,7 +368,7 @@ Mission à KRIBI Via BONABERI Pour 1 Jour(s) Avec 00:00:00 de travail par jour
 
 
 
-      <script>
+      <!-- <script>
     const boutonsFermer = document.querySelectorAll("#close_window");
      const conteneur0 = document.querySelector(".conteneur0");
 
@@ -394,7 +394,24 @@ Mission à KRIBI Via BONABERI Pour 1 Jour(s) Avec 00:00:00 de travail par jour
                     });
                 });
             }
-        </script>
+        </script> -->
+        <script>
+   window.addEventListener('load', (event) => {
+       const boutonsFermer = document.querySelectorAll("#close_window, #fermer");
+       const conteneur0 = document.querySelector(".conteneur0");
+
+       if (conteneur0) {
+           boutonsFermer.forEach((bouton) => {
+               bouton.addEventListener("click", (e) => {
+                   e.preventDefault();
+                   conteneur0.style.display = "none";
+                   console.log('yo');
+               });
+           });
+       }
+   });
+</script>
+
 </body>
 </html>
 

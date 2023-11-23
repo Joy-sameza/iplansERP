@@ -429,7 +429,7 @@ ob_start();
          .text-divider-container2 {
             position: absolute;
             top: 0%;
-            left: 20%;
+            left: 25%;
             transform: translate(-50%, -50%);
             background-color:  #f4f6f6 ;
             padding: 0 10px;
@@ -551,7 +551,7 @@ ob_start();
             // Vous pouvez ajouter du contenu dynamique ici si nécessaire
         }
        </script>
-       <script>
+ <script>
     const ferme = document.querySelector(".close_window");
     const conteneur= document.querySelector(".conteneur");
 

@@ -38,7 +38,7 @@ ob_start();
     <title>List Abscences</title>
 </head>
 <body>
-    <div class="container-fluid border border-2 border-primary" style='width:75%;'>
+    <div class="container-fluid conteneur0 border border-2 border-primary" style='width:75%;'>
         
     <div class="row bg-primary border-1 ">
         <div class="cont_titre d-flex justify-content-between  p-1" style='align-items: center;'>
@@ -427,6 +427,30 @@ element.style {
 }
 
      </style>
+
+
+
+
+   <!-- jsvascript -->
+    <script>
+    const ferme = document.querySelector(".close_window");
+    const conteneur= document.querySelector(".conteneur0");
+
+    ferme.addEventListener("click", (e) => {
+        e.preventDefault()
+        conteneur.style.display = "none";
+       
+    });
+</script>
+ <script>
+    const boutonFermer = document.getElementById("fermer");
+    const conteneur0 = document.querySelector(".conteneur0");
+
+    boutonFermer.addEventListener("click", (e) => {
+        e.preventDefault();
+        conteneur0.style.display = "none";
+    });
+</script>
 </html>
 
 
