@@ -356,7 +356,7 @@ ob_start();
               <button>Imprimer
                 <img  src="<?= SITE_URL ?>/assets/img/printer.png" alt="" style="width: max-content; height: 20px;">
               </button>
-              <button id='fees'>Frais
+              <button id='fees' onclick="transfererDonnees()">Frais
                 <img  src="<?= SITE_URL ?>/assets/img/argent.png" alt="" style="width: max-content; height: 20px;">
               </button>
            </div>
@@ -597,11 +597,11 @@ ob_start();
    <!-- evement sur les bouttons  -->
 
       <script>
-        document.getElementById("fees").addEventListener("click", function() {
+       // document.getElementById("fees").addEventListener("click", function() {
        //  Récupérer la valeur des champs
        
         //  var heurededebut = document.getElementById("heurededebut").value;
-          var personne = document.getElementById("personne").value;
+         // var personne = document.getElementById("personne").value;
       
         //  var dateFin = document.getElementById("dateFin").value;
         //  var dateDebut = document.getElementById("dateDebut").value;
@@ -610,17 +610,71 @@ ob_start();
         //  var via = document.getElementById("via").value;
 
          
-          if (  personne.trim() !== '' ) {
+         // if (  personne.trim() !== '' ) {
             
          // Spécifiez l'URL de la nouvelle page que vous souhaitez ouvrir
-            var nouvellePageURL = "http://localhost/Iplans/details_mission";
+           // var nouvellePageURL = "http://localhost/Iplans/details_mission";
 
             // Ouvrir la nouvelle page dans une nouvelle fenêtre
-            window.open(nouvellePageURL, "_blank");
+           // window.open(nouvellePageURL, "_blank");
+
+
+          
+          // function transfererDonnees() {
+            // Récupérer les données du formulaire
+           // var joursEcart = document.getElementById('joursEcart').value;
+          
+
+            // Stocker les données dans le stockage local
+           // localStorage.setItem('joursEcart', joursEcart);
         
 
-             }
-        });
+            // Rediriger vers la deuxième page
+           // window.location.href = 'http://localhost/Iplans/details_mission';
+       // }else{
+           // swal({
+                       // icon: 'warning',
+                        //text: 'Désolé! Le mot de passe ou le login est incorrects',
+                  //  });
+       // }
+
+        
+
+           //  }
+      //  });
+    </script>
+
+      <!-- fonction de tranfert de donnees  -->
+    <script>
+
+        function transfererDonnees() {
+
+            document.getElementById("fees").addEventListener("click", function() {
+            var personne = document.getElementById("personne").value;
+            var joursEcart = document.getElementById("joursEcart").value;
+
+                 if (personne.trim() !== '' && joursEcart.trim() !== '' ) {
+
+                       localStorage.setItem('joursEcart', joursEcart);
+                       window.location.href = 'http://localhost/Iplans/details_mission';
+                 }else{
+
+                      swal({
+                        icon: 'error',
+                        text: 'Veuillez remplir tous les champs svp !!!',
+                    });
+
+                     
+                 }
+
+            })
+
+
+
+        }
+
+
+
     </script>
 
 
