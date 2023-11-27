@@ -75,10 +75,10 @@ ob_start();
 
                 </div>
 
-                <div class="tooltip47 my-2" onclick="showTooltip()">
-                    <button class='border border-secondary bg-secondary border-1'>
-                        <img src="<?= SITE_URL ?>/assets/img/padlock.png" alt="" style="width: max-content; height: 20px;">
-                        <span class="tooltiptext47">Verrouiller</span>
+                <div class="tooltip47 my-2"">
+                         <button  class='border border-secondary bg-secondary border-1'>
+                            <img  src=" <?= SITE_URL ?>/assets/img/padlock.png" alt="" style="width: max-content; height: 20px;">
+                    <span class="tooltiptext47">Verrouiller</span>
                     </button>
 
                 </div>
@@ -223,7 +223,7 @@ ob_start();
 
         <div class="row d-flex justify-content-between bg-primary bout-bas p-2 mb-2">
             <div style='width:50%;' class=' d-flex justify-content-between'>
-                <button>
+                <button id='new'>
                     Nouveau
                     <img src="<?= SITE_URL ?>/assets/img/add-file.png" alt="" style="width: max-content; height: 20px;">
                 </button>
@@ -391,34 +391,8 @@ ob_start();
         // Vous pouvez ajouter du contenu dynamique ici si nécessaire
     }
 </script>
-<script>
-    // const boutonFermer = document.getElementById("fermer");
-    // const conteneur0 = document.querySelector(".conteneur0");
-
-    // boutonFermer.addEventListener("click", (e) => {
-    //     e.preventDefault();
-    //     conteneur0.style.display = "none";
-    // });
 
 
-    //     const boutonFermer = document.getElementById("close_window");
-    //     const conteneur0 = document.querySelector(".conteneur0");
-
-    //     boutonFermer.addEventListener("click", (e) => {
-    //         e.preventDefault();
-    //         conteneur0.style.display = "none";
-    //     });
-    // 
-</script>
-<!-- <script>
-    const boutonFermer = document.querySelector("close_window");
-    const conteneur0 = document.querySelector(".conteneur0");
-
-    boutonFermer.addEventListener("click", (e) => {
-        e.preventDefault();
-        conteneur0.style.display = "none";
-    });
-</script> -->
 <script>
     const boutonsFermer = document.querySelectorAll("#close_window, #fermer");
     const conteneur0 = document.querySelector(".conteneur0");
@@ -432,6 +406,22 @@ ob_start();
         });
     }
 </script>
+
+<!-- evenements sur les bouttons  -->
+
+
+
+<script>
+    document.getElementById("new").addEventListener("click", function() {
+        // Spécifiez l'URL de la nouvelle page que vous souhaitez ouvrir
+        var nouvellePageURL = "http://localhost/Iplans/mission";
+
+        // Ouvrir la nouvelle page dans une nouvelle fenêtre
+        window.open(nouvellePageURL, "_blank");
+    });
+</script>
+
+<!-- rendre le lien accessible seulement par click sur le boutton  -->
 
 </html>
 

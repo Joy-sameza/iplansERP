@@ -1,12 +1,12 @@
 <?php
-class Controller
+class ControllerM
 {
     /**
      * Constructs a new instance of the class.
      *
-     * @param personne $cour The Courrier object.
+     * @param Mission $cour The Courrier object.
      */
-    public function __construct(private personne $cour)
+    public function __construct(private Mission $cour)
     {
     }
     /**
@@ -41,17 +41,17 @@ class Controller
      */
     private function processResourceRequest(string $method, string $id): void
     {
-        $personne = $this->cour->get($id);
+        $courrier = $this->cour->get($id);
 
-        if (!$personne) {
+        if (!$courrier) {
             http_response_code(404);
-            echo json_encode(["message" => "personne not found"]);
+            echo json_encode(["message" => "Mission not found"]);
             return;
         }
 
         switch ($method) {
             case "GET":
-                echo json_encode($personne);
+                echo json_encode($courrier);
                 break;
 
             case "PATCH":
@@ -70,15 +70,15 @@ class Controller
                     break;
                 }
 
-                $rows = $this->cour->update($personne, $data);
+                $rows = $this->cour->update($courrier, $data);
 
                 if ($rows === false) {
-                    echo json_encode(["message" => "La personne ne peut pas être modifier"]);
+                    echo json_encode(["message" => "la mission ne peut pas être modifier"]);
                     break;
                 } else {
 
                     echo json_encode([
-                        "message" => "personne $id à été mis à jour",
+                        "message" => "Mission $id à été mis à jour",
                         "rows" => $rows
                     ]);
                 }
@@ -88,12 +88,12 @@ class Controller
                 $rows = $this->cour->delete($id);
                 if ($rows === false) {
                     echo json_encode([
-                        "message" => "Le courrier n'as pas été supprimer"
+                        "message" => "Le Mission n'as pas été supprimer"
                     ]);
                     break;
                 }
                 echo json_encode([
-                    "message" => "personne $id à été supprimer",
+                    "message" => "Mission $id à été supprimer",
                     "rows" => $rows
                 ]);
                 break;
@@ -141,12 +141,12 @@ class Controller
                 $id = $this->cour->create($data);
                 if (!$id) {
                     http_response_code(409); // Conflict
-                    echo json_encode(["errors" => "A personne already exists with that name"]);
+                    echo json_encode(["errors" => "A Mission already exists with that name"]);
                     break;
                 }
                 http_response_code(201); // Created
                 echo json_encode([
-                    "message" => "Personne Inserted",
+                    "message" => "Mission Inserted",
                     "id" => $id
                 ]);
                 break;
@@ -169,8 +169,8 @@ class Controller
 
         if (
             $is_new &&
-            (trim($data["nom"]) == "" ||
-                trim($data["prenom"]) == ""
+            (trim($data["dest"]) == "" ||
+                trim($data["duree_travail"]) == ""
 
             )
         ) {
@@ -179,8 +179,8 @@ class Controller
 
         if (
             $is_new &&
-            (empty(trim($data["nom"])) ||
-                empty(trim($data["prenom"]))
+            (empty(trim($data["dest"])) ||
+                empty(trim($data["duree_travail"]))
 
             )
         ) {

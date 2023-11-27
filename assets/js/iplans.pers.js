@@ -169,16 +169,9 @@ function handlePrintTableClick() {
   const pdf = new jspdf.jsPDF({ orientation: "landscape", format: "a0" });
   pdf.addImage(SITE_URL + "/assets/img/iplans logo.png", "PNG", 10, 10, 2.969 * 50, 1 * 50);
   const iplans = "\nLISTE DES EMPLOYEE";
-  const displayDateTime = new Date().toLocaleDateString(pdfLang, {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-  });
+
   pdf.setFontSize(10);
-  pdf.text(displayDateTime + iplans, 10, 75);
+  pdf.text( iplans, 10, 75);
   pdf.autoTable({
     html: "#tbl_emp",
     startX: 10,

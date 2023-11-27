@@ -28,7 +28,7 @@ html {
   /* sizes */
   --header-padding: 0.75em;
   --header-height: 8em;
-  --svg-width: 350px;
+  --svg-width: 10px;
   --icons-gap: 0.5em;
   --font-family: "Cascadia code", "Fira Code", "Open Sans", Cantarell,
     "Helvetica Neue", sans-serif;

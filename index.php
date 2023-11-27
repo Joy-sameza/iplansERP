@@ -34,8 +34,33 @@ if ('/spider' == $uri) {
 if ('/rhumain' == $uri) {
     rhrhrh();
 }
+if ('/tester' == $uri) {
+    tester();
+}
+if ('/mission' == $uri) {
+    mission();
+}
+if ('/details_mission' == $uri) {
+   details_mission();
+}
+if ('/list_mission' == $uri) {
+   list_mission();
+}
+if ('/list_abscences' == $uri) {
+   list_abscences();
+}
+if ('/gestion_abscences' == $uri) {
+   gestion_abscences();
+}
+if ('/selection_salarie' == $uri) {
+   selection_salarie();
+}
+if ('/fiche_message' == $uri) {
+   fiche_message();
+}
 if ('/tableau' == $uri) {
     tableau();
-} else {
+    
+} elseif (!empty($uri) and !in_array($uri, ['/', '/accueil','/details_mission','/list_abscences','/mission', '/list_mission','/courrier', '/login', '/spider', '/rhumain', '/tableau','/gestion_abscences','/selection_salarie','/fiche_message','/tester'])) {
     show404();
 }

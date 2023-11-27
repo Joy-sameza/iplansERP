@@ -68,12 +68,12 @@ ob_start();
 
                         </div>
                         <div style="display: flex; justify-content: space-between; align-items: center; ">
-                            <label for="date_debut" style='30%' class="form-label">Date début </label>
+                            <label for="date_debut" class="form-label">Date début </label>
                             <input type="date" class="form-control-sm" id="date_debut">
 
                         </div>
                         <div style="display: flex; justify-content: space-between; align-items: center;" class='mt-1'>
-                            <label for="date_debut" style='30%' class="form-label">Date fin </label>
+                            <label for="date_debut" class="form-label">Date fin </label>
                             <input type="date" class="form-control-sm" id="date_fin">
                         </div>
 
@@ -201,7 +201,7 @@ ob_start();
                     </thead>
                     <tbody>
 
-                        <tr class="table-primary custom-row text-white" style='background-color:#0D6EFD;'>
+                        <tr class="table-primary custom-row text-center text-white" style='background-color:#0D6EFD;'>
 
                             <td class='text-white' style='background-color:#0D6EFD;'>DEMO</td>
                             <td class='text-white' style='background-color:#0D6EFD;'>APPLICATION</td>
@@ -269,12 +269,12 @@ ob_start();
         <!-- la div du footer  -->
         <div class="row d-flex justify-content-between bg-primary bout-bas p-2 ">
             <div style='width:87%;' class=' d-flex justify-content-between'>
-                <button id='taille_boutton'>
+                <button class='taille_boutton' id='new'>
                     Nouveau
                     <img src="<?= SITE_URL ?>/assets/img/add-file.png" alt="" style="width: max-content; height: 20px;">
                 </button>
 
-                <button id='taille_boutton'>
+                <button class='taille_boutton'>
                     Modifier
                     <img src="<?= SITE_URL ?>/assets/img/set.png" alt="" style="width: max-content; height: 20px;">
                 </button>
@@ -291,7 +291,7 @@ ob_start();
                     Voir Pointages
                     <img src="<?= SITE_URL ?>/assets/img/saving.png" alt="" style="width: max-content; height: 20px;">
                 </button>
-                <button id='taille_boutton'>
+                <button class='taille_boutton'>
                     Conges
                     <img src="<?= SITE_URL ?>/assets/img/question.png" alt="" style="width: max-content; height: 20px;">
                 </button>
@@ -411,7 +411,7 @@ ob_start();
         font-size: 13px;
     }
 
-    .bout-bas #taille_boutton {
+    .bout-bas .taille_boutton {
         width: 100px;
         height: 45px;
         border-radius: 5px;
@@ -464,6 +464,17 @@ ob_start();
     boutonFermer.addEventListener("click", (e) => {
         e.preventDefault();
         conteneur0.style.display = "none";
+    });
+</script>
+
+
+<!-- evenement sur les bouttons  -->
+
+<script>
+    document.getElementById("new").addEventListener("click", function() {
+
+        var nouvellePageURL = "http://localhost/Iplans/gestion_abscences";
+        window.open(nouvellePageURL, "_blank");
     });
 </script>
 

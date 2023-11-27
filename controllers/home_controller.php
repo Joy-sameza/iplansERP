@@ -45,10 +45,62 @@ function tableau()
     $dirs=str_replace("controllers", "", $dirs);
     require $dirs.'vues/tableau.php';
 }
+function tester()
+{
+    $dirs=__DIR__;
+    $dirs=str_replace("controllers", "", $dirs);
+    require $dirs.'vues/tester.php';
+}
 function show404()
 {
     $dirs=__DIR__;
     $dirs=str_replace("controllers", "", $dirs);
     require $dirs.'vues/404.php';
 }
+function mission()
+{
+    $dirs=__DIR__;
+    $dirs=str_replace("controllers", "", $dirs);
+    require $dirs.'vues/mission.php';
+}
+function list_mission()
+{
+    $dirs=__DIR__;
+    $dirs=str_replace("controllers", "", $dirs);
+    require $dirs.'vues/list_mission.php';
+}
+function details_mission()
+{
+    $dirs=__DIR__;
+    $dirs=str_replace("controllers", "", $dirs);
+    require $dirs.'vues/details_mission.php';
+}
+function list_abscences()
+{
+    $dirs=__DIR__;
+    $dirs=str_replace("controllers", "", $dirs);
+    require $dirs.'vues/list_abscences.php';
+}
+
+function gestion_abscences()
+{
+    $dirs=__DIR__;
+    $dirs=str_replace("controllers", "", $dirs);
+    require $dirs.'vues/gestion_abscences.php';
+}
+function selection_salarie()
+{
+    $dirs=__DIR__;
+    $dirs=str_replace("controllers", "", $dirs);
+    require $dirs.'vues/selection_salarie.php';
+}
+function fiche_message()
+{
+    $dirs=__DIR__;
+    $dirs=str_replace("controllers", "", $dirs);
+    require $dirs.'vues/fiche_message.php';
+}
 ?>
+
+
+

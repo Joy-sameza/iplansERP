@@ -16,10 +16,18 @@
 
 
 <link rel="stylesheet" href="<?= SITE_URL ?>/assets/js/jquery-3.1.1.min.js">
+<link rel="stylesheet" href="<?= SITE_URL ?>/assets/js/popper.min.js">
+<link rel="stylesheet" href="<?= SITE_URL ?>/assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="<?= SITE_URL ?>/assets/css/all.min.css">
+<link rel="stylesheet" href="<?= SITE_URL ?>/assets/css/mission.css">
 <link rel="stylesheet" href="<?= SITE_URL ?>/assets/css/sweetalert2.css">
+
 <script type="text/javascript" src="<?= SITE_URL ?>/assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="<?= SITE_URL ?>/assets/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="<?= SITE_URL ?>/assets/js/all.min.js"></script>
 <script type="text/javascript" src="<?= SITE_URL ?>/assets/js/jquery-ui.js"></script>
 <script type="text/javascript" src="<?= SITE_URL ?>/assets/js/sweetalert2.js"></script>
+
 <script src="<?= SITE_URL ?>/assets/js/iplans.courrier.js" defer></script>
 <script src="<?= SITE_URL ?>/assets/js/iplans.pers.js" type="module" defer></script>
 <script src="<?= SITE_URL ?>/assets/js/jspdf.umd.min.js" defer></script>
