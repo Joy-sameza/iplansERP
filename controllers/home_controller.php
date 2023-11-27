@@ -81,6 +81,25 @@ function list_abscences()
     $dirs=str_replace("controllers", "", $dirs);
     require $dirs.'vues/list_abscences.php';
 }
+
+function gestion_abscences()
+{
+    $dirs=__DIR__;
+    $dirs=str_replace("controllers", "", $dirs);
+    require $dirs.'vues/gestion_abscences.php';
+}
+function selection_salarie()
+{
+    $dirs=__DIR__;
+    $dirs=str_replace("controllers", "", $dirs);
+    require $dirs.'vues/selection_salarie.php';
+}
+function fiche_message()
+{
+    $dirs=__DIR__;
+    $dirs=str_replace("controllers", "", $dirs);
+    require $dirs.'vues/fiche_message.php';
+}
 ?>
 
 

@@ -64,7 +64,7 @@ ob_start();
                     <div class="zone3">
                         <img src="<?= SITE_URL ?>/assets/img/avatar.png" alt="" style='width: 100px;height: 100px;' class='border border-secondary border-1' >
                         <!-- <button type="button" class="bout" display='none'><i class="fas fa-search"></i></button> -->
-                        <select class="form-select-sm" style='width:67%'>
+                        <select id='personne' class="form-select-sm" style='width:67%'>
                                                  <option></option>
                                                 <option>jordan</option>
                                                 <option>ulrich</option>
@@ -83,7 +83,7 @@ ob_start();
                                     </label>
                            
                                         <div style="display: flex; justify-content: left;width: 51%; ">
-                                             <select class="form-select-sm" style='width:100%'>
+                                             <select class="form-select-sm" style='width:100%' id='destination'>
                                                  <option></option>
                                                 <option>DOUALA</option>
                                                 <option>YAOUNDE</option>
@@ -95,7 +95,7 @@ ob_start();
                                 </div>
                                 <div style="width: 39%;display: flex;justify-content: space-between;">
                                    <label for="via" class="form-label " style='margin-left: 16%;'>Via</label>   
-                                    <select class="form-select-sm">
+                                    <select class="form-select-sm" id='via'>
                                         <option></option>
                                         <option>EDEA</option>
                                         <option>BONABERIE</option>
@@ -111,7 +111,7 @@ ob_start();
                                 <label for="deplacement" class="form-label">Mode de  déplacement </label>
                              
                                 <span style='display: flex; justify-content: flex-end;'>
-                                <select class="form-select-sm" style='width:72%'>
+                                <select class="form-select-sm" style='width:72%' id='deplacement'>
                                         <option></option>
                                         <option>FDSFDS</option>
                                         <option>CAMION</option>
@@ -125,7 +125,7 @@ ob_start();
 
                             <div style="width: 48% ; display: flex;  "> 
                                 <label for="immatriculation" class="form-label mx-1 " id='text-reduire'>Immatriculation</label>   
-                                    <select class="form-select-sm" style='width:75%'>
+                                    <select class="form-select-sm" style='width:75%' id='immatriculation'>
                                         <option></option>
                                         <option>LT 893BG</option>
                                         <option>LT 126 IA</option>
@@ -139,7 +139,7 @@ ob_start();
                         
                         <div>
                             <label for="cadre" class="form-label" style='width:34%;'>Cadre/Objectif de la Mission  </label>
-                            <select class="form-select-sm" style='width:36%;margin-left:1px;'>
+                            <select class="form-select-sm" style='width:36%;margin-left:1px;' id='cadre'>
                                     <option></option>
                                     <option>FDSFDS</option>
                                     <option>INTEGRATION IPLANS</option>
@@ -154,7 +154,7 @@ ob_start();
                                 <label for="cadre" class="form-label">Site/Tiers  </label>
                              </div>  
                              <div> 
-                                <select class="form-select-sm" style="display: flex; width:180% ">
+                                <select class="form-select-sm" style="display: flex; width:180% " id='site'>
                                         <option></option>
                                         <option>CANALSAT</option>
                                         <option>DEPOT DOUALA</option>
@@ -192,7 +192,7 @@ ob_start();
                             </div>    
                              <div style="display: flex; justify-content: right;width: 42%; gap: 7px;">   
                                 <label for="immatriculation" class="form-label">No BL/LTA</label>   
-                                    <select class="form-select-sm">
+                                    <select class="form-select-sm" id='numere_ima'>
                                         <option></option>
                                         <option>LT 893BG</option>
                                         <option>LT 126 IA</option>
@@ -206,12 +206,13 @@ ob_start();
                         <div class='mt-3' style="display: flex; justify-content: space-between; align-items: center;">
                             <label for="cadre" class="form-label" style="display: flex; justify-content: space-between; align-items: center; width: 35%; ">Nature du chargement </label>
                             <select class="form-select-sm" style='width:65%'>
+                            <option value=""></option>
                             </select>
                             
                         </div>
                         <div class='mt-3' style="display: flex; justify-content: space-between; align-items: center;">
                             <label for="cadre" class="form-label" style="display: flex; justify-content: space-between; align-items: center; width: 35%; ">Prise en charge</label>
-                            <select class="form-select-sm" style='width:65%'>
+                            <select class="form-select-sm" style='width:65%' id='prise'>
                                 <option selected>SURÉE PAR LA SOCIÉTÉ DEMO SUIVANT LE BARÈME EN VIGUEUR.</option>                                                  
                                 </select>
                             
@@ -219,7 +220,7 @@ ob_start();
                         <div class='mt-3' style="display: flex; justify-content: center; align-items: center;" class='mt-3'>
                                 <div style="display: flex; justify-content: space-between; align-items: center; width: 52%; ">
                                         <label for="">Durée travail par jour</label>
-                                        <input type="time" name="heuredebut" class='form-control' id="" value="<?= date('H:i:s') ?>" style='width:33%'>
+                                        <input type="time" name="heuredebut" class='form-control' id="heurededebut" value="<?= date('H:i:s') ?>" style='width:33%'>
                                 </div>
 
                                 <div style="display: flex; justify-content: right;width: 48%; "> 
@@ -312,7 +313,7 @@ ob_start();
                           <img  src="<?= SITE_URL ?>/assets/img/padlock.png" alt="" style="width: max-content; height: 20px;">
                           <span class="tooltiptext">Mon Tooltip personnalisé</span>
                        </button> -->
-                       <div class="tooltip47 my-2" onclick="showTooltip()">
+                       <div class="tooltip47 my-2" >
                          <button >
                             <img  src="<?= SITE_URL ?>/assets/img/padlock.png" alt="" style="width: max-content; height: 20px;">
                             <span class="tooltiptext47">Verrouiller</span>
@@ -331,8 +332,8 @@ ob_start();
 
                             </div>
 
-                              <div class="commentaire mt-1">
-                                  <textarea class="form-control zone-commentaire mt-3" placeholder="Merci d'ecrire votre rapport de mission ci..." rows="28" id="comment" name="text"></textarea>
+                              <div class="commentaire mt-1"> 
+                                  <textarea class="form-control no-focus-outline zone-commentaire mt-3" placeholder="Merci d'ecrire votre rapport de mission ci..." rows="28" id="comment" name="text"></textarea>
                                </div>
                  </div>   
                        
@@ -355,7 +356,7 @@ ob_start();
               <button>Imprimer
                 <img  src="<?= SITE_URL ?>/assets/img/printer.png" alt="" style="width: max-content; height: 20px;">
               </button>
-              <button >Frais
+              <button id='fees'>Frais
                 <img  src="<?= SITE_URL ?>/assets/img/argent.png" alt="" style="width: max-content; height: 20px;">
               </button>
            </div>
@@ -376,6 +377,9 @@ ob_start();
  
 <!--  css du haut  -->
     <style>
+         .no-focus-outline:focus {
+  outline: none; /* Supprime la bordure de focus */
+}
         .bout{
             position: absolute;
             z-index: 10;
@@ -541,19 +545,9 @@ ob_start();
 
    <!-- les script de la page -->
 
-        <script>
-        // Fonction pour afficher le tooltip
-        function showTooltip() {
-            var tooltip = document.getElementById("customTooltip");
-            tooltip.style.visibility = "visible";
-            tooltip.style.opacity = 1;
-
-            // Vous pouvez ajouter du contenu dynamique ici si nécessaire
-        }
-       </script>
  <script>
     const ferme = document.querySelector(".close_window");
-    const conteneur= document.querySelector(".conteneur");
+    const conteneur= document.querySelector(".conteneur0");
 
     ferme.addEventListener("click", (e) => {
         e.preventDefault()
@@ -595,6 +589,45 @@ ob_start();
             document.getElementById("dateFin").valueAsDate = dateFin;
         }
     </script>
+
+
+ <!-- evenements sur frais  -->
+
+  
+   <!-- evement sur les bouttons  -->
+
+      <script>
+        document.getElementById("fees").addEventListener("click", function() {
+       //  Récupérer la valeur des champs
+       
+        //  var heurededebut = document.getElementById("heurededebut").value;
+          var personne = document.getElementById("personne").value;
+      
+        //  var dateFin = document.getElementById("dateFin").value;
+        //  var dateDebut = document.getElementById("dateDebut").value;
+        //  var numere_ima = document.getElementById("numere_ima").value;
+        
+        //  var via = document.getElementById("via").value;
+
+         
+          if (  personne.trim() !== '' ) {
+            
+         // Spécifiez l'URL de la nouvelle page que vous souhaitez ouvrir
+            var nouvellePageURL = "http://localhost/Iplans/details_mission";
+
+            // Ouvrir la nouvelle page dans une nouvelle fenêtre
+            window.open(nouvellePageURL, "_blank");
+        
+
+             }
+        });
+    </script>
+
+
+
+
+
+
 
 </body>
 </html>

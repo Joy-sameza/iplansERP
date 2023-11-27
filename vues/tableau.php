@@ -165,6 +165,8 @@ $d = (array)json_decode($response, true);
             width: 40%;
             }
     </style>
+
+     <!-- fonction de recherche  -->
     
         <script>
             function myFunction() {
