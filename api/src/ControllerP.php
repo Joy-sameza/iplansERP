@@ -88,7 +88,7 @@ class controllerP
                 $rows = $this->cour->delete($id);
                 if ($rows === false) {
                     echo json_encode([
-                        "message" => "Le courrier n'as pas été supprimer"
+                        "message" => "La personne n'as pas été supprimer"
                     ]);
                     break;
                 }

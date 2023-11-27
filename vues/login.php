@@ -30,7 +30,7 @@ if ($query == "lang=en") {
 ob_start();
 ?>
 <link rel="stylesheet" type="text/css" href="<?= SITE_URL ?>/assets/css/login.css">
-    <link href="<?= SITE_URL ?>/assets/css/style.css" rel="stylesheet">
+<link href="<?= SITE_URL ?>/assets/css/style.css" rel="stylesheet">
 <main>
     <h1><u>CONNEXION</u></h1>
     <form method="post" action="">

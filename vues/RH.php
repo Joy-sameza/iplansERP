@@ -1,4 +1,3 @@
-
 <?php
 $title = 'accueil';
 if (session_status() == PHP_SESSION_NONE) {
@@ -99,22 +98,48 @@ ob_start();
         </div>
 
         <div class="cote_droite">
-            <button class="cadena"><i class="fas fa-lock"></i>                        </button>
+            <button class="cadena"><i class="fas fa-lock"></i> </button>
 
-            <button class="btn employer_btn" > <i class="fas fa-users"></i><a href="<?= SITE_URL ?>/tableau">Employés</a> </button>
-            <button class="btn"> <i class="fas fa-save"></i></i><p>Pointages</p></button>
-            <button class="btn"> <i class="fas fa-clock"></i></i><p>Planning Horaires</p></button>
-            <button class="btn"> <i class="fas fa-unlock-alt"></i><p>Mission</p></button>
-            <button class="btn"> <i class="fas fa-calendar-minus"></i><p>Absences</p></button>
-            <button class="btn"> <i class="fas fa-suitcase-rolling"></i><p>Congés</p></button>
-            <button class="btn"> <i class="fas fa-border-style"></i><p>Cloture</p></button>
-            <button class="btn"> <i class="fas fa-dollar-sign"></i><p>Acompte</p></button>
-            <button class="btn"> <i class="fas fa-car"></i><p>Parc Auto</p></button>
-            <button class="btn"> <i class="fas fa-phone-alt"></i><p>Telephone</p></button>
-            <button class="btn"> <i class="fas fa-money-bill"></i><p>Bon de decaissement</p></button>
-            <button class="btn"> <i class="fas fa-clock"></i><p>Hooraires</p></button>
-            <button class="btn"> <i class="fas fa-users"></i><p>Grille Salariale</p></button>
-            <button class="btn"> <i class="fas fa-money-check-alt"></i><p>Salaire</p></button>
+            <button class="btn employer_btn"> <i class="fas fa-users"></i><a href="<?= SITE_URL ?>/tableau">Employés</a> </button>
+            <button class="btn"> <i class="fas fa-save"></i></i>
+                <p>Pointages</p>
+            </button>
+            <button class="btn"> <i class="fas fa-clock"></i></i>
+                <p>Planning Horaires</p>
+            </button>
+            <button class="btn"> <i class="fas fa-unlock-alt"></i>
+                <p>Mission</p>
+            </button>
+            <button class="btn"> <i class="fas fa-calendar-minus"></i>
+                <p>Absences</p>
+            </button>
+            <button class="btn"> <i class="fas fa-suitcase-rolling"></i>
+                <p>Congés</p>
+            </button>
+            <button class="btn"> <i class="fas fa-border-style"></i>
+                <p>Cloture</p>
+            </button>
+            <button class="btn"> <i class="fas fa-dollar-sign"></i>
+                <p>Acompte</p>
+            </button>
+            <button class="btn"> <i class="fas fa-car"></i>
+                <p>Parc Auto</p>
+            </button>
+            <button class="btn"> <i class="fas fa-phone-alt"></i>
+                <p>Telephone</p>
+            </button>
+            <button class="btn"> <i class="fas fa-money-bill"></i>
+                <p>Bon de decaissement</p>
+            </button>
+            <button class="btn"> <i class="fas fa-clock"></i>
+                <p>Hooraires</p>
+            </button>
+            <button class="btn"> <i class="fas fa-users"></i>
+                <p>Grille Salariale</p>
+            </button>
+            <button class="btn"> <i class="fas fa-money-check-alt"></i>
+                <p>Salaire</p>
+            </button>
 
         </div>
     </div>
@@ -145,14 +170,14 @@ ob_start();
 
 <div class="cont_employer" style="display: none;">
     <div class="contenue_employers">
-        <div class="cont_titre" >
+        <div class="cont_titre">
             <div style="display: flex;">
                 <img src="<?= SITE_URL ?>/assets/image/la terre.webp" alt="" class="ico_emplye">
                 <h2 class="fiche_sala">Fiche Salarié</h2>
             </div>
 
             <div>
-                <button class="close_window" style="width: 30px; height: 30px; background-color: red; border: none;">  </button>
+                <button class="close_window" style="width: 30px; height: 30px; background-color: red; border: none;"> </button>
             </div>
         </div>
 
@@ -187,7 +212,7 @@ ob_start();
                                 </select>
                                 <div style="display: flex; flex-direction: column;">
                                     <h3 style="margin-top: -10px;">sexe</h3>
-                                    <div style="display: flex ; gap: 7px; margin-top: -7px;" >
+                                    <div style="display: flex ; gap: 7px; margin-top: -7px;">
                                         <label for="">Masculin</label>
                                         <input type="checkbox" value="Oui">
 
@@ -252,13 +277,13 @@ ob_start();
                             </select>
                         </div>
                         <div class="idntite12">
-                            <label for="">Departement  </label>
+                            <label for="">Departement </label>
                             <select name="" id="">
                                 <option value="">CHAUFFEUR</option>
                             </select>
                         </div>
                         <div class="idntite13">
-                            <label for="">Poste Occupé  </label>
+                            <label for="">Poste Occupé </label>
                             <select name="" id="">
                                 <option value="">PROJECT MANAGER</option>
                             </select>
@@ -316,7 +341,7 @@ ob_start();
                                         <label for="">Nombre d'enfants</label>
                                         <input type="number" value="1" class="enfant">
                                     </div>
-                                    <div >
+                                    <div>
                                         <div>
 
                                         </div>
@@ -357,14 +382,14 @@ ob_start();
                                     <label for="">Carte a puce</label>
                                     <div>
                                         <button><img src="<?= SITE_URL ?>/assets/image/la terre.webp" alt="" style="width: 20px; height: 20px;"></button>
-                                        <button><img src="<?= SITE_URL ?>/assets/image/la terre.webp" alt=""  style="width: 20px; height: 20px;"></button>
+                                        <button><img src="<?= SITE_URL ?>/assets/image/la terre.webp" alt="" style="width: 20px; height: 20px;"></button>
                                     </div>
                                 </div>
                                 <div>
                                     <label for="">Biometrie</label>
                                     <div>
-                                        <button><img src="<?= SITE_URL ?>/assets/image/la terre.webp" alt=""  style="width: 20px; height: 20px;"></button>
-                                        <button><img src="<?= SITE_URL ?>/assets/image/la terre.webp" alt=""  style="width: 20px; height: 20px;"></button>
+                                        <button><img src="<?= SITE_URL ?>/assets/image/la terre.webp" alt="" style="width: 20px; height: 20px;"></button>
+                                        <button><img src="<?= SITE_URL ?>/assets/image/la terre.webp" alt="" style="width: 20px; height: 20px;"></button>
                                     </div>
                                 </div>
                             </div>
@@ -388,7 +413,7 @@ ob_start();
                         <div class="class7">
                             <div class="class8">
                                 <div class="qwe1"><br>
-                                    <div  class="ligne">
+                                    <div class="ligne">
                                         asd
                                     </div>
                                 </div>
@@ -471,8 +496,9 @@ ob_start();
 
 
             <div style="width: 50%; display: flex; gap: 20px;">
-                <button class="btn1"><</button>
-                <button class="btn2">></button>
+                <button class="btn1">
+                    << /button>
+                        <button class="btn2">></button>
             </div>
 
             <div style="width: 100%; display: flex; justify-content: space-around;">
@@ -493,16 +519,16 @@ ob_start();
 
 <div class="divers_cont" style="display: none;">
     <main>
-        <div class="cont_employer" >
+        <div class="cont_employer">
             <div class="contenue_employers">
-                <div class="cont_titre" >
+                <div class="cont_titre">
                     <div style="display: flex;">
                         <img src="<?= SITE_URL ?>/assets/image/la terre.webp" alt="" class="ico_emplye">
                         <h2 class="fiche_sala">Fiche Salarié</h2>
                     </div>
 
                     <div>
-                        <button class="close_window2" style="width: 30px; height: 30px; background-color: red; border: none;">  </button>
+                        <button class="close_window2" style="width: 30px; height: 30px; background-color: red; border: none;"> </button>
                     </div>
                 </div>
 
@@ -519,7 +545,7 @@ ob_start();
                             <p>Frais de Deplacement</p>
                             <p>Acomptes</p>
                             <p class="acti">Divers</p>
-                            <p class="employers_btn" >Employés</p>
+                            <p class="employers_btn">Employés</p>
                         </div>
                     </div>
 
@@ -651,12 +677,12 @@ ob_start();
                                     </div>
                                     <div style="width: 100%; height: 100%; padding-top: 10px;">
                                         <div style="width: 100%; height: 100%; border: 1px solid black;">
-                                            <div style="display: flex; width: 100%; background-color: black; color: white; " >
+                                            <div style="display: flex; width: 100%; background-color: black; color: white; ">
                                                 <p style="width: 50%;  padding-left: 5px; text-align: center;">Nom</p>
                                                 <p style="width: 25%; padding-left: 5px; text-align: center;">Année</p>
                                                 <p style="width: 25%; padding-left: 5px; text-align: center;">Mention</p>
                                             </div>
-                                            <div style="display: flex; width: 100%; background-color: #2169ec; height: 30px;" >
+                                            <div style="display: flex; width: 100%; background-color: #2169ec; height: 30px;">
                                                 <p style="width: 50%;  padding-left: 5px;"></p>
                                                 <p style="width: 25%; padding-left: 5px;"></p>
                                                 <p style="width: 25%; padding-left: 5px;"></p>
@@ -723,7 +749,7 @@ ob_start();
                                         <label for="" style="width: 100%; ">Date de Depart</label>
                                         <input type="date" name="" id="" style="width: 500px;">
                                         <div>
-                                            <input type="checkbox" name="" id="" >
+                                            <input type="checkbox" name="" id="">
                                             <label for="">Archivé</label>
                                         </div>
                                     </div>
@@ -781,14 +807,14 @@ ob_start();
                                             <label for="">Carte a puce</label>
                                             <div>
                                                 <button><img src="<?= SITE_URL ?>/assets/image/la terre.webp" alt="" style="width: 20px; height: 20px;"></button>
-                                                <button><img src="<?= SITE_URL ?>/assets/image/la terre.webp" alt=""  style="width: 20px; height: 20px;"></button>
+                                                <button><img src="<?= SITE_URL ?>/assets/image/la terre.webp" alt="" style="width: 20px; height: 20px;"></button>
                                             </div>
                                         </div>
                                         <div>
                                             <label for="">Biometrie</label>
                                             <div>
-                                                <button><img src="<?= SITE_URL ?>/assets/image/la terre.webp" alt=""  style="width: 20px; height: 20px;"></button>
-                                                <button><img src="<?= SITE_URL ?>/assets/image/la terre.webp" alt=""  style="width: 20px; height: 20px;"></button>
+                                                <button><img src="<?= SITE_URL ?>/assets/image/la terre.webp" alt="" style="width: 20px; height: 20px;"></button>
+                                                <button><img src="<?= SITE_URL ?>/assets/image/la terre.webp" alt="" style="width: 20px; height: 20px;"></button>
                                             </div>
                                         </div>
                                     </div>
@@ -812,7 +838,7 @@ ob_start();
                                 <div class="class7">
                                     <div class="class8">
                                         <div class="qwe1"><br>
-                                            <div  class="ligne">
+                                            <div class="ligne">
                                                 asd
                                             </div>
                                         </div>
@@ -895,8 +921,9 @@ ob_start();
 
 
                     <div style="width: 50%; display: flex; gap: 20px;">
-                        <button class="btn1"><</button>
-                        <button class="btn2">></button>
+                        <button class="btn1">
+                            << /button>
+                                <button class="btn2">></button>
                     </div>
 
                     <div style="width: 100%; display: flex; justify-content: space-around;">
@@ -949,7 +976,6 @@ ob_start();
         element1.classList.add("disparait");
         element2.classList.add("visible");
     });
-
 </script>
 <script>
     const ferme = document.querySelector(".Fermer");
@@ -1015,7 +1041,6 @@ ob_start();
         Supprime.classList.remove("disparait"); // Supprime la classe "disparait"
         croix.classList.remove("visible");
     });
-
 </script>
 
 <?php
