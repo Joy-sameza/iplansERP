@@ -59,3 +59,39 @@ if ($part[1] == 'courrier') {
 }
 
 
+// API MISSION
+if ($part[1] == 'mission') {
+    ini_set("date.timezone", "Africa/Douala");
+
+    $database = new Database(HOST_NAME, USER_NAME, USER_PASSWORD, DB_NAME);
+
+    $courrier = new Mission($database);
+
+    $controller = new ControllerM($courrier);
+
+    $controller->processRequest($method, $id, $path);
+}
+// frais de mission
+if ($part[1] == 'fraismission') {
+    ini_set("date.timezone", "Africa/Douala");
+
+    $database = new Database(HOST_NAME, USER_NAME, USER_PASSWORD, DB_NAME);
+
+    $courrier = new FraisMission($database);
+
+    $controller = new ControllerF($courrier);
+
+    $controller->processRequest($method, $id, $path);
+}
+//absence ou permission
+if ($part[1] == 'permission') {
+    ini_set("date.timezone", "Africa/Douala");
+
+    $database = new Database(HOST_NAME, USER_NAME, USER_PASSWORD, DB_NAME);
+
+    $permission = new Permission($database);
+
+    $controller = new ControllerPermission($permission);
+
+    $controller->processRequest($method, $id, $path);
+}
