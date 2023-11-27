@@ -36,6 +36,6 @@ if ('/rhumain' == $uri) {
 }
 if ('/tableau' == $uri) {
     tableau();
-} elseif (!empty($uri) and !in_array($uri, ['/', '/accueil', '/courrier', '/login', '/spider', '/rhumain', '/tableau'])) {
+} else {
     show404();
 }
