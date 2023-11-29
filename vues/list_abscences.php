@@ -530,10 +530,6 @@ ob_start();
         updatePERMISSIONTable(fillTableau, absence, absTemplate);
     }
 
-    // try {
-    // } catch (error) {
-    //     null;
-    // }
     let siteFiltre, departementFiltre, etatFiltre, salaireFiltre;
 
     const filterForm = document.getElementById("filterForm");

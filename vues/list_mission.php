@@ -443,7 +443,7 @@ ob_start();
 
 <!-- evenements sur les bouttons  -->
 
-<script>
+<script type="module">
     const listTemplate = document.getElementById("listTemplate");
     const tbl = document.querySelector("tbody");
 
@@ -486,15 +486,11 @@ ob_start();
         table.appendChild(element);
     }
 
-    try {
-        const response = await fetch("<?= MISSION_API_URL ?>");
-        const missions = await response.json();
-        tbl.innerHTML = "";
-        for (let rowData of missions)
-            updateMISSIONTable(tbl, rowData, listTemplate);
-    } catch (error) {
-        null;
-    }
+    const response = await fetch("<?= MISSION_API_URL ?>");
+    const missions = await response.json();
+    tbl.innerHTML = "";
+    for (let rowData of missions)
+        updateMISSIONTable(tbl, rowData, listTemplate);
 </script>
 
 <script>
