@@ -1,12 +1,17 @@
 const persTable = document.getElementById("pers_table");
+const persTableRows = persTable.getElementsByTagName("tr");
 const persTableTemplate = document.getElementById("pers_table_template");
 const categorieForm = document.getElementById("categie_form");
 const genre = categorieForm.querySelectorAll('[name="genre"]');
 const prestataire = categorieForm.querySelectorAll('[name="prestataire"]');
 const conforme = categorieForm.querySelectorAll('[name="conforme"]');
 const printTableEmp = document.getElementById("print_table");
+const newData = document.getElementById("new_data");
+const openData = document.getElementById("open_data");
+const deleteData = document.getElementById("delete_data");
 
 let persData = await fetchData();
+let dataAction = "";
 
 persTable.innerHTML = "";
 for (let rowData of persData)
@@ -14,6 +19,13 @@ for (let rowData of persData)
 
 categorieForm.addEventListener("change", handleChangeEvent);
 printTableEmp.addEventListener("click", handlePrintTableClick);
+newData.addEventListener("click", handleNewDataClick);
+openData.addEventListener("click", () => (dataAction = "open"));
+deleteData.addEventListener("click", () => (dataAction = "delete"));
+
+Array.from(persTableRows).forEach((row) =>
+  row.addEventListener("click", handleRowClick)
+);
 
 /**
  * Fetches data from the API URL.
@@ -75,6 +87,7 @@ function updateTable(table, data = {}, elementClone) {
     LieuDelivranceCNI: "LieuDelivranceCNI",
     DateExpirationCNI: "DateExpirationCNI",
     IDDateExpirationCNI: "IDDateExpirationCNI",
+    NEng: "NEng",
   };
 
   Object.entries(data).forEach(([key, value]) => {
@@ -166,19 +179,81 @@ function handleChangeEvent(event) {
  * @param {Event} event The triggering event
  */
 function handlePrintTableClick() {
-  const pdf = new jspdf.jsPDF({ orientation: "landscape", format: "a0" });
-  pdf.addImage(SITE_URL + "/assets/img/iplans logo.png", "PNG", 10, 10, 2.969 * 50, 1 * 50);
+  const pdf = new jspdf.jsPDF({ orientation: "landscape", format: "a4" });
+  pdf.addImage(
+    SITE_URL + "/assets/img/iplans logo.png",
+    "PNG",
+    10,
+    10,
+    2.969 * 50 * 0.25,
+    1 * 50 * 0.25
+  );
   const iplans = "\nLISTE DES EMPLOYEE";
 
+  const jsonData = pdf.autoTableHtmlToJson(
+    document.getElementById("myTable"),
+    false
+  );
+
+  const printableRows = {
+    civilite: 0,
+    nom: 1,
+    prenom: 2,
+    Fonction: 3,
+    phone: 4,
+    Matricule: 6,
+    Email: 9,
+    date_entree: 33,
+    date_sortie: 32,
+  };
   pdf.setFontSize(10);
-  pdf.text( iplans, 10, 75);
+  pdf.text(iplans, 10, 25);
+  const filteredData = [];
+  const headings = [];
+
+  Object.entries(printableRows).forEach(([key]) => headings.push(key));
+
+  for (const row of jsonData.data) {
+    let filteredRow = [];
+    Object.entries(printableRows).forEach(([, value]) => {
+      filteredRow.push(row[value]);
+    });
+    filteredData.push(filteredRow);
+  }
   pdf.autoTable({
-    html: "#tbl_emp",
-    startX: 10,
-    margin: { top: 90 },
+    head: [headings],
+    body: filteredData,
+    styles: {
+      fontSize: 10,
+    },
+    startY: 35,
   });
   pdf.save("table_employee.pdf");
   return;
+}
+function handleNewDataClick() {}
+
+/**
+ * Handles the click event on a row.
+ *
+ * @param {Event} event - The click event.
+ */
+async function handleRowClick(event) {
+  const tableRow = event.target.parentNode;
+  const rowData = extractDataFromRow(tableRow);
+  const id = parseInt(rowData.NEng);
+  switch (dataAction) {
+    case "open":
+      dataAction = "";
+      openRowData(tableRow, id);
+      break;
+    case "delete":
+      dataAction = "";
+      await deleteRowData(id);
+      break;
+    default:
+      break;
+  }
 }
 /**
  * Filter the data according to the specified direction
@@ -386,4 +461,146 @@ function useConformeFilters(conforme, data) {
   return data.filter(
     (element) => element.PrestataireExterne == prestat[conforme]
   );
+}
+/**
+ * Extracts data from a given row and returns an object with the extracted data.
+ *
+ * @param {HTMLTableRowElement} row - The row from which to extract the data.
+ * @return {Object} An object containing the extracted data.
+ */
+function extractDataFromRow(row) {
+  const pers = {
+    civilite: "civilite",
+    nom: "nom",
+    prenom: "prenom",
+    Fonction: "Fonction",
+    phone: "phone",
+    PSeudo: "PSeudo",
+    Matricule: "Matricule",
+    MatriculeInterne: "MatriculeInterne",
+    cni: "cni",
+    Email: "Email",
+    dnais: "dnais",
+    npere: "npere",
+    nmere: "nmere",
+    vnais: "vnais",
+    nurg: "nurg",
+    nuurg: "nuurg",
+    AgenceBanque: "AgenceBanque",
+    CodeBanque: "CodeBanque",
+    CodeGuichetBanque: "CodeGuichetBanque",
+    NumeroCompteBanque: "NumeroCompteBanque",
+    CleRibBanque: "CleRibBanque",
+    CodeSwiftBanque: "CodeSwiftBanque",
+    CodeUtilisateur: "CodeUtilisateur",
+    categorie: "categorie",
+    Grade: "Grade",
+    Convention: "Convention",
+    departement1: "departement1",
+    Direction: "Direction",
+    SousDirection: "SousDirection",
+    Service: "Service",
+    motif_depart: "motif_depart",
+    date_sortie: "date_sortie",
+    date_entree: "date_entree",
+    genre_salarie: "genre_salarie",
+    type_contrat: "type_contrat",
+    IDDate_Contrat: "IDDate_Contrat",
+    IDDate_Sortie: "IDDate_Sortie",
+    LieuDelivranceCNI: "LieuDelivranceCNI",
+    DateExpirationCNI: "DateExpirationCNI",
+    IDDateExpirationCNI: "IDDateExpirationCNI",
+    NEng: "NEng",
+  };
+  const list = Object.keys(pers);
+  let obj = {};
+  list.forEach((item, index) => (obj[item] = row.children[index].textContent));
+  return obj;
+}
+function openRowData() {}
+/**
+ *  Delete an employee data from database
+ * @param {number} id ID of the data to delete in database
+ */
+async function deleteRowData(id) {
+  const val = await swal({
+    icon: "warning",
+    title: "Etes-vous sûr de vouloir supprimer?",
+    text: "Cette action est irreversible!",
+    dangerMode: true,
+    closeOnClickOutside: false,
+    closeOnEsc: false,
+    buttons: {
+      cancel: {
+        text: "Non!",
+        value: false,
+        visible: true,
+        className: "",
+        closeModal: true,
+      },
+      confirm: {
+        text: "Oui, supprimer!",
+        value: true,
+        className: "",
+        closeModal: true,
+      },
+    },
+  });
+  if (!val) return;
+  const url = SITE_URL + "/forms/formdeletepers.php";
+  const response = await postData(url, {}, id);
+  if (response["rows"] >= 1 && response["message"])
+    return showAlert("L'employé a été supprimé avec succès", "success");
+  return showAlert("L'employé n'a pas pu être supprimé", "error");
+}
+/**
+ * Send a POST request to the server with data
+ * @param {string} action - Server URI action
+ * @param {object} data - Data to send to the server
+ * @param {number} id - ID of the data to send
+ * @returns {Promise<any>} - Promise that resolves to the response JSON
+ */
+async function postData(action, data, id) {
+  const formData = new FormData();
+
+  for (const key in data) {
+    formData.append(key, data[key]);
+  }
+  formData.append("iplans_submit", "");
+
+  const options = {
+    cache: "reload",
+    method: "POST",
+    body: formData,
+  };
+
+  try {
+    const response = await fetch(`${action}/?id=${id}`, options);
+    if (!response.ok && response.status !== 200) {
+      return { errors: true };
+    }
+    const responseData = await response.json();
+    return responseData;
+  } catch (error) {
+    return { errors: true };
+  }
+}
+
+/**
+ * Displays an alert with a specified title, type, and optional text.
+ *
+ * @param {string} title - The title of the alert.
+ * @param {string} type - The type of the alert.
+ * @param {string} [text=""] - The optional text to display in the alert.
+ * @return {Promise} - A promise that resolves after the alert is displayed.
+ */
+async function showAlert(title, type, text = "") {
+  swal({
+    icon: type,
+    closeOnClickOutside: true,
+    text: text,
+    title: title,
+    dangerMode: true,
+    timer: type === "error" ? 3500 : 3000,
+  });
 }

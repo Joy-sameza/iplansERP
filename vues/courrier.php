@@ -152,41 +152,41 @@ foreach ($d as $pack) {
 }
 ?>
 
-    <link href="<?= SITE_URL ?>/assets/css/style.css" rel="stylesheet">
+<link href="<?= SITE_URL ?>/assets/css/style.css" rel="stylesheet">
 <main class="main corrier">
   <div class="entrant">
     <h2>Courrier Entrant/Sortant</h2>
     <section>
-      <button>Nbre total de Courrier : <strong><?= ($i+$j)-($u+$v) ?? '0' ?></strong></button>
+      <button>Nbre total de Courrier : <strong><?= ($i + $j) - ($u + $v) ?? '0' ?></strong></button>
       <button>Aujourd'hui Entrant : <strong><?= $ent_auj ?? '0' ?></strong></button>
-        <button>Aujourd'hui Sortant : <strong><?= $sor_auj ?? '0' ?></strong></button>
-      <button>Ancien Courrier : <strong><?= ($i - $ent_auj)+($j - $sor_auj) ?? '0' ?></strong></button>
-      <button>Traités/Archivées : <strong><?= $u+$v ?? '0' ?></strong></button>
+      <button>Aujourd'hui Sortant : <strong><?= $sor_auj ?? '0' ?></strong></button>
+      <button>Ancien Courrier : <strong><?= ($i - $ent_auj) + ($j - $sor_auj) ?? '0' ?></strong></button>
+      <button>Traités/Archivées : <strong><?= $u + $v ?? '0' ?></strong></button>
     </section>
     <section>
       <h4>Niveau d'importance</h4>
-      <span><strong>Exceptionel</strong><strong><?= $e+$k ?? '0' ?></strong></span>
-      <span><strong>Très haute</strong><strong><?= $b+ $g ?? '0' ?></strong></span>
-      <span><strong>haute</strong><strong><?= $a+ $f ?? '0' ?></strong></span>
-      <span><strong>moyenne</strong><strong><?= $c+$h  ?? '0' ?></strong></span>
-      <span><strong>Basse</strong><strong><?= $de+ $z ?? '0' ?></strong></span>
+      <span><strong>Exceptionel</strong><strong><?= $e + $k ?? '0' ?></strong></span>
+      <span><strong>Très haute</strong><strong><?= $b + $g ?? '0' ?></strong></span>
+      <span><strong>haute</strong><strong><?= $a + $f ?? '0' ?></strong></span>
+      <span><strong>moyenne</strong><strong><?= $c + $h  ?? '0' ?></strong></span>
+      <span><strong>Basse</strong><strong><?= $de + $z ?? '0' ?></strong></span>
     </section>
     <button class="btn" data-newcourrier>Nouveau courrier</button>
   </div>
   <div class="sortant">
     <h2>Registre Courier</h2>
     <section>
-      <button>Nbre total de Courrier : <strong><?= ($i+$j)-($u+$v) ?? '0' ?></strong></button>
-        <button>Aujourd'hui Entrant : <strong><?= $ent_auj ?? '0' ?></strong></button>
-        <button>Aujourd'hui Sortant : <strong><?= $sor_auj ?? '0' ?></strong></button>
-      <button>Ancien Courrier : <strong><?= ($i - $ent_auj)+($j - $sor_auj) ?? '0' ?></strong></button>
-      <button>Traités/Archivées : <strong><?= $u+$v ?? '0' ?></strong></button>
+      <button>Nbre total de Courrier : <strong><?= ($i + $j) - ($u + $v) ?? '0' ?></strong></button>
+      <button>Aujourd'hui Entrant : <strong><?= $ent_auj ?? '0' ?></strong></button>
+      <button>Aujourd'hui Sortant : <strong><?= $sor_auj ?? '0' ?></strong></button>
+      <button>Ancien Courrier : <strong><?= ($i - $ent_auj) + ($j - $sor_auj) ?? '0' ?></strong></button>
+      <button>Traités/Archivées : <strong><?= $u + $v ?? '0' ?></strong></button>
     </section>
     <section>
       <h4>Niveau d'importance</h4>
       <span><strong>Exceptionel</strong><strong><?= $e + $k ?? '0' ?></strong></span>
-      <span><strong>Très haute</strong><strong><?= $b+ $g ?? '0' ?></strong></span>
-      <span><strong>haute</strong><strong><?= $a+ $f ?? '0' ?></strong></span>
+      <span><strong>Très haute</strong><strong><?= $b + $g ?? '0' ?></strong></span>
+      <span><strong>haute</strong><strong><?= $a + $f ?? '0' ?></strong></span>
       <span><strong>moyenne</strong><strong><?= $c + $h ?? '0' ?></strong></span>
       <span><strong>Basse</strong><strong><?= $de + $z ?? '0' ?></strong></span>
     </section>

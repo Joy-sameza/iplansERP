@@ -627,8 +627,8 @@ async function deleteData(id) {
   const url = SITE_URL + "/forms/formdatadelete.php";
   const response = await postData(url, {}, id);
   if (response["rows"] === 1 && response["message"])
-    return showAlert("Le courrier a été supprimé avec succès", "success");
-  return showAlert("Le courrier n'a pas pu être supprimé", "error");
+    return showAlert("L'employé a été supprimé avec succès", "success");
+  return showAlert("L'employé n'a pas pu être supprimé", "error");
 }
 /**
  * Send a POST request to the server with data

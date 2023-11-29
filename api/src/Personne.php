@@ -1053,18 +1053,11 @@ class Personne
         // Prepare the SQL statement
         $stmt = $this->conn->prepare($query);
 
-
-        // make a backup in table `backupcourrier`
-
-
-
         // Bind the courier ID parameter
         $stmt->bindParam(':courierId', $courierId, PDO::PARAM_INT);
 
         // Execute the SQL statement
         $stmt->execute();
-
-        // Return the number of rows affected by the delete operation
-        return $stmt->rowCount();
+        return $stmt->rowCount() > 0;
     }
 }
