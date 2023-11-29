@@ -41,7 +41,7 @@ ob_start();
 
 <body>
 
-    <div class="container-fluid conteneur0" style='width:80%;'>
+    <div class="container-fluid conteneur0" style='width:80%; height: 75vh;'>
         <!-- debut du header -->
         <div class="row head bg-primary">
             <div class="cont_titre d-flex justify-content-between  p-1" style='align-items: center;'>
@@ -93,94 +93,87 @@ ob_start();
         </div>
         <!-- fin de la zone date -->
         <!-- debut de la zone de tableau -->
-        <div class="row " style='height:400px;border:1px solid gray;'>
-            <div class="table-responsive debut_tableau w-100">
+        <div class="row " style='border:1px solid gray; overflow: scroll scroll !important; height: clamp(400px, 90%, 65vh);'>
+            <table class="table table-bordered " style="position: relative; text-align: center;">
+                <thead style="position: sticky; top: 0;">
+                    <tr class="table-secondary text-center table-dark ">
+                        <th style='font-size:13px;' class='px-5'>Nom</th>
+                        <th style='font-size:13px;' class='px-5'>Prenom</th>
+                        <th style='font-size:13px;' class='px-5'>Depart</th>
+                        <th style='font-size:13px;' class='px-5'>Duree</th>
+                        <th style='font-size:13px;' class='px-5'>Destination</th>
+                        <th style='font-size:13px;' class='px-5'>Site</th>
+                        <th style='font-size:13px;' class='px-5'>Cadre</th>
+                        <th style='font-size:13px;' class='px-5'>Departement</th>
+                        <th style='font-size:13px;' class='px-5'>Passant Par</th>
+                        <th style='font-size:13px;' class='px-5'>Duree de travail/Jour</th>
+                        <th style='font-size:13px;' class='px-5'>Vehicule</th>
+                        <th style='font-size:13px;' class='px-5'>Immatriculation</th>
+                        <th style='font-size:13px;' class='px-5'>Chargement</th>
+                        <th style='font-size:13px;' class='px-5'>PriseEnCharge</th>
+                        <th style='font-size:13px;' class='px-5'>Matricule</th>
+                        <th style='font-size:13px;' class='px-5'>NumeroDossier</th>
+                        <th style='font-size:13px;' class='px-5'>NumeroBL_LTA</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+                    <tr class="table-primary custom-row" style='background-color:#0D6EFD;'>
 
-                <table class="table table-bordered  ">
-                    <thead>
-                        <tr class="table-secondary text-center table-dark ">
-                            <th style='font-size:13px; ' class='px-5'>Nom</th>
-                            <th style='font-size:13px;' class='px-5'>Prenom</th>
-                            <th style='font-size:13px;' class='px-5'>Depart</th>
-                            <th style='font-size:13px;' class='px-5'>Duree</th>
-                            <th style='font-size:13px;' class='px-5'>Destination</th>
-                            <th style='font-size:13px;' class='px-5'>Site</th>
-                            <th style='font-size:13px;' class='px-5'>Cadre</th>
-                            <th style='font-size:13px;' class='px-5'>Departement</th>
-                            <th style='font-size:13px;' class='px-5'>Passant Par</th>
-                            <th style='font-size:13px;' class='px-5'>Duree de travail/Jour</th>
-                            <th style='font-size:13px;' class='px-5'>Vehicule</th>
-                            <th style='font-size:13px;' class='px-5'>Immatriculation</th>
-                            <th style='font-size:13px;' class='px-5'>Chargement</th>
-                            <th style='font-size:13px;' class='px-5'>PriseEnCharge</th>
-                            <th style='font-size:13px;' class='px-5'>Matricule</th>
-                            <th style='font-size:13px;' class='px-5'>NumeroDossier</th>
-                            <th style='font-size:13px;' class='px-5'>NumeroBL_LTA</th>
+                        <td style='background-color:#0D6EFD;'>
+                            <p></p>
+                        </td>
+                        <td style='background-color:#0D6EFD;'>
+                            <p></p>
+                        </td>
+                        <td style='background-color:#0D6EFD;'>
+                            <p></p>
+                        </td>
+                        <td style='background-color:#0D6EFD;'>
+                            <p></p>
+                        </td>
+                        <td style='background-color:#0D6EFD;'>
+                            <p></p>
+                        </td>
+                        <td style='background-color:#0D6EFD;'>
+                            <p></p>
+                        </td>
+                        <td style='background-color:#0D6EFD;'>
+                            <p></p>
+                        </td>
+                        <td style='background-color:#0D6EFD;'>
+                            <p></p>
+                        </td>
+                        <td style='background-color:#0D6EFD;'>
+                            <p></p>
+                        </td>
+                        <td style='background-color:#0D6EFD;'>
+                            <p></p>
+                        </td>
+                        <td style='background-color:#0D6EFD;'>
+                            <p></p>
+                        </td>
+                        <td style='background-color:#0D6EFD;'>
+                            <p></p>
+                        </td>
+                        <td style='background-color:#0D6EFD;'>
+                            <p></p>
+                        </td>
+                        <td style='background-color:#0D6EFD;'>
+                            <p></p>
+                        </td>
+                        <td style='background-color:#0D6EFD;'>
+                            <p></p>
+                        </td>
+                        <td style='background-color:#0D6EFD;'>
+                            <p></p>
+                        </td>
+                        <td style='background-color:#0D6EFD;'>
+                            <p></p>
+                        </td>
 
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        <tr class="table-primary custom-row" style='background-color:#0D6EFD;'>
-
-                            <td style='background-color:#0D6EFD;'>
-                                <p></p>
-                            </td>
-                            <td style='background-color:#0D6EFD;'>
-                                <p></p>
-                            </td>
-                            <td style='background-color:#0D6EFD;'>
-                                <p></p>
-                            </td>
-                            <td style='background-color:#0D6EFD;'>
-                                <p></p>
-                            </td>
-                            <td style='background-color:#0D6EFD;'>
-                                <p></p>
-                            </td>
-                            <td style='background-color:#0D6EFD;'>
-                                <p></p>
-                            </td>
-                            <td style='background-color:#0D6EFD;'>
-                                <p></p>
-                            </td>
-                            <td style='background-color:#0D6EFD;'>
-                                <p></p>
-                            </td>
-                            <td style='background-color:#0D6EFD;'>
-                                <p></p>
-                            </td>
-                            <td style='background-color:#0D6EFD;'>
-                                <p></p>
-                            </td>
-                            <td style='background-color:#0D6EFD;'>
-                                <p></p>
-                            </td>
-                            <td style='background-color:#0D6EFD;'>
-                                <p></p>
-                            </td>
-                            <td style='background-color:#0D6EFD;'>
-                                <p></p>
-                            </td>
-                            <td style='background-color:#0D6EFD;'>
-                                <p></p>
-                            </td>
-                            <td style='background-color:#0D6EFD;'>
-                                <p></p>
-                            </td>
-                            <td style='background-color:#0D6EFD;'>
-                                <p></p>
-                            </td>
-                            <td style='background-color:#0D6EFD;'>
-                                <p></p>
-                            </td>
-
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
         <style>
@@ -214,16 +207,7 @@ ob_start();
             }
         </style>
 
-
-
-
-
-
         <!-- debut des boutton du bas -->
-
-
-
-
 
         <div class="row d-flex justify-content-between bg-primary bout-bas p-2 mb-2">
             <div style='width:50%;' class=' d-flex justify-content-between'>
@@ -257,23 +241,74 @@ ob_start();
             <!--  css du haut  -->
         </div>
 
-
-
-
-
-
-
-
         <!--  fin des boutton du bas -->
-
     </div>
 
+    <template id="listTemplate">
+        <tr class="table-primary custom-row" style='background-color:#0D6EFD;'>
+            <td style='background-color:#0D6EFD; color: #FFF;'>
+                <p data-nom></p>
+            </td>
+            <td style='background-color:#0D6EFD; color: #FFF;'>
+                <p data-prenom></p>
+            </td>
+            <td style='background-color:#0D6EFD; color: #FFF;'>
+                <p data-depart></p>
+            </td>
+            <td style='background-color:#0D6EFD; color: #FFF;'>
+                <p data-duree></p>
+            </td>
+            <td style='background-color:#0D6EFD; color: #FFF;'>
+                <p data-destination></p>
+            </td>
+            <td style='background-color:#0D6EFD; color: #FFF;'>
+                <p data-site></p>
+            </td>
+            <td style='background-color:#0D6EFD; color: #FFF;'>
+                <p data-cadre></p>
+            </td>
+            <td style='background-color:#0D6EFD; color: #FFF;'>
+                <p data-departement></p>
+            </td>
+            <td style='background-color:#0D6EFD; color: #FFF;'>
+                <p data-passant></p>
+            </td>
+            <td style='background-color:#0D6EFD; color: #FFF;'>
+                <p data-duree_de_travail></p>
+            </td>
+            <td style='background-color:#0D6EFD; color: #FFF;'>
+                <p data-vehicule></p>
+            </td>
+            <td style='background-color:#0D6EFD; color: #FFF;'>
+                <p data-immatriculation></p>
+            </td>
+            <td style='background-color:#0D6EFD; color: #FFF;'>
+                <p data-chargement></p>
+            </td>
+            <td style='background-color:#0D6EFD; color: #FFF;'>
+                <p data-priseencharge></p>
+            </td>
+            <td style='background-color:#0D6EFD; color: #FFF;'>
+                <p data-matricule></p>
+            </td>
+            <td style='background-color:#0D6EFD; color: #FFF;'>
+                <p data-numerodossier></p>
+            </td>
+            <td style='background-color:#0D6EFD; color: #FFF;'>
+                <p data-numerobl_lta></p>
+            </td>
+        </tr>
+    </template>
     <!-- fin du container fluid -->
-
-
 
     <!-- css de cette page -->
     <style>
+        table>tbody>tr:nth-of-type(2n +1)>td {
+            color: #000 !important;
+            background-color: #FFF !important;
+            font-weight: 500;
+        }
+
         /* css du header  */
         .ico_emplye {
             height: 20px;
@@ -379,7 +414,6 @@ ob_start();
             background: #238fce;
         }
     </style>
-
 </body>
 
 
@@ -413,76 +447,73 @@ ob_start();
 
 <!-- evenements sur les bouttons  -->
 
+<script type="module">
+    const listTemplate = document.getElementById("listTemplate");
+    const tbl = document.querySelector("tbody");
 
+    /**
+     * Updates the table with the given data by cloning an element and setting its values.
+     *
+     * @param {Element} table - The table element to update.
+     * @param {Object} data - The data object containing the values to set.
+     * @param {DocumentFragment} elementClone - The cloned element to update with the data values.
+     */
+    function updateMISSIONTable(table, data = {}, elementClone) {
+        const element = elementClone.content.cloneNode(true);
+        const pers = {
+            // nom: "",
+            // prenom: "",
+            dat: "depart",
+            duree: "duree",
+            Lieux: "destination",
+            site: "site",
+            cadre: "cadre",
+            Departement: "departement",
+            via: "passant",
+            "duree_travail": "duree_de_travail",
+            motor: "vehicule",
+            // immatriculation: "",
+            charge: "chargement",
+            PriseEnCharge: "priseencharge",
+            matricule: "matricule",
+            NumeroDossier: "numerodedossier",
+            NumeroBL_LTA: "numerobl_lta",
+        };
+
+        Object.entries(data).forEach(([key, value]) => {
+            if (key in pers) {
+                setValue(pers[key], value, {
+                    parent: element
+                });
+            }
+        });
+        table.appendChild(element);
+    }
+
+    const response = await fetch("<?= MISSION_API_URL ?>");
+    const missions = await response.json();
+    tbl.innerHTML = "";
+    for (let rowData of missions)
+        updateMISSIONTable(tbl, rowData, listTemplate);
+</script>
 
 <script>
     document.getElementById("new").addEventListener("click", function() {
-        // Spécifiez l'URL de la nouvelle page que vous souhaitez ouvrir
-        var nouvellePageURL = "http://localhost/Iplans/mission";
-
         // Ouvrir la nouvelle page dans une nouvelle fenêtre
-        window.open(nouvellePageURL, "_blank");
+        window.location.href = "<?= SITE_URL ?>/mission";
+    });
+
+
+    window.addEventListener("unload", (event) => {
+        event.preventDefault();
+        localStorage.clear();
+        close();
     });
 </script>
 
 <!-- rendre le lien accessible seulement par click sur le boutton  -->
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <?php
 

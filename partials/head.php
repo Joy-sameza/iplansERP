@@ -48,6 +48,8 @@ header("Expires: Thu, 01 Jan 1970 00:00:00 GMT", true);
     const API_URL = "<?= COURRIER_API_URL ?>";
     const SITE_URL = "<?= SITE_URL ?>";
     const api_url_pers = "<?php echo PERS_API_URL; ?>";
+    let lang = localStorage.getItem('lang') || 'fr';
+    const pdfLang = lang === "fr" ? "fr-FR" : "en-UK";
 </script>
 <?php
 if (array_key_exists('save', $_SESSION) and $_SESSION['save']) {
