@@ -31,18 +31,63 @@ ob_start();
 ?>
 <link rel="stylesheet" type="text/css" href="<?= SITE_URL ?>/assets/css/login.css">
     <link href="<?= SITE_URL ?>/assets/css/style.css" rel="stylesheet">
-<main>
+<main >
+    <style>
+		.lange{
+			font-size: 25px;
+            margin-top: 47px;
+			display: none;
+		}
+		.lang{
+			    margin-top: 0px!important;
+				padding-top: 43px;
+		}
+	    .lang	img{
+				height: 24px;
+				width: 24px;
+			}
+
+
+	</style>
     <h1><u>CONNEXION</u></h1>
     <form method="post" action="">
-        <div class="interface">
-            <p><?= $lang['login'] ?> <input type="text" name="email" required></p>
-            <p><?= $lang['pass'] ?> <input type="password" name="motdepasse" required></p><br>
+        <div class="interface mx-4">
+            <div class='container d-flex justify-content-between mb-4'>
+                 <?= $lang['login'] ?> <input type="text" class='form-control' name="email" required>
+            </div>
+            <div class='container d-flex justify-content-between mb-4'>
+                <?= $lang['pass'] ?> <input type="password" class='form-control' name="motdepasse" required>
+            </div>    
         </div>
-        <div class="envoie">
-            <p>
+        <style>
+            .interface input {
+                position: center;
+                border-radius: 7px;
+                width: 240px;
+                height: 35px;
+            }
+            main{
+                width: 450px;
+                
+            }
+            .envoie input {
+                position: center;
+                border-radius: 12px;
+                width: 150px;
+                height: 46px;
+            }
+            .bout{
+                
+            }
+        </style>
+        <div class="envoie justify-content-around text-center mt-6">
+
+                <input type="submit" name="send1" class='bout' value="<?= $lang['se_connecter'] ?>">
+           
+           
                 <input type="reset" value="<?= $lang['annuler'] ?>">
-                <input type="submit" name="send1" value="<?= $lang['se_connecter'] ?>">
-            </p>
+           
+            
         </div>
     </form>
 </main>

@@ -73,7 +73,7 @@ ob_start();
                         
                         </div>
 
-                        <div class="tooltip47 my-2"">
+                        <div class="tooltip47 my-2">
                          <button  class='border border-secondary bg-secondary border-1'>
                             <img  src="<?= SITE_URL ?>/assets/img/padlock.png" alt="" style="width: max-content; height: 20px;" >
                             <span class="tooltiptext47">Verrouiller</span>

@@ -104,8 +104,8 @@ ob_start();
             <button class="btn employer_btn" > <i class="fas fa-users"></i><a href="<?= SITE_URL ?>/tableau">Employés</a> </button>
             <button class="btn"> <i class="fas fa-save"></i></i><p>Pointages</p></button>
             <button class="btn"> <i class="fas fa-clock"></i></i><p>Planning Horaires</p></button>
-            <button class="btn"> <i class="fas fa-unlock-alt"></i><p>Mission</p></button>
-            <button class="btn"> <i class="fas fa-calendar-minus"></i><p>Absences</p></button>
+            <button class="btn"> <i class="fas fa-unlock-alt"></i><a href="<?= SITE_URL ?>/mission">Mission</a></button>
+            <button class="btn"> <i class="fas fa-calendar-minus"></i><a href="<?= SITE_URL ?>/gestion_abscences">Absences</a></button>
             <button class="btn"> <i class="fas fa-suitcase-rolling"></i><p>Congés</p></button>
             <button class="btn"> <i class="fas fa-border-style"></i><p>Cloture</p></button>
             <button class="btn"> <i class="fas fa-dollar-sign"></i><p>Acompte</p></button>

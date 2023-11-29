@@ -433,9 +433,9 @@ ob_start();
         document.getElementById("accorder").addEventListener("click", function() {
             // Spécifiez l'URL de la nouvelle page que vous souhaitez ouvrir
             var nouvellePageURL = "http://localhost/Iplans/fiche_message";
-
+             console.log('click')
             // Ouvrir la nouvelle page dans une nouvelle fenêtre
-            window.open(nouvellePageURL "_blank");
+            window.open(nouvellePageURL, "_blank");
         });
     </script>
 
