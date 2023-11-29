@@ -1,9 +1,9 @@
 <?php
 @define("HOST_NAME", "localhost");
 @define("DB_NAME", "demo");
-@define("USER_NAME", "root");
-@define("USER_PASSWORD", "12345");
-@define('DB_PORT', '3306');
+@define("USER_NAME", "administrator");
+@define("USER_PASSWORD", "system");
+@define('DB_PORT', '5785');
 @define("MAX_UPLOAD_SIZE", 50);
 @define("SITE_URL", "http://localhost/Iplans");
 @define("COURRIER_API_URL", "http://localhost/courrier/");
