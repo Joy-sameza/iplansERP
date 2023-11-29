@@ -41,98 +41,98 @@ ob_start();
 
 <body>
     <div class="container-fluid border border-primary conteneur0 border-3" style='width:58%;'>
+        <form id="frais_form">
+            <div class="row head bg-primary">
+                <div class="cont_titre d-flex justify-content-between  p-1" style='align-items: center;'>
+                    <div style="display: flex;">
+                        <img src="<?= SITE_URL ?>/assets/img/iplans-icon.png" alt="" class="ico_emplye">
+                        <h6 class="fiche_sala" style='color:white;'>Details frais de mission</h6>
 
-        <div class="row head bg-primary">
-            <div class="cont_titre d-flex justify-content-between  p-1" style='align-items: center;'>
-                <div style="display: flex;">
-                    <img src="<?= SITE_URL ?>/assets/img/iplans-icon.png" alt="" class="ico_emplye">
-                    <h6 class="fiche_sala" style='color:white;'>Details frais de mission</h6>
+                    </div>
 
-                </div>
-
-                <div>
-                    <button class="close_window" id="close_window" style="width: 30px; height: 30px; background-color: red; border: none;"> <i class="fas fa-close svg-close" style='color:white;'></i></button>
+                    <div>
+                        <button class="close_window" id="close_window" style="width: 30px; height: 30px; background-color: red; border: none;"> <i class="fas fa-close svg-close" style='color:white;'></i></button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="container-fluid">
-            <h1 class='text-center text-secondary my-3'><b>Frais de Mission</b></h1>
-        </div>
-        <span>Numero Note:</span>
-        <div class="row  justify-content-start mb-3">
-            <div class="col-sm-8 py-3  madiv8  ">
-                <div class='d-flex'>
-                    <div style='width:50%' class='text-center colone1'>
-                        <h5><b>Par Jour</b></h5>
+            <div class="container-fluid">
+                <h1 class='text-center text-secondary my-3'><b>Frais de Mission</b></h1>
+            </div>
+            <span>Numero Note:</span>
+            <div class="row  justify-content-start mb-3">
+                <div class="col-sm-8 py-3  madiv8  ">
+                    <div class='d-flex'>
+                        <div style='width:50%' class='text-center colone1'>
+                            <h5><b>Par Jour</b></h5>
 
-                        <div class='d-flex justify-content-around mt-3'>
-                            <label style='width:10%; '>Transport</label>
-                            <div style="display: flex; justify-content: left;width: 51%; ">
-                                <select class="form-select-sm" style='width:100%' id='transport'>
-                                    <option selected>0</option>
-                                    <option>20000</option>
-                                    <option>50000</option>
-                                    <option>250000</option>
-                                    <option>10000</option>
+                            <div class='d-flex justify-content-around mt-3'>
+                                <label style='width:10%; '>Transport</label>
+                                <div style="display: flex; justify-content: left;width: 51%; ">
+                                    <select class="form-select-sm" style='width:100%' id='transport' required name="transport">
+                                        <option selected>0</option>
+                                        <option>20000</option>
+                                        <option>50000</option>
+                                        <option>250000</option>
+                                        <option>10000</option>
 
-                                </select>FCFA
+                                    </select>FCFA
+                                </div>
                             </div>
-                        </div>
-                        <div class='d-flex justify-content-around mt-3'>
-                            <label style='width:10%; '>Logement</label>
-                            <div style="display: flex; justify-content: left;width: 51%; ">
-                                <select class="form-select-sm" style='width:100%' id='logement'>
-                                    <option selected>0</option>
-                                    <option>25000</option>
-                                    <option>60000</option>
-                                    <option>250000</option>
-                                    <option>10000</option>
-                                    <option>5000</option>
-                                </select>FCFA
+                            <div class='d-flex justify-content-around mt-3'>
+                                <label style='width:10%; '>Logement</label>
+                                <div style="display: flex; justify-content: left;width: 51%; ">
+                                    <select class="form-select-sm" style='width:100%' id='logement' name="logement">
+                                        <option selected>0</option>
+                                        <option>25000</option>
+                                        <option>60000</option>
+                                        <option>250000</option>
+                                        <option>10000</option>
+                                        <option>5000</option>
+                                    </select>FCFA
+                                </div>
                             </div>
-                        </div>
-                        <div class='d-flex justify-content-around mt-3'>
-                            <label style='width:10%; '>Nutrition</label>
-                            <div style="display: flex; justify-content: left;width: 51%; ">
-                                <select class="form-select-sm" style='width:100%' id='nutrition'>
-                                    <option selected>0</option>
-                                    <option>10000</option>
-                                    <option>5000</option>
-                                    <option>6000</option>
+                            <div class='d-flex justify-content-around mt-3'>
+                                <label style='width:10%; '>Nutrition</label>
+                                <div style="display: flex; justify-content: left;width: 51%; ">
+                                    <select class="form-select-sm" style='width:100%' id='nutrition' name="nutrition" required>
+                                        <option selected>0</option>
+                                        <option>10000</option>
+                                        <option>5000</option>
+                                        <option>6000</option>
 
-                                </select>FCFA
+                                    </select>FCFA
+                                </div>
                             </div>
-                        </div>
-                        <div class='d-flex justify-content-around mt-3'>
-                            <label style='width:10%; '>Perdime</label>
-                            <div style="display: flex; justify-content: left;width: 51%; ">
-                                <select class="form-select-sm" style='width:100%' id='perdime'>
-                                    <option selected>0</option>
-                                    <option>10000</option>
-                                    <option>2000</option>
+                            <div class='d-flex justify-content-around mt-3'>
+                                <label style='width:10%; '>Perdime</label>
+                                <div style="display: flex; justify-content: left;width: 51%; ">
+                                    <select class="form-select-sm" style='width:100%' id='perdime' name="perdime">
+                                        <option selected>0</option>
+                                        <option>10000</option>
+                                        <option>2000</option>
 
-                                </select>FCFA
+                                    </select>FCFA
+                                </div>
                             </div>
-                        </div>
-                        <div class='d-flex justify-content-around mt-3'>
-                            <label style='width:10%; '>Autres</label>
-                            <div style="display: flex; justify-content: left;width: 51%; ">
-                                <select class="form-select-sm" style='width:100%' id='autres'>
+                            <div class='d-flex justify-content-around mt-3'>
+                                <label style='width:10%; '>Autres</label>
+                                <div style="display: flex; justify-content: left;width: 51%; ">
+                                    <select class="form-select-sm" style='width:100%' id='autres' name="autres">
 
-                                    <option selected>0</option>
-                                    <option>40000</option>
-                                    <option>10000</option>
-                                    <option>20000</option>
-                                    <option>50000</option>
-                                    <option>5000</option>
-                                    <option>100000</option>
-                                </select>FCFA
+                                        <option selected>0</option>
+                                        <option>40000</option>
+                                        <option>10000</option>
+                                        <option>20000</option>
+                                        <option>50000</option>
+                                        <option>5000</option>
+                                        <option>100000</option>
+                                    </select>FCFA
+                                </div>
                             </div>
-                        </div>
-                        <div class='d-flex justify-content-around mt-3'>
-                            <label style='width:10%; '>Totaux</label>
-                            <div style="display: flex; justify-content: left;width: 51%; ">
-                                <!--<select class="form-select-sm" style='width:100%' id='tataux'>
+                            <div class='d-flex justify-content-around mt-3'>
+                                <label style='width:10%; '>Totaux</label>
+                                <div style="display: flex; justify-content: left;width: 51%; ">
+                                    <!--<select class="form-select-sm" style='width:100%' id='tataux'>
                                                  <option selected>0</option>
                                                 <option>85000</option>
                                                 <option>25000</option>
@@ -148,39 +148,39 @@ ob_start();
                                                 <option>20000</option>
                                                 <option>42000</option>
                                              </select>FCFA -->
-                                <input type="text" class="form-control-sm mt-1" style='width:100%' id="tataux" readonly>
+                                    <input type="text" class="form-control-sm mt-1" style='width:100%' id="tataux" readonly name="tataux">
+                                </div>
                             </div>
+
+
                         </div>
+                        <!--  -->
+                        <div style='width:50%' class='colonne2'>
 
+                            <h5><b>Total</b></h5>
 
-                    </div>
-                    <!--  -->
-                    <div style='width:50%' class='colonne2'>
+                            <div class='justify-content-between mt-3'>
 
-                        <h5><b>Total</b></h5>
+                                <div style="display: flex; justify-content: left; ">
+                                    <select class="form-select-sm" style='width:38%' id='1' name="transport_total">
+                                        <option selected>0</option>
 
-                        <div class='justify-content-between mt-3'>
+                                        <option>50000</option>
+                                        <option>250000</option>
+                                        <option>20000</option>
+                                        <option>40000</option>
+                                        <option>100000</option>
 
-                            <div style="display: flex; justify-content: left; ">
-                                <select class="form-select-sm" style='width:38%' id='1'>
-                                    <option selected>0</option>
-
-                                    <option>50000</option>
-                                    <option>250000</option>
-                                    <option>20000</option>
-                                    <option>40000</option>
-                                    <option>100000</option>
-
-                                </select>FCFA
-                                <input type="checkbox" class="form-check-input" id="check1" name="option1" value="something" checked>
-                                <span class="form-check-label" for="check1">Carburant ?</span>
+                                    </select>FCFA
+                                    <input type="checkbox" class="form-check-input" id="check1" name="option1" checked>
+                                    <span class="form-check-label" for="check1">Carburant ?</span>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class='justify-content-between mt-3'>
+                            <div class='justify-content-between mt-3'>
 
-                            <div style="display: flex; justify-content: left; ">
-                                <!-- <select class="form-select-sm" style='width:38%' id='2'>
+                                <div style="display: flex; justify-content: left; ">
+                                    <!-- <select class="form-select-sm" style='width:38%' id='2'>
                                                   <option selected>0</option>
                                           
                                                 <option>25000</option>
@@ -193,15 +193,15 @@ ob_start();
                                                 <option>150000</option>
                                                 <option>7000</option>
                                              </select>FCFA -->
-                                <input type="text" class="form-control-sm" style='width:38%' id="2" readonly>
+                                    <input type="text" class="form-control-sm" style='width:38%' id="2" readonly name="logement_total">
 
+                                </div>
                             </div>
-                        </div>
 
-                        <div class='justify-content-between mt-3'>
+                            <div class='justify-content-between mt-3'>
 
-                            <div style="display: flex; justify-content: left; ">
-                                <!-- <select class="form-select-sm" style='width:38%' id='3'>
+                                <div style="display: flex; justify-content: left; ">
+                                    <!-- <select class="form-select-sm" style='width:38%' id='3'>
                                                   <option selected>0</option>
                                      
                                                 <option>10000</option>
@@ -209,29 +209,29 @@ ob_start();
                                                 <option>35000</option>
                                            
                                              </select>FCFA -->
-                                <input type="text" class="form-control-sm" style='width:38%' id="3" readonly>
+                                    <input type="text" class="form-control-sm" style='width:38%' id="3" readonly name="nutrition_total">
 
+                                </div>
                             </div>
-                        </div>
 
-                        <div class='justify-content-between mt-3'>
+                            <div class='justify-content-between mt-3'>
 
-                            <div style="display: flex; justify-content: left; ">
-                                <!-- <select class="form-select-sm" style='width:38%' id='4'>
+                                <div style="display: flex; justify-content: left; ">
+                                    <!-- <select class="form-select-sm" style='width:38%' id='4'>
                                                   <option selected>0</option>
                                                 <option>30000</option>
                                                 <option>14000</option>
                               
                                              </select>FCFA -->
-                                <input type="text" class="form-control-sm" style='width:38%' id="4" readonly>
+                                    <input type="text" class="form-control-sm" style='width:38%' id="4" readonly name="perdime_total">
 
+                                </div>
                             </div>
-                        </div>
 
-                        <div class='justify-content-between mt-3'>
+                            <div class='justify-content-between mt-3'>
 
-                            <div style="display: flex; justify-content: left; ">
-                                <!-- <select class="form-select-sm" style='width:38%' id='5'>
+                                <div style="display: flex; justify-content: left; ">
+                                    <!-- <select class="form-select-sm" style='width:38%' id='5'>
                                                   <option selected>0</option>
                                                 <option>60000</option>
                                                 <option>5000</option>
@@ -241,74 +241,70 @@ ob_start();
                                                 <option>140000</option>
                                                 
                                              </select>FCFA  -->
-                                <input type="text" class="form-control-sm" style='width:38%' id="5" value='0' readonly>
+                                    <input type="text" class="form-control-sm" style='width:38%' id="5" value='0' readonly name="autre_total">
 
+                                </div>
                             </div>
+
+
+
+
+
                         </div>
-
-
-
-
-
                     </div>
+                </div><!-- fin colone 1 -->
+
+
+                <div class="col-sm-4 mt-3  madiv4">
+                    <span class='note'><b>Note</b></span>
+                    <textarea class="form-control  w-100 h-100 border-0" id="exampleTextarea" rows="3" readonly>Mission à KRIBI Via BONABERI Pour 1 Jour(s) Avec 00:00:00 de travail par jour</textarea>
+                </div><!-- fin colone 2 -->
+
+            </div>
+            <!-- fin de la row -->
+            <div class="row d-flex justify-content-center  text-center mb-1">
+
+                <div style='width:55%; align-items: center;' class="d-flex justify-content-between mb-3">
+                    <span style='width:60%'><b>TOTAL FRAIS DE MISSION</b></span>
+                    <input type="text" class="form-control-sm vert " id='totalFrais' style='width:50%; align-items: center;' readonly name="totalFrais">FCFA
                 </div>
-            </div><!-- fin colone 1 -->
+                <div style='width:45%; align-items: center;' class="d-flex justify-content-left mb-3">
+                    <span style='width:50%; align-items: center;'><b>TOTAL FRAIS PREVUS</b></span>
 
-
-            <div class="col-sm-4 mt-3  madiv4">
-                <span class='note'><b>Note</b></span>
-                <textarea class="form-control  w-100 h-100 border-0" id="exampleTextarea" rows="3" readonly>
-Mission à KRIBI Via BONABERI Pour 1 Jour(s) Avec 00:00:00 de travail par jour 
-                         </textarea>
-
-
-            </div><!-- fin colone 2 -->
-
-        </div>
-        <!-- fin de la row -->
-        <div class="row d-flex justify-content-center  text-center mb-1">
-
-            <div style='width:55%; align-items: center;' class="d-flex justify-content-between mb-3">
-                <span style='width:60%'><b>TOTAL FRAIS DE MISSION</b></span>
-                <input type="text" class="form-control-sm vert " id='totalFrais' style='width:50%; align-items: center;' readonly>FCFA
+                </div>
             </div>
-            <div style='width:45%; align-items: center;' class="d-flex justify-content-left mb-3">
-                <span style='width:50%; align-items: center;'><b>TOTAL FRAIS PREVUS</b></span>
 
+            <!-- bas de la page -->
+            <div class="row d-flex justify-content-between bg-primary bout-bas p-2">
+                <div style='width:82%;'>
+
+                    <button type="submit">Valider<img src="<?= SITE_URL ?>/assets/img/accept.png" alt="" style="width: max-content; height: 20px;"></button>
+
+
+                    <button>Supprimer
+                        <img src="<?= SITE_URL ?>/assets/img/bin.png" alt="" style="width: max-content; height: 20px;">
+                    </button>
+                    <button>Imprimer
+                        <img src="<?= SITE_URL ?>/assets/img/printer.png" alt="" style="width: max-content; height: 20px;">
+                    </button>
+                    <button>Alerter
+                        <img src="<?= SITE_URL ?>/assets/img/danger.png" alt="" style="width: max-content; height: 20px;">
+                    </button>
+                </div>
+                <!--  css du haut  -->
+                <div style='width:18%;'>
+                    <button id="fermer" class='ferme'>
+                        Fermer
+                        <img src="<?= SITE_URL ?>/assets/img/close.png" alt="" style="width: max-content; height: 20px;">
+                    </button>
+
+
+
+                </div>
+                <!--  css du haut  -->
             </div>
-        </div>
 
-        <!-- bas de la page -->
-        <div class="row d-flex justify-content-between bg-primary bout-bas p-2">
-            <div style='width:82%;'>
-
-                <button>Valider<img src="<?= SITE_URL ?>/assets/img/accept.png" alt="" style="width: max-content; height: 20px;"></button>
-
-
-                <button>Supprimer
-                    <img src="<?= SITE_URL ?>/assets/img/bin.png" alt="" style="width: max-content; height: 20px;">
-                </button>
-                <button>Imprimer
-                    <img src="<?= SITE_URL ?>/assets/img/printer.png" alt="" style="width: max-content; height: 20px;">
-                </button>
-                <button>Alerter
-                    <img src="<?= SITE_URL ?>/assets/img/danger.png" alt="" style="width: max-content; height: 20px;">
-                </button>
-            </div>
-            <!--  css du haut  -->
-            <div style='width:18%;'>
-                <button id="fermer" class='ferme'>
-                    Fermer
-                    <img src="<?= SITE_URL ?>/assets/img/close.png" alt="" style="width: max-content; height: 20px;">
-                </button>
-
-
-
-            </div>
-            <!--  css du haut  -->
-        </div>
-
-
+        </form>
     </div>
     <!-- fin de la grande div -->
 
@@ -363,36 +359,6 @@ Mission à KRIBI Via BONABERI Pour 1 Jour(s) Avec 00:00:00 de travail par jour
     </style>
 
 
-
-
-
-    <!-- <script>
-    const boutonsFermer = document.querySelectorAll("#close_window");
-     const conteneur0 = document.querySelector(".conteneur0");
-
-        if (conteneur0) {
-            boutonsFermer.forEach((bouton) => {
-                bouton.addEventListener("click", (e) => {
-                    e.preventDefault();
-                    conteneur0.style.display = "none";
-                });
-            });
-        }
-  </script>
-    <script>
-          const boutonsFermer = document.querySelectorAll("#fermer");
-            const conteneur0 = document.querySelector(".conteneur0");
-
-            if (conteneur0) {
-                boutonsFermer.forEach((bouton) => {
-                    bouton.addEventListener("click", (e) => {
-                        e.preventDefault();
-                        conteneur0.style.display = "none";
-                        console.log('yo')
-                    });
-                });
-            }
-        </script> -->
     <script>
         window.addEventListener('load', (event) => {
             const boutonsFermer = document.querySelectorAll("#close_window, #fermer");
@@ -409,10 +375,6 @@ Mission à KRIBI Via BONABERI Pour 1 Jour(s) Avec 00:00:00 de travail par jour
             }
         });
     </script>
-
-
-
-
 
     <script>
         // Fonction pour mettre à jour les valeurs de la colonne2 en fonction de la colonne1
@@ -498,51 +460,20 @@ Mission à KRIBI Via BONABERI Pour 1 Jour(s) Avec 00:00:00 de travail par jour
                 document.getElementById('nombreJours').textContent = valeurLocalStorage;
             }
         };
+
+        document.querySelector('form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            const formProps = Object.fromEntries(formData);
+            const props = JSON.stringify(formProps);
+            localStorage.setItem('totalFrais', props);
+            window.close();
+        });
     </script>
-
-
-
 
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <?php
 

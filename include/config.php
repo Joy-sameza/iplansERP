@@ -8,3 +8,5 @@
 @define("SITE_URL", "http://localhost/Iplans");
 @define("COURRIER_API_URL", "http://localhost/courrier/");
 @define("PERS_API_URL", "http://localhost/pers/");
+@define("MISSION_API_URL", "http://localhost/mission/");
+@define("PERMISSION_API_URL", "http://localhost/permission/");

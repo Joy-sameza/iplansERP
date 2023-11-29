@@ -1,5 +1,3 @@
-const pdfLang = lang === "fr" ? "fr-FR" : "en-UK";
-
 const newcourrier = document.querySelector("[data-newcourrier]");
 const modal1 = document.querySelector("[data-modal1]");
 const modal2 = document.querySelector("[data-modal2]");
@@ -77,10 +75,10 @@ closeModals([
 ]);
 window.addEventListener("keydown", (e) => {
   if (
-      e.key === "Escape" &&
-      (modal1.classList.contains("open") ||
-          modal2.classList.contains("open") ||
-          modal3.classList.contains("open"))
+    e.key === "Escape" &&
+    (modal1.classList.contains("open") ||
+      modal2.classList.contains("open") ||
+      modal3.classList.contains("open"))
   ) {
     modal1.classList?.remove("open");
     modal2.classList?.remove("open");
@@ -93,17 +91,17 @@ window.addEventListener("change", (e) => {
   let imps = modal1.querySelectorAll("[type='radio'][name='niveau']");
   if (modal1ref === false) {
     modal1.querySelector("form").action =
-        SITE_URL + "/forms/formdataupdate.php";
+      SITE_URL + "/forms/formdataupdate.php";
     imps[0].parentNode.parentNode.style.pointerEvents = "auto";
     modal1.querySelector(
-        "[type='range'][list='options']"
+      "[type='range'][list='options']"
     ).parentNode.style.display = "none";
   } else {
     modal1.querySelector("form").action = SITE_URL + "/forms/formdata.php";
     imps[0].parentNode.parentNode.style.pointerEvents = "none";
     modal1
-        .querySelector("[type='range'][list='options']")
-        .parentNode.style.removeProperty("display");
+      .querySelector("[type='range'][list='options']")
+      .parentNode.style.removeProperty("display");
     // reset.click();
   }
 });
@@ -119,81 +117,81 @@ function addBorderRadius() {
   entrant.style.borderRadius = borderRadius;
   entrant.nextElementSibling.style.borderRadius = borderRadius;
   entrant.nextElementSibling.nextElementSibling.style.borderRadius =
-      borderRadius;
+    borderRadius;
 }
 
 window.addEventListener("resize", addBorderRadius);
 addBorderRadius();
 
 range.forEach((r, i) =>
-    r.addEventListener("change", function (event) {
-      let select;
-      if (i === 0) {
-        select = modal1.querySelectorAll("[data-select]");
-      }
-      if (i === 1) {
-        select = modal3.querySelectorAll("[data-select]");
-      }
-      const selectedValue = parseInt(event.target.value);
-      const selectedOptionIndex = Math.floor(selectedValue / 5);
+  r.addEventListener("change", function (event) {
+    let select;
+    if (i === 0) {
+      select = modal1.querySelectorAll("[data-select]");
+    }
+    if (i === 1) {
+      select = modal3.querySelectorAll("[data-select]");
+    }
+    const selectedValue = parseInt(event.target.value);
+    const selectedOptionIndex = Math.floor(selectedValue / 5);
 
-      select?.forEach((option) => option.removeAttribute("checked"));
-      select[4 - selectedOptionIndex].setAttribute("checked", "checked");
-    })
+    select?.forEach((option) => option.removeAttribute("checked"));
+    select[4 - selectedOptionIndex].setAttribute("checked", "checked");
+  })
 );
 reset.forEach((r, i) =>
-    r.addEventListener("click", () => {
-      removeAll[i].click();
-    })
+  r.addEventListener("click", () => {
+    removeAll[i].click();
+  })
 );
 upload.forEach((u, i) =>
-    u.addEventListener("click", function () {
-      Rupload[i].click();
-    })
+  u.addEventListener("click", function () {
+    Rupload[i].click();
+  })
 );
 
 Rupload.forEach((u, index) =>
-    u.addEventListener("change", function () {
-      const files = this.files;
+  u.addEventListener("change", function () {
+    const files = this.files;
 
-      for (let i = 0; i < files.length; i++) {
-        const filename = files[i].name;
-        const size = (files[i].size / 1024).toFixed(2);
-        const fileExtension = filename.lastIndexOf(".");
-        let type;
-        fileExtension !== -1
-            ? (type = filename.substring(fileExtension, filename.length))
-            : undefined;
-        type = type?.split(".").pop().toUpperCase();
-        updateTable(
-            tableBody[index],
-            {
-              type: type ?? "???",
-              doc_name: filename,
-              size: size >= 1024 ? (size / 1024).toFixed(2) + " MB" : size + " KB",
-            },
-            rowInfoTemplate
-        );
-      }
-    })
+    for (let i = 0; i < files.length; i++) {
+      const filename = files[i].name;
+      const size = (files[i].size / 1024).toFixed(2);
+      const fileExtension = filename.lastIndexOf(".");
+      let type;
+      fileExtension !== -1
+        ? (type = filename.substring(fileExtension, filename.length))
+        : undefined;
+      type = type?.split(".").pop().toUpperCase();
+      updateTable(
+        tableBody[index],
+        {
+          type: type ?? "???",
+          doc_name: filename,
+          size: size >= 1024 ? (size / 1024).toFixed(2) + " MB" : size + " KB",
+        },
+        rowInfoTemplate
+      );
+    }
+  })
 );
 
 removeAll.forEach((re, i) =>
-    re.addEventListener("click", () => {
-      tableBody[i].innerHTML = "";
-      Rupload[i].value = "";
-    })
+  re.addEventListener("click", () => {
+    tableBody[i].innerHTML = "";
+    Rupload[i].value = "";
+  })
 );
 
 addPiece.forEach((a, i) =>
-    a.addEventListener("click", () => Rupload[i].click())
+  a.addEventListener("click", () => Rupload[i].click())
 );
 
 removePiece.forEach((r, i) =>
-    r.addEventListener("click", () => {
-      tableBody[i].removeChild(tableBody[i].lastChild);
-      Rupload[i].value = "";
-    })
+  r.addEventListener("click", () => {
+    tableBody[i].removeChild(tableBody[i].lastChild);
+    Rupload[i].value = "";
+  })
 );
 
 /**
@@ -414,11 +412,11 @@ function useEtatfilters(etat, data) {
   switch (etat) {
     case "archive_filtre":
       return data.filter(
-          (d) =>
-              d.Statut === "Archivé" ||
-              d.Statut === "Traité" ||
-              d.Statut === "Archivé/Traité" ||
-              d.Statut === "Traité/Archivé"
+        (d) =>
+          d.Statut === "Archivé" ||
+          d.Statut === "Traité" ||
+          d.Statut === "Archivé/Traité" ||
+          d.Statut === "Traité/Archivé"
       );
     case "non_archive_filtre":
       return data.filter((d) => d.Statut === "");
@@ -482,13 +480,13 @@ function modifyData(tableRow, id) {
   const d = data.date.replace(/\//g, "-");
   const pts = d.split("-");
   const formattedDate =
-      pts.slice(-1)[0].length === 4 ? pts.reverse().join("-") : d;
+    pts.slice(-1)[0].length === 4 ? pts.reverse().join("-") : d;
   modal1.querySelector("#date").value = formattedDate;
 
   const time = data.heure
-      .split(":")
-      .map((part) => part.padStart(2, "0"))
-      .join(":");
+    .split(":")
+    .map((part) => part.padStart(2, "0"))
+    .join(":");
   modal1.querySelector("#heure").value = time;
 
   let imps = modal1.querySelectorAll("[type='radio'][name='niveau']");
@@ -512,20 +510,20 @@ function modifyData(tableRow, id) {
     };
     const response = await postData(frm.action, dt, id);
     if (
-        (response["rows"] === undefined && response["message"]) ||
-        response["errors"]
+      (response["rows"] === undefined && response["message"]) ||
+      response["errors"]
     )
       return showAlert(
-          "Le courrier ne peut pas être modifié",
-          "error",
-          "Le courrier est déjà archivé"
+        "Le courrier ne peut pas être modifié",
+        "error",
+        "Le courrier est déjà archivé"
       );
     showAlert("Courrier modifié avec succès", "success").then(() => {
       close1.click();
     });
     window.dispatchEvent(new Event("DOMContentLoaded"));
     formOuvrirCourrier.dispatchEvent(
-        new Event("change", { bubbles: true, cancelable: true })
+      new Event("change", { bubbles: true, cancelable: true })
     );
     // formOuvrirCourrier.dispatchEvent(new Event("change"));
   });
@@ -540,10 +538,10 @@ function modifyData(tableRow, id) {
  */
 function getRadioInputValue(name, parentForm) {
   const radioInputs = Array.from(
-      parentForm.querySelectorAll(`input[name="${name}"]`)
+    parentForm.querySelectorAll(`input[name="${name}"]`)
   );
   const checkedRadioInput = radioInputs.find(
-      (radioInput) => radioInput.checked
+    (radioInput) => radioInput.checked
   );
   return checkedRadioInput?.value;
 }
@@ -580,16 +578,16 @@ async function archiveData(id) {
   if (!val) return;
   const url = SITE_URL + "/forms/formdataupdate.php";
   const response = await postData(
-      url,
-      {
-        statut: "Archivé",
-      },
-      id
+    url,
+    {
+      statut: "Archivé",
+    },
+    id
   );
 
   if (
-      (response["rows"] === undefined && response["message"]) ||
-      response["errors"]
+    (response["rows"] === undefined && response["message"]) ||
+    response["errors"]
   )
     return showAlert("Le courrier ne peut plus être archivé", "error");
   showAlert("Courrier archivé avec succès", "success");

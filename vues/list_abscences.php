@@ -40,7 +40,7 @@ ob_start();
 </head>
 
 <body>
-    <div class="container-fluid conteneur0 border border-2 border-primary" style='width:75%;'>
+    <div class="container-fluid conteneur0 border border-2 border-primary" style='width:75%; height: 75vh;'>
 
         <div class="row bg-primary border-1 ">
             <div class="cont_titre d-flex justify-content-between  p-1" style='align-items: center;'>
@@ -57,131 +57,110 @@ ob_start();
         </div>
         <!-- fin du header  -->
         <div>
-            <div class="row d-flex ">
-
-                <div class='englobe' style='width:25%;padding:0px;margin:0px;position:relative;'>
-                    <div style='width:100%;height: 91px;' class='p-1 pt-2 border border-2 mt-3 border-secondary option_cont'>
-                        <div class="text-divider-container1">
-                            <div class="text-divider">
-                                <span>Periode</span>
+            <form id="filterForm">
+                <div class="row d-flex ">
+                    <div class='englobe' style='width:25%;padding:0px;margin:0px;position:relative;'>
+                        <div style='width:100%;height: 91px;' class='p-1 pt-2 border border-2 mt-3 border-secondary option_cont'>
+                            <div class="text-divider-container1">
+                                <div class="text-divider">
+                                    <span>Periode</span>
+                                </div>
                             </div>
-
+                            <div style="display: flex; justify-content: space-between; align-items: center; ">
+                                <label for="date_debut" class="form-label">Date début </label>
+                                <input type="date" class="form-control-sm" id="date_debut">
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;" class='mt-1'>
+                                <label for="date_fin" class="form-label">Date fin </label>
+                                <input type="date" class="form-control-sm" id="date_fin">
+                            </div>
                         </div>
-                        <div style="display: flex; justify-content: space-between; align-items: center; ">
-                            <label for="date_debut" class="form-label">Date début </label>
-                            <input type="date" class="form-control-sm" id="date_debut">
-
-                        </div>
-                        <div style="display: flex; justify-content: space-between; align-items: center;" class='mt-1'>
-                            <label for="date_debut" class="form-label">Date fin </label>
-                            <input type="date" class="form-control-sm" id="date_fin">
-                        </div>
-
                     </div>
-
-                </div>
-
-                <div class='englobe mx-1' style='width:27%;padding:0px;margin:0px;position:relative;'>
-
-                    <div style='width:100%; height: 91px;' class='p-2 border border-1 option_cont border-2 mt-3 border-secondary'>
-                        <div class="text-divider-container2">
-                            <div class="text-divider">
-                                <span>Selection</span>
+                    <div class='englobe mx-1' style='width:27%;padding:0px;margin:0px;position:relative;'>
+                        <div style='width:100%; height: 91px;' class='p-2 border border-1 option_cont border-2 mt-3 border-secondary'>
+                            <div class="text-divider-container2">
+                                <div class="text-divider">
+                                    <span>Selection</span>
+                                </div>
                             </div>
-
+                            <div style="display: flex; justify-content: space-between; align-items: center; ">
+                                <label for="site" class="form-label">Site </label>
+                                <select class="form-select-sm " style='width:50%' id="site">
+                                    <option SELECTED>TOUS</option>
+                                    <option>DEPOT DOUCHE</option>
+                                    <option>DEPOT NGAOUNDERE</option>
+                                    <option>DEPOT YASSA</option>
+                                </select>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;" class='mt-1'>
+                                <label for="departement" class="form-label">Departement </label>
+                                <select class="form-select-sm " style='width:50%' id="departement">
+                                    <option SELECTED>TOUS</option>
+                                    <option>PEDIATRIE</option>
+                                    <option>APLICATION</option>
+                                    <option>ADMINISTRATEUR</option>
+                                    <option>CHAUFEUR</option>
+                                    <option>TECHNIQUE</option>
+                                    <option>COMMERCIAL</option>
+                                    <option>ENTREPOT</option>
+                                    <option>ADMINISTRATION</option>
+                                </select>
+                            </div>
                         </div>
-                        <div style="display: flex; justify-content: space-between; align-items: center; ">
-                            <label for="date_debut" class="form-label">Site </label>
-                            <select class="form-select-sm " style='width:50%'>
-                                <option SELECTED>TOUS</option>
-                                <option>DEPOT DOUCHE</option>
-                                <option>DEPOT NGAOUNDERE</option>
-                                <option>DEPOT YASSA</option>
-
-                            </select>
-                        </div>
-                        <div style="display: flex; justify-content: space-between; align-items: center;" class='mt-1'>
-                            <label for="date_debut" class="form-label" style='50%'>Departement </label>
-                            <select class="form-select-sm " style='width:50%'>
-                                <option SELECTED>TOUS</option>
-                                <option>PEDIATRIE</option>
-                                <option>APLICATION</option>
-                                <option>ADMINISTRATEUR</option>
-                                <option>CHAUFEUR</option>
-                                <option>TECHNIQUE</option>
-                                <option>COMMERCIAL</option>
-                                <option>ENTREPOT</option>
-                                <option>ADMINISTRATION</option>
-
-
-                            </select>
-                        </div>
-
-
                     </div>
-                </div>
-
-                <div class='englobe' style='width:31%;padding:0px;margin:0px;position:relative;'>
-
-
-                    <div style='width:100%;height: 91px;' class='p-2 border border-1 option_cont border-2 mt-3 border-secondary'>
-                        <div class="text-divider-container3">
-                            <div class="text-divider">
-                                <span>Etats</span>
+                    <div class='englobe' style='width:31%;padding:0px;margin:0px;position:relative;'>
+                        <div style='width:100%;height: 91px;' class='p-2 border border-1 option_cont border-2 mt-3 border-secondary'>
+                            <div class="text-divider-container3">
+                                <div class="text-divider">
+                                    <span>Etats</span>
+                                </div>
                             </div>
-
-                        </div>
-                        <div style="display: flex; justify-content: space-between; align-items: center; ">
-                            <div class="form-check" style='width:60%'>
-                                <input type="checkbox" class="form-check-input" id="check1" name="">
-                                <label class="form-check-label" for="check1">Toutes</label>
+                            <div style="display: flex; justify-content: space-between; align-items: center; ">
+                                <div class="form-check" style='width:60%'>
+                                    <input type="radio" class="form-check-input" id="check1" name="etat" value="toutes">
+                                    <label class="form-check-label" for="check1">Toutes</label>
+                                </div>
+                                <div class="form-check" style='width:40%'>
+                                    <input type="radio" class="form-check-input" id="check2" name="etat" value="en_attentes">
+                                    <label class="form-check-label" for="check2">En Attentes</label>
+                                </div>
                             </div>
-                            <div class="form-check" style='width:40%'>
-                                <input type="checkbox" class="form-check-input" id="check2" name="">
-                                <label class="form-check-label" for="check2">En Attentes</label>
-                            </div>
-                        </div>
-                        <div style="display: flex; justify-content: space-between; align-items: center; " class='mt-2'>
-                            <div class="form-check" style='width:60%'>
-                                <input type="checkbox" class="form-check-input" id="check1" name="">
-                                <label class="form-check-label" for="check1">Archivees(Accordees)</label>
-                            </div>
-                            <div class="form-check" style='width:40%'>
-                                <input type="checkbox" class="form-check-input" id="check2" name="">
-                                <label class="form-check-label" for="check2">Accordees</label>
+                            <div style="display: flex; justify-content: space-between; align-items: center; " class='mt-2'>
+                                <div class="form-check" style='width:60%'>
+                                    <input type="radio" class="form-check-input" id="check1" name="etat" value="archivees">
+                                    <label class="form-check-label" for="check1">Archivees(Accordees)</label>
+                                </div>
+                                <div class="form-check" style='width:40%'>
+                                    <input type="radio" class="form-check-input" id="check2" value="accordees" name="etat">
+                                    <label class="form-check-label" for="check2">Accordees</label>
+                                </div>
                             </div>
                         </div>
-
+                    </div>
+                    <div class='englobe1' style='width:16%;padding:0px;margin:0px;position:relative;'>
+                        <button class='boutton'>
+                            <img src="<?= SITE_URL ?>/assets/img/padlock.png" alt="" style="width: max-content; height: 20px;">
+                        </button>
+                        <select class="form-select-sm mt-5 " style='width:95%;margin-left:10px' id="salaire">
+                            <option SELECTED>TOUS</option>
+                            <option>UN SALAIRE</option>
+                        </select>
                     </div>
                 </div>
-
-                <div class='englobe1' style='width:16%;padding:0px;margin:0px;position:relative;'>
-                    <button class='boutton'>
-                        <img src="<?= SITE_URL ?>/assets/img/padlock.png" alt="" style="width: max-content; height: 20px;">
-
-                    </button>
-                    <select class="form-select-sm mt-5 " style='width:95%;margin-left:10px'>
-                        <option SELECTED>TOUS</option>
-                        <option>UN SALAIRE</option>
-
-                    </select>
-
-                </div>
-            </div>
+            </form>
         </div>
         <!-- fin de la div qui suit  -->
 
 
-        <div class="row " style='height:400px;'>
-            <div class="table-responsive debut_tableau w-100">
-
-                <table class="table table-bordered  ">
-                    <thead>
-                        <tr class="table-secondary text-center table-dark ">
-                            <th style='font-size:13px; ' class='px-5'>Site</th>
+        <div class="row " style='height: clamp(400px, 80%, 55vh);'>
+            <div class="table-responsive debut_tableau w-100 h-100">
+                <table class="table table-bordered " style="position: relative; text-align: center;">
+                    <thead style="position: sticky; top: 0;">
+                        <tr class="table-secondary text-center table-dark">
+                            <th style='font-size:13px;' class='px-5'>Site</th>
                             <th style='font-size:13px;' class='px-5'>Departement</th>
                             <th style='font-size:13px;' class='px-5'>Civilite</th>
-                            <th style='font-size:13px; ' class='px-5'>Nom</th>
+                            <th style='font-size:13px;' class='px-5'>Nom</th>
                             <th style='font-size:13px;' class='px-5'>Prenom</th>
                             <th style='font-size:13px;' class='px-5'>Motif</th>
                             <th style='font-size:13px;' class='px-5'>Debut</th>
@@ -195,14 +174,10 @@ ob_start();
                             <th style='font-size:13px;' class='px-5'>CreePar</th>
                             <th style='font-size:13px;' class='px-5'>AccordeePar</th>
                             <th style='font-size:13px;' class='px-5'>Archive</th>
-
-
                         </tr>
                     </thead>
-                    <tbody>
-
+                    <tbody id="fillTableau">
                         <tr class="table-primary custom-row text-center text-white" style='background-color:#0D6EFD;'>
-
                             <td class='text-white' style='background-color:#0D6EFD;'>DEMO</td>
                             <td class='text-white' style='background-color:#0D6EFD;'>APPLICATION</td>
                             <td class='text-white' style='background-color:#0D6EFD;'>Mademoiselle</td>
@@ -225,14 +200,17 @@ ob_start();
                     </tbody>
                 </table>
             </div>
-
-
         </div>
 
         <!-- debut de la div tableau -->
 
-
         <style>
+            table>tbody>tr:nth-of-type(2n +1)>td {
+                color: #000 !important;
+                background-color: #FFF !important;
+                font-weight: 500;
+            }
+
             .debut_tableau {
 
                 border-bottom: none;
@@ -262,10 +240,7 @@ ob_start();
                 }
             }
         </style>
-
         <!-- fin div tableau  -->
-
-
         <!-- la div du footer  -->
         <div class="row d-flex justify-content-between bg-primary bout-bas p-2 ">
             <div style='width:87%;' class=' d-flex justify-content-between'>
@@ -311,17 +286,32 @@ ob_start();
             <!--  css du haut  -->
         </div>
 
-
         <!-- fin div footer  -->
-
-
-
-
-
 
     </div>
     <!-- fin de la grande div  -->
 
+    <template id="absTemplate">
+        <tr class="table-primary custom-row text-center text-white">
+            <td class='text-white' style='background-color:#0D6EFD;' data-site></td>
+            <td class='text-white' style='background-color:#0D6EFD;' data-departement></td>
+            <td class='text-white' style='background-color:#0D6EFD;' data-civilite></td>
+            <td class='text-white' style='background-color:#0D6EFD;' data-nom></td>
+            <td class='text-white' style='background-color:#0D6EFD;' data-prenom></td>
+            <td class='text-white' style='background-color:#0D6EFD;' data-motif></td>
+            <td class='text-white' style='background-color:#0D6EFD;' data-debut></td>
+            <td class='text-white' style='background-color:#0D6EFD;' data-fin></td>
+            <td class='text-white' style='background-color:#0D6EFD;' data-justification></td>
+            <td class='text-white' style='background-color:#0D6EFD;' data-block_pointage></td>
+            <td class='text-white' style='background-color:#0D6EFD;' data-recuperable></td>
+            <td class='text-white' style='background-color:#0D6EFD;' data-deduiresurconges></td>
+            <td class='text-white' style='background-color:#0D6EFD;' data-anneecomptable></td>
+            <td class='text-white' style='background-color:#0D6EFD;' data-matricule></td>
+            <td class='text-white' style='background-color:#0D6EFD;' data-creepar></td>
+            <td class='text-white' style='background-color:#0D6EFD;' data-accordeepar></td>
+            <td class='text-white' style='background-color:#0D6EFD;' data-archive></td>
+        </tr>
+    </template>
 
 
 </body>
@@ -471,47 +461,169 @@ ob_start();
 <!-- evenement sur les bouttons  -->
 
 <script>
-    document.getElementById("new").addEventListener("click", function() {
+    document.getElementById("new").addEventListener("click", () => window.open("<?= SITE_URL ?>/gestion_abscences", "_blank"));
+</script>
 
-        var nouvellePageURL = "http://localhost/Iplans/gestion_abscences";
-        window.open(nouvellePageURL, "_blank");
+
+<script type="module">
+    const absTemplate = document.getElementById("absTemplate");
+    const fillTableau = document.getElementById("fillTableau");
+
+    /**
+     * Updates the table with the given data by cloning an element and setting its values.
+     *
+     * @param {Element} table - The table element to update.
+     * @param {Object} data - The data object containing the values to set.
+     * @param {DocumentFragment} elementClone - The cloned element to update with the data values.
+     */
+    function updatePERMISSIONTable(table, data = {}, elementClone) {
+        const element = elementClone.content.cloneNode(true);
+        const pers = {
+            Site: "site",
+            departement: "departement",
+            type: "motif",
+            debut: "debut",
+            fin: "fin",
+            Notes: "justification",
+            block_pointage: "block_pointage",
+            reccuperable: "recuperable",
+            deduireSurConges: "deduiresurconges",
+            anneeComptable: "anneecomptable",
+            matricule: "matricule",
+            CreePar: "creepar",
+            AccordeePar: "accordeepar",
+            Archive: "archive",
+        };
+
+        Object.entries(data).forEach(([key, value]) => {
+            if (key in pers) {
+                setValue(pers[key], value, {
+                    parent: element
+                });
+            }
+        });
+        table.appendChild(element);
+    }
+
+    /**
+     * Sets the value of an element with a specific data attribute.
+     *
+     * @param {string} dataAttribute - The data attribute to search for.
+     * @param {any} value - The value to set on the element.
+     * @param {Object} options - The options object.
+     * @param {HTMLElement} options.parent - The parent element to search within (default: document).
+     */
+    function setValue(dataAttribute, value, {
+        parent = document
+    } = {}) {
+        const element = parent.querySelector(`[data-${dataAttribute}]`);
+        if (element) {
+            element.textContent = value;
+        }
+    }
+
+    const response = await fetch("<?= PERMISSION_API_URL ?>");
+    const absences = await response.json();
+
+    fillTableau.innerHTML = '';
+    for (const absence of absences) {
+        updatePERMISSIONTable(fillTableau, absence, absTemplate);
+    }
+
+    // try {
+    // } catch (error) {
+    //     null;
+    // }
+    let siteFiltre, departementFiltre, etatFiltre, salaireFiltre;
+
+    const filterForm = document.getElementById("filterForm");
+    const dateDebut = document.getElementById("date_debut");
+    const dateFin = document.getElementById("date_fin");
+
+    filterForm.addEventListener("change", (event) => {
+        let absOutput = absences;
+        const start = filterForm.querySelector("#date_debut").value;
+        const end = filterForm.querySelector("#date_fin").value;
+        if (event.target.id === "date_debut" || event.target.id === "date_fin")
+            useDateFiltre(start, end, absOutput);
+        if (event.target.id === "site") siteFiltre = event.target.value;
+        if (event.target.id === "departement") departementFiltre = event.target.value;
+        if (event.target.name === "etat") etatFiltre = event.target.value;
+        if (event.target.id === "salaire") salaireFiltre = event.target.value;
+
+        if (siteFiltre) useSiteFiltre(siteFiltre, absOutput)
+        if (departementFiltre) useDepartementFiltre(departementFiltre, absOutput);
+        if (etatFiltre) useEtatFiltre(etatFiltre, absOutput);
+        if (salaireFiltre) useSalaireFiltre(salaireFiltre, absOutput);
+
+        fillTableau.innerHTML = '';
+        for (const absence2 of absOutput) {
+            updatePERMISSIONTable(fillTableau, absence2, absTemplate);
+        }
     });
+
+    /**
+     * @param {string} start
+     * @param {string} end
+     * @param {Array} data 
+     */
+    function useDateFiltre(start, end, data) {
+        if (start && end) {
+            return data.filter(
+                (absence) => {
+                    const date = new Date(absence.debut);
+                    return date >= new Date(start) && date <= new Date(end);
+                }
+            )
+        }
+    }
+
+    /**
+     * @param {string} site
+     * @param {Array} data
+     * @returns {Array}
+     */
+    function useSiteFiltre(site, data) {
+        return data.filter((absence) => absence.site === site)
+    }
+    /**
+     * @param {string} departement
+     * @param {Array} data
+     * @returns {Array}
+     */
+    function useDepartementFiltre(departement, data) {
+        return data.filter((absence) => absence.departement === departement);
+    }
+    /**
+     * @param {string} etat
+     * @param {Array} data
+     * @returns {Array}
+     */
+    function useEtatFiltre(etat, data) {
+        if (etat === "toutes") return data
+        if (etat === "archivees") {
+            return data.filter(
+                (absence) => absence?.Archive > 0
+            )
+        } else {
+            return data.filter(
+                (absence) => absence?.etat === etat
+            )
+        }
+    }
+    /**
+     * @param {string} salaire
+     * @param {Array} data
+     * @returns {Array}
+     */
+    function useSalaireFiltre(salaire, data) {
+        return data.filter(
+            (absence) => absence?.salaire === salaire
+        )
+    }
 </script>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <?php
 

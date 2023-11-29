@@ -68,12 +68,7 @@ ob_start();
                             <p>Parametrage Frais de Mission</p>
                             <button class="loupe"><i class="fas fa-search"></i></button>
                         </div>
-
                     </div>
-
-
-
-
                 </div>
             </div>
         </div>
@@ -108,10 +103,10 @@ ob_start();
                 <p>Planning Horaires</p>
             </button>
             <button class="btn"> <i class="fas fa-unlock-alt"></i>
-                <p>Mission</p>
+                <a href="<?= SITE_URL ?>/list_mission">Mission</a>
             </button>
             <button class="btn"> <i class="fas fa-calendar-minus"></i>
-                <p>Absences</p>
+                <a href="<?= SITE_URL ?>/list_abscences">Absences</a>
             </button>
             <button class="btn"> <i class="fas fa-suitcase-rolling"></i>
                 <p>Congés</p>
@@ -762,33 +757,6 @@ ob_start();
                             </div>
                         </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                         <section class="econte2">
                             <div class="class1">
                                 <div class="class2 spec1">
@@ -904,9 +872,6 @@ ob_start();
 
                                 </div>
                             </div>
-
-
-
 
                         </section>
 
