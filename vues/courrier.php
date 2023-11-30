@@ -321,7 +321,7 @@ foreach ($d as $pack) {
               <?php
               // Get site from database through API
               curl_setopt_array($curl, [
-                CURLOPT_URL => "http://localhost/courrier/site",
+                CURLOPT_URL => COURRIER_API_URL . "site",
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_ENCODING => "",
                 CURLOPT_MAXREDIRS => 10,

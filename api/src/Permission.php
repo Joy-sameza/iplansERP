@@ -7,11 +7,50 @@ class Permission
 
     //Properties for pers
     public $courrierId;
-    public $site;
-    public $date;
-
-    public $indexe;
-    public $codebanque;
+        public $site;
+        public $date;
+        public $indexe;
+        public $codebanque;
+        public $code;
+        public $type;
+        public $matricule;
+        public $departement;
+        public $debut;
+        public $fin;
+        public $note;
+        public $block_pointage;
+        public $ibblockpointage;
+        public $reccuperable;
+        public $deduiresurconges;
+        public $anneecomptable;
+        public $iddatedebut;
+        public $iddatefin;
+        public $creepar;
+        public $accordeepar;
+        public $demande;
+        public $datecreation;
+        public $iddatecreation;
+        public $archive;
+        public $synchronization;
+        public $lastupdatetime;
+        public $idlastupdate;
+        public $userlastupdatetime;
+        public $codeagence;
+        public $indexgroupement;
+        public $indexevenement;
+        public $datetime;
+        public $userdatetime;
+        public $archiveiddate;
+        public $archiveuser;
+        public $archivemotif;
+        public $archivedefinitive;
+        public $archivedefinitiveiddate;
+        public $archivedefinitivedate;
+        public $archivedefinitiveuser;
+        public $archivedefinitivemotif;
+        public $anneeComptable;
+        public $archivedate;
+        public $iddatetime;
 
 
     /**
@@ -111,49 +150,47 @@ class Permission
     {
         $query = "INSERT INTO {$this->table} 
                     SET  
-    
-  
- Site = :site,      
- Indexe = :indexe,
- code =  :code,
-type =  :type,
-matricule = :matricule,
- departement = :departement,
- debut = :debut,
-fin =    :fin,
-Note =  :note,
-block_pointage = :block_pointage,
-  IDBlockPointage = :ibblockpointage,
-  reccuperable =  :reccuperable,
-deduireSurConges =  :deduiresurconges,
-anneeComptable =  :anneecomptable,
-IDDateDebut = :iddatedebut,
- IDDateFin =  :iddatefin,
- CreePar = :creepar,
-  AccordeePar=  :accordeepar,
- Demande =       :demande,
- DateCreation =  :datecreation,
-  IDDateCreation =  :iddatecreation,
- Archive =    :archive,
- Synchronization =  :synchronization,
-  LastUpDateTime =   :lastupdatetime,
- IDLastUpDate =     :idlastupdate,
- UserLastUpDateTime =  :userlastupdatetime,
- CodeAgence =          :codeagence,
- DateTime =            :datetime,
-IndexGroupement =   :indexgroupement,
- IndexEvenement =    :indexevenement,
- IDDateTime =          :iddatetime,  
-UserDateTime =          :userdatetime,
- ArchiveIDDate =         :archiveiddate,
- ArchiveDate =      :archivedate,
- ArchiveUser = :archiveuser,
-  ArchiveMotif =  :archivemotif,
- ArchiveDefinitive = :archivedefinitive,
- ArchiveDefinitiveIDDate =  :archivedefinitiveiddate,
-ArchiveDefinitiveDate =  :archivedefinitivedate,
- ArchiveDefinitiveUser =  :archivedefinitiveuser,
- ArchiveDefinitiveMotif = :archivedefinitivemotif
+                        Site = :site,      
+                        Indexe = :indexe,
+                        code =  :code,
+                        type =  :type,
+                        matricule = :matricule,
+                        departement = :departement,
+                        debut = :debut,
+                        fin =    :fin,
+                        Note =  :note,
+                        block_pointage = :block_pointage,
+                        IDBlockPointage = :ibblockpointage,
+                        reccuperable =  :reccuperable,
+                        deduireSurConges =  :deduiresurconges,
+                        anneeComptable =  :anneecomptable,
+                        IDDateDebut = :iddatedebut,
+                        IDDateFin =  :iddatefin,
+                        CreePar = :creepar,
+                        AccordeePar=  :accordeepar,
+                        Demande =       :demande,
+                        DateCreation =  :datecreation,
+                        IDDateCreation =  :iddatecreation,
+                        Archive =    :archive,
+                        Synchronization =  :synchronization,
+                        LastUpDateTime =   :lastupdatetime,
+                        IDLastUpDate =     :idlastupdate,
+                        UserLastUpDateTime =  :userlastupdatetime,
+                        CodeAgence =          :codeagence,
+                        DateTime =            :datetime,
+                        IndexGroupement =   :indexgroupement,
+                        IndexEvenement =    :indexevenement,
+                        IDDateTime =          :iddatetime,  
+                        UserDateTime =          :userdatetime,
+                        ArchiveIDDate =         :archiveiddate,
+                        ArchiveDate =      :archivedate,
+                        ArchiveUser = :archiveuser,
+                        ArchiveMotif =  :archivemotif,
+                        ArchiveDefinitive = :archivedefinitive,
+                        ArchiveDefinitiveIDDate =  :archivedefinitiveiddate,
+                        ArchiveDefinitiveDate =  :archivedefinitivedate,
+                        ArchiveDefinitiveUser =  :archivedefinitiveuser,
+                        ArchiveDefinitiveMotif = :archivedefinitivemotif
 
                 ";
         $stmt = $this->conn->prepare($query);
@@ -175,30 +212,31 @@ ArchiveDefinitiveDate =  :archivedefinitivedate,
         //data
 
         $this->type = htmlspecialchars(strip_tags($data['type']));
-        $this->code = htmlspecialchars(strip_tags($data['code']??0));
+        $this->code = htmlspecialchars(strip_tags($data['code'] ?? 0));
         $this->debut = htmlspecialchars(strip_tags($data['debut']));
         $this->fin = htmlspecialchars(strip_tags($data['fin']));
-        $this->accordeepar= htmlspecialchars(strip_tags($data['AccordeePar']));
+        $this->accordeepar = htmlspecialchars(strip_tags($data['AccordeePar']));
         $this->deduiresurconges = htmlspecialchars(strip_tags($data['deduireSurConges']));
         $this->anneeComptable = htmlspecialchars(strip_tags($data['anneeComptable']));
         $this->reccuperable = htmlspecialchars(strip_tags($data['reccuperable']));
-        $this->departement = htmlspecialchars(strip_tags($data['departement']??0));
+        $this->departement = htmlspecialchars(strip_tags($data['departement'] ?? 0));
         $this->block_pointage = htmlspecialchars(strip_tags($data['block_pointage']));
-        $this->ibblockpointage = htmlspecialchars(strip_tags($data['IDBlockPointage']));
         $this->demande = htmlspecialchars(strip_tags($data['Demande']));
+
+        $this->ibblockpointage = htmlspecialchars(strip_tags($data['IDBlockPointage']));
         $this->indexgroupement = htmlspecialchars(strip_tags($data['IndexGroupement']));
-        $this->archivedefinitive= htmlspecialchars(strip_tags($data['ArchiveDefinitive']??0));
-        $this->archivemotif= htmlspecialchars(strip_tags($data['ArchiveMotif']??0));
-        $this->archivedefinitive= htmlspecialchars(strip_tags($data['ArchiveDefinitive']??0));
-        $this->archivedefinitivedate= htmlspecialchars(strip_tags($data['ArchiveDefinitiveDate']??0));
-        $this->indexevenement= htmlspecialchars(strip_tags($data['IndexEvenement']??0));
-        $this->datecreation= htmlspecialchars(strip_tags($data['DateCreation']??0));
-        $this->iddatecreation= htmlspecialchars(strip_tags($data['IDDateCreation']??0));
+        $this->archivedefinitive = htmlspecialchars(strip_tags($data['ArchiveDefinitive'] ?? 0));
+        $this->archivemotif = htmlspecialchars(strip_tags($data['ArchiveMotif'] ?? 0));
+        $this->archivedefinitive = htmlspecialchars(strip_tags($data['ArchiveDefinitive'] ?? 0));
+        $this->archivedefinitivedate = htmlspecialchars(strip_tags($data['ArchiveDefinitiveDate'] ?? 0));
+        $this->indexevenement = htmlspecialchars(strip_tags($data['IndexEvenement'] ?? 0));
+        $this->datecreation = htmlspecialchars(strip_tags($data['DateCreation'] ?? 0));
+        $this->iddatecreation = htmlspecialchars(strip_tags($data['IDDateCreation'] ?? 0));
 
-
-
+        
         $i = 0;
         $tmp = mt_rand(0, 9);
+        // str_pad($tmp, 24, mt_rand(0, 9));
         do {
             $tmp .= mt_rand(0, 9);
         } while (++$i < 24);
@@ -214,13 +252,13 @@ ArchiveDefinitiveDate =  :archivedefinitivedate,
         $lastupdatetime = $datetime;
         $idlastupdate = $iddatetime;
         $userdatetime = $login;
-        $archiveiddate=strtotime(date('H:i:s', time() - 1 * 60 * 60));
-        $archiveuser=$login;
-        $archivedefintiveiddate=strtotime(date('H:i:s', time() - 1 * 60 * 60));
-        $archivedefinitiveuser=$login;
-     $idfin=strtotime($this->fin);
-        $iddebut=strtotime($this->debut);
-     $matricule=$site['Site'].$uniqueId;
+        $archiveiddate = strtotime(date('H:i:s', time() - 1 * 60 * 60));
+        $archiveuser = $login;
+        $archivedefintiveiddate = strtotime(date('H:i:s', time() - 1 * 60 * 60));
+        $archivedefinitiveuser = $login;
+        $idfin = strtotime($this->fin);
+        $iddebut = strtotime($this->debut);
+        $matricule = $site['Site'] . $uniqueId;
 
         //Bind data
         $stmt->bindParam(':lastupdatetime', $lastupdatetime, PDO::PARAM_STR);
@@ -235,13 +273,13 @@ ArchiveDefinitiveDate =  :archivedefinitivedate,
         $stmt->bindParam(':datecreation', $this->date, PDO::PARAM_STR);
         $stmt->bindParam(':synchronization', $synchronization, PDO::PARAM_STR);
         $stmt->bindParam(':iddatefin', $idfin, PDO::PARAM_INT);
-        $stmt->bindParam(':iddatedebut',$iddebut, PDO::PARAM_INT);
+        $stmt->bindParam(':iddatedebut', $iddebut, PDO::PARAM_INT);
         $stmt->bindParam(':code', $this->code, PDO::PARAM_INT);
 
         $stmt->bindParam(':note', $this->type, PDO::PARAM_INT);
         $stmt->bindParam(':type', $this->type, PDO::PARAM_INT);
         $stmt->bindParam(':debut', $this->debut, PDO::PARAM_STR);
-        $stmt->bindParam(':fin', $this->fin , PDO::PARAM_STR);
+        $stmt->bindParam(':fin', $this->fin, PDO::PARAM_STR);
         $stmt->bindParam(':block_pointage', $this->block_pointage, PDO::PARAM_INT);
         $stmt->bindParam(':ibblockpointage', $this->ibblockpointage, PDO::PARAM_INT);
         $stmt->bindParam(':reccuperable', $this->reccuperable, PDO::PARAM_INT);
@@ -277,51 +315,49 @@ ArchiveDefinitiveDate =  :archivedefinitivedate,
     public function update(array $current, array $new_data): int | bool
     {
         $query = "UPDATE {$this->table} 
-        SET 
-  
- Site = :site,      
- Indexe = :indexe,
- code =  :code,
-type =  :type,
-matricule = :matricule,
- departement = :departement,
- debut = :debut,
-fin =    :fin,
-Note =  :note,
-block_pointage = :block_pointage,
-  IDBlockPointage = :ibblockpointage,
-  reccuperable =  :reccuperable,
-deduireSurConges =  :deduiresurconges,
-anneeComptable =  :anneecomptable,
-IDDateDebut = :iddatedebut,
- IDDateFin =  :iddatefin,
- CreePar = :creepar,
-  AccordeePar=  :accordeepar,
- Demande =       :demande,
- DateCreation =  :datecreation,
-  IDDateCreation =  :iddatecreation,
- Archive =    :archive,
- Synchronization =  :synchronization,
-  LastUpDateTime =   :lastupdatetime,
- IDLastUpDate =     :idlastupdate,
- UserLastUpDateTime =  :userlastupdatetime,
- CodeAgence =          :codeagence,
- DateTime =            :datetime,
-IndexGroupement =   :indexgroupement,
- IndexEvenement =    :indexevenement,
- IDDateTime =          :iddatetime,  
-UserDateTime =          :userdatetime,
- ArchiveIDDate =         :archiveiddate,
- ArchiveDate =      :archivedate,
- ArchiveUser = :archiveuser,
-  ArchiveMotif =  :archivemotif,
- ArchiveDefinitive = :archivedefinitive,
- ArchiveDefinitiveIDDate =  :archivedefinitiveiddate,
-ArchiveDefinitiveDate =  :archivedefinitivedate,
- ArchiveDefinitiveUser =  :archivedefinitiveuser,
- ArchiveDefinitiveMotif = :archivedefinitivemotif
-
-        WHERE NEng = :courrierId";
+                    SET 
+                        Site = :site,      
+                        Indexe = :indexe,
+                        code =  :code,
+                        type =  :type,
+                        matricule = :matricule,
+                        departement = :departement,
+                        debut = :debut,
+                        fin =    :fin,
+                        Note =  :note,
+                        block_pointage = :block_pointage,
+                        IDBlockPointage = :ibblockpointage,
+                        reccuperable =  :reccuperable,
+                        deduireSurConges =  :deduiresurconges,
+                        anneeComptable =  :anneecomptable,
+                        IDDateDebut = :iddatedebut,
+                        IDDateFin =  :iddatefin,
+                        CreePar = :creepar,
+                        AccordeePar=  :accordeepar,
+                        Demande =       :demande,
+                        DateCreation =  :datecreation,
+                        IDDateCreation =  :iddatecreation,
+                        Archive =    :archive,
+                        Synchronization =  :synchronization,
+                        LastUpDateTime =   :lastupdatetime,
+                        IDLastUpDate =     :idlastupdate,
+                        UserLastUpDateTime =  :userlastupdatetime,
+                        CodeAgence =          :codeagence,
+                        DateTime =            :datetime,
+                        IndexGroupement =   :indexgroupement,
+                        IndexEvenement =    :indexevenement,
+                        IDDateTime =          :iddatetime,  
+                        UserDateTime =          :userdatetime,
+                        ArchiveIDDate =         :archiveiddate,
+                        ArchiveDate =      :archivedate,
+                        ArchiveUser = :archiveuser,
+                        ArchiveMotif =  :archivemotif,
+                        ArchiveDefinitive = :archivedefinitive,
+                        ArchiveDefinitiveIDDate =  :archivedefinitiveiddate,
+                        ArchiveDefinitiveDate =  :archivedefinitivedate,
+                        ArchiveDefinitiveUser =  :archivedefinitiveuser,
+                        ArchiveDefinitiveMotif = :archivedefinitivemotif
+                    WHERE NEng = :courrierId";
         $stmt = $this->conn->prepare($query);
 
         $login = $_SESSION["login"]["nom"] ?? "NONO";
@@ -366,7 +402,6 @@ ArchiveDefinitiveDate =  :archivedefinitivedate,
         $this->indexevenement = htmlspecialchars(strip_tags($new_data['IndexEvenement'] ?? $current['IndexEvenement']));
         $this->iddatetime = htmlspecialchars(strip_tags($new_data['IDDateTime'] ?? $current['IDDateTime ']));
         $this->datetime = htmlspecialchars(strip_tags($new_data['UserDateTime'] ?? $current['UserDateTime ']));
-        $this->iddatetime = htmlspecialchars(strip_tags($new_data['ArchiveIDDate'] ?? $current['ArchiveIDDate']));
         $this->userdatetime = htmlspecialchars(strip_tags($new_data['UserDateTime'] ?? $current['UserDateTime']));
         $this->archivedate = htmlspecialchars(strip_tags($new_data['ArchiveDate'] ?? $current['ArchiveDate ']));
         $this->archiveiddate = htmlspecialchars(strip_tags($new_data['ArchiveIDDate'] ?? $current['ArchiveIDDate']));
@@ -375,7 +410,7 @@ ArchiveDefinitiveDate =  :archivedefinitivedate,
         $this->archivemotif = htmlspecialchars(strip_tags($new_data['ArchiveMotif'] ?? $current['ArchiveMotif']));
         $this->archivedefinitive = htmlspecialchars(strip_tags($new_data['ArchiveDefinitive'] ?? $current['ArchiveDefinitive']));
         $this->archivedefinitiveiddate = htmlspecialchars(strip_tags($new_data['ArchiveDefinitiveIDDate'] ?? $current['ArchiveDefinitiveIDDate ']));
-        $this->archivedefinitivedate= htmlspecialchars(strip_tags($new_data['ArchiveDefinitiveDate'] ?? $current['ArchiveDefinitiveDate']));
+        $this->archivedefinitivedate = htmlspecialchars(strip_tags($new_data['ArchiveDefinitiveDate'] ?? $current['ArchiveDefinitiveDate']));
         $this->archivedefinitiveuser = htmlspecialchars(strip_tags($new_data['ArchiveDefinitiveUser'] ?? $current['ArchiveDefinitiveUser']));
         $this->archivedefinitivemotif = htmlspecialchars(strip_tags($new_data['ArchiveDefinitiveMotif'] ?? $current['ArchiveDefinitiveMotif']));
 
@@ -400,10 +435,10 @@ ArchiveDefinitiveDate =  :archivedefinitivedate,
         $lastupdatetime = $datetime;
         $idlastupdate = $iddatetime;
         $userdatetime = $login;
-        $archiveiddate=strtotime(date('H:i:s', time() - 1 * 60 * 60));
-        $archiveuser=$login;
-        $archivedefintiveiddate=strtotime(date('H:i:s', time() - 1 * 60 * 60));
-        $archivedefinitiveuser=$login;
+        $archiveiddate = strtotime(date('H:i:s', time() - 1 * 60 * 60));
+        $archiveuser = $login;
+        $archivedefintiveiddate = strtotime(date('H:i:s', time() - 1 * 60 * 60));
+        $archivedefinitiveuser = $login;
 
 
         //Bind data
@@ -419,13 +454,13 @@ ArchiveDefinitiveDate =  :archivedefinitivedate,
         $stmt->bindParam(':datecreation', $this->date, PDO::PARAM_STR);
         $stmt->bindParam(':synchronization', $synchronization, PDO::PARAM_STR);
         $stmt->bindParam(':iddatefin', $idfin, PDO::PARAM_INT);
-        $stmt->bindParam(':iddatedebut',$iddebut, PDO::PARAM_INT);
+        $stmt->bindParam(':iddatedebut', $iddebut, PDO::PARAM_INT);
         $stmt->bindParam(':code', $this->code, PDO::PARAM_INT);
 
         $stmt->bindParam(':note', $this->type, PDO::PARAM_INT);
         $stmt->bindParam(':type', $this->type, PDO::PARAM_INT);
         $stmt->bindParam(':debut', $this->debut, PDO::PARAM_STR);
-        $stmt->bindParam(':fin', $this->fin , PDO::PARAM_STR);
+        $stmt->bindParam(':fin', $this->fin, PDO::PARAM_STR);
         $stmt->bindParam(':block_pointage', $this->block_pointage, PDO::PARAM_INT);
         $stmt->bindParam(':ibblockpointage', $this->ibblockpointage, PDO::PARAM_INT);
         $stmt->bindParam(':reccuperable', $this->reccuperable, PDO::PARAM_INT);
