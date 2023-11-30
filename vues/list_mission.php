@@ -61,6 +61,9 @@ ob_start();
         <div class="row" style='background-color: #ebedef '>
             <div style="display: flex; justify-content: space-between; align-items: center;">
 
+<<<<<<< HEAD
+                        <div class="tooltip47 my-2">
+=======
                 <div style="display: flex; justify-content: space-between; align-items: center; width:40%;">
                     <div style="display: flex; justify-content: space-between; align-items: center; width:53%">
                         <label for="deplacement" class="form-label"><strong>Période Du</strong> </label>
@@ -76,6 +79,7 @@ ob_start();
                 </div>
 
                 <div class="tooltip47 my-2"">
+>>>>>>> 00b808bd250616d5657ffb3e3db71e5dfbd04cba
                          <button  class='border border-secondary bg-secondary border-1'>
                             <img  src=" <?= SITE_URL ?>/assets/img/padlock.png" alt="" style="width: max-content; height: 20px;">
                     <span class="tooltiptext47">Verrouiller</span>

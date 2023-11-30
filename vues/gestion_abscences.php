@@ -420,6 +420,17 @@ ob_start();
 
 <!-- ... evenements sur les bouttons ... -->
 
+
+    <script>
+        document.getElementById("accorder").addEventListener("click", function() {
+            // Spécifiez l'URL de la nouvelle page que vous souhaitez ouvrir
+            var nouvellePageURL = "http://localhost/Iplans/fiche_message";
+             console.log('click')
+            // Ouvrir la nouvelle page dans une nouvelle fenêtre
+            window.open(nouvellePageURL, "_blank");
+        });
+    </script>
+
 <script>
     document.getElementById("accorder").addEventListener("click", function() {
         // Spécifiez l'URL de la nouvelle page que vous souhaitez ouvrir
@@ -450,6 +461,7 @@ ob_start();
         console.error(error);
     }
 </script>
+
 
 </html>
 

@@ -1,27 +1,31 @@
-body{
-	background-color:aliceblue ;
+body {
+	background-color: rgb(235, 241, 241);
+
 }
 
-.nomE h1{
+.nomE h1 {
 	text-align: center;
 	font-size: 30px;
 	margin-top: -90px;
-	font-family: Lucida Bright;
+
 }
 
-.logo img{
+.logo img {
 	width: 250px;
 	margin-top: 20px;
 }
-label{
+
+label {
 	font-size: 40px;
 
 }
-main{
+
+main {
 	margin-top: 140px;
 
 }
-main  p{
+
+main p {
 	text-align: center;
 }
 
@@ -34,21 +38,24 @@ div select {
 	margin-left: 5px;
 	border-radius: 12px;
 }
-div select option{
+
+div select option {
 	font-size: 15px;
 	border-radius: 12px;
 }
-.logo2 p{
+
+.logo2 p {
 	text-align: right;
 }
-.logo2 img{
+
+.logo2 img {
 	width: 120px;
 	margin-top: -111px;
 }
 
-main  p input{
+main p input {
 	margin-top: 15px;
-	background-color:turquoise ;
+	background-color: turquoise;
 	width: 100px;
 	height: 26px;
 	margin-left: 10px;
@@ -56,6 +63,6 @@ main  p input{
 	border-radius: 12px;
 }
 
-main input:hover{
-	background-color: #2084c6;
+main input:hover {
+	background-color: #e3e9ec;
 }
