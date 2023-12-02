@@ -56,136 +56,98 @@ ob_start();
                     <button class="close_window" style="width: 30px; height: 30px; background-color: red; border: none;"> <i class="fas fa-close svg-close" style='color:white;'></i></button>
                 </div>
             </div>
-        </div>
-        <!-- fin header  -->
-
-        <h2 class='text-center titre py-1'>GESTIONS DES ABSCENCES</h2>
-
-        <div class="row">
-            <div class="col-8 param m-1 ">
-
-
-
-                <div class='row border border-2 para mt-3'>
-                    <div class="col-6 param1 " style='position: relative;'>
-                        <!-- ceci ne concerne que text divider -->
-                        <div class="text-divider-container">
-                            <div class="text-divider">
-                                <span>Parametres</span>
+            <!-- fin header  -->
+            <h2 class='text-center titre py-1'>GESTIONS DES ABSCENCES</h2>
+            <div class="row">
+                <div class="col-8 param m-1 ">
+                    <div class='row border border-2 para mt-3'>
+                        <div class="col-6 param1 " style='position: relative;'>
+                            <!-- ceci ne concerne que text divider -->
+                            <div class="text-divider-container">
+                                <div class="text-divider">
+                                    <span>Parametres</span>
+                                </div>
                             </div>
-                        </div>
-
-                        <div style="display: flex; justify-content: space-between; align-items: center; " class='mt-3'>
-                            <label for="date_debut" class="form-label">Motif </label>
-                            <select class="form-select-sm " style='width:80%'>
-                                <option selected>FERRIE</option>
-                                <option>REPOS</option>
-                                <option>ECOLE</option>
-                                <option>GREVES</option>
-                                <option>MISSIONS</option>
-                                <option>PERMISSION</option>
-                                <option>SUSPENSION</option>
-                                <option>MATERNITE</option>
-                                <option>RECUPERATION</option>
-                                <option>FAUTE TECHNIQUE</option>
-                                <option>CONGE ANNUEL</option>
-                                <option>PROLONGEMENT MISSION</option>
-
-                            </select>
-                        </div>
-
-
-                        <div style="display: flex; justify-content: space-between; align-items: center;" class='mt-2'>
-                            <label for="date_debut" class="form-label">Debut </label>
-                            <input type="date" class="form-control-sm" id="date_fin">
-                        </div>
-                        <div style="display: flex; justify-content: space-between; align-items: center;" class='mt-2'>
-                            <label for="date_debut" class="form-label">Fin </label>
-                            <input type="date" class="form-control-sm" id="date_fin">
-                        </div>
-
-
-
-                        <div class='mt-2' style="display: flex; justify-content: space-between; align-items: center; ">
-                            <div class="form-check" style='width:50%'>
-                                <input type="checkbox" class="form-check-input" id="check1" name="" checked>
-                                <label class="form-check-label" for="check1">Appliquer a</label>
-                            </div>
-                            <div class="form-check" style='width:50%'>
-
-
-
-                                <select class="form-select-sm " style='width:100%'>
-                                    <option selected>TOUS</option>
-                                    <option>ADMINISTRATIF</option>
-                                    <option>ADMINISTRATION</option>
-                                    <option>APPLICATION</option>
-                                    <option>CHAUFFEUR</option>
-                                    <option>COMMERCIAL</option>
-                                    <option>ENTREPOT</option>
-                                    <option>INFO</option>
-                                    <option>PEDIATRIE</option>
-                                    <option>TECHNIQUE</option>
-
-
+                            <div style="display: flex; justify-content: space-between; align-items: center; " class='mt-3'>
+                                <label for="motif" class="form-label">Motif </label>
+                                <select class="form-select-sm " style='width:80%' name="motif" id="motif" required aria-required="true">
+                                    <option></option>
+                                    <option>FERRIE</option>
+                                    <option>REPOS</option>
+                                    <option>ECOLE</option>
+                                    <option>GREVES</option>
+                                    <option>MISSIONS</option>
+                                    <option>PERMISSION</option>
+                                    <option>SUSPENSION</option>
+                                    <option>MATERNITE</option>
+                                    <option>RECUPERATION</option>
+                                    <option>FAUTE TECHNIQUE</option>
+                                    <option>CONGE ANNUEL</option>
+                                    <option>PROLONGEMENT MISSION</option>
                                 </select>
                             </div>
-                        </div>
-                        <div class='mt-2' style="display: flex; justify-content: space-between; align-items: center; ">
-                            <div class="form-check" style='width:50%'>
-                                <input type="checkbox" class="form-check-input" id="check1" name="">
-                                <label class="form-check-label" for="check1">Déduire des congés</label>
+                            <div style="display: flex; justify-content: space-between; align-items: center;" class='mt-2'>
+                                <label for="date_debut" class="form-label">Début </label>
+                                <input type="date" class="form-control-sm" id="date_debut" name="date_debut" required aria-required="true">
                             </div>
-                            <div class="form-check" style='width:50%'>
-
-                                <select class="form-select-sm " style='width:71%'>
-                                    <option selected></option>
-
-                                </select>
-                                <button class='boutton'>
-                                    <img src="<?= SITE_URL ?>/assets/img/question.png" alt="" style="width: max-content; height: 20px;">
-
-                                </button>
+                            <div style="display: flex; justify-content: space-between; align-items: center;" class='mt-2'>
+                                <label for="date_fin" class="form-label">Fin </label>
+                                <input type="date" class="form-control-sm" id="date_fin" name="date_fin" required aria-required="true">
                             </div>
-                        </div>
-
-
-                        <div class="form-check mt-1" style='width:100%'>
-                            <input type="checkbox" class="form-check-input" id="check1" name="" checked>
-                            <label class="form-check-label" for="check1">Bloquer Pointages</label>
-                        </div>
-
-                        <div class="form-check mt-2" style='width:100%'>
-                            <input type="checkbox" class="form-check-input" id="check1" name="" checked disabled>
-                            <label disabled class="form-check-label" for="check1">Recuperable en cas de travail</label>
-                        </div>
-
-
-
-
-                        <div class='mt-2' style="display: flex; justify-content: space-between; align-items: center; ">
-                            <div class="form-check" style='width:30%'>
-                                <input type="checkbox" class="form-check-input" id="check1" name="">
-                                <label class="form-check-label text-danger " style='font-weight:bold' for="check1">Accorder</label>
+                            <div class='mt-2' style="display: flex; justify-content: space-between; align-items: center; ">
+                                <div class="form-check" style='width:50%'>
+                                    <input type="checkbox" class="form-check-input" id="check1" name="appliquer_check" checked>
+                                    <label class="form-check-label" for="check1">Appliquer à</label>
+                                </div>
+                                <div class="form-check" style='width:50%'>
+                                    <select class="form-select-sm " style='width:100%' name="appliquer">
+                                        <option selected>TOUS</option>
+                                        <option>ADMINISTRATIF</option>
+                                        <option>ADMINISTRATION</option>
+                                        <option>APPLICATION</option>
+                                        <option>CHAUFFEUR</option>
+                                        <option>COMMERCIAL</option>
+                                        <option>ENTREPOT</option>
+                                        <option>INFO</option>
+                                        <option>PEDIATRIE</option>
+                                        <option>TECHNIQUE</option>
+                                    </select>
+                                </div>
                             </div>
-                            <div class="form-check" style='width:70%'>
-
-
-                                <div class="tooltip47 my-2">
-                                    <button class='boutton' id='accorder'>
-                                        <img src="<?= SITE_URL ?>/assets/img/book.png" alt="" style="width: 60px; height: 35px;">
-                                        <span class="tooltiptext47">Faite un courrier de confirmation</span>
+                            <div class='mt-2' style="display: flex; justify-content: space-between; align-items: center; ">
+                                <div class="form-check" style='width:50%'>
+                                    <input type="checkbox" class="form-check-input" id="check2" name="deduire_check">
+                                    <label class="form-check-label" for="check2">Déduire des congés</label>
+                                </div>
+                                <div class="form-check" style='width:50%'>
+                                    <select class="form-select-sm " style='width:71%' name="deduire">
+                                        <option selected></option>
+                                    </select>
+                                    <button class='boutton'>
+                                        <img src="<?= SITE_URL ?>/assets/img/question.png" alt="" style="width: max-content; height: 20px;">
                                     </button>
                                 </div>
-
                             </div>
-                        </div>
-
-
-                        <div class='mt-2 anne_com  d-flex justify-content-end border border-2 p-1' style='width:83%'>
-                            <div class="text-divider-container2">
-                                <div class="text-divider">
-                                    <span>Annee Comptable</span>
+                            <div class="form-check mt-1" style='width:100%'>
+                                <input type="checkbox" class="form-check-input" id="check3" name="bloquer_check" checked>
+                                <label class="form-check-label" for="check3">Bloquer Pointages</label>
+                            </div>
+                            <div class="form-check mt-2" style='width:100%'>
+                                <input type="checkbox" class="form-check-input" id="check4" name="recuperable_check" checked disabled>
+                                <label disabled class="form-check-label" for="check4">Recuperable en cas de travail</label>
+                            </div>
+                            <div class='mt-2' style="display: flex; justify-content: space-between; align-items: center; ">
+                                <div class="form-check" style='width:30%'>
+                                    <input type="checkbox" class="form-check-input" id="check5" name="accorder_check">
+                                    <label class="form-check-label text-danger " style='font-weight:bold' for="check5">Accorder</label>
+                                </div>
+                                <div class="form-check" style='width:70%'>
+                                    <div class="tooltip47 my-2">
+                                        <button class='boutton' id='accorder'>
+                                            <img src="<?= SITE_URL ?>/assets/img/book.png" alt="" style="width: 60px; height: 35px;">
+                                            <span class="tooltiptext47">Faite un courrier de confirmation</span>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
 
@@ -221,63 +183,68 @@ ob_start();
                                 <div class="text-divider">
                                     <span>Note de justification</span>
                                 </div>
+                                <select class="form-select-sm " style='width:29%' name="anneeComptable" required aria-required="true">
+                                    <option></option>
+                                    <option>2023</option>
+                                    <option>2022</option>
+                                    <option>2021</option>
+                                    <option>2020</option>
+                                    <option>2019</option>
+                                    <option>2018</option>
+                                    <option>2017</option>
+                                    <option>2016</option>
+                                    <option>2015</option>
+                                    <option>2014</option>
+                                    <option>2013</option>
+                                    <option>2012</option>
+                                    <option>2011</option>
+                                    <option>2010</option>
+                                </select>
                             </div>
-                            <textarea class="form-control mt-0  shadow-none" id="exampleTextarea" rows="14"></textarea>
-
                         </div>
-
-
-
-
+                        <div class="col-6 ">
+                            <div class='mt-2 note border border-2 p-1 mt-3' style='width:100%'>
+                                <div class="text-divider-container3">
+                                    <div class="text-divider">
+                                        <span>Note de justification</span>
+                                    </div>
+                                </div>
+                                <textarea class="form-control mt-0  shadow-none" id="exampleTextarea" rows="14" style="resize: none;" name="justification"></textarea>
+                            </div>
+                        </div>
                     </div>
-
                 </div>
-
+                <div class="col-4 param2" style='margin-left: -10px; margin-right: -10px;'>
+                    <div class="zone3 mt-3 " style='margin-left:10px;'>
+                        <img src="<?= SITE_URL ?>/assets/img/avatar.png" alt="" style='width: 270px;height: 300px;' class='border border-secondary border-1'>
+                        <button type="button" class="bout"><i class="fas fa-search"></i></button>
+                        <input type="text" class="form-control-sm backinput mt-3 border border-0" style='width: 270px; color: #FFF;' list="personList" name="person" required aria-required="true">
+                        <datalist id="personList"></datalist>
+                    </div>
+                </div>
             </div>
-            <div class="col-4 param2" style='margin-left: -10px; margin-right: -10px;'>
-
-
-
-                <div class="zone3 mt-3 " style='margin-left:10px;'>
-                    <img src="<?= SITE_URL ?>/assets/img/avatar.png" alt="" style='width: 270px;height: 300px;' class='border border-secondary border-1'>
-                    <button type="button" class="bout"><i class="fas fa-search"></i></button>
-                    <input type="text" class="form-control-sm backinput mt-3 border border-0" style='width: 270px'>
-
+            <!-- debut du bas de page  -->
+            <div class="row d-flex justify-content-between bg-primary bout-bas p-2 ">
+                <div style='width:15%;'>
+                    <button type="submit">Valider<img src="<?= SITE_URL ?>/assets/img/accept.png" alt="" style="width: max-content; height: 20px;"></button>
                 </div>
-
-
+                <!--  c2eme -->
+                <div style='width:30%;' class="d-flex justify-content-end">
+                    <button>Rechercher
+                        <img src="<?= SITE_URL ?>/assets/img/search.png" alt="" style="width: max-content; height: 20px;">
+                    </button>
+                </div>
+                <!--  css du haut  -->
+                <div style='width:13%;'>
+                    <button id="fermer" class='ferme'>
+                        Fermer
+                        <img src="<?= SITE_URL ?>/assets/img/close.png" alt="" style="width: max-content; height: 20px;">
+                    </button>
+                </div>
+                <!--  css du haut  -->
             </div>
         </div>
-
-
-        <!-- debut du bas de page  -->
-
-        <div class="row d-flex justify-content-between bg-primary bout-bas p-2 ">
-            <div style='width:15%;'>
-
-                <button>Valider<img src="<?= SITE_URL ?>/assets/img/accept.png" alt="" style="width: max-content; height: 20px;"></button>
-            </div>
-
-            <!--  c2eme -->
-
-            <div style='width:30%;' class="d-flex justify-content-end">
-
-                <button>Rechercher
-                    <img src="<?= SITE_URL ?>/assets/img/search.png" alt="" style="width: max-content; height: 20px;">
-                </button>
-            </div>
-            <!--  css du haut  -->
-            <div style='width:13%;'>
-                <button id="fermer" class='ferme'>
-                    Fermer
-                    <img src="<?= SITE_URL ?>/assets/img/close.png" alt="" style="width: max-content; height: 20px;">
-                </button>
-
-            </div>
-            <!--  css du haut  -->
-        </div>
-
-    </div>
+    </form>
     <!-- fin du contanaire  -->
 
     <style>
@@ -346,6 +313,7 @@ ob_start();
             padding: 0;
             text-align: center;
         }
+
         .note,
         .anne_com {
             position: relative;
@@ -440,6 +408,48 @@ ob_start();
     });
 </script>
 
+<script>
+    const btns = document.querySelectorAll('button:not([type="submit"])');
+    for (const btn of btns) {
+        btn.type = 'button';
+    }
+</script>
+
+<script>
+    document.querySelector('form').addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const form = event.currentTarget
+        const formData = new FormData(form);
+        // formData.append('iplans_submit', "");
+        const formProps = Object.fromEntries(formData);
+        formProps['iplans_submit'] = '';
+        console.log(JSON.stringify(formProps));
+
+        const start = new Date(formProps['date_debut']);
+        const end = new Date(formProps['date_fin']);
+        if (start.getTime() > end.getTime()) {
+            swal({
+                icon: 'error',
+                title: 'La date de fin est invalide',
+                text: 'La date de fin doit être supérieur à la date de début',
+            })
+        }
+
+        const submitResponse = await fetch('<?= SITE_URL ?>/forms/formabscences.php', {
+            method: 'POST',
+            body: JSON.stringify(formProps),
+            cache: "reload",
+        });
+        const data = await submitResponse.text();
+        if (!submitResponse.ok || submitResponse.status !== 200) {
+            swal({
+                icon: 'error',
+                text: 'Une erreur est survenue'
+            });
+        }
+    });
+</script>
+
 <!-- ... evenements sur les bouttons ... -->
 
 
@@ -456,18 +466,29 @@ ob_start();
     });
 </script>
 
+<script type="module">
+    const personList = document.getElementById("personList");
 
+    try {
+        const response = await fetch('<?= PERS_API_URL ?>');
+        if (!response.ok) {
+            throw new Error('Failed to fetch persons');
+        }
+        const persons = await response.json();
+
+        for (const person of persons) {
+            const option = document.createElement("option");
+            option.value = person.NEng;
+            option.text = `${person.nom} ${person.prenom}`;
+            personList.appendChild(option);
+        }
+    } catch (error) {
+        console.error(error);
+    }
+</script>
 
 
 </html>
-
-
-
-
-
-
-
-
 
 <?php
 

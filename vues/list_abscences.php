@@ -87,23 +87,21 @@ ob_start();
                                 <label for="site" class="form-label">Site </label>
                                 <select class="form-select-sm " style='width:50%' id="site">
                                     <option SELECTED>TOUS</option>
-                                    <option>DEPOT DOUCHE</option>
-                                    <option>DEPOT NGAOUNDERE</option>
-                                    <option>DEPOT YASSA</option>
                                 </select>
                             </div>
                             <div style="display: flex; justify-content: space-between; align-items: center;" class='mt-1'>
                                 <label for="departement" class="form-label">Departement </label>
                                 <select class="form-select-sm " style='width:50%' id="departement">
-                                    <option SELECTED>TOUS</option>
-                                    <option>PEDIATRIE</option>
-                                    <option>APLICATION</option>
-                                    <option>ADMINISTRATEUR</option>
-                                    <option>CHAUFEUR</option>
-                                    <option>TECHNIQUE</option>
-                                    <option>COMMERCIAL</option>
-                                    <option>ENTREPOT</option>
-                                    <option>ADMINISTRATION</option>
+                                    <option SELECTED value="TOUS">TOUS</option>
+                                    <option value="ADMINISTRATIF">ADMINISTRATIF</option>
+                                    <option value="ADMINISTRATIION">ADMINISTRATION</option>
+                                    <option value="APPLICATION">APPLICATION</option>
+                                    <option value="COMMERCIAL">COMMERCIAL</option>
+                                    <option value="ENTREPOT">ENTREPOT</option>
+                                    <option value="TECHNIQUE">TECHNIQUE</option>
+                                    <option value="PEDIATRIE">PEDIATRIE</option>
+                                    <option value="CHAUFEUR">CHAUFEUR</option>
+                                    <option value=" ">INCONNU</option>
                                 </select>
                             </div>
                         </div>
@@ -312,7 +310,7 @@ ob_start();
                     Supprimer
                     <img src="<?= SITE_URL ?>/assets/img/bin.png" alt="" style="width: max-content; height: 20px;">
                 </button>
-                <button>
+                <button id="printData">
                     Imprimer Liste
                     <img src="<?= SITE_URL ?>/assets/img/printer.png" alt="" style="width: max-content; height: 20px;">
                 </button>
@@ -526,6 +524,7 @@ ob_start();
 <script type="module">
     const absTemplate = document.getElementById("absTemplate");
     const fillTableau = document.getElementById("fillTableau");
+    const site = document.getElementById("site");
 
     /**
      * Updates the table with the given data by cloning an element and setting its values.
@@ -580,8 +579,18 @@ ob_start();
         }
     }
 
+    const responseSitesIplans = await fetch("<?= COURRIER_API_URL . "site" ?>");
+    const sitesIplans = await responseSitesIplans.json();
+    for (const siteIplan of sitesIplans) {
+        const option = document.createElement("option");
+        option.value = siteIplan;
+        option.text = siteIplan;
+        site.appendChild(option);
+    }
+
     const response = await fetch("<?= PERMISSION_API_URL ?>");
     const absences = await response.json();
+
 
     fillTableau.innerHTML = '';
     for (const absence of absences) {
@@ -599,16 +608,16 @@ ob_start();
         const start = filterForm.querySelector("#date_debut").value;
         const end = filterForm.querySelector("#date_fin").value;
         if (event.target.id === "date_debut" || event.target.id === "date_fin")
-            useDateFiltre(start, end, absOutput);
+            absOutput = useDateFiltre(start, end, absOutput);
         if (event.target.id === "site") siteFiltre = event.target.value;
         if (event.target.id === "departement") departementFiltre = event.target.value;
         if (event.target.name === "etat") etatFiltre = event.target.value;
         if (event.target.id === "salaire") salaireFiltre = event.target.value;
 
-        if (siteFiltre) useSiteFiltre(siteFiltre, absOutput)
-        if (departementFiltre) useDepartementFiltre(departementFiltre, absOutput);
-        if (etatFiltre) useEtatFiltre(etatFiltre, absOutput);
-        if (salaireFiltre) useSalaireFiltre(salaireFiltre, absOutput);
+        if (siteFiltre) absOutput = useSiteFiltre(siteFiltre, absOutput)
+        if (departementFiltre) absOutput = useDepartementFiltre(departementFiltre, absOutput);
+        if (etatFiltre) absOutput = useEtatFiltre(etatFiltre, absOutput);
+        if (salaireFiltre) absOutput = useSalaireFiltre(salaireFiltre, absOutput);
 
         fillTableau.innerHTML = '';
         for (const absence2 of absOutput) {
@@ -624,9 +633,12 @@ ob_start();
     function useDateFiltre(start, end, data) {
         if (start && end) {
             return data.filter(
-                (absence) => {
-                    const date = new Date(absence.debut);
-                    return date >= new Date(start) && date <= new Date(end);
+                (absence, index) => {
+                    absence.debut = absence.debut.split('/').reverse().join('-');
+                    absence.fin = absence.fin.split('/').reverse().join('-');
+                    const dateDebut = new Date(absence.debut);
+                    const dateFin = new Date(absence.fin);
+                    return dateDebut >= new Date(start) && dateFin <= new Date(end);
                 }
             )
         }
@@ -638,7 +650,9 @@ ob_start();
      * @returns {Array}
      */
     function useSiteFiltre(site, data) {
-        return data.filter((absence) => absence.site === site)
+        if (!site) return data
+        if (site === "TOUS") return data
+        return data.filter((absence) => absence?.Site === site)
     }
     /**
      * @param {string} departement
@@ -646,7 +660,9 @@ ob_start();
      * @returns {Array}
      */
     function useDepartementFiltre(departement, data) {
-        return data.filter((absence) => absence.departement === departement);
+        if (!departement) return data
+        if (departement === "TOUS") return data
+        return data.filter((absence) => absence?.departement === departement);
     }
     /**
      * @param {string} etat
@@ -671,9 +687,70 @@ ob_start();
      * @returns {Array}
      */
     function useSalaireFiltre(salaire, data) {
+        if (!salaire) return data
+        if (salaire === "TOUS") return data
         return data.filter(
             (absence) => absence?.salaire === salaire
         )
+    }
+</script>
+
+<script>
+    document.getElementById('printData').addEventListener('click', printDataAction);
+
+    function printDataAction() {
+        const pdf = new jspdf.jsPDF({
+            orientation: "landscape",
+            format: "a4"
+        });
+        pdf.addImage(
+            SITE_URL + "/assets/img/iplans logo.png",
+            "PNG",
+            10,
+            10,
+            2.969 * 50 * 0.25,
+            1 * 50 * 0.25
+        );
+        const iplans = "\nLISTE D'ABSCENCES";
+        pdf.setFontSize(10);
+        pdf.text(iplans, 10, 25);
+        const jsonData = pdf.autoTableHtmlToJson(
+            document.getElementById("absTable"),
+            false
+        );
+        const printableRowsAbs = {
+            Site: 0,
+            Departement: 1,
+            Civilite: 2,
+            Nom: 3,
+            Prenom: 4,
+            Motif: 5,
+            Debut: 6,
+            Fin: 7,
+            AccordeePar: 15,
+        };
+
+        const filteredData = [];
+        const headings = [];
+
+        Object.entries(printableRowsAbs).forEach(([key]) => headings.push(key));
+
+        for (const row of jsonData.data) {
+            let filteredRow = [];
+            Object.entries(printableRowsAbs).forEach(([, value]) => {
+                filteredRow.push(row[value]);
+            });
+            filteredData.push(filteredRow);
+        }
+        pdf.autoTable({
+            head: [headings],
+            body: filteredData,
+            styles: {
+                fontSize: 10,
+            },
+            startY: 35,
+        });
+        pdf.save("table_employee.pdf");
     }
 </script>
 
