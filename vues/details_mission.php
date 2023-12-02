@@ -368,8 +368,9 @@ ob_start();
                 boutonsFermer.forEach((bouton) => {
                     bouton.addEventListener("click", (e) => {
                         e.preventDefault();
-                        conteneur0.style.display = "none";
-                        console.log('yo');
+                        // conteneur0.style.display = "none";
+                        // console.log('yo');
+                         window.location.href = "<?= SITE_URL ?>/mission";
                     });
                 });
             }

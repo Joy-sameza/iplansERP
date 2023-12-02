@@ -32,7 +32,7 @@ ob_start();
 <link rel="stylesheet" type="text/css" href="<?= SITE_URL ?>/assets/css/login.css">
 
     <link href="<?= SITE_URL ?>/assets/css/style.css" rel="stylesheet">
-<main >
+<main2 >
     <style>
 		.lange{
 			font-size: 25px;
@@ -116,7 +116,7 @@ if (isset($_POST['send1'])) {
              swal.showLoading()
              }
              }).then(function(){
-                 window.open('" . SITE_URL . "/spider','_self');
+                 window.open('" . SITE_URL . "/home','_self');
              });
             </script>";
         } else {

@@ -153,9 +153,43 @@ foreach ($d as $pack) {
 ?>
 
 <link href="<?= SITE_URL ?>/assets/css/style.css" rel="stylesheet">
+  <style>
+		.lange{
+			font-size: 25px;
+            margin-top: 47px;
+			display: none;
+		}
+		.lang{
+			    margin-top: 0px!important;
+				padding-top: 43px;
+		}
+	    .lang	img{
+				height: 24px;
+				width: 24px;
+			}
+      .main{
+        margin-top:9%!important;
+        margin-bottom:10%!important;
+      }
+      .encou {
+    margin-top: -13px;
+}
+
+  .bout-bas  {
+            width: 130px;
+            height: 49px;
+            border-radius: 5px;
+            float:right;
+            margin-right:28px;
+        }
+
+
+	</style>
+  <h1 class='text-center text-uppercase text-bold my-3' style='font-weight:700'>Gestion des courriers</h1>
 <main class="main corrier">
+  
   <div class="entrant">
-    <h2>Courrier Entrant/Sortant</h2>
+    <h2> Entrant/Sortant</h2>
     <section>
       <button>Nbre total de Courrier : <strong><?= ($i + $j) - ($u + $v) ?? '0' ?></strong></button>
       <button>Aujourd'hui Entrant : <strong><?= $ent_auj ?? '0' ?></strong></button>
@@ -208,9 +242,18 @@ foreach ($d as $pack) {
       <span><strong>moyenne</strong><strong><?= $enc3 ?? '0' ?></strong></span>
       <span><strong>Basse</strong><strong><?= $enc4 ?? '0' ?></strong></span>
     </section><br><br><br>
-    <button class="btn" data-nouvelleRedaction>Nouvelle Redaction</button>
+    <button class="btn encou" data-nouvelleRedaction>Nouvelle Redaction</button>
   </div>
 </main>
+<div class='espace'  style='height:100px'>
+           
+                  <button id="fermer" class='ferme bout-bas'>
+                        Fermer
+                        <img src="<?= SITE_URL ?>/assets/img/close.png" alt="" style="width: max-content; height: 20px;">
+                    </button>
+</div>
+
+
 
 <div class="modal" data-modal1>
   <div class="container">
@@ -540,6 +583,7 @@ foreach ($d as $pack) {
     <td data-neng style="display: none;"></td>
   </tr>
 </template>
+
 
 <?php
 $content = ob_get_clean();

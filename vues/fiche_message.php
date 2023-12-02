@@ -385,13 +385,14 @@ DEMOy
 
             ferme.addEventListener("click", (e) => {
                 e.preventDefault();
-                conteneur.style.display = "none";
+                window.location.href = "<?= SITE_URL ?>/gestion_abscences";
             });
-
+            
             const boutonFermer = document.getElementById("fermer");
             boutonFermer.addEventListener("click", (e) => {
                 e.preventDefault();
-                conteneur.style.display = "none";
+                window.location.href = "<?= SITE_URL ?>/gestion_abscences";
+               
             });
         });
     </script>

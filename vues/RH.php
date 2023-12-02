@@ -95,12 +95,11 @@ ob_start();
         <div class="cote_droite">
             <button class="cadena"><i class="fas fa-lock"></i> </button>
 
-<<<<<<< HEAD
             <button class="btn employer_btn" > <i class="fas fa-users"></i><a href="<?= SITE_URL ?>/tableau">Employés</a> </button>
             <button class="btn"> <i class="fas fa-save"></i></i><p>Pointages</p></button>
             <button class="btn"> <i class="fas fa-clock"></i></i><p>Planning Horaires</p></button>
-            <button class="btn"> <i class="fas fa-unlock-alt"></i><a href="<?= SITE_URL ?>/mission">Mission</a></button>
-            <button class="btn"> <i class="fas fa-calendar-minus"></i><a href="<?= SITE_URL ?>/gestion_abscences">Absences</a></button>
+            <button class="btn"> <i class="fas fa-unlock-alt"></i><a href="<?= SITE_URL ?>/list_mission">Mission</a></button>
+            <button class="btn"> <i class="fas fa-calendar-minus"></i><a href="<?= SITE_URL ?>/list_abscences">Absences</a></button>
             <button class="btn"> <i class="fas fa-suitcase-rolling"></i><p>Congés</p></button>
             <button class="btn"> <i class="fas fa-border-style"></i><p>Cloture</p></button>
             <button class="btn"> <i class="fas fa-dollar-sign"></i><p>Acompte</p></button>
@@ -110,48 +109,6 @@ ob_start();
             <button class="btn"> <i class="fas fa-clock"></i><p>Hooraires</p></button>
             <button class="btn"> <i class="fas fa-users"></i><p>Grille Salariale</p></button>
             <button class="btn"> <i class="fas fa-money-check-alt"></i><p>Salaire</p></button>
-=======
-            <button class="btn employer_btn"> <i class="fas fa-users"></i><a href="<?= SITE_URL ?>/tableau">Employés</a> </button>
-            <button class="btn"> <i class="fas fa-save"></i></i>
-                <p>Pointages</p>
-            </button>
-            <button class="btn"> <i class="fas fa-clock"></i></i>
-                <p>Planning Horaires</p>
-            </button>
-            <button class="btn"> <i class="fas fa-unlock-alt"></i>
-                <a href="<?= SITE_URL ?>/list_mission">Mission</a>
-            </button>
-            <button class="btn"> <i class="fas fa-calendar-minus"></i>
-                <a href="<?= SITE_URL ?>/list_abscences">Absences</a>
-            </button>
-            <button class="btn"> <i class="fas fa-suitcase-rolling"></i>
-                <p>Congés</p>
-            </button>
-            <button class="btn"> <i class="fas fa-border-style"></i>
-                <p>Cloture</p>
-            </button>
-            <button class="btn"> <i class="fas fa-dollar-sign"></i>
-                <p>Acompte</p>
-            </button>
-            <button class="btn"> <i class="fas fa-car"></i>
-                <p>Parc Auto</p>
-            </button>
-            <button class="btn"> <i class="fas fa-phone-alt"></i>
-                <p>Telephone</p>
-            </button>
-            <button class="btn"> <i class="fas fa-money-bill"></i>
-                <p>Bon de decaissement</p>
-            </button>
-            <button class="btn"> <i class="fas fa-clock"></i>
-                <p>Hooraires</p>
-            </button>
-            <button class="btn"> <i class="fas fa-users"></i>
-                <p>Grille Salariale</p>
-            </button>
-            <button class="btn"> <i class="fas fa-money-check-alt"></i>
-                <p>Salaire</p>
-            </button>
->>>>>>> 00b808bd250616d5657ffb3e3db71e5dfbd04cba
 
         </div>
     </div>

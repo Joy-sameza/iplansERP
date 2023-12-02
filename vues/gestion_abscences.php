@@ -40,7 +40,7 @@ ob_start();
 </head>
 
 <body>
-    <div class="container-fluid conteneur border  border-2 border-secondary" style='width:80%;'>
+    <div class="container-fluid conteneur my-5 border  border-2 border-secondary" style='width:80%;'>
 
         <!-- le header  -->
 
@@ -189,9 +189,9 @@ ob_start();
                                 </div>
                             </div>
 
-                            <select class="form-select-sm " style='width:29%'>
-                                <option></option>
-                                <option><b>2010</b></option>
+                            <select class="form-select-sm " style='width:29%' disabled>
+                            <option value="<?= date('Y') ?>" selected><?= date('Y') ?></option>
+                                <!-- <option><b>2010</b></option>
                                 <option><b>2011</b></option>
                                 <option><b>2012</b></option>
                                 <option><b>2013</b></option>
@@ -202,7 +202,7 @@ ob_start();
                                 <option><b>2018</b></option>
                                 <option><b>2019</b></option>
                                 <option><b>2020</b></option>
-                                <option><b>2021</b></option>
+                                <option><b>2021</b></option> -->
 
                             </select>
 
@@ -404,6 +404,9 @@ ob_start();
             visibility: visible;
             opacity: 1;
         }
+          .header{
+        display:none;
+    }
     </style>
 
 
@@ -426,13 +429,13 @@ ob_start();
 
         ferme.addEventListener("click", (e) => {
             e.preventDefault();
-            conteneur.style.display = "none";
+           window.location.href = "<?= SITE_URL ?>/list_abscences";
         });
 
         const boutonFermer = document.getElementById("fermer");
         boutonFermer.addEventListener("click", (e) => {
             e.preventDefault();
-            conteneur.style.display = "none";
+            window.location.href = "<?= SITE_URL ?>/list_abscences";
         });
     });
 </script>
@@ -440,15 +443,7 @@ ob_start();
 <!-- ... evenements sur les bouttons ... -->
 
 
-    <script>
-        document.getElementById("accorder").addEventListener("click", function() {
-            // Spécifiez l'URL de la nouvelle page que vous souhaitez ouvrir
-            var nouvellePageURL = "http://localhost/Iplans/fiche_message";
-             console.log('click')
-            // Ouvrir la nouvelle page dans une nouvelle fenêtre
-            window.open(nouvellePageURL, "_blank");
-        });
-    </script>
+
 
 <script>
     document.getElementById("accorder").addEventListener("click", function() {
@@ -456,7 +451,8 @@ ob_start();
         var nouvellePageURL = "http://localhost/Iplans/fiche_message";
 
         // Ouvrir la nouvelle page dans une nouvelle fenêtre
-        window.open(nouvellePageURL, "_blank");
+        window.location.href = "<?= SITE_URL ?>/fiche_message";
+
     });
 </script>
 

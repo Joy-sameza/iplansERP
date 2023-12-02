@@ -40,7 +40,7 @@ ob_start();
 </head>
 
 <body>
-    <div class="container-fluid conteneur0 border border-2 border-primary" style='width:75%; height: 75vh;'>
+    <div class="container-fluid conteneur0 my-5 border border-2 border-primary" style='width:75%;border-bottom:none; height: 99vh;'>
 
         <div class="row bg-primary border-1 ">
             <div class="cont_titre d-flex justify-content-between  p-1" style='align-items: center;'>
@@ -138,13 +138,67 @@ ob_start();
                         </div>
                     </div>
                     <div class='englobe1' style='width:16%;padding:0px;margin:0px;position:relative;'>
-                        <button class='boutton'>
-                            <img src="<?= SITE_URL ?>/assets/img/padlock.png" alt="" style="width: max-content; height: 20px;">
-                        </button>
-                        <select class="form-select-sm mt-5 " style='width:95%;margin-left:10px' id="salaire">
+                      <select class="form-select-sm  " style='width:100%;margin-top:30px;float:left' id="salaire">
                             <option SELECTED>TOUS</option>
                             <option>UN SALAIRE</option>
-                        </select>
+                        </select> 
+                        
+
+                          <!-- zone de recherche -->
+    <div class="container-fluid text-center mt-2" id="zone_recherche" >
+        <form>
+            <input type="text" id="myInput" class='form-control ' onkeyup="myFunction()" name="search" placeholder="Nom..." style='margin-left: -13px;'>
+        </form>
+    </div>
+    <!-- style de ma zone de recherche  -->
+    <style>
+        #myInput {
+            width: 165px;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            font-size: 15px;
+            background-color: white;
+            background-image: url('<?= SITE_URL ?>/assets/img/searchicon.png');
+            background-position: 10px 5px;
+            background-repeat: no-repeat;
+            padding: 3px 20px 5px 40px;
+            -webkit-transition: width 0.4s ease-in-out;
+            transition: width 0.4s ease-in-out;
+        }
+
+    </style>
+
+
+   <script>
+        function myFunction() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[3];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+
+
+                        
+
+
+                    <button class='boutton'>
+                            <img src="<?= SITE_URL ?>/assets/img/padlock.png" alt="" style="width: max-content; height: 20px;">
+                        </button>
+                       
                     </div>
                 </div>
             </form>
@@ -154,7 +208,7 @@ ob_start();
 
         <div class="row " style='height: clamp(400px, 80%, 55vh);'>
             <div class="table-responsive debut_tableau w-100 h-100">
-                <table class="table table-bordered " style="position: relative; text-align: center;">
+                <table class="table table-bordered " id='myTable' style="position: relative; text-align: center;">
                     <thead style="position: sticky; top: 0;">
                         <tr class="table-secondary text-center table-dark">
                             <th style='font-size:13px;' class='px-5'>Site</th>
@@ -431,6 +485,9 @@ ob_start();
         padding-left: 0 !important;
         padding-right: 0 !important;
     }
+    .header{
+        display:none;
+    }
 </style>
 
 
@@ -443,7 +500,7 @@ ob_start();
 
     ferme.addEventListener("click", (e) => {
         e.preventDefault()
-        conteneur.style.display = "none";
+        window.location.href = "<?= SITE_URL ?>/home";
 
     });
 </script>
@@ -453,7 +510,7 @@ ob_start();
 
     boutonFermer.addEventListener("click", (e) => {
         e.preventDefault();
-        conteneur0.style.display = "none";
+         window.location.href = "<?= SITE_URL ?>/home";
     });
 </script>
 
@@ -461,7 +518,8 @@ ob_start();
 <!-- evenement sur les bouttons  -->
 
 <script>
-    document.getElementById("new").addEventListener("click", () => window.open("<?= SITE_URL ?>/gestion_abscences", "_blank"));
+    document.getElementById("new").addEventListener("click",
+     () => window.location.href = "<?= SITE_URL ?>/gestion_abscences" );
 </script>
 
 

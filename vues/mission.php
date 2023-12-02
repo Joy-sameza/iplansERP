@@ -38,7 +38,7 @@ ob_start();
 </head>
 
 <body>
-    <div class="container-fluid conteneur conteneur0  border border-primary border-4" style='width:75%'>
+    <div class="container-fluid conteneur my-5 conteneur0  border border-primary border-4" style='width:75%'>
 
         <form id="main_form" enctype="multipart/form-data" method="post">
             <div class="row bg-primary border-1 ">
@@ -61,10 +61,10 @@ ob_start();
                         <div class="zone2  text-center" style='width:70%'>
                             <h2 class='text-mission mt-3' style='font-weight:bold; color: #2c3e50; '>NOUVELLE MISSION</h2>
                         </div>
-                        <div class="zone3" style="display: flex; justify-content: center; align-items:center; flex-direction: column;">
+                        <div class="zone3" style="display: flex; justify-content: center; align-items:center; flex-direction: column;width: 25%;">
                             <img src="<?= SITE_URL ?>/assets/img/avatar.png" alt="" style='width: 100px;height: 100px;' class='border border-secondary border-1'>
                             <!-- <button type="button" class="bout" display='none'><i class="fas fa-search"></i></button> -->
-                            <select id='personne' name="personne" required aria-required="true" class="form-select-sm" style='width:67%'>
+                            <select id='personne' name="personne" required aria-required="true" class="form-select-sm" style='width:80%'>
                                 <option></option>
                             </select>
                         </div>
@@ -489,6 +489,9 @@ ob_start();
             background-color: #f4f6f6;
             /* Remplacez cette couleur par celle que vous souhaitez utiliser */
         }
+        .header{
+            display:none;
+        }
     </style>
 
 
@@ -502,7 +505,8 @@ ob_start();
 
         ferme.addEventListener("click", (e) => {
             e.preventDefault()
-            conteneur.style.display = "none";
+            // conteneur.style.display = "none";
+             window.location.href = "<?= SITE_URL ?>/list_mission";
 
         });
     </script>
@@ -555,7 +559,8 @@ ob_start();
                 if (personne.trim() !== '' && joursEcart.trim() !== '') {
 
                     localStorage.setItem('joursEcart', joursEcart);
-                    window.open("<?= SITE_URL ?>/details_mission", "_blank");
+                    // window.open("<?= SITE_URL ?>/details_mission");
+                    window.location.href = "<?= SITE_URL ?>/details_mission";
                 } else {
 
                     swal({
