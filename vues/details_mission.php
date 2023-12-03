@@ -30,18 +30,18 @@ ob_start();
 
 
 
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Details Missions</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Details Missions</title>
+    </head>
 
-<body>
+    <body>
     <div class="container-fluid border border-primary conteneur0 border-3" style='width:58%;'>
-        <form id="frais_form">
+        <form id="frais_form" method="post" >
             <div class="row head bg-primary">
                 <div class="cont_titre d-flex justify-content-between  p-1" style='align-items: center;'>
                     <div style="display: flex;">
@@ -182,7 +182,7 @@ ob_start();
                                 <div style="display: flex; justify-content: left; ">
                                     <!-- <select class="form-select-sm" style='width:38%' id='2'>
                                                   <option selected>0</option>
-                                          
+
                                                 <option>25000</option>
                                                 <option>75000</option>
                                                 <option>240000</option>
@@ -203,11 +203,11 @@ ob_start();
                                 <div style="display: flex; justify-content: left; ">
                                     <!-- <select class="form-select-sm" style='width:38%' id='3'>
                                                   <option selected>0</option>
-                                     
+
                                                 <option>10000</option>
                                                 <option>18000</option>
                                                 <option>35000</option>
-                                           
+
                                              </select>FCFA -->
                                     <input type="text" class="form-control-sm" style='width:38%' id="3" readonly name="nutrition_total">
 
@@ -221,7 +221,7 @@ ob_start();
                                                   <option selected>0</option>
                                                 <option>30000</option>
                                                 <option>14000</option>
-                              
+
                                              </select>FCFA -->
                                     <input type="text" class="form-control-sm" style='width:38%' id="4" readonly name="perdime_total">
 
@@ -239,7 +239,7 @@ ob_start();
                                                 <option>80000</option>
                                                 <option>100000</option>
                                                 <option>140000</option>
-                                                
+
                                              </select>FCFA  -->
                                     <input type="text" class="form-control-sm" style='width:38%' id="5" value='0' readonly name="autre_total">
 
@@ -278,7 +278,7 @@ ob_start();
             <div class="row d-flex justify-content-between bg-primary bout-bas p-2">
                 <div style='width:82%;'>
 
-                    <button type="submit">Valider<img src="<?= SITE_URL ?>/assets/img/accept.png" alt="" style="width: max-content; height: 20px;"></button>
+                    <button type="submit" name="frais_missiom_submit">Valider<img src="<?= SITE_URL ?>/assets/img/accept.png" alt="" style="width: max-content; height: 20px;"></button>
 
 
                     <button>Supprimer
@@ -426,7 +426,7 @@ ob_start();
                         e.preventDefault();
                         // conteneur0.style.display = "none";
                         // console.log('yo');
-                         window.location.href = "<?= SITE_URL ?>/mission";
+                        window.location.href = "<?= SITE_URL ?>/mission";
                     });
                 });
             }
@@ -528,9 +528,9 @@ ob_start();
         });
     </script>
 
-</body>
+    </body>
 
-</html>
+    </html>
 
 <?php
 

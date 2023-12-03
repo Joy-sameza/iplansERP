@@ -1,3 +1,6 @@
+
+
+
 <?php
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
@@ -149,7 +152,7 @@ function sendDataCourrier(string $data, string $fileDestination): array
 }
 
 // traitement des informations des employers
-if (isset($_POST['ajouter'])) {
+if (isset($_POST['ajouter_pers'])) {
 
 // Get the form data
     $civilite = $_POST['civilite'];
@@ -282,13 +285,9 @@ if (isset($_POST['ajouter'])) {
 
     $response = curl_exec($curl);
 
-    $err = curl_error($curl);
-
-    curl_close($curl);
-
-    return (array)json_decode($response, true);
-
-
-
+    if ($response) {
+        header("location: ../employes");
+    }
 }
 
+//post de mission
