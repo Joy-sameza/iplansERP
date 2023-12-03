@@ -195,7 +195,7 @@ class Mission
         $this->indexEvenement = htmlspecialchars(strip_tags($data['IndexEvenement']));
         $this->indexdossierlogistique = htmlspecialchars(strip_tags($data['IndexDossierLogistique']));
         $this->numerodossier = htmlspecialchars(strip_tags($data['NumeroDossier']));
-        $this->Numerobl_lta = htmlspecialchars(strip_tags($data['NumeroBL_LTA']));
+        $this->Numerobl_lta = htmlspecialchars(strip_tags($data['NumeroBL_LTA']??0));
         $this->mat = htmlspecialchars(strip_tags($data['mat']));
         $this->state = htmlspecialchars(strip_tags($data['state']));
         $this->priseencharge = htmlspecialchars(strip_tags($data['PriseEnCharge']));
@@ -206,8 +206,8 @@ class Mission
         $this->lieux = htmlspecialchars(strip_tags($data['Lieux']));
         $this->archive = htmlspecialchars(strip_tags($data['Archive']));
         $this->archivemotif  = htmlspecialchars(strip_tags($data['ArchiveMotif']));
-        $this->archivedefinitive = htmlspecialchars(strip_tags($data['ArchiveDefinitive']));
-        $this->archivedefinitivemotif = htmlspecialchars(strip_tags($data['ArchiveDefinitiveMotif']));
+        $this->archivedefinitive = htmlspecialchars(strip_tags($data['ArchiveDefinitive']??0));
+        $this->archivedefinitivemotif = htmlspecialchars(strip_tags($data['ArchiveDefinitiveMotif']??0));
 
 
         // $this->status = htmlspecialchars(strip_tags($data['status']));

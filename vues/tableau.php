@@ -1125,7 +1125,7 @@ $d = (array)json_decode($response, true);
 
             <div class="option47">
                 <div style="width: 50%; padding-left: 30px;">
-                    <button>Ajouter<img src="<?= SITE_URL ?>/assets/img/accept.png" alt="" style="width: max-content; height: 20px;"></button>
+                    <button type="submit" name="ajouter_pers">Ajouter<img src="<?= SITE_URL ?>/assets/img/accept.png" alt="" style="width: max-content; height: 20px;"></button>
                 </div>
 
 
@@ -1731,7 +1731,7 @@ $d = (array)json_decode($response, true);
 
                     <div class="option47">
                         <div style="width: 50%; padding-left: 30px;">
-                            <button>Ajouter<img src="<?= SITE_URL ?>/assets/img/accept.png" alt="" style="width: max-content; height: 20px;"></button>
+                            <button type="submit" name="ajouter_pers">Ajouter<img src="<?= SITE_URL ?>/assets/img/accept.png" alt="" style="width: max-content; height: 20px;"></button>
                         </div>
 
 

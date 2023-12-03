@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7d0e5bba-8be3-4af7-9bd3-b337ff71621c" name="Changes" comment="api mission absence et frais de mission">
+    <list default="true" id="7d0e5bba-8be3-4af7-9bd3-b337ff71621c" name="Changes" comment="mission et abscence">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Database.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Database.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Mission.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Mission.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forms/formdata.php" beforeDir="false" afterPath="$PROJECT_DIR$/forms/formdata.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vues/details_mission.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/details_mission.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vues/tableau.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/tableau.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,16 +33,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/pc/Documents/storenjs",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/xampp/htdocs/iplans&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -56,7 +58,8 @@
       <workItem from="1701100747182" duration="672000" />
       <workItem from="1701156363999" duration="570000" />
       <workItem from="1701158336499" duration="3318000" />
-      <workItem from="1701242662389" duration="5427000" />
+      <workItem from="1701242662389" duration="9436000" />
+      <workItem from="1701520979144" duration="19591000" />
     </task>
     <task id="LOCAL-00001" summary="print succed">
       <created>1699875368090</created>
@@ -72,7 +75,14 @@
       <option name="project" value="LOCAL" />
       <updated>1701046927342</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="mission et abscence">
+      <created>1701257786064</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1701257786064</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -92,6 +102,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="print succed" />
     <MESSAGE value="api mission absence et frais de mission" />
-    <option name="LAST_COMMIT_MESSAGE" value="api mission absence et frais de mission" />
+    <MESSAGE value="mission et abscence" />
+    <option name="LAST_COMMIT_MESSAGE" value="mission et abscence" />
   </component>
 </project>
