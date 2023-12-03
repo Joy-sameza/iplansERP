@@ -100,6 +100,12 @@ function fiche_message()
     $dirs=str_replace("controllers", "", $dirs);
     require $dirs.'vues/fiche_message.php';
 }
+function permi_con()
+{
+    $dirs=__DIR__;
+    $dirs=str_replace("controllers", "", $dirs);
+    require $dirs.'vues/permi_con.php';
+}
 ?>
 
 

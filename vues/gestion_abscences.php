@@ -407,6 +407,60 @@ ob_start();
           .header{
         display:none;
     }
+
+     body {
+
+            border-bottom: none;
+            overflow-x: auto;
+
+
+            &::-webkit-scrollbar {
+                height: 10px;
+                /* Ajuster la hauteur de la barre de défilement horizontale */
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background-color: #3498db;
+                /* Couleur du curseur de défilement */
+            }
+
+            &::-webkit-scrollbar-track {
+                background-color: #ecf0f1;
+                /* Couleur de la piste de défilement */
+            }
+
+            &:hover {
+                &::-webkit-scrollbar-thumb {
+                    background-color: #0b9444;
+                    /* Changement de couleur au survol */
+                }
+            }
+        }
+
+              /* scrollbar du tableau */
+
+        ::-webkit-scrollbar {
+            width: 15px;
+        }
+
+
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px grey;
+            border-radius: 10px;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #238fce;
+            border-radius: 10px;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0b9444;
+        }
     </style>
 
 

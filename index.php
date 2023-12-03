@@ -31,7 +31,7 @@ if ('/login' == $uri) {
 if ('/home' == $uri) {
     spider();
 }
-if ('/rhumain' == $uri) {
+if ('/resource_humaine' == $uri) {
     rhrhrh();
 }
 if ('/tester' == $uri) {
@@ -58,8 +58,11 @@ if ('/selection_salarie' == $uri) {
 if ('/fiche_message' == $uri) {
     fiche_message();
 }
-if ('/tableau' == $uri) {
+if ('/permi_con' == $uri) {
+    permi_con();
+}
+if ('/employes' == $uri) {
     tableau();
-} elseif (!empty($uri) and !in_array($uri, ['/', '/accueil', '/details_mission', '/list_abscences', '/mission', '/list_mission', '/courrier', '/login', '/home', '/rhumain', '/tableau', '/gestion_abscences', '/selection_salarie', '/fiche_message', '/tester'])) {
+} elseif (!empty($uri) and !in_array($uri, ['/', '/accueil', '/details_mission', '/list_abscences', '/mission', '/list_mission', '/courrier', '/login', '/home', '/resource_humaine', '/employes', '/gestion_abscences', '/selection_salarie', '/fiche_message', '/tester','/permi_con'])) {
     show404();
 }

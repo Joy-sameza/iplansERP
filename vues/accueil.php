@@ -90,7 +90,7 @@ ob_start();
 				
 				</div>
 				<p style='position:relative'>
-					<a href="<?= SITE_URL ?>/login"><input type="button"  class='btn' value="<?= $lang['suivant'] ?>"><i class="fas fa-chevron-right ic2" style='position:absolute'></i><i class="fas fa-chevron-right ic1" style='position:absolute'></i></input></a>
+					<a href="<?= SITE_URL ?>/login"><input type="button" onclick="saveData()" class='btn' value="<?= $lang['suivant'] ?>"><i class="fas fa-chevron-right ic2" style='position:absolute'></i><i class="fas fa-chevron-right ic1" style='position:absolute'></i></input></a>
 
                          
 
@@ -133,6 +133,26 @@ ob_start();
 		</div>		
 	</form>
 </main>
+
+ <script>
+        function saveData() {
+            // Récupérer la valeur du champ select
+            var selectedText = document.getElementById("etablissement").options[document.getElementById("etablissement").selectedIndex].text;
+
+            // Vérifier si des données existent déjà dans le localStorage
+            var storedData = JSON.parse(localStorage.getItem("etablissement")) || [];
+
+            // Ajouter la nouvelle valeur au tableau
+            storedData.push(selectedText);
+
+            // Enregistrer les données mises à jour dans le localStorage
+            localStorage.setItem("etablissement", JSON.stringify(storedData));
+
+            alert("Données enregistrées dans le localStorage !");
+        }
+    </script>
+
+
 <?php
 $content = ob_get_clean();
 include 'layout.php';

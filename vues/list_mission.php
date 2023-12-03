@@ -41,7 +41,7 @@ ob_start();
 
 <body>
 
-    <div class="container-fluid conteneur0 my-5" style='width:80%; height: 75vh;'>
+    <div class="container-fluid mt-5 conteneur0" style='width:80%; height: 75vh;'>
         <!-- debut du header -->
         <div class="row head bg-primary">
             <div class="cont_titre d-flex justify-content-between  p-1" style='align-items: center;'>
@@ -61,7 +61,21 @@ ob_start();
         <div class="row" style='background-color: #ebedef '>
             <div style="display: flex; justify-content: space-between; align-items: center;">
 
-                        <div class="tooltip47 my-2">
+                <div style="display: flex; justify-content: space-between; align-items: center; width:40%;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; width:53%">
+                        <label for="deplacement" class="form-label"><strong>Période Du</strong> </label>
+                        <input type="date" class="form-control-sm">
+
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; width:42% ">
+                        <label for="deplacement" class="form-label"><strong>Au</strong> </label>
+                        <input type="date" class="form-control-sm">
+
+                    </div>
+
+                </div>
+
+                <div class="tooltip47 my-2">
                          <button  class='border border-secondary bg-secondary border-1'>
                             <img  src=" <?= SITE_URL ?>/assets/img/padlock.png" alt="" style="width: max-content; height: 20px;">
                     <span class="tooltiptext47">Verrouiller</span>
@@ -191,8 +205,8 @@ ob_start();
 
         <!-- debut des boutton du bas -->
 
-        <div class="row d-flex justify-content-between bg-primary bout-bas p-2 mb-2">
-            <div style='width:60%;' class=' d-flex justify-content-between'>
+        <div class="row d-flex justify-content-between bg-primary bout-bas  p-2 mb-2">
+            <div style='width:50%;' class=' d-flex justify-content-between'>
                 <button id='new'>
                     Nouveau
                     <img src="<?= SITE_URL ?>/assets/img/add-file.png" alt="" style="width: max-content; height: 20px;">
@@ -202,9 +216,6 @@ ob_start();
                     Ouvrir
                     <img src="<?= SITE_URL ?>/assets/img/folder.png" alt="" style="width: max-content; height: 20px;">
                 </button>
-                <button>Imprimer
-                        <img src="<?= SITE_URL ?>/assets/img/printer.png" alt="" style="width: max-content; height: 20px;">
-                    </button>
 
                 <button>
                     Supprimer
@@ -216,7 +227,7 @@ ob_start();
                 </button>
             </div>
             <!--  css du haut  -->
-            <div style='width:40%;justify-content:flex-end;' class=' d-flex '>
+            <div style='width:50%;justify-content:flex-end;' class=' d-flex '>
                 <button id="fermer">
                     Fermer
                     <img src="<?= SITE_URL ?>/assets/img/close.png" alt="" style="width: max-content; height: 20px;">
@@ -305,6 +316,9 @@ ob_start();
         } */
 
         /* css du tooltip sur les bouttons acteur vs chefban */
+        .header{
+            display:none;
+        }
 
         .tooltip47 {
             position: relative;
@@ -398,16 +412,30 @@ ob_start();
         ::-webkit-scrollbar-thumb:hover {
             background: #238fce;
         }
-          .header{
-            display:none;
-            margin-top:20px;
-        }
-        
     </style>
 </body>
 
 
 <!-- les script de la page -->
+<script>
+    const ferme = document.querySelector(".close_window");
+    const conteneur = document.querySelector(".conteneur0");
+
+    ferme.addEventListener("click", (e) => {
+        e.preventDefault()
+        window.location.href = "<?= SITE_URL ?>/permi_con";
+
+    });
+</script>
+<script>
+    const boutonFermer = document.getElementById("fermer");
+    const conteneur0 = document.querySelector(".conteneur0");
+
+    boutonFermer.addEventListener("click", (e) => {
+        e.preventDefault();
+         window.location.href = "<?= SITE_URL ?>/permi_con";
+    });
+</script>
 
 <script>
     // Fonction pour afficher le tooltip
@@ -429,8 +457,7 @@ ob_start();
         boutonsFermer.forEach((bouton) => {
             bouton.addEventListener("click", (e) => {
                 e.preventDefault();
-                // conteneur0.style.display = "none";
-                 window.location.href = "<?= SITE_URL ?>/home";
+                conteneur0.style.display = "none";
             });
         });
     }

@@ -412,7 +412,7 @@ $d = (array)json_decode($response, true);
             <button class="bouton email"> <i class="fas fa-envelope svg"></i>Envoyer un Email </button>
         </div>
         <div class="col-sm-3 d-flex justify-content-end ">
-            <button class="bouton" id="recherche"> <i class="fas fa-search svg"></i></i>Recherche47</button>
+            <button class="bouton" id="recherche"> <i class="fas fa-search svg"></i></i>Recherche</button>
             <button class="bouton fermer" id="fermer_page"> <i class="fas fa-close svg"></i>Fermer</button>
         </div>
 
@@ -482,7 +482,7 @@ $d = (array)json_decode($response, true);
         /* scrollbar du tableau */
 
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 15px;
         }
 
 
@@ -512,7 +512,7 @@ $d = (array)json_decode($response, true);
 
 
             &::-webkit-scrollbar {
-                height: 10px;
+                height: 15px;
                 /* Ajuster la hauteur de la barre de défilement horizontale */
             }
 

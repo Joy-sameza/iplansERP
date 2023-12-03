@@ -95,7 +95,7 @@ ob_start();
             /* Nouvelle couleur de fond au survol */
             color: #fff !important;
             /* Nouvelle couleur du texte au survol */
-            zoom: 1.1;
+            /* zoom: 1.1; */
 
         }
 
@@ -112,7 +112,7 @@ ob_start();
 
         /* Styles pour le clic sur le bouton */
         .func:active {
-            transform: translateY(2px) !important;
+            /* transform: translateX(1px) !important; */
             color: #fff !important;
             /* Légère descente au clic */
         }
@@ -141,7 +141,7 @@ ob_start();
             style="width: 40px; height: 40px; margin-right:7px">Médiathèque</button>
     <button type="button" class="func"><img src="<?= SITE_URL ?>/assets/img/conversation.png" alt=""
             style="width: 40px; height: 40px; margin-right:7px">GED</button>
-    <button type="button" class="func" id="rhumain"><a href="<?= SITE_URL ?>/rhumain"
+    <button type="button" class="func" id="rhumain"><a href="<?= SITE_URL ?>/resource_humaine"
             style="width: 40px; height: 40px; margin-right:7pxlor: black"><img
                 src="<?= SITE_URL ?>/assets/img/human.png" alt=""
                 style="width: 40px; height: 40px; margin-right:7px">GRH</a></button>
