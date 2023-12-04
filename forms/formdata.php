@@ -120,6 +120,13 @@ if (isset($_POST['iplans_submit'])) {
     }
 }
 
+/**
+ * Sends data via Courrier API and returns the response.
+ *
+ * @param string $data The data to be sent to the API.
+ * @param string $fileDestination The destination file path.
+ * @return array The response from the API.
+ */
 function sendDataCourrier(string $data, string $fileDestination): array
 {
     $curl = curl_init();

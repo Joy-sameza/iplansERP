@@ -71,7 +71,7 @@ class Permission
     public function getAll(): array
     {
         // Build the SQL query to select all rows from the table
-        $query = "SELECT * FROM  {$this->table} ";
+        $query = "SELECT * FROM  {$this->table} WHERE supprimer = 0";
 
         // Execute the query and retrieve the result set
         $stmt = $this->conn->query($query);
@@ -384,35 +384,37 @@ class Permission
         $this->reccuperable = htmlspecialchars(strip_tags($new_data['reccuperable'] ?? $current['reccuperable']));
         $this->deduiresurconges = htmlspecialchars(strip_tags($new_data['deduireSurConges'] ?? $current['deduireSurConges']));
         $this->anneecomptable = htmlspecialchars(strip_tags($new_data['anneeComptable'] ?? $current['anneeComptable']));
-        $this->iddatedebut = htmlspecialchars(strip_tags($new_data['IDDateDebut'] ?? $current['IDDateDebut']));
-        $this->iddatefin = htmlspecialchars(strip_tags($new_data['IDDateFin'] ?? $current['IDDateFin']));
-        $this->creepar = htmlspecialchars(strip_tags($new_data['CreePar'] ?? $current['CreePar']));
-        $this->accordeepar = htmlspecialchars(strip_tags($new_data['AccordeePar'] ?? $current['AccordeePar']));
-        $this->demande = htmlspecialchars(strip_tags($new_data['Demande'] ?? $current['Demande']));
-        $this->datecreation = htmlspecialchars(strip_tags($new_data['DateCreation'] ?? $current['DateCreation']));
-        $this->iddatecreation = htmlspecialchars(strip_tags($new_data['IDDateCreation'] ?? $current['IDDateCreation']));
-        $this->archive = htmlspecialchars(strip_tags($new_data['Archive'] ?? $current['Archive']));
-        $this->synchronization = htmlspecialchars(strip_tags($new_data['Synchronization'] ?? $current['Synchronization']));
-        $this->lastupdatetime = htmlspecialchars(strip_tags($new_data['LastUpDateTime '] ?? $current['LastUpDateTime']));
-        $this->idlastupdate = htmlspecialchars(strip_tags($new_data['IDLastUpDate'] ?? $current['IDLastUpDate']));
-        $this->userlastupdatetime = htmlspecialchars(strip_tags($new_data['UserLastUpDateTime'] ?? $current['UserLastUpDateTime']));
-        $this->codeagence = htmlspecialchars(strip_tags($new_data['CodeAgence '] ?? $current['CodeAgence']));
-        $this->datetime = htmlspecialchars(strip_tags($new_data['DateTime'] ?? $current['DateTime']));
-        $this->indexgroupement = htmlspecialchars(strip_tags($new_data['IndexGroupement'] ?? $current['IndexGroupement']));
-        $this->indexevenement = htmlspecialchars(strip_tags($new_data['IndexEvenement'] ?? $current['IndexEvenement']));
-        $this->iddatetime = htmlspecialchars(strip_tags($new_data['IDDateTime'] ?? $current['IDDateTime ']));
-        $this->datetime = htmlspecialchars(strip_tags($new_data['UserDateTime'] ?? $current['UserDateTime ']));
-        $this->userdatetime = htmlspecialchars(strip_tags($new_data['UserDateTime'] ?? $current['UserDateTime']));
-        $this->archivedate = htmlspecialchars(strip_tags($new_data['ArchiveDate'] ?? $current['ArchiveDate ']));
-        $this->archiveiddate = htmlspecialchars(strip_tags($new_data['ArchiveIDDate'] ?? $current['ArchiveIDDate']));
-        $this->archivedate = htmlspecialchars(strip_tags($new_data['ArchiveDate'] ?? $current['ArchiveDate']));
-        $this->archiveuser = htmlspecialchars(strip_tags($new_data['ArchiveUser'] ?? $current['ArchiveUser']));
-        $this->archivemotif = htmlspecialchars(strip_tags($new_data['ArchiveMotif'] ?? $current['ArchiveMotif']));
-        $this->archivedefinitive = htmlspecialchars(strip_tags($new_data['ArchiveDefinitive'] ?? $current['ArchiveDefinitive']));
-        $this->archivedefinitiveiddate = htmlspecialchars(strip_tags($new_data['ArchiveDefinitiveIDDate'] ?? $current['ArchiveDefinitiveIDDate ']));
-        $this->archivedefinitivedate = htmlspecialchars(strip_tags($new_data['ArchiveDefinitiveDate'] ?? $current['ArchiveDefinitiveDate']));
-        $this->archivedefinitiveuser = htmlspecialchars(strip_tags($new_data['ArchiveDefinitiveUser'] ?? $current['ArchiveDefinitiveUser']));
-        $this->archivedefinitivemotif = htmlspecialchars(strip_tags($new_data['ArchiveDefinitiveMotif'] ?? $current['ArchiveDefinitiveMotif']));
+
+
+        $this->iddatedebut = htmlspecialchars(strip_tags($new_data['IDDateDebut'] ?? $current['IDDateDebut'] ?? ''));
+        $this->iddatefin = htmlspecialchars(strip_tags($new_data['IDDateFin'] ?? $current['IDDateFin'] ?? ''));
+        $this->creepar = htmlspecialchars(strip_tags($new_data['CreePar'] ?? $current['CreePar'] ?? ''));
+        $this->accordeepar = htmlspecialchars(strip_tags($new_data['AccordeePar'] ?? $current['AccordeePar'] ?? ''));
+        $this->demande = htmlspecialchars(strip_tags($new_data['Demande'] ?? $current['Demande'] ?? ''));
+        $this->datecreation = htmlspecialchars(strip_tags($new_data['DateCreation'] ?? $current['DateCreation'] ?? ''));
+        $this->iddatecreation = htmlspecialchars(strip_tags($new_data['IDDateCreation'] ?? $current['IDDateCreation'] ?? ''));
+        $this->archive = htmlspecialchars(strip_tags($new_data['Archive'] ?? $current['Archive'] ?? ''));
+        $this->synchronization = htmlspecialchars(strip_tags($new_data['Synchronization'] ?? $current['Synchronization'] ?? ''));
+        $this->lastupdatetime = htmlspecialchars(strip_tags($new_data['LastUpDateTime '] ?? $current['LastUpDateTime'] ?? ''));
+        $this->idlastupdate = htmlspecialchars(strip_tags($new_data['IDLastUpDate'] ?? $current['IDLastUpDate'] ?? ''));
+        $this->userlastupdatetime = htmlspecialchars(strip_tags($new_data['UserLastUpDateTime'] ?? $current['UserLastUpDateTime'] ?? ''));
+        $this->codeagence = htmlspecialchars(strip_tags($new_data['CodeAgence '] ?? $current['CodeAgence'] ?? ''));
+        $this->datetime = htmlspecialchars(strip_tags($new_data['DateTime'] ?? $current['DateTime'] ?? ''));
+        $this->indexgroupement = htmlspecialchars(strip_tags($new_data['IndexGroupement'] ?? $current['IndexGroupement'] ?? ''));
+        $this->indexevenement = htmlspecialchars(strip_tags($new_data['IndexEvenement'] ?? $current['IndexEvenement'] ?? ''));
+        $this->iddatetime = htmlspecialchars(strip_tags($new_data['IDDateTime'] ?? $current['IDDateTime '] ?? ''));
+        $this->datetime = htmlspecialchars(strip_tags($new_data['UserDateTime'] ?? $current['UserDateTime '] ?? ''));
+        $this->userdatetime = htmlspecialchars(strip_tags($new_data['UserDateTime'] ?? $current['UserDateTime'] ?? ''));
+        $this->archivedate = htmlspecialchars(strip_tags($new_data['ArchiveDate'] ?? $current['ArchiveDate '] ?? ''));
+        $this->archiveiddate = htmlspecialchars(strip_tags($new_data['ArchiveIDDate'] ?? $current['ArchiveIDDate'] ?? ''));
+        $this->archivedate = htmlspecialchars(strip_tags($new_data['ArchiveDate'] ?? $current['ArchiveDate'] ?? ''));
+        $this->archiveuser = htmlspecialchars(strip_tags($new_data['ArchiveUser'] ?? $current['ArchiveUser'] ?? ''));
+        $this->archivemotif = htmlspecialchars(strip_tags($new_data['ArchiveMotif'] ?? $current['ArchiveMotif'] ?? ''));
+        $this->archivedefinitive = htmlspecialchars(strip_tags($new_data['ArchiveDefinitive'] ?? $current['ArchiveDefinitive'] ?? ''));
+        $this->archivedefinitiveiddate = htmlspecialchars(strip_tags($new_data['ArchiveDefinitiveIDDate'] ?? $current['ArchiveDefinitiveIDDate '] ?? ''));
+        $this->archivedefinitivedate = htmlspecialchars(strip_tags($new_data['ArchiveDefinitiveDate'] ?? $current['ArchiveDefinitiveDate'] ?? ''));
+        $this->archivedefinitiveuser = htmlspecialchars(strip_tags($new_data['ArchiveDefinitiveUser'] ?? $current['ArchiveDefinitiveUser'] ?? ''));
+        $this->archivedefinitivemotif = htmlspecialchars(strip_tags($new_data['ArchiveDefinitiveMotif'] ?? $current['ArchiveDefinitiveMotif'] ?? ''));
 
         $this->courrierId = htmlspecialchars(strip_tags($current["NEng"]));
 

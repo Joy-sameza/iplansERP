@@ -10,22 +10,25 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit('POST request method required');
 }
 
-
-// if (!array_key_exists('iplans_submit', $_POST)) {
-//     http_response_code(401);
-//     exit;
-// }
-
 // Get the form data
-if (isset($_POST['iplans_submit'])) {
-    $type = $_POST['type'];
-    $ref = $_POST['ref'];
-    $desti = $_POST['desti'];
-    $objet = $_POST['objet'];
-    $source = $_POST['source'];
-    $date = $_POST['date'];
-    $heure = $_POST['heure'];
-    $niveau = $_POST['niveau'];
+if (array_key_exists('iplans_submit', $_POST)) {
+
+    $personne_id = (int)$_POST['personne'];
+    $destination = $_POST['destination'];
+    $via = $_POST['via'];
+    $deplacement = $_POST['deplacement'];
+    $immatriculation = $_POST['immatriculation'];
+    $cadre = $_POST['cadre'];
+    $site = $_POST['site'];
+    $dateDebut = $_POST['dateDebut'];
+    $joursEcart = $_POST['joursEcart'];
+    $dateFin = $_POST['dateFin'];
+    $nature = $_POST['nature'];
+    $prise = $_POST['prise'];
+    $heuredebut = $_POST['heuredebut'];
+    $nobl_lta = $_POST['nobl_lta'];
+    $comment = $_POST['comment'];
+    $totalFees = (array)json_decode($_POST['totalFees'], true);
 
     $bytes = 1024 * 1024; //Convert Megabytes to bytes
     $done = false;
@@ -79,42 +82,183 @@ if (isset($_POST['iplans_submit'])) {
         $done = move_uploaded_file($files["tmp_name"], $fileDestination);
     }
 
+    $o = getPersonIndex($personne_id);
+    $matricule = isset($o['index']) ? (string)$o['index'] : null;
+
+    $noteDeFrais = str_pad('N', 15, mt_rand(0, 9));
+
     $data = json_encode([
-        "Site" => "mcs",
-        "InOutCourier" => $type,
-        "ReferenceCourier" => $ref,
-        "ObjetCourier" => $objet,
-        "SourceCourier" => $source,
-        "NiveauImportance" => $niveau,
-        "Destinataire" => $desti,
-        "DateDepot" => $date,
-        "HeureDepot" => $heure,
-        "NomPieceJointe" => $fileName,
-        "DestiPieceJointe" => $fileDestination
+        'matricule' => $matricule,
+        'dest' => $destination,
+        'via' => $via,
+        'cadre' => $cadre,
+        'deplacement' => $deplacement,
+        'NumeroBL_LTA' => $nobl_lta,
+        'site' => $site,
+        'dateDebut' => $dateDebut,
+        'Lieux' => $destination,
+        'duree' => $joursEcart,
+        'dateFin' => $dateFin,
+        'nature' => $nature,
+        'PriseEnCharge' => $prise,
+        'charge' => $prise,
+        'heuredebut' => $heuredebut,
+        'Rapport' => $comment,
+        'duree_travail' => $joursEcart,
+        'Note_de_Frais' => $noteDeFrais,
+        'Departement' => 'DEMO',
+        "motor" => "123",
+        "IndexEvenement" => "123",
+        "IndexDossierLogistique" => "123",
+        "NumeroDossier" => "123",
+        "mat" => $immatriculation,
+        "state" => "123",
+        "BlockPointage" => "123",
+        "historique" => "123",
+        "Synchronization" => "123",
+        "Archive" => 0,
+        "ArchiveMotif" => "123",
+        'NomPieceJointe' => $fileName,
+        'DestiPieceJointe' => $fileDestination
     ]);
 
-    if ($done) {
-        $output = sendDataCourrier($data, $fileDestination);
+    $car = ($totalFees['option1'] === "on") ? (int)$totalFees['transport_total'] / 2 : (int)$totalFees['transport_total'];
 
-        if (array_key_exists("message", $output) && array_key_exists("id", $output)) {
-            $_SESSION['save'] = true;
-            header("Location: " . SITE_URL . "/courrier");
-        } else {
-            unlink($fileDestination);
-            http_response_code(500);
-            $_SESSION['error'] = true;
-            header("Location: " . SITE_URL . "/courrier");
-        }
+    $fraisData = json_encode([
+        'Indexe' => $matricule,
+        'site' => $site,
+        'NumNote' => $noteDeFrais,
+        'ModeReglement' => "",
+        'PseudoAccorde' => "",
+        'TransportParJour' => $totalFees['transport'],
+        'Transport' => $totalFees['transport_total'],
+        'LogementParJour' => $totalFees['logement'],
+        'Logement' => $totalFees['logement_total'],
+        'NutritionParJour' => $totalFees['nutrition'],
+        'Nutrition' => $totalFees['nutrition_total'],
+        'PerdiemeParJour' => $totalFees['perdime'],
+        'Perdieme' => $totalFees['perdime_total'],
+        'AutresParJour' => $totalFees['autres'],
+        'Autres' => $totalFees['autre_total'],
+        'TotalPArJour' => $totalFees['tataux'],
+        'TotalFrais' => $totalFees['totalFrais'],
+        'DateCreation' => date('d/m/Y'),
+        'Carburant' => $car,
+    ]);
+
+    $outputMission = sendDataMission($data, $fileDestination);
+    $outputFrais = sendFraisData($fraisData);
+
+
+    if (
+        (array_key_exists("message", $outputMission) && array_key_exists("id", $outputMission)) &&
+        (array_key_exists("message", $outputFrais) && array_key_exists("id", $outputFrais))
+    ) {
+        echo json_encode([$outputMission, $outputFrais]);
     } else {
-        $output = sendDataCourrier($data, $fileDestination);
+        if ($done) unlink($fileDestination);
+        http_response_code(500);
+        echo json_encode([$outputMission, $outputFrais]);
+    }
+} else {
+    http_response_code(401);
+    exit;
+}
 
-        if (array_key_exists("message", $output) && array_key_exists("id", $output)) {
-            $_SESSION['save'] = true;
-            header("Location: " . SITE_URL . "/courrier");
-        } else {
-            http_response_code(500);
-            $_SESSION['error'] = true;
-            header("Location: " . SITE_URL . "/courrier");
-        }
+
+/**
+ * Sends data via courier.
+ *
+ * @param mixed $data The data to be sent.
+ * @param string $fileDestination The destination file.
+ * @throws Exception If there is an error in the request.
+ * @return array The response from the API.
+ */
+function sendDataMission($data, $fileDestination)
+{
+    $curl = curl_init();
+    curl_setopt_array($curl, [
+        CURLOPT_URL => MISSION_API_URL,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "POST",
+        CURLOPT_POSTFIELDS => $data,
+        CURLOPT_HTTPHEADER => [
+            "Content-Type: application/json"
+        ],
+    ]);
+    $response = curl_exec($curl);
+    $err = curl_error($curl);
+
+    curl_close($curl);
+
+    if ($err) {
+        return ["errors" => $err];
+        unlink($fileDestination);
+    } else {
+        return (array)json_decode($response, true);
+    }
+}
+
+/**
+ * Retrieves the index of a person from the API based on the given person ID.
+ *
+ * @param int $personId The ID of the person to retrieve the index for.
+ * @throws Some_Exception_Class Description of the exception that may be thrown.
+ * @return array Returns an array containing the index of the person. If there is an error, the array will contain an "errors" key with the error message.
+ */
+function getPersonIndex(int $personId): array
+{
+    $curl = curl_init();
+    curl_setopt_array($curl, [
+        CURLOPT_URL => PERS_API_URL . $personId,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "GET",
+    ]);
+    $response = curl_exec($curl);
+    $error = curl_error($curl);
+    curl_close($curl);
+
+    return $error ? ["errors" => $error] : ['index' => ((array) json_decode($response, true))["Indexe"]];
+}
+
+
+/**
+ * Sends the given data to the Frais Mission API via a POST request.
+ *
+ * @param mixed $data The data to send to the API.
+ * @throws Exception If there is an error sending the request.
+ * @return array The response from the API as an associative array.
+ */
+function sendFraisData($data): array
+{
+    $curl = curl_init();
+    curl_setopt_array($curl, [
+        CURLOPT_URL => FRAIS_MISSION_API_URL,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "POST",
+        CURLOPT_POSTFIELDS => $data,
+        CURLOPT_HTTPHEADER => [
+            "Content-Type: application/json"
+        ],
+    ]);
+    $response = curl_exec($curl);
+    $error = curl_error($curl);
+
+    curl_close($curl);
+
+    if ($error) {
+        return ["errors" => $error];
+    } else {
+        return json_decode($response, true);
     }
 }

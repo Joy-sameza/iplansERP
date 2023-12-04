@@ -40,7 +40,7 @@ ob_start();
 </head>
 
 <body>
-    <div class="container-fluid conteneur0 my-5 border border-2 border-primary" style='width:75%;border-bottom:none; height: 99vh;'>
+    <div class="container-fluid conteneur0 my-5 border border-2 border-primary" style='width:75%;border-bottom:none; height: 75vh;'>
 
         <div class="row bg-primary border-1 ">
             <div class="cont_titre d-flex justify-content-between  p-1" style='align-items: center;'>
@@ -136,67 +136,66 @@ ob_start();
                         </div>
                     </div>
                     <div class='englobe1' style='width:16%;padding:0px;margin:0px;position:relative;'>
-                      <select class="form-select-sm  " style='width:100%;margin-top:30px;float:left' id="salaire">
+                        <select class="form-select-sm  " style='width:100%;margin-top:30px;float:left' id="salaire">
                             <option SELECTED>TOUS</option>
                             <option>UN SALAIRE</option>
-                        </select> 
-                        
-
-                          <!-- zone de recherche -->
-    <div class="container-fluid text-center mt-2" id="zone_recherche" >
-        <form>
-            <input type="text" id="myInput" class='form-control ' onkeyup="myFunction()" name="search" placeholder="Nom..." style='margin-left: -13px;'>
-        </form>
-    </div>
-    <!-- style de ma zone de recherche  -->
-    <style>
-        #myInput {
-            width: 165px;
-            box-sizing: border-box;
-            border: 2px solid #ccc;
-            border-radius: 8px;
-            font-size: 15px;
-            background-color: white;
-            background-image: url('<?= SITE_URL ?>/assets/img/searchicon.png');
-            background-position: 10px 5px;
-            background-repeat: no-repeat;
-            padding: 3px 20px 5px 40px;
-            -webkit-transition: width 0.4s ease-in-out;
-            transition: width 0.4s ease-in-out;
-        }
-
-    </style>
+                        </select>
 
 
-   <script>
-        function myFunction() {
-            var input, filter, table, tr, td, i, txtValue;
-            input = document.getElementById("myInput");
-            filter = input.value.toUpperCase();
-            table = document.getElementById("myTable");
-            tr = table.getElementsByTagName("tr");
-            for (i = 0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName("td")[3];
-                if (td) {
-                    txtValue = td.textContent || td.innerText;
-                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                        tr[i].style.display = "";
-                    } else {
-                        tr[i].style.display = "none";
-                    }
-                }
-            }
-        }
-    </script>
+                        <!-- zone de recherche -->
+                        <div class="container-fluid text-center mt-2" id="zone_recherche">
+                            <form>
+                                <input type="text" id="myInput" class='form-control ' onkeyup="myFunction()" name="search" placeholder="Nom..." style='margin-left: -13px;'>
+                            </form>
+                        </div>
+                        <!-- style de ma zone de recherche  -->
+                        <style>
+                            #myInput {
+                                width: 165px;
+                                box-sizing: border-box;
+                                border: 2px solid #ccc;
+                                border-radius: 8px;
+                                font-size: 15px;
+                                background-color: white;
+                                background-image: url('<?= SITE_URL ?>/assets/img/searchicon.png');
+                                background-position: 10px 5px;
+                                background-repeat: no-repeat;
+                                padding: 3px 20px 5px 40px;
+                                -webkit-transition: width 0.4s ease-in-out;
+                                transition: width 0.4s ease-in-out;
+                            }
+                        </style>
 
 
-                        
+                        <script>
+                            function myFunction() {
+                                var input, filter, table, tr, td, i, txtValue;
+                                input = document.getElementById("myInput");
+                                filter = input.value.toUpperCase();
+                                table = document.getElementById("myTable");
+                                tr = table.getElementsByTagName("tr");
+                                for (i = 0; i < tr.length; i++) {
+                                    td = tr[i].getElementsByTagName("td")[3];
+                                    if (td) {
+                                        txtValue = td.textContent || td.innerText;
+                                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                            tr[i].style.display = "";
+                                        } else {
+                                            tr[i].style.display = "none";
+                                        }
+                                    }
+                                }
+                            }
+                        </script>
 
 
-                    <button class='boutton'>
+
+
+
+                        <button class='boutton'>
                             <img src="<?= SITE_URL ?>/assets/img/padlock.png" alt="" style="width: max-content; height: 20px;">
                         </button>
-                       
+
                     </div>
                 </div>
             </form>
@@ -247,7 +246,6 @@ ob_start();
                             <td class='text-white' style='background-color:#0D6EFD;'></td>
                             <td class='text-white' style='background-color:#0D6EFD;'></td>
                             <td class='text-white' style='background-color:#0D6EFD;'>2</td>
-
                         </tr>
                     </tbody>
                 </table>
@@ -301,12 +299,12 @@ ob_start();
                     <img src="<?= SITE_URL ?>/assets/img/add-file.png" alt="" style="width: max-content; height: 20px;">
                 </button>
 
-                <button class='taille_boutton'>
+                <button class='taille_boutton' id="modify">
                     Modifier
                     <img src="<?= SITE_URL ?>/assets/img/set.png" alt="" style="width: max-content; height: 20px;">
                 </button>
 
-                <button>
+                <button id="delete">
                     Supprimer
                     <img src="<?= SITE_URL ?>/assets/img/bin.png" alt="" style="width: max-content; height: 20px;">
                 </button>
@@ -344,7 +342,7 @@ ob_start();
     <!-- fin de la grande div  -->
 
     <template id="absTemplate">
-        <tr class="table-primary custom-row text-center text-white">
+        <tr class="table-primary custom-row text-center text-white" style="pointer-events: all !important;">
             <td class='text-white' style='background-color:#0D6EFD;' data-site></td>
             <td class='text-white' style='background-color:#0D6EFD;' data-departement></td>
             <td class='text-white' style='background-color:#0D6EFD;' data-civilite></td>
@@ -362,6 +360,7 @@ ob_start();
             <td class='text-white' style='background-color:#0D6EFD;' data-creepar></td>
             <td class='text-white' style='background-color:#0D6EFD;' data-accordeepar></td>
             <td class='text-white' style='background-color:#0D6EFD;' data-archive></td>
+            <td class='text-white' style='background-color:#0D6EFD; display:none;' data-neng></td>
         </tr>
     </template>
 
@@ -483,62 +482,64 @@ ob_start();
         padding-left: 0 !important;
         padding-right: 0 !important;
     }
-    .header{
-        display:none;
+
+    .header {
+        display: none;
     }
-     body {
 
-            border-bottom: none;
-            overflow-x: auto;
+    body {
+
+        border-bottom: none;
+        overflow-x: auto;
 
 
-            &::-webkit-scrollbar {
-                height: 10px;
-                /* Ajuster la hauteur de la barre de défilement horizontale */
-            }
+        &::-webkit-scrollbar {
+            height: 10px;
+            /* Ajuster la hauteur de la barre de défilement horizontale */
+        }
 
+        &::-webkit-scrollbar-thumb {
+            background-color: #3498db;
+            /* Couleur du curseur de défilement */
+        }
+
+        &::-webkit-scrollbar-track {
+            background-color: #ecf0f1;
+            /* Couleur de la piste de défilement */
+        }
+
+        &:hover {
             &::-webkit-scrollbar-thumb {
-                background-color: #3498db;
-                /* Couleur du curseur de défilement */
-            }
-
-            &::-webkit-scrollbar-track {
-                background-color: #ecf0f1;
-                /* Couleur de la piste de défilement */
-            }
-
-            &:hover {
-                &::-webkit-scrollbar-thumb {
-                    background-color: #0b9444;
-                    /* Changement de couleur au survol */
-                }
+                background-color: #0b9444;
+                /* Changement de couleur au survol */
             }
         }
+    }
 
-              /* scrollbar du tableau */
+    /* scrollbar du tableau */
 
-        ::-webkit-scrollbar {
-            width: 15px;
-        }
+    ::-webkit-scrollbar {
+        width: 15px;
+    }
 
 
 
-        /* Track */
-        ::-webkit-scrollbar-track {
-            box-shadow: inset 0 0 5px grey;
-            border-radius: 10px;
-        }
+    /* Track */
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey;
+        border-radius: 10px;
+    }
 
-        /* Handle */
-        ::-webkit-scrollbar-thumb {
-            background: #238fce;
-            border-radius: 10px;
-        }
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #238fce;
+        border-radius: 10px;
+    }
 
-        /* Handle on hover */
-        ::-webkit-scrollbar-thumb:hover {
-            background: #0b9444;
-        }
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #0b9444;
+    }
 </style>
 
 
@@ -561,18 +562,12 @@ ob_start();
 
     boutonFermer.addEventListener("click", (e) => {
         e.preventDefault();
-         window.location.href = "<?= SITE_URL ?>/permi_con";
+        window.location.href = "<?= SITE_URL ?>/permi_con";
     });
 </script>
 
 
 <!-- evenement sur les bouttons  -->
-
-<script>
-    document.getElementById("new").addEventListener("click",
-     () => window.location.href = "<?= SITE_URL ?>/gestion_abscences" );
-</script>
-
 
 <script type="module">
     const absTemplate = document.getElementById("absTemplate");
@@ -593,6 +588,9 @@ ob_start();
             departement: "departement",
             type: "motif",
             debut: "debut",
+            nom: "nom",
+            prenom: "prenom",
+            Civilite: "civilite",
             fin: "fin",
             Notes: "justification",
             block_pointage: "block_pointage",
@@ -603,6 +601,7 @@ ob_start();
             CreePar: "creepar",
             AccordeePar: "accordeepar",
             Archive: "archive",
+            NEng: "neng",
         };
 
         Object.entries(data).forEach(([key, value]) => {
@@ -641,9 +640,21 @@ ob_start();
         site.appendChild(option);
     }
 
+    const persData = await fetch("<?= PERS_API_URL ?>");
+    const pers = await persData.json();
+
     const response = await fetch("<?= PERMISSION_API_URL ?>");
     const absences = await response.json();
 
+    for (const person of pers) {
+        for (const abs of absences) {
+            if (abs.matricule === person.Indexe) {
+                abs.nom = person.nom;
+                abs.prenom = person.prenom;
+                abs.Civilite = person.civilite;
+            }
+        }
+    }
 
     fillTableau.innerHTML = '';
     for (const absence of absences) {
@@ -746,7 +757,113 @@ ob_start();
             (absence) => absence?.salaire === salaire
         )
     }
+
+    document.getElementById("new").addEventListener("click",
+        () => window.location.href = "<?= SITE_URL ?>/gestion_abscences");
+
+    const allRows = document.querySelectorAll("tr");
+    let actionData = "";
+    const modifyBtn = document.getElementById("modify");
+    const deleteBtn = document.getElementById("delete");
+
+    modifyBtn.addEventListener("click", () => actionData = "modify");
+    deleteBtn.addEventListener("click", () => actionData = "delete");
+    Array.from(allRows).forEach((row) => {
+        row.addEventListener("click", async (e) => {
+            const targetRow = e.target.parentNode;
+            const extractedData = extractDataFromRow(targetRow);
+            switch (actionData) {
+                case "modify":
+                    actionData = "";
+                    localStorage.setItem("extractedData", JSON.stringify(extractedData));
+                    window.open("<?= SITE_URL ?>/gestion_abscences", "_self");
+                    break;
+                case "delete":
+                    actionData = "";
+                    await deleteAbscence(parseInt(extractedData.neng));
+                    setTimeout(() => {}, 1500);
+                    window.location.href = "<?= SITE_URL ?>/list_abscences";
+                    break;
+                default:
+                    break;
+            }
+        });
+    });
+
+    /** 
+     * Extract data from a row
+     * @param {HTMLTableRowElement} row Row from which data is to be extracted
+     * @returns {Object} The extracted data
+     */
+    function extractDataFromRow(row) {
+        const pers = {
+            Site: "site",
+            departement: "departement",
+            type: "motif",
+            debut: "debut",
+            fin: "fin",
+            Notes: "justification",
+            block_pointage: "block_pointage",
+            reccuperable: "recuperable",
+            deduireSurConges: "deduiresurconges",
+            anneeComptable: "anneecomptable",
+            matricule: "matricule",
+            CreePar: "creepar",
+            AccordeePar: "accordeepar",
+            Archive: "archive",
+            NEng: "neng",
+        };
+        let obj = {};
+        for (const [, value] of Object.entries(pers)) {
+            obj[value] = row.querySelector(`[data-${value}]`).textContent;
+        }
+        return obj;
+    }
+
+    /**
+     * @param {number} id The id of the abscence to delete
+     * @returns {Promise<void>}
+     */
+    async function deleteAbscence(id) {
+        const val = await swal({
+            icon: "warning",
+            title: "Etes-vous sûr de vouloir supprimer?",
+            text: "Cette action est irreversible!",
+            dangerMode: true,
+            closeOnClickOutside: false,
+            closeOnEsc: false,
+            buttons: {
+                cancel: {
+                    text: "Non!",
+                    value: false,
+                    visible: true,
+                    className: "",
+                    closeModal: true,
+                },
+                confirm: {
+                    text: "Oui, supprimer!",
+                    value: true,
+                    className: "",
+                    closeModal: true,
+                },
+            },
+        });
+        if (!val) return;
+        const formData = new FormData();
+        formData.append("id", id);
+        formData.append("iplans_submit", "");
+        const response = await fetch("<?= SITE_URL ?>/forms/formdeleteabsence.php", {
+            method: "POST",
+            body: formData,
+        });
+        if (!response.ok) return showAlert("L'absence n'a pas pu être supprimé", "error");
+        return showAlert("L'absence a été supprimé avec succès", "success");
+
+        // if (response["rows"] >= 1 && response["message"])
+        // return showAlert("L'absence n'a pas pu être supprimé", "error");
+    }
 </script>
+
 
 <script>
     document.getElementById('printData').addEventListener('click', printDataAction);
@@ -768,7 +885,7 @@ ob_start();
         pdf.setFontSize(10);
         pdf.text(iplans, 10, 25);
         const jsonData = pdf.autoTableHtmlToJson(
-            document.getElementById("absTable"),
+            document.getElementById("myTable"),
             false
         );
         const printableRowsAbs = {

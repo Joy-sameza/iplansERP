@@ -600,7 +600,7 @@ async function showAlert(title, type, text = "") {
     closeOnClickOutside: true,
     text: text,
     title: title,
-    dangerMode: true,
+    dangerMode: type === "error",
     timer: type === "error" ? 3500 : 3000,
   });
 }
