@@ -205,7 +205,7 @@ ob_start();
         <!-- debut des boutton du bas -->
 
         <div class="row d-flex justify-content-between bg-primary bout-bas  p-2 mb-2">
-            <div style='width:50%;' class=' d-flex justify-content-between'>
+            <div style='width:60%;' class=' d-flex justify-content-between'>
                 <button id='new'>
                     Nouveau
                     <img src="<?= SITE_URL ?>/assets/img/add-file.png" alt="" style="width: max-content; height: 20px;">
@@ -215,6 +215,9 @@ ob_start();
                     Ouvrir
                     <img src="<?= SITE_URL ?>/assets/img/folder.png" alt="" style="width: max-content; height: 20px;">
                 </button>
+                 <button>Imprimer
+                        <img src="<?= SITE_URL ?>/assets/img/printer.png" alt="" style="width: max-content; height: 20px;">
+                    </button>
 
                 <button id="delete">
                     Supprimer
@@ -226,7 +229,7 @@ ob_start();
                 </button>
             </div>
             <!--  css du haut  -->
-            <div style='width:50%;justify-content:flex-end;' class=' d-flex '>
+            <div style='width:40%;justify-content:flex-end;' class=' d-flex '>
                 <button id="fermer">
                     Fermer
                     <img src="<?= SITE_URL ?>/assets/img/close.png" alt="" style="width: max-content; height: 20px;">
