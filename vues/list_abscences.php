@@ -40,7 +40,7 @@ ob_start();
 </head>
 
 <body>
-    <div class="container-fluid conteneur0 my-5 border border-2 border-primary" style='width:75%;border-bottom:none; height: 99vh;'>
+    <div class="container-fluid conteneur0 my-5 border border-2 border-primary" style='width:75%;border-bottom:none; height: 75vh;'>
 
         <div class="row bg-primary border-1 ">
             <div class="cont_titre d-flex justify-content-between  p-1" style='align-items: center;'>
@@ -588,6 +588,9 @@ ob_start();
             departement: "departement",
             type: "motif",
             debut: "debut",
+            nom: "nom",
+            prenom: "prenom",
+            Civilite: "civilite",
             fin: "fin",
             Notes: "justification",
             block_pointage: "block_pointage",
@@ -637,9 +640,21 @@ ob_start();
         site.appendChild(option);
     }
 
+    const persData = await fetch("<?= PERS_API_URL ?>");
+    const pers = await persData.json();
+
     const response = await fetch("<?= PERMISSION_API_URL ?>");
     const absences = await response.json();
 
+    for (const person of pers) {
+        for (const abs of absences) {
+            if (abs.matricule === person.Indexe) {
+                abs.nom = person.nom;
+                abs.prenom = person.prenom;
+                abs.Civilite = person.civilite;
+            }
+        }
+    }
 
     fillTableau.innerHTML = '';
     for (const absence of absences) {
@@ -761,7 +776,7 @@ ob_start();
                 case "modify":
                     actionData = "";
                     localStorage.setItem("extractedData", JSON.stringify(extractedData));
-                    window.open("<?= SITE_URL ?>/gestion_abscences", "_blank");
+                    window.open("<?= SITE_URL ?>/gestion_abscences", "_self");
                     break;
                 case "delete":
                     actionData = "";

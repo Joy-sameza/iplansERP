@@ -215,9 +215,9 @@ ob_start();
                     Ouvrir
                     <img src="<?= SITE_URL ?>/assets/img/folder.png" alt="" style="width: max-content; height: 20px;">
                 </button>
-                 <button>Imprimer
-                        <img src="<?= SITE_URL ?>/assets/img/printer.png" alt="" style="width: max-content; height: 20px;">
-                    </button>
+                <button>Imprimer
+                    <img src="<?= SITE_URL ?>/assets/img/printer.png" alt="" style="width: max-content; height: 20px;">
+                </button>
 
                 <button id="delete">
                     Supprimer
@@ -565,7 +565,7 @@ ob_start();
     Array.from(allRows).forEach(function(row) {
         row.addEventListener("click", function(event) {
             console.log(event.target);
-            
+
         });
     });
 </script>

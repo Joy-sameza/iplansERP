@@ -133,8 +133,8 @@ ob_start();
                                 <label class="form-check-label" for="check1">Bloquer Pointages</label>
                             </div>
                             <div class="form-check mt-2" style='width:100%'>
-                                <input type="checkbox" class="form-check-input" id="recuperable_check" name="recuperable" checked disabled>
-                                <label disabled class="form-check-label" for="check1">Recuperable en cas de travail</label>
+                                <input type="checkbox" class="form-check-input" id="recuperable_check" name="recuperable" checked style="pointer-events: none;">
+                                <label disabled class="form-check-label" for="recuperable_check">Recuperable en cas de travail</label>
                             </div>
                             <div class='mt-2' style="display: flex; justify-content: space-between; align-items: center; ">
                                 <div class="form-check" style='width:30%'>
@@ -156,7 +156,7 @@ ob_start();
                                         <span>Annee Comptable</span>
                                     </div>
                                 </div>
-                                <select class="form-select-sm " style='width:29%' disabled name="annee">
+                                <select class="form-select-sm " style='width:29%; pointer-events: none;' name="annee">
                                     <?php
                                     for ($i = 2010; $i <= (int)date('Y') - 1; $i++) {
                                         echo '<option value="' . $i . '">' . $i . '</option>';
@@ -208,6 +208,7 @@ ob_start();
                 <!--  css du haut  -->
             </div>
         </div>
+        <input type="text" name="id" id="identifiant" readonly aria-readonly="true" style="display: none;">
     </form>
     <!-- fin du contanaire  -->
 
@@ -449,43 +450,64 @@ ob_start();
         form.addEventListener("submit", async (event) => {
             event.preventDefault();
             const formData = new FormData(form);
-            formData.append('iplans_submit', "");
 
-            const userData = Object.fromEntries(formData);
-            const submitData = {
-                debut: userData['date_debut'],
-                fin: userData['date_fin'],
-                type: userData['motif'],
-                AccordeePar: userData['identifiant'],
-                deduireSurConges: userData['deduire'],
-                anneeComptable: userData?.annee === "" ? new Date().getFullYear() : userData['annee'],
-                reccuperable: "non",
-                block_pointage: "123",
-                Demande: userData['identifiant'],
-                IDBlockPointage: "123",
-                IndexGroupement: "123",
-            };
-
-            const response = await fetch(form.action, {
-                method: "POST",
-                body: JSON.stringify(submitData),
-            });
-
-            if (response.status === 200 || response.status === 201 || response.ok) {
-                const data = await response.json();
-                console.log(data);
-                await swal({
-                    icon: 'success',
-                    text: form.getAttribute('success') ?? 'Abscence enregistreé avec succès!',
-                });
-                setTimeout(() => {}, 6000);
-                window.location.href = '<?= SITE_URL ?>/list_abscences';
+            if (form.action !== '<?= PERMISSION_API_URL ?>') {
+                formData.append('iplans_submit', "");
+                const response = await fetch(form.action, {
+                    method: "POST",
+                    body: formData,
+                })
+                if (response.status === 200 || response.status === 201 || response.ok) {
+                    const data = await response.json();
+                    await swal({
+                        icon: 'success',
+                        text: form.getAttribute('success') ?? 'Abscence enregistreé avec succès!',
+                    });
+                    setTimeout(() => {}, 6000);
+                    window.location.href = '<?= SITE_URL ?>/list_abscences';
+                } else {
+                    swal({
+                        icon: 'error',
+                        text: 'Une erreur est survenue',
+                    });
+                }
             } else {
-                swal({
-                    icon: 'error',
-                    text: 'Une erreur est survenue',
+                const userData = Object.fromEntries(formData);
+                const submitData = {
+                    debut: userData['date_debut'],
+                    fin: userData['date_fin'],
+                    type: userData['motif'],
+                    AccordeePar: userData['identifiant'],
+                    deduireSurConges: userData['deduire'],
+                    anneeComptable: userData?.annee === "" ? new Date().getFullYear() : userData['annee'],
+                    reccuperable: "non",
+                    block_pointage: "123",
+                    Demande: userData['identifiant'],
+                    IDBlockPointage: "123",
+                    IndexGroupement: "123",
+                    id: userData['id'],
+                };
+
+                const response = await fetch(form.action, {
+                    method: "POST",
+                    body: JSON.stringify(submitData),
                 });
+                if (response.status === 200 || response.status === 201 || response.ok) {
+                    const data = await response.json();
+                    await swal({
+                        icon: 'success',
+                        text: form.getAttribute('success') ?? 'Abscence enregistreé avec succès!',
+                    });
+                    setTimeout(() => {}, 6000);
+                    window.location.href = '<?= SITE_URL ?>/list_abscences';
+                } else {
+                    swal({
+                        icon: 'error',
+                        text: 'Une erreur est survenue',
+                    });
+                }
             }
+
         });
     </script>
 
@@ -501,10 +523,13 @@ ob_start();
                 deduiresurconges: 'deduire',
                 anneecomptable: 'annee',
                 reccuperable: 'recuperable',
+                neng: 'id',
+                justification: 'justification',
             }
             // set the data in the form
             const form = document.querySelector('form');
             form.action = '<?= SITE_URL ?>/forms/formpermissionupdate.php';
+            form.setAttribute('success', 'L\'abscence à été mis à jour avec succès!');
             for (let [key, value] of Object.entries(data)) {
                 for (const [k, v] of Object.entries(loopObject)) {
                     if (key === k) {

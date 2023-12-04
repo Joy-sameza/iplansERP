@@ -10,51 +10,47 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit('POST request method required');
 }
 
-// const loopObject = {
-//     debut: 'date_debut',
-//     fin: 'date_fin',
-//     motif: 'motif',
-//     deduiresurconges: 'deduire',
-//     anneecomptable: 'annee',
-//     reccuperable: 'recuperable',
-// }
-
 if (array_key_exists('iplans_submit', $_POST)) {
-    echo json_encode($_POST);
-    exit;
+
     // Get the form data
-    $type = $_POST['type'] ?? null;
-    $ref = $_POST['ref'] ?? null;
-    $desti = $_POST['desti'] ?? null;
-    $objet = $_POST['objet'] ?? null;
-    $source = $_POST['source'] ?? null;
-    $date = $_POST['date'] ?? null;
-    $heure = $_POST['heure'] ?? null;
-    $niveau = $_POST['niveau'] ?? null;
-    $statut = $_POST['statut'] ?? null;
+    $debut = $_POST['date_debut'];
+    $fin = $_POST['date_fin'];
+    $type = $_POST['motif'];
+    $deduire = $_POST['deduire'];
+    $annee = $_POST['annee'];
+    $recuperable = $_POST['recuperable'];
+    $blockpointage = $_POST['bloquer'] == 'on' ? 'OUI' : 'NON';
+
+    $identifiant = $_POST['identifiant'];
+    $persData = json_decode(file_get_contents(PERS_API_URL), true);
+    $matricule = null;
+    foreach ($persData as $person) {
+        if ($person['NEng'] == $identifiant) {
+            $matricule = $person['Indexe'];
+            break;
+        }
+    }
 
     $data = json_encode([
-        "InOutCourier" => $type,
-        "ReferenceCourier" => $ref,
-        "ObjetCourier" => $objet,
-        "SourceCourier" => $source,
-        "NiveauImportance" => $niveau,
-        "Destinataire" => $desti,
-        "DateDepot" => $date,
-        "HeureDepot" => $heure,
-        "NomPieceJointe" => $fileName,
-        "DestiPieceJointe" => $fileDestination,
-        "Statut" => $statut
+        "debut" => $debut,
+        "fin" => $fin,
+        "type" => $type,
+        "AccordeePar" => "NONO YANNICK",
+        "deduireSurConges" => $deduire,
+        "anneeComptable" => $annee,
+        "reccuperable" => "OUI",
+        "block_pointage" => $blockpointage,
+        "matricule" => $matricule,
+        "Demande" => '123',
+        "IDBlockPointage" => '123',
+        "IndexGroupement" => "123",
+        "IDDateTime"=> uniqid(date("Y-m-d H:i:s"), true),
     ]);
 
     $output = sendDataUsingCurl($data);
 
-    if (array_key_exists("message", $output) && array_key_exists("rows", $output)) {
-        echo json_encode($output);
-    } else {
-        http_response_code(500);
-        echo json_encode($output);
-    }
+    if (!(array_key_exists("message", $output) && array_key_exists("rows", $output))) http_response_code(500);
+    echo json_encode($output);
 } else {
     http_response_code(401);
     exit;
