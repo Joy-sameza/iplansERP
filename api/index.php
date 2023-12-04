@@ -95,3 +95,15 @@ if ($part[1] == 'permission') {
 
     $controller->processRequest($method, $id, $path);
 }
+
+//site iplans
+if ($part[1] == 'siteiplans') {
+    ini_set("date.timezone", "Africa/Douala");
+
+    $database = new Database(HOST_NAME, USER_NAME, USER_PASSWORD, DB_NAME);
+    $siteiplans= new Siteiplans($database);
+
+    $controllersite = new Controllersite($siteiplans);
+
+    $controllersite->processRequest($method, $id, $path);
+}
