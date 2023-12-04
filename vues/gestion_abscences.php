@@ -40,11 +40,11 @@ ob_start();
 </head>
 
 <body>
-    <div class="container-fluid conteneur my-5 border  border-2 border-secondary" style='width:80%;'>
+    <div class="container-fluid conteneur my-4 border  border-2 border-primary" style='width:80%;'>
 
         <!-- le header  -->
 
-        <div class="row bg-secondary border-1 ">
+        <div class="row bg-primary border-1 ">
             <div class="cont_titre d-flex justify-content-between  p-1" style='align-items: center;'>
                 <div style="display: flex;">
                     <img src="<?= SITE_URL ?>/assets/img/iplans-icon.png" alt="" class="ico_emplye">
@@ -59,7 +59,7 @@ ob_start();
         </div>
         <!-- fin header  -->
 
-        <h2 class='text-center titre py-1'>GESTIONS DES ABSCENCES</h2>
+        <h1 class='text-center titre pt-2'>GESTIONS DES ABSCENCES</h1>
 
         <div class="row">
             <div class="col-8 param m-1 ">

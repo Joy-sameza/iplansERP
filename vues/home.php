@@ -27,10 +27,17 @@ ob_start();
 
 <!---------------- Main section ------------------------>
 <link href="<?= SITE_URL ?>/assets/css/style.css" rel="stylesheet">
-<main class="main">
+
+
+           <div class="container   d-flex justify-content-center align-items-center">
+                <h1 class='text-uppercase text-muted text-decoration-underline mt-4'><b><ul id="displayData"></ul></b></h1>
+            </div>
+<main class="main mt-4">
     <!--  Main start -->
 
-    <div class="pictures" style="height: 62%; border-radius: 15px!important;border:0;background:none;">
+    
+
+    <div class="pictures " style="height: 62%; border-radius: 15px!important;border:0;background:none;">
         <img src="<?= SITE_URL ?>/assets/img/avatar.png" alt=""
             style='width: 270px;height: 300px; border-radius: 15px!important;'>
 
@@ -116,6 +123,61 @@ ob_start();
             color: #fff !important;
             /* Légère descente au clic */
         }
+
+
+          body {
+
+            border-bottom: none;
+            overflow-x: auto;
+
+
+            &::-webkit-scrollbar {
+                height: 10px;
+                /* Ajuster la hauteur de la barre de défilement horizontale */
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background-color: #3498db;
+                /* Couleur du curseur de défilement */
+            }
+
+            &::-webkit-scrollbar-track {
+                background-color: #ecf0f1;
+                /* Couleur de la piste de défilement */
+            }
+
+            &:hover {
+                &::-webkit-scrollbar-thumb {
+                    background-color: #0b9444;
+                    /* Changement de couleur au survol */
+                }
+            }
+        }
+
+              /* scrollbar du tableau */
+
+        ::-webkit-scrollbar {
+            width: 15px;
+        }
+
+
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px grey;
+            border-radius: 10px;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #238fce;
+            border-radius: 10px;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0b9444;
+        }
         </style>
 
 
@@ -148,7 +210,29 @@ ob_start();
     <button type="button" class="func"><img src="<?= SITE_URL ?>/assets/img/data-management.png" alt=""
             style="width: 40px; height: 40px; margin-right:7px">Gestion Administrative</button>
 </main>
+
+  <div class="container d-flex justify-content-end pb-5 align-items-right">
+              
+    <img src="<?= SITE_URL ?>/assets/img/logo_minesec2.png" alt=""style="width: 130px; height: 130px; margin-right:7px">
+  </div>
 <!--  main end -->
+
+
+
+    <script>
+        // Récupérer la dernière valeur depuis le localStorage
+        var storedData = JSON.parse(localStorage.getItem("etablissement"));
+
+        // Afficher la dernière valeur sur la page
+        var displayElement = document.getElementById("displayData");
+
+        if (storedData && storedData.length > 0) {
+            var lastSelectedValue = storedData[storedData.length - 1];
+            displayElement.textContent = lastSelectedValue;
+        } else {
+            displayElement.textContent = "Aucune donnée disponible.";
+        }
+    </script>
 
 
 

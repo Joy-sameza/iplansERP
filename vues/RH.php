@@ -49,6 +49,9 @@ ob_start();
 	</style>
 
 <main>
+    <div class="container   d-flex justify-content-center align-items-center">
+                <h2 class='text-uppercase text-muted  mt-4'><b><ul id="displayData"></ul></b></h2>
+    </div>
     <div class="container">
        
          <div class="row text-center">
@@ -121,12 +124,12 @@ ob_start();
                 <h1 class='text-uppercase mt-4'><b>gestion des ressources humaines</b></h1>
             </div>
             <div class="col-sm-3  d-flex justify-content-center align-items-center  text-white">
-                  <a href="<?= SITE_URL ?>/tableau">
+              
                         
-                            <img src="<?= SITE_URL ?>/assets/img/logo_minesec2.png" alt=""style="width: 200px; height: 200px; margin-right:7px">
+                            <img src="<?= SITE_URL ?>/assets/img/logo_minesec2.png" alt=""style="width: 170px; height: 170px; margin-right:7px">
                             
                         
-                  </a>
+                 
             </div>
         </div>
 
@@ -247,12 +250,18 @@ ob_start();
 
 
    <script>
-        // Récupérer les données depuis le localStorage
-        var storedData = localStorage.getItem("etablissement");
+        // Récupérer la dernière valeur depuis le localStorage
+        var storedData = JSON.parse(localStorage.getItem("etablissement"));
 
-        // Afficher les données sur la page
+        // Afficher la dernière valeur sur la page
         var displayElement = document.getElementById("displayData");
-        displayElement.textContent =  storedData;
+
+        if (storedData && storedData.length > 0) {
+            var lastSelectedValue = storedData[storedData.length - 1];
+            displayElement.textContent = lastSelectedValue;
+        } else {
+            displayElement.textContent = "Aucune donnée disponible.";
+        }
     </script>
 
 
