@@ -15,3 +15,6 @@ uploads
 *.css.map
 
 *.vs
+
+# ignore config files
+include/config.php

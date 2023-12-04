@@ -199,7 +199,7 @@ class Personne
     public function get($courierId): array | false
     {
         // Prepare the SQL query
-        $query = "SELECT * FROM {$this->table} WHERE NEng = :courierId and supp !=1";
+        $query = "SELECT * FROM {$this->table} WHERE NEng = :courierId and supp = 0";
 
         // Prepare the statement
         $stmt = $this->conn->prepare($query);

@@ -12,7 +12,50 @@ class FraisMission
 
     public $indexe;
     public $codebanque;
-
+    private $transportparjour;
+    private $transport;
+    private $logementparjour;
+    private $logement;
+    private $nutritionparjour;
+    private $nutrition;
+    private $perdiemeparjour;
+    private $perdieme;
+    private $autresparjour;
+    private $autres;
+    private $totalparjour;
+    private $totalfrais;
+    private $caburant;
+    private $archivemotif;
+    private $archivedefinitive;
+    private $archivedefinitivedate;
+    private $numnote;
+    private $modereglement;
+    private $pseudoaccorde;
+    private $idheureaccordee;
+    private $iddateaccordee;
+    private $montantaccorde;
+    private $idreglement;
+    private $heureaccordee;
+    private $dateaccordee;
+    private $datecreation;
+    private $iddatecreation;
+    private $archive;
+    private $archivedate;
+    private $archivedefinitivemotif;
+    private $civilite;
+    private $creerpar;
+    private $indexmission;
+    private $synchronization;
+    private $idlastupdate;
+    private $userlastupdatetime;
+    private $codeagence;
+    private $datetime;
+    private $iddatetime;
+    private $userdatetime;
+    private $archiveiddate;
+    private $archiveuser;
+    private $archivedefinitiveiddate;
+    private $archivedefinitiveuser;
 
     /**
      * Constructor for the class.
@@ -111,53 +154,52 @@ class FraisMission
     {
         $query = "INSERT INTO {$this->table} 
                     SET  
-    
-  Site = :site,
-Indexe  = :indexe,
-NumNote  = :numnote,
-ModeReglement= :modereglement,
-  PseudoAccorde= :pseudoaccorde,
- TransportParJour= :transportparjour,
-Transport= :transport,
- LogementParJour= :logementparjour,
- Logement= :logement,
-NutritionParJour= :nutritionparjour,
- Nutrition= :nutrition,
-PerdiemeParJour= :perdiemeparjour,
- Perdieme= :perdieme,
-AutresParJour= :autresparjour,
-Autres= :autres,
-TotalPArJour= :totalparjour,
-TotalFrais= :totalfrais,
- IDHeureAccordee= :idheureaccordee,
- IDDateAccordee= :iddateaccordee,
- MontantAccorde= :montantaccorde, 
-IDReglement= :idreglement,
- HeureAccordee= :heureaccordee,
-DateAccordee= :dateaccordee,
-DateCreation= :datecreation,
-IDDateCreation= :iddatecreation,
-CreePar= :creerpar,
-IndexMission= :indexmission,
- Carburant= :caburant,
-Synchronization= :synchronization,
-LastUpDateTime = :lastupdatetime,
-IDLastUpDate= :idlastupdate,
-UserLastUpDateTime= :userlastupdatetime,
- CodeAgence= :codeagence,
-DateTime= :datetime,
-IDDateTime= :iddatetime,
-UserDateTime= :userdatetime,
- Archive= :archive,
-ArchiveIDDate= :archiveiddate,
- ArchiveDate= :archivedate,
-ArchiveUser= :archiveuser,
- ArchiveMotif= :archivemotif,
-ArchiveDefinitive= :archivedefinitive, 
-ArchiveDefinitiveIDDate= :archivedefinitiveiddate,
-  ArchiveDefinitiveDate= :archivedefinitivedate,  
-ArchiveDefinitiveUser= :archivedefinitiveuser, 
-ArchiveDefinitiveMotif= :archivedefinitivemotif
+                        Site = :site,
+                        Indexe  = :indexe,
+                        NumNote  = :numnote,
+                        ModeReglement= :modereglement,
+                          PseudoAccorde= :pseudoaccorde,
+                        TransportParJour= :transportparjour,
+                        Transport= :transport,
+                        LogementParJour= :logementparjour,
+                        Logement= :logement,
+                        NutritionParJour= :nutritionparjour,
+                        Nutrition= :nutrition,
+                        PerdiemeParJour= :perdiemeparjour,
+                        Perdieme= :perdieme,
+                        AutresParJour= :autresparjour,
+                        Autres= :autres,
+                        TotalPArJour= :totalparjour,
+                        TotalFrais= :totalfrais,
+                        IDHeureAccordee= :idheureaccordee,
+                        IDDateAccordee= :iddateaccordee,
+                        MontantAccorde= :montantaccorde, 
+                        IDReglement= :idreglement,
+                        HeureAccordee= :heureaccordee,
+                        DateAccordee= :dateaccordee,
+                        DateCreation= :datecreation,
+                        IDDateCreation= :iddatecreation,
+                        CreePar= :creerpar,
+                        IndexMission= :indexmission,
+                        Carburant= :caburant,
+                        Synchronization= :synchronization,
+                        LastUpDateTime = :lastupdatetime,
+                        IDLastUpDate= :idlastupdate,
+                        UserLastUpDateTime= :userlastupdatetime,
+                        CodeAgence= :codeagence,
+                        DateTime= :datetime,
+                        IDDateTime= :iddatetime,
+                        UserDateTime= :userdatetime,
+                        Archive= :archive,
+                        ArchiveIDDate= :archiveiddate,
+                        ArchiveDate= :archivedate,
+                        ArchiveUser= :archiveuser,
+                        ArchiveMotif= :archivemotif,
+                        ArchiveDefinitive= :archivedefinitive, 
+                        ArchiveDefinitiveIDDate= :archivedefinitiveiddate,
+                          ArchiveDefinitiveDate= :archivedefinitivedate,  
+                        ArchiveDefinitiveUser= :archivedefinitiveuser, 
+                        ArchiveDefinitiveMotif= :archivedefinitivemotif
 
                 ";
         $stmt = $this->conn->prepare($query);
@@ -177,7 +219,6 @@ ArchiveDefinitiveMotif= :archivedefinitivemotif
         $codeAgence = $code_agence_stmt->fetch(PDO::FETCH_ASSOC);
 
         //data
-
         $this->transportparjour = htmlspecialchars(strip_tags($data['TransportParJour']));
         $this->transport = htmlspecialchars(strip_tags($data['Transport']));
         $this->logementparjour = htmlspecialchars(strip_tags($data['LogementParJour']));
@@ -195,11 +236,10 @@ ArchiveDefinitiveMotif= :archivedefinitivemotif
         $this->archivemotif= htmlspecialchars(strip_tags($data['ArchiveMotif']??0));
         $this->archivedefinitive= htmlspecialchars(strip_tags($data['ArchiveDefinitive']??0));
         $this->archivedefinitivedate= htmlspecialchars(strip_tags($data['ArchiveDefinitiveDate']??0));
-        $this->numnote= htmlspecialchars(strip_tags($data['NumNote  ']??0));
+        $this->numnote= htmlspecialchars(strip_tags($data['NumNote']??0));
         $this->modereglement= htmlspecialchars(strip_tags($data['ModeReglement']??0));
         $this->pseudoaccorde= htmlspecialchars(strip_tags($data['PseudoAccorde']??0));
         $this->montantaccorde= htmlspecialchars(strip_tags($data['MontantAccorde']??0));
-
         $this->idheureaccordee= htmlspecialchars(strip_tags($data['IDHeureAccordee']??0));
         $this->iddateaccordee= htmlspecialchars(strip_tags($data['IDDateAccordee']??0));
         $this->montantaccorde= htmlspecialchars(strip_tags($data['MontantAccorde']??0));

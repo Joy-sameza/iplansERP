@@ -153,7 +153,7 @@ ob_start();
                         </div>
                         <div style="display: flex; justify-content: right;width: 42%; gap: 7px;">
                             <label for="immatriculation" class="form-label">Nombre de jour(s)</label>
-                            <input type="number" class="form-control-sm" name="joursEcart" id="joursEcart" placeholder="0" oninput="modifierDateFin(); calculerJours()" style='width:23%;'>
+                            <input type="number" min="0" class="form-control-sm" name="joursEcart" id="joursEcart" placeholder="0" oninput="modifierDateFin(); calculerJours()" style='width:23%;'>
                         </div>
                     </div>
                     <!-- fin 3eme ligne -->
@@ -164,7 +164,7 @@ ob_start();
                         </div>
                         <div style="display: flex; justify-content: right;width: 42%; gap: 7px;">
                             <label for="immatriculation" class="form-label">No BL/LTA</label>
-                            <select class="form-select-sm" id='numere_ima'>
+                            <select class="form-select-sm" id='numere_ima' name="nobl_lta">
                                 <option></option>
                                 <option>LT 893BG</option>
                                 <option>LT 126 IA</option>
@@ -275,7 +275,7 @@ ob_start();
                             </div>
                         </div>
                         <div class="commentaire mt-1">
-                            <textarea class="form-control no-focus-outline zone-commentaire mt-3" name="comment" placeholder="Merci d'ecrire votre rapport de mission ci..." rows="28" id="comment" name="text"></textarea>
+                            <textarea class="form-control no-focus-outline zone-commentaire mt-3" name="comment" placeholder="Merci d'ecrire votre rapport de mission ci..." rows="28" style="resize: none;" id="comment" name="text"></textarea>
                         </div>
                     </div>
                 </div><!--  fin de la partie ou div droite -->
@@ -489,12 +489,13 @@ ob_start();
             background-color: #f4f6f6;
             /* Remplacez cette couleur par celle que vous souhaitez utiliser */
         }
-        .header{
-            display:none;
+
+        .header {
+            display: none;
         }
 
 
-         body {
+        body {
 
             border-bottom: none;
             overflow-x: auto;
@@ -523,7 +524,7 @@ ob_start();
             }
         }
 
-              /* scrollbar du tableau */
+        /* scrollbar du tableau */
 
         ::-webkit-scrollbar {
             width: 15px;
@@ -561,7 +562,7 @@ ob_start();
         ferme.addEventListener("click", (e) => {
             e.preventDefault()
             // conteneur.style.display = "none";
-             window.location.href = "<?= SITE_URL ?>/list_mission";
+            window.location.href = "<?= SITE_URL ?>/list_mission";
 
         });
     </script>
@@ -571,7 +572,7 @@ ob_start();
 
         boutonFermer.addEventListener("click", (e) => {
             e.preventDefault();
-           window.location.href = "<?= SITE_URL ?>/list_mission";
+            window.location.href = "<?= SITE_URL ?>/list_mission";
         });
     </script>
 
@@ -614,8 +615,8 @@ ob_start();
                 if (personne.trim() !== '' && joursEcart.trim() !== '') {
 
                     localStorage.setItem('joursEcart', joursEcart);
-                    // window.open("<?= SITE_URL ?>/details_mission");
-                    window.location.href = "<?= SITE_URL ?>/details_mission";
+                    window.open("<?= SITE_URL ?>/details_mission");
+                    // window.location.href = "<?= SITE_URL ?>/details_mission";
                 } else {
 
                     swal({
@@ -649,7 +650,8 @@ ob_start();
 
     <script>
         // Submit main form to the sever
-        document.querySelector("form").addEventListener("submit", async function(event) {
+        const form = document.querySelector("form");
+        form.addEventListener("submit", async function(event) {
             event.preventDefault();
             const totalFees = JSON.parse(localStorage.getItem('totalFrais'));
 
@@ -663,26 +665,27 @@ ob_start();
             const formData = new FormData(this);
             formData.append('totalFees', JSON.stringify(totalFees));
             formData.append('iplans_submit', '');
-            console.log(Object.fromEntries(formData));
 
             // submit data using fetch
             const response = await fetch("<?= SITE_URL ?>/forms/form_mission.php", {
-                method: this.method,
+                method: 'POST',
                 body: formData,
-                headers: {
-                    "Content-Type": this.enctype,
-                    "Boundary": Math.PI.toString().padEnd(50, Math.PI.toString())
-                }
             });
 
-            if (response.status) {
+            if (response.status === 200 || response.status === 201 || response.ok) {
                 const data = await response.json();
                 console.log(data);
+                await swal({
+                    icon: 'success',
+                    text: 'Mission enregistreé avec succès!',
+                });
+                setTimeout(() => {}, 6000);
+                window.location.href = '<?= SITE_URL ?>/list_mission';
             } else {
                 swal({
                     icon: 'error',
                     text: 'Une erreur est survenue',
-                })
+                });
             }
         });
     </script>
@@ -696,8 +699,6 @@ ob_start();
 </body>
 
 </html>
-
-
 
 <?php
 

@@ -76,9 +76,9 @@ ob_start();
                 </div>
 
                 <div class="tooltip47 my-2">
-                         <button  class='border border-secondary bg-secondary border-1'>
-                            <img  src=" <?= SITE_URL ?>/assets/img/padlock.png" alt="" style="width: max-content; height: 20px;">
-                    <span class="tooltiptext47">Verrouiller</span>
+                    <button class='border border-secondary bg-secondary border-1'>
+                        <img src=" <?= SITE_URL ?>/assets/img/padlock.png" alt="" style="width: max-content; height: 20px;">
+                        <span class="tooltiptext47">Verrouiller</span>
                     </button>
 
                 </div>
@@ -166,7 +166,6 @@ ob_start();
                         <td style='background-color:#0D6EFD;'>
                             <p></p>
                         </td>
-
                     </tr>
                 </tbody>
             </table>
@@ -212,12 +211,12 @@ ob_start();
                     <img src="<?= SITE_URL ?>/assets/img/add-file.png" alt="" style="width: max-content; height: 20px;">
                 </button>
 
-                <button>
+                <button id="open">
                     Ouvrir
                     <img src="<?= SITE_URL ?>/assets/img/folder.png" alt="" style="width: max-content; height: 20px;">
                 </button>
 
-                <button>
+                <button id="delete">
                     Supprimer
                     <img src="<?= SITE_URL ?>/assets/img/bin.png" alt="" style="width: max-content; height: 20px;">
                 </button>
@@ -241,7 +240,7 @@ ob_start();
     </div>
 
     <template id="listTemplate">
-        <tr class="table-primary custom-row" style='background-color:#0D6EFD;'>
+        <tr class="table-primary custom-row" style='background-color:#0D6EFD; pointer-events: all !important; cursor: pointer;'>
             <td style='background-color:#0D6EFD; color: #FFF;'>
                 <p data-nom></p>
             </td>
@@ -293,6 +292,7 @@ ob_start();
             <td style='background-color:#0D6EFD; color: #FFF;'>
                 <p data-numerobl_lta></p>
             </td>
+            <td data-neng style="display: none;"></td>
         </tr>
     </template>
     <!-- fin du container fluid -->
@@ -316,8 +316,8 @@ ob_start();
         } */
 
         /* css du tooltip sur les bouttons acteur vs chefban */
-        .header{
-            display:none;
+        .header {
+            display: none;
         }
 
         .tooltip47 {
@@ -416,6 +416,20 @@ ob_start();
 </body>
 
 
+<script>
+    const openMission = document.getElementById("open");
+
+    let missionDataAction = '';
+    openMission.addEventListener("click", function(event) {
+
+    })
+</script>
+
+<script>
+    const deleteMission = document.getElementById("delete");
+    deleteMission.addEventListener("click", () => missionDataAction = "delete");
+</script>
+
 <!-- les script de la page -->
 <script>
     const ferme = document.querySelector(".close_window");
@@ -433,7 +447,7 @@ ob_start();
 
     boutonFermer.addEventListener("click", (e) => {
         e.preventDefault();
-         window.location.href = "<?= SITE_URL ?>/permi_con";
+        window.location.href = "<?= SITE_URL ?>/permi_con";
     });
 </script>
 
@@ -451,7 +465,7 @@ ob_start();
 
 <script>
     const boutonsFermer = document.querySelectorAll("#close_window, #fermer");
-    const conteneur0 = document.querySelector(".conteneur0");
+    // const conteneur0 = document.querySelector(".conteneur0");
 
     if (conteneur0) {
         boutonsFermer.forEach((bouton) => {
@@ -479,8 +493,8 @@ ob_start();
     function updateMISSIONTable(table, data = {}, elementClone) {
         const element = elementClone.content.cloneNode(true);
         const pers = {
-            // nom: "",
-            // prenom: "",
+            nom: "nom",
+            prenom: "prenom",
             dat: "depart",
             duree: "duree",
             Lieux: "destination",
@@ -496,6 +510,7 @@ ob_start();
             matricule: "matricule",
             NumeroDossier: "numerodedossier",
             NumeroBL_LTA: "numerobl_lta",
+            NEng: "neng",
         };
 
         Object.entries(data).forEach(([key, value]) => {
@@ -508,8 +523,20 @@ ob_start();
         table.appendChild(element);
     }
 
+    const persData = await fetch("<?= PERS_API_URL ?>");
+    const pers = await persData.json();
+
     const response = await fetch("<?= MISSION_API_URL ?>");
     const missions = await response.json();
+
+    for (const person of pers) {
+        for (const mission of missions) {
+            if (mission.matricule === person.Indexe) {
+                mission.nom = person.nom;
+                mission.prenom = person.prenom;
+            }
+        }
+    }
     tbl.innerHTML = "";
     for (let rowData of missions)
         updateMISSIONTable(tbl, rowData, listTemplate);
@@ -526,6 +553,17 @@ ob_start();
         event.preventDefault();
         localStorage.clear();
         close();
+    });
+</script>
+
+<script>
+    const allRows = document.getElementsByTagName("tr");
+    console.log(allRows);
+    Array.from(allRows).forEach(function(row) {
+        row.addEventListener("click", function(event) {
+            console.log(event.target);
+            
+        });
     });
 </script>
 

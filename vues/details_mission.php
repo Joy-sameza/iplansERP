@@ -257,7 +257,7 @@ ob_start();
 
                 <div class="col-sm-4 mt-3  madiv4">
                     <span class='note'><b>Note</b></span>
-                    <textarea class="form-control  w-100 h-100 border-0" id="exampleTextarea" rows="3" readonly>Mission à KRIBI Via BONABERI Pour 1 Jour(s) Avec 00:00:00 de travail par jour</textarea>
+                    <textarea class="form-control  w-100 h-100 border-0" name="note" style="resize: none;" id="exampleTextarea" rows="3" readonly>Mission à KRIBI Via BONABERI Pour 1 Jour(s) Avec 00:00:00 de travail par jour</textarea>
                 </div><!-- fin colone 2 -->
 
             </div>
@@ -359,7 +359,7 @@ ob_start();
 
 
 
-         body {
+        body {
 
             border-bottom: none;
             overflow-x: auto;
@@ -388,7 +388,7 @@ ob_start();
             }
         }
 
-              /* scrollbar du tableau */
+        /* scrollbar du tableau */
 
         ::-webkit-scrollbar {
             width: 15px;
@@ -426,7 +426,7 @@ ob_start();
                         e.preventDefault();
                         // conteneur0.style.display = "none";
                         // console.log('yo');
-                         window.location.href = "<?= SITE_URL ?>/mission";
+                        window.location.href = "<?= SITE_URL ?>/mission";
                     });
                 });
             }
@@ -509,14 +509,12 @@ ob_start();
 
     <script>
         // Au chargement de la page, récupérer la valeur depuis le localStorage
-        window.onload = function() {
-            var valeurLocalStorage = localStorage.getItem('joursEcart');
+        var valeurLocalStorage = localStorage.getItem('joursEcart');
 
-            // Mettre à jour le texte du placeholder avec la valeur du localStorage
-            if (valeurLocalStorage) {
-                document.getElementById('nombreJours').textContent = valeurLocalStorage;
-            }
-        };
+        // Mettre à jour le texte du placeholder avec la valeur du localStorage
+        // if (valeurLocalStorage) {
+        //     document.getElementById('nombreJours').textContent = valeurLocalStorage;
+        // }
 
         document.querySelector('form').addEventListener('submit', function(event) {
             event.preventDefault();
@@ -524,7 +522,7 @@ ob_start();
             const formProps = Object.fromEntries(formData);
             const props = JSON.stringify(formProps);
             localStorage.setItem('totalFrais', props);
-            window.close();
+            close();
         });
     </script>
 
