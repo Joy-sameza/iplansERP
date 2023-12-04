@@ -66,6 +66,12 @@ ob_start();
 
             </div>
         </div>
+</div>
+   <div class="container-fluid d-flex justify-content-end mt-5 my-3 px-4 align-items-right">
+                        
+                <img src="<?= SITE_URL ?>/assets/img/logo_minesec2.png" alt=""style="width: 130px; height: 130px; margin-right:7px">
+            </div> 
+       
 <!-- 
         <div class='espace'  style='height:100px'>
            
@@ -214,10 +220,7 @@ ob_start();
     </script>
 
 
-     
-      
-    
-    </div>
+  
 
 
 

@@ -67,12 +67,6 @@ ob_start();
 							<label for="etablissemt" class="text-uppercase"><?= $lang['etablissement'] ?></label>
 					
 							<select name="Etablissement" id="etablissement" class="form-select" style='width:30%;height:11%'required>
-<<<<<<< HEAD
-							  
-								<!-- <option><?= $lang['choix1'] ?></option> -->
-								<option value="nyalla"  selected>Lycee bilingue de Nyalla</option>
-								<option value="japoma">Lycee de Japoma</option>
-=======
 
 								<!-- <option><?= $lang['choix1'] ?></option> -->
                                 <?php
@@ -101,7 +95,6 @@ ob_start();
                                     <?php
                                 }
                                 ?>
->>>>>>> 165c9bb4f5a8418f346f7c9488e95fd1f509a31d
 							</select>
 					
 					
@@ -111,10 +104,6 @@ ob_start();
 					
 						<label for="specialite" class="text-uppercase"><?= $lang['specialite'] ?></label>
 							<select name="specialite" id="specialite" class="form-select " style='width:30%;height:11%'required>
-<<<<<<< HEAD
-							    
-=======
->>>>>>> 165c9bb4f5a8418f346f7c9488e95fd1f509a31d
 								<!-- <option><?= $lang['choix2'] ?></option> -->
 								<option value="ict" selected>GHT</option>
 								
@@ -126,10 +115,6 @@ ob_start();
 					 
 						<label for="cycle" class="text-uppercase"><?= $lang['cycle'] ?></label>
 							<select name="cycle" id="cycle" class="form-select " style='width:30%;height:11%'required>
-<<<<<<< HEAD
-							   
-=======
->>>>>>> 165c9bb4f5a8418f346f7c9488e95fd1f509a31d
 								<!-- <option><?= $lang['choix3'] ?></option> -->
 								<option value="licence"  selected>Premier Cycle</option>
 								<option value="master">Second Cycle</option>
