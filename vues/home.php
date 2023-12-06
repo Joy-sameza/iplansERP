@@ -62,7 +62,7 @@ ob_start();
 
         button {
             display: inline-block;
-
+              
             font-size: 10px;
             font-weight: 500;
             text-align: center;
@@ -85,6 +85,8 @@ ob_start();
             text-transform: capitalize;
             width: 15.5rem !important;
             height: 4rem !important;
+          
+            
             display: inline-block;
             text-align: center;
             border: 2px solid gray !important;
@@ -94,6 +96,11 @@ ob_start();
             color: black;
             border-radius: 15px !important;
 
+        }
+        .cent-bout{
+                    display: flex!important;
+                    justify-content: center!important;
+                    align-items: center!important;
         }
 
         /* Styles pour le survol du bouton */
@@ -187,28 +194,59 @@ ob_start();
         <img src="<?= SITE_URL ?>/assets/img/house.png" alt=""
             style="width: 40px; height: 40px; margin-right:7px">Accueil
     </button>
-    <button type="button" class="func"><img src="<?= SITE_URL ?>/assets/img/debate.png" alt=""
-            style="width: 40px; height: 40px; margin-right:7px">Communication personnelle</button>
-    <button type="button" class="func"><img src="<?= SITE_URL ?>/assets/img/message.png" alt=""
-            style="width: 40px; height: 40px; margin-right:7px">Messagerie</button>
+
+
+    <button type="button" class="func cent-bout">
+        <img src="<?= SITE_URL ?>/assets/img/debate.png" alt=""
+            style="width: 40px; height: 40px; margin-right:7px">Communication personnelle
+    </button>
+
+
+    <button type="button" class="func">
+        <img src="<?= SITE_URL ?>/assets/img/message.png" alt=""
+            style="width: 40px; height: 40px; margin-right:7px">Messagerie
+    </button>
+
     <button type="button" class="func" data-courrier>
         <img src="<?= SITE_URL ?>/assets/img/food.png" alt="" style="width: 40px; height: 40px; margin-right:7px">
         Courrier&nbsp;E/S
     </button>
-    <button type="button" class="func" data-hotel><img src="<?= SITE_URL ?>/assets/img/receptionist.png" alt=""
-            style="width: 40px; height: 40px; margin-right:7px">Réception/Accueil</button>
-    <button type="button" class="func" style='bottom: 1%;'><img src="<?= SITE_URL ?>/assets/img/setting.png" alt=""
-            style="width: 40px; height: 40px; margin-right:7px">Paramètres</button>
-    <button type="button" class="func"><img src="<?= SITE_URL ?>/assets/img/video.png" alt=""
-            style="width: 40px; height: 40px; margin-right:7px">Médiathèque</button>
-    <button type="button" class="func"><img src="<?= SITE_URL ?>/assets/img/conversation.png" alt=""
-            style="width: 40px; height: 40px; margin-right:7px">GED</button>
-    <button type="button" class="func" id="rhumain"><a href="<?= SITE_URL ?>/resource_humaine"
-            style="width: 40px; height: 40px; margin-right:7pxlor: black"><img
-                src="<?= SITE_URL ?>/assets/img/human.png" alt=""
-                style="width: 40px; height: 40px; margin-right:7px">GRH</a></button>
-    <button type="button" class="func"><img src="<?= SITE_URL ?>/assets/img/data-management.png" alt=""
-            style="width: 40px; height: 40px; margin-right:7px">Gestion Administrative</button>
+
+
+    <button type="button" class="func" data-hotel>
+        <img src="<?= SITE_URL ?>/assets/img/receptionist.png" alt=""
+            style="width: 40px; height: 40px; margin-right:7px">Réception/Accueil
+    </button>
+
+
+    <button type="button" class="func" style='bottom: 1%;'>
+      <img src="<?= SITE_URL ?>/assets/img/setting.png" alt=""
+            style="width: 40px; height: 40px; margin-right:7px">Paramètres
+    </button>
+
+
+    <button type="button" class="func">
+        <img src="<?= SITE_URL ?>/assets/img/video.png" alt=""
+            style="width: 40px; height: 40px; margin-right:7px">Médiathèque
+    </button>
+
+
+    <button type="button" class="func">
+        <img src="<?= SITE_URL ?>/assets/img/conversation.png" alt=""
+            style="width: 40px; height: 40px; margin-right:7px">GED
+    </button>
+
+
+    <button type="button" class="func" id="rhumain" onclick="redirectToRH()">
+       <a href="<?= SITE_URL ?>/resource_humaine"style="width: 40px; height: 40px; margin-right:7pxlor: black">
+            <img src="<?= SITE_URL ?>/assets/img/human.png" alt="" style="width: 40px; height: 40px; margin-right:7px">GRH
+       </a>
+    </button>
+
+
+    <button type="button" class="func cent-bout">
+        <img src="<?= SITE_URL ?>/assets/img/data-management.png" alt=""style="width: 40px; height: 40px; margin-right:7px">Gestion Administrative
+    </button>
 </main>
 
   <div class="container d-flex justify-content-end pb-5 align-items-right">
@@ -230,7 +268,16 @@ ob_start();
             var lastSelectedValue = storedData[storedData.length - 1];
             displayElement.textContent = lastSelectedValue;
         } else {
-            displayElement.textContent = "Aucune donnée disponible.";
+           
+        }
+    </script>
+
+ <!-- gestion des clique sur les boutton -->
+
+    <script>
+        function redirectToRH() {
+       
+            window.location.href = '<?= SITE_URL ?>/resource_humaine';
         }
     </script>
 

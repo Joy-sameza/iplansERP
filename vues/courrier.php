@@ -170,8 +170,8 @@ foreach ($d as $pack) {
 				width: 24px;
 			}
       .main{
-        margin-top:9%!important;
-        margin-bottom:10%!important;
+        margin-top:6%!important;
+        margin-bottom:5%!important;
       }
       .encou {
     margin-top: -13px;
@@ -240,8 +240,33 @@ foreach ($d as $pack) {
             background: #0b9444;
         }
 
+        .corrier > div > section > button {
+            display: block;
+            font-size: 14px; 
+            padding: var(--header-padding);
+        }
+        .corrier > div > section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: inherit;
+            height: 2rem;
+            padding: 4px;
+            width: 85%;
+            height: fit-content;
+            display: grid;
+            justify-content: center;
+            row-gap: 2px;
+        }
+
 	</style>
   <h1 class='text-center text-uppercase text-bold my-3' style='font-weight:700'>Gestion des courriers</h1>
+  <div class="container-fluid" style='position:relative'>
+      <button id="fermer" class='ferme bout-bas' style='position:absolute;right: 0;top: -57px;border:none'>
+                        Retour
+                        <img src="<?= SITE_URL ?>/assets/img/previous.png" alt="" style="width: max-content; height: 20px;">
+                    </button>
+  </div>
 <main class="main corrier">
   
   <div class="entrant">
@@ -280,7 +305,7 @@ foreach ($d as $pack) {
       <span><strong>moyenne</strong><strong><?= $c + $h ?? '0' ?></strong></span>
       <span><strong>Basse</strong><strong><?= $de + $z ?? '0' ?></strong></span>
     </section>
-    <button class="btn" data-ouvrirCourrier>Ouvrir un courrier</button>
+    <button class="btn" id='ouvrir' data-ouvrirCourrier>Ouvrir un courrier</button>
   </div>
   <div class="encours">
     <h2>Courrier en cours</h2>
@@ -303,16 +328,20 @@ foreach ($d as $pack) {
 </main>
 <div class='espace'  style='height:100px'>
            
-                  <button id="fermer" class='ferme bout-bas'>
-                        Fermer
-                        <img src="<?= SITE_URL ?>/assets/img/close.png" alt="" style="width: max-content; height: 20px;">
+                  <button id="retour" class='ferme bout-bas' style='border:none'>
+                        Retour
+                        <img src="<?= SITE_URL ?>/assets/img/previous.png" alt="" style="width: max-content; height: 20px;">
                     </button>
 </div>
 
+<style>
+  .cont-modal{
+   margin-top: 335px!important;
+  }
+</style>
 
-
-<div class="modal" data-modal1>
-  <div class="container">
+<div class="modal  my-4" data-modal1 style='border-radius:4px'>
+  <div class="container cont-modal my-3 pt-4" style='width:800px;position: relative;border-radius:4px'>
     <button data-close>&times;</button>
     <h3 class="title">Nouveau Courrier</h3>
     <form data-form enctype="multipart/form-data" method="post" action="<?= SITE_URL ?>/forms/formdata.php">
@@ -322,7 +351,7 @@ foreach ($d as $pack) {
         <label for="sortant"><input type="radio" name="type" id="sortant" value="Sortant" required />Courrier Sortant</label>
       </fieldset>
       <fieldset>
-        <legend>Info Courrier</legend>
+        <legend class='mt-5'>Info Courrier</legend>
         <div class="group">
           <label for="ref">Reference</label>
           <input type="text" name="ref" id="ref" required />
@@ -368,7 +397,8 @@ foreach ($d as $pack) {
               <tbody data-tbody></tbody>
             </table>
           </fieldset>
-          <fieldset>
+          <fieldset style='display:block'>
+          
             <legend>Niveau d'importance</legend>
             <div class="options">
               <label for="exceptionnel"><input required data-select type="radio" name="niveau" id="exceptionnel" value="Exceptionnel"> Exceptionnel</label>
@@ -394,12 +424,17 @@ foreach ($d as $pack) {
       <div class="btn">
         <button type="reset" title="Annuler" data-reset><img src="<?= SITE_URL ?>/assets/img/icons/solid/xmark.svg" height="32px"></button>
         <button type="submit" title="Envoyer" name="iplans_submit"><img src="<?= SITE_URL ?>/assets/img/icons/solid/paper-plane.svg" height="32px"></button>
+        <button id="fermer2" style='border:none'>
+                    Fermer
+                    <img src="<?= SITE_URL ?>/assets/img/close.png" alt="" style="width: max-content; height: 20px;">
+
+                </button>
       </div>
     </form>
   </div>
 </div>
-<div class="modal" data-modal2>
-  <div class="container" id="modal2-container">
+<div class="modal mt-4" data-modal2>
+  <div class="container mt-5" id="modal2-container">
     <button data-close2>&times;</button>
     <h3 class="title">Liste des courier arrivé/départ</h3>
     <div class="heading">
@@ -498,8 +533,13 @@ foreach ($d as $pack) {
     </div>
   </div>
 </div>
-<div class="modal" data-modal3>
-  <div class="container">
+<style>
+  .cont-new{
+    margin-top:810px!important;
+  }
+</style>
+<div class="modal mt-4" data-modal3>
+  <div class="container py-3 my-4 cont-new" style='width:880px; position:relative'>
     <button data-close3>&times;</button>
     <h3 class="title">Nouveau Courrier en cours</h3>
     <form data-form enctype="multipart/form-data" method="post" action="<?= SITE_URL ?>/forms/formdata.php">
@@ -588,7 +628,7 @@ foreach ($d as $pack) {
               <tbody data-tbody></tbody>
             </table>
           </fieldset>
-          <fieldset>
+          <fieldset style='display:block'>
             <legend>Niveau d'importance</legend>
             <div class="options">
               <label for="exceptionnel"><input required data-select type="radio" name="niveau" id="exceptionnel" value="Exceptionnel"> Exceptionnel</label>
@@ -616,7 +656,15 @@ foreach ($d as $pack) {
         <button type="submit" title="Envoyer" name="iplans_submit"><img src="<?= SITE_URL ?>/assets/img/icons/solid/paper-plane.svg" height="32px"></button>
       </div>
     </form>
+
+    
   </div>
+
+
+
+
+
+
 </div>
 <template data-template-row-info>
   <tr>
@@ -639,17 +687,77 @@ foreach ($d as $pack) {
     <td data-neng style="display: none;"></td>
   </tr>
 </template>
+<style>
+  #fermer2{
+            width: 120px;
+            height: 45px;
+            border-radius: 5px;
+            position: absolute;
+            
+  }
+  #fermer{
+            width: 120px;
+            height: 45px;
+            border-radius: 5px;
+           
+            
+  }
+</style>
 
+
+  <!-- <script>
+    const boutonsFermer = document.querySelectorAll("#fermer2");
+    const conteneur0 = document.querySelector(".cont-modal");
+
+    if (conteneur0) {
+        boutonsFermer.forEach((bouton) => {
+            bouton.addEventListener("click", (e) => {
+                e.preventDefault();
+                conteneur0.style.display = "none";
+            });
+        });
+    }
+</script> -->
    <script>
-        const boutonFermer = document.getElementById("fermer");
-        const conteneur0 = document.querySelector(".conteneur0");
+        const bouton = document.getElementById("fermer");
+       
 
-        boutonFermer.addEventListener("click", (e) => {
+        bouton.addEventListener("click", (e) => {
             e.preventDefault();
            window.location.href = "<?= SITE_URL ?>/home";
         });
     </script>
+   <script>
+        const boutonRetour = document.getElementById("retour");
+       
 
+        boutonRetour.addEventListener("click", (e) => {
+            e.preventDefault();
+           window.location.href = "<?= SITE_URL ?>/home";
+        });
+    </script>
+    <!-- ramene la page en haut  -->
+
+
+ <script>
+        
+      const boutTop = document.querySelector('.btn');
+          boutTop.addEventListener("click", (e) => {
+              e.preventDefault();
+     
+        document.documentElement.scrollTop = 0;
+    });
+</script>
+
+ <script>
+        
+      const boutTop = document.getElementById("ouvrir");
+          boutTop.addEventListener("click", (e) => {
+              e.preventDefault();
+     
+        document.documentElement.scrollTop = 0;
+    });
+</script>
 
 <?php
 $content = ob_get_clean();

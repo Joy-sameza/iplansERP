@@ -40,7 +40,7 @@ ob_start();
 <body>
     <div class="container-fluid conteneur my-5 conteneur0  border border-primary border-4" style='width:75%'>
 
-        <form id="main_form" enctype="multipart/form-data" method="post">
+        <form id="main_form" enctype="multipart/form-data" method="post" class="was-validated">
             <div class="row bg-primary border-1 ">
                 <div class="cont_titre d-flex justify-content-between  p-1" style='align-items: center;'>
                     <div style="display: flex;">
@@ -64,7 +64,7 @@ ob_start();
                         <div class="zone3" style="display: flex; justify-content: center; align-items:center; flex-direction: column;width: 25%;">
                             <img src="<?= SITE_URL ?>/assets/img/avatar.png" alt="" style='width: 100px;height: 100px;' class='border border-secondary border-1'>
                             <!-- <button type="button" class="bout" display='none'><i class="fas fa-search"></i></button> -->
-                            <select id='personne' name="personne" required aria-required="true" class="form-select-sm" style='width:80%'>
+                            <select id='personne' name="personne" required aria-required="true" class="form-select-sm" style='width:80%' required>
                                 <option></option>
                             </select>
                         </div>
@@ -87,7 +87,7 @@ ob_start();
                         </div>
                         <div style="width: 39%;display: flex;justify-content: space-between;">
                             <label for="via" class="form-label " style='margin-left: 16%;'>Via</label>
-                            <select class="form-select-sm" id='via' name="via">
+                            <select class="form-select-sm" id='via' name="via"required>
                                 <option value=""></option>
                                 <option value="EDEA">EDEA</option>
                                 <option value="BONABERIE">BONABERIE</option>
@@ -100,7 +100,7 @@ ob_start();
                         <div style="display: flex; justify-content:space-between; align-items: center;  width: 96%; ">
                             <label for="deplacement" class="form-label">Mode de déplacement </label>
                             <span style='display: flex; justify-content: flex-end;'>
-                                <select class="form-select-sm" style='width:72%' name="deplacement" id='deplacement'>
+                                <select class="form-select-sm" style='width:72%' name="deplacement" id='deplacement'required>
                                     <option value=""></option>
                                     <option value="FDSFDS">FDSFDS</option>
                                     <option value="CAMION">CAMION</option>
@@ -111,25 +111,29 @@ ob_start();
                         </div>
                         <div style="width: 48% ; display: flex;  ">
                             <label for="immatriculation" class="form-label mx-1 " id='text-reduire'>Immatriculation</label>
-                            <select class="form-select-sm" style='width:75%' name="immatriculation" id='immatriculation'>
+                            <select class="form-select-sm" style='width:75%' name="immatriculation" id='immatriculation'required>
                                 <option value=""></option>
                                 <option value="LT 893BG">LT 893BG</option>
                                 <option value="LT 126 IA">LT 126 IA</option>
                                 <option value="LT 278 EN">LT 278 EN</option>
                             </select>
+                            
                         </div>
                     </div>
                     <!-- 2eme ligne -->
                     <div class='mt-3'>
                         <div>
                             <label for="cadre" class="form-label" style='width:34%;'>Cadre/Objectif de la Mission </label>
-                            <select class="form-select-sm" style='width:36%;margin-left:1px;' name="cadre" id='cadre' required aria-required="true">
+                            <select class="form-select-sm" style='width:36%;margin-left:1px;' name="cadre" id='cadre' required aria-required="true"required>
                                 <option value=""></option>
                                 <option value="FDSFDS">FDSFDS</option>
                                 <option value="INTEGRATION IPLANS">INTEGRATION IPLANS</option>
                                 <option value="LIVRAISON MARCHANDISE">LIVRAISON MARCHANDISE</option>
                             </select>
+                            
                         </div>
+                         <div class="valid-feedback">Valid.</div>
+                                 <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
                     <div class='mt-3' style=" display: flex;  width:100% ">
                         <div style=" display: flex; width:35% ">
@@ -143,6 +147,8 @@ ob_start();
                                 <option value="DEPOT YAOUNDE">DEPOT YAOUNDE</option>
                                 <option value="FDSFDSFDSFDS">FDSFDSFDSFDS</option>
                             </select>
+                             <div class="valid-feedback">Valid.</div>
+                                 <div class="invalid-feedback">Please fill out this field.</div>
                         </div>
                     </div>
                     <!-- fin 3eme ligne -->
@@ -170,6 +176,7 @@ ob_start();
                                 <option>LT 126 IA</option>
                                 <option>LT 278 EN</option>
                             </select>
+                            
                         </div>
                     </div>
                     <div class='mt-3' style="display: flex; justify-content: space-between; align-items: center;">
@@ -182,20 +189,24 @@ ob_start();
                         <label for="prise" class="form-label" style="display: flex; justify-content: space-between; align-items: center; width: 35%; ">Prise en charge</label>
                         <select class="form-select-sm" style='width:65%' name="prise" id='prise'>
                             <option selected>SURÉE PAR LA SOCIÉTÉ DEMO SUIVANT LE BARÈME EN VIGUEUR.</option>
+                             
                         </select>
+                        
+                           
                     </div>
+                    
                     <div class='mt-3' style="display: flex; justify-content: center; align-items: center;" class='mt-3'>
-                        <div style="display: flex; justify-content: space-between; align-items: center; width: 52%; ">
+                        <div style="display: flex; justify-content: space-between; align-items: center; width:81%; ">
                             <label for="heuredebut">Durée travail par jour</label>
-                            <input type="time" name="heuredebut" class='form-control' name="heurededebut" id="heurededebut" value="<?= date('H:i:s') ?>" style='width:33%'>
+                            <input type="time" name="heuredebut" class='form-control' name="heurededebut" id="heurededebut" value="<?= date('H:i:s') ?>" style='width:39%'>
                         </div>
-                        <div style="display: flex; justify-content: right;width: 48%; ">
-                            <div class="form-check mt-2" style='width:58%;'>
+                        <div style="display: flex; justify-content: right;width: 63%; ">
+                            <div class="form-check mt-2" style='width:43%;'>
                                 <input type="checkbox" class="form-check-input" name="check1" id="check1" name="option1" value="something" checked>
-                                <label class="form-check-label " id='text-reduire' for="check1">Bloquer le pointage?</label>
+                                <label class="form-check-label " id='text-reduire' for="check1">Bloquer le <br>pointage?</label>
                             </div>
-                            <label for="immatriculation" class="form-label  mt-3 " id='text-reduire' style='width:25%;'>No Dossier</label>
-                            <input type="text" class="form-control" style='width:15%'>
+                            <label for="immatriculation" class="form-label  mt-3 " id='text-reduire' style='width:29%;'>No Dossier</label>
+                            <input type="text" class="form-control" style='width:35%'>
                         </div>
                     </div>
                     <div class="custom-form mt-4 ">
@@ -275,14 +286,14 @@ ob_start();
                             </div>
                         </div>
                         <div class="commentaire mt-1">
-                            <textarea class="form-control no-focus-outline zone-commentaire mt-3" name="comment" placeholder="Merci d'ecrire votre rapport de mission ci..." rows="28" style="resize: none;" id="comment" name="text"></textarea>
+                            <textarea class="form-control no-focus-outline zone-commentaire mt-3" name="comment" placeholder="Merci d'ecrire votre rapport de mission ci..." rows="30" style="resize: none;" id="comment" name="text" required></textarea>
                         </div>
                     </div>
                 </div><!--  fin de la partie ou div droite -->
             </div>
             <div class="row d-flex justify-content-between bg-primary bout-bas p-2 ">
                 <div style='width:10%;'>
-                    <button type="submit" name="iplans_submit">Valider<img src="<?= SITE_URL ?>/assets/img/accept.png" alt="" style="width: max-content; height: 20px;"></button>
+                    <button type="submit" id='valider' onclick="saveDonnees()" name="iplans_submit">Valider<img src="<?= SITE_URL ?>/assets/img/accept.png" alt="" style="width: max-content; height: 20px;"></button>
                 </div>
                 <!--  c2eme -->
                 <div style='width:57%;'>
@@ -616,6 +627,31 @@ ob_start();
 
                     localStorage.setItem('joursEcart', joursEcart);
                     window.open("<?= SITE_URL ?>/details_mission");
+                    // window.location.href = "<?= SITE_URL ?>/details_mission";
+                } else {
+
+                    swal({
+                        icon: 'error',
+                        text: 'Veuillez remplir tous les champs svp !!!',
+                    });
+
+
+                }
+
+            })
+        }
+    </script>
+    <script>
+        function saveDonnees() {
+
+            document.getElementById("valider").addEventListener("click", function() {
+                var personne = document.getElementById("personne").value;
+                var joursEcart = document.getElementById("joursEcart").value;
+
+                if (personne.trim() !== '' && joursEcart.trim() !== '') {
+
+                    //code ici pour enregistrer dans la BD
+                    window.open("<?= SITE_URL ?>/list_mission");
                     // window.location.href = "<?= SITE_URL ?>/details_mission";
                 } else {
 

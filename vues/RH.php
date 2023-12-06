@@ -259,9 +259,7 @@ ob_start();
         if (storedData && storedData.length > 0) {
             var lastSelectedValue = storedData[storedData.length - 1];
             displayElement.textContent = lastSelectedValue;
-        } else {
-            displayElement.textContent = "Aucune donnée disponible.";
-        }
+        } 
     </script>
 
 

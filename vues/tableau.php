@@ -413,7 +413,7 @@ $d = (array)json_decode($response, true);
         </div>
         <div class="col-sm-3 d-flex justify-content-end ">
             <button class="bouton" id="recherche"> <i class="fas fa-search svg"></i></i>Recherche</button>
-            <button class="bouton fermer" id="fermer_page"> <i class="fas fa-close svg"></i>Fermer</button>
+            <button class="bouton fermer" id="fermons"> <i class="fas fa-close svg"></i>Fermer47</button>
         </div>
 
     </div>
@@ -602,9 +602,12 @@ $d = (array)json_decode($response, true);
                 </style>
 
 
-                <div class="econte">
-                    <div class="econte1">
-                        <h1 style="background-color: black;color: white; padding: 12px;">Employé</h1>
+                <div class="econte row" >
+
+                   <div class="col">
+
+                      <div class="econte1 employe47 px-1" id='47' style='width:100%;border-right: 2px solid gray;'>
+                        <h1 style="background-color: black;color: white;width:100%; padding: 12px;">Employé</h1>
                         <section class="div_1">
                             <h3 style="font-size: 25px;">Identité</h3>
                             <div class="idntite1">
@@ -659,40 +662,27 @@ $d = (array)json_decode($response, true);
                             </div>
                             <div class="idntite8">
                                 <label class="mt-3" for="">Site (Agence)</label>
-                                <select class="form-select form-select-sm" name="siteagence" id="">
-                                    <option value="DEMO">DEMO</option>
-                                </select>
+                            <input type="text" class="form-control mt-3" name="nompere" id="">
                             </div>
                             <div class="idntite9">
                                 <label class="mt-3" for="">Direction </label>
-                                <select class="form-select form-select-sm" name="direction" id="">
-                                    <option value="">BICEC</option>
-                                    <option value="">UBA</option>
-                                </select>
+                                <input type="text" class="form-control mt-3" name="nompere" id="">
                             </div>
                             <div class="idntite10">
                                 <label class="mt-3" for="">Sous-Direction </label>
-                                <select class="form-select form-select-sm" name="sousdirection" id="">
-                                    <option value="">BICEC</option>
-                                </select>
+                               <input type="text" class="form-control mt-3" name="nompere" id="">
                             </div>
                             <div class="idntite11">
                                 <label class="mt-3" for="">Service </label>
-                                <select class="form-select form-select-sm" name="service" id="">
-                                    <option value="SSMEDICAL">SSMEDICAL</option>
-                                </select>
+                               <input type="text" class="form-control mt-3" name="nom" required>
                             </div>
                             <div class="idntite12">
                                 <label class="mt-3" for="">Departement </label>
-                                <select class="form-select form-vert form-select-sm" name="departement" id="">
-                                    <option value="CHAUFFEUR">CHAUFFEUR</option>
-                                </select>
+                                <input type="text" class="form-control mt-3" name="nom" required>
                             </div>
                             <div class="idntite13">
                                 <label class="mt-3" for="">Poste Occupé </label>
-                                <select class="form-select form-bleu form-select-sm" name="posteoccupe" id="">
-                                    <option value="PROJECT MANAGER">PROJECT MANAGER</option>
-                                </select>
+                               <input type="text" class="form-control mt-3" name="nom" required>
                             </div>
                             <style>
                                 .form-vert {
@@ -742,6 +732,7 @@ $d = (array)json_decode($response, true);
                             .contenue_employers {
                                 height: 600px;
                                 overflow: auto;
+                                width:90%!important
                             }
                         </style>
 
@@ -756,10 +747,8 @@ $d = (array)json_decode($response, true);
                                 </div>
                                 <div>
                                     <label class="mt-3" for="">Lieu de Naissance</label>
-                                    <select name="lieunaissance" class="form-select form-select slectdate mt-3" id="" style="width: 80%; margin-right: 30%;">
-                                        <option value="">Dschang</option>
-                                        <option value="">Douala</option>
-                                    </select>
+                                 
+                                    <input type="text" class="form-control mt-3" style="width: 80%; margin-right: 30%;" name="nom" required>
                                 </div>
                                 <div>
                                     <label class="mt-3" for="">Nom du Pere</label>
@@ -808,70 +797,289 @@ $d = (array)json_decode($response, true);
                                 </div>
                             </div>
                         </div>
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
                     </div>
-                    <!-- css pour la div 2 -->
-                    <style>
-                        .div_2 label {
-                            font-size: 18px
-                        }
+                     <div class="col px-1 diver47" id='diver47' style='display:none;width:100%;'>
+                               <div class="econte1 gauche-divers" style="border-right: 2px solid gray;">
+                                   <h1 style="background-color: black;color: white; padding: 12px;">Divers</h1>
+                                   <div style="padding-top: 10px;">
+                                       <ul class="pagination">
+                                           <li class="page-item d-flex justify-content-center"><a id='activer' class="page-link page-link0 px-4  m-0 text-dark  " href="#"> <span>Categorie</span></a></li>
+                                           <li class="page-item"><a class="page-link page-link0 px-4 text-dark m-0 " href="#"><span> Banque</span></a></li>
+    
+    
+                                       </ul>
+                                   </div>
+                                   <div class="Autre"> <!--le carre autre commence ici -->
+                                       <span style="font-size: 30px;margin-left:10px ;">Autres</span>
+                                       <div style="display: flex; justify-content: center; align-items: center;">
+                                           <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; ">
+                                               <p>Convention Collective</p>
+                                               <div style="display: flex; justify-content: left;width: 50%; gap: 7px;">
+                                                   <select class="form-select form-select-sm" name="conventioncollective" id="" style='background-color:#238fce ;'>
+                                                       <option></option>
+                                                       <option>FONCTIONNAIRE</option>
+                                                   </select>
+                                                   <button style="height: 25px; height: 25px; padding-top:3px; border:none; background-color:#fff"><img src="<?= SITE_URL ?>/assets/img/plus.png" alt=""></button>
+                                               </div>
+                                           </div>
+                                           <div style="width: 50% ; display: flex;   gap: 7px;">
+                                               <label for="">echellon</label>
+                                               <select class="form-select form-select-sm" style='background-color:#238fce ;' name="echellon" id="">
+                                                   <option value="">E</option>
+                                               </select>
+                                               <button style="height: 25px; height: 25px; padding-top:3px; border:none; background-color:#fff"><img src="<?= SITE_URL ?>/assets/img/plus.png" alt="" style="width: 20px;"></button>
+                                           </div>
+                                       </div><!--ligne 1 fini ici-->
+    
+    
+                                       <div style="display: flex; justify-content: center; align-items: center;">
+                                           <div style="display: flex; justify-content:space-between; align-items: center; width: 100%; ">
+                                               <p>Categorie</p>
+                                               <div style="display: flex; justify-content: left; width: 50%; gap: 7px;">
+                                                   <select class="form-select form-select-sm" style='background-color:#238fce ;' name="categorie" id="" style="width: 150px;">
+                                                       <option value="">VI</option>
+                                                   </select>
+                                                   <button style="height: 25px; height: 25px; padding-top:2px; border:none; background-color:#fff"><img src="<?= SITE_URL ?>/assets/img/plus.png" alt="" style="width: 20px;"></button>
+                                               </div>
+                                           </div>
+                                           <div style="width: 50% ; display: flex;   gap: 7px;">
+                                               <label for="">Indice</label>
+                                               <select class="form-select form-select-sm" style='background-color:#238fce ;' name="" id="" style="width: 100%;">
+                                                   <option value="">E</option>
+                                               </select>
+                                               <button style="height: 25px; height: 25px; padding-top:3px; border:none; background-color:#fff"><img src="<?= SITE_URL ?>/assets/img/plus.png" alt="" style="width: 20px;"></button>
+                                           </div>
+                                       </div>
+    
+    
+                                       <div style="display: flex; justify-content: center; align-items: center;">
+                                           <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; ">
+                                               <p>Salaire De base Par semaine</p>
+                                               <div style="display: flex; justify-content: left;width: 50%; gap: 7px;">
+                                                   <input class="form-control " type="number" name="salairebase">
+                                               </div>
+                                           </div>
+                                           <div style="width: 50% ; display: flex;  ">
+                                               <input type="checkbox" class="form-check-input" name="loge" id="" value="oui">
+                                               <label for=""><b>logé</b></label>
+                                           </div>
+                                       </div>
+    
+    
+                                       <div style="display: flex; justify-content: center; align-items: center;">
+                                           <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; ">
+                                               <p>Heure par Semaine</p>
+                                               <div style="display: flex; justify-content: left;width: 50%; gap: 7px;">
+                                                   <select class="form-select form-select-sm" name="heuresemaine" id="" style="width: 140px;" style='background-color:#238fce ;'>
+                                                       <option value="0">0</option>
+                                                       <option value="5">5</option>
+                                                   </select>
+                                               </div>
+                                           </div>
+                                           <div style="width: 50% ; display: flex; ">
+                                               <input type="checkbox" class="form-check-input" name="nouri" id="" value="oui">
+                                               <label for=""><b>Nourie</b></label>
+                                           </div>
+                                       </div>
+    
+    
+                                       <div style="display: flex; justify-content: center; align-items: center;">
+                                           <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; ">
+                                               <p>Taux Horaires</p>
+                                               <div style="display: flex; justify-content: left;width: 50%; gap: 7px;">
+                                                   <select class="form-select form-select-sm" name="tauxhoriare" id="" style="width: 140px;">
+                                                       <option value="0">0</option>
+                                                       <option value="5">5</option>
+                                                   </select>
+                                               </div>
+                                           </div>
+                                           <div style="width: 50% ; display: flex;   ">
+                                               <input type="checkbox" class="form-check-input" name="assure" id="" value="oui">
+                                               <label for=""><b>Assuré</b></label>
+                                           </div>
+                                       </div>
+    
+    
+    
+                                       <div style="display: flex; justify-content: center; align-items: center; width: 67%;">
+                                           <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; ">
+                                               <p>Cumul Heure</p>
+                                               <div style="display: flex; justify-content: left;width: 50%; gap: 7px;">
+                                                   <input type="text" style='background-color:#0b9444 ;' class="form-control " name="cumulheure" id="">
+                                               </div>
+                                           </div>
+                                       </div>
+    
+    
+                                       <div style="display: flex; justify-content: center; align-items: center; width: 67%;">
+                                           <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; ">
+                                               <p>Grade de Salarié</p>
+                                               <div style="display: flex; justify-content: left;width: 50%; gap: 7px;">
+                                                   <input type="text" style='background-color:#FFFF00 ;' class="form-control " name="gradesalarie" id="" style="width: 70%; ">
+                                               </div>
+                                           </div>
+                                       </div>
+                                   </div>
+    
+                                   <div style="width: 100%;  height: 200px; "><!--Diplomes-->
+                                       <p>
+                                           <b>Diplomes</b>
+                                       </p>
+                                       <div style="display: flex; justify-content: right; align-items: end;  width: 100%; height: 80%;">
+                                           <div style="display: flex; padding-left:0px;padding-right:0px; flex-direction: column; align-items: end; justify-content: space-between; height: 100%;">
+                                               <button style="height: 35px; height: 35px; padding-top:2px; border:2px solid gray; background-color:#fff"><img src="<?= SITE_URL ?>/assets/img/plus.png" alt="" style="width: 10px;"></button>
+                                               <button style="height: 35px; height: 35px; padding-top:2px; border:2px solid gray; background-color:#fff"><img src="<?= SITE_URL ?>/assets/img/minus.png" alt="" style="width: 20px;"></button>
+                                           </div>
+                                           <div style="width: 100%; height: 100%; padding-left:0px;">
+                                               <div style="width: 100%; height: 100%; padding-left:0px; padding-right:0px; border: 1px solid gray;">
+    
+                                                   <div style="display: flex; width: 100%; height: 0px;">
+    
+                                                   </div>
+                                                   <style>
+                                                       .econte1 div {}
+                                                   </style>
+    
+                                                   <table class="table table-bordered">
+                                                       <thead>
+                                                           <tr class='table-dark text-center'>
+                                                               <th class='px-5'>Nom</th>
+                                                               <th class="text-center">Année</th>
+                                                               <th class="text-center">Mention</th>
+    
+                                                           </tr>
+                                                       </thead>
+                                                       <tbody>
+                                                           <tr class='table-primary'>
+                                                               <td>
+                                                                   <p>
+                                                                   <p>
+                                                               </td>
+                                                               <td></td>
+                                                               <td></td>
+    
+    
+    
+    
+    
+                                                           </tr>
+                                                       </tbody>
+                                                   </table>
+    
+                                               </div>
+                                           </div>
+                                       </div>
+    
+                                   </div>
+                                   <style>
+                                       .bleauta {
+                                           background: #2169EC !important;
+                                       }
+                                   </style>
+    
+                                   <div> <!--contrat-->
+                                       <p>
+                                           <b>Contrat</b>
+                                       </p>
+                                       <div style="display: flex; align-items: center; justify-content: space-around;">
+                                           <label for="">Genre de Salarié</label>
+                                           <select class="form-select form-select-sm" name="genresalarie2" id="">
+                                               <option value="PERMANENT">PERMANENT</option>
+                                               <option value="STAGIAIRE">STAGIAIRE</option>
+                                           </select>
+                                           <button style="height: 25px; height: 25px; padding-top:3px; padding-right:45px; border:none; background-color:#fff"><img src="<?= SITE_URL ?>/assets/img/search.png" alt="" style="width: 20px;"></button>
+                                           <label for="">Type De Contrat</label>
+                                           <select class="form-select form-select-sm" name="contrat" id="">
+                                               <option value=" CDD">
+                                                   CDD
+                                               </option>
+                                               <option value=" CDI">
+                                                   CDI
+                                               </option>
+                                           </select>
+                                           <button style="height: 25px; height: 25px; padding-top:3px; border:none; background-color:#fff"><img src="<?= SITE_URL ?>/assets/img/search.png" alt="" style="width: 20px;"></button>
+                                       </div>
+                                       <div style="width: 70%;  display: flex; justify-content: space-between; align-items: center;">
+                                           <label for="" class='text-danger'>Identifiant Interne</label>
+                                           <input type="text" class="form-control " style='background-color:#FFFF00 ;' name="identifiantinterne" id="" style=" width: 60%;">
+                                       </div>
+                                       <div style="width: 70%;  display: flex; justify-content: space-between; align-items: center;">
+                                           <label for="" class='text-danger'>Matricule Interne</label>
+                                           <input type="text" class="form-control " style='background-color:#238fce;' name="matriculeinterne" id="" style=" width: 60%;">
+                                       </div>
+                                       <div style="width: 100%;  display: flex; justify-content: space-between; align-items: center;">
+                                           <label for="" class='text-danger' style=" width: 40%;">Matricule Social (CNPS)</label>
+                                           <input type="text" class="form-control " name="matriculesocial" id="" style=" width: 40%;">
+                                           <label for="" class='text-danger' style="width: 20%; padding-left: 10px;">N* Enreg</label>
+                                           <input type="number" class="form-control " style="width: 15%;" name="numenregistrement">
+                                       </div>
+                                       <div style="width: 70%;  display: flex; justify-content: space-between; align-items: center;">
+                                           <label for="" class='text-danger'>NIU (Impots)</label>
+                                           <input type="text" class="form-control " name="NIU" id="" style=" width: 60%;">
+                                       </div>
+                                       <div>
+                                           <p>
+                                               <b>Entrée</b>
+                                           </p>
+                                           <div style="width: 60%;   display: flex; justify-content: space-around;">
+                                               <label for="">Entrée</label>
+                                               <input type="date" class="form-control " name="dateentree" id="" value="<?= date('Y-m-d') ?>">
+                                           </div>
+                                           <div style="width: 60%;  display: flex; justify-content: space-around;">
+                                               <label for="">Date de Contrat</label>
+                                               <input type="date" class="form-control " name="datecontrat" id="" value="<?= date('Y-m-d') ?>">
+                                           </div>
+                                       </div>
+                                       <div>
+                                           <p>
+                                               <b>Depart</b>
+                                           </p>
+                                           <div style="width: 100%;   display: flex; justify-content: space-evenly; align-items: center;">
+                                               <label for="" style="width: 100%; ">Date de Depart</label>
+                                               <input type="date" class="form-control " name="datedepart" id="" style="width: 500px;">
+                                               <div>
+                                                   <input type="checkbox" name="" id="" value="archive">
+                                                   <label for="">Archivé</label>
+                                               </div>
+                                           </div>
+                                           <div style="width: 71%;   display: flex; justify-content: space-around;">
+                                               <label for="">Motif De Depart</label>
+                                               <input type="text" class="form-control " style='background-color:#238fce;' name="motifdepart" id="">
+    
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
 
-                        .slectdate {
-                            height: 31px !important;
-                        }
 
-                        .num {
-                            margin-top: 1rem !important;
-                        }
-
-                        .situation p,
-                        label {
-                            font-size: 18px
-                        }
-
-                        .div_2 input[type="radio"] {
-                            width: 15% !important;
-                            height: 19px !important;
-                        }
-
-                        /* .econte1 div {
-                        margin: 0;
-                        padding: 0;
-                    } */
-                        .bordure {
-                            padding-left: 10px;
-                        }
-
-                        .cont_employer2 {
-                            height: 205%;
-                            padding-left: 7px;
-                        }
-
-                        .se1 p {
-                            font-size: 17px;
-                            font-weight: 600;
-                        }
-
-                        .spec1 {
-                            justify-content: space-around;
-                        }
-                    </style>
+                           </div>
 
 
+                   </div>
 
-
-
-
-                    <section class="econte2">
+                   <div class="col" style='margin-top:200px'>
+                    
+                    <section class="econte2" style='width:100%'>
                         <div class="class1 mx-2">
                             <div class="class2 spec1">
                                 <div class="gauche">
                                     <div class="form-check">
                                         <input type="checkbox" class="form-check-input" id="check1" name="option1" value="something" checked>
-                                        <label class="form-check-label h4" for="check1">Prestataire interne ?</label>
+                                        <label class="form-check-label h4" for="check1">Prestataire interne ?47</label>
                                     </div>
                                     <div class="form-check">
                                         <input type="checkbox" class="form-check-input" id="check1" name="option1" value="something" checked>
-                                        <label class="form-check-label h4 text-danger" for="check1">Prestataire externe ?</label>
+                                        <label class="form-check-label h4 text-danger" for="check1">Prestataire externe ?47</label>
                                     </div>
 
 
@@ -1113,6 +1321,61 @@ $d = (array)json_decode($response, true);
                         </style>
 
                     </section>
+                   </div>
+                                   
+                   
+
+
+                  
+                    <!-- css pour la div 2 -->
+                    <style>
+                        .div_2 label {
+                            font-size: 18px
+                        }
+
+                        .slectdate {
+                            height: 31px !important;
+                        }
+
+                        .num {
+                            margin-top: 1rem !important;
+                        }
+
+                        .situation p,
+                        label {
+                            font-size: 18px
+                        }
+
+                        .div_2 input[type="radio"] {
+                            width: 15% !important;
+                            height: 19px !important;
+                        }
+
+                 
+                        .bordure {
+                            padding-left: 10px;
+                        }
+
+                        .cont_employer2 {
+                            height: 205%;
+                            padding-left: 7px;
+                        }
+
+                        .se1 p {
+                            font-size: 17px;
+                            font-weight: 600;
+                        }
+
+                        .spec1 {
+                            justify-content: space-around;
+                        }
+                    </style>
+
+
+
+
+
+
 
                 </div>
             </div>
@@ -1208,258 +1471,271 @@ $d = (array)json_decode($response, true);
                         </div>
 
 
-                        <div class="econte" style="zoom: 95%; ">
-                            <div class="econte1 gauche-divers" style="border-right: 2px solid gray;">
-                                <h1 style="background-color: black;color: white; padding: 12px;">Divers</h1>
-                                <div style="padding-top: 10px;">
-                                    <ul class="pagination">
-                                        <li class="page-item d-flex justify-content-center"><a id='activer' class="page-link page-link0 px-4  m-0 text-dark  " href="#"> <span>Categorie</span></a></li>
-                                        <li class="page-item"><a class="page-link page-link0 px-4 text-dark m-0 " href="#"><span> Banque</span></a></li>
+                        <div class="econte row" style=" ">
+
+                           <div class="col p-1">
+                               <div class="econte1 gauche-divers" style="border-right: 2px solid gray;      display:none">
+                                   <h1 style="background-color: black;color: white; padding: 12px;">Divers</h1>
+                                   <div style="padding-top: 10px;">
+                                       <ul class="pagination">
+                                           <li class="page-item d-flex justify-content-center"><a id='activer' class="page-link page-link0 px-4  m-0 text-dark  " href="#"> <span>Categorie</span></a></li>
+                                           <li class="page-item"><a class="page-link page-link0 px-4 text-dark m-0 " href="#"><span> Banque</span></a></li>
+    
+    
+                                       </ul>
+                                   </div>
+                                   <div class="Autre"> <!--le carre autre commence ici -->
+                                       <span style="font-size: 30px;margin-left:10px ;">Autres</span>
+                                       <div style="display: flex; justify-content: center; align-items: center;">
+                                           <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; ">
+                                               <p>Convention Collective</p>
+                                               <div style="display: flex; justify-content: left;width: 50%; gap: 7px;">
+                                                   <select class="form-select form-select-sm" name="conventioncollective" id="" style='background-color:#238fce ;'>
+                                                       <option></option>
+                                                       <option>FONCTIONNAIRE</option>
+                                                   </select>
+                                                   <button style="height: 25px; height: 25px; padding-top:3px; border:none; background-color:#fff"><img src="<?= SITE_URL ?>/assets/img/plus.png" alt=""></button>
+                                               </div>
+                                           </div>
+                                           <div style="width: 50% ; display: flex;   gap: 7px;">
+                                               <label for="">echellon</label>
+                                               <select class="form-select form-select-sm" style='background-color:#238fce ;' name="echellon" id="">
+                                                   <option value="">E</option>
+                                               </select>
+                                               <button style="height: 25px; height: 25px; padding-top:3px; border:none; background-color:#fff"><img src="<?= SITE_URL ?>/assets/img/plus.png" alt="" style="width: 20px;"></button>
+                                           </div>
+                                       </div><!--ligne 1 fini ici-->
+    
+    
+                                       <div style="display: flex; justify-content: center; align-items: center;">
+                                           <div style="display: flex; justify-content:space-between; align-items: center; width: 100%; ">
+                                               <p>Categorie</p>
+                                               <div style="display: flex; justify-content: left; width: 50%; gap: 7px;">
+                                                   <select class="form-select form-select-sm" style='background-color:#238fce ;' name="categorie" id="" style="width: 150px;">
+                                                       <option value="">VI</option>
+                                                   </select>
+                                                   <button style="height: 25px; height: 25px; padding-top:2px; border:none; background-color:#fff"><img src="<?= SITE_URL ?>/assets/img/plus.png" alt="" style="width: 20px;"></button>
+                                               </div>
+                                           </div>
+                                           <div style="width: 50% ; display: flex;   gap: 7px;">
+                                               <label for="">Indice</label>
+                                               <select class="form-select form-select-sm" style='background-color:#238fce ;' name="" id="" style="width: 100%;">
+                                                   <option value="">E</option>
+                                               </select>
+                                               <button style="height: 25px; height: 25px; padding-top:3px; border:none; background-color:#fff"><img src="<?= SITE_URL ?>/assets/img/plus.png" alt="" style="width: 20px;"></button>
+                                           </div>
+                                       </div>
+    
+    
+                                       <div style="display: flex; justify-content: center; align-items: center;">
+                                           <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; ">
+                                               <p>Salaire De base Par semaine</p>
+                                               <div style="display: flex; justify-content: left;width: 50%; gap: 7px;">
+                                                   <input class="form-control " type="number" name="salairebase">
+                                               </div>
+                                           </div>
+                                           <div style="width: 50% ; display: flex;  ">
+                                               <input type="checkbox" class="form-check-input" name="loge" id="" value="oui">
+                                               <label for=""><b>logé</b></label>
+                                           </div>
+                                       </div>
+    
+    
+                                       <div style="display: flex; justify-content: center; align-items: center;">
+                                           <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; ">
+                                               <p>Heure par Semaine</p>
+                                               <div style="display: flex; justify-content: left;width: 50%; gap: 7px;">
+                                                   <select class="form-select form-select-sm" name="heuresemaine" id="" style="width: 140px;" style='background-color:#238fce ;'>
+                                                       <option value="0">0</option>
+                                                       <option value="5">5</option>
+                                                   </select>
+                                               </div>
+                                           </div>
+                                           <div style="width: 50% ; display: flex; ">
+                                               <input type="checkbox" class="form-check-input" name="nouri" id="" value="oui">
+                                               <label for=""><b>Nourie</b></label>
+                                           </div>
+                                       </div>
+    
+    
+                                       <div style="display: flex; justify-content: center; align-items: center;">
+                                           <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; ">
+                                               <p>Taux Horaires</p>
+                                               <div style="display: flex; justify-content: left;width: 50%; gap: 7px;">
+                                                   <select class="form-select form-select-sm" name="tauxhoriare" id="" style="width: 140px;">
+                                                       <option value="0">0</option>
+                                                       <option value="5">5</option>
+                                                   </select>
+                                               </div>
+                                           </div>
+                                           <div style="width: 50% ; display: flex;   ">
+                                               <input type="checkbox" class="form-check-input" name="assure" id="" value="oui">
+                                               <label for=""><b>Assuré</b></label>
+                                           </div>
+                                       </div>
+    
+    
+    
+                                       <div style="display: flex; justify-content: center; align-items: center; width: 67%;">
+                                           <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; ">
+                                               <p>Cumul Heure</p>
+                                               <div style="display: flex; justify-content: left;width: 50%; gap: 7px;">
+                                                   <input type="text" style='background-color:#0b9444 ;' class="form-control " name="cumulheure" id="">
+                                               </div>
+                                           </div>
+                                       </div>
+    
+    
+                                       <div style="display: flex; justify-content: center; align-items: center; width: 67%;">
+                                           <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; ">
+                                               <p>Grade de Salarié</p>
+                                               <div style="display: flex; justify-content: left;width: 50%; gap: 7px;">
+                                                   <input type="text" style='background-color:#FFFF00 ;' class="form-control " name="gradesalarie" id="" style="width: 70%; ">
+                                               </div>
+                                           </div>
+                                       </div>
+                                   </div>
+    
+                                   <div style="width: 100%;  height: 200px; "><!--Diplomes-->
+                                       <p>
+                                           <b>Diplomes</b>
+                                       </p>
+                                       <div style="display: flex; justify-content: right; align-items: end;  width: 100%; height: 80%;">
+                                           <div style="display: flex; padding-left:0px;padding-right:0px; flex-direction: column; align-items: end; justify-content: space-between; height: 100%;">
+                                               <button style="height: 35px; height: 35px; padding-top:2px; border:2px solid gray; background-color:#fff"><img src="<?= SITE_URL ?>/assets/img/plus.png" alt="" style="width: 10px;"></button>
+                                               <button style="height: 35px; height: 35px; padding-top:2px; border:2px solid gray; background-color:#fff"><img src="<?= SITE_URL ?>/assets/img/minus.png" alt="" style="width: 20px;"></button>
+                                           </div>
+                                           <div style="width: 100%; height: 100%; padding-left:0px;">
+                                               <div style="width: 100%; height: 100%; padding-left:0px; padding-right:0px; border: 1px solid gray;">
+    
+                                                   <div style="display: flex; width: 100%; height: 0px;">
+    
+                                                   </div>
+                                                   <style>
+                                                       .econte1 div {}
+                                                   </style>
+    
+                                                   <table class="table table-bordered">
+                                                       <thead>
+                                                           <tr class='table-dark text-center'>
+                                                               <th class='px-5'>Nom</th>
+                                                               <th class="text-center">Année</th>
+                                                               <th class="text-center">Mention</th>
+    
+                                                           </tr>
+                                                       </thead>
+                                                       <tbody>
+                                                           <tr class='table-primary'>
+                                                               <td>
+                                                                   <p>
+                                                                   <p>
+                                                               </td>
+                                                               <td></td>
+                                                               <td></td>
+    
+    
+    
+    
+    
+                                                           </tr>
+                                                       </tbody>
+                                                   </table>
+    
+                                               </div>
+                                           </div>
+                                       </div>
+    
+                                   </div>
+                                   <style>
+                                       .bleauta {
+                                           background: #2169EC !important;
+                                       }
+                                   </style>
+    
+                                   <div> <!--contrat-->
+                                       <p>
+                                           <b>Contrat</b>
+                                       </p>
+                                       <div style="display: flex; align-items: center; justify-content: space-around;">
+                                           <label for="">Genre de Salarié</label>
+                                           <select class="form-select form-select-sm" name="genresalarie2" id="">
+                                               <option value="PERMANENT">PERMANENT</option>
+                                               <option value="STAGIAIRE">STAGIAIRE</option>
+                                           </select>
+                                           <button style="height: 25px; height: 25px; padding-top:3px; padding-right:45px; border:none; background-color:#fff"><img src="<?= SITE_URL ?>/assets/img/search.png" alt="" style="width: 20px;"></button>
+                                           <label for="">Type De Contrat</label>
+                                           <select class="form-select form-select-sm" name="contrat" id="">
+                                               <option value=" CDD">
+                                                   CDD
+                                               </option>
+                                               <option value=" CDI">
+                                                   CDI
+                                               </option>
+                                           </select>
+                                           <button style="height: 25px; height: 25px; padding-top:3px; border:none; background-color:#fff"><img src="<?= SITE_URL ?>/assets/img/search.png" alt="" style="width: 20px;"></button>
+                                       </div>
+                                       <div style="width: 70%;  display: flex; justify-content: space-between; align-items: center;">
+                                           <label for="" class='text-danger'>Identifiant Interne</label>
+                                           <input type="text" class="form-control " style='background-color:#FFFF00 ;' name="identifiantinterne" id="" style=" width: 60%;">
+                                       </div>
+                                       <div style="width: 70%;  display: flex; justify-content: space-between; align-items: center;">
+                                           <label for="" class='text-danger'>Matricule Interne</label>
+                                           <input type="text" class="form-control " style='background-color:#238fce;' name="matriculeinterne" id="" style=" width: 60%;">
+                                       </div>
+                                       <div style="width: 100%;  display: flex; justify-content: space-between; align-items: center;">
+                                           <label for="" class='text-danger' style=" width: 40%;">Matricule Social (CNPS)</label>
+                                           <input type="text" class="form-control " name="matriculesocial" id="" style=" width: 40%;">
+                                           <label for="" class='text-danger' style="width: 20%; padding-left: 10px;">N* Enreg</label>
+                                           <input type="number" class="form-control " style="width: 15%;" name="numenregistrement">
+                                       </div>
+                                       <div style="width: 70%;  display: flex; justify-content: space-between; align-items: center;">
+                                           <label for="" class='text-danger'>NIU (Impots)</label>
+                                           <input type="text" class="form-control " name="NIU" id="" style=" width: 60%;">
+                                       </div>
+                                       <div>
+                                           <p>
+                                               <b>Entrée</b>
+                                           </p>
+                                           <div style="width: 60%;   display: flex; justify-content: space-around;">
+                                               <label for="">Entrée</label>
+                                               <input type="date" class="form-control " name="dateentree" id="" value="<?= date('Y-m-d') ?>">
+                                           </div>
+                                           <div style="width: 60%;  display: flex; justify-content: space-around;">
+                                               <label for="">Date de Contrat</label>
+                                               <input type="date" class="form-control " name="datecontrat" id="" value="<?= date('Y-m-d') ?>">
+                                           </div>
+                                       </div>
+                                       <div>
+                                           <p>
+                                               <b>Depart</b>
+                                           </p>
+                                           <div style="width: 100%;   display: flex; justify-content: space-evenly; align-items: center;">
+                                               <label for="" style="width: 100%; ">Date de Depart</label>
+                                               <input type="date" class="form-control " name="datedepart" id="" style="width: 500px;">
+                                               <div>
+                                                   <input type="checkbox" name="" id="" value="archive">
+                                                   <label for="">Archivé</label>
+                                               </div>
+                                           </div>
+                                           <div style="width: 71%;   display: flex; justify-content: space-around;">
+                                               <label for="">Motif De Depart</label>
+                                               <input type="text" class="form-control " style='background-color:#238fce;' name="motifdepart" id="">
+    
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
 
 
-                                    </ul>
-                                </div>
-                                <div class="Autre"> <!--le carre autre commence ici -->
-                                    <span style="font-size: 30px;margin-left:10px ;">Autres</span>
-                                    <div style="display: flex; justify-content: center; align-items: center;">
-                                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; ">
-                                            <p>Convention Collective</p>
-                                            <div style="display: flex; justify-content: left;width: 50%; gap: 7px;">
-                                                <select class="form-select form-select-sm" name="conventioncollective" id="" style='background-color:#238fce ;'>
-                                                    <option></option>
-                                                    <option>FONCTIONNAIRE</option>
-                                                </select>
-                                                <button style="height: 25px; height: 25px; padding-top:3px; border:none; background-color:#fff"><img src="<?= SITE_URL ?>/assets/img/plus.png" alt=""></button>
-                                            </div>
-                                        </div>
-                                        <div style="width: 50% ; display: flex;   gap: 7px;">
-                                            <label for="">echellon</label>
-                                            <select class="form-select form-select-sm" style='background-color:#238fce ;' name="echellon" id="">
-                                                <option value="">E</option>
-                                            </select>
-                                            <button style="height: 25px; height: 25px; padding-top:3px; border:none; background-color:#fff"><img src="<?= SITE_URL ?>/assets/img/plus.png" alt="" style="width: 20px;"></button>
-                                        </div>
-                                    </div><!--ligne 1 fini ici-->
+                           </div>
+                            <!-- fin gauche de diver  -->
 
+                           <div class="col">
+                          
 
-                                    <div style="display: flex; justify-content: center; align-items: center;">
-                                        <div style="display: flex; justify-content:space-between; align-items: center; width: 100%; ">
-                                            <p>Categorie</p>
-                                            <div style="display: flex; justify-content: left; width: 50%; gap: 7px;">
-                                                <select class="form-select form-select-sm" style='background-color:#238fce ;' name="categorie" id="" style="width: 150px;">
-                                                    <option value="">VI</option>
-                                                </select>
-                                                <button style="height: 25px; height: 25px; padding-top:2px; border:none; background-color:#fff"><img src="<?= SITE_URL ?>/assets/img/plus.png" alt="" style="width: 20px;"></button>
-                                            </div>
-                                        </div>
-                                        <div style="width: 50% ; display: flex;   gap: 7px;">
-                                            <label for="">Indice</label>
-                                            <select class="form-select form-select-sm" style='background-color:#238fce ;' name="" id="" style="width: 100%;">
-                                                <option value="">E</option>
-                                            </select>
-                                            <button style="height: 25px; height: 25px; padding-top:3px; border:none; background-color:#fff"><img src="<?= SITE_URL ?>/assets/img/plus.png" alt="" style="width: 20px;"></button>
-                                        </div>
-                                    </div>
+                           </div>
 
-
-                                    <div style="display: flex; justify-content: center; align-items: center;">
-                                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; ">
-                                            <p>Salaire De base Par semaine</p>
-                                            <div style="display: flex; justify-content: left;width: 50%; gap: 7px;">
-                                                <input class="form-control " type="number" name="salairebase">
-                                            </div>
-                                        </div>
-                                        <div style="width: 50% ; display: flex;  ">
-                                            <input type="checkbox" class="form-check-input" name="loge" id="" value="oui">
-                                            <label for=""><b>logé</b></label>
-                                        </div>
-                                    </div>
-
-
-                                    <div style="display: flex; justify-content: center; align-items: center;">
-                                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; ">
-                                            <p>Heure par Semaine</p>
-                                            <div style="display: flex; justify-content: left;width: 50%; gap: 7px;">
-                                                <select class="form-select form-select-sm" name="heuresemaine" id="" style="width: 140px;" style='background-color:#238fce ;'>
-                                                    <option value="0">0</option>
-                                                    <option value="5">5</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div style="width: 50% ; display: flex; ">
-                                            <input type="checkbox" class="form-check-input" name="nouri" id="" value="oui">
-                                            <label for=""><b>Nourie</b></label>
-                                        </div>
-                                    </div>
-
-
-                                    <div style="display: flex; justify-content: center; align-items: center;">
-                                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; ">
-                                            <p>Taux Horaires</p>
-                                            <div style="display: flex; justify-content: left;width: 50%; gap: 7px;">
-                                                <select class="form-select form-select-sm" name="tauxhoriare" id="" style="width: 140px;">
-                                                    <option value="0">0</option>
-                                                    <option value="5">5</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div style="width: 50% ; display: flex;   ">
-                                            <input type="checkbox" class="form-check-input" name="assure" id="" value="oui">
-                                            <label for=""><b>Assuré</b></label>
-                                        </div>
-                                    </div>
-
-
-
-                                    <div style="display: flex; justify-content: center; align-items: center; width: 67%;">
-                                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; ">
-                                            <p>Cumul Heure</p>
-                                            <div style="display: flex; justify-content: left;width: 50%; gap: 7px;">
-                                                <input type="text" style='background-color:#0b9444 ;' class="form-control " name="cumulheure" id="">
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div style="display: flex; justify-content: center; align-items: center; width: 67%;">
-                                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; ">
-                                            <p>Grade de Salarié</p>
-                                            <div style="display: flex; justify-content: left;width: 50%; gap: 7px;">
-                                                <input type="text" style='background-color:#FFFF00 ;' class="form-control " name="gradesalarie" id="" style="width: 70%; ">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div style="width: 100%;  height: 200px; "><!--Diplomes-->
-                                    <p>
-                                        <b>Diplomes</b>
-                                    </p>
-                                    <div style="display: flex; justify-content: right; align-items: end;  width: 100%; height: 80%;">
-                                        <div style="display: flex; padding-left:0px;padding-right:0px; flex-direction: column; align-items: end; justify-content: space-between; height: 100%;">
-                                            <button style="height: 35px; height: 35px; padding-top:2px; border:2px solid gray; background-color:#fff"><img src="<?= SITE_URL ?>/assets/img/plus.png" alt="" style="width: 10px;"></button>
-                                            <button style="height: 35px; height: 35px; padding-top:2px; border:2px solid gray; background-color:#fff"><img src="<?= SITE_URL ?>/assets/img/minus.png" alt="" style="width: 20px;"></button>
-                                        </div>
-                                        <div style="width: 100%; height: 100%; padding-left:0px;">
-                                            <div style="width: 100%; height: 100%; padding-left:0px; padding-right:0px; border: 1px solid gray;">
-
-                                                <div style="display: flex; width: 100%; height: 0px;">
-
-                                                </div>
-                                                <style>
-                                                    .econte1 div {}
-                                                </style>
-
-                                                <table class="table table-bordered">
-                                                    <thead>
-                                                        <tr class='table-dark text-center'>
-                                                            <th class='px-5'>Nom</th>
-                                                            <th class="text-center">Année</th>
-                                                            <th class="text-center">Mention</th>
-
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr class='table-primary'>
-                                                            <td>
-                                                                <p>
-                                                                <p>
-                                                            </td>
-                                                            <td></td>
-                                                            <td></td>
-
-
-
-
-
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <style>
-                                    .bleauta {
-                                        background: #2169EC !important;
-                                    }
-                                </style>
-
-                                <div> <!--contrat-->
-                                    <p>
-                                        <b>Contrat</b>
-                                    </p>
-                                    <div style="display: flex; align-items: center; justify-content: space-around;">
-                                        <label for="">Genre de Salarié</label>
-                                        <select class="form-select form-select-sm" name="genresalarie2" id="">
-                                            <option value="PERMANENT">PERMANENT</option>
-                                            <option value="STAGIAIRE">STAGIAIRE</option>
-                                        </select>
-                                        <button style="height: 25px; height: 25px; padding-top:3px; padding-right:45px; border:none; background-color:#fff"><img src="<?= SITE_URL ?>/assets/img/search.png" alt="" style="width: 20px;"></button>
-                                        <label for="">Type De Contrat</label>
-                                        <select class="form-select form-select-sm" name="contrat" id="">
-                                            <option value=" CDD">
-                                                CDD
-                                            </option>
-                                            <option value=" CDI">
-                                                CDI
-                                            </option>
-                                        </select>
-                                        <button style="height: 25px; height: 25px; padding-top:3px; border:none; background-color:#fff"><img src="<?= SITE_URL ?>/assets/img/search.png" alt="" style="width: 20px;"></button>
-                                    </div>
-                                    <div style="width: 70%;  display: flex; justify-content: space-between; align-items: center;">
-                                        <label for="" class='text-danger'>Identifiant Interne</label>
-                                        <input type="text" class="form-control " style='background-color:#FFFF00 ;' name="identifiantinterne" id="" style=" width: 60%;">
-                                    </div>
-                                    <div style="width: 70%;  display: flex; justify-content: space-between; align-items: center;">
-                                        <label for="" class='text-danger'>Matricule Interne</label>
-                                        <input type="text" class="form-control " style='background-color:#238fce;' name="matriculeinterne" id="" style=" width: 60%;">
-                                    </div>
-                                    <div style="width: 100%;  display: flex; justify-content: space-between; align-items: center;">
-                                        <label for="" class='text-danger' style=" width: 40%;">Matricule Social (CNPS)</label>
-                                        <input type="text" class="form-control " name="matriculesocial" id="" style=" width: 40%;">
-                                        <label for="" class='text-danger' style="width: 20%; padding-left: 10px;">N* Enreg</label>
-                                        <input type="number" class="form-control " style="width: 15%;" name="numenregistrement">
-                                    </div>
-                                    <div style="width: 70%;  display: flex; justify-content: space-between; align-items: center;">
-                                        <label for="" class='text-danger'>NIU (Impots)</label>
-                                        <input type="text" class="form-control " name="NIU" id="" style=" width: 60%;">
-                                    </div>
-                                    <div>
-                                        <p>
-                                            <b>Entrée</b>
-                                        </p>
-                                        <div style="width: 60%;   display: flex; justify-content: space-around;">
-                                            <label for="">Entrée</label>
-                                            <input type="date" class="form-control " name="dateentree" id="" value="<?= date('Y-m-d') ?>">
-                                        </div>
-                                        <div style="width: 60%;  display: flex; justify-content: space-around;">
-                                            <label for="">Date de Contrat</label>
-                                            <input type="date" class="form-control " name="datecontrat" id="" value="<?= date('Y-m-d') ?>">
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <p>
-                                            <b>Depart</b>
-                                        </p>
-                                        <div style="width: 100%;   display: flex; justify-content: space-evenly; align-items: center;">
-                                            <label for="" style="width: 100%; ">Date de Depart</label>
-                                            <input type="date" class="form-control " name="datedepart" id="" style="width: 500px;">
-                                            <div>
-                                                <input type="checkbox" name="" id="" value="archive">
-                                                <label for="">Archivé</label>
-                                            </div>
-                                        </div>
-                                        <div style="width: 71%;   display: flex; justify-content: space-around;">
-                                            <label for="">Motif De Depart</label>
-                                            <input type="text" class="form-control " style='background-color:#238fce;' name="motifdepart" id="">
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        
                             <!--  css pour la premiere partie gauche de divers -->
                             <style>
                                 .gauche-divers label,
@@ -1478,252 +1754,6 @@ $d = (array)json_decode($response, true);
                                 }
                             </style>
 
-                            <section class="econte2">
-                                <div class="class1 mx-2">
-                                    <div class="class2 spec1">
-                                        <div class="gauche">
-                                            <div class="form-check">
-                                                <input type="checkbox" class="form-check-input" id="check1" name="option1" value="something" checked>
-                                                <label class="form-check-label h4" for="check1">Prestataire interne ?</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input type="checkbox" class="form-check-input" id="check1" name="option1" value="something" checked>
-                                                <label class="form-check-label h4 text-danger" for="check1">Prestataire externe ?</label>
-                                            </div>
-
-
-                                        </div>
-                                        <div class="class4">
-                                            <div>
-                                                <label for="" class=' gras mt-4'>Carte a puce</label>
-                                                <div>
-                                                    <button><img src="<?= SITE_URL ?>/assets/img/floppy-disk.png" alt="" style="width: max-content; height: 35px;"></button>
-                                                    <button><img src="<?= SITE_URL ?>/assets/img/close.png" alt="" style="width: max-content; height: 40px;"></button>
-
-
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <label class=' gras mt-3' for="">Biometrie</label>
-                                                <div>
-                                                    <button><img src="<?= SITE_URL ?>/assets/img/floppy-disk.png" alt="" style="width: max-content; height: 35px;"></button>
-                                                    <button><img src="<?= SITE_URL ?>/assets/img/close.png" alt="" style="width: max-content; height: 40px;"></button>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- css pour les bouton -->
-                                        <style>
-                                            .class4 img {
-                                                width: 33px !important;
-                                            }
-
-                                            .gras {
-                                                font-weight: 600;
-                                            }
-
-                                            .spec2,
-                                            .spec1 {
-                                                justify-content: center !important;
-                                            }
-
-                                            .econte2 {
-                                                width: 100%;
-                                                zoom: 79%;
-                                            }
-                                        </style>
-
-                                    </div>
-
-                                    <div class=" spec2">
-                                        <div class="preview-image">
-
-
-                                            <img src="<?= SITE_URL ?>/assets/img/images.png" class='placeholder-img' alt="">
-                                        </div>
-                                        <div class='zone'>
-                                            <div class="roww">
-                                                <input type="file" class="input-file" accept="image/*" hidden>
-                                                <button style='margin-left: 24px;'>
-                                                    <img src="<?= SITE_URL ?>/assets/img/search.png" alt="" style="width: max-content; height: 35px;">
-                                                </button>
-                                                <button class="choix-img">
-                                                    <img class="choix-img" src="<?= SITE_URL ?>/assets/img/camera.png" alt="" style="width: max-content; height: 35px;">
-                                                </button>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <!-- css pour les bouton et images -->
-                                    <style>
-                                        .spec2 {
-                                            height: 100%;
-                                            width: 100%;
-                                            display: flex;
-                                            flex-direction: column;
-                                            justify-content: space;
-                                            align-items: flex-end;
-                                        }
-
-                                        .placeholder-img {
-                                            width: 300px !important;
-                                            height: 400px !important;
-                                        }
-
-                                        .preview-img img {
-                                            max-width: 490px;
-                                            min-height: 335px;
-                                            width: 100%;
-                                            height: 100%;
-                                            object-fit: contain;
-                                        }
-
-                                        .preview-image img {
-                                            max-width: 490px;
-                                            min-height: 335px;
-                                            width: 100%;
-                                            height: 100%;
-                                            object-fit: contain;
-                                        }
-
-                                        .preview-img {
-                                            display: flex;
-                                            overflow: hidden;
-                                            align-items: center;
-                                            justify-content: center;
-                                            margin-left: 20px;
-                                            border: 2px solid #aaa;
-                                            border-radius: 10px;
-                                        }
-
-                                        .preview-image {
-                                            display: flex;
-                                            overflow: hidden;
-                                            align-items: center;
-                                            justify-content: center;
-                                            margin-left: 20px;
-                                            border: 2px solid #aaa;
-                                            border-radius: 10px;
-                                        }
-
-                                        .zone {
-                                            justify-content: flex-start !important;
-                                            gap: 10px;
-                                        }
-
-                                        section button {
-                                            border: 1px solid gray;
-                                            border-radius: 5px;
-                                            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-
-                                        }
-
-                                        section button:hover {
-                                            background-color: #D3D3D3;
-                                            ;
-                                            /* Gris foncé */
-                                            box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-                                        }
-                                    </style>
-                                </div>
-
-                                <div class="class5">
-                                    <div class="class6">
-                                        <ul class="pagination">
-                                            <li class="page-item d-flex justify-content-center"><a id='activer' class="page-link page-link0 px-4  m-0 text-dark  " href="#"> <span>Horaires</span></a></li>
-                                            <li class="page-item"><a class="page-link page-link0 px-4 text-dark m-0 " href="#"><span> Services</span></a></li>
-                                            <li class="page-item "><a class="page-link page-link0 px-4 text-dark   " href="#"><span>Messagerie</span></a></li>
-                                            <li class="page-item"><a class="page-link page-link0 px-4 text-dark  " href="#"><span>Biometrie</span></a></li>
-                                            <li class="page-item espace"><a class="page-link px-2 text-dark " href="#"><span>❮❮</span></a></li>
-                                            <li class="page-item"><a class="page-link px-2 text-dark" href="#"><span>❯❯</span></a></li>
-
-                                        </ul>
-
-                                    </div>
-                                    <div class="class7" style="padding-left: 30px;">
-                                        <div class="class8">
-                                            <div class="qwe1"><br>
-                                                <div class="ligne">
-
-                                                </div>
-                                            </div>
-                                            <label class='option-horaire'>Options horaires </label>
-                                            <div class="qwe2">
-
-                                                <div class="activer">
-                                                    <input type="checkbox" class="form-check-input" name="active" id="" value="1">
-
-                                                    <lable>Activer</lable>
-
-                                                </div>
-                                                <div class="opt">
-                                                    <div class="option_debut">
-                                                        <label for="">Début Option</label>
-                                                        <input type="time" name="heuredebut" class='form-control' id="" value="<?= date('H:i') ?>">
-                                                    </div>
-                                                    <div class="Option_fin">
-                                                        <label for="">Fin Option</label>
-                                                        <input type="time" name="heurefin" class='form-control' id="" value="<?= date('H:i') ?>">
-                                                    </div>
-                                                </div>
-                                                <div class="btn_bas">
-
-
-                                                    <button>Ajouter<img src="<?= SITE_URL ?>/assets/img/add-file.png" alt="" style="width: max-content; height: 20px;"></button>
-                                                    <button>Retirer<img src="<?= SITE_URL ?>/assets/img/close.png" alt="" style="width: max-content; height: 20px;"></button>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="class9">
-                                            <div>
-                                                <input type="checkbox" class="form-check-input" name="lundi1" id="" value="1">
-                                                Lundi
-                                            </div>
-                                            <div>
-                                                <input type="checkbox" class="form-check-input" name="mardi1" id="" value="1">
-                                                Mardi
-                                            </div>
-                                            <div>
-                                                <input type="checkbox" class="form-check-input" name="mercredi1" id="" value="1">
-                                                Mercredi
-                                            </div>
-                                            <div>
-                                                <input type="checkbox" class="form-check-input" name="jeudi1" id="" value="1">
-                                                Jeudi
-                                            </div>
-                                            <div>
-                                                <input type="checkbox" class="form-check-input" name="vendredi1" id="" value="1">
-                                                Vendredi
-                                            </div>
-                                            <div>
-                                                <input type="checkbox" class="form-check-input" name="samedi1" id="" value="1">
-                                                Samedi
-                                            </div>
-                                            <div>
-                                                <input type="checkbox" class="form-check-input" name="dimanche1" id="" value="1">
-                                                Dimanche
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                    <style>
-
-                                    </style>
-
-
-                                    <div>
-
-                                    </div>
-                                </div>
-
-
-
-
-
-
-                            </section>
 
                         </div>
                     </div>
@@ -1880,11 +1910,23 @@ $d = (array)json_decode($response, true);
 </script>
 <script>
     const diverBtn = document.querySelector(".divers");
-    const cont_diver = document.querySelector(".divers_cont");
+    const cont_emplo = document.querySelector(".employe47");
+    const cont_diver = document.querySelector(".diver47");
     diverBtn.addEventListener("click", () => {
         cont_diver.style.display = "flex";
+        cont_emplo.style.display = "none";
     })
 </script>
+<script>
+    const emploBtn = document.querySelector(".acti");
+    const cont_emplo2 = document.querySelector(".employe47");
+    const cont_diver2 = document.querySelector(".diver47");
+    emploBtn.addEventListener("click", () => {
+        cont_diver2.style.display = "none";
+        cont_emplo2.style.display = "block";
+    })
+</script>
+
 <script>
     const emploBtn = document.querySelector(".employers_btn");
     const cont_divers = document.querySelector(".divers_cont");
@@ -1961,6 +2003,16 @@ $d = (array)json_decode($response, true);
         cont_employer.style.display = "none";
     });
 </script>
+
+   <script>
+        const bouton = document.getElementById("fermons");
+       
+
+        bouton.addEventListener("click", (e) => {
+            e.preventDefault();
+           window.location.href = "<?= SITE_URL ?>/resource_humaine";
+        });
+    </script>
 
 
 </div>
