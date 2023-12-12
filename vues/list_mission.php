@@ -211,7 +211,7 @@ ob_start();
                     <img src="<?= SITE_URL ?>/assets/img/add-file.png" alt="" style="width: max-content; height: 20px;">
                 </button>
 
-                <button id="open">
+                <button id="modify">
                     Ouvrir
                     <img src="<?= SITE_URL ?>/assets/img/folder.png" alt="" style="width: max-content; height: 20px;">
                 </button>
@@ -526,8 +526,8 @@ ob_start();
         table.appendChild(element);
     }
 
-    const persData = await fetch("<?= PERS_API_URL ?>");
-    const pers = await persData.json();
+    const persData1 = await fetch("<?= PERS_API_URL ?>");
+    const pers = await persData1.json();
 
     const response = await fetch("<?= MISSION_API_URL ?>");
     const missions = await response.json();
@@ -544,21 +544,67 @@ ob_start();
     for (let rowData of missions)
         updateMISSIONTable(tbl, rowData, listTemplate);
 
-        const absTemplate = document.getElementById("listTemplate");
+
 
         const site = document.getElementById("site");
 
 
         document.getElementById("new").addEventListener("click",
-        () => window.location.href = "<?= SITE_URL ?>/list_mission");
+        () => window.location.href = "<?= SITE_URL ?>/mission");
    // const extractedData = localStorage.getItem('extractedData');
+    const extractedData = localStorage.getItem('extractedData');
+    if (extractedData) {
+        const data = JSON.parse(extractedData);
+        localStorage.removeItem('extractedData');
+        const loopObject = {
+            nom: "nom",
+            prenom: "prenom",
+            dat: "depart",
+            duree: "duree",
+            Lieux: "destination",
+            site: "site",
+            cadre: "cadre",
+            Departement: "departement",
+            via: "passant",
+            duree_travail: "duree_de_travail",
+            motor: "vehicule",
+            // immatriculation: "",
+            charge: "chargement",
+            PriseEnCharge: "priseencharge",
+            matricule: "matricule",
+            NumeroDossier: "numerodedossier",
+            NumeroBL_LTA: "numerobl_lta",
+            NEng: "neng",
+        }
+        // set the data in the form
+        const form = document.querySelector('form');
+        form.action = '<?= SITE_URL ?>/forms/formmissionupdate.php';
+        form.setAttribute('success', 'La\'mission à été mis à jour avec succès!');
+        for (let [key, value] of Object.entries(data)) {
+            for (const [k, v] of Object.entries(loopObject)) {
+                if (key === k) {
+                    if (key == 'depart' ) {
+                        //format the value to date format (yyyy-MM-dd)
+                        value = value.split('/').reverse().join('-');
+                    }
+
+                    const input = form.querySelector(`[name="${v}"]`);
+                    if (input) {
+                        input.value = value;
+                    } else {
+                        console.error(`Input with name "${key}" not found in the form.`);
+                    }
+                }
+            }
+        }
+    }
 
         const allRows = document.querySelectorAll("tr");
         let missionDataAction = "";
-        const openBtn = document.getElementById("open");
+        const openBtn = document.getElementById("modify");
         const deleteBtn = document.getElementById("delete");
 
-        openBtn.addEventListener("click", () => missionDataAction = "open");
+        openBtn.addEventListener("click", () => missionDataAction = "modify");
        // deleteBtn.addEventListener("click", () => actionData = "delete");
     deleteBtn.addEventListener("click", () => missionDataAction = "delete");
         Array.from(allRows).forEach((row) => {
@@ -566,7 +612,7 @@ ob_start();
             const targetRow = e.target.parentNode;
             const extractedData = extractDataFromRow(targetRow);
             switch (missionDataAction) {
-                case "open":
+                case "modify":
                     missionDataAction = "";
                     localStorage.setItem("extractedData", JSON.stringify(extractedData));
                     window.open("<?= SITE_URL ?>/list_mission", "_self");
