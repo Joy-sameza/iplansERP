@@ -106,6 +106,18 @@ function permi_con()
     $dirs=str_replace("controllers", "", $dirs);
     require $dirs.'vues/permi_con.php';
 }
+function openEmployer()
+{
+    $dirs=__DIR__;
+    $dirs=str_replace("controllers", "", $dirs);
+    require $dirs.'vues/openEmployer.php';
+}
+function list_visit_rdv()
+{
+    $dirs=__DIR__;
+    $dirs=str_replace("controllers", "", $dirs);
+    require $dirs.'vues/list_visit_rdv.php';
+}
 ?>
 
 

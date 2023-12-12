@@ -76,6 +76,7 @@ ob_start();
                             </label>
                             <div style="display: flex; justify-content: left;width: 51%; ">
                                 <select class="form-control-sm" style='width:100%' id="destination" name="destination" required>
+                                    
                                     <option value=""></option>
                                     <option value="DOUALA">DOUALA</option>
                                     <option value="YAOUNDE">YAOUNDE</option>
@@ -87,7 +88,7 @@ ob_start();
                         </div>
                         <div style="width: 39%;display: flex;justify-content: space-between;">
                             <label for="via" class="form-label " style='margin-left: 16%;'>Via</label>
-                            <select class="form-select-sm" id='via' name="via"required>
+                            <select class="form-select-sm" id='via' name="via" required>
                                 <option value=""></option>
                                 <option value="EDEA">EDEA</option>
                                 <option value="BONABERIE">BONABERIE</option>
@@ -198,7 +199,7 @@ ob_start();
                     <div class='mt-3' style="display: flex; justify-content: center; align-items: center;" class='mt-3'>
                         <div style="display: flex; justify-content: space-between; align-items: center; width:81%; ">
                             <label for="heuredebut">Durée travail par jour</label>
-                            <input type="time" name="heuredebut" class='form-control' name="heurededebut" id="heurededebut" value="<?= date('H:i:s') ?>" style='width:39%'>
+                            <input type="time" name="heuredebut" class='form-control' name="heurededebut" id="heurededebut" value="" style='width:39%'>
                         </div>
                         <div style="display: flex; justify-content: right;width: 63%; ">
                             <div class="form-check mt-2" style='width:43%;'>
@@ -240,6 +241,10 @@ ob_start();
                         </div>
                         <div class="table-container">
                             <table class="table table-bordered">
+                                <a title="pièces jointes" data-firstPiece>
+                                    <input type="file" name="userfiles" data-Rupload id="files" class="hidden">
+                                    <img data-upload src="<?= SITE_URL ?>/assets/img/icons/solid/paperclip.svg" height="16">
+                                </a>
                                 <thead>
                                     <tr class="table-dark">
                                         <th width=2% class="text-center">T</th>
@@ -621,11 +626,18 @@ ob_start();
 
             document.getElementById("fees").addEventListener("click", function() {
                 var personne = document.getElementById("personne").value;
+                var destination = document.getElementById("destination").value;
                 var joursEcart = document.getElementById("joursEcart").value;
+                var via = document.getElementById("via").value;
+                var heurededebut = document.getElementById("heurededebut").value;
 
-                if (personne.trim() !== '' && joursEcart.trim() !== '') {
+                if (personne.trim() !== '' && joursEcart.trim() !== '' && destination.trim() !== '' && via.trim() !== '') {
+                    //envoie des donnes au 
 
                     localStorage.setItem('joursEcart', joursEcart);
+                    localStorage.setItem('destination', destination);
+                    localStorage.setItem('via', via);
+                    localStorage.setItem('heurededebut', heurededebut);
                     window.open("<?= SITE_URL ?>/details_mission");
                     // window.location.href = "<?= SITE_URL ?>/details_mission";
                 } else {
@@ -647,8 +659,12 @@ ob_start();
             document.getElementById("valider").addEventListener("click", function() {
                 var personne = document.getElementById("personne").value;
                 var joursEcart = document.getElementById("joursEcart").value;
+                
+                var destination = document.getElementById("destination").value;
+                var joursEcart = document.getElementById("joursEcart").value;
+                var via = document.getElementById("via").value;
 
-                if (personne.trim() !== '' && joursEcart.trim() !== '') {
+                if (personne.trim() !== '' && joursEcart.trim() !== '' && destination.trim() !== '' && via.trim() !== '') {
 
                     //code ici pour enregistrer dans la BD
                     window.open("<?= SITE_URL ?>/list_mission");
@@ -731,6 +747,64 @@ ob_start();
             btn.type = 'button';
         }
     </script>
+
+
+   <!-- envoie des donnees du formulaire a la page frais mission  -->
+
+   <script>
+  function sendData(){
+        document.getElementById("main_form").addEventListener("submit", function (event) {
+    // Empêcher le comportement par défaut du formulaire (envoi direct)
+    event.preventDefault();
+
+    // Récupérer les valeurs des champs du formulaire
+    var joursEcart = document.getElementById("joursEcart").value;
+    var heurededebut = document.getElementById("heurededebut").value;
+    var destination = document.getElementById("destination").value;
+    var via = document.getElementById("via").value;
+    // Ajouter d'autres champs selon vos besoins
+
+    // Créer un objet FormData pour faciliter l'envoi des données
+    var formData = new FormData();
+    formData.append("joursEcart", joursEcart);
+    formData.append("destination", destination);
+    formData.append("via", via);
+    formData.append("heurededebut", heurededebut);
+    
+    // Ajouter d'autres champs selon vos besoins
+
+    // Utiliser Fetch pour envoyer les données à la page souhaitée
+    fetch("<?= SITE_URL ?>/details_mission", {
+         
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.json())  // Vous pouvez ajuster cela en fonction du format de réponse attendu
+    .then(data => {
+        // Gérer la réponse si nécessaire
+        console.log(data);
+    })
+    .catch(error => {
+        console.error("Erreur lors de l'envoi des données :", error);
+    });
+});
+  }
+
+   </script>
+
+   <script>
+    function executerDeuxFonctions() {
+    transfererDonnees()
+    sendData()
+}
+   </script>
+
+   <!-- recuperation des donnes dans le local storage et affichage deans le textarea  -->
+
+
+
+
+   
 
 </body>
 

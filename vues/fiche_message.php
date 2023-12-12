@@ -373,6 +373,15 @@ DEMOy
             visibility: visible;
             opacity: 1;
         }
+
+
+       textarea .form-control{
+  
+    padding: 0px!important; 
+    
+   }
+
+
     </style>
 
     <!-- le js de la page  -->
