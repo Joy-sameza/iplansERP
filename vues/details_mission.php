@@ -257,7 +257,10 @@ ob_start();
 
                 <div class="col-sm-4 mt-3  madiv4">
                     <span class='note'><b>Note</b></span>
-                    <textarea class="form-control  w-100 h-100 border-0" name="note" style="resize: none;" id="exampleTextarea" rows="3" readonly>Mission à KRIBI Via BONABERI Pour 1 Jour(s) Avec 00:00:00 de travail par jour</textarea>
+                    <textarea class="form-control  w-100 h-100 border-0" name="note" style="resize: none;" id="textarea" rows="3" readonly>
+
+                
+                </textarea>
                 </div><!-- fin colone 2 -->
 
             </div>
@@ -302,6 +305,27 @@ ob_start();
 
                 </div>
                 <!--  css du haut  -->
+
+                <?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Vérifier si les données ont été correctement envoyées
+    if (isset($_POST["via"]) && isset($_POST["destination"])) {
+        // Récupérer les données du formulaire
+        $via = $_POST["via"];
+        $destination = $_POST["destination"];
+
+        // Faire quelque chose avec les données (par exemple, les afficher)
+        echo "Personne: " . $via . "<br>";
+        echo "Destination: " . $destination . "<br>";
+
+        // Vous pouvez également rediriger l'utilisateur ou effectuer d'autres actions ici
+    } else {
+        // Les données n'ont pas été correctement envoyées
+        echo "Erreur : Données manquantes dans la requête.";
+    }
+}
+?>
+
             </div>
 
         </form>
@@ -525,6 +549,41 @@ ob_start();
             close();
         });
     </script>
+
+
+
+
+   <script>
+                // Exécutez cette fonction au chargement de la page
+            document.addEventListener("DOMContentLoaded", function() {
+                // Récupérez les valeurs depuis le localStorage
+                var joursEcart = localStorage.getItem('joursEcart');
+                var destination = localStorage.getItem('destination');
+                var via = localStorage.getItem('via');
+                var heurededebut = localStorage.getItem('heurededebut');
+
+                // Affichez ces valeurs dans le textarea
+                afficherValeurs(joursEcart, destination, via, heurededebut);
+            });
+
+            // Fonction pour afficher les valeurs dans le textarea
+            function afficherValeurs(joursEcart, destination, via, heurededebut) {
+                // Récupérez le textarea
+                var textarea = document.getElementById("textarea");
+
+                // Assurez-vous que le textarea existe
+                if (textarea) {
+                    // Affichez les valeurs dans le textarea
+                    textarea.value = `Mission à ${destination}\nVia ${via}\nPour ${joursEcart} Jour(s)\nAvec ${heurededebut} de travail par jour`;
+                    // Désactivez le textarea pour le rendre en lecture seule
+                    textarea.readOnly = true;
+
+                }
+            }
+
+   </script>
+   <style>
+   </style>
 
     </body>
 

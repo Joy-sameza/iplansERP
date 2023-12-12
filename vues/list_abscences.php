@@ -204,7 +204,7 @@ ob_start();
 
 
         <div class="row " style='height: clamp(400px, 80%, 55vh);'>
-            <div class="table-responsive debut_tableau w-100 h-100">
+            <div class="table-responsive debut_tableau w-100 ">
                 <table class="table table-bordered " id='myTable' style="position: relative; text-align: center;">
                     <thead style="position: sticky; top: 0;">
                         <tr class="table-secondary text-center table-dark">
@@ -545,25 +545,7 @@ ob_start();
 
 
 
-<!-- jsvascript -->
-<script>
-    const ferme = document.querySelector(".close_window");
-    const conteneur = document.querySelector(".conteneur0");
 
-    ferme.addEventListener("click", (e) => {
-        e.preventDefault()
-        window.location.href = "<?= SITE_URL ?>/permi_con";
-
-    });
-</script>
-<script>
-    const boutonFermer = document.getElementById("fermer");
-    const conteneur0 = document.querySelector(".conteneur0");
-
-    boutonFermer.addEventListener("click", (e) => {
-        e.preventDefault();
-        window.location.href = "<?= SITE_URL ?>/permi_con";
-    });
 </script>
 
 

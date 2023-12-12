@@ -44,6 +44,10 @@ ob_start();
 
 
         <style>
+            a {
+                    text-decoration: none;
+                }
+
         .lange {
             font-size: 25px;
             margin-top: 47px;
@@ -213,9 +217,13 @@ ob_start();
     </button>
 
 
-    <button type="button" class="func" data-hotel>
-        <img src="<?= SITE_URL ?>/assets/img/receptionist.png" alt=""
+    <button type="button" class="func" data-hotel onclick="redirectToRA()">
+        
+
+             <a href="<?= SITE_URL ?>/list-visit-rdv"style="width: 40px; height: 40px; margin-right:7pxlor: black">
+           <img src="<?= SITE_URL ?>/assets/img/receptionist.png" alt=""
             style="width: 40px; height: 40px; margin-right:7px">Réception/Accueil
+       </a>
     </button>
 
 
@@ -278,6 +286,12 @@ ob_start();
         function redirectToRH() {
        
             window.location.href = '<?= SITE_URL ?>/resource_humaine';
+        }
+    </script>
+    <script>
+        function redirectToRA() {
+       
+            window.location.href = '<?= SITE_URL ?>/list-visit-rdv';
         }
     </script>
 

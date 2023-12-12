@@ -44,7 +44,7 @@ async function fetchData() {
  * @param {Object} data - The data object containing the values to set.
  * @param {DocumentFragment} elementClone - The cloned element to update with the data values.
  */
-function updateTable(table, data = {}, elementClone) {
+function updateTable(table, data = {}, elementClone, matricule) {
   const element = elementClone.content.cloneNode(true);
   const pers = {
     civilite: "civilite",
@@ -95,6 +95,10 @@ function updateTable(table, data = {}, elementClone) {
       setValue(pers[key], value, { parent: element });
     }
   });
+  const deleteButton = element.querySelector('#delete');
+  if (deleteButton) {
+    deleteButton.setAttribute('data-id', matricule);
+  }
   table.appendChild(element);
 }
 /**
@@ -240,20 +244,8 @@ function handleNewDataClick() { }
  */
 async function handleRowClick(event) {
   const tableRow = event.target.parentNode;
-  const rowData = extractDataFromRow(tableRow);
-  const id = parseInt(rowData.NEng);
-  switch (dataAction) {
-    case "open":
-      dataAction = "";
-      openRowData(tableRow, id);
-      break;
-    case "delete":
-      dataAction = "";
-      await deleteRowData(id);
-      break;
-    default:
-      break;
-  }
+
+
 }
 /**
  * Filter the data according to the specified direction
@@ -462,97 +454,13 @@ function useConformeFilters(conforme, data) {
     (element) => element.PrestataireExterne == prestat[conforme]
   );
 }
-/**
- * Extracts data from a given row and returns an object with the extracted data.
- *
- * @param {HTMLTableRowElement} row - The row from which to extract the data.
- * @return {Object} An object containing the extracted data.
- */
-function extractDataFromRow(row) {
-  const pers = {
-    civilite: "civilite",
-    nom: "nom",
-    prenom: "prenom",
-    Fonction: "Fonction",
-    phone: "phone",
-    PSeudo: "PSeudo",
-    Matricule: "Matricule",
-    MatriculeInterne: "MatriculeInterne",
-    cni: "cni",
-    Email: "Email",
-    dnais: "dnais",
-    npere: "npere",
-    nmere: "nmere",
-    vnais: "vnais",
-    nurg: "nurg",
-    nuurg: "nuurg",
-    AgenceBanque: "AgenceBanque",
-    CodeBanque: "CodeBanque",
-    CodeGuichetBanque: "CodeGuichetBanque",
-    NumeroCompteBanque: "NumeroCompteBanque",
-    CleRibBanque: "CleRibBanque",
-    CodeSwiftBanque: "CodeSwiftBanque",
-    CodeUtilisateur: "CodeUtilisateur",
-    categorie: "categorie",
-    Grade: "Grade",
-    Convention: "Convention",
-    departement1: "departement1",
-    Direction: "Direction",
-    SousDirection: "SousDirection",
-    Service: "Service",
-    motif_depart: "motif_depart",
-    date_sortie: "date_sortie",
-    date_entree: "date_entree",
-    genre_salarie: "genre_salarie",
-    type_contrat: "type_contrat",
-    IDDate_Contrat: "IDDate_Contrat",
-    IDDate_Sortie: "IDDate_Sortie",
-    LieuDelivranceCNI: "LieuDelivranceCNI",
-    DateExpirationCNI: "DateExpirationCNI",
-    IDDateExpirationCNI: "IDDateExpirationCNI",
-    NEng: "NEng",
-  };
-  const list = Object.keys(pers);
-  let obj = {};
-  list.forEach((item, index) => (obj[item] = row.children[index].textContent));
-  return obj;
-}
+
 function openRowData() { }
 /**
  *  Delete an employee data from database
  * @param {number} id ID of the data to delete in database
  */
-async function deleteRowData(id) {
-  const val = await swal({
-    icon: "warning",
-    title: "Etes-vous sûr de vouloir supprimer?",
-    text: "Cette action est irreversible!",
-    dangerMode: true,
-    closeOnClickOutside: false,
-    closeOnEsc: false,
-    buttons: {
-      cancel: {
-        text: "Non!",
-        value: false,
-        visible: true,
-        className: "",
-        closeModal: true,
-      },
-      confirm: {
-        text: "Oui, supprimer!",
-        value: true,
-        className: "",
-        closeModal: true,
-      },
-    },
-  });
-  if (!val) return;
-  const url = SITE_URL + "/forms/formdeletepers.php";
-  const response = await postData(url, {}, id);
-  if (response["rows"] >= 1 && response["message"])
-    return showAlert("L'employé a été supprimé avec succès", "success");
-  return showAlert("L'employé n'a pas pu être supprimé", "error");
-}
+
 /**
  * Send a POST request to the server with data
  * @param {string} action - Server URI action

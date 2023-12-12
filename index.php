@@ -61,8 +61,14 @@ if ('/fiche_message' == $uri) {
 if ('/permi_con' == $uri) {
     permi_con();
 }
+if ('/openEmployer' == $uri) {
+    openEmployer();
+}
+if ('/list-visit-rdv' == $uri) {
+    list_visit_rdv();
+}
 if ('/employes' == $uri) {
     tableau();
-} elseif (!empty($uri) and !in_array($uri, ['/', '/accueil', '/details_mission', '/list_abscences', '/mission', '/list_mission', '/courrier', '/login', '/home', '/resource_humaine', '/employes', '/gestion_abscences', '/selection_salarie', '/fiche_message', '/tester','/permi_con'])) {
+} elseif (!empty($uri) and !in_array($uri, ['/', '/accueil', '/details_mission', '/list_abscences', '/mission', '/list_mission', '/courrier', '/login', '/home', '/resource_humaine', '/employes', '/gestion_abscences', '/selection_salarie', '/fiche_message', '/tester','/permi_con','/openEmployer','/list-visit-rdv'])) {
     show404();
 }

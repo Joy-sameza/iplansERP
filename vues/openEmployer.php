@@ -1,4 +1,3 @@
-
 <?php
 $title = 'accueil';
 if (session_status() == PHP_SESSION_NONE) {
@@ -68,361 +67,9 @@ $d = (array)json_decode($response, true);
 
 
 <main>
-    <div class="haut_avec_label mt-3"> <!--le haut avec les label-->
-        <div class="d-flex">
-            <div class="d-flex p-2">
-                <span class="m-2">Site(Agence) </span>
-                <select name="" id="" class="form-select p-2">
-                    <option value="">Demo</option>
-                </select>
-            </div>
-            <div class="d-flex p-2">
-                <span class="m-2">Departement</span>
-                <select name="" id="" class="form-select p-2">
-                    <option value="">TOUS</option>
-                </select>
-            </div>
-            <div class="d-flex p-2">
-                <span class="m-2">Genre</span>
-                <select name="" id="" class="form-select p-2">
-                    <option value="">Permanent</option>
-                </select>
-            </div>
+   
 
-            <input type="checkbox" class="form-check-input mt-3" name="" id=" ">
-            <span class="m-2">
-                Archivés
-            </span>
-        </div>
-
-
-        <!-- <div>
-            <button>
-                <img src="<?= SITE_URL ?>/assets/image/SAV.webp" alt="">
-            </button>
-        </div>
-        -->
-    </div> <!---fin le haut avec les label -->
-
-    <div class="aphabet "> <!--debut lettre de l'aphabet-->
-        <p class="a-z">A-Z</p>
-
-        <p>A</p>
-        <p>B</p>
-        <p>C</p>
-        <p>D</p>
-        <p>E</p>
-        <p>F</p>
-        <p>G</p>
-        <p>H</p>
-        <p>I</p>
-        <p>J</p>
-        <p>K</p>
-        <p>L</p>
-        <p>M</p>
-        <p>N</p>
-        <p>O</p>
-        <p>P</p>
-        <p>Q</p>
-        <p>R</p>
-        <p>S</p>
-        <p>T</p>
-        <p>U</p>
-        <p>V</p>
-        <p>W</p>
-        <p>X</p>
-        <p>Y</p>
-        <p>Z</p>
-
-    </div> <!--fin lettre de l'alphabet-->
-
-
-
-
-    <!-- zone de recherche -->
-    <div class="container text-center" id="zone_recherche" style="display:none">
-        <form>
-            <input type="text" id="myInput" onkeyup="myFunction()" name="search" placeholder="Nom...">
-        </form>
-    </div>
-    <!-- style de ma zone de recherche  -->
-    <style>
-        #myInput {
-            width: 200px;
-            box-sizing: border-box;
-            border: 2px solid #ccc;
-            border-radius: 8px;
-            font-size: 21px;
-            background-color: white;
-            background-image: url('<?= SITE_URL ?>/assets/img/searchicon.png');
-            background-position: 10px 10px;
-            background-repeat: no-repeat;
-            padding: 5px 20px 5px 40px;
-            -webkit-transition: width 0.4s ease-in-out;
-            transition: width 0.4s ease-in-out;
-        }
-
-        #myInput:focus {
-            width: 40%;
-        }
-    </style>
-
-    <!-- fonction de recherche  -->
-
-    <script>
-        function myFunction() {
-            var input, filter, table, tr, td, i, txtValue;
-            input = document.getElementById("myInput");
-            filter = input.value.toUpperCase();
-            table = document.getElementById("myTable");
-            tr = table.getElementsByTagName("tr");
-            for (i = 0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName("td")[1];
-                if (td) {
-                    txtValue = td.textContent || td.innerText;
-                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                        tr[i].style.display = "";
-                    } else {
-                        tr[i].style.display = "none";
-                    }
-                }
-            }
-        }
-    </script>
-
-    <!-- fin zone de recherche  -->
-
-
-    <div class="debut_tableau mt-3"> <!--debut tableau-->
-
-        <table class="table table-striped table-hover  container" id="myTable">
-            <thead class="table-success">
-                <!-- <td role="columnheader">Options</td> -->
-                <!-- <td role="columnheader">id</td> -->
-                <td role="columnheader">Civilite</td>
-                <td role="columnheader">Nom</td>
-                <td role="columnheader">Prenom</td>
-                <td role="columnheader">Fonction</td>
-                <td role="columnheader">Telephone</td>
-                <td role="columnheader">Pseudo</td>
-                <td role="columnheader">Matricule</td>
-                <td role="columnheader">Identifiant</td>
-                <td role="columnheader">CNI</td>
-                <td role="columnheader">Email</td>
-                <td role="columnheader">DateNaissance</td>
-                <td role="columnheader">Nom_du_Pere</td>
-                <td role="columnheader">Nom_de_la_mere</td>
-                <td role="columnheader">Ville_de_Naissance</td>
-                <td role="columnheader">Nom_D'urgence</td>
-                <td role="columnheader">Numero_D'urgence</td>
-                <td role="columnheader">AgenceBanque</td>
-                <td role="columnheader">CodeBanque</td>
-                <td role="columnheader">CodeGuichetBanque</td>
-                <td role="columnheader">NumeroCompletBanque</td>
-                <td role="columnheader">CleRibBanque</td>
-                <td role="columnheader">VcodeSwittBanque</td>
-                <td role="columnheader">CodeUtilisateur</td>
-                <td role="columnheader">Categorie</td>
-                <td role="columnheader">Grade </td>
-                <td role="columnheader">Convention</td>
-                <td role="columnheader">Departement</td>
-                <td role="columnheader">GenreSalarie</td>
-                <td role="columnheader">Direction</td>
-                <td role="columnheader">SousDirection</td>
-                <td role="columnheader">Service</td>
-                <td role="columnheader">MotifDepart </td>
-                <td role="columnheader">DateSortie</td>
-                <td role="columnheader">DateEntree</td>
-                <td role="columnheader">GenreSalarie</td>
-                <td role="columnheader">TypeContrat</td>
-                <td role="columnheader">IDDate_Contrat</td>
-                <td role="columnheader">IDDate_Sortie</td>
-                <td role="columnheader">LieuDelivranceCNI</td>
-                <td role="columnheader">DateExpirationCNI</td>
-                <td role="columnheader">IDDateExpirationCNI</td>
-                <td role="columnheader">IDDate_Contrat</td>
-                <td role="columnheader">IDDate_Sortie</td>
-            </thead>
-            <tbody id="pers_table"> </tbody>
-        </table>
-
-
-    </div><!--fin de zone du tableau-->
-
-
-
-    <form id="categie_form">
-        <div class="zonne_dinformation"> <!--zone d'information -->
-            <div class="zone1 ">
-                <div class="zone">
-                    <label for="direction_filtre">Direction</label>
-                    <select name="direction_filtre" id="direction_filtre" class="form-select ">
-                        <option value="MEDICALE">MEDICALE</option>
-                        <option value="TOUTES" selected>TOUTES</option>
-                    </select>
-                    <label for="sous_direction_filtre">Sous Dir~</label>
-                    <select name="sous_direction_filtre" id="sous_direction_filtre" class="form-select ">
-                        <option value="MEDICALE">MEDICALE</option>
-                        <option value="TOUTES" selected>TOUTES</option>
-                    </select>
-                    <label for="services_filtre">Services</label>
-                    <select name="services_filtre" id="services_filtre" class="form-select">
-                        <option value="SSMEDICALE">SSMEDICALE</option>
-                        <option value="TOUS" selected>TOUS</option>
-                    </select>
-                </div>
-                <div class="zone">
-                    <label for="grade_filtre">Grade</label>
-                    <select name="grade_filtre" id="grade_filtre" class="form-select">
-                        <option value="CADRE_SUPERIEUR">CADRE SUPERIEUR</option>
-                        <option value="TOUS" selected>TOUS</option>
-                    </select>
-                    <label for="convention_filtre">Convention</label>
-                    <select name="convention_filtre" id="convention_filtre" class="form-select">
-                        <option value="FONCTION">FONCTION</option>
-                        <option value="TOUTES" selected>TOUTES</option>
-                    </select>
-                    <label for="categorie_filtre">Categ~</label>
-                    <select name="categorie_filtre" id="categorie_filtre" class="form-select">
-                        <option value="0">0</option>
-                        <option value="03">03</option>
-                        <option value="4">4</option>
-                        <option value="6">6</option>
-                        <option value="8">8</option>
-                        <option value="A">A</option>
-                        <option value="I">I</option>
-                        <option value="IX">IX</option>
-                        <option value="VI">VI</option>
-                        <option value="XII">XII</option>
-                        <option value="TOUTES" selected>TOUTES</option>
-
-
-                    </select>
-                    <label for="fonction_filtre">Fontion</label>
-                    <select name="fonction_filtre" id="fonction_filtre" class="form-select">
-                        <option value="TOUTES" selected>TOUTES</option>
-                        <option value="AGENT_D_ENTRETIEN">AGENT D'ENTRETIEN</option>
-                        <option value="AIDE_MAGSINIER">AIDE MAGSINIER</option>
-                        <option value="ASSISTANCE_TECHNIQUE">ASSISTANCE TECHNIQUE</option>
-                        <option value="CHAUFFEUR_COURRIER">CHAUFFEUR/COURRIER </option>
-                        <option value="COMMERCIAL">COMMERCIAL</option>
-                        <option value="COMPTABLE">COMPTABLE</option>
-                        <option value="CHAUFFEUR_LIVREUR">CHAUFFEUR/LIVREUR</option>
-                        <option value="CONTROLLEUR_DE_GESTION">CONTROLLEUR DE GESTION</option>
-                        <option value="DIRECTEUR_COMMERCIAL">DIRECTEUR COMMERCIAL</option>
-                        <option value="DIRECTEUR_GENERAL">DIRECTEUR GENERAL</option>
-                        <option value="DIRECTRICE_GENERALE_ADJOINTE">DIRECTRICE GENERALE ADJOINTE</option>
-                        <option value="FACTURIERE">FACTURIERE</option>
-                        <option value="GARDIEND_DE_NUIT">GARDIEND DE NUIT</option>
-                        <option value="HOETESSE_DE_VENTES">HOETESSE DE VENTES</option>
-                        <option value="IT">IT </option>
-                        <option value="MAGASINIER">MAGASINIER</option>
-                        <option value="PEDIATRE">PEDIATRE</option>
-                        <option value="PRESTATAIRE">PRESTATAIRE</option>
-                        <option value="PROJECT_MANAGER">PROJECT MANAGER</option>
-                        <option value="RECEPTIONNISTE">RECEPTIONNISTE</option>
-                        <option value="RESPONSABLE_DU_PERSONNEL">RESPONSABLE DU PERSONNEL</option>
-                        <option value="RESPONSABLE_D_ENTREPOT">RESPONSABLE D ENTREPOT</option>
-                        <option value="RESPONSABLE_PROMO">RESPONSABLE PROMO</option>
-                    </select>
-                </div>
-            </div>
-
-
-
-            <div class="zone_de_categorie"><!--zone de categorie-->
-                <div> <!--sexe-->
-                    <p style="font-size: 15px;">
-                        Sexe
-                    </p>
-                    <div>
-                        <input type="radio" name="genre" class="form-check-input" value="male">
-                        <label for="">M</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="genre" class="form-check-input" value="female">
-                        <label for="">F</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="genre" class="form-check-input" value="all" checked>
-                        <label for="">Tous</label>
-                    </div>
-                </div>
-                <div> <!--Prestataire-->
-                    <p style="font-size: 15px;">
-                        Prestataire
-                    </p>
-                    <div>
-                        <input type="radio" class="form-check-input" name="prestataire" value="no">
-                        <label for="">Non</label>
-                    </div>
-                    <div>
-                        <input type="radio" class="form-check-input" name="prestataire" value="yes">
-                        <label for="">Oui</label>
-                    </div>
-                    <div>
-                        <input type="radio" class="form-check-input" name="prestataire" value="all" checked>
-                        <label for="">Tous</label>
-                    </div>
-                </div>
-                <div> <!--Conforme-->
-                    <p style="font-size: 15px;">
-                        Conforme
-                    </p>
-                    <div>
-                        <input type="radio" class="form-check-input" name="conforme" value="no">
-                        <label for="">Non</label>
-                    </div>
-                    <div>
-                        <input type="radio" class="form-check-input" name="conforme" value="yes">
-                        <label for="">Oui</label>
-                    </div>
-                    <div>
-                        <input type="radio" class="form-check-input" name="conforme" value="all" checked>
-                        <label for="">Tous</label>
-                    </div>
-                </div>
-                <div> <!--Periode de naissance-->
-                    <p style="font-size: 15px;">
-                        Periode Naissance
-                    </p>
-                    <div>
-                        <label for="">Actif</label>
-                        <input type="checkbox" class="form-check-input" name="actif" id="">
-                    </div>
-                    <div>
-                        <input type="date" id="date_debut" value="<?= date('Y-m-d') ?>">
-                        <label for="">Debut</label>
-                    </div>
-                    <div>
-                        <input type="date" id="date_fin" value="<?= date('Y-m-d') ?>">
-                        <label for="">Fin</label>
-                    </div>
-                </div>
-            </div>
-    </form>
-    </div><!--fin d'information-->
-
-    <!--debut de mes boutton-->
-    <div class="container-fluid d-flex justify-content-between mb-4">
-        <div class="col-sm-9 ">
-
-            <button class="bouton Nouveau" id="new_data"><i class="fas fa-external-link-alt svg"></i>Nouveau</button>
-            <button class="bouton" id="open_data"><i class="fas fa-folder-open svg"></i>Ouvrir</button>
-            <button class="bouton" id="delete_data"><i class="fas fa-trash svg"></i>Suprimer</button>
-            <button class="bouton" id="print_table"><i class="fas fa-print svg"></i>Imprimer</button>
-            <button class="bouton"> <i class="fas fa-clock svg"></i>Pointages</button>
-            <button class="bouton email"> <i class="fas fa-envelope svg"></i>Envoyer un Email </button>
-        </div>
-        <div class="col-sm-3 d-flex justify-content-end ">
-            <button class="bouton" id="recherche"> <i class="fas fa-search svg"></i></i>Recherche</button>
-            <button class="bouton fermer" id="fermons"> <i class="fas fa-close svg"></i>Fermer</button>
-        </div>
-
-    </div>
-    <div style='visibility: hidden;'>
-        <p>juste de lespace</p>
-    </div>
+  
     <style>
         .container-fluid {
             margin-bottom: 4rem;
@@ -536,44 +183,28 @@ $d = (array)json_decode($response, true);
                 }
             }
         }
+
+        .cont_employer{
+            background-color:white!important;
+        }
     </style>
 
 
-    <!--fin de mes boutton-->
-
-    <!-- 
-    <div class="cont_button_bas" style="display:none;">
-        <div style="display: flex; justify-content: center; align-items: center; gap: 10px; width: max-content;">
-      
-       
-           
-            <button class="btn_bass bout Nouveau" >Nouveau</button>
-            <button class="btn_bass" >Ouvrir</button>
-            <button class="btn_bass" >Suprimer</button>
-            <button class="btn_bass"  id="print_table">Imprimer</button>
-            <button class="btn_bass" >Pointages</button>
-            <button class="btn_bass email" >Envoyer un Email47 </button>
-        </div>
-        <div style="display: flex; gap: 10px;">
-            <button class="btn_bass" >Recherche</button>
-            <button class="btn_bass" >Fermer</button>
-        </div>
-    </div> -->
 </main>
 
 <!--- debut du formulaire generale---->
 
-<form data-form enctype="multipart/form-data" method="post" id='formu_show' action="<?= SITE_URL ?>/forms/formdata.php">
+<form id='formu_show'>
 
 
 
-    <div class="cont_employer" style="display: none;">
+    <div class="cont_employer" style="">
         <!----employer formulaire------->
         <div class="contenue_employers">
             <div class="cont_titre ">
                 <div style="display: flex;">
                     <img src="<?= SITE_URL ?>/assets/img/iplans-icon.png" alt="" class="ico_emplye">
-                    <h2 class="fiche_sala">Fiche Salarié</h2>
+                    <h2 class="fiche_sala">Fiche Salarié open em</h2>
                 </div>
 
                 <div>
@@ -618,6 +249,7 @@ $d = (array)json_decode($response, true);
                                     <label for="">Civilité</label>
                                     <select name="civilite" class="form-select form-select" id='civilite' style="width: 100%;">
                                         <option value="Monsieur">Monsieur</option>
+                                        <option value="Madame">Mademoiselle</option>
                                         <option value="Madame">Madame</option>
                                     </select>
                                     <div style="display: flex; flex-direction: column;">
@@ -634,11 +266,30 @@ $d = (array)json_decode($response, true);
                                     </div>
                                 </div>
                             </div>
+                    <?php
+                    // Démarrez la session si ce n'est pas déjà fait
+                 
+                 
+                    // Vérifiez si les données sont envoyées via POST
+                    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["formData"])) {
+                        // Récupérez les données JSON et décodez-les en tableau associatif
+                        $formData = json_decode($_POST["formData"], true);
+                        
+                        // Stockez les données dans la session (côté serveur)
+                        $_SESSION["formData"] = $formData;
+            
+                        // Utilisez $formData comme nécessaire
+                    }
+                    ?>
+
 
                             <div class="idntite2">
                                 <label for="" class="mt-3">Nom</label>
-                                <input type="text" class="form-control mt-3" name="nom" id='nom' required>
+                                <input type="text" class="form-control mt-3" name="nom" id='nom' value="">
+                               
                             </div>
+                       
+
                             <div class="idntite3">
                                 <label for="" class="mt-3">Prenom</label>
                                 <input type="text" class="form-control mt-3" name="prenom" id='prenom'>
@@ -653,11 +304,11 @@ $d = (array)json_decode($response, true);
                             </div>
                             <div class="idntite5">
                                 <label class="mt-3" for="">Adresse</label>
-                                <input type="text" class="form-control mt-3" name="adresse">
+                                <input type="text" class="form-control mt-3" name="adresse" id=''>
                             </div>
                             <div class="idntite6">
                                 <label class="mt-3" for="">Telephone</label>
-                                <input type="tel" class="form-control mt-3" name="tel">
+                                <input type="tel" class="form-control mt-3" name="tel" id='phone'>
                             </div>
                             <div class="idntite7">
                                 <label class="mt-3" for="">Telephone Pro~</label>
@@ -665,11 +316,11 @@ $d = (array)json_decode($response, true);
                             </div>
                             <div class="idntite8">
                                 <label class="mt-3" for="">Site (Agence)</label>
-                            <input type="text" class="form-control mt-3" name="nompere" id="">
+                            <input type="text" class="form-control mt-3" name="nompere" id="agenceBanque">
                             </div>
                             <div class="idntite9">
                                 <label class="mt-3" for="">Direction </label>
-                                <input type="text" class="form-control mt-3" name="nompere" id="Direction">
+                                <input type="text" class="form-control mt-3" name="Direction" id="Direction">
                             </div>
                             <div class="idntite10">
                                 <label class="mt-3" for="">Sous-Direction </label>
@@ -735,7 +386,7 @@ $d = (array)json_decode($response, true);
                             .contenue_employers {
                                 height: 600px;
                                 overflow: auto;
-                                width:90%!important
+                                width:85%!important
                             }
                         </style>
 
@@ -759,11 +410,11 @@ $d = (array)json_decode($response, true);
                                 </div>
                                 <div>
                                     <label class="mt-3" for="">Nom de la mere</label>
-                                    <input type="text" class="form-control num mt-3" name="nommere" id="nmere">
+                                    <input type="text" class="form-control num mt-3" name="nommere" value="<?php echo $formData['prenom'] ?? ''; ?>"id="nmere">
                                 </div>
                                 <div>
                                     <label class="mt-3" for="">nom durgence</label>
-                                    <input type="text" class="form-control mt-3" name="nomurgence" id="nurg">
+                                    <input type="text" class="form-control mt-3" name="nomurgence" id="nurg" >
                                 </div>
                                 <div>
                                     <label class="mt-3" for="">Numero D'urgence</label>
@@ -1018,11 +669,11 @@ $d = (array)json_decode($response, true);
                                        </div>
                                        <div style="width: 70%;  display: flex; justify-content: space-between; align-items: center;">
                                            <label for="" class='text-danger'>Matricule Interne</label>
-                                           <input type="text" class="form-control " style='background-color:#238fce;' name="matriculeinterne" id="" style=" width: 60%;">
+                                           <input type="text" class="form-control " style='background-color:#238fce;' name="matriculeInterne" id="matriculeInterne" style=" width: 60%;">
                                        </div>
                                        <div style="width: 100%;  display: flex; justify-content: space-between; align-items: center;">
                                            <label for="" class='text-danger' style=" width: 40%;">Matricule Social (CNPS)</label>
-                                           <input type="text" class="form-control " name="matriculesocial" id="" style=" width: 40%;">
+                                           <input type="text" class="form-control " name="matricule" id="matricule" style=" width: 40%;">
                                            <label for="" class='text-danger' style="width: 20%; padding-left: 10px;">N* Enreg</label>
                                            <input type="number" class="form-control " style="width: 15%;" name="numenregistrement">
                                        </div>
@@ -1040,6 +691,7 @@ $d = (array)json_decode($response, true);
                                            </div>
                                            <div style="width: 60%;  display: flex; justify-content: space-around;">
                                                <label for="">Date de Contrat</label>
+                                               
                                                <input type="date" class="form-control " name="datecontrat" id="IDDate_Contrat" value="<?= date('Y-m-d') ?>">
                                            </div>
                                        </div>
@@ -1404,7 +1056,7 @@ $d = (array)json_decode($response, true);
                 <div style="width: 100%; display: flex; justify-content: space-around;">
                     <button>Recherche<img src="<?= SITE_URL ?>/assets/img/search.png" alt="" style="width: max-content; height: 20px;"></button>
                     <button>Imprimer<img src="<?= SITE_URL ?>/assets/img/printer.png" alt="" style="width: max-content; height: 20px;"></button>
-                    <button>Vider<img src="<?= SITE_URL ?>/assets/img/bin.png" alt="" style="width: max-content; height: 20px;"></button>
+                    <button type='reset'>Vider<img src="<?= SITE_URL ?>/assets/img/bin.png" alt="" style="width: max-content; height: 20px;"></button>
 
                 </div>
 
@@ -1792,96 +1444,13 @@ $d = (array)json_decode($response, true);
     </div>
 </form>
 
-<template id="pers_table_template">
-    <tr style="pointer-events: all !important;">
-<!--         
-        <td id='option'>
-            <div class="d-flex">
-
-                <button class="bouton btn-open justify-content-around"  id="open">
-                    <i class="fas fa-folder-open "></i>
-                </button>
-                <button class="bouton bg-danger" onclick='supprimerLigne(this)'  id='delete'>
-                    <i class="fas fa-trash "></i>
-                </button>
-
-                <style>
-                   #option .bouton {
-                        background-color: #238fce;
-                        color: #fff;
-                         padding: 8px 20px; 
-                        font-size: 17px;
-                       
-                        border: none;
-                        border-radius: 5px;
-                        cursor: pointer;
-                        transition: background-color 0.4s ease;
-                        width: max-content;
-                        height: 43px;
-                       
-                        
-                    }
-                </style>
-            </div>
-
-        </td> -->
-        <!-- <td id='data-NEng' data-NEng ></td> -->
-        <td id='civilite' data-civilite></td>
-        <td  data-nom id='nom'></td>
-        <td  data-prenom id='prenom'></td>
-        <td id='fonction' data-Fonction></td>
-        <td id='phone' data-phone></td>
-        <td id='pseudo' data-PSeudo></td>
-        <td id='matricule' data-Matricule></td>
-        <td id='matriculeInterne' data-MatriculeInterne></td>
-        <td id='cni' data-cni></td>
-        <td id='email' data-Email></td>
-        <td id='dnais' data-dnais></td>
-        <td id='npere' data-npere></td>
-        <td id='nmere' data-nmere></td>
-        <td id='vnais' data-vnais></td>
-        <td id='nurg' data-nurg></td>
-        <td id='nuurg' data-nuurg></td>
-        <td id='agenceBanque' data-AgenceBanque></td>
-        <td id='codeBanque' data-CodeBanque></td>
-        <td id='codeguichet' data-CodeGuichetBanque></td>
-        <td id='numcomptbanque' data-NumeroCompteBanque></td>
-        <td id='cleRib' data-CleRibBanque></td>
-        <td id='CodeSwiftBanque' data-CodeSwiftBanque></td>
-        <td id='CodeUtilisateur' data-CodeUtilisateur></td>
-        <td id='categorie' data-categorie></td>
-        <td id='Grade' data-Grade></td>
-        <td id='Convention' data-Convention></td>
-        <td id='departement1' data-departement1></td>
-        <td id='Direction' data-Direction></td>
-        <td id='SousDirection' data-SousDirection></td>
-        <td id='Service' data-Service></td>
-        <td id='motif_depart' data-motif_depart></td>
-        <td id='date_sortie' data-date_sortie></td>
-        <td id='date_entree' data-date_entree></td>
-        <td id='genre_salarie' data-genre_salarie></td>
-        <td id='type_contrat' data-type_contrat></td>
-        <td id='IDDate_Contrat' data-IDDate_Contrat></td>
-        <td id='IDDate_Sortie' data-IDDate_Sortie></td>
-        <td id='LieuDelivranceCNI' data-LieuDelivranceCNI></td>
-        <td id='DateExpirationCNI' data-DateExpirationCNI></td>
-        <td id='IDDateExpirationCNI' data-IDDateExpirationCNI></td>
-        
-    </tr>
-</template>
 
 
 
 
 
 
-<script>
-    const employer = document.querySelector(".Nouveau");
-    const cont_emp = document.querySelector(".cont_employer");
-    employer.addEventListener("click", () => {
-        cont_emp.style.display = "flex";
-    });
-</script>
+
 <!-- <script>
     const close_window = document.querySelector(".close_window");
     
@@ -1896,16 +1465,7 @@ $d = (array)json_decode($response, true);
 </script> -->
 
 <!-- click sur le boutton recherche  -->
-<script>
-    const zone_recherche = document.getElementById("zone_recherche");
-    const boutRecherche = document.getElementById("recherche");
 
-    boutRecherche.addEventListener("click", (e) => {
-        e.preventDefault();
-        zone_recherche.style.display = "block";
-        document.documentElement.scrollTop = 0;
-    });
-</script>
 
 <script>
     const boutonsFermer5 = document.querySelectorAll("#close_window");
@@ -1934,15 +1494,7 @@ $d = (array)json_decode($response, true);
     }
 </script>
 
-<script>
-    const fermer1 = document.querySelector(".fermer");
-    const cont_employer = document.querySelector(".cont_employer");
-    const Diver_cont = document.querySelector(".divers_cont");
-    fermer1.addEventListener("click", () => {
-        cont_employer.style.display = "none";
-        Diver_cont.style.display = "none";
-    });
-</script>
+
 <script>
     const diverBtn = document.querySelector(".divers");
     const cont_emplo = document.querySelector(".employe47");
@@ -2008,22 +1560,7 @@ $d = (array)json_decode($response, true);
 </script>
 
 
-<!-- <script>
-    //pour
-    const fileInput = document.querySelector(".input-file")
-    const chooseImgBtn = document.querySelector(".choix-img")
-    const previewImg = document.querySelector(".preview-image img")
 
-    const loadImage = () => {
-        let file = fileInput.files[0]; // getting user selected file
-        console.log(file)
-        if (!file) return; // return if user hasn't selected file
-        previewImg.src = URL.createObjectURL(file) // passing file url as preview img src
-    }
-
-    chooseImgBtn.addEventListener("click", () => fileInput.click())
-    fileInput.addEventListener("change", loadImage)
-</script> -->
 
 
 
@@ -2039,331 +1576,83 @@ $d = (array)json_decode($response, true);
     });
 </script>
 
-   <script>
-        const bouton = document.getElementById("fermons");
-       
 
-        bouton.addEventListener("click", (e) => {
-            e.preventDefault();
-           window.location.href = "<?= SITE_URL ?>/resource_humaine";
-        });
-    </script>
+<script>
+    // Récupérer les données depuis sessionStorage
+    var formData = JSON.parse(sessionStorage.getItem('formData'));
+    console.log(formData)
+
+    // Remplir le formulaire avec les données
+             document.getElementById("nom").value = formData.nom;
+            // document.getElementById("prenom").value = formData.prenom || '';
+
+             document.getElementById("prenom").value = formData.prenom || '';
+             //document.getElementById("civilite").value = formData.civilite || '';
+             document.getElementById("fonction").value = formData.fonction || '';
+             document.getElementById("phone").value = formData.phone || '';
+       
+             document.getElementById("matricule").value = formData.matricule || '';
+             document.getElementById("matriculeInterne").value = formData.matriculeInterne || '';
+             document.getElementById("cni").value = formData.cni || '';
+             document.getElementById("email").value = formData.email || '';
+             document.getElementById("dnais").value = formData.dnais || '';
+             document.getElementById("npere").value = formData.npere || '';
+             document.getElementById("nmere").value = formData.nmere || '';
+             document.getElementById("vnais").value = formData.vnais || '';
+             document.getElementById("nurg").value = formData.nurg || '';
+             document.getElementById("nuurg").value = formData.nuurg || '';
+             document.getElementById("agenceBanque").value = formData.agenceBanque || '';
+            // document.getElementById("codeBanque").value = formData.codeBanque || '';
+            // document.getElementById("codeguichet").value = formData.codeguichet || '';
+            // document.getElementById("numcomptbanque").value = formData.numcomptbanque || '';
+            // document.getElementById("cleRib").value = formData.cleRib || '';
+            // document.getElementById("CodeSwiftBanque").value = formData.CodeSwiftBanque || '';
+            // document.getElementById("CodeUtilisateur").value = formData.CodeUtilisateur || '';
+             document.getElementById("categorie").value = formData.categorie || '';
+             document.getElementById("Grade").value = formData.Grade || '';
+            // document.getElementById("Convention").value = formData.Convention || '';
+             document.getElementById("departement1").value = formData.departement1 || '';
+             document.getElementById("Direction").value = formData.Direction || '';
+             document.getElementById("SousDirection").value = formData.SousDirection || '';
+             document.getElementById("Service").value = formData.Service || '';
+             document.getElementById("motif_depart").value = formData.motif_depart || '';
+            // document.getElementById("date_sortie").value = formData.date_sortie || '';
+            // document.getElementById("date_entree").value = formData.date_entree || '';
+            // document.getElementById("genre_salarie").value = formData.genre_salarie || '';
+            // document.getElementById("type_contrat").value = formData.type_contrat || '';
+            // document.getElementById("IDDate_Contrat").value = formData.prenom || '';
+            // document.getElementById("IDDate_Sortie").value = formData.IDDate_Sortie || '';
+             document.getElementById("LieuDelivranceCNI").value = formData.LieuDelivranceCNI || '';
+            // document.getElementById("DateExpirationCNI").value = formData.DateExpirationCNI || '';
+            // document.getElementById("IDDateExpirationCNI").value = formData.IDDateExpirationCNI || '';
+
+
+    // les champs selects
+
+
+                var civiliteValue = formData.civilite;
+
+                // Accédez à l'élément select
+                var selectCivilite = document.getElementById("civilite");
+
+                for (var i = 0; i < selectCivilite.options.length; i++) {
+                    // Vérifiez si la valeur de l'option correspond à celle dans formData
+                    if (selectCivilite.options[i].value === civiliteValue) {
+                        // Définissez la propriété selected de cette option sur true
+                        selectCivilite.options[i].selected = true;
+                        // Sortez de la boucle car vous avez trouvé la correspondance
+                        break;
+                    }
+                }
+
+
+
+</script>
+
+   
 
 
 </div>
-
-
-<!-- javascript pour la gestion du tableau -->
-
-<script>
-  
-   document.addEventListener("DOMContentLoaded", function() {
-    const table = document.getElementById("myTable");
-    const form = document.getElementById("formu_show");
-    let selectedRow;
-    //     // Gérer le survol de la ligne
-    // table.addEventListener("mouseover", function(event) {
-    //     const targetRow = event.target.closest("tr");
-    //     if (targetRow) {
-    //         targetRow.classList.add("highlight");
-    //     }
-    // });
-
-    // Gérer le survol en dehors de la ligne
-    // table.addEventListener("mouseout", function(event) {
-    //     const targetRow = event.target.closest("tr");
-    //     if (targetRow) {
-    //         targetRow.classList.remove("highlight");
-    //     }
-    // });
-
-            // Fonction pour remplir le formulaire avec les données de la ligne
-                    // const nom = targetRow.cells[2].textContent;
-            table.addEventListener("dblclick", function(event) {
-            const targetRow = event.target.closest("tr");
-            const form = document.getElementById("formu_show");
-          
-            if (targetRow) {
-            // Désélectionner la ligne actuelle
-            if (selectedRow) {
-            selectedRow.classList.remove("selected");
-            }
-
-            // Sélectionner la nouvelle ligne
-            targetRow.classList.add("selected");
-            selectedRow = targetRow;
-
-            // Récupérer les données de la ligne et les afficher dans le formulaire
-            const civilite = targetRow.cells[1].textContent;
-            // const nom = targetRow.cells[2].textContent;
-            const nom = targetRow.querySelector('[data-nom]').textContent;
-            const prenom = targetRow.cells[3].textContent;
-            const fonction = targetRow.cells[4].textContent;
-            const phone = targetRow.cells[5].textContent;
-            const pseudo = targetRow.cells[6].textContent;
-            const matricule = targetRow.cells[7].textContent;
-            const cni= targetRow.cells[9].textContent;
-            const email = targetRow.cells[10].textContent;
-            const dnais = targetRow.cells[11].textContent;
-            const npere= targetRow.cells[12].textContent;
-            const nmere = targetRow.cells[13].textContent;
-            const vnais= targetRow.cells[14].textContent;
-            const nurg= targetRow.cells[15].textContent;
-            const nuurg = targetRow.cells[16].textContent;
-            const agenceBanque = targetRow.cells[17].textContent;
-            const codeBanque = targetRow.cells[18].textContent;
-            const codeguichet = targetRow.cells[19].textContent;
-            const numcomptbanque = targetRow.cells[20].textContent;
-            const cleRib = targetRow.cells[21].textContent;
-            const CodeSwiftBanque = targetRow.cells[22].textContent;
-            const CodeUtilisateur = targetRow.cells[23].textContent;
-            const categorie = targetRow.cells[24].textContent;
-            const Grade = targetRow.cells[25].textContent;
-            const Convention = targetRow.cells[26].textContent;
-            const departement1 = targetRow.cells[27].textContent;
-            const genre_salarie = targetRow.cells[28].textContent;
-            const Direction = targetRow.cells[29].textContent;
-            const SousDirection = targetRow.cells[30].textContent;
-            const Service = targetRow.cells[31].textContent;
-            const motif_depart = targetRow.cells[32].textContent;
-            const date_sortie = targetRow.cells[33].textContent;
-            const date_entree = targetRow.cells[34].textContent;
-            const type_contrat = targetRow.cells[35].textContent;
-            const IDDate_Contrat = targetRow.cells[36].textContent;
-            const IDDate_Sortie = targetRow.cells[37].textContent;
-            const LieuDelivranceCNI = targetRow.cells[38].textContent;
-            const DateExpirationCNI = targetRow.cells[39].textContent;
-            const IDDateExpirationCNI = targetRow.cells[40].textContent;
-              
-
-            // // Ajoutez d'autres lignes pour récupérer d'autres données
-
-            // Afficher les données dans le formulaire
-            // document.getElementById("nom").value = nom;
-            // document.getElementById("prenom").value = prenom;
-            // document.getElementById("civilite").value = civilite;
-            // document.getElementById("fonction").value = fonction;
-            // document.getElementById("phone").value = phone;
-            // document.getElementById("pseudo").value = pseudo;
-            // document.getElementById("matricule").value = matricule;
-            // document.getElementById("matriculeInterne").value = matriculeInterne;
-            // document.getElementById("cni").value = cni;
-            // document.getElementById("email").value = email;
-            // document.getElementById("dnais").value = dnais;
-            // document.getElementById("npere").value = npere;
-            // document.getElementById("nmere").value = nmere;
-            // document.getElementById("vnais").value = vnais;
-            // document.getElementById("nurg").value = nurg;
-            // document.getElementById("nuurg").value = nuurg;
-            // document.getElementById("agenceBanque").value = agenceBanque;
-            // document.getElementById("codeBanque").value = codeBanque;
-            // document.getElementById("codeguichet").value = codeguichet;
-            // document.getElementById("numcomptbanque").value = numcomptbanque;
-            // document.getElementById("cleRib").value = cleRib;
-            // document.getElementById("CodeSwiftBanque").value = CodeSwiftBanque;
-            // document.getElementById("CodeUtilisateur").value = CodeUtilisateur;
-            // document.getElementById("categorie").value = categorie;
-            // document.getElementById("Grade").value = Grade;
-            // document.getElementById("Convention").value = Convention;
-            // document.getElementById("departement1").value = departement1;
-            // document.getElementById("Direction").value = Direction;
-            // document.getElementById("SousDirection").value = SousDirection;
-            // document.getElementById("Service").value = Service;
-            // document.getElementById("motif_depart").value = motif_depart;
-            // document.getElementById("date_sortie").value = date_sortie;
-            // document.getElementById("date_entree").value = date_entree;
-            // document.getElementById("genre_salarie").value = genre_salarie;
-            // document.getElementById("type_contrat").value = type_contrat;
-            // document.getElementById("IDDate_Contrat").value = prenom;
-            // document.getElementById("IDDate_Sortie").value = IDDate_Sortie;
-            // document.getElementById("LieuDelivranceCNI").value = LieuDelivranceCNI;
-            // document.getElementById("DateExpirationCNI").value = DateExpirationCNI;
-            // document.getElementById("IDDateExpirationCNI").value = IDDateExpirationCNI;
-  
-            console.log(nom,prenom,categorie,Service)
-      
-            }
-            });
-          
-
-  
-    });
-
-      
-  
-
-    //  function supprimerLigne(button) {
-    //     var row = button.closest('tr');
-    //      const rowId = event.target.getAttribute('data-id');
-    //     row.remove();
-    // }
- </script>   
-
-    
-<!-- <script>
-    $(document).ready(function() {
-        $('#myTable').on('click', '.btn-open', function(event) {
-
-            const targetRow = event.target.closest("tr");
-            
-
-            var civilite = targetRow.cells[1].textContent;
-          
-            // const nom = targetRow.cells[2].textContent;
-            var nom = targetRow.querySelector('[data-nom]').textContent;
-            var prenom = targetRow.cells[3].textContent;
-            var fonction = targetRow.cells[4].textContent;
-            var phone = targetRow.querySelector('[data-phone]').textContent;
-            var pseudo = targetRow.cells[6].textContent;
-            var matricule = targetRow.cells[7].textContent;
-            var cni= targetRow.cells[9].textContent;
-            var email = targetRow.cells[10].textContent;
-            var dnais = targetRow.cells[11].textContent;
-            var npere= targetRow.cells[12].textContent;
-            var nmere = targetRow.cells[13].textContent;
-            var vnais= targetRow.cells[14].textContent;
-            var nurg= targetRow.cells[15].textContent;
-            var nuurg = targetRow.cells[16].textContent;
-            var agenceBanque = targetRow.cells[17].textContent;
-            var codeBanque = targetRow.cells[18].textContent;
-            var codeguichet = targetRow.cells[19].textContent;
-            var numcomptbanque = targetRow.cells[20].textContent;
-            var cleRib = targetRow.cells[21].textContent;
-            var CodeSwiftBanque = targetRow.cells[22].textContent;
-            var CodeUtilisateur = targetRow.cells[23].textContent;
-            var categorie = targetRow.cells[24].textContent;
-            var Grade = targetRow.cells[25].textContent;
-            var Convention = targetRow.cells[26].textContent;
-            var departement1 = targetRow.cells[27].textContent;
-            var genre_salarie = targetRow.cells[28].textContent;
-            var Direction = targetRow.cells[29].textContent;
-            var SousDirection = targetRow.cells[30].textContent;
-            var Service = targetRow.cells[31].textContent;
-            var motif_depart = targetRow.cells[32].textContent;
-            var date_sortie = targetRow.cells[33].textContent;
-            var date_entree = targetRow.cells[34].textContent;
-            var type_contrat = targetRow.cells[35].textContent;
-            var IDDate_Contrat = targetRow.cells[36].textContent;
-            var IDDate_Sortie = targetRow.cells[37].textContent;
-            var LieuDelivranceCNI = targetRow.cells[38].textContent;
-            var DateExpirationCNI = targetRow.cells[39].textContent;
-            var IDDateExpirationCNI = targetRow.cells[40].textContent;
-
-            var formData = {
-               
-                nom: nom,
-                prenom: prenom,
-                fonction: fonction,
-                phone: phone,
-                matricule: matricule,
-                cni: cni,
-                email: email,
-                dnais: dnais,
-                npere: npere,
-                nmere: nmere,
-                vnais: vnais,
-                nurg: nurg,
-                nuurg: nuurg,
-                agenceBanque: agenceBanque,
-                codeBanque: codeBanque,
-                codeguichet: codeguichet,
-                numcomptbanque: numcomptbanque,
-                cleRib: cleRib,
-                CodeSwiftBanque: CodeSwiftBanque,
-                CodeUtilisateur: CodeUtilisateur,
-                categorie: categorie,
-                Grade: Grade,
-                SousDirection: SousDirection,
-                Convention: Convention,
-                departement1: departement1,
-                genre_salarie: genre_salarie,
-                Direction: Direction,
-                Service: Service,
-                date_sortie: date_sortie,
-                date_entree: date_entree,
-                type_contrat: type_contrat,
-                IDDate_Contrat: IDDate_Contrat,
-                IDDate_Sortie: IDDate_Sortie,
-                LieuDelivranceCNI: LieuDelivranceCNI,
-                DateExpirationCNI: DateExpirationCNI,
-                IDDateExpirationCNI: IDDateExpirationCNI,
-                civilite: civilite
-
-
-            };
-            console.log(civilite)
-
-            sessionStorage.setItem('formData', JSON.stringify(formData));
-            $.ajax({
-                    type: "POST",
-                    url: "http://localhost/Iplans/openEmployer",  // Remplacez par le chemin de votre script PHP
-                    data: { formData: JSON.stringify(formData) },
-                    success: function(response) {
-                        // Gérez la réponse du serveur si nécessaire
-                        console.log(response);
-                        console.log('reussi donc ok')
-                    },
-                    error: function(error) {
-                        // Gérez les erreurs si nécessaire
-                        console.error(error);
-                        console.error('des erreurs');
-                    }
-                });
-
-            
-           window.location.href = 'http://localhost/Iplans/openEmployer';
-
-
-        
-        });
-    });
-</script> -->
-
-
-<!-- je vais commenter et decommenter  -->
- <!-- <script>
-      
-        function supprimerLigne(button) {
-           
-            const row = button.closest('tr');
-
-            const neng = row.querySelector("[data-NEng]").textContent;
-            console.log('id:',neng)
-
-            
-            const url = `http://localhost/pers/${neng}`;
-            row.remove();
-
-            // Effectuer la requête DELETE
-            fetch(url, {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`Erreur de suppression : ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Suppression réussie :', data);
-                // Mettez à jour l'interface utilisateur ou effectuez d'autres actions nécessaires
-                // par exemple, supprimer la ligne du tableau
-                row.remove();
-            })
-            .catch(error => {
-                console.error('Erreur lors de la suppression :', error);
-                // Gérer les erreurs ou informer l'utilisateur
-            });
-        }
-</script> -->
-
-
-
-
-
 
 
 
