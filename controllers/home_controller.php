@@ -118,6 +118,12 @@ function list_visit_rdv()
     $dirs=str_replace("controllers", "", $dirs);
     require $dirs.'vues/list_visit_rdv.php';
 }
+function fiche_visite_rdv()
+{
+    $dirs=__DIR__;
+    $dirs=str_replace("controllers", "", $dirs);
+    require $dirs.'vues/fiche_visite_rdv.php';
+}
 ?>
 
 

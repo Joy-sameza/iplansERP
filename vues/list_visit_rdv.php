@@ -179,7 +179,7 @@ ob_start();
 
          <div class="row d-flex ">
                     <div class='englobe' style='width:25%;padding:0px;margin:0px;position:relative;'>
-                         <div style="display: flex; justify-content: space-between; align-items: center; " class='p-1 pt-2 border border-2 option_cont mt-2 border-secondary '>
+                         <div style="display: flex; justify-content: space-between; align-items: center; " class='p-1 pt-1 border border-2 option_cont mt-2 border-secondary '>
                                 <label for="date_debut" class="form-label">Services </label>
                                  <select class="form-select-sm " style='width:70%;background:yellow' id="site">
                                     <option>TOUS</option>
@@ -194,7 +194,7 @@ ob_start();
                                 </select>
                                 
                             </div>
-                        <div style='width:100%;height: 55px;' class='p-1 pt-2 border border-2 mt-3 border-secondary option_cont'>
+                        <div style='width:100%;height: 50px;' class='p-1 pt-2 border border-2 mt-2 border-secondary option_cont'>
                             <div class="text-divider-container7">
                                 <div class="text-divider">
                                     <span>Selection</span>
