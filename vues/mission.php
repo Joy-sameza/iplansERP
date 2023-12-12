@@ -305,7 +305,7 @@ ob_start();
                     <button>Supprimer
                         <img src="<?= SITE_URL ?>/assets/img/bin.png" alt="" style="width: max-content; height: 20px;">
                     </button>
-                    <button>Imprimer
+                    <button id="printData">Imprimer
                         <img src="<?= SITE_URL ?>/assets/img/printer.png" alt="" style="width: max-content; height: 20px;">
                     </button>
                     <button id='fees' onclick="transfererDonnees()">Frais

@@ -90,7 +90,7 @@ ob_start();
         <!-- fin de la zone date -->
         <!-- debut de la zone de tableau -->
         <div class="row " style='border:1px solid gray; overflow: scroll scroll !important; height: clamp(400px, 90%, 65vh);'>
-            <table class="table table-bordered " style="position: relative; text-align: center;">
+            <table class="table table-bordered " style="position: relative; text-align: center;" id="mytable_mission">
                 <thead style="position: sticky; top: 0;">
                     <tr class="table-secondary text-center table-dark ">
                         <th style='font-size:13px;' class='px-5'>Nom</th>
@@ -211,11 +211,11 @@ ob_start();
                     <img src="<?= SITE_URL ?>/assets/img/add-file.png" alt="" style="width: max-content; height: 20px;">
                 </button>
 
-                <button id="open">
+                <button id="modify">
                     Ouvrir
                     <img src="<?= SITE_URL ?>/assets/img/folder.png" alt="" style="width: max-content; height: 20px;">
                 </button>
-                <button>Imprimer
+                <button ID="printData">Imprimer
                     <img src="<?= SITE_URL ?>/assets/img/printer.png" alt="" style="width: max-content; height: 20px;">
                 </button>
 
@@ -420,17 +420,17 @@ ob_start();
 
 
 <script>
-    const openMission = document.getElementById("open");
-
-    let missionDataAction = '';
-    openMission.addEventListener("click", function(event) {
-
-    })
+    // const openMission = document.getElementById("open");
+    //
+    // let missionDataAction = '';
+    // openMission.addEventListener("click", function(event) {
+    //
+    // })
 </script>
 
 <script>
-    const deleteMission = document.getElementById("delete");
-    deleteMission.addEventListener("click", () => missionDataAction = "delete");
+    // const deleteMission = document.getElementById("delete");
+    // deleteMission.addEventListener("click", () => missionDataAction = "delete");
 </script>
 
 <!-- les script de la page -->
@@ -526,8 +526,8 @@ ob_start();
         table.appendChild(element);
     }
 
-    const persData = await fetch("<?= PERS_API_URL ?>");
-    const pers = await persData.json();
+    const persData1 = await fetch("<?= PERS_API_URL ?>");
+    const pers = await persData1.json();
 
     const response = await fetch("<?= MISSION_API_URL ?>");
     const missions = await response.json();
@@ -543,8 +543,230 @@ ob_start();
     tbl.innerHTML = "";
     for (let rowData of missions)
         updateMISSIONTable(tbl, rowData, listTemplate);
-</script>
 
+
+
+        const site = document.getElementById("site");
+
+
+        document.getElementById("new").addEventListener("click",
+        () => window.location.href = "<?= SITE_URL ?>/mission");
+   // const extractedData = localStorage.getItem('extractedData');
+    const extractedData = localStorage.getItem('extractedData');
+    if (extractedData) {
+        const data = JSON.parse(extractedData);
+        localStorage.removeItem('extractedData');
+        const loopObject = {
+            nom: "nom",
+            prenom: "prenom",
+            dat: "depart",
+            duree: "duree",
+            Lieux: "destination",
+            site: "site",
+            cadre: "cadre",
+            Departement: "departement",
+            via: "passant",
+            duree_travail: "duree_de_travail",
+            motor: "vehicule",
+            // immatriculation: "",
+            charge: "chargement",
+            PriseEnCharge: "priseencharge",
+            matricule: "matricule",
+            NumeroDossier: "numerodedossier",
+            NumeroBL_LTA: "numerobl_lta",
+            NEng: "neng",
+        }
+        // set the data in the form
+        const form = document.querySelector('form');
+        form.action = '<?= SITE_URL ?>/forms/formmissionupdate.php';
+        form.setAttribute('success', 'La\'mission à été mis à jour avec succès!');
+        for (let [key, value] of Object.entries(data)) {
+            for (const [k, v] of Object.entries(loopObject)) {
+                if (key === k) {
+                    if (key == 'depart' ) {
+                        //format the value to date format (yyyy-MM-dd)
+                        value = value.split('/').reverse().join('-');
+                    }
+
+                    const input = form.querySelector(`[name="${v}"]`);
+                    if (input) {
+                        input.value = value;
+                    } else {
+                        console.error(`Input with name "${key}" not found in the form.`);
+                    }
+                }
+            }
+        }
+    }
+
+        const allRows = document.querySelectorAll("tr");
+        let missionDataAction = "";
+        const openBtn = document.getElementById("modify");
+        const deleteBtn = document.getElementById("delete");
+
+        openBtn.addEventListener("click", () => missionDataAction = "modify");
+       // deleteBtn.addEventListener("click", () => actionData = "delete");
+    deleteBtn.addEventListener("click", () => missionDataAction = "delete");
+        Array.from(allRows).forEach((row) => {
+        row.addEventListener("click", async (e) => {
+            const targetRow = e.target.parentNode;
+            const extractedData = extractDataFromRow(targetRow);
+            switch (missionDataAction) {
+                case "modify":
+                    missionDataAction = "";
+                    localStorage.setItem("extractedData", JSON.stringify(extractedData));
+                    window.open("<?= SITE_URL ?>/list_mission", "_self");
+                    break;
+                case "delete":
+                    missionDataAction = "";
+                    await deleteMission(parseInt(extractedData.neng));
+                    setTimeout(() => {}, 1500);
+                    window.location.href = "<?= SITE_URL ?>/list_mission";
+                    break;
+                default:
+                    break;
+            }
+        });
+    });
+
+        /**
+        * Extract data from a row
+        * @param {HTMLTableRowElement} row Row from which data is to be extracted
+        * @returns {Object} The extracted data
+        */
+        function extractDataFromRow(row) {
+        const pers = {
+            nom: "nom",
+            prenom: "prenom",
+            dat: "depart",
+            duree: "duree",
+            Lieux: "destination",
+            site: "site",
+            cadre: "cadre",
+            Departement: "departement",
+            via: "passant",
+            duree_travail: "duree_de_travail",
+            motor: "vehicule",
+            // immatriculation: "",
+            charge: "chargement",
+            PriseEnCharge: "priseencharge",
+            matricule: "matricule",
+            NumeroDossier: "numerodedossier",
+            NumeroBL_LTA: "numerobl_lta",
+            NEng: "neng",
+    };
+        let obj = {};
+        for (const [, value] of Object.entries(pers)) {
+        obj[value] = row.querySelector(`[data-${value}]`);
+    }
+        return obj;
+    }
+
+
+
+
+
+
+/**
+     * @param {number} id The id of the abscence to delete
+     * @returns {Promise<void>}
+     */
+    async function deleteMission(id) {
+        const val = await swal({
+            icon: "warning",
+            title: "Etes-vous sûr de vouloir supprimer?",
+            text: "Cette action est irreversible!",
+            dangerMode: true,
+            closeOnClickOutside: false,
+            closeOnEsc: false,
+            buttons: {
+                cancel: {
+                    text: "Non!",
+                    value: false,
+                    visible: true,
+                    className: "",
+                    closeModal: true,
+                },
+                confirm: {
+                    text: "Oui, supprimer!",
+                    value: true,
+                    className: "",
+                    closeModal: true,
+                },
+            },
+        });
+        if (!val) return;
+        const formData = new FormData();
+        formData.append("id", id);
+        formData.append("iplans_submit", "");
+        const response = await fetch("<?= SITE_URL ?>/forms/formdeletemission.php", {
+            method: "POST",
+            body: formData,
+        });
+        if (!response.ok) return showAlert("la mission n'a pas pu être supprimé", "error");
+        return showAlert("La mission a été supprimé avec succès", "success");
+
+        // if (response["rows"] >= 1 && response["message"])
+        // return showAlert("L'absence n'a pas pu être supprimé", "error");
+    }
+</script>
+<script>
+    document.getElementById('printData').addEventListener('click', printDataAction);
+
+    function printDataAction() {
+        const pdf = new jspdf.jsPDF({
+            orientation: "landscape",
+            format: "a4"
+        });
+        pdf.addImage(
+            SITE_URL + "/assets/img/iplans logo.png",
+            "PNG",
+            10,
+            10,
+            2.969 * 50 * 0.25,
+            1 * 50 * 0.25
+        );
+        const iplans = "\nLISTE DES MISSIONS";
+        pdf.setFontSize(10);
+        pdf.text(iplans, 10, 25);
+        const jsonData = pdf.autoTableHtmlToJson(
+            document.getElementById("mytable_mission"),
+            false
+        );
+        const printableRowsMission = {
+            Nom: 0,
+            Prenom: 1,
+            Depart: 2,
+            Duree: 3,
+            Destination: 4,
+            'Duree de travail/Jour': 10,
+            Site: 5,
+            'Passant Par': 9,
+        };
+
+        const filteredData = [];
+        const headings = [];
+
+        Object.entries(printableRowsMission).forEach(([key]) => headings.push(key));
+
+        for (const row of jsonData.data) {
+            let filteredRow = [];
+            Object.entries(printableRowsMission).forEach(([, value]) => {
+                filteredRow.push(row[value]);
+            });
+            filteredData.push(filteredRow);
+        }
+        pdf.autoTable({
+            head: [headings],
+            body: filteredData,
+            styles: {
+                fontSize: 10,
+            },
+            startY: 35,
+        });
+        pdf.save("LISTE_MISSION.pdf");
+    }
+</script>
 <script>
     document.getElementById("new").addEventListener("click", function() {
         // Ouvrir la nouvelle page dans une nouvelle fenêtre
