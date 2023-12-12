@@ -365,37 +365,37 @@ class Personne
 
         //data
 
-        $this->civilite = htmlspecialchars(strip_tags($data['civilite']));
-        $this->nom = htmlspecialchars(strip_tags($data['nom']));
-        $this->prenom = htmlspecialchars(strip_tags($data['prenom']));
+        $this->civilite = htmlspecialchars(strip_tags($data['civilite']?? 0));
+        $this->nom = htmlspecialchars(strip_tags($data['nom']?? 0));
+        $this->prenom = htmlspecialchars(strip_tags($data['prenom']?? 0));
         $this->grade = htmlspecialchars(strip_tags($data['Grade'] ?? 0));
         $this->assurance = htmlspecialchars(strip_tags($data['Assurance'] ?? 0));
-        $this->matricule = htmlspecialchars(strip_tags($data['Matricule']));
-        $this->matriculeinterne = htmlspecialchars(strip_tags($data['MatriculeInterne']));
-        $this->cni = htmlspecialchars(strip_tags($data['cni']));
-        $this->lieudelivrancecni = htmlspecialchars(strip_tags($data['LieuDelivranceCNI']));
-        $this->dateexpirationcni = htmlspecialchars(strip_tags($data['DateExpirationCNI']));
+        $this->matricule = htmlspecialchars(strip_tags($data['Matricule']?? 0));
+        $this->matriculeinterne = htmlspecialchars(strip_tags($data['MatriculeInterne']?? 0));
+        $this->cni = htmlspecialchars(strip_tags($data['cni']?? 0));
+        $this->lieudelivrancecni = htmlspecialchars(strip_tags($data['LieuDelivranceCNI']?? 0));
+        $this->dateexpirationcni = htmlspecialchars(strip_tags($data['DateExpirationCNI']?? 0));
         $this->iddateexpirationcni = htmlspecialchars(strip_tags($data['IDDateExpirationCNI'] ?? 0));
-        $this->departement = htmlspecialchars(strip_tags($data['departement']));
-        $this->departement1 = htmlspecialchars(strip_tags($data['departement1']));
-        $this->direction = htmlspecialchars(strip_tags($data['Direction']));
-        $this->sousdirection = htmlspecialchars(strip_tags($data['SousDirection']));
-        $this->service = htmlspecialchars(strip_tags($data['Service']));
-        $this->email = htmlspecialchars(strip_tags($data['Email']));
-        $this->emailprofessionnel = htmlspecialchars(strip_tags($data['EmailProfessionnel']));
+        $this->departement = htmlspecialchars(strip_tags($data['departement']?? 0));
+        $this->departement1 = htmlspecialchars(strip_tags($data['departement1']?? 0));
+        $this->direction = htmlspecialchars(strip_tags($data['Direction']?? 0));
+        $this->sousdirection = htmlspecialchars(strip_tags($data['SousDirection']?? 0));
+        $this->service = htmlspecialchars(strip_tags($data['Service']?? 0));
+        $this->email = htmlspecialchars(strip_tags($data['Email']?? 0));
+        $this->emailprofessionnel = htmlspecialchars(strip_tags($data['EmailProfessionnel']?? 0));
         $this->agencebanque = htmlspecialchars(strip_tags($data['AgenceBanque'] ?? 0));
         $this->codebanque = htmlspecialchars(strip_tags($data['CodeBanque'] ?? 0));
         $this->codeguichetbanque = htmlspecialchars(strip_tags($data['CodeGuichetBanque'] ?? 0));
         $this->codeswiftbanque = htmlspecialchars(strip_tags($data['CodeSwiftBanque'] ?? 0));
         $this->numerocomptebanque = htmlspecialchars(strip_tags($data['NumeroCompteBanque'] ?? 0));
         $this->cleribbanque = htmlspecialchars(strip_tags($data['CleRibBanque'] ??  0));
-        $this->phone = htmlspecialchars(strip_tags($data['phone']));
+        $this->phone = htmlspecialchars(strip_tags($data['phone']?? 0));
         $this->agence = htmlspecialchars(strip_tags($data['agence'] ?? "DEMO"));
         $this->telephoneprofessionnel = htmlspecialchars(strip_tags($data['TelephoneProfessionnel'] ?? 0));
         $this->adresse = htmlspecialchars(strip_tags($data['Adresse'] ?? 0));
         $this->fonction = htmlspecialchars(strip_tags($data['Fonction'] ?? 0));
         $this->foto = htmlspecialchars(strip_tags($data['foto'] ?? 0));
-        $this->sexe = htmlspecialchars(strip_tags($data['Sexe']));
+        $this->sexe = htmlspecialchars(strip_tags($data['Sexe']?? 0));
         $this->signaturenumerique = htmlspecialchars(strip_tags($data['SignatureNumerique'] ?? 0));
         $this->fingerprint1 = htmlspecialchars(strip_tags($data['FingerPrint1'] ?? 0));
         $this->fingerprint2 = htmlspecialchars(strip_tags($data['FingerPrint2'] ?? 0));
@@ -1044,7 +1044,7 @@ class Personne
     {
         // Define the query to delete the courier by ID
         $query = "UPDATE {$this->table} 
-        SET supprimer=1
+        SET supp=1
         WHERE NEng = :courierId";
 
         // Sanitize and assign the courier ID

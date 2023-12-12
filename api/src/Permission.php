@@ -7,50 +7,50 @@ class Permission
 
     //Properties for pers
     public $courrierId;
-        public $site;
-        public $date;
-        public $indexe;
-        public $codebanque;
-        public $code;
-        public $type;
-        public $matricule;
-        public $departement;
-        public $debut;
-        public $fin;
-        public $note;
-        public $block_pointage;
-        public $ibblockpointage;
-        public $reccuperable;
-        public $deduiresurconges;
-        public $anneecomptable;
-        public $iddatedebut;
-        public $iddatefin;
-        public $creepar;
-        public $accordeepar;
-        public $demande;
-        public $datecreation;
-        public $iddatecreation;
-        public $archive;
-        public $synchronization;
-        public $lastupdatetime;
-        public $idlastupdate;
-        public $userlastupdatetime;
-        public $codeagence;
-        public $indexgroupement;
-        public $indexevenement;
-        public $datetime;
-        public $userdatetime;
-        public $archiveiddate;
-        public $archiveuser;
-        public $archivemotif;
-        public $archivedefinitive;
-        public $archivedefinitiveiddate;
-        public $archivedefinitivedate;
-        public $archivedefinitiveuser;
-        public $archivedefinitivemotif;
-        public $anneeComptable;
-        public $archivedate;
-        public $iddatetime;
+    public $site;
+    public $date;
+    public $indexe;
+    public $codebanque;
+    public $code;
+    public $type;
+    public $matricule;
+    public $departement;
+    public $debut;
+    public $fin;
+    public $note;
+    public $block_pointage;
+    public $ibblockpointage;
+    public $reccuperable;
+    public $deduiresurconges;
+    public $anneecomptable;
+    public $iddatedebut;
+    public $iddatefin;
+    public $creepar;
+    public $accordeepar;
+    public $demande;
+    public $datecreation;
+    public $iddatecreation;
+    public $archive;
+    public $synchronization;
+    public $lastupdatetime;
+    public $idlastupdate;
+    public $userlastupdatetime;
+    public $codeagence;
+    public $indexgroupement;
+    public $indexevenement;
+    public $datetime;
+    public $userdatetime;
+    public $archiveiddate;
+    public $archiveuser;
+    public $archivemotif;
+    public $archivedefinitive;
+    public $archivedefinitiveiddate;
+    public $archivedefinitivedate;
+    public $archivedefinitiveuser;
+    public $archivedefinitivemotif;
+    public $anneeComptable;
+    public $archivedate;
+    public $iddatetime;
 
 
     /**
@@ -233,7 +233,7 @@ class Permission
         $this->datecreation = htmlspecialchars(strip_tags($data['DateCreation'] ?? 0));
         $this->iddatecreation = htmlspecialchars(strip_tags($data['IDDateCreation'] ?? 0));
 
-        
+
         $i = 0;
         $tmp = mt_rand(0, 9);
         // str_pad($tmp, 24, mt_rand(0, 9));

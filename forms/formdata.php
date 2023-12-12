@@ -243,7 +243,7 @@ if (isset($_POST['ajouter_pers'])) {
         "phone" => $tel,
         "TelephoneProfessionne" => $telpro,
         "Adresse" => "douala",
-        "Fonction" => 0,
+        "Fonction" => $departement,
         "Sexe" => $genre,
         "dnais" => $datenaissssance,
         "npere" => $nompere,
