@@ -40,7 +40,7 @@ ob_start();
 </head>
 
 <body>
-    <div class="container-fluid conteneur0 my-5 border border-2 border-primary" style='width:75%;border-bottom:none; height: 75vh;'>
+    <div class="container-fluid conteneur0 my-5 border border-2 border-primary" style='width:75%;border-bottom:none;' >
 
         <div class="row bg-primary border-1 ">
             <div class="cont_titre d-flex justify-content-between  p-1" style='align-items: center;'>
@@ -203,9 +203,9 @@ ob_start();
         <!-- fin de la div qui suit  -->
 
 
-        <div class="row " style='height: clamp(400px, 80%, 55vh);'>
-            <div class="table-responsive debut_tableau w-100 ">
-                <table class="table table-bordered " id='myTable' style="position: relative; text-align: center;">
+
+            <div class="table-responsive debut_tableau w-100 " style="height: 420px">
+                <table class="table table-bordered  "  id='myTable' >
                     <thead style="position: sticky; top: 0;">
                         <tr class="table-secondary text-center table-dark">
                             <th style='font-size:13px;' class='px-5'>Site</th>
@@ -250,7 +250,7 @@ ob_start();
                     </tbody>
                 </table>
             </div>
-        </div>
+
 
         <!-- debut de la div tableau -->
 
@@ -376,7 +376,7 @@ ob_start();
 
     .englobe,
     .option_cont {
-        background-color: #bfc9ca;
+        background-color: #edf1f1;
     }
 
     .option_cont {
@@ -389,7 +389,7 @@ ob_start();
         top: 10%;
         left: 17%;
         transform: translate(-50%, -50%);
-        background-color: #BFC9CA;
+        background-color: #edf1f1;
         padding: 0 7px;
         font-size: 14px;
     }
@@ -399,7 +399,7 @@ ob_start();
         top: 10%;
         left: 17%;
         transform: translate(-50%, -50%);
-        background-color: #BFC9CA;
+        background-color: #edf1f1;
         padding: 0 7px;
         font-size: 14px;
     }
@@ -409,7 +409,7 @@ ob_start();
         top: 12%;
         left: 10%;
         transform: translate(-50%, -50%);
-        background-color: #BFC9CA;
+        background-color: #edf1f1;
         padding: 0 7px;
         font-size: 14px;
     }
@@ -475,6 +475,7 @@ ob_start();
 
     .table-responsive {
         overflow-x: auto;
+        overflow-y: auto;
         -webkit-overflow-scrolling: touch;
     }
 

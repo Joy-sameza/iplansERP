@@ -539,7 +539,7 @@ class Personne
         $stmt->bindParam(':phone', $this->phone, PDO::PARAM_INT);
         $stmt->bindParam(':telephoneprofessionnel', $this->telephoneprofessionnel, PDO::PARAM_STR);
         $stmt->bindParam(':adresse', $this->adresse, PDO::PARAM_STR);
-        $stmt->bindParam(':fonction', $this->fonction, PDO::PARAM_STR);
+        $stmt->bindParam(':fonction', $this->fonction, PDO::PARAM_INT);
         $stmt->bindParam(':foto', $this->foto, PDO::PARAM_STR);
         $stmt->bindParam(':sexe', $this->sexe, PDO::PARAM_STR);
         $stmt->bindParam(':signaturenumerique', $this->signaturenumerique, PDO::PARAM_STR);
