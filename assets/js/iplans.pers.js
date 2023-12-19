@@ -318,7 +318,7 @@ function useGradeFilters(grade, data) {
 function useConventionFilters(convention, data) {
   if (convention === "TOUTES" || !convention) return data;
   const conv = {
-    FONCTION: "FONCTION",
+    departement1: "FONCTION",
   };
   return data.filter((element) => element.Convention == conv[convention]);
 }

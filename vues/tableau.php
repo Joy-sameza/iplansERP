@@ -4,6 +4,7 @@ $title = 'accueil';
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
+
 $url = $_SERVER["REQUEST_URI"];
 $query = parse_url($url, PHP_URL_QUERY);
 if ($query == "lang=en") {
@@ -24,35 +25,162 @@ if ($query == "lang=en") {
     }
 }
 
+// traitement des informations des employers
+if (isset($_POST['ajouter_pers'])) {
+
+// Get the form data
+    $civilite = $_POST['civilite'];
+    $genre = $_POST['genre']??0;
+    $nom = $_POST['nom'];
+    $prenom = $_POST['prenom'];
+    $cni = $_POST['cni'];
+    $fait = $_POST['fait'];
+    $expire = $_POST['expire'];
+    $adresse = $_POST['adresse'];
+    $tel = $_POST['tel'];
+    $telpro = $_POST['telpro'];
+    $siteagence = $_POST['siteagence'];
+    $direction = $_POST['direction'];
+    $sousdirection = $_POST['sousdirection'];
+    $service = $_POST['service'];
+    $departement = $_POST['departement1'];
+    $posteoccupe = $_POST['fonction'];
+    $datenaissssance = $_POST['datenaissssance'];
+    $lieunaissance = $_POST['lieunaissance'];
+    $nompere = $_POST['nompere'];
+    $nommere = $_POST['nommere'];
+    $nomurgence = $_POST['nomurgence'];
+    $numerourgence = $_POST['numerourgence'];
+    $email = $_POST['email'];
+    $emailpro = $_POST['emailpro'];
+
+
+    $lundi1 = $_POST['lundi1']??0;
+    $mardi1 = $_POST['mardi1']??0;
+    $mercredi1 = $_POST['mercredi1']??0;
+    $jeudi1 = $_POST['jeudi1']??0;
+    $vendredi1 = $_POST['vendredi1']??0;
+    $samedi1 = $_POST['samedi1']??0;
+    $dimanche1 = $_POST['dimanche1']??0;
+
+    $loge = $_POST['loge']??0;
+    $assure = $_POST['assure']??0;
+    $nouri = $_POST['nouri']??0;
+
+
+    $nombreenfant = $_POST['nombreenfant'];
+    $heuredebut = $_POST['heuredebut'];
+    $heurefin = $_POST['heurefin'];
+    $conventioncollective = $_POST['conventioncollective'];
+    $echellon = $_POST['echellon'];
+    $categorie = $_POST['categorie'];
+    $salairebase = (int)$_POST['salairebase'];
+    $heuresemaine = $_POST['heuresemaine'];
+    $tauxhoriare = $_POST['tauxhoriare'];
+    $gradesalarie = $_POST['gradesalarie'];
+    $genresalarie2 = $_POST['genresalarie2'];
+    $contrat = $_POST['contrat'];
+    $identifiantinterne = $_POST['identifiantinterne'];
+    $matriculeinterne = $_POST['matriculeinterne'];
+    $matriculesocial = $_POST['matriculesocial'];
+    $numenregistrement = $_POST['numenregistrement'];
+    $NIU = $_POST['NIU'];
+    $dateentree = $_POST['dateentree'];
+    $datecontrat = $_POST['datecontrat'];
+    $datedepart = $_POST['datedepart'];
+    $motifdepart = $_POST['motifdepart'];
+
+    $data = json_encode([
+        "Site" => "mcs",
+        "civilite" => $civilite,
+        "nom" => $nom,
+        "prenom" => $prenom,
+        "Matricule" => $matriculeinterne,
+        "MatriculeInterne" => $matriculeinterne,
+        "cni" => $cni,
+        "LieuDelivranceCNI" => $fait,
+        "DateExpirationCNI" => $expire,
+        "Fonction" => 0,
+        "departement1" => $posteoccupe,
+        "Direction" => $direction,
+        "SousDirection" => $sousdirection,
+        "Service" => $service,
+        "Email" => $email,
+        "EmailProfessionnel" => $emailpro,
+        "phone" => $tel,
+        "TelephoneProfessionne" => $telpro,
+        "Adresse" => "douala",
+        "Sexe" => $genre,
+        "dnais" => $datenaissssance,
+        "npere" => $nompere,
+        "nmere" => $nommere,
+        "vnais" => $lieunaissance,
+        "nurg" => $nomurgence,
+        "nuurg" => $numerourgence,
+        "Convention" => $conventioncollective,
+        "categorie" => $categorie,
+        "Echelon" => $echellon,
+        "SalaireBaseMensuel" => $salairebase,
+        "genre_salarie" => $gradesalarie,
+        "date_entree" => $dateentree,
+        "date_contrat" => $datecontrat,
+        "type_contrat" =>  $contrat,
+        "motif_depart" => $motifdepart,
+        "NombreEnfant" =>  $nombreenfant,
+
+        "CodeAgence" => "252525"
+
+    ]);
+    $curl = curl_init();
+
+    curl_setopt_array($curl, [
+        CURLOPT_URL => PERS_API_URL,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "POST",
+        CURLOPT_POSTFIELDS => $data,
+        CURLOPT_HTTPHEADER => [
+            "Content-Type: application/json"
+        ],
+    ]);
+
+    $response = curl_exec($curl);
+    if ($response) {
+
+        echo "<script>
+             swal({
+             icon: 'success',
+             text: 'employes enregistree avec succès...',
+             timer: 1000,
+             onOpen: function(){
+             swal.showLoading()
+             }
+             }).then(function(){
+                 window.open('" . SITE_URL . "/employees','_self');
+             });
+            </script>";
+
+    } else {
+        echo "<script>
+                    swal({
+                        icon: 'error',
+                        text: 'une erreur s est produite',
+                    });
+                </script>";
+    }
+}
+
 
 ob_start();
+
 ?>
 <?php
 require_once "./include/config.php";
 ini_set("date.timezone", "Africa/Douala");
-$curl = curl_init();
 
-curl_setopt_array($curl, [
-    CURLOPT_URL => PERS_API_URL,
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_ENCODING => "",
-    CURLOPT_MAXREDIRS => 10,
-    CURLOPT_TIMEOUT => 30,
-    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-    CURLOPT_CUSTOMREQUEST => "GET",
-]);
-
-$response = curl_exec($curl);
-$err = curl_error($curl);
-$data = [];
-
-curl_close($curl);
-
-if ($err) {
-    $_SESSION['error'] = true;
-    return;
-}
-$d = (array)json_decode($response, true);
 //var_dump($d);
 //exit();
 ?>
@@ -251,7 +379,7 @@ $d = (array)json_decode($response, true);
 
 
 
-    <form id="categie_form">
+    <form id="categie_form" >
         <div class="zonne_dinformation"> <!--zone d'information -->
             <div class="zone1 ">
                 <div class="zone">
@@ -541,12 +669,12 @@ $d = (array)json_decode($response, true);
 
     <!--fin de mes boutton-->
 
-    <!-- 
+    <!--
     <div class="cont_button_bas" style="display:none;">
         <div style="display: flex; justify-content: center; align-items: center; gap: 10px; width: max-content;">
-      
-       
-           
+
+
+
             <button class="btn_bass bout Nouveau" >Nouveau</button>
             <button class="btn_bass" >Ouvrir</button>
             <button class="btn_bass" >Suprimer</button>
@@ -563,7 +691,7 @@ $d = (array)json_decode($response, true);
 
 <!--- debut du formulaire generale---->
 
-<form data-form enctype="multipart/form-data" method="post" id='formu_show' action="<?= SITE_URL ?>/forms/formdata.php">
+<form data-form enctype="multipart/form-data" method="post" id='' action="">
 
 
 
@@ -665,27 +793,27 @@ $d = (array)json_decode($response, true);
                             </div>
                             <div class="idntite8">
                                 <label class="mt-3" for="">Site (Agence)</label>
-                            <input type="text" class="form-control mt-3" name="nompere" id="">
+                            <input type="text" class="form-control mt-3" name="siteagence" id="">
                             </div>
                             <div class="idntite9">
                                 <label class="mt-3" for="">Direction </label>
-                                <input type="text" class="form-control mt-3" name="nompere" id="Direction">
+                                <input type="text" class="form-control mt-3" name="direction" id="Direction">
                             </div>
                             <div class="idntite10">
                                 <label class="mt-3" for="">Sous-Direction </label>
-                               <input type="text" class="form-control mt-3" name="nompere" id="SousDirection">
+                               <input type="text" class="form-control mt-3" name="sousdirection" id="SousDirection">
                             </div>
                             <div class="idntite11">
                                 <label class="mt-3" for="">Service </label>
-                               <input type="text" class="form-control mt-3" name="nom" id='Service' required>
+                               <input type="text" class="form-control mt-3" name="service" id='Service' required>
                             </div>
                             <div class="idntite12">
                                 <label class="mt-3" for="">Departement </label>
-                                <input type="text" class="form-control mt-3" name="nom" id='departement1' required>
+                                <input type="text" class="form-control mt-3" name="departement1" id='departement1' required>
                             </div>
                             <div class="idntite13">
                                 <label class="mt-3" for="">Poste Occupé </label>
-                               <input type="text" class="form-control mt-3" name="nom" id='fonction' required>
+                               <input type="text" class="form-control mt-3" name="fonction" id='fonction' required>
                             </div>
                             <style>
                                 .form-vert {
@@ -749,9 +877,9 @@ $d = (array)json_decode($response, true);
                                     <input type="date" class="form-control mt-3" name="datenaissssance" id="dnais" value="<?= date('Y-m-d') ?>">
                                 </div>
                                 <div>
-                                    <label class="mt-3" for="">Lieu de Naissance</label>
-                                 
-                                    <input type="text" class="form-control mt-3" style="width: 80%; margin-right: 30%;" name="nom" id='vnais'>
+                                    <label class="mt-3" for="" >Lieu de Naissance</label>
+
+                                    <input type="text" class="form-control mt-3" style="width: 80%; margin-right: 30%;" name="lieunaissance" id='vnais'>
                                 </div>
                                 <div>
                                     <label class="mt-3" for="">Nom du Pere</label>
@@ -800,16 +928,16 @@ $d = (array)json_decode($response, true);
                                 </div>
                             </div>
                         </div>
-                   
-                   
-                   
-                   
-                   
-                   
-                   
-                   
-                   
-                   
+
+
+
+
+
+
+
+
+
+
                     </div>
                      <div class="col px-1 diver47" id='diver47' style='display:none;width:100%;'>
                                <div class="econte1 gauche-divers" style="border-right: 2px solid gray;">
@@ -818,8 +946,8 @@ $d = (array)json_decode($response, true);
                                        <ul class="pagination">
                                            <li class="page-item d-flex justify-content-center"><a id='activer' class="page-link page-link0 px-4  m-0 text-dark  " href="#"> <span>Categorie</span></a></li>
                                            <li class="page-item"><a class="page-link page-link0 px-4 text-dark m-0 " href="#"><span> Banque</span></a></li>
-    
-    
+
+
                                        </ul>
                                    </div>
                                    <div class="Autre"> <!--le carre autre commence ici -->
@@ -843,8 +971,8 @@ $d = (array)json_decode($response, true);
                                                <button style="height: 25px; height: 25px; padding-top:3px; border:none; background-color:#fff"><img src="<?= SITE_URL ?>/assets/img/plus.png" alt="" style="width: 20px;"></button>
                                            </div>
                                        </div><!--ligne 1 fini ici-->
-    
-    
+
+
                                        <div style="display: flex; justify-content: center; align-items: center;">
                                            <div style="display: flex; justify-content:space-between; align-items: center; width: 100%; ">
                                                <p>Categorie</p>
@@ -863,8 +991,8 @@ $d = (array)json_decode($response, true);
                                                <button style="height: 25px; height: 25px; padding-top:3px; border:none; background-color:#fff"><img src="<?= SITE_URL ?>/assets/img/plus.png" alt="" style="width: 20px;"></button>
                                            </div>
                                        </div>
-    
-    
+
+
                                        <div style="display: flex; justify-content: center; align-items: center;">
                                            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; ">
                                                <p>Salaire De base Par semaine</p>
@@ -877,8 +1005,8 @@ $d = (array)json_decode($response, true);
                                                <label for=""><b>logé</b></label>
                                            </div>
                                        </div>
-    
-    
+
+
                                        <div style="display: flex; justify-content: center; align-items: center;">
                                            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; ">
                                                <p>Heure par Semaine</p>
@@ -894,8 +1022,8 @@ $d = (array)json_decode($response, true);
                                                <label for=""><b>Nourie</b></label>
                                            </div>
                                        </div>
-    
-    
+
+
                                        <div style="display: flex; justify-content: center; align-items: center;">
                                            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; ">
                                                <p>Taux Horaires</p>
@@ -911,9 +1039,9 @@ $d = (array)json_decode($response, true);
                                                <label for=""><b>Assuré</b></label>
                                            </div>
                                        </div>
-    
-    
-    
+
+
+
                                        <div style="display: flex; justify-content: center; align-items: center; width: 67%;">
                                            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; ">
                                                <p>Cumul Heure</p>
@@ -922,8 +1050,8 @@ $d = (array)json_decode($response, true);
                                                </div>
                                            </div>
                                        </div>
-    
-    
+
+
                                        <div style="display: flex; justify-content: center; align-items: center; width: 67%;">
                                            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; ">
                                                <p>Grade de Salarié</p>
@@ -933,7 +1061,7 @@ $d = (array)json_decode($response, true);
                                            </div>
                                        </div>
                                    </div>
-    
+
                                    <div style="width: 100%;  height: 200px; "><!--Diplomes-->
                                        <p>
                                            <b>Diplomes</b>
@@ -945,21 +1073,21 @@ $d = (array)json_decode($response, true);
                                            </div>
                                            <div style="width: 100%; height: 100%; padding-left:0px;">
                                                <div style="width: 100%; height: 100%; padding-left:0px; padding-right:0px; border: 1px solid gray;">
-    
+
                                                    <div style="display: flex; width: 100%; height: 0px;">
-    
+
                                                    </div>
                                                    <style>
                                                        .econte1 div {}
                                                    </style>
-    
+
                                                    <table class="table table-bordered">
                                                        <thead>
                                                            <tr class='table-dark text-center'>
                                                                <th class='px-5'>Nom</th>
                                                                <th class="text-center">Année</th>
                                                                <th class="text-center">Mention</th>
-    
+
                                                            </tr>
                                                        </thead>
                                                        <tbody>
@@ -970,26 +1098,26 @@ $d = (array)json_decode($response, true);
                                                                </td>
                                                                <td></td>
                                                                <td></td>
-    
-    
-    
-    
-    
+
+
+
+
+
                                                            </tr>
                                                        </tbody>
                                                    </table>
-    
+
                                                </div>
                                            </div>
                                        </div>
-    
+
                                    </div>
                                    <style>
                                        .bleauta {
                                            background: #2169EC !important;
                                        }
                                    </style>
-    
+
                                    <div> <!--contrat-->
                                        <p>
                                            <b>Contrat</b>
@@ -1058,7 +1186,7 @@ $d = (array)json_decode($response, true);
                                            <div style="width: 71%;   display: flex; justify-content: space-around;">
                                                <label for="">Motif De Depart</label>
                                                <input type="text" class="form-control " style='background-color:#238fce;' name="motifdepart" id="motif_depart">
-    
+
                                            </div>
                                        </div>
                                    </div>
@@ -1071,7 +1199,7 @@ $d = (array)json_decode($response, true);
                    </div>
 
                    <div class="col" style='margin-top:200px'>
-                    
+
                     <section class="econte2" style='width:100%'>
                         <div class="class1 mx-2">
                             <div class="class2 spec1">
@@ -1325,11 +1453,11 @@ $d = (array)json_decode($response, true);
 
                     </section>
                    </div>
-                                   
-                   
 
 
-                  
+
+
+
                     <!-- css pour la div 2 -->
                     <style>
                         .div_2 label {
@@ -1354,7 +1482,7 @@ $d = (array)json_decode($response, true);
                             height: 19px !important;
                         }
 
-                 
+
                         .bordure {
                             padding-left: 10px;
                         }
@@ -1483,8 +1611,8 @@ $d = (array)json_decode($response, true);
                                        <ul class="pagination">
                                            <li class="page-item d-flex justify-content-center"><a id='activer' class="page-link page-link0 px-4  m-0 text-dark  " href="#"> <span>Categorie</span></a></li>
                                            <li class="page-item"><a class="page-link page-link0 px-4 text-dark m-0 " href="#"><span> Banque</span></a></li>
-    
-    
+
+
                                        </ul>
                                    </div>
                                    <div class="Autre"> <!--le carre autre commence ici -->
@@ -1508,8 +1636,8 @@ $d = (array)json_decode($response, true);
                                                <button style="height: 25px; height: 25px; padding-top:3px; border:none; background-color:#fff"><img src="<?= SITE_URL ?>/assets/img/plus.png" alt="" style="width: 20px;"></button>
                                            </div>
                                        </div><!--ligne 1 fini ici-->
-    
-    
+
+
                                        <div style="display: flex; justify-content: center; align-items: center;">
                                            <div style="display: flex; justify-content:space-between; align-items: center; width: 100%; ">
                                                <p>Categorie</p>
@@ -1528,8 +1656,8 @@ $d = (array)json_decode($response, true);
                                                <button style="height: 25px; height: 25px; padding-top:3px; border:none; background-color:#fff"><img src="<?= SITE_URL ?>/assets/img/plus.png" alt="" style="width: 20px;"></button>
                                            </div>
                                        </div>
-    
-    
+
+
                                        <div style="display: flex; justify-content: center; align-items: center;">
                                            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; ">
                                                <p>Salaire De base Par semaine</p>
@@ -1542,8 +1670,8 @@ $d = (array)json_decode($response, true);
                                                <label for=""><b>logé</b></label>
                                            </div>
                                        </div>
-    
-    
+
+
                                        <div style="display: flex; justify-content: center; align-items: center;">
                                            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; ">
                                                <p>Heure par Semaine</p>
@@ -1559,8 +1687,8 @@ $d = (array)json_decode($response, true);
                                                <label for=""><b>Nourie</b></label>
                                            </div>
                                        </div>
-    
-    
+
+
                                        <div style="display: flex; justify-content: center; align-items: center;">
                                            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; ">
                                                <p>Taux Horaires</p>
@@ -1576,9 +1704,9 @@ $d = (array)json_decode($response, true);
                                                <label for=""><b>Assuré</b></label>
                                            </div>
                                        </div>
-    
-    
-    
+
+
+
                                        <div style="display: flex; justify-content: center; align-items: center; width: 67%;">
                                            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; ">
                                                <p>Cumul Heure</p>
@@ -1587,8 +1715,8 @@ $d = (array)json_decode($response, true);
                                                </div>
                                            </div>
                                        </div>
-    
-    
+
+
                                        <div style="display: flex; justify-content: center; align-items: center; width: 67%;">
                                            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; ">
                                                <p>Grade de Salarié</p>
@@ -1598,7 +1726,7 @@ $d = (array)json_decode($response, true);
                                            </div>
                                        </div>
                                    </div>
-    
+
                                    <div style="width: 100%;  height: 200px; "><!--Diplomes-->
                                        <p>
                                            <b>Diplomes</b>
@@ -1610,21 +1738,21 @@ $d = (array)json_decode($response, true);
                                            </div>
                                            <div style="width: 100%; height: 100%; padding-left:0px;">
                                                <div style="width: 100%; height: 100%; padding-left:0px; padding-right:0px; border: 1px solid gray;">
-    
+
                                                    <div style="display: flex; width: 100%; height: 0px;">
-    
+
                                                    </div>
                                                    <style>
                                                        .econte1 div {}
                                                    </style>
-    
+
                                                    <table class="table table-bordered">
                                                        <thead>
                                                            <tr class='table-dark text-center'>
                                                                <th class='px-5'>Nom</th>
                                                                <th class="text-center">Année</th>
                                                                <th class="text-center">Mention</th>
-    
+
                                                            </tr>
                                                        </thead>
                                                        <tbody>
@@ -1635,26 +1763,26 @@ $d = (array)json_decode($response, true);
                                                                </td>
                                                                <td></td>
                                                                <td></td>
-    
-    
-    
-    
-    
+
+
+
+
+
                                                            </tr>
                                                        </tbody>
                                                    </table>
-    
+
                                                </div>
                                            </div>
                                        </div>
-    
+
                                    </div>
                                    <style>
                                        .bleauta {
                                            background: #2169EC !important;
                                        }
                                    </style>
-    
+
                                    <div> <!--contrat-->
                                        <p>
                                            <b>Contrat</b>
@@ -1723,7 +1851,7 @@ $d = (array)json_decode($response, true);
                                            <div style="width: 71%;   display: flex; justify-content: space-around;">
                                                <label for="">Motif De Depart</label>
                                                <input type="text" class="form-control " style='background-color:#238fce;' name="motifdepart" id="">
-    
+
                                            </div>
                                        </div>
                                    </div>
@@ -1734,11 +1862,11 @@ $d = (array)json_decode($response, true);
                             <!-- fin gauche de diver  -->
 
                            <div class="col">
-                          
+
 
                            </div>
 
-                        
+
                             <!--  css pour la premiere partie gauche de divers -->
                             <style>
                                 .gauche-divers label,
@@ -1816,17 +1944,17 @@ $d = (array)json_decode($response, true);
                    #option .bouton {
                         background-color: #238fce;
                         color: #fff;
-                         padding: 8px 20px; 
+                         padding: 8px 20px;
                         font-size: 17px;
-                       
+
                         border: none;
                         border-radius: 5px;
                         cursor: pointer;
                         transition: background-color 0.4s ease;
                         width: max-content;
                         height: 43px;
-                       
-                        
+
+
                     }
                 </style>
             </div>
@@ -1873,7 +2001,7 @@ $d = (array)json_decode($response, true);
         <td id='LieuDelivranceCNI' data-LieuDelivranceCNI></td>
         <td id='DateExpirationCNI' data-DateExpirationCNI></td>
         <td id='IDDateExpirationCNI' data-IDDateExpirationCNI></td>
-        
+
     </tr>
 </template>
 
@@ -1891,15 +2019,15 @@ $d = (array)json_decode($response, true);
 </script>
 <!-- <script>
     const close_window = document.querySelector(".close_window");
-    
+
     const cont_employer = document.querySelector(".cont_employer");
 
     close_window.addEventListener("click", (event) => {
          event.preventDefault();
         cont_employer.style.display = "none";
-        
+
     });
-  
+
 </script> -->
 
 <!-- click sur le boutton recherche  -->
@@ -2048,7 +2176,7 @@ $d = (array)json_decode($response, true);
 
    <script>
         const bouton = document.getElementById("fermons");
-       
+
 
         bouton.addEventListener("click", (e) => {
             e.preventDefault();
@@ -2063,7 +2191,7 @@ $d = (array)json_decode($response, true);
 <!-- javascript pour la gestion du tableau -->
 
 <script>
-  
+
    document.addEventListener("DOMContentLoaded", function() {
     const table = document.getElementById("myTable");
     const form = document.getElementById("formu_show");
@@ -2089,7 +2217,7 @@ $d = (array)json_decode($response, true);
             table.addEventListener("dblclick", function(event) {
             const targetRow = event.target.closest("tr");
             const form = document.getElementById("formu_show");
-          
+
             if (targetRow) {
             // Désélectionner la ligne actuelle
             if (selectedRow) {
@@ -2141,7 +2269,7 @@ $d = (array)json_decode($response, true);
             const LieuDelivranceCNI = targetRow.cells[38].textContent;
             const DateExpirationCNI = targetRow.cells[39].textContent;
             const IDDateExpirationCNI = targetRow.cells[40].textContent;
-              
+
 
             // // Ajoutez d'autres lignes pour récupérer d'autres données
 
@@ -2186,25 +2314,26 @@ $d = (array)json_decode($response, true);
             // document.getElementById("LieuDelivranceCNI").value = LieuDelivranceCNI;
             // document.getElementById("DateExpirationCNI").value = DateExpirationCNI;
             // document.getElementById("IDDateExpirationCNI").value = IDDateExpirationCNI;
-  
+
             console.log(nom,prenom,categorie,Service)
-      
+
             }
             });
-          
 
-  
+
+
     });
 
-      
-  
+
+
 
     //  function supprimerLigne(button) {
     //     var row = button.closest('tr');
     //      const rowId = event.target.getAttribute('data-id');
     //     row.remove();
     // }
- </script>   
+ </script>
+
 
     
  <script>
@@ -2212,10 +2341,10 @@ $d = (array)json_decode($response, true);
         $('#myTable').on('click', '.btn-open', function(event) {
 
             const targetRow = event.target.closest("tr");
-            
+
 
             var civilite = targetRow.cells[1].textContent;
-          
+
             // const nom = targetRow.cells[2].textContent;
             var nom = targetRow.querySelector('[data-nom]').textContent;
             var prenom = targetRow.cells[3].textContent;
@@ -2257,7 +2386,7 @@ $d = (array)json_decode($response, true);
             var IDDateExpirationCNI = targetRow.cells[40].textContent;
 
             var formData = {
-               
+
                 nom: nom,
                 prenom: prenom,
                 fonction: fonction,
@@ -2317,11 +2446,11 @@ $d = (array)json_decode($response, true);
                     }
                 });
 
-            
+
            window.location.href = 'http://localhost/Iplans/openEmployer';
 
 
-        
+
         });
     });
 </script> 
@@ -2567,13 +2696,13 @@ $d = (array)json_decode($response, true);
 <script>
       
         function supprimerLigne(button) {
-           
+
             const row = button.closest('tr');
 
             const neng = row.querySelector("[data-NEng]").textContent;
             console.log('id:',neng)
 
-            
+
             const url = `http://localhost/pers/${neng}`;
          
 

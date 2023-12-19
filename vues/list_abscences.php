@@ -3,6 +3,7 @@ $title = 'accueil';
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
+
 $url = $_SERVER["REQUEST_URI"];
 $query = parse_url($url, PHP_URL_QUERY);
 if ($query == "lang=en") {
@@ -25,6 +26,7 @@ if ($query == "lang=en") {
 
 
 ob_start();
+
 ?>
 
 
@@ -40,7 +42,11 @@ ob_start();
 </head>
 
 <body>
+<<<<<<< HEAD
     <div class="container-fluid conteneur0 my-5 border border-2 border-primary" style='width:75%;border-bottom:none;'>
+=======
+    <div class="container-fluid conteneur0 my-5 border border-2 border-primary" style='width:75%;border-bottom:none;' >
+>>>>>>> ba0a7b1a26051990de7002ac597d23648fc1af2e
 
         <div class="row bg-primary border-1 ">
             <div class="cont_titre d-flex justify-content-between  p-1" style='align-items: center;'>
@@ -203,9 +209,15 @@ ob_start();
         <!-- fin de la div qui suit  -->
 
 
+<<<<<<< HEAD
         <div class="row " >
             <div class="table-responsive debut_tableau w-100 " style='height:400px;'>
                 <table class="table table-bordered " id='myTable' style="position: relative; text-align: center;">
+=======
+
+            <div class="table-responsive debut_tableau w-100 " style="height: 420px">
+                <table class="table table-bordered  "  id='myTable' >
+>>>>>>> ba0a7b1a26051990de7002ac597d23648fc1af2e
                     <thead style="position: sticky; top: 0;">
                         <tr class="table-secondary text-center table-dark">
                             <th style='font-size:13px;' class='px-5'>Site</th>
@@ -250,7 +262,7 @@ ob_start();
                     </tbody>
                 </table>
             </div>
-        </div>
+
 
         <!-- debut de la div tableau -->
 
@@ -376,7 +388,11 @@ ob_start();
 
     .englobe,
     .option_cont {
+<<<<<<< HEAD
         background-color: #EBEDEF;
+=======
+        background-color: #edf1f1;
+>>>>>>> ba0a7b1a26051990de7002ac597d23648fc1af2e
     }
 
     .option_cont {
@@ -389,7 +405,11 @@ ob_start();
         top: 10%;
         left: 17%;
         transform: translate(-50%, -50%);
+<<<<<<< HEAD
         background-color: #EBEDEF;
+=======
+        background-color: #edf1f1;
+>>>>>>> ba0a7b1a26051990de7002ac597d23648fc1af2e
         padding: 0 7px;
         font-size: 14px;
     }
@@ -399,7 +419,11 @@ ob_start();
         top: 10%;
         left: 17%;
         transform: translate(-50%, -50%);
+<<<<<<< HEAD
         background-color: #EBEDEF;
+=======
+        background-color: #edf1f1;
+>>>>>>> ba0a7b1a26051990de7002ac597d23648fc1af2e
         padding: 0 7px;
         font-size: 14px;
     }
@@ -409,7 +433,11 @@ ob_start();
         top: 12%;
         left: 10%;
         transform: translate(-50%, -50%);
+<<<<<<< HEAD
         background-color: #EBEDEF;
+=======
+        background-color: #edf1f1;
+>>>>>>> ba0a7b1a26051990de7002ac597d23648fc1af2e
         padding: 0 7px;
         font-size: 14px;
     }
@@ -475,6 +503,7 @@ ob_start();
 
     .table-responsive {
         overflow-x: auto;
+        overflow-y: auto;
         -webkit-overflow-scrolling: touch;
     }
 
