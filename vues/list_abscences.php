@@ -3,6 +3,7 @@ $title = 'accueil';
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
+
 $url = $_SERVER["REQUEST_URI"];
 $query = parse_url($url, PHP_URL_QUERY);
 if ($query == "lang=en") {
@@ -25,6 +26,7 @@ if ($query == "lang=en") {
 
 
 ob_start();
+
 ?>
 
 

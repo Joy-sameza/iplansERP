@@ -28,6 +28,8 @@ if ($query == "lang=en") {
     }
 }
 ob_start();
+
+
 ?>
 <link rel="stylesheet" type="text/css" href="<?= SITE_URL ?>/assets/css/login.css">
 

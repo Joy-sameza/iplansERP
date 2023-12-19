@@ -4,6 +4,7 @@ $title = 'accueil';
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
+
 $url = $_SERVER["REQUEST_URI"];
 $query = parse_url($url, PHP_URL_QUERY);
 if ($query == "lang=en") {
@@ -29,7 +30,7 @@ if (isset($_POST['ajouter_pers'])) {
 
 // Get the form data
     $civilite = $_POST['civilite'];
-    $genre = $_POST['genre'];
+    $genre = $_POST['genre']??0;
     $nom = $_POST['nom'];
     $prenom = $_POST['prenom'];
     $cni = $_POST['cni'];
@@ -147,8 +148,6 @@ if (isset($_POST['ajouter_pers'])) {
     ]);
 
     $response = curl_exec($curl);
-    var_dump($response);
-    exit();
     if ($response) {
 
         echo "<script>
@@ -163,6 +162,7 @@ if (isset($_POST['ajouter_pers'])) {
                  window.open('" . SITE_URL . "/employees','_self');
              });
             </script>";
+
     } else {
         echo "<script>
                     swal({
@@ -175,6 +175,7 @@ if (isset($_POST['ajouter_pers'])) {
 
 
 ob_start();
+
 ?>
 <?php
 require_once "./include/config.php";
