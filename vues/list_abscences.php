@@ -40,7 +40,7 @@ ob_start();
 </head>
 
 <body>
-    <div class="container-fluid conteneur0 my-5 border border-2 border-primary" style='width:75%;border-bottom:none; height: 75vh;'>
+    <div class="container-fluid conteneur0 my-5 border border-2 border-primary" style='width:75%;border-bottom:none;'>
 
         <div class="row bg-primary border-1 ">
             <div class="cont_titre d-flex justify-content-between  p-1" style='align-items: center;'>
@@ -203,8 +203,8 @@ ob_start();
         <!-- fin de la div qui suit  -->
 
 
-        <div class="row " style='height: clamp(400px, 80%, 55vh);'>
-            <div class="table-responsive debut_tableau w-100 ">
+        <div class="row " >
+            <div class="table-responsive debut_tableau w-100 " style='height:400px;'>
                 <table class="table table-bordered " id='myTable' style="position: relative; text-align: center;">
                     <thead style="position: sticky; top: 0;">
                         <tr class="table-secondary text-center table-dark">
@@ -376,7 +376,7 @@ ob_start();
 
     .englobe,
     .option_cont {
-        background-color: #bfc9ca;
+        background-color: #EBEDEF;
     }
 
     .option_cont {
@@ -389,7 +389,7 @@ ob_start();
         top: 10%;
         left: 17%;
         transform: translate(-50%, -50%);
-        background-color: #BFC9CA;
+        background-color: #EBEDEF;
         padding: 0 7px;
         font-size: 14px;
     }
@@ -399,7 +399,7 @@ ob_start();
         top: 10%;
         left: 17%;
         transform: translate(-50%, -50%);
-        background-color: #BFC9CA;
+        background-color: #EBEDEF;
         padding: 0 7px;
         font-size: 14px;
     }
@@ -409,7 +409,7 @@ ob_start();
         top: 12%;
         left: 10%;
         transform: translate(-50%, -50%);
-        background-color: #BFC9CA;
+        background-color: #EBEDEF;
         padding: 0 7px;
         font-size: 14px;
     }
@@ -545,7 +545,25 @@ ob_start();
 
 
 
+<script>
+    const ferme = document.querySelector(".close_window");
+    const conteneur = document.querySelector(".conteneur0");
 
+    ferme.addEventListener("click", (e) => {
+        e.preventDefault()
+        window.location.href = "<?= SITE_URL ?>/permi_con";
+
+    });
+</script>
+<script>
+    const boutonFermer = document.getElementById("fermer");
+    const conteneur0 = document.querySelector(".conteneur0");
+
+    boutonFermer.addEventListener("click", (e) => {
+        e.preventDefault();
+        window.location.href = "<?= SITE_URL ?>/permi_con";
+    });
+</script>
 </script>
 
 

@@ -197,8 +197,8 @@ $d = (array)json_decode($response, true);
 
         <table class="table table-striped table-hover  container" id="myTable">
             <thead class="table-success">
-                <!-- <td role="columnheader">Options</td> -->
-                <!-- <td role="columnheader">id</td> -->
+                 <td role="columnheader">Options</td>
+                 <td role="columnheader">id</td> 
                 <td role="columnheader">Civilite</td>
                 <td role="columnheader">Nom</td>
                 <td role="columnheader">Prenom</td>
@@ -1794,11 +1794,18 @@ $d = (array)json_decode($response, true);
 
 <template id="pers_table_template">
     <tr style="pointer-events: all !important;">
-<!--         
+        
         <td id='option'>
             <div class="d-flex">
 
-                <button class="bouton btn-open justify-content-around"  id="open">
+                <!-- <button class="bouton bg-success "  id="set">
+                    <i class="fas fa-edit"></i>
+
+                </button> -->
+                <button class="bouton bg-success btn-modif" onclick='modifierLigne(this)'><i class="fas fa-edit"></i></button>
+
+                
+                <button class="bouton btn-open "  id="open">
                     <i class="fas fa-folder-open "></i>
                 </button>
                 <button class="bouton bg-danger" onclick='supprimerLigne(this)'  id='delete'>
@@ -1824,8 +1831,8 @@ $d = (array)json_decode($response, true);
                 </style>
             </div>
 
-        </td> -->
-        <!-- <td id='data-NEng' data-NEng ></td> -->
+        </td> 
+        <td id='data-NEng' data-NEng ></td> 
         <td id='civilite' data-civilite></td>
         <td  data-nom id='nom'></td>
         <td  data-prenom id='prenom'></td>
@@ -2200,7 +2207,7 @@ $d = (array)json_decode($response, true);
  </script>   
 
     
-<!-- <script>
+ <script>
     $(document).ready(function() {
         $('#myTable').on('click', '.btn-open', function(event) {
 
@@ -2296,15 +2303,15 @@ $d = (array)json_decode($response, true);
             sessionStorage.setItem('formData', JSON.stringify(formData));
             $.ajax({
                     type: "POST",
-                    url: "http://localhost/Iplans/openEmployer",  // Remplacez par le chemin de votre script PHP
+                    url: "http://localhost/Iplans/openEmployer", 
                     data: { formData: JSON.stringify(formData) },
                     success: function(response) {
-                        // Gérez la réponse du serveur si nécessaire
+                        
                         console.log(response);
                         console.log('reussi donc ok')
                     },
                     error: function(error) {
-                        // Gérez les erreurs si nécessaire
+                       
                         console.error(error);
                         console.error('des erreurs');
                     }
@@ -2317,11 +2324,247 @@ $d = (array)json_decode($response, true);
         
         });
     });
-</script> -->
+</script> 
+
+ <script>
+    $(document).ready(function() {
+        $('#myTable').on('click', '.btn-open', function(event) {
+
+            const targetRow = event.target.closest("tr");
+            
+
+            var civilite = targetRow.cells[1].textContent;
+          
+            // const nom = targetRow.cells[2].textContent;
+            var nom = targetRow.querySelector('[data-nom]').textContent;
+            var prenom = targetRow.cells[3].textContent;
+            var fonction = targetRow.cells[4].textContent;
+            var phone = targetRow.querySelector('[data-phone]').textContent;
+            var pseudo = targetRow.cells[6].textContent;
+            var matricule = targetRow.cells[7].textContent;
+            var cni= targetRow.cells[9].textContent;
+            var email = targetRow.cells[10].textContent;
+            var dnais = targetRow.cells[11].textContent;
+            var npere= targetRow.cells[12].textContent;
+            var nmere = targetRow.cells[13].textContent;
+            var vnais= targetRow.cells[14].textContent;
+            var nurg= targetRow.cells[15].textContent;
+            var nuurg = targetRow.cells[16].textContent;
+            var agenceBanque = targetRow.cells[17].textContent;
+            var codeBanque = targetRow.cells[18].textContent;
+            var codeguichet = targetRow.cells[19].textContent;
+            var numcomptbanque = targetRow.cells[20].textContent;
+            var cleRib = targetRow.cells[21].textContent;
+            var CodeSwiftBanque = targetRow.cells[22].textContent;
+            var CodeUtilisateur = targetRow.cells[23].textContent;
+            var categorie = targetRow.cells[24].textContent;
+            var Grade = targetRow.cells[25].textContent;
+            var Convention = targetRow.cells[26].textContent;
+            var departement1 = targetRow.cells[27].textContent;
+            var genre_salarie = targetRow.cells[28].textContent;
+            var Direction = targetRow.cells[29].textContent;
+            var SousDirection = targetRow.cells[30].textContent;
+            var Service = targetRow.cells[31].textContent;
+            var motif_depart = targetRow.cells[32].textContent;
+            var date_sortie = targetRow.cells[33].textContent;
+            var date_entree = targetRow.cells[34].textContent;
+            var type_contrat = targetRow.cells[35].textContent;
+            var IDDate_Contrat = targetRow.cells[36].textContent;
+            var IDDate_Sortie = targetRow.cells[37].textContent;
+            var LieuDelivranceCNI = targetRow.cells[38].textContent;
+            var DateExpirationCNI = targetRow.cells[39].textContent;
+            var IDDateExpirationCNI = targetRow.cells[40].textContent;
+
+            var formData = {
+               
+                nom: nom,
+                prenom: prenom,
+                fonction: fonction,
+                phone: phone,
+                matricule: matricule,
+                cni: cni,
+                email: email,
+                dnais: dnais,
+                npere: npere,
+                nmere: nmere,
+                vnais: vnais,
+                nurg: nurg,
+                nuurg: nuurg,
+                agenceBanque: agenceBanque,
+                codeBanque: codeBanque,
+                codeguichet: codeguichet,
+                numcomptbanque: numcomptbanque,
+                cleRib: cleRib,
+                CodeSwiftBanque: CodeSwiftBanque,
+                CodeUtilisateur: CodeUtilisateur,
+                categorie: categorie,
+                Grade: Grade,
+                SousDirection: SousDirection,
+                Convention: Convention,
+                departement1: departement1,
+                genre_salarie: genre_salarie,
+                Direction: Direction,
+                Service: Service,
+                date_sortie: date_sortie,
+                date_entree: date_entree,
+                type_contrat: type_contrat,
+                IDDate_Contrat: IDDate_Contrat,
+                IDDate_Sortie: IDDate_Sortie,
+                LieuDelivranceCNI: LieuDelivranceCNI,
+                DateExpirationCNI: DateExpirationCNI,
+                IDDateExpirationCNI: IDDateExpirationCNI,
+                civilite: civilite
 
 
-<!-- je vais commenter et decommenter  -->
- <!-- <script>
+            };
+            console.log(civilite)
+
+            sessionStorage.setItem('formData', JSON.stringify(formData));
+            $.ajax({
+                    type: "POST",
+                    url: "http://localhost/Iplans/openEmployer", 
+                    data: { formData: JSON.stringify(formData) },
+                    success: function(response) {
+                        
+                        console.log(response);
+                        console.log('reussi donc ok')
+                    },
+                    error: function(error) {
+                       
+                        console.error(error);
+                        console.error('des erreurs');
+                    }
+                });
+
+            
+           window.location.href = 'http://localhost/Iplans/openEmployer';
+
+
+        
+        });
+    });
+</script> 
+ <script>
+    $(document).ready(function() {
+        $('#myTable').on('click', '.btn-modif', function(event) {
+
+            const targetRow = event.target.closest("tr");
+            
+
+            var civilite = targetRow.cells[1].textContent;
+          
+            // const nom = targetRow.cells[2].textContent;
+            var nom = targetRow.querySelector('[data-nom]').textContent;
+            var prenom = targetRow.cells[3].textContent;
+            var fonction = targetRow.cells[4].textContent;
+            var phone = targetRow.querySelector('[data-phone]').textContent;
+            var pseudo = targetRow.cells[6].textContent;
+            var matricule = targetRow.cells[7].textContent;
+            var cni= targetRow.cells[9].textContent;
+            var email = targetRow.cells[10].textContent;
+            var dnais = targetRow.cells[11].textContent;
+            var npere= targetRow.cells[12].textContent;
+            var nmere = targetRow.cells[13].textContent;
+            var vnais= targetRow.cells[14].textContent;
+            var nurg= targetRow.cells[15].textContent;
+            var nuurg = targetRow.cells[16].textContent;
+            var agenceBanque = targetRow.cells[17].textContent;
+            var codeBanque = targetRow.cells[18].textContent;
+            var codeguichet = targetRow.cells[19].textContent;
+            var numcomptbanque = targetRow.cells[20].textContent;
+            var cleRib = targetRow.cells[21].textContent;
+            var CodeSwiftBanque = targetRow.cells[22].textContent;
+            var CodeUtilisateur = targetRow.cells[23].textContent;
+            var categorie = targetRow.cells[24].textContent;
+            var Grade = targetRow.cells[25].textContent;
+            var Convention = targetRow.cells[26].textContent;
+            var departement1 = targetRow.cells[27].textContent;
+            var genre_salarie = targetRow.cells[28].textContent;
+            var Direction = targetRow.cells[29].textContent;
+            var SousDirection = targetRow.cells[30].textContent;
+            var Service = targetRow.cells[31].textContent;
+            var motif_depart = targetRow.cells[32].textContent;
+            var date_sortie = targetRow.cells[33].textContent;
+            var date_entree = targetRow.cells[34].textContent;
+            var type_contrat = targetRow.cells[35].textContent;
+            var IDDate_Contrat = targetRow.cells[36].textContent;
+            var IDDate_Sortie = targetRow.cells[37].textContent;
+            var LieuDelivranceCNI = targetRow.cells[38].textContent;
+            var DateExpirationCNI = targetRow.cells[39].textContent;
+            var IDDateExpirationCNI = targetRow.cells[40].textContent;
+
+            var formData = {
+               
+                nom: nom,
+                prenom: prenom,
+                fonction: fonction,
+                phone: phone,
+                matricule: matricule,
+                cni: cni,
+                email: email,
+                dnais: dnais,
+                npere: npere,
+                nmere: nmere,
+                vnais: vnais,
+                nurg: nurg,
+                nuurg: nuurg,
+                agenceBanque: agenceBanque,
+                codeBanque: codeBanque,
+                codeguichet: codeguichet,
+                numcomptbanque: numcomptbanque,
+                cleRib: cleRib,
+                CodeSwiftBanque: CodeSwiftBanque,
+                CodeUtilisateur: CodeUtilisateur,
+                categorie: categorie,
+                Grade: Grade,
+                SousDirection: SousDirection,
+                Convention: Convention,
+                departement1: departement1,
+                genre_salarie: genre_salarie,
+                Direction: Direction,
+                Service: Service,
+                date_sortie: date_sortie,
+                date_entree: date_entree,
+                type_contrat: type_contrat,
+                IDDate_Contrat: IDDate_Contrat,
+                IDDate_Sortie: IDDate_Sortie,
+                LieuDelivranceCNI: LieuDelivranceCNI,
+                DateExpirationCNI: DateExpirationCNI,
+                IDDateExpirationCNI: IDDateExpirationCNI,
+                civilite: civilite
+
+
+            };
+            console.log(civilite)
+
+            sessionStorage.setItem('formData', JSON.stringify(formData));
+            $.ajax({
+                    type: "POST",
+                    url: "http://localhost/Iplans/modifEmploye", 
+                    data: { formData: JSON.stringify(formData) },
+                    success: function(response) {
+                        
+                        console.log(response);
+                        console.log('reussi donc ok')
+                    },
+                    error: function(error) {
+                       
+                        console.error(error);
+                        console.error('des erreurs');
+                    }
+                });
+
+            
+           window.location.href = 'http://localhost/Iplans/modifEmploye';
+
+
+        
+        });
+    });
+</script> 
+
+
+<script>
       
         function supprimerLigne(button) {
            
@@ -2332,7 +2575,7 @@ $d = (array)json_decode($response, true);
 
             
             const url = `http://localhost/pers/${neng}`;
-            row.remove();
+         
 
             // Effectuer la requête DELETE
             fetch(url, {
@@ -2352,13 +2595,15 @@ $d = (array)json_decode($response, true);
                 // Mettez à jour l'interface utilisateur ou effectuez d'autres actions nécessaires
                 // par exemple, supprimer la ligne du tableau
                 row.remove();
+                showAlert('Suppression réussie', 'success', 'L\'élément a été supprimé avec succès.');
+
             })
             .catch(error => {
                 console.error('Erreur lors de la suppression :', error);
                 // Gérer les erreurs ou informer l'utilisateur
             });
         }
-</script> -->
+</script>
 
 
 

@@ -69,7 +69,7 @@ ob_start();
 </div>
    <div class="container-fluid d-flex justify-content-end mt-5 my-3 px-4 align-items-right">
                         
-                <img src="<?= SITE_URL ?>/assets/img/logo_minesec2.png" alt=""style="width: 130px; height: 130px; margin-right:7px">
+                <img src="<?= SITE_URL ?>/assets/img/logo_minesec2.png" alt=""style="width: 170px; height: 170px; margin-right:7px">
             </div> 
        
 <!-- 
@@ -93,7 +93,7 @@ ob_start();
             margin-right:28px;
         }
      
-
+        
      	.lange{
 			font-size: 25px;
             margin-top: 47px;
@@ -102,6 +102,7 @@ ob_start();
 		.lang{
 			    margin-top: 0px!important;
 				padding-top: 43px;
+                display:none;
 		}
 	    .lang	img{
 				height: 24px;

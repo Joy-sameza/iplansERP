@@ -235,7 +235,7 @@ ob_start();
 
         .param {
 
-            background-color: #F4F6F6;
+            background-color: #EBEDEF;
 
         }
 
@@ -245,7 +245,7 @@ ob_start();
             top: 0%;
             left: 15%;
             transform: translate(-50%, -50%);
-            background-color: #F4F6F6;
+            background-color: #EBEDEF;
             padding: 0 10px;
             font-size: 16px;
         }
@@ -255,7 +255,7 @@ ob_start();
             top: -5%;
             left: 27%;
             transform: translate(-50%, -50%);
-            background-color: #F4F6F6;
+            background-color: #EBEDEF;
             padding: 0 6px;
             font-size: 14px;
 

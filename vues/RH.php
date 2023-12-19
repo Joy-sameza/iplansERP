@@ -39,6 +39,7 @@ ob_start();
 		.lang{
 			    margin-top: 0px!important;
 				padding-top: 43px;
+                display:none;
 		}
 	    .lang	img{
 				height: 24px;
@@ -118,25 +119,23 @@ ob_start();
 
             </div>
         </div>
-        <div class="row">
-           
-            <div class="col-sm-9  p-5 d-flex justify-content-left align-items-left">
-                <h1 class='text-uppercase mt-4'><b>gestion des ressources humaines</b></h1>
-            </div>
-            <div class="col-sm-3  d-flex justify-content-center align-items-center  text-white">
-              
-                        
-                            <img src="<?= SITE_URL ?>/assets/img/logo_minesec2.png" alt=""style="width: 170px; height: 170px; margin-right:7px">
-                            
-                        
-                 
-            </div>
-        </div>
-
-     
       
-    
+       
     </div>
+
+
+
+     <div class="container-fluid">
+               <div class="row">
+                  <div class="col-sm-12  p-2 d-flex justify-content-center align-items-left">
+                    <h1 class='text-uppercase mt-4'><b>gestion des ressources humaines</b></h1>
+                  </div>
+                  <div class="col-sm-12  d-flex justify-content-end align-items-center  text-white">
+                    <img src="<?= SITE_URL ?>/assets/img/logo_minesec2.png" alt=""style="width: 170px; height: 170px; margin-right:0px">
+                  </div>
+               </div>
+
+        </div>
 
   
 </main>

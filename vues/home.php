@@ -57,6 +57,7 @@ ob_start();
         .lang {
             margin-top: 0px !important;
             padding-top: 43px;
+            display:none;
         }
 
         .lang img {
@@ -257,7 +258,7 @@ ob_start();
     </button>
 </main>
 
-  <div class="container d-flex justify-content-end pb-5 align-items-right">
+  <div class="container-fluid d-flex justify-content-end pb-5 align-items-right">
               
     <img src="<?= SITE_URL ?>/assets/img/logo_minesec2.png" alt=""style="width: 130px; height: 130px; margin-right:7px">
   </div>

@@ -124,6 +124,12 @@ function fiche_visite_rdv()
     $dirs=str_replace("controllers", "", $dirs);
     require $dirs.'vues/fiche_visite_rdv.php';
 }
+function modifEmploye()
+{
+    $dirs=__DIR__;
+    $dirs=str_replace("controllers", "", $dirs);
+    require $dirs.'vues//modifEmploye.php';
+}
 ?>
 
 

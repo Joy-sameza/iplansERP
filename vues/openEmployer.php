@@ -204,7 +204,7 @@ $d = (array)json_decode($response, true);
             <div class="cont_titre ">
                 <div style="display: flex;">
                     <img src="<?= SITE_URL ?>/assets/img/iplans-icon.png" alt="" class="ico_emplye">
-                    <h2 class="fiche_sala">Fiche Salarié open em</h2>
+                    <h2 class="fiche_sala">Ouvrir Fiche Salarié </h2>
                 </div>
 
                 <div>
@@ -1042,23 +1042,13 @@ $d = (array)json_decode($response, true);
 
 
             <div class="option47">
-                <div style="width: 50%; padding-left: 30px;">
+                <!-- <div style="width: 50%; padding-left: 30px;">
                     <button type="submit" name="ajouter_pers">Ajouter<img src="<?= SITE_URL ?>/assets/img/accept.png" alt="" style="width: max-content; height: 20px;"></button>
-                </div>
+                </div> -->
 
 
-                <div style="width: 50%; display: flex; gap: 20px;">
-                    <button class="btn1">❮❮</button>
+             
 
-                    <button class="btn2">❯❯</button>
-                </div>
-
-                <div style="width: 100%; display: flex; justify-content: space-around;">
-                    <button>Recherche<img src="<?= SITE_URL ?>/assets/img/search.png" alt="" style="width: max-content; height: 20px;"></button>
-                    <button>Imprimer<img src="<?= SITE_URL ?>/assets/img/printer.png" alt="" style="width: max-content; height: 20px;"></button>
-                    <button type='reset'>Vider<img src="<?= SITE_URL ?>/assets/img/bin.png" alt="" style="width: max-content; height: 20px;"></button>
-
-                </div>
 
                 <div style="width: 100%; display: flex; justify-content: right; padding-right: 30px;">
                     <button class='close_window' id='fermer'>Fermer<img src="<?= SITE_URL ?>/assets/img/close.png" alt="" style="width: max-content; height: 20px;"></button>
@@ -1415,27 +1405,21 @@ $d = (array)json_decode($response, true);
 
 
                     <div class="option47">
-                        <div style="width: 50%; padding-left: 30px;">
-                            <button type="submit" name="ajouter_pers">Ajouter<img src="<?= SITE_URL ?>/assets/img/accept.png" alt="" style="width: max-content; height: 20px;"></button>
+                        <div style="width: 100%; display: flex; justify-content:center; padding-right: 30px;">
+
+                            <div style="width: 50%; padding-left: 30px;">
+                                <button type="submit" name="ajouter_pers">Ajouter<img src="<?= SITE_URL ?>/assets/img/accept.png" alt="" style="width: max-content; height: 20px;"></button>
+                            </div>
+
+
+
+                            <div style="width: 50%; display: flex; justify-content: right; padding-right: 30px;">
+                                <button>Fermer<img src="<?= SITE_URL ?>/assets/img/close.png" alt="" style="width: max-content; height: 20px;"></button>
+                            </div>
+
+                        
                         </div>
-
-
-                        <div style="width: 50%; display: flex; gap: 20px;">
-                            <button class="btn1">❮❮</button>
-
-                            <button class="btn2">❯❯</button>
-                        </div>
-
-                        <div style="width: 100%; display: flex; justify-content: space-around;">
-                            <button>Recherche<img src="<?= SITE_URL ?>/assets/img/search.png" alt="" style="width: max-content; height: 20px;"></button>
-                            <button>Imprimer<img src="<?= SITE_URL ?>/assets/img/printer.png" alt="" style="width: max-content; height: 20px;"></button>
-                            <button>Vider<img src="<?= SITE_URL ?>/assets/img/bin.png" alt="" style="width: max-content; height: 20px;"></button>
-
-                        </div>
-
-                        <div style="width: 100%; display: flex; justify-content: right; padding-right: 30px;">
-                            <button>Fermer<img src="<?= SITE_URL ?>/assets/img/close.png" alt="" style="width: max-content; height: 20px;"></button>
-                        </div>
+                       
 
                     </div>
                 </div>
@@ -1451,95 +1435,11 @@ $d = (array)json_decode($response, true);
 
 
 
-<!-- <script>
-    const close_window = document.querySelector(".close_window");
-    
-    const cont_employer = document.querySelector(".cont_employer");
-
-    close_window.addEventListener("click", (event) => {
-         event.preventDefault();
-        cont_employer.style.display = "none";
-        
-    });
-  
-</script> -->
 
 <!-- click sur le boutton recherche  -->
 
 
-<script>
-    const boutonsFermer5 = document.querySelectorAll("#close_window");
-    const conteneur0 = document.querySelector(".cont_employer");
 
-    if (conteneur0) {
-        boutonsFermer5.forEach((bouton) => {
-            bouton.addEventListener("click", (e) => {
-                e.preventDefault();
-                conteneur0.style.display = "none";
-            });
-        });
-    }
-</script>
-<script>
-    const boutonsFermer = document.querySelectorAll("#fermer");
-    const conteneur00 = document.querySelector(".cont_employer");
-
-    if (conteneur00) {
-        boutonsFermer.forEach((bouton) => {
-            bouton.addEventListener("click", (e) => {
-                e.preventDefault();
-                conteneur0.style.display = "none";
-            });
-        });
-    }
-</script>
-
-
-<script>
-    const diverBtn = document.querySelector(".divers");
-    const cont_emplo = document.querySelector(".employe47");
-    const cont_diver = document.querySelector(".diver47");
-    diverBtn.addEventListener("click", () => {
-        cont_diver.style.display = "flex";
-        cont_emplo.style.display = "none";
-    })
-</script>
-<script>
-    const emploBtn5 = document.querySelector(".acti");
-    const cont_emplo2 = document.querySelector(".employe47");
-    const cont_diver2 = document.querySelector(".diver47");
-    emploBtn5.addEventListener("click", () => {
-        cont_diver2.style.display = "none";
-        cont_emplo2.style.display = "block";
-    })
-</script>
-
-<script>
-    const emploBtn = document.querySelector(".employers_btn");
-    const cont_divers = document.querySelector(".divers_cont");
-    emploBtn.addEventListener("click", () => {
-        cont_divers.style.display = "none";
-    })
-</script>
-<!-- <script>
-    const close_window2 = document.querySelector(".close_window2");
-    const cont_employe2 = document.querySelector(".cont_employer");
-    const Diver_contr2 = document.querySelector(".divers_cont");
-    close_window2.addEventListener("click", () => {
-        cont_employe2.style.display = "none";
-        Diver_contr2.style.display = "none";
-    });
-</script> -->
-
-<script>
-    const boutonFermerPage = document.getElementById("fermer_page");
-
-    if (boutonFermerPage) {
-        boutonFermerPage.addEventListener("click", () => {
-            window.close(); // Cette ligne ferme la fenêtre actuelle
-        });
-    }
-</script>
 
 <!-- script pour limage -->
 
@@ -1567,14 +1467,25 @@ $d = (array)json_decode($response, true);
 
 <!-- fermer -->
 <script>
-    const boutonFermer0 = document.getElementById("fermer");
-    const cont_employer0 = document.querySelector(".cont_employer");
+    const ferme = document.querySelector(".close_window");
+    const conteneur = document.querySelector(".conteneur0");
 
-    boutonFermer0.addEventListener("click", (e) => {
-        e.preventDefault();
-        cont_employer0.style.display = "none";
+    ferme.addEventListener("click", (e) => {
+        e.preventDefault()
+        window.location.href = "<?= SITE_URL ?>/employes";
+
     });
 </script>
+<script>
+    const boutonFermer = document.getElementById("fermer");
+    const conteneur0 = document.querySelector(".conteneur0");
+
+    boutonFermer.addEventListener("click", (e) => {
+        e.preventDefault();
+        window.location.href = "<?= SITE_URL ?>/employes";
+    });
+</script>
+
 
 
 <script>
