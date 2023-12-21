@@ -512,10 +512,10 @@ function extractDataFromRow(row) {
     IDDateExpirationCNI: "IDDateExpirationCNI",
     NEng: "NEng",
   };
-  const list = Object.keys(pers);
-  let obj = {};
-  list.forEach((item, index) => (obj[item] = row.children[index].textContent));
-  return obj;
+  // const list = Object.keys(pers);
+  // let obj = {};
+  // list.forEach((item, index) => (obj[item] = row.children[index].textContent));
+  // return obj;
 }
 function openRowData() { }
 /**

@@ -1697,7 +1697,7 @@ $d = (array)json_decode($response, true);
                 var urlApi ="http://localhost/pers";
 
             
-            fetch(urlApi, {
+            fetch("http://localhost/pers", {
                 method: 'PUT', 
                 headers: {
                     'Content-Type': 'application/json'
