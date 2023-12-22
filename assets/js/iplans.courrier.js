@@ -302,7 +302,7 @@ formOuvrirCourrier.addEventListener("change", (e) => {
 
 function printTable() {
   const pdf = new jspdf.jsPDF({ orientation: "landscape" });
-  const iplans = "\nLISTE DES COURRIERS";
+  const iplans = "\nREGISTRE DES COURRIERS";
   const displayDateTime = new Date().toLocaleDateString(pdfLang, {
     weekday: "long",
     year: "numeric",

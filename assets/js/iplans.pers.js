@@ -179,6 +179,15 @@ function handleChangeEvent(event) {
  * @param {Event} event The triggering event
  */
 function handlePrintTableClick() {
+  const displayDateTime = new Date().toLocaleDateString(pdfLang, {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+  });
+  const nothing=" ";
   const pdf = new jspdf.jsPDF({ orientation: "landscape", format: "a4" });
   pdf.addImage(
     SITE_URL + "/assets/img/iplans logo.png",
@@ -188,7 +197,7 @@ function handlePrintTableClick() {
     2.969 * 50 * 0.25,
     1 * 50 * 0.25
   );
-  const iplans = "\nLISTE DES EMPLOYEE";
+  const iplans = "\nREGISTRE DES EMPLOYEES";
 
   const jsonData = pdf.autoTableHtmlToJson(
     document.getElementById("myTable"),
@@ -196,18 +205,18 @@ function handlePrintTableClick() {
   );
 
   const printableRows = {
-    civilite: 0,
-    nom: 1,
-    prenom: 2,
-    Fonction: 3,
-    phone: 4,
-    Matricule: 6,
-    Email: 9,
+    civilite: 2,
+    nom: 3,
+    prenom: 4,
+    Fonction: 5,
+    phone: 6,
+    Matricule: 8,
+    Email: 11,
     date_entree: 33,
     date_sortie: 32,
   };
   pdf.setFontSize(10);
-  pdf.text(iplans, 10, 25);
+  pdf.text(iplans+nothing+nothing+nothing+nothing+nothing+displayDateTime, 10, 25);
   const filteredData = [];
   const headings = [];
 

@@ -3,6 +3,9 @@ $title = 'accueil';
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
+
+
+
 $url = $_SERVER["REQUEST_URI"];
 $query = parse_url($url, PHP_URL_QUERY);
 if ($query == "lang=en") {
@@ -23,38 +26,149 @@ if ($query == "lang=en") {
     }
 }
 
+    if (isset($_POST['ajouter_pers2'])) {
+        $test = (array)$_SESSION['formData'];
+        $id = $test['NEng'];
 
-ob_start();
-?>
-<?php
-require_once "./include/config.php";
-ini_set("date.timezone", "Africa/Douala");
-$curl = curl_init();
+        // Get the form data
+        $civilite = $_POST['civilite'] ?? $test['civilite'];
+        $genre = $_POST['genre'] ?? 0;
+        $nom = $_POST['nom'] ?? $test['nom'];
+        $prenom = $_POST['prenom'] ?? $test['prenom'];
+        $cni = $_POST['cni'] ?? $test['cni'];
+        $fait = $_POST['fait'] ?? $test['fait'];
+        $expire = $_POST['expire'] ?? $test['expire'];
+        $adresse = $_POST['adresse'] ?? $test['adresse'];
+        $tel = $_POST['tel'] ?? $test['tel'];
+        $telpro = $_POST['telpro'] ?? $test['telpro'];
+        $siteagence = $_POST['siteagence'] ?? $test['siteagence'];
+        $direction = $_POST['direction'] ?? $test['direction'];
+        $sousdirection = $_POST['sousdirection'] ?? $test['sousdirection'];
+        $service = $_POST['service'] ?? $test['service'];
+        $departement = $_POST['departement1'] ?? $test['departement1'];
+        $posteoccupe = $_POST['fonction'] ?? $test['fonction'];
+        $datenaissssance = $_POST['datenaissssance'] ?? $test['datenaissssance'];
+        $lieunaissance = $_POST['lieunaissance'] ?? $test['lieunaissance'];
+        $nompere = $_POST['nompere'] ?? $test['nompere'];
+        $nommere = $_POST['nommere'] ?? $test['nommere'];
+        $nomurgence = $_POST['nomurgence'] ?? $test['nomurgence'];
+        $numerourgence = $_POST['numerourgence'] ?? $test['numerourgence'];
+        $email = $_POST['email'] ?? $test['email'];
+        $emailpro = $_POST['emailpro'] ?? $test['emailpro'];
 
-curl_setopt_array($curl, [
-    CURLOPT_URL => PERS_API_URL,
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_ENCODING => "",
-    CURLOPT_MAXREDIRS => 10,
-    CURLOPT_TIMEOUT => 30,
-    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-    CURLOPT_CUSTOMREQUEST => "GET",
-]);
 
-$response = curl_exec($curl);
-$err = curl_error($curl);
-$data = [];
+        $lundi1 = $_POST['lundi1'] ?? 0;
+        $mardi1 = $_POST['mardi1'] ?? 0;
+        $mercredi1 = $_POST['mercredi1'] ?? 0;
+        $jeudi1 = $_POST['jeudi1'] ?? 0;
+        $vendredi1 = $_POST['vendredi1'] ?? 0;
+        $samedi1 = $_POST['samedi1'] ?? 0;
+        $dimanche1 = $_POST['dimanche1'] ?? 0;
 
-curl_close($curl);
+        $loge = $_POST['loge'] ?? 0;
+        $assure = $_POST['assure'] ?? 0;
+        $nouri = $_POST['nouri'] ?? 0;
 
-if ($err) {
-    $_SESSION['error'] = true;
-    return;
-}
-$d = (array)json_decode($response, true);
-//var_dump($d);
-//exit();
-?>
+
+        $nombreenfant = $_POST['nombreenfant'] ?? $test['nombreenfant'];
+        $heuredebut = $_POST['heuredebut'] ?? $test['heuredebut'];
+        $heurefin = $_POST['heurefin'] ?? $test['heurefin'];
+        $conventioncollective = $_POST['conventioncollective'] ?? $test['conventioncollective'];
+        $echellon = $_POST['echellon'] ?? $test['echellon'];
+        $categorie = $_POST['categorie'] ?? $test['categorie'];
+        $salairebase = (int)$_POST['salairebase'] ?? $test['salairebase'];
+        $heuresemaine = $_POST['heuresemaine'] ?? $test['heuresemaine'];
+        $tauxhoriare = $_POST['tauxhoriare'] ?? $test['tauxhoriare'];
+        $gradesalarie = $_POST['gradesalarie'] ?? $test['gradesalarie'];
+        $genresalarie2 = $_POST['genresalarie2'] ?? $test['genresalarie2'];
+        $contrat = $_POST['contrat'] ?? $test['contrat'];
+        $identifiantinterne = $_POST['identifiantinterne'] ?? $test['identifiantinterne'];
+        $matriculeinterne = $_POST['matriculeinterne'] ?? $test['matriculeinterne'];
+        $matriculesocial = $_POST['matriculesocial'] ?? $test['matriculesocial'];
+        $numenregistrement = $_POST['numenregistrement'] ?? $test['numenregistrement'];
+        $NIU = $_POST['NIU'] ?? $test['NIU'];
+        $dateentree = $_POST['dateentree'] ?? $test['dateentree'];
+        $datecontrat = $_POST['datecontrat'] ?? $test['datecontrat'];
+        $datedepart = $_POST['datedepart'] ?? $test['datedepart'];
+        $motifdepart = $_POST['motifdepart'] ?? $test['motifdepart'];
+
+        $data = json_encode([
+            "Site" => "mcs",
+            "civilite" => $civilite,
+            "nom" => $nom,
+            "prenom" => $prenom,
+            "Matricule" => $matriculeinterne,
+            "MatriculeInterne" => $matriculeinterne,
+            "cni" => $cni,
+            "LieuDelivranceCNI" => $fait,
+            "DateExpirationCNI" => $expire,
+            "Fonction" => 0,
+            "departement1" => $posteoccupe,
+            "Direction" => $direction,
+            "SousDirection" => $sousdirection,
+            "Service" => $service,
+            "Email" => $email,
+            "EmailProfessionnel" => $emailpro,
+            "phone" => $tel,
+            "TelephoneProfessionne" => $telpro,
+            "Adresse" => "douala",
+            "Sexe" => $genre,
+            "dnais" => $datenaissssance,
+            "npere" => $nompere,
+            "nmere" => $nommere,
+            "vnais" => $lieunaissance,
+            "nurg" => $nomurgence,
+            "nuurg" => $numerourgence,
+            "Convention" => $conventioncollective,
+            "categorie" => $categorie,
+            "Echelon" => $echellon,
+            "SalaireBaseMensuel" => $salairebase,
+            "genre_salarie" => $gradesalarie,
+            "date_entree" => $dateentree,
+            "date_contrat" => $datecontrat,
+            "type_contrat" => $contrat,
+            "motif_depart" => $motifdepart,
+            "NombreEnfant" => $nombreenfant,
+
+            "CodeAgence" => "252525"
+
+        ]);
+        $curl = curl_init();
+
+        curl_setopt_array($curl, [
+            CURLOPT_URL => PERS_API_URL . $id,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "PATCH",
+            CURLOPT_POSTFIELDS => $data,
+            CURLOPT_HTTPHEADER => [
+                "Content-Type: application/json"
+            ],
+        ]);
+
+        $response = (array)json_decode(curl_exec($curl));
+        header('Location: '.'/Iplans/employes');
+        echo "<script>
+    swal({
+        icon: 'success',
+        text: 'employes mise a jour avec succès...',
+        timer: 3000,
+        onOpen: function(){
+            swal.showLoading()
+        }
+    }).then(function(){
+        window.open('" . SITE_URL . "/employees','_self');
+    });
+</script>";
+
+
+        ob_start();
+    }
+    ?>
+
 <link rel="stylesheet" href="<?= SITE_URL ?>/assets/css/tableau.css">
 <link rel="stylesheet" href="<?= SITE_URL ?>/assets/css/index5.css">
 <link href="<?= SITE_URL ?>/assets/css/Divers.css" rel="stylesheet">
@@ -194,7 +308,7 @@ $d = (array)json_decode($response, true);
 
 <!--- debut du formulaire generale---->
 
-<form id='formu_show'>
+<form id='formu_show' method="post">
 
 
 
@@ -316,19 +430,19 @@ $d = (array)json_decode($response, true);
                             </div>
                             <div class="idntite8">
                                 <label class="mt-3" for="">Site (Agence)</label>
-                            <input type="text" class="form-control mt-3" name="nompere" id="agenceBanque" value="0000">
+                            <input type="text" class="form-control mt-3" name="siteagence" id="agenceBanque" value="0000">
                             </div>
                             <div class="idntite9">
                                 <label class="mt-3" for="">Direction </label>
-                                <input type="text" class="form-control mt-3" name="Direction" id="Direction" value="0000">
+                                <input type="text" class="form-control mt-3" name="direction" id="Direction" value="0000">
                             </div>
                             <div class="idntite10">
                                 <label class="mt-3" for="">Sous-Direction </label>
-                               <input type="text" class="form-control mt-3" name="nompere" id="SousDirection" value="0000">
+                               <input type="text" class="form-control mt-3" name="sousdirection" id="SousDirection" value="0000">
                             </div>
                             <div class="idntite11">
                                 <label class="mt-3" for="">Service </label>
-                               <input type="text" class="form-control mt-3" name="nom" id='Service' value="0000" >
+                               <input type="text" class="form-control mt-3" name="service" id='Service' value="0000" >
                             </div>
                             <div class="idntite12">
                                 <label class="mt-3" for="">Departement </label>
@@ -402,7 +516,7 @@ $d = (array)json_decode($response, true);
                                 <div>
                                     <label class="mt-3" for="">Lieu de Naissance</label>
                                  
-                                    <input type="text" class="form-control mt-3" style="width: 80%; margin-right: 30%;" name="nom" id='vnais' value="0000">
+                                    <input type="text" class="form-control mt-3" style="width: 80%; margin-right: 30%;" name="lieunaissance" id='vnais' value="0000">
                                 </div>
                                 <div>
                                     <label class="mt-3" for="">Nom du Pere</label>
@@ -1043,7 +1157,7 @@ $d = (array)json_decode($response, true);
 
             <div class="option47 mt-3">
                 <div style="width: 50%; padding-left: 70px;">
-                    <button type="button" class='bg-success' onclick="enregistrerModification()" id='modif' name="ajouter_pers">Enregistrer les modifications<img src="<?= SITE_URL ?>/assets/img/set.png" alt="" style="width: max-content; height: 20px;"></button>
+                    <button type="submit" class='bg-success'  id='modif' name="ajouter_pers2">Enregistrer les modifications<img src="<?= SITE_URL ?>/assets/img/set.png" alt="" style="width: max-content; height: 20px;"></button>
                 </div> 
 
 
@@ -1588,7 +1702,8 @@ $d = (array)json_decode($response, true);
 
 
         // Remplir le formulaire avec les données
-            var nom = document.getElementById("nom").value = formData.nom;
+          //  var NEng= document.getElementById("NEng").value ;
+            var nom = document.getElementById("nom").value ;
             // document.getElementById("prenom").value = formData.prenom || '';
 
             var prenom = document.getElementById("prenom").value ;
@@ -1632,10 +1747,8 @@ $d = (array)json_decode($response, true);
           var IDDateExpirationCNI=  document.getElementById("IDDateExpirationCNI").value;
 
 
-
         
             var newFormData = {
-               
                 nom: nom,
                 prenom: prenom,
                 fonction: fonction,
@@ -1694,17 +1807,17 @@ $d = (array)json_decode($response, true);
 
 
 
-                var urlApi ="http://localhost/pers";
+                let urlApi ="http://localhost/pers/6";
 
             
             fetch(urlApi, {
-                method: 'PUT', 
+                method: 'PUT',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    "Accept": 'application/json'
                 },
                 body: JSON.stringify(newFormData)
-            })
-                .then(response => {
+            }).then(response => {
                     if (!response.ok) {
                         throw new Error('La requête a échoué');
                     }
@@ -1730,7 +1843,6 @@ $d = (array)json_decode($response, true);
 
 
 
-
              
     }
 
@@ -1744,7 +1856,55 @@ $d = (array)json_decode($response, true);
 
 
 
-
+<?php
+//require_once "./include/config.php";
+//ini_set("date.timezone", "Africa/Douala");
+//if(isset($_POST['jouter_pers'])) {
+//    $curlHandle = curl_init();
+//
+//    $curlOptions = [
+//        CURLOPT_URL => PERS_API_URL . $id,
+//        CURLOPT_RETURNTRANSFER => true,
+//        CURLOPT_ENCODING => "",
+//        CURLOPT_MAXREDIRS => 10,
+//        CURLOPT_TIMEOUT => 30,
+//        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+//        CURLOPT_CUSTOMREQUEST => "PATCH",
+//        CURLOPT_POSTFIELDS => $data,
+//        CURLOPT_HTTPHEADER => [
+//            "Content-Type: application/json"
+//        ],
+//    ];
+//
+//    curl_setopt_array($curlHandle, $curlOptions);
+//
+//    $response = (array)json_decode(curl_exec($curlHandle));
+//    $err = curl_error($curlHandle);
+//
+//    curl_close($curlHandle);
+//    if (is_int($response['rows'])) {
+//        echo "<script>
+//             swal({
+//             icon: 'success',
+//             text: 'mise a jour  avec succès...',
+//             timer: 1000,
+//             onOpen: function(){
+//             swal.showLoading()
+//             }
+//             }).then(function(){
+//                 window.open('" . SITE_URL . "/employes','_self');
+//             });
+//            </script>";
+//    } else {
+//        echo "<script>
+//                    swal({
+//                        icon: 'warning',
+//                        text: 'Désolé! une erreur s est produite',
+//                    });
+//                </script>";
+//    }
+//}
+//?>
 
 <?php
 

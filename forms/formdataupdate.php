@@ -16,7 +16,7 @@ if (!isset($_POST['iplans_submit'])) {
 }
 
 // Get the form data
-$type = $_POST['type'] ?? null;
+$type = $_POST['nom'] ?? null;
 $ref = $_POST['ref'] ?? null;
 $desti = $_POST['desti'] ?? null;
 $objet = $_POST['objet'] ?? null;

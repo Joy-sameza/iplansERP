@@ -148,6 +148,8 @@ if (isset($_POST['ajouter_pers'])) {
     ]);
 
     $response = curl_exec($curl);
+    var_dump($response);
+    header('Location: '.'/Iplans/employes');
     if ($response) {
 
         echo "<script>
@@ -1960,7 +1962,7 @@ ini_set("date.timezone", "Africa/Douala");
             </div>
 
         </td> 
-        <td id='data-NEng' data-NEng ></td> 
+        <td id='data-NEng' data-NEng ></td>
         <td id='civilite' data-civilite></td>
         <td  data-nom id='nom'></td>
         <td  data-prenom id='prenom'></td>
@@ -2230,7 +2232,8 @@ ini_set("date.timezone", "Africa/Douala");
 
             // Récupérer les données de la ligne et les afficher dans le formulaire
             const civilite = targetRow.cells[1].textContent;
-            // const nom = targetRow.cells[2].textContent;
+                const NEng =  targetRow.cells[3].textContent;
+             //const NEng = targetRow.cells[0].textContent;
             const nom = targetRow.querySelector('[data-nom]').textContent;
             const prenom = targetRow.cells[3].textContent;
             const fonction = targetRow.cells[4].textContent;
@@ -2342,7 +2345,7 @@ ini_set("date.timezone", "Africa/Douala");
 
             const targetRow = event.target.closest("tr");
 
-
+            var NEng = targetRow.querySelector('[data-NEng]').textContent;
             var civilite = targetRow.cells[1].textContent;
 
             // const nom = targetRow.cells[2].textContent;
@@ -2386,7 +2389,7 @@ ini_set("date.timezone", "Africa/Douala");
             var IDDateExpirationCNI = targetRow.cells[40].textContent;
 
             var formData = {
-
+              NEng:NEng,
                 nom: nom,
                 prenom: prenom,
                 fonction: fonction,
@@ -2460,10 +2463,10 @@ ini_set("date.timezone", "Africa/Douala");
         $('#myTable').on('click', '.btn-open', function(event) {
 
             const targetRow = event.target.closest("tr");
-            
 
+            //const neng = row.querySelector("[data-NEng]").textContent;
+            var NEng = targetRow.querySelector('[data-NEng]').textContent;
             var civilite = targetRow.cells[1].textContent;
-          
             // const nom = targetRow.cells[2].textContent;
             var nom = targetRow.querySelector('[data-nom]').textContent;
             var prenom = targetRow.cells[3].textContent;
@@ -2505,7 +2508,7 @@ ini_set("date.timezone", "Africa/Douala");
             var IDDateExpirationCNI = targetRow.cells[40].textContent;
 
             var formData = {
-               
+               NEng:NEng,
                 nom: nom,
                 prenom: prenom,
                 fonction: fonction,
@@ -2578,17 +2581,17 @@ ini_set("date.timezone", "Africa/Douala");
         $('#myTable').on('click', '.btn-modif', function(event) {
 
             const targetRow = event.target.closest("tr");
-            
 
-            var civilite = targetRow.cells[1].textContent;
+            var NEng = targetRow.cells[1].textContent;
+            var civilite = targetRow.cells[2].textContent;
           
             // const nom = targetRow.cells[2].textContent;
-            var nom = targetRow.querySelector('[data-nom]').textContent;
-            var prenom = targetRow.cells[3].textContent;
-            var fonction = targetRow.cells[4].textContent;
-            var phone = targetRow.querySelector('[data-phone]').textContent;
-            var pseudo = targetRow.cells[6].textContent;
-            var matricule = targetRow.cells[7].textContent;
+            var nom = targetRow.cells[3].textContent;
+            var prenom = targetRow.cells[4].textContent;
+            var fonction = targetRow.cells[5].textContent;
+            var phone = targetRow.cells[6].textContent;
+            var pseudo = targetRow.cells[7].textContent;
+            var matricule = targetRow.cells[8].textContent;
             var cni= targetRow.cells[9].textContent;
             var email = targetRow.cells[10].textContent;
             var dnais = targetRow.cells[11].textContent;
@@ -2623,7 +2626,8 @@ ini_set("date.timezone", "Africa/Douala");
             var IDDateExpirationCNI = targetRow.cells[40].textContent;
 
             var formData = {
-               
+               NEng:NEng,
+                civilite:civilite,
                 nom: nom,
                 prenom: prenom,
                 fonction: fonction,

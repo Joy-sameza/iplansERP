@@ -798,10 +798,7 @@ class Personne
         $this->foto = htmlspecialchars(strip_tags($new_data['foto'] ?? $current['foto']));
         $this->sexe = htmlspecialchars(strip_tags($new_data['Sexe'] ?? $current['Sexe']));
         $this->signaturenumerique = htmlspecialchars(strip_tags($new_data['SignatureNumerique'] ?? $current['SignatureNumerique']));
-        $this->fingerprint1 = htmlspecialchars(strip_tags($new_data['FingerPrint1'] ?? $current['FingerPrint1']));
-        $this->fingerprint2 = htmlspecialchars(strip_tags($new_data['FingerPrint2'] ?? $current['FingerPrint2']));
-        $this->fingerprint3 = htmlspecialchars(strip_tags($new_data['FingerPrint3'] ?? $current['FingerPrint3']));
-        $this->fingerprint4 = htmlspecialchars(strip_tags($new_data['FingerPrint4'] ?? $current['FingerPrint4']));
+
         $this->image = htmlspecialchars(strip_tags($new_data['image'] ?? $current['image']));
         $this->signature = htmlspecialchars(strip_tags($new_data['signature'] ?? $current['signature']));
         $this->status = htmlspecialchars(strip_tags($new_data['STATUS'] ?? $current['STATUS']));
@@ -956,13 +953,13 @@ class Personne
         $stmt->bindParam(':status', $this->status, PDO::PARAM_STR);
         $stmt->bindParam(':typepers', $this->typepers, PDO::PARAM_STR);
         $stmt->bindParam(':badge', $this->badge, PDO::PARAM_STR);
-        $stmt->bindParam(':dnais', $this->dnais, PDO::PARAM_STR);
+        $stmt->bindParam(':dnais', $this->dnais, PDO::PARAM_STR_CHAR);
         $stmt->bindParam(':iddatenaissance', $iddatenaissance, PDO::PARAM_INT);
         $stmt->bindParam(':npere', $this->npere, PDO::PARAM_STR);
         $stmt->bindParam(':nmere', $this->nmere, PDO::PARAM_STR);
-        $stmt->bindParam(':vnais', $this->vnais, PDO::PARAM_STR);
-        $stmt->bindParam(':nurg', $this->nurg, PDO::PARAM_STR);
-        $stmt->bindParam(':nuurg', $this->nuurg, PDO::PARAM_STR);
+        $stmt->bindParam(':vnais', $this->vnais, PDO::PARAM_STR_CHAR);
+        $stmt->bindParam(':nurg', $this->nurg, PDO::PARAM_INT);
+        $stmt->bindParam(':nuurg', $this->nuurg, PDO::PARAM_STR_CHAR);
         $stmt->bindParam(':threadindex', $this->threadindex, PDO::PARAM_STR);
         $stmt->bindParam(':threadindex1', $this->threadindex1, PDO::PARAM_STR);
         $stmt->bindParam(':lundi', $this->lundi, PDO::PARAM_STR);
