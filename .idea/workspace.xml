@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7d0e5bba-8be3-4af7-9bd3-b337ff71621c" name="Changes" comment="enregistrement employes">
+    <list default="true" id="7d0e5bba-8be3-4af7-9bd3-b337ff71621c" name="Changes" comment="enregistrement employes2">
+      <change afterPath="$PROJECT_DIR$/forms/formupdatepers.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vues/list_abscences.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/list_abscences.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vues/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Personne.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Personne.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/iplans.courrier.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/iplans.courrier.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/iplans.pers.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/iplans.pers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forms/formdataupdate.php" beforeDir="false" afterPath="$PROJECT_DIR$/forms/formdataupdate.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vues/modifEmploye.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/modifEmploye.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vues/tableau.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/tableau.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -62,7 +66,7 @@
       <workItem from="1702020741543" duration="7490000" />
       <workItem from="1702298799756" duration="18235000" />
       <workItem from="1702817538342" duration="7482000" />
-      <workItem from="1702919719640" duration="5551000" />
+      <workItem from="1702919719640" duration="35761000" />
     </task>
     <task id="LOCAL-00001" summary="print succed">
       <created>1699875368090</created>
@@ -113,7 +117,14 @@
       <option name="project" value="LOCAL" />
       <updated>1702924214998</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="enregistrement employes2">
+      <created>1702946133719</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1702946133719</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -138,6 +149,7 @@
     <MESSAGE value="mise a jour d accueil" />
     <MESSAGE value="verification" />
     <MESSAGE value="enregistrement employes" />
-    <option name="LAST_COMMIT_MESSAGE" value="enregistrement employes" />
+    <MESSAGE value="enregistrement employes2" />
+    <option name="LAST_COMMIT_MESSAGE" value="enregistrement employes2" />
   </component>
 </project>
