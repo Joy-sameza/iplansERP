@@ -2688,7 +2688,7 @@ ini_set("date.timezone", "Africa/Douala");
                 });
 
             
-           window.location.href = 'http://localhost/Iplans/modifEmploye';
+           //window.location.href = 'http://localhost/Iplans/modifEmploye';
 
 
         
@@ -2708,6 +2708,7 @@ ini_set("date.timezone", "Africa/Douala");
 
 
             const url = `http://localhost/pers/${neng}`;
+           // row.remove();
          
 
             // Effectuer la requête DELETE
