@@ -27,6 +27,13 @@ ob_start();
 
 <!---------------- Main section ------------------------>
 <link href="<?= SITE_URL ?>/assets/css/style.css" rel="stylesheet">
+<div class="container-fluid" style='position:relative;'>
+     <button id="retour" class='ferme bout-bas' style='position:absolute;right: 60px;top:25px;'>
+                        Retour
+           <img src="<?= SITE_URL ?>/assets/img/previous.png" alt="" style="width: max-content; height: 20px;">
+      </button>
+     
+</div>
 
 
            <div class="container   d-flex justify-content-center align-items-center">
@@ -44,6 +51,20 @@ ob_start();
 
 
         <style>
+              #retour{
+            width: 120px;
+            height: 45px;
+            border-radius: 5px;
+            border: 1px solid gray;
+             transition: background-color 0.3s, color 0.3s;
+              font-size: 14px;
+           
+            
+            }
+             #retour:hover {
+            background-color: #45a049;
+            color: #fff;
+            }
             a {
                     text-decoration: none;
                 }
@@ -195,15 +216,15 @@ ob_start();
 
     </div>
 
-    <button type="button" class="func" style='top:1%'>
+    <button type="button" class="func" style='top:1%'  onclick="redirectToACC()">
         <img src="<?= SITE_URL ?>/assets/img/house.png" alt=""
             style="width: 40px; height: 40px; margin-right:7px">Accueil
     </button>
 
 
-    <button type="button" class="func cent-bout">
+    <button type="button" class="func cent-bout" onclick="redirectToCP()">
         <img src="<?= SITE_URL ?>/assets/img/debate.png" alt=""
-            style="width: 40px; height: 40px; margin-right:7px">Communication personnelle
+            style="width: 40px; height: 40px; margin-right:7px">Communication professionnelle
     </button>
 
 
@@ -221,7 +242,7 @@ ob_start();
     <button type="button" class="func" data-hotel onclick="redirectToRA()">
         
 
-             <a href="<?= SITE_URL ?>/list-visit-rdv"style="width: 40px; height: 40px; margin-right:7pxlor: black">
+             <a href="<?= SITE_URL ?>/home/list-visit-rdv"style="width: 40px; height: 40px; margin-right:7pxlor: black">
            <img src="<?= SITE_URL ?>/assets/img/receptionist.png" alt=""
             style="width: 40px; height: 40px; margin-right:7px">Réception/Accueil
        </a>
@@ -247,13 +268,13 @@ ob_start();
 
 
     <button type="button" class="func" id="rhumain" onclick="redirectToRH()">
-       <a href="<?= SITE_URL ?>/resource_humaine"style="width: 40px; height: 40px; margin-right:7pxlor: black">
+       <a href="<?= SITE_URL ?>/home/resource_humaine"style="width: 40px; height: 40px; margin-right:7pxlor: black">
             <img src="<?= SITE_URL ?>/assets/img/human.png" alt="" style="width: 40px; height: 40px; margin-right:7px">GRH
        </a>
     </button>
 
 
-    <button type="button" class="func cent-bout">
+    <button type="button" class="func cent-bout" onclick="redirectToGA()">
         <img src="<?= SITE_URL ?>/assets/img/data-management.png" alt=""style="width: 40px; height: 40px; margin-right:7px">Gestion Administrative
     </button>
 </main>
@@ -286,16 +307,39 @@ ob_start();
     <script>
         function redirectToRH() {
        
-            window.location.href = '<?= SITE_URL ?>/resource_humaine';
+            window.location.href = '<?= SITE_URL ?>/home/resource_humaine';
         }
     </script>
     <script>
         function redirectToRA() {
        
-            window.location.href = '<?= SITE_URL ?>/list-visit-rdv';
+            window.location.href = '<?= SITE_URL ?>/home/list-visit-rdv';
         }
     </script>
+    <script>
+        function redirectToACC() {
+       
+            window.location.href = '<?= SITE_URL ?>/home/acceuil';
+        }
+        function redirectToCP() {
+       
+            window.location.href = '<?= SITE_URL ?>/home/com_pro';
+        }
+        function redirectToGA() {
+       
+            window.location.href = '<?= SITE_URL ?>/home/gestion_administrative';
+        }
+    </script>
+<!-- secript pour retour  -->
+  <script>
+        const bouton = document.getElementById("retour");
+       
 
+        bouton.addEventListener("click", (e) => {
+            e.preventDefault();
+           window.location.href = "<?= SITE_URL ?>/login";
+        });
+    </script>
 
 
 <?php

@@ -40,7 +40,7 @@ ob_start();
 </head>
 
 <body>
-    <div class="container-fluid conteneur0 my-5  border border-2 border-primary" style='width:75%;border-bottom:none;'>
+    <div class="container-fluid conteneur0 my-5  border border-2 border-primary" style='width:85%;border-bottom:none;'>
 
         <div class="row bg-primary border-1  ">
             <div class="cont_titre d-flex justify-content-between  p-1" style='align-items: center;'>
@@ -197,7 +197,7 @@ ob_start();
                         <div style='width:100%;height: 50px;' class='p-1 pt-2 border border-2 mt-2 border-secondary option_cont'>
                             <div class="text-divider-container7">
                                 <div class="text-divider">
-                                    <span>Selection</span>
+                                    <span>Selection7</span>
                                 </div>
                             </div>
                             <div style="display: flex; justify-content: space-between; align-items: center; ">
@@ -214,7 +214,7 @@ ob_start();
                         <div style='width:100%; height: 91px;' class='p-2 border border-1 option_cont border-2 mt-3 border-secondary'>
                             <div class="text-divider-container2">
                                 <div class="text-divider">
-                                    <span>Selection</span>
+                                    <span>Selection2</span>
                                 </div>
                             </div>
                             <div style="display: flex; justify-content: space-between; align-items: center; ">
@@ -395,7 +395,7 @@ ob_start();
     .text-divider-container1 {
         position: absolute;
         top: 14%;
-        left:23%;
+        left:29%;
         transform: translate(-50%, -50%);
         background-color: #edf1f1;
         padding: 0 7px;
@@ -403,8 +403,8 @@ ob_start();
     }
     .text-divider-container7 {
         position: absolute;
-        top: 54%;
-        left:18%;
+        top: 57%;
+        left:21%;
         transform: translate(-50%, -50%);
         background-color: #edf1f1;
         padding: 0 7px;
@@ -414,7 +414,7 @@ ob_start();
     .text-divider-container2 {
         position: absolute;
         top: 10%;
-        left: 20%;
+        left: 24%;
         transform: translate(-50%, -50%);
         background-color: #edf1f1;
         padding: 0 7px;
@@ -423,7 +423,7 @@ ob_start();
     .text-divider-container6 {
         position: absolute;
         top: 10%;
-        left: 20%;
+        left: 24%;
         transform: translate(-50%, -50%);
         background-color: #edf1f1;
         padding: 0 7px;
@@ -433,11 +433,11 @@ ob_start();
     .text-divider-container3 {
         position: absolute;
         top: 12%;
-        left: 47%;
+        left: 50%;
         transform: translate(-50%, -50%);
         background-color: #edf1f1;
         padding: 0 7px;
-        font-size: 14px;
+        font-size: 13px;
     }
     .text-divider-container5 {
         position: absolute;

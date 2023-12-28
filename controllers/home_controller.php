@@ -130,6 +130,36 @@ function modifEmploye()
     $dirs=str_replace("controllers", "", $dirs);
     require $dirs.'vues//modifEmploye.php';
 }
+function acceuil()
+{
+    $dirs=__DIR__;
+    $dirs=str_replace("controllers", "", $dirs);
+    require $dirs.'vues/acceuil.php';
+}
+function openMission()
+{
+    $dirs=__DIR__;
+    $dirs=str_replace("controllers", "", $dirs);
+    require $dirs.'vues/openMission.php';
+}
+function com_pro()
+{
+    $dirs=__DIR__;
+    $dirs=str_replace("controllers", "", $dirs);
+    require $dirs.'vues/com_pro.php';
+}
+function openAbscence()
+{
+    $dirs=__DIR__;
+    $dirs=str_replace("controllers", "", $dirs);
+    require $dirs.'vues/openAbscence.php';
+}
+function gestion_administrative()
+{
+    $dirs=__DIR__;
+    $dirs=str_replace("controllers", "", $dirs);
+    require $dirs.'vues/gestion_administrative.php';
+}
 ?>
 
 

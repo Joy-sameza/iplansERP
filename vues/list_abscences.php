@@ -208,8 +208,9 @@ ob_start();
         <div class="row " >
             <div class="table-responsive debut_tableau w-100 " style='height:400px;'>
                 <table class="table table-bordered " id='myTable' style="position: relative; text-align: center;">
-                    <thead style="position: sticky; top: 0;">
+                    <thead style="position: sticky; top: 0; z-index:999">
                         <tr class="table-secondary text-center table-dark">
+                            <th style='font-size:13px;' class='px-5'>Options</th>
                             <th style='font-size:13px;' class='px-5'>Site</th>
                             <th style='font-size:13px;' class='px-5'>Departement</th>
                             <th style='font-size:13px;' class='px-5'>Civilite</th>
@@ -230,25 +231,7 @@ ob_start();
                         </tr>
                     </thead>
                     <tbody id="fillTableau">
-                        <tr class="table-primary custom-row text-center text-white" style='background-color:#0D6EFD;'>
-                            <td class='text-white' style='background-color:#0D6EFD;'>DEMO</td>
-                            <td class='text-white' style='background-color:#0D6EFD;'>APPLICATION</td>
-                            <td class='text-white' style='background-color:#0D6EFD;'>Mademoiselle</td>
-                            <td class='text-white' style='background-color:#0D6EFD;'>Kamsu Simo </td>
-                            <td class='text-white' style='background-color:#0D6EFD;'>Liliane Diane</td>
-                            <td class='text-white' style='background-color:#0D6EFD;'>Repos</td>
-                            <td class='text-white' style='background-color:#0D6EFD;'>09/10/2023</td>
-                            <td class='text-white' style='background-color:#0D6EFD;'>09/10/2023</td>
-                            <td class='text-white' style='background-color:#0D6EFD;'>MEMO</td>
-                            <td class='text-white' style='background-color:#0D6EFD;'>oui</td>
-                            <td class='text-white' style='background-color:#0D6EFD;'>oui</td>
-                            <td class='text-white' style='background-color:#0D6EFD;'></td>
-                            <td class='text-white' style='background-color:#0D6EFD;'>2021</td>
-                            <td class='text-white' style='background-color:#0D6EFD;'>Demo96e973e691</td>
-                            <td class='text-white' style='background-color:#0D6EFD;'></td>
-                            <td class='text-white' style='background-color:#0D6EFD;'></td>
-                            <td class='text-white' style='background-color:#0D6EFD;'>2</td>
-                        </tr>
+                       
                     </tbody>
                 </table>
             </div>
@@ -345,6 +328,89 @@ ob_start();
 
     <template id="absTemplate">
         <tr class="table-primary custom-row text-center text-white" style="pointer-events: all !important;">
+            <td class='text-white' style='background-color:#0D6EFD;'id='option' >
+        
+        
+                    
+        
+            <div class="d-flex">
+
+                <!-- <button class="bouton bg-success "  id="set">
+                    <i class="fas fa-edit"></i>
+
+                </button> -->
+                <div class="tooltip47">
+                    <button class="bouton bg-success btn-modif"><i class="fas fa-edit"></i>
+                
+                      <span class="tooltiptext47">Modifier</span>
+                    </button>
+                </div>
+
+                <div class="tooltip47">
+                    <button class="bouton btn-open mx-1 "  id="open">
+                        <i class="fas fa-folder-open "></i>
+                           <span class="tooltiptext47">Ouvrir</span>
+                    </button>
+                </div> 
+                
+                <div class="tooltip47">
+                    <button class="bouton bg-danger" onclick='supprimerLigne(this)'  id='delete'>
+                        <i class="fas fa-trash "></i>
+                            <span class="tooltiptext47">Supprimer</span>        
+                    </button>
+                </div>   
+
+                <style>
+                   #option .bouton {
+                        background-color: #238fce;
+                        color: #fff;
+                         padding: 8px 20px;
+                        font-size: 17px;
+
+                        border: none;
+                        border-radius: 5px;
+                        cursor: pointer;
+                        transition: background-color 0.4s ease;
+                        width: max-content;
+                        height: 43px;
+
+
+                    }
+                    
+        .tooltip47 {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .tooltip47 .tooltiptext47 {
+            visibility: hidden;
+            width: 90px;
+            background-color: #f0f004;
+            color: #080808;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 10;
+            top: 116%;
+            left: 50%;
+            margin-left: -32px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 14px;
+        }
+
+        
+        .tooltip47:hover .tooltiptext47 {
+            visibility: visible;
+            opacity: 1;
+        }
+                </style>
+            </div>
+
+      
+        </td>
             <td class='text-white' style='background-color:#0D6EFD;' data-site></td>
             <td class='text-white' style='background-color:#0D6EFD;' data-departement></td>
             <td class='text-white' style='background-color:#0D6EFD;' data-civilite></td>
@@ -926,6 +992,135 @@ ob_start();
         pdf.save("table_employee.pdf");
     }
 </script>
+
+
+
+<script>
+      
+        function supprimerLigne(button) {
+
+            const row = button.closest('tr');
+
+            const neng = row.querySelector("[data-neng]").textContent;
+            console.log('id:',neng)
+
+
+            const url = `http://localhost/permission/${neng}`;
+           // row.remove();
+         
+
+            // Effectuer la requête DELETE
+            fetch(url, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Erreur de suppression : ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Suppression réussie :', data);
+                // Mettez à jour l'interface utilisateur ou effectuez d'autres actions nécessaires
+                // par exemple, supprimer la ligne du tableau
+                row.remove();
+                showAlert('Suppression réussie', 'success', 'L\'élément a été supprimé avec succès.');
+
+            })
+            .catch(error => {
+                console.error('Erreur lors de la suppression :', error);
+                // Gérer les erreurs ou informer l'utilisateur
+            });
+        }
+</script>
+
+
+</script>
+ <script>
+    $(document).ready(function() {
+        $('#myTable').on('click', '.btn-modif', function(event) {
+
+            const targetRow = event.target.closest("tr");
+
+            // var neng = targetRow.querySelector('[data-neng]').textContent;
+            // var site = targetRow.querySelector('[data-site]').textContent;
+            // var departement = targetRow.querySelector('[data-departement]').textContent;
+            // var civilite = targetRow.querySelector('[data-civilite]').textContent;
+            // var block_pointage = targetRow.querySelector('[data-block_pointage]').textContent;
+            // var prenom = targetRow.querySelector('[data-prenom]').textContent;
+            // var motif = targetRow.querySelector('[data-motif]').textContent;
+            // var fin = targetRow.querySelector('[data-fin]').textContent;
+            // var justification = targetRow.querySelector('[data-justification]').textContent;
+            // var recuperable = targetRow.querySelector('[data-recuperable]').textContent;
+            // var deduiresurconges = targetRow.querySelector('[data-deduiresurconges]').textContent;
+            // var anneecomptable = targetRow.querySelector('[data-anneecomptable]').textContent;
+            // var matricule = targetRow.querySelector('[data-matricule]').textContent;
+            // var creepar = targetRow.querySelector('[data-creepar]').textContent;
+            // var accordeepar  = targetRow.querySelector('[data-accordeepar]').textContent;
+            // var archive = targetRow.querySelector('[data-archive]').textContent;
+          
+           
+
+
+
+            var formData_Abs = {
+                neng:neng,
+                nom: nom,
+                prenom: prenom,          
+                civilite:civilite,
+                matricule: matricule,
+                archive:archive,
+                accordeepar:accordeepar,
+                creepar:creepar,
+                anneecomptable:anneecomptable,
+                deduiresurconges:deduiresurconges,
+                recuperable:
+
+
+                
+                destination:destination,
+                site:site,
+                cadre:cadre,
+                departement:departement,
+                passant:passant,
+                duree_de_travail:duree_de_travail,
+                vehicule:vehicule,
+                immatriculation:immatriculation,
+            
+
+
+
+            };
+           
+
+            sessionStorage.setItem('formData_Abs', JSON.stringify(formData_Abs));
+            $.ajax({
+                    type: "POST",
+                    url: "http://localhost/Iplans/openAbscence", 
+                    data: { formData_Abs: JSON.stringify(formData_Abs) },
+                    success: function(response) {
+                        
+                        console.log(response);
+                        console.log('reussi donc ok')
+                    },
+                    error: function(error) {
+                       
+                        console.error(error);
+                        console.error('des erreurs');
+                    }
+                });
+
+
+           window.location.href = 'http://localhost/Iplans/openAbscence';
+
+
+
+        });
+    });
+</script> 
 
 </html>
 

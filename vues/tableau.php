@@ -697,9 +697,9 @@ ini_set("date.timezone", "Africa/Douala");
 
 
 
-    <div class="cont_employer" style="display: none;">
+    <div class="cont_employer " style="display: none;">
         <!----employer formulaire------->
-        <div class="contenue_employers">
+        <div class="contenue_employers mb-4">
             <div class="cont_titre ">
                 <div style="display: flex;">
                     <img src="<?= SITE_URL ?>/assets/img/iplans-icon.png" alt="" class="ico_emplye">
@@ -1548,10 +1548,15 @@ ini_set("date.timezone", "Africa/Douala");
         <style>
             .option47 {
                 display: flex;
+                position: fixed;
+                top:550px;
+                left:20%;
                 justify-content: space-around;
                 align-items: center;
-                width: 100%;
-                height: 7%;
+                 
+                width: 75%;
+               
+                 z-index: 1;
             }
 
             .option47 button {
@@ -1932,15 +1937,26 @@ ini_set("date.timezone", "Africa/Douala");
                     <i class="fas fa-edit"></i>
 
                 </button> -->
-                <button class="bouton bg-success btn-modif" onclick='modifierLigne(this)'><i class="fas fa-edit"></i></button>
-
+                <div class="tooltip47">
+                    <button class="bouton bg-success btn-modif" onclick='modifierLigne(this)'><i class="fas fa-edit"></i>
                 
-                <button class="bouton btn-open "  id="open">
-                    <i class="fas fa-folder-open "></i>
-                </button>
-                <button class="bouton bg-danger" onclick='supprimerLigne(this)'  id='delete'>
-                    <i class="fas fa-trash "></i>
-                </button>
+                      <span class="tooltiptext47">Modifier</span>
+                    </button>
+                </div>
+
+                <div class="tooltip47">
+                    <button class="bouton btn-open "  id="open">
+                        <i class="fas fa-folder-open "></i>
+                           <span class="tooltiptext47">Ouvrir</span>
+                    </button>
+                </div> 
+                
+                <div class="tooltip47">
+                    <button class="bouton bg-danger" onclick='supprimerLigne(this)'  id='delete'>
+                        <i class="fas fa-trash "></i>
+                            <span class="tooltiptext47">Supprimer</span>        
+                    </button>
+                </div>   
 
                 <style>
                    #option .bouton {
@@ -1958,6 +1974,36 @@ ini_set("date.timezone", "Africa/Douala");
 
 
                     }
+                    
+        .tooltip47 {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .tooltip47 .tooltiptext47 {
+            visibility: hidden;
+            width: 90px;
+            background-color: #f0f004;
+            color: #080808;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 10;
+            top: 116%;
+            left: 50%;
+            margin-left: -32px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 14px;
+        }
+
+        
+        .tooltip47:hover .tooltiptext47 {
+            visibility: visible;
+            opacity: 1;
+        }
                 </style>
             </div>
 
@@ -2182,7 +2228,7 @@ ini_set("date.timezone", "Africa/Douala");
 
         bouton.addEventListener("click", (e) => {
             e.preventDefault();
-           window.location.href = "<?= SITE_URL ?>/resource_humaine";
+           window.location.href = "<?= SITE_URL ?>/home/resource_humaine";
         });
     </script>
 
@@ -2688,7 +2734,7 @@ ini_set("date.timezone", "Africa/Douala");
                 });
 
             
-           //window.location.href = 'http://localhost/Iplans/modifEmploye';
+           window.location.href = 'http://localhost/Iplans/modifEmploye';
 
 
         

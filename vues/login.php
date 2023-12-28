@@ -36,11 +36,17 @@ ob_start();
     <link href="<?= SITE_URL ?>/assets/css/style.css" rel="stylesheet">
 <main2 >
     <style>
-		.lange{
+		.lang{
 			font-size: 25px;
             margin-top: 47px;
 			display: none;
 		}
+        
+        .lang{
+            font-size: 25px;
+            margin-top: 47px;
+            display: none;
+        }
 		.lang{
 			    margin-top: 0px!important;
 				padding-top: 43px;
@@ -54,11 +60,20 @@ ob_start();
 	</style>
 
 <link href="<?= SITE_URL ?>/assets/css/style.css" rel="stylesheet">
+<div class="container-fluid" style='position:relative;'>
+     <button id="retour" class='ferme bout-bas' style='position:absolute;right: 60px;top: -50px;'>
+                        Retour
+           <img src="<?= SITE_URL ?>/assets/img/previous.png" alt="" style="width: max-content; height: 20px;">
+      </button>
+     
+</div>
 <main>
+    
 
     <h1><u>CONNEXION</u></h1>
     <form method="post" action="">
         <div class="interface mx-4">
+            
             <div class='container d-flex justify-content-between mb-4'>
                  <?= $lang['login'] ?> <input type="text" class='form-control' name="email" required>
             </div>
@@ -67,6 +82,19 @@ ob_start();
             </div>    
         </div>
         <style>
+             #retour{
+            width: 120px;
+            height: 45px;
+            border-radius: 5px;
+            border: 1px solid gray;
+             transition: background-color 0.3s, color 0.3s;
+           
+            
+            }
+             #retour:hover {
+            background-color: #45a049;
+            color: #fff;
+            }
             .interface input {
                 position: center;
                 border-radius: 7px;
@@ -151,7 +179,7 @@ ob_start();
         </div>
     </form>
 </main>
-  <div class="container d-flex justify-content-end pb-5 align-items-right">
+  <div class="container-fluid d-flex justify-content-end pb-5 align-items-right">
               
     <img src="<?= SITE_URL ?>/assets/img/logo_minesec2.png" alt=""style="width: 130px; height: 130px; margin-right:7px">
   </div>
@@ -189,6 +217,19 @@ if (isset($_POST['send1'])) {
     }
 }
 ?>
+
+
+
+<!-- script pour le boutton retour  -->
+  <script>
+        const bouton = document.getElementById("retour");
+       
+
+        bouton.addEventListener("click", (e) => {
+            e.preventDefault();
+           window.location.href = "<?= SITE_URL ?>/";
+        });
+    </script>
 
 
 <?php

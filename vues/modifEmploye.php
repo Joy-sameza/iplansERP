@@ -1540,13 +1540,6 @@ if ($query == "lang=en") {
 </form>
 
 
-
-
-
-
-
-
-
 <!-- click sur le boutton recherche  -->
 
 

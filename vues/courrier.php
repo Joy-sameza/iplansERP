@@ -265,7 +265,7 @@ foreach ($d as $pack) {
       <button id="fermer" class='ferme bout-bas' style='position:absolute;right: 0;top: -57px;border:none'>
                         Retour
                         <img src="<?= SITE_URL ?>/assets/img/previous.png" alt="" style="width: max-content; height: 20px;">
-                    </button>
+      </button>
   </div>
 <main class="main corrier">
   
@@ -286,7 +286,11 @@ foreach ($d as $pack) {
       <span><strong>moyenne</strong><strong><?= $c + $h  ?? '0' ?></strong></span>
       <span><strong>Basse</strong><strong><?= $de + $z ?? '0' ?></strong></span>
     </section>
-    <button class="btn" data-newcourrier>Nouveau courrier</button>
+    <button class="bout-courier" data-newcourrier>
+       <img src="<?= SITE_URL ?>/assets/img/add-file.png" alt="" style="width: max-content; height: 25px;">
+       Nouveau courrier
+    </button>
+  
   </div>
   <div class="sortant">
     <h2>Registre Courier</h2>
@@ -305,7 +309,9 @@ foreach ($d as $pack) {
       <span><strong>moyenne</strong><strong><?= $c + $h ?? '0' ?></strong></span>
       <span><strong>Basse</strong><strong><?= $de + $z ?? '0' ?></strong></span>
     </section>
-    <button class="btn" id='ouvrir' data-ouvrirCourrier>Ouvrir un courrier</button>
+    <button class="bout-courier" id='ouvrir' data-ouvrirCourrier>
+        <img src="<?= SITE_URL ?>/assets/img/folder.png" alt="" style="width: max-content; height: 25px;">Ouvrir un courrier
+    </button>
   </div>
   <div class="encours">
     <h2>Courrier en cours</h2>
@@ -323,7 +329,8 @@ foreach ($d as $pack) {
       <span><strong>moyenne</strong><strong><?= $enc3 ?? '0' ?></strong></span>
       <span><strong>Basse</strong><strong><?= $enc4 ?? '0' ?></strong></span>
     </section><br><br><br>
-    <button class="btn encou" data-nouvelleRedaction>Nouvelle Redaction</button>
+    <button class="bout-courier" data-nouvelleRedaction>
+        <img src="<?= SITE_URL ?>/assets/img/add-file.png" alt="" style="width: max-content; height: 25px;">Nouvelle Redaction</button>
   </div>
 </main>
 <div class='espace'  style='height:100px'>
@@ -499,7 +506,7 @@ foreach ($d as $pack) {
           <legend>Type de courier</legend>
           <label for=""><input type="radio" name="type_filtre" value="entrant_filtre" id=""> Courier Entrant</label>
           <label for=""><input type="radio" name="type_filtre" value="sortant_filtre" id=""> Courier Sortant</label>
-          <label for=""><input type="radio" name="type_filtre" value="encours_filtre" id=""> Courier en cours</label>
+          <label for=""><input type="radio" name="type_filtre" value="encours_filtre" id="">Redaction Professionnelle</label>
           <label for=""><input type="radio" name="type_filtre" value="tous_type_filtre" id="" checked> Tous</label>
         </fieldset>
       </form>
@@ -688,6 +695,34 @@ foreach ($d as $pack) {
   </tr>
 </template>
 <style>
+
+  .bout-courier{
+            width: 240px;
+            height: 55px;
+            border-radius: 5px;
+            font-size:17px;
+            color:white;
+             border: 2px solid #fff;
+             background-color: #0D6EFD;
+
+  }
+  .bout-courier:hover{
+      background-color: #0B9444;
+            color: #fff;
+  }
+    #fermer{
+            width: 120px;
+            height: 45px;
+            border-radius: 5px;
+            border: 1px solid gray;
+             transition: background-color 0.3s, color 0.3s;
+           
+            
+            }
+             #fermer:hover {
+            background-color: #45a049;
+            color: #fff;
+            }
   #fermer2{
             width: 120px;
             height: 45px;
@@ -695,13 +730,10 @@ foreach ($d as $pack) {
             position: absolute;
             
   }
-  #fermer{
-            width: 120px;
-            height: 45px;
-            border-radius: 5px;
-           
-            
+  .lang{
+    display:none;
   }
+
 </style>
 
 

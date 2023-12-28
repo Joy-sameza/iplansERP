@@ -91,8 +91,9 @@ ob_start();
         <!-- debut de la zone de tableau -->
         <div class="row " style='border:1px solid gray; overflow: scroll scroll !important; height: clamp(400px, 90%, 65vh);'>
             <table class="table table-bordered " style="position: relative; text-align: center;" id="mytable_mission">
-                <thead style="position: sticky; top: 0;">
+                <thead style="position: sticky; top: 0; z-index:9999" class='mt-1'>
                     <tr class="table-secondary text-center table-dark ">
+                        <th style='font-size:13px;' class='px-5'>Option</th>
                         <th style='font-size:13px;' class='px-5'>Nom</th>
                         <th style='font-size:13px;' class='px-5'>Prenom</th>
                         <th style='font-size:13px;' class='px-5'>Depart</th>
@@ -113,60 +114,7 @@ ob_start();
                     </tr>
                 </thead>
                 <tbody id="tbody">
-                    <tr class="table-primary custom-row" style='background-color:#0D6EFD;'>
-
-                        <td style='background-color:#0D6EFD;'>
-                            <p></p>
-                        </td>
-                        <td style='background-color:#0D6EFD;'>
-                            <p></p>
-                        </td>
-                        <td style='background-color:#0D6EFD;'>
-                            <p></p>
-                        </td>
-                        <td style='background-color:#0D6EFD;'>
-                            <p></p>
-                        </td>
-                        <td style='background-color:#0D6EFD;'>
-                            <p></p>
-                        </td>
-                        <td style='background-color:#0D6EFD;'>
-                            <p></p>
-                        </td>
-                        <td style='background-color:#0D6EFD;'>
-                            <p></p>
-                        </td>
-                        <td style='background-color:#0D6EFD;'>
-                            <p></p>
-                        </td>
-                        <td style='background-color:#0D6EFD;'>
-                            <p></p>
-                        </td>
-                        <td style='background-color:#0D6EFD;'>
-                            <p></p>
-                        </td>
-                        <td style='background-color:#0D6EFD;'>
-                            <p></p>
-                        </td>
-                        <td style='background-color:#0D6EFD;'>
-                            <p></p>
-                        </td>
-                        <td style='background-color:#0D6EFD;'>
-                            <p></p>
-                        </td>
-                        <td style='background-color:#0D6EFD;'>
-                            <p></p>
-                        </td>
-                        <td style='background-color:#0D6EFD;'>
-                            <p></p>
-                        </td>
-                        <td style='background-color:#0D6EFD;'>
-                            <p></p>
-                        </td>
-                        <td style='background-color:#0D6EFD;'>
-                            <p></p>
-                        </td>
-                    </tr>
+                    
                 </tbody>
             </table>
         </div>
@@ -270,6 +218,87 @@ ob_start();
 
     <template id="listTemplate">
         <tr class="table-primary custom-row" style='background-color:#0D6EFD; pointer-events: all !important; cursor: pointer;'>
+         
+
+                 
+        <td id='option' style='background-color:#0D6EFD; color: #FFF;'>
+            <div class="d-flex">
+
+                <!-- <button class="bouton bg-success "  id="set">
+                    <i class="fas fa-edit"></i>
+
+                </button> -->
+                <div class="tooltip47">
+                    <button class="bouton bg-success btn-modif" onclick='modifierLigne(this)'><i class="fas fa-edit"></i>
+                
+                      <span class="tooltiptext47">Modifier</span>
+                    </button>
+                </div>
+
+                <div class="tooltip47 mx-1">
+                    <button class="bouton btn-open "  id="open">
+                        <i class="fas fa-folder-open "></i>
+                           <span class="tooltiptext47">Ouvrir</span>
+                    </button>
+                </div> 
+                
+                <div class="tooltip47">
+                    <button class="bouton bg-danger" onclick='supprimerLigne(this)'  id='delete'>
+                        <i class="fas fa-trash "></i>
+                            <span class="tooltiptext47">Supprimer</span>        
+                    </button>
+                </div>   
+
+                <style>
+                   #option .bouton {
+                        background-color: #238fce;
+                        color: #fff;
+                         padding: 8px 20px;
+                        font-size: 17px;
+
+                        border: none;
+                        border-radius: 5px;
+                        cursor: pointer;
+                        transition: background-color 0.4s ease;
+                        width: max-content;
+                        height: 43px;
+
+
+                    }
+                    
+        .tooltip47 {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .tooltip47 .tooltiptext47 {
+            visibility: hidden;
+            width: 90px;
+            background-color: #f0f004;
+            color: #080808;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 10;
+            top: 116%;
+            left: 50%;
+            margin-left: -32px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 14px;
+        }
+
+        
+        .tooltip47:hover .tooltiptext47 {
+            visibility: visible;
+            opacity: 1;
+        }
+                </style>
+            </div>
+
+        </td>
             <td style='background-color:#0D6EFD; color: #FFF;'>
                 <p data-nom></p>
             </td>
@@ -366,7 +395,7 @@ ob_start();
             position: absolute;
             z-index: 10;
             top: 125%;
-            left: 50%;
+            left: 110%;
             margin-left: -60px;
             opacity: 0;
             transition: opacity 0.3s;
@@ -819,6 +848,134 @@ ob_start();
 </script>
 
 <!-- rendre le lien accessible seulement par click sur le boutton  -->
+
+
+
+
+<!-- liste des foction sur le tableau  -->
+
+
+<script>
+      
+        function supprimerLigne(button) {
+
+            const row = button.closest('tr');
+
+            const neng = row.querySelector("[data-neng]").textContent;
+            console.log('id:',neng)
+
+
+            const url = `http://localhost/mission/${neng}`;
+           // row.remove();
+         
+
+            // Effectuer la requête DELETE
+            fetch(url, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Erreur de suppression : ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Suppression réussie :', data);
+                // Mettez à jour l'interface utilisateur ou effectuez d'autres actions nécessaires
+                // par exemple, supprimer la ligne du tableau
+                row.remove();
+                showAlert('Suppression réussie', 'success', 'L\'élément a été supprimé avec succès.');
+
+            })
+            .catch(error => {
+                console.error('Erreur lors de la suppression :', error);
+                // Gérer les erreurs ou informer l'utilisateur
+            });
+        }
+</script>
+ <script>
+    $(document).ready(function() {
+        $('#mytable_mission').on('click', '.btn-open', function(event) {
+
+            const targetRow = event.target.closest("tr");
+
+            var neng = targetRow.querySelector('[data-neng]').textContent;
+            var prenom = targetRow.querySelector('[data-prenom]').textContent;
+            var nom = targetRow.querySelector('[data-nom]').textContent;
+            var depart = targetRow.querySelector('[data-depart]').textContent;
+            var duree = targetRow.querySelector('[data-duree]').textContent;
+            var destination = targetRow.querySelector('[data-destination]').textContent;
+            var site = targetRow.querySelector('[data-site]').textContent;
+            var cadre = targetRow.querySelector('[data-cadre]').textContent;
+            var departement = targetRow.querySelector('[data-departement]').textContent;
+            var passant = targetRow.querySelector('[data-passant]').textContent;
+            var duree_de_travail = targetRow.querySelector('[data-duree_de_travail]').textContent;
+            var vehicule = targetRow.querySelector('[data-vehicule]').textContent;
+            var immatriculation = targetRow.querySelector('[data-immatriculation]').textContent;
+            var chargement = targetRow.querySelector('[data-chargement]').textContent;
+            var priseencharge = targetRow.querySelector('[data-priseencharge]').textContent;
+            var matricule = targetRow.querySelector('[data-matricule]').textContent;
+            var numerodossier = targetRow.querySelector('[data-numerodossier]').textContent;
+            var  numerobl_lta = targetRow.querySelector('[ data-numerobl_lta]').textContent;
+           
+
+
+
+            var formData_Mission = {
+                neng:neng,
+                nom: nom,
+                prenom: prenom,
+              
+       
+                matricule: matricule,
+                depart:depart,
+                duree:duree,
+                destination:destination,
+                site:site,
+                cadre:cadre,
+                departement:departement,
+                passant:passant,
+                duree_de_travail:duree_de_travail,
+                vehicule:vehicule,
+                immatriculation:immatriculation,
+                chargement:chargement,
+                priseencharge:priseencharge,
+                numerodossier:numerodossier,
+                numerobl_lta:numerobl_lta
+
+
+
+            };
+           
+
+            sessionStorage.setItem('formData_Mission', JSON.stringify(formData_Mission));
+            $.ajax({
+                    type: "POST",
+                    url: "http://localhost/Iplans/openMission", 
+                    data: { formData_Mission: JSON.stringify(formData_Mission) },
+                    success: function(response) {
+                        
+                        console.log(response);
+                        console.log('reussi donc ok')
+                    },
+                    error: function(error) {
+                       
+                        console.error(error);
+                        console.error('des erreurs');
+                    }
+                });
+
+
+           window.location.href = 'http://localhost/Iplans/openMission';
+
+
+
+        });
+    });
+</script> 
 
 </html>
 

@@ -28,6 +28,13 @@ ob_start();
 ?>
 <link href="<?= SITE_URL ?>/assets/css/index5.css" rel="stylesheet">
 <link href="<?= SITE_URL ?>/assets/css/styleRH.css" rel="stylesheet">
+<div class="container-fluid" style='position:relative;'>
+     <button id="retour" class='ferme bout-bas' style='position:absolute;right: 60px;top:25px;'>
+                        Retour
+           <img src="<?= SITE_URL ?>/assets/img/previous.png" alt="" style="width: max-content; height: 20px;">
+      </button>
+     
+</div>
     <div class="container">
 
       
@@ -85,6 +92,19 @@ ob_start();
 
 
       <style>
+          #retour{
+            width: 120px;
+            height: 45px;
+            border-radius: 5px;
+            border: 1px solid gray;
+             transition: background-color 0.3s, color 0.3s;
+           
+            
+            }
+             #retour:hover {
+            background-color: #45a049;
+            color: #fff;
+            }
          .bout-bas  {
             width: 130px;
             height: 49px;
@@ -216,9 +236,21 @@ ob_start();
         
         boutonFermer.addEventListener("click", (e) => {
             e.preventDefault();
-           window.location.href = "<?= SITE_URL ?>/resource_humaine";
+           window.location.href = "<?= SITE_URL ?>/home/resource_humaine";
         });
     </script>
+
+       <!-- script pour le boutton retour  -->
+         <script>
+        const bouton = document.getElementById("retour");
+       
+
+        bouton.addEventListener("click", (e) => {
+            e.preventDefault();
+           window.location.href = "<?= SITE_URL ?>/home/resource_humaine";
+        });
+    </script>
+
 
 
   
