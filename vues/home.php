@@ -249,7 +249,7 @@ ob_start();
     </button>
 
 
-    <button type="button" class="func" style='bottom: 1%;'>
+    <button type="button" class="func" style='bottom: 1%;' onclick='redirectToParam()'>
       <img src="<?= SITE_URL ?>/assets/img/setting.png" alt=""
             style="width: 40px; height: 40px; margin-right:7px">Paramètres
     </button>
@@ -328,6 +328,10 @@ ob_start();
         function redirectToGA() {
        
             window.location.href = '<?= SITE_URL ?>/home/gestion_administrative';
+        }
+        function redirectToParam() {
+       
+            window.location.href = '<?= SITE_URL ?>/home/param';
         }
     </script>
 <!-- secript pour retour  -->

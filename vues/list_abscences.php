@@ -1067,28 +1067,26 @@ ob_start();
 
 
             var formData_Abs = {
-                neng:neng,
-                nom: nom,
-                prenom: prenom,          
-                civilite:civilite,
-                matricule: matricule,
-                archive:archive,
-                accordeepar:accordeepar,
-                creepar:creepar,
-                anneecomptable:anneecomptable,
-                deduiresurconges:deduiresurconges,
-                recuperable:
+                // neng:neng,
+                // nom: nom,
+                // prenom: prenom,          
+                // civilite:civilite,
+                // matricule: matricule,
+                // archive:archive,
+                // accordeepar:accordeepar,
+                // creepar:creepar,
+                // anneecomptable:anneecomptable,
+                // deduiresurconges:deduiresurconges,
+                // recuperable:
 
-
-                
-                destination:destination,
-                site:site,
-                cadre:cadre,
-                departement:departement,
-                passant:passant,
-                duree_de_travail:duree_de_travail,
-                vehicule:vehicule,
-                immatriculation:immatriculation,
+                // destination:destination,
+                // site:site,
+                // cadre:cadre,
+                // departement:departement,
+                // passant:passant,
+                // duree_de_travail:duree_de_travail,
+                // vehicule:vehicule,
+                // immatriculation:immatriculation,
             
 
 

@@ -83,8 +83,8 @@ ob_start();
                         <!-- le tableau a lintereieur -->
                         <div class="option-boutton d-flex justify-content-end ">
                             <div class="tooltip47">
-                                <input type="file" id="fileInput" style="display: none;">
-                                <button id="piece_add">
+                                <input type="file" id="fileInput" data-rupload style="display: none;">
+                                <button id="piece_add" data-upload>
                                     
                                     <img src="<?= SITE_URL ?>/assets/img/plus.png" alt="" style="width: max-content; height: 20px;">
                                     <span class="tooltiptext1">Charger une pièce jointe</span>
@@ -444,6 +444,7 @@ ob_start();
         });
     </script>
 
+
      <script>
     $(document).ready(function () {
       $("#piece_add").click(function () {
@@ -453,9 +454,19 @@ ob_start();
       $("#fileInput").change(function (event) {
         var files = event.target.files;
 
+     
+
         if (files.length > 0) {
+
+               let type;
+             const filename = files[0].name;
+             const fileExtension = filename.lastIndexOf(".");
+             fileExtension !== -1
+                    ? (type = filename.substring(fileExtension, filename.length))
+                    : undefined;
+                type = type?.split(".").pop().toUpperCase();
           var pieceJointe = {
-            type: "Fichier",
+           type: type ?? "???",
             nom: files[0].name,
             taille: formatSize(files[0].size)
           };
@@ -497,7 +508,7 @@ ob_start();
       // Fonction pour télécharger la pièce jointe
      // Fonction pour télécharger la pièce jointe
     window.telechargerPieceJointe = function (nomPieceJointe) {
-    var chemin = SITE_URL + '/chemin/vers/votre/dossier/' + nomPieceJointe;
+    var chemin = SITE_URL + '/assets/documents/' + nomPieceJointe;
 
     // Créer un lien de téléchargement et déclencher le téléchargement
     var link = document.createElement('a');
@@ -514,13 +525,14 @@ ob_start();
 };
 
     });
-  </script>
+  </script> 
+  <
   <script>
         function redirectToRH() {
        
             window.location.href = '<?= SITE_URL ?>/home/resource_humaine';
         }
-    </script>
+    </scrip>
     <script>
         function redirectToRA() {
        

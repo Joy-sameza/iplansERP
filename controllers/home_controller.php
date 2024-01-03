@@ -160,6 +160,12 @@ function gestion_administrative()
     $dirs=str_replace("controllers", "", $dirs);
     require $dirs.'vues/gestion_administrative.php';
 }
+function param()
+{
+    $dirs=__DIR__;
+    $dirs=str_replace("controllers", "", $dirs);
+    require $dirs.'vues/param.php';
+}
 ?>
 
 

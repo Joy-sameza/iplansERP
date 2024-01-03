@@ -229,7 +229,7 @@ ob_start();
 
                 </button> -->
                 <div class="tooltip47">
-                    <button class="bouton bg-success btn-modif" onclick='modifierLigne(this)'><i class="fas fa-edit"></i>
+                    <button class="bouton bg-success btn-modif"><i class="fas fa-edit"></i>
                 
                       <span class="tooltiptext47">Modifier</span>
                     </button>
@@ -270,6 +270,7 @@ ob_start();
             position: relative;
             display: inline-block;
             cursor: pointer;
+             z-index: 9999;
         }
 
         .tooltip47 .tooltiptext47 {
@@ -281,7 +282,7 @@ ob_start();
             border-radius: 6px;
             padding: 5px;
             position: absolute;
-            z-index: 10;
+            z-index: 9999;
             top: 116%;
             left: 50%;
             margin-left: -32px;
@@ -294,6 +295,7 @@ ob_start();
         .tooltip47:hover .tooltiptext47 {
             visibility: visible;
             opacity: 1;
+             z-index: 9999;
         }
                 </style>
             </div>
@@ -898,7 +900,7 @@ ob_start();
 </script>
  <script>
     $(document).ready(function() {
-        $('#mytable_mission').on('click', '.btn-open', function(event) {
+        $('#mytable_mission').on('click', '.btn-modif', function(event) {
 
             const targetRow = event.target.closest("tr");
 

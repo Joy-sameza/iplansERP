@@ -712,7 +712,7 @@ ini_set("date.timezone", "Africa/Douala");
             </div>
 
 
-            <div class="cont_employer2">
+            <div class="cont_employer2 mb-3">
                 <div class="list_gauche">
                     <div class="se1">
                         <p>Mission</p>
@@ -1513,13 +1513,8 @@ ini_set("date.timezone", "Africa/Douala");
                 </div>
             </div>
 
-            <!-- css pour la div de droite -->
-            <style>
 
-            </style>
-
-
-            <div class="option47">
+            <div class="option47 py-2">
                 <div style="width: 50%; padding-left: 30px;">
                     <button type="submit" name="ajouter_pers">Ajouter<img src="<?= SITE_URL ?>/assets/img/accept.png" alt="" style="width: max-content; height: 20px;"></button>
                 </div>
@@ -1550,11 +1545,13 @@ ini_set("date.timezone", "Africa/Douala");
                 display: flex;
                 position: fixed;
                 top:550px;
-                left:20%;
+                left:5%;
+                background-color:#fff;
+
                 justify-content: space-around;
                 align-items: center;
                  
-                width: 75%;
+                width: 90%;
                
                  z-index: 1;
             }
