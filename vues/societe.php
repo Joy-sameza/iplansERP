@@ -485,87 +485,7 @@ ob_start();
                 
             </div>
 
-            <div class='row mx-1' style='height:70vh;display:none'>
-                <div class='col-sm-6' style='display: flex;flex-direction: column;justify-content:space-around;'>
-                    <div >
-                        <h2>Liste des utilisateurs</h2>
-                    </div>
-                    <div class='tooltip47'>
-                         <button id='new' class='bg-success '>
-                              Nouveau
-                            <img src="<?= SITE_URL ?>/assets/img/add-file.png" alt="" style="width: max-content; height: 20px;">
-                          
-                         </button>
-                           <div class='tooltipBoutton'>
-                              <button id="simple" class='ferme my-3'>
-                                    Simple
-                                    <img src="<?= SITE_URL ?>/assets/img/evaluation.png" alt="" style="width: max-content; height: 20px;">
-                             </button>
-                              <button id="admin" class='ferme'>
-                                    Admin
-                                    <img src="<?= SITE_URL ?>/assets/img/staff.png" alt="" style="width: max-content; height: 20px;">
-                             </button>
-
-                          </div>
-                    </div>
-                </div>
-                <div class='col-sm-6' style=''>
-
-                 <!-- formulaire  -->
-                   <div style='width:100%; display:none' id='simple_form'>
-                    <form action="" class='mt-5 p-4' style='border:2px solid gray;border-radius:9px; width: 65% ;'>
-                        <div style='margin-bottom:30px;    text-align: center; '>
-                            <h4>Form Utilisateurs</h4>
-                        </div>
-                        <div class='d-flex mt-4'>
-                            <label style="width: 20%" class='mt-1' for="">Nom:</label>
-                             <input type="text" class="form-control"style="width: 80%" name="nom" id='nom'>
-
-                        </div>
-                        <div class='d-flex mt-4'>
-                            <label style="width: 20%" class='mt-1' for="">Prenom:</label>
-                             <input type="text" class="form-control"style="width: 80%" name="nom" id='prenom'>
-
-                        </div>
-                        <div class='d-flex mt-4'>
-                            <label style="width: 20%" class='mt-1' for="">Password:</label>
-                             <input type="password" class="form-control"style="width: 80%" name="nom" id='nom'>
-
-                        </div>
-                        <div class='d-flex mt-4 mx-5'>
-                            <label style="width: 60%" for="">Super Utilisateur ?</label>
-                            <input type="checkbox" class="form-check-input mx-2 " name="" id="" >OUI
-                            <input type="checkbox" class="form-check-input mx-2 " name="" id="" >NON
-                            
-
-                        </div>
-                        <div class='d-flex justify-content-center mt-3' style='align-items:center'> 
-                            <div class='mx-2'>
-                               <input type="checkbox" class="form-check-input mx-2 " name="" id="" >
-                            <label style="width: 60%" for="">Reinitialiser</label>
-                            </div>
-                            
-                             <button type="submit" id='valid' style='width:130px;height:40px;border-radius:5px;' name="iplans_submit">Valider<img src="<?= SITE_URL ?>/assets/img/accept.png" alt="" style="width: max-content; height: 20px;"></button>
-                            
-                            
-
-                        </div>
-                    </form>
-
-                   </div>
-
-                   <!-- tableau pour les admins  -->
-                   <div style='width:100%;' id='tableau'>
-
-
-
-                   </div>
-                   <!-- fin div pour admin  -->
-                </div>
-                
-
-            </div>
-
+        
 
 
 
@@ -743,13 +663,15 @@ ob_start();
 
     
 </script>
+
+
  <script>
         const bouton = document.getElementById("societe");
        
+
         bouton.addEventListener("click", (e) => {
-         
+            e.preventDefault();
            window.location.href = "<?= SITE_URL ?>/home/param/societe";
-           console.log('click')
         });
     </script>
 

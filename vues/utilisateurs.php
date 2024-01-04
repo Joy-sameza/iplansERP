@@ -76,7 +76,7 @@ ob_start();
             </div>
             <div class=" bout" style='  text-align: center;'>
 
-                    <button type="button" id='societe' name="iplans_submit"><img src="<?= SITE_URL ?>/assets/img/house.png" alt="" style="width: max-content; height: 20px;"> Société
+                    <button type="button" id='OK' name="iplans_submit"><img src="<?= SITE_URL ?>/assets/img/house.png" alt="" style="width: max-content; height: 20px;"> Société
                     </button>
                     <button type="button" id='OK' name="">
                         Pointages
@@ -132,7 +132,7 @@ ob_start();
                 
              </div>
 
-            <div class="row mt-5 " style=''>
+            <div class="row mt-5 " style='display:none'>
                 <!-- gauche  -->
                 <div class="col-sm-5 mx-4">
                     <form action="">
@@ -485,7 +485,7 @@ ob_start();
                 
             </div>
 
-            <div class='row mx-1' style='height:70vh;display:none'>
+            <div class='row mx-1' style='height:70vh;' >
                 <div class='col-sm-6' style='display: flex;flex-direction: column;justify-content:space-around;'>
                     <div >
                         <h2>Liste des utilisateurs</h2>
@@ -555,7 +555,7 @@ ob_start();
                    </div>
 
                    <!-- tableau pour les admins  -->
-                   <div style='width:100%;' id='tableau'>
+                   <div style='width:100%;' id='tableau_admin'>
 
 
 
@@ -743,24 +743,6 @@ ob_start();
 
     
 </script>
- <script>
-        const bouton = document.getElementById("societe");
-       
-        bouton.addEventListener("click", (e) => {
-         
-           window.location.href = "<?= SITE_URL ?>/home/param/societe";
-           console.log('click')
-        });
-    </script>
-
-
-
-
-
-
-
-
-
 
 
 

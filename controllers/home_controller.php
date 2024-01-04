@@ -166,6 +166,18 @@ function param()
     $dirs=str_replace("controllers", "", $dirs);
     require $dirs.'vues/param.php';
 }
+function utilisateurs()
+{
+    $dirs=__DIR__;
+    $dirs=str_replace("controllers", "", $dirs);
+    require $dirs.'vues/utilisateurs.php';
+}
+function societe()
+{
+    $dirs=__DIR__;
+    $dirs=str_replace("controllers", "", $dirs);
+    require $dirs.'vues/societe.php';
+}
 ?>
 
 
