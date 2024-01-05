@@ -76,12 +76,12 @@ ob_start();
             </div>
             <div class=" bout" style='  text-align: center;'>
 
-                    <button type="button" id='OK' name="iplans_submit"><img src="<?= SITE_URL ?>/assets/img/house.png" alt="" style="width: max-content; height: 20px;"> Société
+                    <button type="button" id='OK' onclick='redirectToSociete()' name="iplans_submit"><img src="<?= SITE_URL ?>/assets/img/house.png" alt="" style="width: max-content; height: 20px;"> Société
                     </button>
                     <button type="button" id='OK' name="">
                         Pointages
                     </button>
-                    <button type="button" id='OK' name="">
+                    <button type="button"  onclick='redirectToUser()' id='OK' name="">
                         Utilisateurs
                     </button>
                     <button type="button" id='OK' name="">
@@ -485,8 +485,8 @@ ob_start();
                 
             </div>
 
-            <div class='row mx-1' style='height:70vh;' >
-                <div class='col-sm-6' style='display: flex;flex-direction: column;justify-content:space-around;'>
+            <div class='row mx-1' style='height:80vh;' >
+                <div class='col-sm-3' style='display: flex;flex-direction: column;justify-content:space-around;align-items:center'>
                     <div >
                         <h2>Liste des utilisateurs</h2>
                     </div>
@@ -509,13 +509,13 @@ ob_start();
                           </div>
                     </div>
                 </div>
-                <div class='col-sm-6' style=''>
+                <div class='col-sm-9' style=''>
 
-                 <!-- formulaire  -->
-                   <div style='width:100%; display:none' id='simple_form'>
-                    <form action="" class='mt-5 p-4' style='border:2px solid gray;border-radius:9px; width: 65% ;'>
+                 <!-- formulaire de connexion  -->
+                   <div style=' display:none;margin-left: 270px;' id='simple_form' class='mb-3'>
+                    <form action="" class='mt-5 p-4 mb-3' style='border:2px solid gray;border-radius:9px; width: 70% ;'>
                         <div style='margin-bottom:30px;    text-align: center; '>
-                            <h4>Form Utilisateurs</h4>
+                            <h4> Utilisateurs</h4>
                         </div>
                         <div class='d-flex mt-4'>
                             <label style="width: 20%" class='mt-1' for="">Nom:</label>
@@ -539,10 +539,12 @@ ob_start();
                             
 
                         </div>
-                        <div class='d-flex justify-content-center mt-3' style='align-items:center'> 
-                            <div class='mx-2'>
-                               <input type="checkbox" class="form-check-input mx-2 " name="" id="" >
-                            <label style="width: 60%" for="">Reinitialiser</label>
+                        <div class='d-flex justify-content-center mt-3' style='align-items:center;flex-direction: column;'> 
+                            <div class='mx-2 mb-2 d-flex'>
+                               <input type="checkbox" class="form-check-input mx-2 " name="" id="" > 
+                           <a href="">
+                               <label style="width: 100%" for="" id='reini_pass'>Reinitialiser mot de passe ?</label>
+                           </a> 
                             </div>
                             
                              <button type="submit" id='valid' style='width:130px;height:40px;border-radius:5px;' name="iplans_submit">Valider<img src="<?= SITE_URL ?>/assets/img/accept.png" alt="" style="width: max-content; height: 20px;"></button>
@@ -553,9 +555,224 @@ ob_start();
                     </form>
 
                    </div>
+                 <!-- formulaire de reinitialisation  -->
+                   <div style=' display:none;margin-left: 270px;' id='reini_form'>
+                    <form action="" class='mt-5 p-4' style='border:2px solid gray;border-radius:9px; width: 70% ;'>
+                        <div style='margin-bottom:30px;    text-align: center; '>
+                            <h4>Changer le mot de passe... </h4>
+                        </div>
+                          <div class='d-flex mt-4'>
+                            <label style="width: 30%" class='mt-1' for="">Email:</label>
+                             <input type="email" class="form-control"style="width: 70%" name="nom" id='email'>
+
+                        </div>
+                       <div class='d-flex mt-4'>
+                            <label style="width: 30%" class='mt-1' for="">Old Password:</label>
+                             <input type="password" class="form-control"style="width: 70%" name="nom" id='nom'>
+
+                        </div>
+                      
+                        <div class='d-flex mt-4'>
+                            <label style="width: 30%" class='mt-1' for="">New Password:</label>
+                             <input type="password" class="form-control"style="width: 70%" name="nom" id='nom'>
+
+                        </div>
+                     
+                        <div class='d-flex justify-content-center mt-3' style='align-items:center'> 
+                       
+                             <button type="submit" id='valid' style='width:130px;height:40px;border-radius:5px;' name="iplans_submit">Valider<img src="<?= SITE_URL ?>/assets/img/accept.png" alt="" style="width: max-content; height: 20px;"></button>
+                            
+                        </div>
+                    </form>
+
+                   </div>
 
                    <!-- tableau pour les admins  -->
                    <div style='width:100%;' id='tableau_admin'>
+
+
+                                    
+                        <div class="debut_tableau mt-3"> <!--debut tableau-->
+
+                            <table class="table table-striped table-hover  container" id="myTable">
+                                <thead class="table-success">
+                                    <td role="columnheader">Options</td>
+                                    <td role="columnheader">id</td> 
+                                    <td role="columnheader">Civilite</td>
+                                    <td role="columnheader">Nom</td>
+                                    <td role="columnheader">Prenom</td>
+                                    <td role="columnheader">Fonction</td>
+                                    <td role="columnheader">Telephone</td>
+                                    <td role="columnheader">Pseudo</td>
+                                    <td role="columnheader">Matricule</td>
+                                    <td role="columnheader">Identifiant</td>
+                                    <td role="columnheader">CNI</td>
+                                    <td role="columnheader">Email</td>
+                                    <td role="columnheader">DateNaissance</td>
+                                    <td role="columnheader">Nom_du_Pere</td>
+                                    <td role="columnheader">Nom_de_la_mere</td>
+                                    <td role="columnheader">Ville_de_Naissance</td>
+                                    <td role="columnheader">Nom_D'urgence</td>
+                                    <td role="columnheader">Numero_D'urgence</td>
+                                    <td role="columnheader">AgenceBanque</td>
+                                    <td role="columnheader">CodeBanque</td>
+                                    <td role="columnheader">CodeGuichetBanque</td>
+                                    <td role="columnheader">NumeroCompletBanque</td>
+                                    <td role="columnheader">CleRibBanque</td>
+                                    <td role="columnheader">VcodeSwittBanque</td>
+                                    <td role="columnheader">CodeUtilisateur</td>
+                                    <td role="columnheader">Categorie</td>
+                                    <td role="columnheader">Grade </td>
+                                    <td role="columnheader">Convention</td>
+                                    <td role="columnheader">Departement</td>
+                                    <td role="columnheader">GenreSalarie</td>
+                                    <td role="columnheader">Direction</td>
+                                    <td role="columnheader">SousDirection</td>
+                                    <td role="columnheader">Service</td>
+                                    <td role="columnheader">MotifDepart </td>
+                                    <td role="columnheader">DateSortie</td>
+                                    <td role="columnheader">DateEntree</td>
+                                    <td role="columnheader">GenreSalarie</td>
+                                    <td role="columnheader">TypeContrat</td>
+                                    <td role="columnheader">IDDate_Contrat</td>
+                                    <td role="columnheader">IDDate_Sortie</td>
+                                    <td role="columnheader">LieuDelivranceCNI</td>
+                                    <td role="columnheader">DateExpirationCNI</td>
+                                    <td role="columnheader">IDDateExpirationCNI</td>
+                                    <td role="columnheader">IDDate_Contrat</td>
+                                    <td role="columnheader">IDDate_Sortie</td>
+                                </thead>
+                                <tbody id="pers_table"> </tbody>
+                            </table>
+
+                            <template id="pers_table_template">
+                                <tr style="pointer-events: all !important;">
+                                    
+                                    <td id='option'>
+                                        <div class="d-flex">
+
+                                            <!-- <button class="bouton bg-success "  id="set">
+                                                <i class="fas fa-edit"></i>
+
+                                            </button> -->
+                                            <div class="tooltip47">
+                                                <button class="bouton bg-success btn-modif" onclick='modifierLigne(this)'><i class="fas fa-edit"></i>
+                                            
+                                                <span class="tooltiptext47">Modifier</span>
+                                                </button>
+                                            </div>
+
+                                            <div class="tooltip47">
+                                                <button class="bouton btn-open "  id="open">
+                                                    <i class="fas fa-folder-open "></i>
+                                                    <span class="tooltiptext47">Ouvrir</span>
+                                                </button>
+                                            </div> 
+                                            
+                                            <div class="tooltip47">
+                                                <button class="bouton bg-danger" onclick='supprimerLigne(this)'  id='delete'>
+                                                    <i class="fas fa-trash "></i>
+                                                        <span class="tooltiptext47">Supprimer</span>        
+                                                </button>
+                                            </div>   
+
+                                            <style>
+                                            #option .bouton {
+                                                    background-color: #238fce;
+                                                    color: #fff;
+                                                    padding: 8px 20px;
+                                                    font-size: 17px;
+
+                                                    border: none;
+                                                    border-radius: 5px;
+                                                    cursor: pointer;
+                                                    transition: background-color 0.4s ease;
+                                                    width: max-content;
+                                                    height: 43px;
+
+
+                                                }
+                                                
+                                    .tooltip47 {
+                                        position: relative;
+                                        display: inline-block;
+                                        cursor: pointer;
+                                    }
+
+                                    .tooltip47 .tooltiptext47 {
+                                        visibility: hidden;
+                                        width: 90px;
+                                        background-color: #f0f004;
+                                        color: #080808;
+                                        text-align: center;
+                                        border-radius: 6px;
+                                        padding: 5px;
+                                        position: absolute;
+                                        z-index: 10;
+                                        top: 116%;
+                                        left: 50%;
+                                        margin-left: -32px;
+                                        opacity: 0;
+                                        transition: opacity 0.3s;
+                                        font-size: 14px;
+                                    }
+
+                                    
+                                    .tooltip47:hover .tooltiptext47 {
+                                        visibility: visible;
+                                        opacity: 1;
+                                    }
+                                            </style>
+                                        </div>
+
+                                    </td> 
+                                    <td id='data-NEng' data-NEng ></td>
+                                    <td id='civilite' data-civilite></td>
+                                    <td  data-nom id='nom'></td>
+                                    <td  data-prenom id='prenom'></td>
+                                    <td id='fonction' data-Fonction></td>
+                                    <td id='phone' data-phone></td>
+                                    <td id='pseudo' data-PSeudo></td>
+                                    <td id='matricule' data-Matricule></td>
+                                    <td id='matriculeInterne' data-MatriculeInterne></td>
+                                    <td id='cni' data-cni></td>
+                                    <td id='email' data-Email></td>
+                                    <td id='dnais' data-dnais></td>
+                                    <td id='npere' data-npere></td>
+                                    <td id='nmere' data-nmere></td>
+                                    <td id='vnais' data-vnais></td>
+                                    <td id='nurg' data-nurg></td>
+                                    <td id='nuurg' data-nuurg></td>
+                                    <td id='agenceBanque' data-AgenceBanque></td>
+                                    <td id='codeBanque' data-CodeBanque></td>
+                                    <td id='codeguichet' data-CodeGuichetBanque></td>
+                                    <td id='numcomptbanque' data-NumeroCompteBanque></td>
+                                    <td id='cleRib' data-CleRibBanque></td>
+                                    <td id='CodeSwiftBanque' data-CodeSwiftBanque></td>
+                                    <td id='CodeUtilisateur' data-CodeUtilisateur></td>
+                                    <td id='categorie' data-categorie></td>
+                                    <td id='Grade' data-Grade></td>
+                                    <td id='Convention' data-Convention></td>
+                                    <td id='departement1' data-departement1></td>
+                                    <td id='Direction' data-Direction></td>
+                                    <td id='SousDirection' data-SousDirection></td>
+                                    <td id='Service' data-Service></td>
+                                    <td id='motif_depart' data-motif_depart></td>
+                                    <td id='date_sortie' data-date_sortie></td>
+                                    <td id='date_entree' data-date_entree></td>
+                                    <td id='genre_salarie' data-genre_salarie></td>
+                                    <td id='type_contrat' data-type_contrat></td>
+                                    <td id='IDDate_Contrat' data-IDDate_Contrat></td>
+                                    <td id='IDDate_Sortie' data-IDDate_Sortie></td>
+                                    <td id='LieuDelivranceCNI' data-LieuDelivranceCNI></td>
+                                    <td id='DateExpirationCNI' data-DateExpirationCNI></td>
+                                    <td id='IDDateExpirationCNI' data-IDDateExpirationCNI></td>
+
+                                </tr>
+                            </template>
+
+
+                        </div><!--fin de zone du tableau-->
 
 
 
@@ -584,16 +801,71 @@ ob_start();
                 </div>
             
                 <div style='width:10.5%;'>
-                    <button id="fermer" class='ferme'>
+                    <button id="fermer" >
                         Fermer
                         <img src="<?= SITE_URL ?>/assets/img/close.png" alt="" style="width: max-content; height: 20px;">
                     </button>
+                      
                 </div>
               
          </div>
 
     </div>  
     <style>
+          /* scrollbar du tableau */
+
+        ::-webkit-scrollbar {
+            width: 15px;
+        }
+
+
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px grey;
+            border-radius: 10px;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #238fce;
+            border-radius: 10px;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0b9444;
+        }
+
+
+        .debut_tableau {
+
+            border-bottom: none;
+            overflow-x: auto;
+
+
+            &::-webkit-scrollbar {
+                height: 15px;
+                /* Ajuster la hauteur de la barre de défilement horizontale */
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background-color: #3498db;
+                /* Couleur du curseur de défilement */
+            }
+
+            &::-webkit-scrollbar-track {
+                background-color: #ecf0f1;
+                /* Couleur de la piste de défilement */
+            }
+
+            &:hover {
+                &::-webkit-scrollbar-thumb {
+                    background-color: #0b9444;
+                    /* Changement de couleur au survol */
+                }
+            }
+        }
       label{
         font-weight:500;
       }
@@ -632,15 +904,13 @@ ob_start();
        .tooltip47 .tooltipBoutton{
             visibility: hidden;
             width: 180px;
-           
-           
             text-align: center;
             border-radius: 6px;
             padding: 5px;
             position: absolute;
             z-index: 10;
-            top: 73%;
-            left: 11%;
+            top: 80%;
+            left: 17%;
             
             opacity: 0;
             transition: opacity 0.3s;
@@ -734,14 +1004,46 @@ ob_start();
 <script>
     const boutton_simple = document.querySelector('#simple')
     const simple_form = document.querySelector('#simple_form')
+    const reini_form = document.querySelector('#reini_form')
+    const tableau_admin = document.querySelector('#tableau_admin')
+    const reini_pass = document.querySelector('#reini_pass')
+    const boutton_admin = document.querySelector('#admin')
 
         boutton_simple.addEventListener("click", (e) => {
         e.preventDefault();
         simple_form.style.display = "block";
+        tableau_admin.style.display = "none";
+        reini_form.style.display = "none";
+       
+    });
+        reini_pass.addEventListener("click", (e) => {
+        e.preventDefault();
+        simple_form.style.display = "none";
+        tableau_admin.style.display = "none";
+        reini_form.style.display = "block";
+       
+    });
+        boutton_admin.addEventListener("click", (e) => {
+        e.preventDefault();
+        simple_form.style.display = "none";
+        tableau_admin.style.display = "block";
+        reini_form.style.display = "none";
        
     });
 
     
+</script>
+ <script>
+        function redirectToSociete() {
+       
+            window.location.href = '<?= SITE_URL ?>/home/param';
+        }
+</script>
+ <script>
+        function redirectToUser() {
+       
+            window.location.href = '<?= SITE_URL ?>/home/param/utilisateurs';
+        }
 </script>
 
 

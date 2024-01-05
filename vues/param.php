@@ -76,12 +76,12 @@ ob_start();
             </div>
             <div class=" bout" style='  text-align: center;'>
 
-                    <button type="button" id='societe' name="iplans_submit"><img src="<?= SITE_URL ?>/assets/img/house.png" alt="" style="width: max-content; height: 20px;"> Société
+                    <button type="button" id='societe' onclick='redirectToSociete()'><img src="<?= SITE_URL ?>/assets/img/house.png" alt="" style="width: max-content; height: 20px;"> Société
                     </button>
                     <button type="button" id='OK' name="">
                         Pointages
                     </button>
-                    <button type="button" id='OK' name="">
+                    <button type="button" id='' onclick='redirectToUser()'  name="">
                         Utilisateurs
                     </button>
                     <button type="button" id='OK' name="">
@@ -584,7 +584,7 @@ ob_start();
                 </div>
             
                 <div style='width:10.5%;'>
-                    <button id="fermer" class='ferme'>
+                    <button id="fermer" >
                         Fermer
                         <img src="<?= SITE_URL ?>/assets/img/close.png" alt="" style="width: max-content; height: 20px;">
                     </button>
@@ -744,14 +744,17 @@ ob_start();
     
 </script>
  <script>
-        const bouton = document.getElementById("societe");
+        function redirectToSociete() {
        
-        bouton.addEventListener("click", (e) => {
-         
-           window.location.href = "<?= SITE_URL ?>/home/param/societe";
-           console.log('click')
-        });
-    </script>
+            window.location.href = '<?= SITE_URL ?>/home/param';
+        }
+</script>
+ <script>
+        function redirectToUser() {
+       
+            window.location.href = '<?= SITE_URL ?>/home/param/utilisateurs';
+        }
+</script>
 
 
 

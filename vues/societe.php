@@ -504,7 +504,7 @@ ob_start();
                 </div>
             
                 <div style='width:10.5%;'>
-                    <button id="fermer" class='ferme'>
+                    <button id="fermer">
                         Fermer
                         <img src="<?= SITE_URL ?>/assets/img/close.png" alt="" style="width: max-content; height: 20px;">
                     </button>

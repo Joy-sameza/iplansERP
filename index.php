@@ -99,6 +99,6 @@ if ('/home/param/societe' == $uri) {
 }
 if ('/employes' == $uri) {
     tableau();
-} elseif (!empty($uri) and !in_array($uri, ['/', '/accueil', '/details_mission', '/list_abscences', '/mission', '/list_mission', '/courrier', '/login', '/home', '/home/resource_humaine', '/employes', '/home/gestion_abscences', '/selection_salarie', '/fiche_message', '/tester','/permi_con','/openEmployer','/home/list-visit-rdv','/visit-rdv','/modifEmploye','/home/acceuil','/openMission','/gestion_abscences','/openAbscence','/home/com_pro','/home/gestion_administrative','/home/param','/home/param/utilisateurs'])) {
+} elseif (!empty($uri) and !in_array($uri, ['/', '/accueil', '/details_mission', '/list_abscences', '/mission', '/list_mission', '/courrier', '/login', '/home', '/home/resource_humaine', '/employes', '/home/gestion_abscences', '/selection_salarie', '/fiche_message', '/tester','/permi_con','/openEmployer','/home/list-visit-rdv','/visit-rdv','/modifEmploye','/home/acceuil','/openMission','/gestion_abscences','/openAbscence','/home/com_pro','/home/gestion_administrative','/home/param','/home/param/utilisateurs','/home/param/societe'])) {
     show404();
 }
