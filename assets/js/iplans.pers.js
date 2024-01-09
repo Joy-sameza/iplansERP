@@ -179,6 +179,7 @@ function handleChangeEvent(event) {
  * @param {Event} event The triggering event
  */
 function handlePrintTableClick() {
+  const print="imprimer le"
   const displayDateTime = new Date().toLocaleDateString(pdfLang, {
     weekday: "long",
     year: "numeric",
@@ -216,7 +217,7 @@ function handlePrintTableClick() {
     date_sortie: 32,
   };
   pdf.setFontSize(10);
-  pdf.text(iplans+nothing+nothing+nothing+nothing+nothing+displayDateTime, 10, 25);
+  pdf.text(iplans+nothing+print+nothing+displayDateTime, 10, 25);
   const filteredData = [];
   const headings = [];
 
@@ -237,7 +238,7 @@ function handlePrintTableClick() {
     },
     startY: 35,
   });
-  pdf.save("table_employee.pdf");
+  pdf.save("registre employees.pdf");
   return;
 }
 function handleNewDataClick() { }

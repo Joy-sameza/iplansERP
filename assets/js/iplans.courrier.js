@@ -311,6 +311,14 @@ function printTable() {
     hour: "numeric",
     minute: "numeric",
   });
+  pdf.addImage(
+      SITE_URL + "/assets/img/iplans logo.png",
+      "PNG",
+      10,
+      10,
+      2.969 * 50 * 0.25,
+      1 * 50 * 0.25
+  );
   pdf.setFontSize(11);
   pdf.text(displayDateTime + iplans, 10, 10);
   pdf.autoTable({

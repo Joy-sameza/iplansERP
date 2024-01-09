@@ -46,9 +46,23 @@ class Commandes extends connexion
 
     function getAdmin($email,$password)
     {
-
+          $password1=base64_encode($password);
         $req=$this->access->prepare("SELECT * FROM utilisateurs WHERE nom = ? AND passwords = ?");
-        $req->execute(array($email,$password));
+        $req->execute(array($email,$password1));
+        if ($req->rowCount()==1)
+        {
+            $data=$req->fetch();
+            return $data;
+        }else{
+            return false;
+        }
+        $req->closeCursor();
+
+    }
+    function verifuser($email)
+    {
+        $req=$this->access->prepare("SELECT PasswordDemand,NEng FROM utilisateurs WHERE nom = ? ");
+        $req->execute(array($email));
         if ($req->rowCount()==1)
         {
             $data=$req->fetch();

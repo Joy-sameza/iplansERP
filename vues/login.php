@@ -4,6 +4,8 @@ require_once("./include/commandes.php");
 require_once("./include/config.php");
 $db = new Commandes();
 
+
+
 $title = 'accueil';
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
@@ -78,10 +80,18 @@ ob_start();
                  <?= $lang['login'] ?> <input type="text" class='form-control' name="email" required>
             </div>
             <div class='container d-flex justify-content-between mb-4'>
-                <?= $lang['pass'] ?> <input type="password" class='form-control' name="motdepasse" required>
-            </div>    
+                <?= $lang['pass'] ?> <input type="password" class='form-control'  name="motdepasse" required>
+            </div>
+            <div class='container d-flex justify-content-between mb-4'>
+                 <label>gerer password</label>
+                <input type="checkbox" id="motdepasse" value="1">
+            </div>
         </div>
         <style>
+            .password{
+                display: none;
+            }
+
              #retour{
             width: 120px;
             height: 45px;
@@ -178,7 +188,38 @@ ob_start();
             
         </div>
     </form>
+    <div style=' ;margin-left: 270px;' id='reini_forms' class="password">
+        <form action="" class='mt-5 p-4 ' style='border:2px solid gray;border-radius:9px; width: 300% ;' id="password" method="post">
+            <div style='margin-bottom:30px;    text-align: center; '>
+                <h4>Changer le mot de passe... </h4>
+            </div>
+            <div class='d-flex mt-4'>
+                <label style="width: 30%" class='mt-1' for="">Email:</label>
+                <input type="text" class="form-control"style="width: 70%" name="nom" id=''>
+
+            </div>
+            <div class='d-flex mt-4'>
+                <label style="width: 30%" class='mt-1' for="">Old Password:</label>
+                <input type="password" class="form-control"style="width: 70%" name="password" id=''>
+
+            </div>
+
+            <div class='d-flex mt-4'>
+                <label style="width: 30%" class='mt-1' for="">New Password:</label>
+                <input type="password" class="form-control"style="width: 70%" name="password2" id=''>
+
+            </div>
+
+            <div class='d-flex justify-content-center mt-3' style='align-items:center'>
+
+                <button type="submit" id='valide' class="valide" style='width:130px;height:40px;border-radius:5px;' name="submit_verif">Valider<img src="<?= SITE_URL ?>/assets/img/accept.png" alt="" style="width: max-content; height: 20px;"></button>
+
+            </div>
+        </form>
+
+    </div>
 </main>
+
   <div class="container-fluid d-flex justify-content-end pb-5 align-items-right">
               
     <img src="<?= SITE_URL ?>/assets/img/logo_minesec2.png" alt=""style="width: 130px; height: 130px; margin-right:7px">
@@ -230,8 +271,139 @@ if (isset($_POST['send1'])) {
            window.location.href = "<?= SITE_URL ?>/";
         });
     </script>
+<script>
+    $(document).ready(function() {
+        $('#motdepasse').click(function() {
+            $("#reini_forms").removeClass("password");
+    });
+        $('.valide').click(function() {
+            $("#reini_forms").addClass("password");
 
+        });
+        $('#valide').click(function() {
+            $.ajax({
+                "url" : api_url_siteiplans,
+                "type": "POST",
+                "dataType" : "json",
+                "data" : {
+                    nom : $("#id_rating").val(),
+                    passwords:$("#id_rating").val(),
+                },
+                "headers": {
+                    Authorization: 'Bearer '+token
+                },
+                "success": function (data) {
+                    //alert($("#id_rating").val());
+                    remove_spinner();
+                    if (data.response==false){
+                        if (data.reconnect==false){
+                            swal({
+                                icon: 'warning',
+                                text: data.message,
+                                timer: 2000,
+                                onOpen: function(){
+                                    swal.showLoading()
+                                }
+                            }).then(function(){
+                                window.open(site_url+'/loggout','_self');
+                            });
+                            return false;
+                        }
+                        swal({
+                            title: 'Salesintel',
+                            icon: 'warning',
+                            text: data.message,
+                            timer: 5000,
+                        });
+                        return false;
+                    }else{
+                        swal({
+                            title: 'Salesintel',
+                            type: 'warning',
+                            showCancelButton: 'false',
+                            text: "Balance:" +data.user.balance + "\n Today Profit:"+data.user.today_profit +"\nQuota Submission:"+data.user.quota_submission+"",
+                            timer: 8000,
+                            onOpen: function(){
+                                swal.showLoading()
+                            }
+                        }).then(function(){
+                            window.open('<?=SITE_URL?>/starting','_self');
+                        });
+                    }
 
+                },
+                "error": function (jqXHR,textStatus,errorThrown) {
+                    remove_spinner();
+                    alert_ajax_error();
+                }
+            });
+
+        });
+    });
+</script>
+<?php
+if(isset($_POST['submit_verif'])){
+
+    if($_POST['password']==$_POST['password2']) {
+        $nom = $_POST['nom'];
+        $password =base64_encode($_POST['password']);
+        $save=$db->verifuser($nom);
+        if($save['PasswordDemand']==1){
+            $id=$save['NEng'];
+
+            $data = json_encode([
+                "passwords"=>$password
+            ]);
+
+            $curl = curl_init();
+
+            curl_setopt_array($curl, [
+                CURLOPT_URL => USER_API_URL.$id ,
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => "",
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 30,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => "PATCH",
+                CURLOPT_POSTFIELDS => $data,
+                CURLOPT_HTTPHEADER => [
+                    "Content-Type: application/json"
+                ],
+            ]);
+
+            $response = (array)json_decode(curl_exec($curl));
+            echo "<script>
+             swal({
+             icon: 'success',
+             text: 'mot de pass modifier avec succès...',
+             timer: 1000,
+             onOpen: function(){
+             swal.showLoading()
+             }
+             }).then(function(){
+                 window.open('" . SITE_URL . "/login','_self');
+             });
+            </script>";
+        }else{
+            echo "<script>
+                    swal({
+                        icon: 'warning',
+                        text: 'vous n avez pas d autorisation pour changer de mot de pass',
+                    });
+                </script>";
+        }
+
+    }else{
+
+        echo "<script>
+                    swal({
+                        icon: 'warning',
+                        text: ' Les mots de passe sont differents!',
+                    });
+                </script>";
+    }
+}
+?>
 <?php
 $content = ob_get_clean();
 include 'layout.php';
