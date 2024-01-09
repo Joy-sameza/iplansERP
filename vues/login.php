@@ -194,18 +194,18 @@ ob_start();
                 <h4>Changer le mot de passe... </h4>
             </div>
             <div class='d-flex mt-4'>
-                <label style="width: 30%" class='mt-1' for="">Email:</label>
+                <label style="width: 30%" class='mt-1' for="">Login:</label>
                 <input type="text" class="form-control"style="width: 70%" name="nom" id=''>
 
             </div>
             <div class='d-flex mt-4'>
-                <label style="width: 30%" class='mt-1' for="">Old Password:</label>
+                <label style="width: 30%" class='mt-1' for="">new Password:</label>
                 <input type="password" class="form-control"style="width: 70%" name="password" id=''>
 
             </div>
 
             <div class='d-flex mt-4'>
-                <label style="width: 30%" class='mt-1' for="">New Password:</label>
+                <label style="width: 30%" class='mt-1' for="">Confirm new Password:</label>
                 <input type="password" class="form-control"style="width: 70%" name="password2" id=''>
 
             </div>

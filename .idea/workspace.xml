@@ -1,24 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7d0e5bba-8be3-4af7-9bd3-b337ff71621c" name="Changes" comment="enregistrement EMPLOYES">
-      <change afterPath="$PROJECT_DIR$/api/src/ControllerUser.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Controllersite.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Controllersite.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Siteiplans.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Siteiplans.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/iplans.courrier.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/iplans.courrier.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/iplans.pers.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/iplans.pers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/commandes.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/commandes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/partials/head.php" beforeDir="false" afterPath="$PROJECT_DIR$/partials/head.php" afterDir="false" />
+    <list default="true" id="7d0e5bba-8be3-4af7-9bd3-b337ff71621c" name="Changes" comment="finitions de paramettre">
       <change beforePath="$PROJECT_DIR$/vues/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vues/modifEmploye.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/modifEmploye.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vues/param.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/param.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vues/societe.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/societe.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vues/tableau.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/tableau.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vues/utilisateurs.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/utilisateurs.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +68,7 @@
       <workItem from="1702020741543" duration="7490000" />
       <workItem from="1702298799756" duration="18235000" />
       <workItem from="1702817538342" duration="7482000" />
-      <workItem from="1702919719640" duration="110187000" />
+      <workItem from="1702919719640" duration="110857000" />
     </task>
     <task id="LOCAL-00001" summary="print succed">
       <created>1699875368090</created>
@@ -149,7 +133,14 @@
       <option name="project" value="LOCAL" />
       <updated>1703221797633</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="finitions de paramettre">
+      <created>1704811809439</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1704811809439</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -176,6 +167,7 @@
     <MESSAGE value="enregistrement employes" />
     <MESSAGE value="enregistrement employes2" />
     <MESSAGE value="enregistrement EMPLOYES" />
-    <option name="LAST_COMMIT_MESSAGE" value="enregistrement EMPLOYES" />
+    <MESSAGE value="finitions de paramettre" />
+    <option name="LAST_COMMIT_MESSAGE" value="finitions de paramettre" />
   </component>
 </project>
