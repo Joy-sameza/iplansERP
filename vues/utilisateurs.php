@@ -1,4 +1,8 @@
 <?php
+session_start();
+require_once("./include/commandes.php");
+require_once("./include/config.php");
+$db = new Commandes();
 $title = 'accueil';
 if (session_status() == PHP_SESSION_NONE) {
   session_start();
@@ -24,55 +28,66 @@ if ($query == "lang=en") {
 }
 ob_start();
 if (isset($_POST['submit_user'])) {
-    if($_POST['password1']==$_POST['password2']) {
-        // Get the form data
-        $nom = $_POST['nom'];
-        $prenom = $_POST['prenom'];
-        $password_base64=base64_encode($_POST['password1']);
-        $superviseur = $_POST['superviseur']??0;
-        $reini_pass = $_POST['reini_pass']??0;
+    $text=$db->verifuser($_POST['nom']);
+      if($text==false) {
+          if ($_POST['password1'] == $_POST['password2']) {
+              // Get the form data
+              $nom = $_POST['nom'];
+              $prenom = $_POST['prenom'];
+              $password_base64 = base64_encode($_POST['password1']);
+              $superviseur = $_POST['superviseur'] ?? 0;
+              $reini_pass = $_POST['reini_pass'] ?? 0;
 
 
-        $data = json_encode([
-            "nom" => $nom,
-            "prenom" => $prenom,
-            "superviseur" => $superviseur,
-            "passwords" => $password_base64,
-            "passworddemand"=>$reini_pass
+              $data = json_encode([
+                  "nom" => $nom,
+                  "prenom" => $prenom,
+                  "superviseur" => $superviseur,
+                  "passwords" => $password_base64,
+                  "passworddemand" => $reini_pass
 
-        ]);
-        $curl = curl_init();
+              ]);
+              $curl = curl_init();
 
-        curl_setopt_array($curl, [
-            CURLOPT_URL => USER_API_URL ,
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => "",
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 30,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => "POST",
-            CURLOPT_POSTFIELDS => $data,
-            CURLOPT_HTTPHEADER => [
-                "Content-Type: application/json"
-            ],
-        ]);
+              curl_setopt_array($curl, [
+                  CURLOPT_URL => USER_API_URL,
+                  CURLOPT_RETURNTRANSFER => true,
+                  CURLOPT_ENCODING => "",
+                  CURLOPT_MAXREDIRS => 10,
+                  CURLOPT_TIMEOUT => 30,
+                  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                  CURLOPT_CUSTOMREQUEST => "POST",
+                  CURLOPT_POSTFIELDS => $data,
+                  CURLOPT_HTTPHEADER => [
+                      "Content-Type: application/json"
+                  ],
+              ]);
 
-        $response = (array)json_decode(curl_exec($curl));
-        echo "<script>
+              $response = (array)json_decode(curl_exec($curl));
+              echo "<script>
                     swal({
                         icon: 'success',
                         text: 'utilisateurs enregistrees avec success!',
                     });
                 </script>";
 
-    }else{
-        echo "<script>
+          } else {
+              echo "<script>
                     swal({
                         icon: 'warning',
                         text: 'Désolé! Les  mots de passes sont differents ou donnees  incorrects',
                     });
                 </script>";
-    }
+          }
+      }else{
+
+          echo "<script>
+                    swal({
+                        icon: 'warning',
+                        text: 'Désolé! ce login existe deja',
+                    });
+                </script>";
+      }
 
 }
 

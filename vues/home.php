@@ -248,12 +248,12 @@ ob_start();
        </a>
     </button>
 
-
+<?php if($_SESSION['login'] =="SUPERVISEUR"){?>
     <button type="button" class="func" style='bottom: 1%;' onclick='redirectToParam()'>
       <img src="<?= SITE_URL ?>/assets/img/setting.png" alt=""
             style="width: 40px; height: 40px; margin-right:7px">Paramètres
     </button>
-
+<?php }?>
 
     <button type="button" class="func">
         <img src="<?= SITE_URL ?>/assets/img/video.png" alt=""

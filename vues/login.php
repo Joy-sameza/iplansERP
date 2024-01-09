@@ -234,7 +234,7 @@ if (isset($_POST['send1'])) {
         // print_r($admin);
         // exit();
         if ($admin) {
-            $_SESSION['login'] = $admin;
+            $_SESSION['login'] = $email;
             echo "<script>
              swal({
              icon: 'success',
@@ -352,7 +352,8 @@ if(isset($_POST['submit_verif'])){
             $id=$save['NEng'];
 
             $data = json_encode([
-                "passwords"=>$password
+                "passwords"=>$password,
+                "PasswordDemand"=>1
             ]);
 
             $curl = curl_init();

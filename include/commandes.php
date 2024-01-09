@@ -73,5 +73,19 @@ class Commandes extends connexion
         $req->closeCursor();
 
     }
+    function checklogin($email)
+    {
+        $req=$this->access->prepare("SELECT * FROM utilisateurs WHERE nom = ? ");
+        $req->execute(array($email));
+        if ($req->rowCount()==1)
+        {
+            $data=$req->fetch();
+            return true;
+        }else{
+            return false;
+        }
+        $req->closeCursor();
+
+    }
 
 }
