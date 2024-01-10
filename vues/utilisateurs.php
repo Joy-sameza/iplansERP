@@ -588,11 +588,11 @@ ob_start();
                    </div>
 
                    <!-- tableau pour les admins  -->
-                   <div style='width:100%;' id='tableau_admin'>
+                   <div style='width:100%;margin-left:27px;' id='tableau_admin'>
 
 
                                     
-                        <div class="debut_tableau mt-3"> <!--debut tableau-->
+                        <div class="debut_tableau mt-3" style=''> <!--debut tableau-->
 
                             <table class="table table-striped table-hover  container" id="myTable">
                                 <thead class="table-success">
@@ -782,11 +782,6 @@ ob_start();
                 
 
             </div>
-
-
-
-
-
 
 
 
