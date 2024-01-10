@@ -1,4 +1,5 @@
 <?php
+
 $title = 'accueil';
 if (session_status() == PHP_SESSION_NONE) {
   session_start();
@@ -23,7 +24,85 @@ if ($query == "lang=en") {
   }
 }
 ob_start();
-?><style>
+$curl = curl_init();
+curl_setopt_array($curl, [
+    CURLOPT_URL => siteiplans_API_URL."8",
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_ENCODING => "",
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 30,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    CURLOPT_CUSTOMREQUEST => "GET",
+    CURLOPT_HTTPHEADER => [
+        "Content-Type: application/json"
+    ],
+]);
+$response_societe= (array)json_decode(curl_exec($curl));
+?>
+<?php
+if (isset($_POST['submit_societe'])) {
+    $image=$_FILES['image']['name'];
+    $file_tmp_name=$_FILES['image']['tmp_name'];
+    move_uploaded_file($file_tmp_name,"uploads/$image");
+        // Get the form data
+        $site = $_POST['site'];
+        $email = $_POST['email'];
+        $siteweb=$_POST['siteweb'];
+        $pobox = $_POST['pobox'];
+        $employees = $_POST['employees'];
+        $nombreposte=$_POST['nombreposte'];
+       $telephone = $_POST['telephone'];
+         $adress = $_POST['adress'];
+
+
+
+        $data = json_encode([
+            "Site" => $site,
+            "EMail" => $email,
+            "Telephone" => $telephone,
+            "Employees" => $employees,
+            "NombrePoste"=>$nombreposte,
+            "POBOX"=>$pobox,
+            "Address"=>$adress,
+            "NomPhoto"=>$image
+
+
+        ]);
+        $curl = curl_init();
+
+        curl_setopt_array($curl, [
+            CURLOPT_URL => siteiplans_API_URL."8" ,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "PATCH",
+            CURLOPT_POSTFIELDS => $data,
+            CURLOPT_HTTPHEADER => [
+                "Content-Type: application/json"
+            ],
+        ]);
+
+        $response = (array)json_decode(curl_exec($curl));
+    echo "<script>
+             swal({
+             icon: 'success',
+             text: 'mise a jour  avec succès...',
+             timer: 2000,
+             onOpen: function(){
+             swal.showLoading()
+             }
+             }).then(function(){
+                 window.open('" . SITE_URL . "/home/param','_self');
+             });
+            </script>";
+
+
+
+}
+?>
+<style>
     .header{
         display: none;
      }
@@ -135,22 +214,22 @@ ob_start();
             <div class="row mt-5 " style=''>
                 <!-- gauche  -->
                 <div class="col-sm-5 mx-4">
-                    <form action="">
+                    <form action="" method="post" enctype="multipart/form-data">
                           <div class="idntite3 d-flex">
                                 <label for="" class="mt-2" style="width: 33%">Nom Social</label>
-                                <input type="text" class="form-control mt-2"style="width: 67%" name="prenom" id='prenom' value='SOCIETE DEMO'>
+                                <input type="text" class="form-control mt-2"style="width: 67%" name="site" id='site' value='<?php echo $response_societe['Site']?>'>
                          </div>
                           <div class="idntite3 d-flex">
                                 <label for="" class="mt-2" style="width: 33%">Adresse</label>
-                                <input type="text" class="form-control mt-2"style="width: 67%" name="prenom" id='prenom' value='DOUALA'>
+                                <input type="text" class="form-control mt-2"style="width: 67%" name="adress" id='adress' value='<?php echo $response_societe['Address']?>'>
                          </div>
                           <div class="idntite3 d-flex">
                                 <label for="" class="mt-2" style="width: 33%">Boite Postal </label>
-                                <input type="text" class="form-control mt-2"style="width: 67%" name="prenom" id='prenom' value='8908'>
+                                <input type="text" class="form-control mt-2"style="width: 67%" name="pobox" id='pobox' value='<?php echo $response_societe['POBOX']?>'>
                          </div>
                           <div class="idntite3 d-flex">
                                 <label for="" class="mt-2" style="width: 33%">Telephone</label>
-                                <input type="text" class="form-control mt-2"style="width: 67%" name="prenom" id='prenom' value='33472866'>
+                                <input type="text" class="form-control mt-2"style="width: 67%" name="telephone" id='telephone' value='<?php echo $response_societe['Telephone']?>'>
                          </div>
                           <div class="idntite3 d-flex">
                                 <label for="" class="mt-2" style="width: 33%">Telecopie(Fax)</label>
@@ -158,15 +237,15 @@ ob_start();
                          </div>
                           <div class="idntite3 d-flex">
                                 <label for="" class="mt-2" style="width: 33%">Site Web</label>
-                                <input type="text" class="form-control mt-2"style="width: 67%" name="prenom" id='prenom' value='kokotel.com'>
+                                <input type="text" class="form-control mt-2"style="width: 67%" name="siteweb" id='prenom' value='<?php echo $response_societe['WebSite']?>'>
                          </div>
                           <div class="idntite3 d-flex">
                                 <label for="" class="mt-2" style="width: 33%">Email</label>
-                                <input type="text" class="form-control mt-2"style="width: 67%" name="prenom" id='prenom' value='info@kokotel.com'>
+                                <input type="text" class="form-control mt-2"style="width: 67%" name="email" id='prenom' value='<?php echo $response_societe['EMail']?>'>
                          </div>
                           <div class="idntite3 d-flex">
                                 <label for="" class="mt-2" style="width: 33%">Site</label>
-                                <input type="text" class="form-control mt-2"style="width: 67%" name="prenom" id='prenom'  value='DEMO' disabled>
+                                <input type="text" class="form-control mt-2"style="width: 67%" name="prenom" id='prenom'  value='<?php echo $response_societe['Site']?>' disabled>
                          </div>
                           <div class="idntite3 d-flex mt-2">
                                <div style="width: 33%">
@@ -175,39 +254,20 @@ ob_start();
                                    <label for="" class="mt-4" style="width: 100%">Nombre de Poste (*)</label>
                                </div>
                                <div style="width: 30%">
-                                <input type="text" class="form-control mt-3"style="width: 70%" name="prenom" id='prenom'  value='DEMO' >
-                                <input type="number" class="form-control mt-3"style="width: 70%" name="prenom" id='prenom'  value='10' >
-                                 <select class="form-select form-select-sm mt-3" name=""  style="width: 70%">
-                                                       <option>0</option>
-                                                       <option>1</option>
-                                                       <option>2</option>
-                                                       <option>3</option>
-                                                       <option>4</option>
-                                                       <option>5</option>
-                                                       <option>6</option>
-                                                       <option>7</option>
-                                                       <option>9</option>
-                                                       <option>10</option>
-                                                       <option>11</option>
-                                                       <option>12</option>
-                                                       <option>13</option>
-                                                       <option>14</option>
-                                                       <option>15</option>
-                                                       <option>16</option>
-                                                       <option>17</option>
-                                                       <option>18</option>
-                                                       <option>19</option>
-                                                       <option>20</option>
-                                 </select>
+                                <input type="text" class="form-control mt-3"style="width: 70%" name="prenom" id='prenom'  value='<?php echo $response_societe["Site"]?>' >
+                                <input type="tel" class="form-control mt-3"style="width: 70%" name="employees" id='prenom'  value='<?php echo $response_societe['Employees']?>' >
+                                 <input type="tel"class="form-select form-select-sm mt-3" name="nombreposte"  style="width: 70%" value="<?php echo $response_societe['NombrePoste']?>">
+
+
                             
                                </div>
                                <div style="width: 37%;align-items: flex-end;display: flex;flex-direction: column;" class=''>
                                    <div class="preview-img">
-                                    <img src="<?= SITE_URL ?>/assets/img/images.png" class='placeholder-img' alt="" style='height:130px'>
+                                    <img src="<?= SITE_URL ?>/uploads/<?php echo $response_societe["NomPhoto"]?>" class='placeholder-img' alt="" style='height:130px'>
                                 </div>
                                 <div class='zone'>
                                     <div class="roww">
-                                        <input type="file" class="file-input" accept="image/*" hidden>
+                                        <input type="file" class="file-input" accept="*/*" name="image"  value="" hidden>
                                         <button class="choose-img mt-2" style='margin-left: 24px;border-radius:5px;height: 40px;width:150px'>
                                             <img class="choose-img" src="<?= SITE_URL ?>/assets/img/search.png" alt="" style="width: max-content; height: 25px;"><b>Logo Societe</b>
                                         </button>
@@ -219,7 +279,7 @@ ob_start();
                               </div>
                          </div>
                          <div class='d-flex mt-3' >
-                            <button type="submit" id='appliquer' style='width:340px;height:40px;margin: 0 auto;border-radius:5px' name="iplans_submit">Appliquer <img src="<?= SITE_URL ?>/assets/img/accept.png" alt="" style="width: max-content; height: 20px;"></button>
+                            <button type="submit" id='appliquer' style='width:340px;height:40px;margin: 0 auto;border-radius:5px' name="submit_societe">Appliquer <img src="<?= SITE_URL ?>/assets/img/accept.png" alt="" style="width: max-content; height: 20px;"></button>
                          </div>
                          
                     </form>

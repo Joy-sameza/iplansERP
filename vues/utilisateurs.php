@@ -1,4 +1,8 @@
 <?php
+session_start();
+require_once("./include/commandes.php");
+require_once("./include/config.php");
+$db = new Commandes();
 $title = 'accueil';
 if (session_status() == PHP_SESSION_NONE) {
   session_start();
@@ -23,7 +27,95 @@ if ($query == "lang=en") {
   }
 }
 ob_start();
-?><style>
+if (isset($_POST['submit_user'])) {
+    $text=$db->verifuser($_POST['nom']);
+      if($text==false) {
+          if ($_POST['password1'] == $_POST['password2']) {
+              // Get the form data
+              $nom = $_POST['nom'];
+              $prenom = $_POST['prenom'];
+              $password_base64 = base64_encode($_POST['password1']);
+              $superviseur = $_POST['superviseur'] ?? 0;
+              $reini_pass = $_POST['reini_pass'] ?? 0;
+
+
+              $data = json_encode([
+                  "nom" => $nom,
+                  "prenom" => $prenom,
+                  "superviseur" => $superviseur,
+                  "passwords" => $password_base64,
+                  "passworddemand" => $reini_pass
+
+              ]);
+              $curl = curl_init();
+
+              curl_setopt_array($curl, [
+                  CURLOPT_URL => USER_API_URL,
+                  CURLOPT_RETURNTRANSFER => true,
+                  CURLOPT_ENCODING => "",
+                  CURLOPT_MAXREDIRS => 10,
+                  CURLOPT_TIMEOUT => 30,
+                  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                  CURLOPT_CUSTOMREQUEST => "POST",
+                  CURLOPT_POSTFIELDS => $data,
+                  CURLOPT_HTTPHEADER => [
+                      "Content-Type: application/json"
+                  ],
+              ]);
+
+              $response = (array)json_decode(curl_exec($curl));
+              echo "<script>
+                    swal({
+                        icon: 'success',
+                        text: 'utilisateurs enregistrees avec success!',
+                    });
+                </script>";
+
+          } else {
+              echo "<script>
+                    swal({
+                        icon: 'warning',
+                        text: 'Désolé! Les  mots de passes sont differents ou donnees  incorrects',
+                    });
+                </script>";
+          }
+      }else{
+
+          echo "<script>
+                    swal({
+                        icon: 'warning',
+                        text: 'Désolé! ce login existe deja',
+                    });
+                </script>";
+      }
+
+}
+
+$curl = curl_init();
+
+curl_setopt_array($curl, [
+    CURLOPT_URL => USER_API_URL,
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_ENCODING => "",
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 30,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    CURLOPT_CUSTOMREQUEST => "GET",
+    CURLOPT_HTTPHEADER => [
+        "Content-Type: application/json"
+    ],
+]);
+
+$response= (array)json_decode(curl_exec($curl));
+
+
+
+?>
+<?php
+
+?>
+
+    <style>
     .header{
         display: none;
      }
@@ -138,11 +230,11 @@ ob_start();
                     <form action="">
                           <div class="idntite3 d-flex">
                                 <label for="" class="mt-2" style="width: 33%">Nom Social</label>
-                                <input type="text" class="form-control mt-2"style="width: 67%" name="prenom" id='prenom' value='SOCIETE DEMO'>
+                                <input type="text" class="form-control mt-2"style="width: 67%" name="prenom" value=''>
                          </div>
                           <div class="idntite3 d-flex">
                                 <label for="" class="mt-2" style="width: 33%">Adresse</label>
-                                <input type="text" class="form-control mt-2"style="width: 67%" name="prenom" id='prenom' value='DOUALA'>
+                                <input type="text" class="form-control mt-2"style="width: 67%" name="prenom" id='prenom' value='DOUALA3'>
                          </div>
                           <div class="idntite3 d-flex">
                                 <label for="" class="mt-2" style="width: 33%">Boite Postal </label>
@@ -513,41 +605,44 @@ ob_start();
 
                  <!-- formulaire de connexion  -->
                    <div style=' display:none;margin-left: 270px;' id='simple_form' class='mb-3'>
-                    <form action="" class='mt-5 p-4 mb-3' style='border:2px solid gray;border-radius:9px; width: 70% ;'>
+                    <form action="" class='mt-5 p-4 mb-3' style='border:2px solid gray;border-radius:9px; width: 70% ;' method="post">
                         <div style='margin-bottom:30px;    text-align: center; '>
                             <h4> Utilisateurs</h4>
                         </div>
                         <div class='d-flex mt-4'>
                             <label style="width: 20%" class='mt-1' for="">Nom:</label>
-                             <input type="text" class="form-control"style="width: 80%" name="nom" id='nom'>
+                             <input type="text" class="form-control"style="width: 80%" name="nom" id='nom' required>
 
                         </div>
                         <div class='d-flex mt-4'>
-                            <label style="width: 20%" class='mt-1' for="">Prenom:</label>
-                             <input type="text" class="form-control"style="width: 80%" name="nom" id='prenom'>
+                            <label style="width: 20%" class='mt-1' for="" >Prenom:</label>
+                             <input type="text" class="form-control"style="width: 80%" name="prenom" id='prenom' required>
 
                         </div>
                         <div class='d-flex mt-4'>
                             <label style="width: 20%" class='mt-1' for="">Password:</label>
-                             <input type="password" class="form-control"style="width: 80%" name="nom" id='nom'>
+                             <input type="password" class="form-control"style="width: 80%" name="password1" id='nom'>
+
+                        </div>
+                        <div class='d-flex mt-4'>
+                            <label style="width: 20%" class='mt-1' for="">Confirm Password:</label>
+                            <input type="password" class="form-control"style="width: 80%" name="password2" id='nom'>
 
                         </div>
                         <div class='d-flex mt-4 mx-5'>
-                            <label style="width: 60%" for="">Super Utilisateur ?</label>
-                            <input type="checkbox" class="form-check-input mx-2 " name="" id="" >OUI
-                            <input type="checkbox" class="form-check-input mx-2 " name="" id="" >NON
+                            <label style="width: 60%" for="">Superviseur ?</label>
+                            <input type="checkbox" class="form-check-input mx-2 " name="superviseur" id="" value="1">
+
                             
 
                         </div>
                         <div class='d-flex justify-content-center mt-3' style='align-items:center;flex-direction: column;'> 
                             <div class='mx-2 mb-2 d-flex'>
-                               <input type="checkbox" class="form-check-input mx-2 " name="" id="" > 
-                           <a href="">
+                               <input type="checkbox" class="form-check-input mx-2 " name="reini_pass" id=""  value="1">
                                <label style="width: 100%" for="" id='reini_pass'>Reinitialiser mot de passe ?</label>
-                           </a> 
                             </div>
                             
-                             <button type="submit" id='valid' style='width:130px;height:40px;border-radius:5px;' name="iplans_submit">Valider<img src="<?= SITE_URL ?>/assets/img/accept.png" alt="" style="width: max-content; height: 20px;"></button>
+                             <button type="submit" id='valid' style='width:130px;height:40px;border-radius:5px;' name="submit_user">Valider<img src="<?= SITE_URL ?>/assets/img/accept.png" alt="" style="width: max-content; height: 20px;"></button>
                             
                             
 
@@ -556,7 +651,7 @@ ob_start();
 
                    </div>
                  <!-- formulaire de reinitialisation  -->
-                   <div style=' display:none;margin-left: 270px;' id='reini_form'>
+                   <div style=' display:none;margin-left: 270px;' id='reini_forms'>
                     <form action="" class='mt-5 p-4' style='border:2px solid gray;border-radius:9px; width: 70% ;'>
                         <div style='margin-bottom:30px;    text-align: center; '>
                             <h4>Changer le mot de passe... </h4>
@@ -588,64 +683,35 @@ ob_start();
                    </div>
 
                    <!-- tableau pour les admins  -->
-                   <div style='width:100%;margin-left:27px;' id='tableau_admin'>
+                   <div style='width:100%;' id='tableau_admin'>
 
 
                                     
                         <div class="debut_tableau mt-3" style=''> <!--debut tableau-->
 
-                            <table class="table table-striped table-hover  container" id="myTable">
+                            <table class="table table-striped table-hover  container" id="myTable_user">
                                 <thead class="table-success">
-                                    <td role="columnheader">Options</td>
-                                    <td role="columnheader">id</td> 
-                                    <td role="columnheader">Civilite</td>
                                     <td role="columnheader">Nom</td>
                                     <td role="columnheader">Prenom</td>
-                                    <td role="columnheader">Fonction</td>
-                                    <td role="columnheader">Telephone</td>
-                                    <td role="columnheader">Pseudo</td>
-                                    <td role="columnheader">Matricule</td>
-                                    <td role="columnheader">Identifiant</td>
-                                    <td role="columnheader">CNI</td>
-                                    <td role="columnheader">Email</td>
-                                    <td role="columnheader">DateNaissance</td>
-                                    <td role="columnheader">Nom_du_Pere</td>
-                                    <td role="columnheader">Nom_de_la_mere</td>
-                                    <td role="columnheader">Ville_de_Naissance</td>
-                                    <td role="columnheader">Nom_D'urgence</td>
-                                    <td role="columnheader">Numero_D'urgence</td>
-                                    <td role="columnheader">AgenceBanque</td>
-                                    <td role="columnheader">CodeBanque</td>
-                                    <td role="columnheader">CodeGuichetBanque</td>
-                                    <td role="columnheader">NumeroCompletBanque</td>
-                                    <td role="columnheader">CleRibBanque</td>
-                                    <td role="columnheader">VcodeSwittBanque</td>
-                                    <td role="columnheader">CodeUtilisateur</td>
-                                    <td role="columnheader">Categorie</td>
-                                    <td role="columnheader">Grade </td>
-                                    <td role="columnheader">Convention</td>
-                                    <td role="columnheader">Departement</td>
-                                    <td role="columnheader">GenreSalarie</td>
-                                    <td role="columnheader">Direction</td>
-                                    <td role="columnheader">SousDirection</td>
-                                    <td role="columnheader">Service</td>
-                                    <td role="columnheader">MotifDepart </td>
-                                    <td role="columnheader">DateSortie</td>
-                                    <td role="columnheader">DateEntree</td>
-                                    <td role="columnheader">GenreSalarie</td>
-                                    <td role="columnheader">TypeContrat</td>
-                                    <td role="columnheader">IDDate_Contrat</td>
-                                    <td role="columnheader">IDDate_Sortie</td>
-                                    <td role="columnheader">LieuDelivranceCNI</td>
-                                    <td role="columnheader">DateExpirationCNI</td>
-                                    <td role="columnheader">IDDateExpirationCNI</td>
-                                    <td role="columnheader">IDDate_Contrat</td>
-                                    <td role="columnheader">IDDate_Sortie</td>
+                                    <td role="columnheader">matricule</td>
+                                    <td role="columnheader">groupe</td>
+
                                 </thead>
-                                <tbody id="pers_table"> </tbody>
+                                <tbody id="user_table">
+                                <?php foreach ($response as $respons){?>
+                                <tr> <td><?php echo $respons->nom?></td>
+                                    <td><?php echo $respons->prenom?></td>
+
+                                    <td><?php echo $respons->matricule?></td>
+
+                                    <td><?php echo  $respons->groupe?></td>
+
+                                </tr>
+                                <?php }?>
+                                </tbody>
                             </table>
 
-                            <template id="pers_table_template">
+                            <template id="user_table_template">
                                 <tr style="pointer-events: all !important;">
                                     
                                     <td id='option'>
@@ -727,46 +793,11 @@ ob_start();
 
                                     </td> 
                                     <td id='data-NEng' data-NEng ></td>
-                                    <td id='civilite' data-civilite></td>
                                     <td  data-nom id='nom'></td>
                                     <td  data-prenom id='prenom'></td>
-                                    <td id='fonction' data-Fonction></td>
-                                    <td id='phone' data-phone></td>
-                                    <td id='pseudo' data-PSeudo></td>
-                                    <td id='matricule' data-Matricule></td>
-                                    <td id='matriculeInterne' data-MatriculeInterne></td>
-                                    <td id='cni' data-cni></td>
-                                    <td id='email' data-Email></td>
-                                    <td id='dnais' data-dnais></td>
-                                    <td id='npere' data-npere></td>
-                                    <td id='nmere' data-nmere></td>
-                                    <td id='vnais' data-vnais></td>
-                                    <td id='nurg' data-nurg></td>
-                                    <td id='nuurg' data-nuurg></td>
-                                    <td id='agenceBanque' data-AgenceBanque></td>
-                                    <td id='codeBanque' data-CodeBanque></td>
-                                    <td id='codeguichet' data-CodeGuichetBanque></td>
-                                    <td id='numcomptbanque' data-NumeroCompteBanque></td>
-                                    <td id='cleRib' data-CleRibBanque></td>
-                                    <td id='CodeSwiftBanque' data-CodeSwiftBanque></td>
-                                    <td id='CodeUtilisateur' data-CodeUtilisateur></td>
-                                    <td id='categorie' data-categorie></td>
-                                    <td id='Grade' data-Grade></td>
-                                    <td id='Convention' data-Convention></td>
-                                    <td id='departement1' data-departement1></td>
-                                    <td id='Direction' data-Direction></td>
-                                    <td id='SousDirection' data-SousDirection></td>
-                                    <td id='Service' data-Service></td>
-                                    <td id='motif_depart' data-motif_depart></td>
-                                    <td id='date_sortie' data-date_sortie></td>
-                                    <td id='date_entree' data-date_entree></td>
-                                    <td id='genre_salarie' data-genre_salarie></td>
-                                    <td id='type_contrat' data-type_contrat></td>
-                                    <td id='IDDate_Contrat' data-IDDate_Contrat></td>
-                                    <td id='IDDate_Sortie' data-IDDate_Sortie></td>
-                                    <td id='LieuDelivranceCNI' data-LieuDelivranceCNI></td>
-                                    <td id='DateExpirationCNI' data-DateExpirationCNI></td>
-                                    <td id='IDDateExpirationCNI' data-IDDateExpirationCNI></td>
+                                    <td id='matricule' data-matricule></td>
+                                    <td id='groupe' data-groupe></td>
+
 
                                 </tr>
                             </template>
@@ -965,10 +996,11 @@ ob_start();
         }
     </style>  
     <!--  //fin grande div    -->
+
     <script>
         const bouton = document.getElementById("fermer");
         const bouton2 = document.getElementById("close_window");
-       
+
 
         bouton.addEventListener("click", (e) => {
             e.preventDefault();
@@ -1001,7 +1033,7 @@ ob_start();
     const simple_form = document.querySelector('#simple_form')
     const reini_form = document.querySelector('#reini_form')
     const tableau_admin = document.querySelector('#tableau_admin')
-    const reini_pass = document.querySelector('#reini_pass')
+    //const reini_pass = document.querySelector('#reini_pass')
     const boutton_admin = document.querySelector('#admin')
 
         boutton_simple.addEventListener("click", (e) => {
@@ -1011,13 +1043,13 @@ ob_start();
         reini_form.style.display = "none";
        
     });
-        reini_pass.addEventListener("click", (e) => {
-        e.preventDefault();
-        simple_form.style.display = "none";
-        tableau_admin.style.display = "none";
-        reini_form.style.display = "block";
-       
-    });
+    //     reini_pass.addEventListener("click", (e) => {
+    //     e.preventDefault();
+    //     simple_form.style.display = "none";
+    //     tableau_admin.style.display = "none";
+    //     reini_form.style.display = "block";
+    //
+    // });
         boutton_admin.addEventListener("click", (e) => {
         e.preventDefault();
         simple_form.style.display = "none";
@@ -1042,7 +1074,22 @@ ob_start();
 </script>
 
 
+<script>
+    alert("hello")
+    const userTable = document.getElementById("user_table");
+    const userTableTemplate = document.getElementById("user_table_template");
 
+    let userData = await fetchData();
+  alert(userData);
+    persTable.innerHTML = "";
+    for (let rowData of userData)
+        updateTable(userTable, rowData, userTableTemplate);
+
+    async function fetchData() {
+        const response = await fetch(api_url_user);
+        const data = await response.json();
+        return data;
+</script>
 
 
 <?php

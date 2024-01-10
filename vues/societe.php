@@ -23,6 +23,7 @@ if ($query == "lang=en") {
   }
 }
 ob_start();
+
 ?><style>
     .header{
         display: none;
@@ -138,11 +139,11 @@ ob_start();
                     <form action="">
                           <div class="idntite3 d-flex">
                                 <label for="" class="mt-2" style="width: 33%">Nom Social</label>
-                                <input type="text" class="form-control mt-2"style="width: 67%" name="prenom" id='prenom' value='SOCIETE DEMO'>
+                                <input type="text" class="form-control mt-2"style="width: 67%" name="prenom" id='prenom' value=''>
                          </div>
                           <div class="idntite3 d-flex">
                                 <label for="" class="mt-2" style="width: 33%">Adresse</label>
-                                <input type="text" class="form-control mt-2"style="width: 67%" name="prenom" id='prenom' value='DOUALA'>
+                                <input type="text" class="form-control mt-2"style="width: 67%" name="prenom" id='prenom' value='DOUALA3'>
                          </div>
                           <div class="idntite3 d-flex">
                                 <label for="" class="mt-2" style="width: 33%">Boite Postal </label>

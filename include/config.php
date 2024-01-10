@@ -13,3 +13,4 @@
 @define("FRAIS_MISSION_API_URL", "http://localhost/fraismission/");
 @define("siteiplans_API_URL", "http://localhost/siteiplans/");
 @define("FRAIS_MISSION_API_URL", "http://localhost/fraismission/");
+@define("USER_API_URL", "http://localhost/user/");

@@ -327,7 +327,9 @@ ini_set("date.timezone", "Africa/Douala");
 
         <table class="table table-striped table-hover  container" id="myTable">
             <thead class="table-success">
-                 <td role="columnheader">Options</td>
+
+            <tr>
+            <td role="columnheader">Options</td>
                  <td role="columnheader">id</td> 
                 <td role="columnheader">Civilite</td>
                 <td role="columnheader">Nom</td>
@@ -372,6 +374,7 @@ ini_set("date.timezone", "Africa/Douala");
                 <td role="columnheader">IDDateExpirationCNI</td>
                 <td role="columnheader">IDDate_Contrat</td>
                 <td role="columnheader">IDDate_Sortie</td>
+            </tr>
             </thead>
             <tbody id="pers_table"> </tbody>
         </table>

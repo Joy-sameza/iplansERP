@@ -26,7 +26,7 @@ if ($query == "lang=en") {
     }
 }
 
-    if (isset($_POST['ajouter_pers2'])) {
+    if (isset($_POST['ajouter_pers22'])) {
         $test = (array)$_SESSION['formData'];
         $id = $test['NEng'];
 
@@ -308,7 +308,7 @@ if ($query == "lang=en") {
 
 <!--- debut du formulaire generale---->
 
-<form id='formu_show' method="post">
+<form id='formu_show' method="">
 
 
 
@@ -1157,7 +1157,7 @@ if ($query == "lang=en") {
 
             <div class="option47 mt-3">
                 <div style="width: 50%; padding-left: 70px;">
-                    <button type="submit" class='bg-success'  id='modif' name="ajouter_pers2">Enregistrer les modifications<img src="<?= SITE_URL ?>/assets/img/set.png" alt="" style="width: max-content; height: 20px;"></button>
+                    <button type="" class='bg-success'  id='modif' onclick="enregistrerModification()" name="ajouter_pers2">Enregistrer les modifications<img src="<?= SITE_URL ?>/assets/img/set.png" alt="" style="width: max-content; height: 20px;"></button>
                 </div> 
 
 
@@ -1799,31 +1799,98 @@ if ($query == "lang=en") {
 
 
 
+            //
+            //     let urlApi ="http://localhost/pers/6";
+            //
+            //
+            // fetch(urlApi, {
+            //     method: 'PUT',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //         "Accept": 'application/json'
+            //     },
+            //     body: JSON.stringify(newFormData)
+            // }).then(response => {
+            //         if (!response.ok) {
+            //             throw new Error('La requête a échoué');
+            //         }
+            //         return response.json();
+            //     })
+            //     .then(data => console.log('Données mises à jour avec succès :', data))
+            //     .catch(error => {
+            //         console.error('Erreur lors de la mise à jour des données :', error);
+            //
+            //
+            //         if (error.response) {
+            //             console.log('Contenu du corps de la réponse :', error.response.body);
+            //         }
+            //     });
 
-                let urlApi ="http://localhost/pers/6";
+            // URL de votre API pour la modification des données
+            const url = 'http://localhost/pers'; // Remplacez avec votre URL
 
-            
-            fetch(urlApi, {
-                method: 'PUT',
+// Données à mettre à jour
+            const donneesModifiees = {
+                nom: nom,
+                prenom: prenom,
+                fonction: fonction,
+                phone: phone,
+                matricule: matricule,
+                cni: cni,
+                civilite:civilite,
+                email: email,
+                dnais: dnais,
+                npere: npere,
+                nmere: nmere,
+                vnais: vnais,
+                nurg: nurg,
+                nuurg: nuurg,
+                matriculeInterne:matriculeInterne,
+
+
+                categorie: categorie,
+                Grade: Grade,
+                SousDirection: SousDirection,
+                Convention: Convention,
+                departement1: departement1,
+
+                Direction: Direction,
+                Service: Service,
+
+                date_entree: date_entree,
+                type_contrat: type_contrat,
+                IDDate_Contrat: IDDate_Contrat,
+                IDDate_Sortie: IDDate_Sortie,
+                LieuDelivranceCNI: LieuDelivranceCNI,
+
+                IDDateExpirationCNI: IDDateExpirationCNI,
+                motif_depart:motif_depart,
+            };
+
+// Configuration de la requête PATCH
+            const options = {
+                method: 'PATCH',
                 headers: {
-                    'Content-Type': 'application/json',
-                    "Accept": 'application/json'
+                    'Content-Type': 'application/json' // Définition du type de contenu comme JSON
                 },
-                body: JSON.stringify(newFormData)
-            }).then(response => {
-                    if (!response.ok) {
-                        throw new Error('La requête a échoué');
-                    }
-                    return response.json();
-                })
-                .then(data => console.log('Données mises à jour avec succès :', data))
-                .catch(error => {
-                    console.error('Erreur lors de la mise à jour des données :', error);
+                body: JSON.stringify(donneesModifiees) // Conversion des données en JSON
+            };
 
-                    
-                    if (error.response) {
-                        console.log('Contenu du corps de la réponse :', error.response.body);
+// Envoi de la requête PATCH à l'API
+            fetch(url, options)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Erreur lors de la modification des données');
                     }
+                    return response.json(); // Récupération de la réponse JSON si la requête est réussie
+                })
+                .then(data => {
+                    console.log('Données modifiées avec succès :', data);
+                    // Faire quelque chose avec la réponse si nécessaire
+                })
+                .catch(error => {
+                    console.error('Erreur :', error);
+                    // Gérer l'erreur ici
                 });
 
 
@@ -1836,8 +1903,7 @@ if ($query == "lang=en") {
 
 
 
-             
-    }
+        }
 
         
 </script>
