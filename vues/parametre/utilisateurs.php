@@ -37,6 +37,7 @@ if (isset($_POST['submit_user'])) {
               $password_base64 = base64_encode($_POST['password1']);
               $superviseur = $_POST['superviseur'] ?? 0;
               $reini_pass = $_POST['reini_pass'] ?? 0;
+              $portee=$_POST['portee']??"TOUS";
 
 
               $data = json_encode([
@@ -44,7 +45,8 @@ if (isset($_POST['submit_user'])) {
                   "prenom" => $prenom,
                   "superviseur" => $superviseur,
                   "passwords" => $password_base64,
-                  "passworddemand" => $reini_pass
+                  "passworddemand" => $reini_pass,
+                  "portee"=>$portee
 
               ]);
               $curl = curl_init();
@@ -633,14 +635,23 @@ $response= (array)json_decode(curl_exec($curl));
                             <label style="width: 60%" for="">Superviseur ?</label>
                             <input type="checkbox" class="form-check-input mx-2 " name="superviseur" id="" value="1">
 
+                            <label style="width: 100%" for="" id='reini_pass'>Reinitialiser mot de passe ?</label>
+                            <input type="checkbox" class="form-check-input mx-2 " name="reini_pass" id=""  value="1">
+
+
                             
 
                         </div>
+                        <div class='d-flex mt-4'>
+                            <label style="width: 20%" class='mt-1' for="">Portee:</label>
+                            <select>
+                                <option>TOUS</option>
+                            </select>
+
+
+                        </div>
                         <div class='d-flex justify-content-center mt-3' style='align-items:center;flex-direction: column;'> 
-                            <div class='mx-2 mb-2 d-flex'>
-                               <input type="checkbox" class="form-check-input mx-2 " name="reini_pass" id=""  value="1">
-                               <label style="width: 100%" for="" id='reini_pass'>Reinitialiser mot de passe ?</label>
-                            </div>
+
                             
                              <button type="submit" id='valid' style='width:130px;height:40px;border-radius:5px;' name="submit_user">Valider<img src="<?= SITE_URL ?>/assets/img/accept.png" alt="" style="width: max-content; height: 20px;"></button>
                             
@@ -1094,5 +1105,5 @@ $response= (array)json_decode(curl_exec($curl));
 
 <?php
 $content = ob_get_clean();
-include 'layout.php'
+include './vues/layout.php';
 ?>

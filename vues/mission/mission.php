@@ -329,7 +329,7 @@ ob_start();
                     </div>
                 </div><!--  fin de la partie ou div droite -->
             </div>
-            <div class="row d-flex justify-content-between bg-primary bout-bas p-2 ">
+            <div class="row d-flex justify-content-between bg-primary bout-bas p-2 mt-2 ">
                 <div style='width:10%;'>
                     <button type="submit" id='valider' onclick="saveDonnees()" name="iplans_submit">Valider<img src="<?= SITE_URL ?>/assets/img/accept.png" alt="" style="width: max-content; height: 20px;"></button>
                 </div>
@@ -832,7 +832,14 @@ ob_start();
 }
    </script>
 
-  
+   <!-- recuperation des donnes dans le local storage et affichage deans le textarea  -->
+
+
+
+
+
+
+   <!-- le tableau pour affichage des fichiers  -->
  <script>
     $(document).ready(function () {
       $("#piece_add").click(function () {
@@ -916,5 +923,5 @@ ob_start();
 <?php
 
 $content = ob_get_clean();
-include 'layout.php';
+include './vues/layout.php';
 ?>

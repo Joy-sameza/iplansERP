@@ -592,5 +592,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <?php
 
 $content = ob_get_clean();
-include 'layout.php';
+include './vues/layout.php';
 ?>

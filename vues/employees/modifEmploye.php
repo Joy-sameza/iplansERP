@@ -3,6 +3,9 @@ $title = 'accueil';
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
+
+
+
 $url = $_SERVER["REQUEST_URI"];
 $query = parse_url($url, PHP_URL_QUERY);
 if ($query == "lang=en") {
@@ -23,38 +26,149 @@ if ($query == "lang=en") {
     }
 }
 
+    if (isset($_POST['ajouter_pers22'])) {
+        $test = (array)$_SESSION['formData'];
+        $id = $test['NEng'];
 
-ob_start();
-?>
-<?php
-require_once "./include/config.php";
-ini_set("date.timezone", "Africa/Douala");
-$curl = curl_init();
+        // Get the form data
+        $civilite = $_POST['civilite'] ?? $test['civilite'];
+        $genre = $_POST['genre'] ?? 0;
+        $nom = $_POST['nom'] ?? $test['nom'];
+        $prenom = $_POST['prenom'] ?? $test['prenom'];
+        $cni = $_POST['cni'] ?? $test['cni'];
+        $fait = $_POST['fait'] ?? $test['fait'];
+        $expire = $_POST['expire'] ?? $test['expire'];
+        $adresse = $_POST['adresse'] ?? $test['adresse'];
+        $tel = $_POST['tel'] ?? $test['tel'];
+        $telpro = $_POST['telpro'] ?? $test['telpro'];
+        $siteagence = $_POST['siteagence'] ?? $test['siteagence'];
+        $direction = $_POST['direction'] ?? $test['direction'];
+        $sousdirection = $_POST['sousdirection'] ?? $test['sousdirection'];
+        $service = $_POST['service'] ?? $test['service'];
+        $departement = $_POST['departement1'] ?? $test['departement1'];
+        $posteoccupe = $_POST['fonction'] ?? $test['fonction'];
+        $datenaissssance = $_POST['datenaissssance'] ?? $test['datenaissssance'];
+        $lieunaissance = $_POST['lieunaissance'] ?? $test['lieunaissance'];
+        $nompere = $_POST['nompere'] ?? $test['nompere'];
+        $nommere = $_POST['nommere'] ?? $test['nommere'];
+        $nomurgence = $_POST['nomurgence'] ?? $test['nomurgence'];
+        $numerourgence = $_POST['numerourgence'] ?? $test['numerourgence'];
+        $email = $_POST['email'] ?? $test['email'];
+        $emailpro = $_POST['emailpro'] ?? $test['emailpro'];
 
-curl_setopt_array($curl, [
-    CURLOPT_URL => PERS_API_URL,
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_ENCODING => "",
-    CURLOPT_MAXREDIRS => 10,
-    CURLOPT_TIMEOUT => 30,
-    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-    CURLOPT_CUSTOMREQUEST => "GET",
-]);
 
-$response = curl_exec($curl);
-$err = curl_error($curl);
-$data = [];
+        $lundi1 = $_POST['lundi1'] ?? 0;
+        $mardi1 = $_POST['mardi1'] ?? 0;
+        $mercredi1 = $_POST['mercredi1'] ?? 0;
+        $jeudi1 = $_POST['jeudi1'] ?? 0;
+        $vendredi1 = $_POST['vendredi1'] ?? 0;
+        $samedi1 = $_POST['samedi1'] ?? 0;
+        $dimanche1 = $_POST['dimanche1'] ?? 0;
 
-curl_close($curl);
+        $loge = $_POST['loge'] ?? 0;
+        $assure = $_POST['assure'] ?? 0;
+        $nouri = $_POST['nouri'] ?? 0;
 
-if ($err) {
-    $_SESSION['error'] = true;
-    return;
-}
-$d = (array)json_decode($response, true);
-//var_dump($d);
-//exit();
-?>
+
+        $nombreenfant = $_POST['nombreenfant'] ?? $test['nombreenfant'];
+        $heuredebut = $_POST['heuredebut'] ?? $test['heuredebut'];
+        $heurefin = $_POST['heurefin'] ?? $test['heurefin'];
+        $conventioncollective = $_POST['conventioncollective'] ?? $test['conventioncollective'];
+        $echellon = $_POST['echellon'] ?? $test['echellon'];
+        $categorie = $_POST['categorie'] ?? $test['categorie'];
+        $salairebase = (int)$_POST['salairebase'] ?? $test['salairebase'];
+        $heuresemaine = $_POST['heuresemaine'] ?? $test['heuresemaine'];
+        $tauxhoriare = $_POST['tauxhoriare'] ?? $test['tauxhoriare'];
+        $gradesalarie = $_POST['gradesalarie'] ?? $test['gradesalarie'];
+        $genresalarie2 = $_POST['genresalarie2'] ?? $test['genresalarie2'];
+        $contrat = $_POST['contrat'] ?? $test['contrat'];
+        $identifiantinterne = $_POST['identifiantinterne'] ?? $test['identifiantinterne'];
+        $matriculeinterne = $_POST['matriculeinterne'] ?? $test['matriculeinterne'];
+        $matriculesocial = $_POST['matriculesocial'] ?? $test['matriculesocial'];
+        $numenregistrement = $_POST['numenregistrement'] ?? $test['numenregistrement'];
+        $NIU = $_POST['NIU'] ?? $test['NIU'];
+        $dateentree = $_POST['dateentree'] ?? $test['dateentree'];
+        $datecontrat = $_POST['datecontrat'] ?? $test['datecontrat'];
+        $datedepart = $_POST['datedepart'] ?? $test['datedepart'];
+        $motifdepart = $_POST['motifdepart'] ?? $test['motifdepart'];
+
+        $data = json_encode([
+            "Site" => "mcs",
+            "civilite" => $civilite,
+            "nom" => $nom,
+            "prenom" => $prenom,
+            "Matricule" => $matriculeinterne,
+            "MatriculeInterne" => $matriculeinterne,
+            "cni" => $cni,
+            "LieuDelivranceCNI" => $fait,
+            "DateExpirationCNI" => $expire,
+            "Fonction" => 0,
+            "departement1" => $posteoccupe,
+            "Direction" => $direction,
+            "SousDirection" => $sousdirection,
+            "Service" => $service,
+            "Email" => $email,
+            "EmailProfessionnel" => $emailpro,
+            "phone" => $tel,
+            "TelephoneProfessionne" => $telpro,
+            "Adresse" => "douala",
+            "Sexe" => $genre,
+            "dnais" => $datenaissssance,
+            "npere" => $nompere,
+            "nmere" => $nommere,
+            "vnais" => $lieunaissance,
+            "nurg" => $nomurgence,
+            "nuurg" => $numerourgence,
+            "Convention" => $conventioncollective,
+            "categorie" => $categorie,
+            "Echelon" => $echellon,
+            "SalaireBaseMensuel" => $salairebase,
+            "genre_salarie" => $gradesalarie,
+            "date_entree" => $dateentree,
+            "date_contrat" => $datecontrat,
+            "type_contrat" => $contrat,
+            "motif_depart" => $motifdepart,
+            "NombreEnfant" => $nombreenfant,
+
+            "CodeAgence" => "252525"
+
+        ]);
+        $curl = curl_init();
+
+        curl_setopt_array($curl, [
+            CURLOPT_URL => PERS_API_URL . $id,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "PATCH",
+            CURLOPT_POSTFIELDS => $data,
+            CURLOPT_HTTPHEADER => [
+                "Content-Type: application/json"
+            ],
+        ]);
+
+        $response = (array)json_decode(curl_exec($curl));
+        header('Location: '.'/Iplans/employes');
+        echo "<script>
+    swal({
+        icon: 'success',
+        text: 'employes mise a jour avec succès...',
+        timer: 3000,
+        onOpen: function(){
+            swal.showLoading()
+        }
+    }).then(function(){
+        window.open('" . SITE_URL . "/employees','_self');
+    });
+</script>";
+
+
+        ob_start();
+    }
+    ?>
+
 <link rel="stylesheet" href="<?= SITE_URL ?>/assets/css/tableau.css">
 <link rel="stylesheet" href="<?= SITE_URL ?>/assets/css/index5.css">
 <link href="<?= SITE_URL ?>/assets/css/Divers.css" rel="stylesheet">
@@ -194,7 +308,7 @@ $d = (array)json_decode($response, true);
 
 <!--- debut du formulaire generale---->
 
-<form id='formu_show'>
+<form id='formu_show' method="">
 
 
 
@@ -204,7 +318,7 @@ $d = (array)json_decode($response, true);
             <div class="cont_titre ">
                 <div style="display: flex;">
                     <img src="<?= SITE_URL ?>/assets/img/iplans-icon.png" alt="" class="ico_emplye">
-                    <h2 class="fiche_sala">Ouvrir Fiche Salarié </h2>
+                    <h2 class="fiche_sala">Modification Fiche Salarié  </h2>
                 </div>
 
                 <div>
@@ -285,58 +399,58 @@ $d = (array)json_decode($response, true);
 
                             <div class="idntite2">
                                 <label for="" class="mt-3">Nom</label>
-                                <input type="text" class="form-control mt-3" name="nom" id='nom' value="">
+                                <input type="text" class="form-control mt-3" name="nom" id='nom' value="john">
                                
                             </div>
                        
 
                             <div class="idntite3">
                                 <label for="" class="mt-3">Prenom</label>
-                                <input type="text" class="form-control mt-3" name="prenom" id='prenom'>
+                                <input type="text" class="form-control mt-3" name="prenom" id='prenom' value="john">
                             </div>
                             <div class="idntite4">
                                 <label class="mt-3" for="" style="width: 80%">N* Carte national</label>
-                                <input type="text" class="form-control mt-3" name="cni" id='cni'>
+                                <input type="text" class="form-control mt-3" name="cni" id='cni' value="0000">
                                 <label class="mt-3" for="" style="width: 40%" >Fait a</label>
-                                <input type="text" class="form-control mt-3" name="fait" id='LieuDelivranceCNI' required>
+                                <input type="text" class="form-control mt-3" name="fait" id='LieuDelivranceCNI' >
                                 <label class="mt-3" for="" style="width: 70%">Expire le</label>
                                 <input type="date" name="expire" id='IDDateExpirationCNI' class="form-control mt-3" value="<?= date('Y-m-d') ?>">
                             </div>
                             <div class="idntite5">
                                 <label class="mt-3" for="">Adresse</label>
-                                <input type="text" class="form-control mt-3" name="adresse" id=''>
+                                <input type="text" class="form-control mt-3" name="adresse" id='' value="Douala">
                             </div>
                             <div class="idntite6">
                                 <label class="mt-3" for="">Telephone</label>
-                                <input type="tel" class="form-control mt-3" name="tel" id='phone'>
+                                <input type="tel" class="form-control mt-3" name="tel" id='phone' value="0000">
                             </div>
                             <div class="idntite7">
                                 <label class="mt-3" for="">Telephone Pro~</label>
-                                <input type="tel" class="form-control mt-3" name="telpro">
+                                <input type="tel" class="form-control mt-3" name="telpro" value="0000">
                             </div>
                             <div class="idntite8">
                                 <label class="mt-3" for="">Site (Agence)</label>
-                            <input type="text" class="form-control mt-3" name="nompere" id="agenceBanque">
+                            <input type="text" class="form-control mt-3" name="siteagence" id="agenceBanque" value="0000">
                             </div>
                             <div class="idntite9">
                                 <label class="mt-3" for="">Direction </label>
-                                <input type="text" class="form-control mt-3" name="Direction" id="Direction">
+                                <input type="text" class="form-control mt-3" name="direction" id="Direction" value="0000">
                             </div>
                             <div class="idntite10">
                                 <label class="mt-3" for="">Sous-Direction </label>
-                               <input type="text" class="form-control mt-3" name="nompere" id="SousDirection">
+                               <input type="text" class="form-control mt-3" name="sousdirection" id="SousDirection" value="0000">
                             </div>
                             <div class="idntite11">
                                 <label class="mt-3" for="">Service </label>
-                               <input type="text" class="form-control mt-3" name="nom" id='Service' required>
+                               <input type="text" class="form-control mt-3" name="service" id='Service' value="0000" >
                             </div>
                             <div class="idntite12">
                                 <label class="mt-3" for="">Departement </label>
-                                <input type="text" class="form-control mt-3" name="nom" id='departement1' required>
+                                <input type="text" class="form-control mt-3" name="nom" id='departement1' value="0000">
                             </div>
                             <div class="idntite13">
                                 <label class="mt-3" for="">Poste Occupé </label>
-                               <input type="text" class="form-control mt-3" name="nom" id='fonction' required>
+                               <input type="text" class="form-control mt-3" name="nom" id='fonction' value="0000">
                             </div>
                             <style>
                                 .form-vert {
@@ -402,11 +516,11 @@ $d = (array)json_decode($response, true);
                                 <div>
                                     <label class="mt-3" for="">Lieu de Naissance</label>
                                  
-                                    <input type="text" class="form-control mt-3" style="width: 80%; margin-right: 30%;" name="nom" id='vnais'>
+                                    <input type="text" class="form-control mt-3" style="width: 80%; margin-right: 30%;" name="lieunaissance" id='vnais' value="0000">
                                 </div>
                                 <div>
                                     <label class="mt-3" for="">Nom du Pere</label>
-                                    <input type="text" class="form-control mt-3" name="nompere" id="npere">
+                                    <input type="text" class="form-control mt-3" name="nompere" id="npere" value="0000">
                                 </div>
                                 <div>
                                     <label class="mt-3" for="">Nom de la mere</label>
@@ -414,11 +528,11 @@ $d = (array)json_decode($response, true);
                                 </div>
                                 <div>
                                     <label class="mt-3" for="">nom durgence</label>
-                                    <input type="text" class="form-control mt-3" name="nomurgence" id="nurg" >
+                                    <input type="text" class="form-control mt-3" name="nomurgence" id="nurg" value="0000">
                                 </div>
                                 <div>
                                     <label class="mt-3" for="">Numero D'urgence</label>
-                                    <input type="tel" class="form-control num mt-3" name="numerourgence" id="nuurg">
+                                    <input type="tel" class="form-control num mt-3" name="numerourgence" id="nuurg" value="0000">
                                 </div>
                                 <div>
                                     <label class="mt-3" for="">Adresse email</label>
@@ -426,7 +540,7 @@ $d = (array)json_decode($response, true);
                                 </div>
                                 <div>
                                     <label class="mt-3" for="">Adresse email pro~</label>
-                                    <input type="email" class="form-control mt-3" name="emailpro" id="">
+                                    <input type="email" class="form-control mt-3" name="emailpro" id="" value="0000">
                                 </div>
                                 <div class="situation">
                                     <h3 class='mt-3'>situation matrimonial</h3>
@@ -665,21 +779,21 @@ $d = (array)json_decode($response, true);
                                        </div>
                                        <div style="width: 70%;  display: flex; justify-content: space-between; align-items: center;">
                                            <label for="" class='text-danger'>Identifiant Interne</label>
-                                           <input type="text" class="form-control " style='background-color:#FFFF00 ;' name="identifiantinterne" id="" style=" width: 60%;">
+                                           <input type="text" class="form-control " style='background-color:#FFFF00 ;' name="identifiantinterne"value="0000" id="" style=" width: 60%;">
                                        </div>
                                        <div style="width: 70%;  display: flex; justify-content: space-between; align-items: center;">
                                            <label for="" class='text-danger'>Matricule Interne</label>
-                                           <input type="text" class="form-control " style='background-color:#238fce;' name="matriculeInterne" id="matriculeInterne" style=" width: 60%;">
+                                           <input type="text" class="form-control " style='background-color:#238fce;' name="matriculeInterne" id="matriculeInterne" style=" width: 60%;" value="0000">
                                        </div>
                                        <div style="width: 100%;  display: flex; justify-content: space-between; align-items: center;">
-                                           <label for="" class='text-danger' style=" width: 40%;">Matricule Social (CNPS)</label>
+                                           <label for="" class='text-danger'value="0000" style=" width: 40%;">Matricule Social (CNPS)</label>
                                            <input type="text" class="form-control " name="matricule" id="matricule" style=" width: 40%;">
                                            <label for="" class='text-danger' style="width: 20%; padding-left: 10px;">N* Enreg</label>
-                                           <input type="number" class="form-control " style="width: 15%;" name="numenregistrement">
+                                           <input type="number" class="form-control "value="0000" style="width: 15%;" name="numenregistrement">
                                        </div>
                                        <div style="width: 70%;  display: flex; justify-content: space-between; align-items: center;">
                                            <label for="" class='text-danger'>NIU (Impots)</label>
-                                           <input type="text" class="form-control " name="NIU" id="" style=" width: 60%;">
+                                           <input type="text" class="form-control "value="0000" name="NIU" id="" style=" width: 60%;">
                                        </div>
                                        <div>
                                            <p>
@@ -703,13 +817,13 @@ $d = (array)json_decode($response, true);
                                                <label for="" style="width: 100%; ">Date de Depart</label>
                                                <input type="date" class="form-control " name="datedepart" id="IDDate_Sortie" style="width: 500px;">
                                                <div>
-                                                   <input type="checkbox" name="" id="" value="archive">
+                                                   <input type="checkbox" name="" id=""value="0000" value="archive">
                                                    <label for="">Archivé</label>
                                                </div>
                                            </div>
                                            <div style="width: 71%;   display: flex; justify-content: space-around;">
                                                <label for="">Motif De Depart</label>
-                                               <input type="text" class="form-control " style='background-color:#238fce;' name="motifdepart" id="motif_depart">
+                                               <input type="text"value="0000" class="form-control " style='background-color:#238fce;' name="motifdepart" id="motif_depart">
     
                                            </div>
                                        </div>
@@ -1041,13 +1155,10 @@ $d = (array)json_decode($response, true);
             </style>
 
 
-            <div class="option47">
-                <!-- <div style="width: 50%; padding-left: 30px;">
-                    <button type="submit" name="ajouter_pers">Ajouter<img src="<?= SITE_URL ?>/assets/img/accept.png" alt="" style="width: max-content; height: 20px;"></button>
-                </div> -->
-
-
-             
+            <div class="option47 mt-3">
+                <div style="width: 50%; padding-left: 70px;">
+                    <button type="" class='bg-success'  id='modif' onclick="enregistrerModification()" name="ajouter_pers2">Enregistrer les modifications<img src="<?= SITE_URL ?>/assets/img/set.png" alt="" style="width: max-content; height: 20px;"></button>
+                </div> 
 
 
                 <div style="width: 100%; display: flex; justify-content: right; padding-right: 30px;">
@@ -1072,6 +1183,14 @@ $d = (array)json_decode($response, true);
                 border: 1px solid gray;
                 border-radius: 5px;
             }
+            .option47 #modif {
+                width: 260px;
+                height: 44px;
+                border: 1px solid gray;
+                border-radius: 5px;
+                font-size:18px;
+                color:white;
+            }
         </style>
     </div>
     <!-----divers----->
@@ -1084,7 +1203,7 @@ $d = (array)json_decode($response, true);
                 <div class="contenue_employers">
                     <div class="cont_titre ">
                         <div style="display: flex;">
-                            <img src="<?= SITE_URL ?>/assets/image/la terre.webp" alt="" class="ico_emplye">
+                            <img src="<?= SITE_URL ?>/assets/image/la%20terre.webp" alt="" class="ico_emplye">
                             <h2 class="fiche_sala">Fiche Salarié</h2>
                         </div>
 
@@ -1405,21 +1524,13 @@ $d = (array)json_decode($response, true);
 
 
                     <div class="option47">
-                        <div style="width: 100%; display: flex; justify-content:center; padding-right: 30px;">
-
-                            <div style="width: 50%; padding-left: 30px;">
-                                <button type="submit" name="ajouter_pers">Ajouter<img src="<?= SITE_URL ?>/assets/img/accept.png" alt="" style="width: max-content; height: 20px;"></button>
-                            </div>
+                      
 
 
 
-                            <div style="width: 50%; display: flex; justify-content: right; padding-right: 30px;">
-                                <button>Fermer<img src="<?= SITE_URL ?>/assets/img/close.png" alt="" style="width: max-content; height: 20px;"></button>
-                            </div>
-
-                        
+                        <div style="width: 50%; display: flex; justify-content: right; padding-right: 30px;">
+                            <button>Fermer<img src="<?= SITE_URL ?>/assets/img/close.png" alt="" style="width: max-content; height: 20px;"></button>
                         </div>
-                       
 
                     </div>
                 </div>
@@ -1427,13 +1538,6 @@ $d = (array)json_decode($response, true);
         </main>
     </div>
 </form>
-
-
-
-
-
-
-
 
 
 <!-- click sur le boutton recherche  -->
@@ -1461,7 +1565,24 @@ $d = (array)json_decode($response, true);
 
 
 
-
+<script>
+    const diverBtn = document.querySelector(".divers");
+    const cont_emplo = document.querySelector(".employe47");
+    const cont_diver = document.querySelector(".diver47");
+    diverBtn.addEventListener("click", () => {
+        cont_diver.style.display = "flex";
+        cont_emplo.style.display = "none";
+    })
+</script>
+<script>
+    const emploBtn5 = document.querySelector(".acti");
+    const cont_emplo2 = document.querySelector(".employe47");
+    const cont_diver2 = document.querySelector(".diver47");
+    emploBtn5.addEventListener("click", () => {
+        cont_diver2.style.display = "none";
+        cont_emplo2.style.display = "block";
+    })
+</script>
 
 
 
@@ -1560,6 +1681,233 @@ $d = (array)json_decode($response, true);
 
 </script>
 
+  <!-- modification dans API  -->
+
+
+  <script>
+
+        // Fonction pour envoyer les modifications à l'API
+        function enregistrerModification() {
+        
+        var nouveauNom = document.getElementById('nom').value;
+        var nouveauPrenom = document.getElementById('prenom').value;
+      
+
+
+        // Remplir le formulaire avec les données
+          //  var NEng= document.getElementById("NEng").value ;
+            var nom = document.getElementById("nom").value ;
+            // document.getElementById("prenom").value = formData.prenom || '';
+
+            var prenom = document.getElementById("prenom").value ;
+            var civilite= document.getElementById("civilite").value ;
+            var fonction =  document.getElementById("fonction").value
+            var phone = document.getElementById("phone").value  ;
+       
+           var matricule =   document.getElementById("matricule").value  ;
+           var matriculeInterne =   document.getElementById("matriculeInterne").value  ;
+           var cni =   document.getElementById("cni").value ;
+           var email =   document.getElementById("email").value ;
+           var dnais =   document.getElementById("dnais").value ;
+           var npere =   document.getElementById("npere").value  ;
+           var nmere =   document.getElementById("nmere").value  ;
+           var vnais =   document.getElementById("vnais").value ;
+           var nurg =   document.getElementById("nurg").value ;
+           var nuurg =   document.getElementById("nuurg").value  ;
+           var agenceBanque =   document.getElementById("agenceBanque").value ;
+           // var codeBanque = document.getElementById("codeBanque").value  ;
+           //var codeguichet= document.getElementById("codeguichet").value ;
+        // var numcomptbanque = document.getElementById("numcomptbanque").value || '' ;
+           // var cleRib =  document.getElementById("cleRib").value  ;
+          //  var CodeSwiftBanque = document.getElementById("CodeSwiftBanque").value ;
+          // var CodeUtilisateur =  document.getElementById("CodeUtilisateur").value  ;
+          var categorie =   document.getElementById("categorie").value  ;
+          var Grade =   document.getElementById("Grade").value ;
+          var Convention=   document.getElementById("Convention").value  ;
+          var departement1=    document.getElementById("departement1").value  ;
+          var Direction =   document.getElementById("Direction").value  ;
+          var SousDirection =   document.getElementById("SousDirection").value  ;
+          var Service =  document.getElementById("Service").value  ;
+          var motif_depart=   document.getElementById("motif_depart").value  ;
+         // var date_sortie = document.getElementById("date_sortie").value  ;
+          var date_entree = document.getElementById("date_entree").value ;
+         // var genre_salarie =  document.getElementById("genre_salarie").value ;
+          var type_contrat = document.getElementById("type_contrat").value ;
+           var IDDate_Contrat=   document.getElementById("IDDate_Contrat").value  ;
+          var IDDate_Sortie =   document.getElementById("IDDate_Sortie").value  ;
+          var LieuDelivranceCNI =    document.getElementById("LieuDelivranceCNI").value ;
+          //var DateExpirationCNI =  document.getElementById("DateExpirationCNI").value  ;
+          var IDDateExpirationCNI=  document.getElementById("IDDateExpirationCNI").value;
+
+
+        
+            var newFormData = {
+                nom: nom,
+                prenom: prenom,
+                fonction: fonction,
+                phone: phone,
+                matricule: matricule,
+                cni: cni,
+                civilite:civilite,
+                email: email,
+                dnais: dnais,
+                npere: npere,
+                nmere: nmere,
+                vnais: vnais,
+                nurg: nurg,
+                nuurg: nuurg,
+                matriculeInterne:matriculeInterne,
+             
+              
+                categorie: categorie,
+                Grade: Grade,
+                SousDirection: SousDirection,
+                Convention: Convention,
+                departement1: departement1,
+             
+                Direction: Direction,
+                Service: Service,
+         
+                date_entree: date_entree,
+                type_contrat: type_contrat,
+                IDDate_Contrat: IDDate_Contrat,
+                IDDate_Sortie: IDDate_Sortie,
+                LieuDelivranceCNI: LieuDelivranceCNI,
+               
+                IDDateExpirationCNI: IDDateExpirationCNI,
+               motif_depart:motif_depart,
+
+
+            };
+
+
+        // // Vous devrez remplacer cette URL par l'URL de votre API
+        // var urlApi = 'http://localhost/pers';
+
+        // // Utilisation de fetch pour envoyer les données mises à jour à l'API
+        // fetch(urlApi, {
+        //     method: 'PUT', // Utilisez 'PUT' pour les mises à jour
+        //     headers: {
+        //     'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify(newFormData)
+        // })
+        //     .then(response => response.json())
+        //     .then(data => console.log('Données mises à jour avec succès :', data))
+        //     .catch(error => console.error('Erreur lors de la mise à jour des données :', error));
+
+
+
+
+            //
+            //     let urlApi ="http://localhost/pers/6";
+            //
+            //
+            // fetch(urlApi, {
+            //     method: 'PUT',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //         "Accept": 'application/json'
+            //     },
+            //     body: JSON.stringify(newFormData)
+            // }).then(response => {
+            //         if (!response.ok) {
+            //             throw new Error('La requête a échoué');
+            //         }
+            //         return response.json();
+            //     })
+            //     .then(data => console.log('Données mises à jour avec succès :', data))
+            //     .catch(error => {
+            //         console.error('Erreur lors de la mise à jour des données :', error);
+            //
+            //
+            //         if (error.response) {
+            //             console.log('Contenu du corps de la réponse :', error.response.body);
+            //         }
+            //     });
+
+            // URL de votre API pour la modification des données
+            const url = 'http://localhost/pers'; // Remplacez avec votre URL
+
+// Données à mettre à jour
+            const donneesModifiees = {
+                nom: nom,
+                prenom: prenom,
+                fonction: fonction,
+                phone: phone,
+                matricule: matricule,
+                cni: cni,
+                civilite:civilite,
+                email: email,
+                dnais: dnais,
+                npere: npere,
+                nmere: nmere,
+                vnais: vnais,
+                nurg: nurg,
+                nuurg: nuurg,
+                matriculeInterne:matriculeInterne,
+
+
+                categorie: categorie,
+                Grade: Grade,
+                SousDirection: SousDirection,
+                Convention: Convention,
+                departement1: departement1,
+
+                Direction: Direction,
+                Service: Service,
+
+                date_entree: date_entree,
+                type_contrat: type_contrat,
+                IDDate_Contrat: IDDate_Contrat,
+                IDDate_Sortie: IDDate_Sortie,
+                LieuDelivranceCNI: LieuDelivranceCNI,
+
+                IDDateExpirationCNI: IDDateExpirationCNI,
+                motif_depart:motif_depart,
+            };
+
+// Configuration de la requête PATCH
+            const options = {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json' // Définition du type de contenu comme JSON
+                },
+                body: JSON.stringify(donneesModifiees) // Conversion des données en JSON
+            };
+
+// Envoi de la requête PATCH à l'API
+            fetch(url, options)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Erreur lors de la modification des données');
+                    }
+                    return response.json(); // Récupération de la réponse JSON si la requête est réussie
+                })
+                .then(data => {
+                    console.log('Données modifiées avec succès :', data);
+                    // Faire quelque chose avec la réponse si nécessaire
+                })
+                .catch(error => {
+                    console.error('Erreur :', error);
+                    // Gérer l'erreur ici
+                });
+
+
+
+
+
+
+
+
+
+
+
+        }
+
+        
+</script>
+
    
 
 
@@ -1568,9 +1916,9 @@ $d = (array)json_decode($response, true);
 
 
 
-
 <?php
 
 $content = ob_get_clean();
-include 'layout.php';
+include './vues/layout.php';
 ?>
+
