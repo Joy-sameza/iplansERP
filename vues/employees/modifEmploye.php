@@ -3,7 +3,7 @@ $title = 'accueil';
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-
+ob_start();
 
 
 $url = $_SERVER["REQUEST_URI"];
@@ -26,7 +26,8 @@ if ($query == "lang=en") {
     }
 }
 
-    if (isset($_POST['ajouter_pers22'])) {
+    if (isset($_POST['modif_pers'])) {
+
         $test = (array)$_SESSION['formData'];
         $id = $test['NEng'];
 
@@ -150,22 +151,30 @@ if ($query == "lang=en") {
         ]);
 
         $response = (array)json_decode(curl_exec($curl));
-        header('Location: '.'/Iplans/employes');
-        echo "<script>
-    swal({
-        icon: 'success',
-        text: 'employes mise a jour avec succès...',
-        timer: 3000,
-        onOpen: function(){
-            swal.showLoading()
+        if($response['response']==true){
+            echo "<script>
+                    swal({
+                        icon: 'success',
+                        text: 'employes mise a jour avec success!',
+                    }).then(function(){
+                 window.open('" . SITE_URL . "/employes','_self');
+             });
+                </script>";
+        }else{
+            echo "<script>
+                    swal({
+                        icon: 'warning',
+                        text: 'Désolé! errreur d enregistrement',
+                    });
+                </script>";
+
         }
-    }).then(function(){
-        window.open('" . SITE_URL . "/employees','_self');
-    });
-</script>";
 
 
-        ob_start();
+      //  header('Location: '.'/Iplans/employes');
+
+
+
     }
     ?>
 
@@ -308,7 +317,7 @@ if ($query == "lang=en") {
 
 <!--- debut du formulaire generale---->
 
-<form id='formu_show' method="">
+<form id='formu_show' method="post">
 
 
 
@@ -536,11 +545,11 @@ if ($query == "lang=en") {
                                 </div>
                                 <div>
                                     <label class="mt-3" for="">Adresse email</label>
-                                    <input type="email" class="form-control mt-3" name="email" id="email">
+                                    <input type="text" class="form-control mt-3" name="email" id="email">
                                 </div>
                                 <div>
                                     <label class="mt-3" for="">Adresse email pro~</label>
-                                    <input type="email" class="form-control mt-3" name="emailpro" id="" value="0000">
+                                    <input type="text" class="form-control mt-3" name="emailpro" id="" value="0000">
                                 </div>
                                 <div class="situation">
                                     <h3 class='mt-3'>situation matrimonial</h3>
@@ -1157,7 +1166,7 @@ if ($query == "lang=en") {
 
             <div class="option47 mt-3">
                 <div style="width: 50%; padding-left: 70px;">
-                    <button type="" class='bg-success'  id='modif' onclick="enregistrerModification()" name="ajouter_pers2">Enregistrer les modifications<img src="<?= SITE_URL ?>/assets/img/set.png" alt="" style="width: max-content; height: 20px;"></button>
+                    <button type="" class='bg-success'  id='modif'  name="modif_pers">Enregistrer les modifications<img src="<?= SITE_URL ?>/assets/img/set.png" alt="" style="width: max-content; height: 20px;"></button>
                 </div> 
 
 
@@ -1684,229 +1693,229 @@ if ($query == "lang=en") {
   <!-- modification dans API  -->
 
 
-  <script>
-
-        // Fonction pour envoyer les modifications à l'API
-        function enregistrerModification() {
-        
-        var nouveauNom = document.getElementById('nom').value;
-        var nouveauPrenom = document.getElementById('prenom').value;
-      
-
-
-        // Remplir le formulaire avec les données
-          //  var NEng= document.getElementById("NEng").value ;
-            var nom = document.getElementById("nom").value ;
-            // document.getElementById("prenom").value = formData.prenom || '';
-
-            var prenom = document.getElementById("prenom").value ;
-            var civilite= document.getElementById("civilite").value ;
-            var fonction =  document.getElementById("fonction").value
-            var phone = document.getElementById("phone").value  ;
-       
-           var matricule =   document.getElementById("matricule").value  ;
-           var matriculeInterne =   document.getElementById("matriculeInterne").value  ;
-           var cni =   document.getElementById("cni").value ;
-           var email =   document.getElementById("email").value ;
-           var dnais =   document.getElementById("dnais").value ;
-           var npere =   document.getElementById("npere").value  ;
-           var nmere =   document.getElementById("nmere").value  ;
-           var vnais =   document.getElementById("vnais").value ;
-           var nurg =   document.getElementById("nurg").value ;
-           var nuurg =   document.getElementById("nuurg").value  ;
-           var agenceBanque =   document.getElementById("agenceBanque").value ;
-           // var codeBanque = document.getElementById("codeBanque").value  ;
-           //var codeguichet= document.getElementById("codeguichet").value ;
-        // var numcomptbanque = document.getElementById("numcomptbanque").value || '' ;
-           // var cleRib =  document.getElementById("cleRib").value  ;
-          //  var CodeSwiftBanque = document.getElementById("CodeSwiftBanque").value ;
-          // var CodeUtilisateur =  document.getElementById("CodeUtilisateur").value  ;
-          var categorie =   document.getElementById("categorie").value  ;
-          var Grade =   document.getElementById("Grade").value ;
-          var Convention=   document.getElementById("Convention").value  ;
-          var departement1=    document.getElementById("departement1").value  ;
-          var Direction =   document.getElementById("Direction").value  ;
-          var SousDirection =   document.getElementById("SousDirection").value  ;
-          var Service =  document.getElementById("Service").value  ;
-          var motif_depart=   document.getElementById("motif_depart").value  ;
-         // var date_sortie = document.getElementById("date_sortie").value  ;
-          var date_entree = document.getElementById("date_entree").value ;
-         // var genre_salarie =  document.getElementById("genre_salarie").value ;
-          var type_contrat = document.getElementById("type_contrat").value ;
-           var IDDate_Contrat=   document.getElementById("IDDate_Contrat").value  ;
-          var IDDate_Sortie =   document.getElementById("IDDate_Sortie").value  ;
-          var LieuDelivranceCNI =    document.getElementById("LieuDelivranceCNI").value ;
-          //var DateExpirationCNI =  document.getElementById("DateExpirationCNI").value  ;
-          var IDDateExpirationCNI=  document.getElementById("IDDateExpirationCNI").value;
-
-
-        
-            var newFormData = {
-                nom: nom,
-                prenom: prenom,
-                fonction: fonction,
-                phone: phone,
-                matricule: matricule,
-                cni: cni,
-                civilite:civilite,
-                email: email,
-                dnais: dnais,
-                npere: npere,
-                nmere: nmere,
-                vnais: vnais,
-                nurg: nurg,
-                nuurg: nuurg,
-                matriculeInterne:matriculeInterne,
-             
-              
-                categorie: categorie,
-                Grade: Grade,
-                SousDirection: SousDirection,
-                Convention: Convention,
-                departement1: departement1,
-             
-                Direction: Direction,
-                Service: Service,
-         
-                date_entree: date_entree,
-                type_contrat: type_contrat,
-                IDDate_Contrat: IDDate_Contrat,
-                IDDate_Sortie: IDDate_Sortie,
-                LieuDelivranceCNI: LieuDelivranceCNI,
-               
-                IDDateExpirationCNI: IDDateExpirationCNI,
-               motif_depart:motif_depart,
-
-
-            };
-
-
-        // // Vous devrez remplacer cette URL par l'URL de votre API
-        // var urlApi = 'http://localhost/pers';
-
-        // // Utilisation de fetch pour envoyer les données mises à jour à l'API
-        // fetch(urlApi, {
-        //     method: 'PUT', // Utilisez 'PUT' pour les mises à jour
-        //     headers: {
-        //     'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify(newFormData)
-        // })
-        //     .then(response => response.json())
-        //     .then(data => console.log('Données mises à jour avec succès :', data))
-        //     .catch(error => console.error('Erreur lors de la mise à jour des données :', error));
-
-
-
-
-            //
-            //     let urlApi ="http://localhost/pers/6";
-            //
-            //
-            // fetch(urlApi, {
-            //     method: 'PUT',
-            //     headers: {
-            //         'Content-Type': 'application/json',
-            //         "Accept": 'application/json'
-            //     },
-            //     body: JSON.stringify(newFormData)
-            // }).then(response => {
-            //         if (!response.ok) {
-            //             throw new Error('La requête a échoué');
-            //         }
-            //         return response.json();
-            //     })
-            //     .then(data => console.log('Données mises à jour avec succès :', data))
-            //     .catch(error => {
-            //         console.error('Erreur lors de la mise à jour des données :', error);
-            //
-            //
-            //         if (error.response) {
-            //             console.log('Contenu du corps de la réponse :', error.response.body);
-            //         }
-            //     });
-
-            // URL de votre API pour la modification des données
-            const url = 'http://localhost/pers'; // Remplacez avec votre URL
-
-// Données à mettre à jour
-            const donneesModifiees = {
-                nom: nom,
-                prenom: prenom,
-                fonction: fonction,
-                phone: phone,
-                matricule: matricule,
-                cni: cni,
-                civilite:civilite,
-                email: email,
-                dnais: dnais,
-                npere: npere,
-                nmere: nmere,
-                vnais: vnais,
-                nurg: nurg,
-                nuurg: nuurg,
-                matriculeInterne:matriculeInterne,
-
-
-                categorie: categorie,
-                Grade: Grade,
-                SousDirection: SousDirection,
-                Convention: Convention,
-                departement1: departement1,
-
-                Direction: Direction,
-                Service: Service,
-
-                date_entree: date_entree,
-                type_contrat: type_contrat,
-                IDDate_Contrat: IDDate_Contrat,
-                IDDate_Sortie: IDDate_Sortie,
-                LieuDelivranceCNI: LieuDelivranceCNI,
-
-                IDDateExpirationCNI: IDDateExpirationCNI,
-                motif_depart:motif_depart,
-            };
-
-// Configuration de la requête PATCH
-            const options = {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json' // Définition du type de contenu comme JSON
-                },
-                body: JSON.stringify(donneesModifiees) // Conversion des données en JSON
-            };
-
-// Envoi de la requête PATCH à l'API
-            fetch(url, options)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Erreur lors de la modification des données');
-                    }
-                    return response.json(); // Récupération de la réponse JSON si la requête est réussie
-                })
-                .then(data => {
-                    console.log('Données modifiées avec succès :', data);
-                    // Faire quelque chose avec la réponse si nécessaire
-                })
-                .catch(error => {
-                    console.error('Erreur :', error);
-                    // Gérer l'erreur ici
-                });
-
-
-
-
-
-
-
-
-
-
-
-        }
-
-        
-</script>
+<!--  <script>-->
+<!---->
+<!--        // Fonction pour envoyer les modifications à l'API-->
+<!--        function enregistrerModification() {-->
+<!--        -->
+<!--        var nouveauNom = document.getElementById('nom').value;-->
+<!--        var nouveauPrenom = document.getElementById('prenom').value;-->
+<!--      -->
+<!---->
+<!---->
+<!--        // Remplir le formulaire avec les données-->
+<!--          //  var NEng= document.getElementById("NEng").value ;-->
+<!--            var nom = document.getElementById("nom").value ;-->
+<!--            // document.getElementById("prenom").value = formData.prenom || '';-->
+<!---->
+<!--            var prenom = document.getElementById("prenom").value ;-->
+<!--            var civilite= document.getElementById("civilite").value ;-->
+<!--            var fonction =  document.getElementById("fonction").value-->
+<!--            var phone = document.getElementById("phone").value  ;-->
+<!--       -->
+<!--           var matricule =   document.getElementById("matricule").value  ;-->
+<!--           var matriculeInterne =   document.getElementById("matriculeInterne").value  ;-->
+<!--           var cni =   document.getElementById("cni").value ;-->
+<!--           var email =   document.getElementById("email").value ;-->
+<!--           var dnais =   document.getElementById("dnais").value ;-->
+<!--           var npere =   document.getElementById("npere").value  ;-->
+<!--           var nmere =   document.getElementById("nmere").value  ;-->
+<!--           var vnais =   document.getElementById("vnais").value ;-->
+<!--           var nurg =   document.getElementById("nurg").value ;-->
+<!--           var nuurg =   document.getElementById("nuurg").value  ;-->
+<!--           var agenceBanque =   document.getElementById("agenceBanque").value ;-->
+<!--           // var codeBanque = document.getElementById("codeBanque").value  ;-->
+<!--           //var codeguichet= document.getElementById("codeguichet").value ;-->
+<!--        // var numcomptbanque = document.getElementById("numcomptbanque").value || '' ;-->
+<!--           // var cleRib =  document.getElementById("cleRib").value  ;-->
+<!--          //  var CodeSwiftBanque = document.getElementById("CodeSwiftBanque").value ;-->
+<!--          // var CodeUtilisateur =  document.getElementById("CodeUtilisateur").value  ;-->
+<!--          var categorie =   document.getElementById("categorie").value  ;-->
+<!--          var Grade =   document.getElementById("Grade").value ;-->
+<!--          var Convention=   document.getElementById("Convention").value  ;-->
+<!--          var departement1=    document.getElementById("departement1").value  ;-->
+<!--          var Direction =   document.getElementById("Direction").value  ;-->
+<!--          var SousDirection =   document.getElementById("SousDirection").value  ;-->
+<!--          var Service =  document.getElementById("Service").value  ;-->
+<!--          var motif_depart=   document.getElementById("motif_depart").value  ;-->
+<!--         // var date_sortie = document.getElementById("date_sortie").value  ;-->
+<!--          var date_entree = document.getElementById("date_entree").value ;-->
+<!--         // var genre_salarie =  document.getElementById("genre_salarie").value ;-->
+<!--          var type_contrat = document.getElementById("type_contrat").value ;-->
+<!--           var IDDate_Contrat=   document.getElementById("IDDate_Contrat").value  ;-->
+<!--          var IDDate_Sortie =   document.getElementById("IDDate_Sortie").value  ;-->
+<!--          var LieuDelivranceCNI =    document.getElementById("LieuDelivranceCNI").value ;-->
+<!--          //var DateExpirationCNI =  document.getElementById("DateExpirationCNI").value  ;-->
+<!--          var IDDateExpirationCNI=  document.getElementById("IDDateExpirationCNI").value;-->
+<!---->
+<!---->
+<!--        -->
+<!--            var newFormData = {-->
+<!--                nom: nom,-->
+<!--                prenom: prenom,-->
+<!--                fonction: fonction,-->
+<!--                phone: phone,-->
+<!--                matricule: matricule,-->
+<!--                cni: cni,-->
+<!--                civilite:civilite,-->
+<!--                email: email,-->
+<!--                dnais: dnais,-->
+<!--                npere: npere,-->
+<!--                nmere: nmere,-->
+<!--                vnais: vnais,-->
+<!--                nurg: nurg,-->
+<!--                nuurg: nuurg,-->
+<!--                matriculeInterne:matriculeInterne,-->
+<!--             -->
+<!--              -->
+<!--                categorie: categorie,-->
+<!--                Grade: Grade,-->
+<!--                SousDirection: SousDirection,-->
+<!--                Convention: Convention,-->
+<!--                departement1: departement1,-->
+<!--             -->
+<!--                Direction: Direction,-->
+<!--                Service: Service,-->
+<!--         -->
+<!--                date_entree: date_entree,-->
+<!--                type_contrat: type_contrat,-->
+<!--                IDDate_Contrat: IDDate_Contrat,-->
+<!--                IDDate_Sortie: IDDate_Sortie,-->
+<!--                LieuDelivranceCNI: LieuDelivranceCNI,-->
+<!--               -->
+<!--                IDDateExpirationCNI: IDDateExpirationCNI,-->
+<!--               motif_depart:motif_depart,-->
+<!---->
+<!---->
+<!--            };-->
+<!---->
+<!---->
+<!--        // // Vous devrez remplacer cette URL par l'URL de votre API-->
+<!--        // var urlApi = 'http://localhost/pers';-->
+<!---->
+<!--        // // Utilisation de fetch pour envoyer les données mises à jour à l'API-->
+<!--        // fetch(urlApi, {-->
+<!--        //     method: 'PUT', // Utilisez 'PUT' pour les mises à jour-->
+<!--        //     headers: {-->
+<!--        //     'Content-Type': 'application/json'-->
+<!--        //     },-->
+<!--        //     body: JSON.stringify(newFormData)-->
+<!--        // })-->
+<!--        //     .then(response => response.json())-->
+<!--        //     .then(data => console.log('Données mises à jour avec succès :', data))-->
+<!--        //     .catch(error => console.error('Erreur lors de la mise à jour des données :', error));-->
+<!---->
+<!---->
+<!---->
+<!---->
+<!--            //-->
+<!--            //     let urlApi ="http://localhost/pers/6";-->
+<!--            //-->
+<!--            //-->
+<!--            // fetch(urlApi, {-->
+<!--            //     method: 'PUT',-->
+<!--            //     headers: {-->
+<!--            //         'Content-Type': 'application/json',-->
+<!--            //         "Accept": 'application/json'-->
+<!--            //     },-->
+<!--            //     body: JSON.stringify(newFormData)-->
+<!--            // }).then(response => {-->
+<!--            //         if (!response.ok) {-->
+<!--            //             throw new Error('La requête a échoué');-->
+<!--            //         }-->
+<!--            //         return response.json();-->
+<!--            //     })-->
+<!--            //     .then(data => console.log('Données mises à jour avec succès :', data))-->
+<!--            //     .catch(error => {-->
+<!--            //         console.error('Erreur lors de la mise à jour des données :', error);-->
+<!--            //-->
+<!--            //-->
+<!--            //         if (error.response) {-->
+<!--            //             console.log('Contenu du corps de la réponse :', error.response.body);-->
+<!--            //         }-->
+<!--            //     });-->
+<!---->
+<!--            // URL de votre API pour la modification des données-->
+<!--            const url = 'http://localhost/pers'; // Remplacez avec votre URL-->
+<!---->
+<!--// Données à mettre à jour-->
+<!--            const donneesModifiees = {-->
+<!--                nom: nom,-->
+<!--                prenom: prenom,-->
+<!--                fonction: fonction,-->
+<!--                phone: phone,-->
+<!--                matricule: matricule,-->
+<!--                cni: cni,-->
+<!--                civilite:civilite,-->
+<!--                email: email,-->
+<!--                dnais: dnais,-->
+<!--                npere: npere,-->
+<!--                nmere: nmere,-->
+<!--                vnais: vnais,-->
+<!--                nurg: nurg,-->
+<!--                nuurg: nuurg,-->
+<!--                matriculeInterne:matriculeInterne,-->
+<!---->
+<!---->
+<!--                categorie: categorie,-->
+<!--                Grade: Grade,-->
+<!--                SousDirection: SousDirection,-->
+<!--                Convention: Convention,-->
+<!--                departement1: departement1,-->
+<!---->
+<!--                Direction: Direction,-->
+<!--                Service: Service,-->
+<!---->
+<!--                date_entree: date_entree,-->
+<!--                type_contrat: type_contrat,-->
+<!--                IDDate_Contrat: IDDate_Contrat,-->
+<!--                IDDate_Sortie: IDDate_Sortie,-->
+<!--                LieuDelivranceCNI: LieuDelivranceCNI,-->
+<!---->
+<!--                IDDateExpirationCNI: IDDateExpirationCNI,-->
+<!--                motif_depart:motif_depart,-->
+<!--            };-->
+<!---->
+<!--// Configuration de la requête PATCH-->
+<!--            const options = {-->
+<!--                method: 'PATCH',-->
+<!--                headers: {-->
+<!--                    'Content-Type': 'application/json' // Définition du type de contenu comme JSON-->
+<!--                },-->
+<!--                body: JSON.stringify(donneesModifiees) // Conversion des données en JSON-->
+<!--            };-->
+<!---->
+<!--// Envoi de la requête PATCH à l'API-->
+<!--            fetch(url, options)-->
+<!--                .then(response => {-->
+<!--                    if (!response.ok) {-->
+<!--                        throw new Error('Erreur lors de la modification des données');-->
+<!--                    }-->
+<!--                    return response.json(); // Récupération de la réponse JSON si la requête est réussie-->
+<!--                })-->
+<!--                .then(data => {-->
+<!--                    console.log('Données modifiées avec succès :', data);-->
+<!--                    // Faire quelque chose avec la réponse si nécessaire-->
+<!--                })-->
+<!--                .catch(error => {-->
+<!--                    console.error('Erreur :', error);-->
+<!--                    // Gérer l'erreur ici-->
+<!--                });-->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!--        }-->
+<!---->
+<!--        -->
+<!--</script>-->
 
    
 
