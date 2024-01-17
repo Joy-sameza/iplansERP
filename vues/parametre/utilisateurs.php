@@ -170,12 +170,13 @@ $response= (array)json_decode(curl_exec($curl));
             </div>
             <div class=" bout" style='  text-align: center;'>
 
-                    <button type="button" id='OK' onclick='redirectToSociete()' name="iplans_submit"><img src="<?= SITE_URL ?>/assets/img/house.png" alt="" style="width: max-content; height: 20px;"> Société
+                   <button type="button" class="bouton" id='societe' onclick="redirectToSociete();changerFond(this, 'Société')"><img src="<?= SITE_URL ?>/assets/img/house.png" alt="" style="width: max-content; height: 20px;"> Société
                     </button>
                     <button type="button" id='OK' name="">
                         Pointages
                     </button>
-                    <button type="button"  onclick='redirectToUser()' id='OK' name="">
+                     <button type="button" class="bouton" id=''
+                      onclick="redirectToUser();changerFond(this,'Utilisateurs')">
                         Utilisateurs
                     </button>
                     <button type="button" id='OK' name="">
@@ -232,35 +233,35 @@ $response= (array)json_decode(curl_exec($curl));
                     <form action="">
                           <div class="idntite3 d-flex">
                                 <label for="" class="mt-2" style="width: 33%">Nom Social</label>
-                                <input type="text" class="form-control mt-2"style="width: 67%" name="prenom" value=''>
+                                <input type="text" class="form-control mt-2"style="width: 67%" name="" value=''>
                          </div>
                           <div class="idntite3 d-flex">
                                 <label for="" class="mt-2" style="width: 33%">Adresse</label>
-                                <input type="text" class="form-control mt-2"style="width: 67%" name="prenom" id='prenom' value='DOUALA3'>
+                                <input type="text" class="form-control mt-2"style="width: 67%" name="" id='' value='DOUALA3'>
                          </div>
                           <div class="idntite3 d-flex">
                                 <label for="" class="mt-2" style="width: 33%">Boite Postal </label>
-                                <input type="text" class="form-control mt-2"style="width: 67%" name="prenom" id='prenom' value='8908'>
+                                <input type="text" class="form-control mt-2"style="width: 67%" name="" id='' value='8908'>
                          </div>
                           <div class="idntite3 d-flex">
                                 <label for="" class="mt-2" style="width: 33%">Telephone</label>
-                                <input type="text" class="form-control mt-2"style="width: 67%" name="prenom" id='prenom' value='33472866'>
+                                <input type="text" class="form-control mt-2"style="width: 67%" name="" id='' value='33472866'>
                          </div>
                           <div class="idntite3 d-flex">
                                 <label for="" class="mt-2" style="width: 33%">Telecopie(Fax)</label>
-                                <input type="text" class="form-control mt-2"style="width: 67%" name="prenom" id='prenom'>
+                                <input type="text" class="form-control mt-2"style="width: 67%" name="" id=''>
                          </div>
                           <div class="idntite3 d-flex">
                                 <label for="" class="mt-2" style="width: 33%">Site Web</label>
-                                <input type="text" class="form-control mt-2"style="width: 67%" name="prenom" id='prenom' value='kokotel.com'>
+                                <input type="text" class="form-control mt-2"style="width: 67%" name="" id='' value='kokotel.com'>
                          </div>
                           <div class="idntite3 d-flex">
                                 <label for="" class="mt-2" style="width: 33%">Email</label>
-                                <input type="text" class="form-control mt-2"style="width: 67%" name="prenom" id='prenom' value='info@kokotel.com'>
+                                <input type="text" class="form-control mt-2"style="width: 67%" name="" id='' value='info@kokotel.com'>
                          </div>
                           <div class="idntite3 d-flex">
                                 <label for="" class="mt-2" style="width: 33%">Site</label>
-                                <input type="text" class="form-control mt-2"style="width: 67%" name="prenom" id='prenom'  value='DEMO' disabled>
+                                <input type="text" class="form-control mt-2"style="width: 67%" name="" id=''  value='DEMO' disabled>
                          </div>
                           <div class="idntite3 d-flex mt-2">
                                <div style="width: 33%">
@@ -269,8 +270,8 @@ $response= (array)json_decode(curl_exec($curl));
                                    <label for="" class="mt-4" style="width: 100%">Nombre de Poste (*)</label>
                                </div>
                                <div style="width: 30%">
-                                <input type="text" class="form-control mt-3"style="width: 70%" name="prenom" id='prenom'  value='DEMO' >
-                                <input type="number" class="form-control mt-3"style="width: 70%" name="prenom" id='prenom'  value='10' >
+                                <input type="text" class="form-control mt-3"style="width: 70%" name="" id=''  value='DEMO' >
+                                <input type="number" class="form-control mt-3"style="width: 70%" name="" id=''  value='10' >
                                  <select class="form-select form-select-sm mt-3" name=""  style="width: 70%">
                                                        <option>0</option>
                                                        <option>1</option>
@@ -618,7 +619,7 @@ $response= (array)json_decode(curl_exec($curl));
                         </div>
                         <div class='d-flex mt-4'>
                             <label style="width: 20%" class='mt-1' for="" >Prenom:</label>
-                             <input type="text" class="form-control"style="width: 80%" name="prenom" id='prenom' required>
+                             <input type="text" class="form-control"style="width: 80%" name="" id='' required>
 
                         </div>
                         <div class='d-flex mt-4'>
@@ -653,7 +654,7 @@ $response= (array)json_decode(curl_exec($curl));
                         <div class='d-flex justify-content-center mt-3' style='align-items:center;flex-direction: column;'> 
 
                             
-                             <button type="submit" id='valid' style='width:130px;height:40px;border-radius:5px;' name="submit_user">Valider<img src="<?= SITE_URL ?>/assets/img/accept.png" alt="" style="width: max-content; height: 20px;"></button>
+                             <button type="submit" id='' style='width:130px;height:40px;border-radius:5px;' name="submit_user">Valider<img src="<?= SITE_URL ?>/assets/img/accept.png" alt="" style="width: max-content; height: 20px;"></button>
                             
                             
 
@@ -1005,6 +1006,11 @@ $response= (array)json_decode(curl_exec($curl));
             height: 50px;
             position: relative;
         }
+         .bouton.active {
+      background-color: #0D6EFD;
+      color:white;
+      border-color:#0D6EFD;
+    }
     </style>  
     <!--  //fin grande div    -->
 
@@ -1100,6 +1106,42 @@ $response= (array)json_decode(curl_exec($curl));
         const response = await fetch(api_url_user);
         const data = await response.json();
         return data;
+    }
+</script>
+<script>
+    // Fonction pour changer le fond et sauvegarder l'état dans localStorage
+    function changerFond(bouton, nomBouton) {
+      // Désactive tous les autres boutons
+      var tousLesBoutons = document.querySelectorAll('.bouton');
+      tousLesBoutons.forEach(function (autreBouton) {
+        if (autreBouton !== bouton) {
+          autreBouton.classList.remove('active');
+          localStorage.removeItem(autreBouton.innerText.trim().replace(/\s+/g, ''));
+        }
+      });
+
+      // Bascule la classe active du bouton
+      bouton.classList.toggle('active');
+
+      // Enregistre l'état du bouton dans localStorage
+      if (bouton.classList.contains('active')) {
+        localStorage.setItem(nomBouton, 'active');
+      } else {
+        localStorage.removeItem(nomBouton);
+      }
+    }
+
+    // Restaure l'état des boutons lors du chargement de la page
+    document.addEventListener('DOMContentLoaded', function () {
+      var boutons = document.querySelectorAll('.bouton');
+      boutons.forEach(function (bouton) {
+        var nomBouton = bouton.innerText.trim().replace(/\s+/g, ''); // Utilise le texte du bouton comme nom
+        var etatBouton = localStorage.getItem(nomBouton);
+        if (etatBouton === 'active') {
+          bouton.classList.add('active');
+        }
+      });
+    });
 </script>
 
 

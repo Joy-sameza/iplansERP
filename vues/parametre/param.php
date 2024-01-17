@@ -159,12 +159,13 @@ if (isset($_POST['submit_societe'])) {
             </div>
             <div class=" bout" style='  text-align: center;'>
 
-                    <button type="button" id='societe' onclick='redirectToSociete()'><img src="<?= SITE_URL ?>/assets/img/house.png" alt="" style="width: max-content; height: 20px;"> Société
+                    <button type="button" class="bouton" id='societe' onclick="redirectToSociete();changerFond(this, 'Société')"><img src="<?= SITE_URL ?>/assets/img/house.png" alt="" style="width: max-content; height: 20px;"> Société
                     </button>
                     <button type="button" id='OK' name="">
                         Pointages
                     </button>
-                    <button type="button" id='' onclick='redirectToUser()'  name="">
+                     <button type="button" class="bouton" id=''
+                      onclick="redirectToUser();changerFond(this,'Utilisateurs')">
                         Utilisateurs
                     </button>
                     <button type="button" id='OK' name="">
@@ -295,7 +296,7 @@ if (isset($_POST['submit_societe'])) {
                         <!-- ceci ne concerne que text divider -->
                         <div class="text-divider-container2">
                             <div class="text-divider2">
-                                <span>Rapport de mission</span>
+                                <span>Paramètres généraux </span>
                             </div>
                         </div>
                         <div class="mt-3 mx-1 ">
@@ -762,6 +763,11 @@ if (isset($_POST['submit_societe'])) {
             height: 50px;
             position: relative;
         }
+  .bouton.active {
+      background-color: #0D6EFD;
+      color:white;
+      border-color:#0D6EFD;
+    }
     </style>  
     <!--  //fin grande div    -->
     <script>
@@ -820,12 +826,39 @@ if (isset($_POST['submit_societe'])) {
         }
 </script>
 <script>
-    //const valeurDeSite = sessionStorage.getItem('site');
-    // Variable JavaScript à envoyer
+    // Fonction pour changer le fond et sauvegarder l'état dans localStorage
+    function changerFond(bouton, nomBouton) {
+      // Désactive tous les autres boutons
+      var tousLesBoutons = document.querySelectorAll('.bouton');
+      tousLesBoutons.forEach(function (autreBouton) {
+        if (autreBouton !== bouton) {
+          autreBouton.classList.remove('active');
+          localStorage.removeItem(autreBouton.innerText.trim().replace(/\s+/g, ''));
+        }
+      });
 
+      // Bascule la classe active du bouton
+      bouton.classList.toggle('active');
 
+      // Enregistre l'état du bouton dans localStorage
+      if (bouton.classList.contains('active')) {
+        localStorage.setItem(nomBouton, 'active');
+      } else {
+        localStorage.removeItem(nomBouton);
+      }
+    }
 
-    //alert(valeurDeSite);
+    // Restaure l'état des boutons lors du chargement de la page
+    document.addEventListener('DOMContentLoaded', function () {
+      var boutons = document.querySelectorAll('.bouton');
+      boutons.forEach(function (bouton) {
+        var nomBouton = bouton.innerText.trim().replace(/\s+/g, ''); // Utilise le texte du bouton comme nom
+        var etatBouton = localStorage.getItem(nomBouton);
+        if (etatBouton === 'active') {
+          bouton.classList.add('active');
+        }
+      });
+    });
 </script>
 
 
