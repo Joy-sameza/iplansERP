@@ -45,7 +45,7 @@ class controllerP
 
         if (!$personne) {
             http_response_code(404);
-            echo json_encode(["message" => "personne not found"]);
+            echo json_encode(["response" => false,"message" => "personne not found"]);
             return;
         }
 
@@ -60,24 +60,25 @@ class controllerP
 
                 if (!empty($errors)) {
                     http_response_code(422);
-                    echo json_encode(["errors" => $errors]);
+                    echo json_encode(["response" => false,"errors" => $errors]);
                     break;
                 }
 
                 if (empty($data)) {
                     http_response_code(304);
-                    echo json_encode(["message" => "Nothing to update"]);
+                    echo json_encode(["response" => false,"message" => "Nothing to update"]);
                     break;
                 }
 
                 $rows = $this->cour->update($personne, $data);
 
                 if ($rows === false) {
-                    echo json_encode(["message" => "La personne ne peut pas être modifier"]);
+                    echo json_encode([ "response" => false,"message" => "La personne ne peut pas être modifier"]);
                     break;
                 } else {
 
                     echo json_encode([
+                        "response" => true,
                         "message" => "personne $id à été mis à jour",
                         "rows" => $rows
                     ]);

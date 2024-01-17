@@ -1927,7 +1927,7 @@ ini_set("date.timezone", "Africa/Douala");
     </div>
 </form>
 
-<template id="pers_table_template">
+<template id="pers_table_template" >
     <tr style="pointer-events: all !important;">
         
         <td id='option'>
@@ -2518,7 +2518,7 @@ ini_set("date.timezone", "Africa/Douala");
             var prenom = targetRow.cells[3].textContent;
             var fonction = targetRow.cells[4].textContent;
             var phone = targetRow.querySelector('[data-phone]').textContent;
-            var pseudo = targetRow.cells[6].textContent;
+            var PSeudo = targetRow.cells[6].textContent;
             var matricule = targetRow.cells[7].textContent;
             var cni= targetRow.cells[9].textContent;
             var email = targetRow.cells[10].textContent;
@@ -2559,6 +2559,7 @@ ini_set("date.timezone", "Africa/Douala");
                 prenom: prenom,
                 fonction: fonction,
                 phone: phone,
+                PSeudo:PSeudo,
                 matricule: matricule,
                 cni: cni,
                 email: email,
@@ -2636,7 +2637,7 @@ ini_set("date.timezone", "Africa/Douala");
             var prenom = targetRow.cells[4].textContent;
             var fonction = targetRow.cells[5].textContent;
             var phone = targetRow.cells[6].textContent;
-            var pseudo = targetRow.cells[7].textContent;
+            var PSeudo = targetRow.cells[7].textContent;
             var matricule = targetRow.cells[8].textContent;
             var cni= targetRow.cells[9].textContent;
             var email = targetRow.cells[10].textContent;
@@ -2678,6 +2679,7 @@ ini_set("date.timezone", "Africa/Douala");
                 prenom: prenom,
                 fonction: fonction,
                 phone: phone,
+                PSeudo: PSeudo,
                 matricule: matricule,
                 cni: cni,
                 email: email,
