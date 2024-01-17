@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once("./include/commandes.php");
 require_once("./include/config.php");
 $db = new Commandes();
@@ -10,6 +9,7 @@ $title = 'accueil';
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
+
 $url = $_SERVER["REQUEST_URI"];
 $query = parse_url($url, PHP_URL_QUERY);
 if ($query == "lang=en") {
@@ -224,7 +224,7 @@ ob_start();
 
   <div class="container-fluid d-flex justify-content-end pb-5 align-items-right">
               
-    <img src="<?= SITE_URL ?>/assets/img/logo_minesec2.png" alt=""style="width: 130px; height: 130px; margin-right:7px">
+    <img src="<?= SITE_URL ?>/assets/img/logo_minesec2.png" alt="" style="width: 130px; height: 130px; margin-right:7px">
   </div>
 <?php
 if (isset($_POST['send1'])) {
@@ -355,7 +355,7 @@ if(isset($_POST['submit_verif'])){
 
             $data = json_encode([
                 "passwords"=>$password,
-                "PasswordDemand"=>1
+                "PasswordDemand"=>0
             ]);
 
             $curl = curl_init();
@@ -409,5 +409,5 @@ if(isset($_POST['submit_verif'])){
 ?>
 <?php
 $content = ob_get_clean();
-include 'layout.php';
+include './vues/layout.php';
 ?>

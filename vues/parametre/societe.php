@@ -1,5 +1,4 @@
 <?php
-
 $title = 'accueil';
 if (session_status() == PHP_SESSION_NONE) {
   session_start();
@@ -24,85 +23,8 @@ if ($query == "lang=en") {
   }
 }
 ob_start();
-$curl = curl_init();
-curl_setopt_array($curl, [
-    CURLOPT_URL => siteiplans_API_URL."8",
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_ENCODING => "",
-    CURLOPT_MAXREDIRS => 10,
-    CURLOPT_TIMEOUT => 30,
-    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-    CURLOPT_CUSTOMREQUEST => "GET",
-    CURLOPT_HTTPHEADER => [
-        "Content-Type: application/json"
-    ],
-]);
-$response_societe= (array)json_decode(curl_exec($curl));
-?>
-<?php
-if (isset($_POST['submit_societe'])) {
-    $image=$_FILES['image']['name'];
-    $file_tmp_name=$_FILES['image']['tmp_name'];
-    move_uploaded_file($file_tmp_name,"uploads/$image");
-        // Get the form data
-        $site = $_POST['site'];
-        $email = $_POST['email'];
-        $siteweb=$_POST['siteweb'];
-        $pobox = $_POST['pobox'];
-        $employees = $_POST['employees'];
-        $nombreposte=$_POST['nombreposte'];
-       $telephone = $_POST['telephone'];
-         $adress = $_POST['adress'];
 
-
-
-        $data = json_encode([
-            "Site" => $site,
-            "EMail" => $email,
-            "Telephone" => $telephone,
-            "Employees" => $employees,
-            "NombrePoste"=>$nombreposte,
-            "POBOX"=>$pobox,
-            "Address"=>$adress,
-            "NomPhoto"=>$image
-
-
-        ]);
-        $curl = curl_init();
-
-        curl_setopt_array($curl, [
-            CURLOPT_URL => siteiplans_API_URL."8" ,
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => "",
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 30,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => "PATCH",
-            CURLOPT_POSTFIELDS => $data,
-            CURLOPT_HTTPHEADER => [
-                "Content-Type: application/json"
-            ],
-        ]);
-
-        $response = (array)json_decode(curl_exec($curl));
-    echo "<script>
-             swal({
-             icon: 'success',
-             text: 'mise a jour  avec succès...',
-             timer: 2000,
-             onOpen: function(){
-             swal.showLoading()
-             }
-             }).then(function(){
-                 window.open('" . SITE_URL . "/home/param','_self');
-             });
-            </script>";
-
-
-
-}
-?>
-<style>
+?><style>
     .header{
         display: none;
      }
@@ -155,12 +77,12 @@ if (isset($_POST['submit_societe'])) {
             </div>
             <div class=" bout" style='  text-align: center;'>
 
-                    <button type="button" id='societe' onclick='redirectToSociete()'><img src="<?= SITE_URL ?>/assets/img/house.png" alt="" style="width: max-content; height: 20px;"> Société
+                    <button type="button" id='societe' name="iplans_submit"><img src="<?= SITE_URL ?>/assets/img/house.png" alt="" style="width: max-content; height: 20px;"> Société
                     </button>
                     <button type="button" id='OK' name="">
                         Pointages
                     </button>
-                    <button type="button" id='' onclick='redirectToUser()'  name="">
+                    <button type="button" id='OK' name="">
                         Utilisateurs
                     </button>
                     <button type="button" id='OK' name="">
@@ -214,22 +136,22 @@ if (isset($_POST['submit_societe'])) {
             <div class="row mt-5 " style=''>
                 <!-- gauche  -->
                 <div class="col-sm-5 mx-4">
-                    <form action="" method="post" enctype="multipart/form-data">
+                    <form action="">
                           <div class="idntite3 d-flex">
                                 <label for="" class="mt-2" style="width: 33%">Nom Social</label>
-                                <input type="text" class="form-control mt-2"style="width: 67%" name="site" id='site' value='<?php echo $response_societe['Site']?>'>
+                                <input type="text" class="form-control mt-2"style="width: 67%" name="prenom" id='prenom' value=''>
                          </div>
                           <div class="idntite3 d-flex">
                                 <label for="" class="mt-2" style="width: 33%">Adresse</label>
-                                <input type="text" class="form-control mt-2"style="width: 67%" name="adress" id='adress' value='<?php echo $response_societe['Address']?>'>
+                                <input type="text" class="form-control mt-2"style="width: 67%" name="prenom" id='prenom' value='DOUALA3'>
                          </div>
                           <div class="idntite3 d-flex">
                                 <label for="" class="mt-2" style="width: 33%">Boite Postal </label>
-                                <input type="text" class="form-control mt-2"style="width: 67%" name="pobox" id='pobox' value='<?php echo $response_societe['POBOX']?>'>
+                                <input type="text" class="form-control mt-2"style="width: 67%" name="prenom" id='prenom' value='8908'>
                          </div>
                           <div class="idntite3 d-flex">
                                 <label for="" class="mt-2" style="width: 33%">Telephone</label>
-                                <input type="text" class="form-control mt-2"style="width: 67%" name="telephone" id='telephone' value='<?php echo $response_societe['Telephone']?>'>
+                                <input type="text" class="form-control mt-2"style="width: 67%" name="prenom" id='prenom' value='33472866'>
                          </div>
                           <div class="idntite3 d-flex">
                                 <label for="" class="mt-2" style="width: 33%">Telecopie(Fax)</label>
@@ -237,15 +159,15 @@ if (isset($_POST['submit_societe'])) {
                          </div>
                           <div class="idntite3 d-flex">
                                 <label for="" class="mt-2" style="width: 33%">Site Web</label>
-                                <input type="text" class="form-control mt-2"style="width: 67%" name="siteweb" id='prenom' value='<?php echo $response_societe['WebSite']?>'>
+                                <input type="text" class="form-control mt-2"style="width: 67%" name="prenom" id='prenom' value='kokotel.com'>
                          </div>
                           <div class="idntite3 d-flex">
                                 <label for="" class="mt-2" style="width: 33%">Email</label>
-                                <input type="text" class="form-control mt-2"style="width: 67%" name="email" id='prenom' value='<?php echo $response_societe['EMail']?>'>
+                                <input type="text" class="form-control mt-2"style="width: 67%" name="prenom" id='prenom' value='info@kokotel.com'>
                          </div>
                           <div class="idntite3 d-flex">
                                 <label for="" class="mt-2" style="width: 33%">Site</label>
-                                <input type="text" class="form-control mt-2"style="width: 67%" name="prenom" id='prenom'  value='<?php echo $response_societe['Site']?>' disabled>
+                                <input type="text" class="form-control mt-2"style="width: 67%" name="prenom" id='prenom'  value='DEMO' disabled>
                          </div>
                           <div class="idntite3 d-flex mt-2">
                                <div style="width: 33%">
@@ -254,20 +176,39 @@ if (isset($_POST['submit_societe'])) {
                                    <label for="" class="mt-4" style="width: 100%">Nombre de Poste (*)</label>
                                </div>
                                <div style="width: 30%">
-                                <input type="text" class="form-control mt-3"style="width: 70%" name="prenom" id='prenom'  value='<?php echo $response_societe["Site"]?>' >
-                                <input type="tel" class="form-control mt-3"style="width: 70%" name="employees" id='prenom'  value='<?php echo $response_societe['Employees']?>' >
-                                 <input type="tel"class="form-select form-select-sm mt-3" name="nombreposte"  style="width: 70%" value="<?php echo $response_societe['NombrePoste']?>">
-
-
+                                <input type="text" class="form-control mt-3"style="width: 70%" name="prenom" id='prenom'  value='DEMO' >
+                                <input type="number" class="form-control mt-3"style="width: 70%" name="prenom" id='prenom'  value='10' >
+                                 <select class="form-select form-select-sm mt-3" name=""  style="width: 70%">
+                                                       <option>0</option>
+                                                       <option>1</option>
+                                                       <option>2</option>
+                                                       <option>3</option>
+                                                       <option>4</option>
+                                                       <option>5</option>
+                                                       <option>6</option>
+                                                       <option>7</option>
+                                                       <option>9</option>
+                                                       <option>10</option>
+                                                       <option>11</option>
+                                                       <option>12</option>
+                                                       <option>13</option>
+                                                       <option>14</option>
+                                                       <option>15</option>
+                                                       <option>16</option>
+                                                       <option>17</option>
+                                                       <option>18</option>
+                                                       <option>19</option>
+                                                       <option>20</option>
+                                 </select>
                             
                                </div>
                                <div style="width: 37%;align-items: flex-end;display: flex;flex-direction: column;" class=''>
                                    <div class="preview-img">
-                                    <img src="<?= SITE_URL ?>/uploads/<?php echo $response_societe["NomPhoto"]?>" class='placeholder-img' alt="" style='height:130px'>
+                                    <img src="<?= SITE_URL ?>/assets/img/images.png" class='placeholder-img' alt="" style='height:130px'>
                                 </div>
                                 <div class='zone'>
                                     <div class="roww">
-                                        <input type="file" class="file-input" accept="*/*" name="image"  value="" hidden>
+                                        <input type="file" class="file-input" accept="image/*" hidden>
                                         <button class="choose-img mt-2" style='margin-left: 24px;border-radius:5px;height: 40px;width:150px'>
                                             <img class="choose-img" src="<?= SITE_URL ?>/assets/img/search.png" alt="" style="width: max-content; height: 25px;"><b>Logo Societe</b>
                                         </button>
@@ -279,7 +220,7 @@ if (isset($_POST['submit_societe'])) {
                               </div>
                          </div>
                          <div class='d-flex mt-3' >
-                            <button type="submit" id='appliquer' style='width:340px;height:40px;margin: 0 auto;border-radius:5px' name="submit_societe">Appliquer <img src="<?= SITE_URL ?>/assets/img/accept.png" alt="" style="width: max-content; height: 20px;"></button>
+                            <button type="submit" id='appliquer' style='width:340px;height:40px;margin: 0 auto;border-radius:5px' name="iplans_submit">Appliquer <img src="<?= SITE_URL ?>/assets/img/accept.png" alt="" style="width: max-content; height: 20px;"></button>
                          </div>
                          
                     </form>
@@ -545,87 +486,7 @@ if (isset($_POST['submit_societe'])) {
                 
             </div>
 
-            <div class='row mx-1' style='height:70vh;display:none'>
-                <div class='col-sm-6' style='display: flex;flex-direction: column;justify-content:space-around;'>
-                    <div >
-                        <h2>Liste des utilisateurs</h2>
-                    </div>
-                    <div class='tooltip47'>
-                         <button id='new' class='bg-success '>
-                              Nouveau
-                            <img src="<?= SITE_URL ?>/assets/img/add-file.png" alt="" style="width: max-content; height: 20px;">
-                          
-                         </button>
-                           <div class='tooltipBoutton'>
-                              <button id="simple" class='ferme my-3'>
-                                    Simple
-                                    <img src="<?= SITE_URL ?>/assets/img/evaluation.png" alt="" style="width: max-content; height: 20px;">
-                             </button>
-                              <button id="admin" class='ferme'>
-                                    Admin
-                                    <img src="<?= SITE_URL ?>/assets/img/staff.png" alt="" style="width: max-content; height: 20px;">
-                             </button>
-
-                          </div>
-                    </div>
-                </div>
-                <div class='col-sm-6' style=''>
-
-                 <!-- formulaire  -->
-                   <div style='width:100%; display:none' id='simple_form'>
-                    <form action="" class='mt-5 p-4' style='border:2px solid gray;border-radius:9px; width: 65% ;'>
-                        <div style='margin-bottom:30px;    text-align: center; '>
-                            <h4>Form Utilisateurs</h4>
-                        </div>
-                        <div class='d-flex mt-4'>
-                            <label style="width: 20%" class='mt-1' for="">Nom:</label>
-                             <input type="text" class="form-control"style="width: 80%" name="nom" id='nom'>
-
-                        </div>
-                        <div class='d-flex mt-4'>
-                            <label style="width: 20%" class='mt-1' for="">Prenom:</label>
-                             <input type="text" class="form-control"style="width: 80%" name="nom" id='prenom'>
-
-                        </div>
-                        <div class='d-flex mt-4'>
-                            <label style="width: 20%" class='mt-1' for="">Password:</label>
-                             <input type="password" class="form-control"style="width: 80%" name="nom" id='nom'>
-
-                        </div>
-                        <div class='d-flex mt-4 mx-5'>
-                            <label style="width: 60%" for="">Super Utilisateur ?</label>
-                            <input type="checkbox" class="form-check-input mx-2 " name="" id="" >OUI
-                            <input type="checkbox" class="form-check-input mx-2 " name="" id="" >NON
-                            
-
-                        </div>
-                        <div class='d-flex justify-content-center mt-3' style='align-items:center'> 
-                            <div class='mx-2'>
-                               <input type="checkbox" class="form-check-input mx-2 " name="" id="" >
-                            <label style="width: 60%" for="">Reinitialiser</label>
-                            </div>
-                            
-                             <button type="submit" id='valid' style='width:130px;height:40px;border-radius:5px;' name="iplans_submit">Valider<img src="<?= SITE_URL ?>/assets/img/accept.png" alt="" style="width: max-content; height: 20px;"></button>
-                            
-                            
-
-                        </div>
-                    </form>
-
-                   </div>
-
-                   <!-- tableau pour les admins  -->
-                   <div style='width:100%;' id='tableau'>
-
-
-
-                   </div>
-                   <!-- fin div pour admin  -->
-                </div>
-                
-
-            </div>
-
+        
 
 
 
@@ -644,7 +505,7 @@ if (isset($_POST['submit_societe'])) {
                 </div>
             
                 <div style='width:10.5%;'>
-                    <button id="fermer" >
+                    <button id="fermer">
                         Fermer
                         <img src="<?= SITE_URL ?>/assets/img/close.png" alt="" style="width: max-content; height: 20px;">
                     </button>
@@ -803,18 +664,17 @@ if (isset($_POST['submit_societe'])) {
 
     
 </script>
+
+
  <script>
-        function redirectToSociete() {
+        const bouton = document.getElementById("societe");
        
-            window.location.href = '<?= SITE_URL ?>/home/param';
-        }
-</script>
- <script>
-        function redirectToUser() {
-       
-            window.location.href = '<?= SITE_URL ?>/home/param/utilisateurs';
-        }
-</script>
+
+        bouton.addEventListener("click", (e) => {
+            e.preventDefault();
+           window.location.href = "<?= SITE_URL ?>/home/param/societe";
+        });
+    </script>
 
 
 
@@ -831,5 +691,5 @@ if (isset($_POST['submit_societe'])) {
 
 <?php
 $content = ob_get_clean();
-include 'layout.php'
+include './vues/layout.php';
 ?>

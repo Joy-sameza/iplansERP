@@ -1,12 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7d0e5bba-8be3-4af7-9bd3-b337ff71621c" name="Changes" comment="finitions de paramettre2">
-      <change beforePath="$PROJECT_DIR$/include/commandes.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/commandes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vues/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/home.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vues/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vues/param.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/param.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vues/utilisateurs.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/utilisateurs.php" afterDir="false" />
+    <list default="true" id="7d0e5bba-8be3-4af7-9bd3-b337ff71621c" name="Changes" comment="finitions de paramettre3">
+      <change afterPath="$PROJECT_DIR$/vues/home/accueil.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/home_controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/home_controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vues/acceuil.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vues/courrier.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/courier/courrier.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vues/details_mission.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/mission/details_mission.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vues/gestion_abscences.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/absence/gestion_abscences.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vues/list_abscences.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/absence/list_abscences.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vues/list_mission.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/mission/list_mission.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vues/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/home/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vues/mission.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/mission/mission.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vues/modifEmploye.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/employees/modifEmploye.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vues/openAbscence.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/absence/openAbscence.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vues/openEmployer.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/employees/openEmployer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vues/openMission.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/mission/openMission.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vues/param.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/parametre/param.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vues/societe.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/parametre/societe.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vues/tableau.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/employees/tableau.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vues/utilisateurs.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/parametre/utilisateurs.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,17 +55,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/xampp/htdocs/iplans",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\PhpStorm 2022.2.2\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/xampp/htdocs/iplans&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\PhpStorm 2022.2.2\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\iplans\vues\parametre" />
+      <recent name="C:\xampp\htdocs\iplans\vues\absence" />
+      <recent name="C:\xampp\htdocs\iplans\vues\mission" />
+      <recent name="C:\xampp\htdocs\iplans\vues\employees" />
+      <recent name="C:\xampp\htdocs\iplans\vues\courier" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -72,7 +95,7 @@
       <workItem from="1702020741543" duration="7490000" />
       <workItem from="1702298799756" duration="18235000" />
       <workItem from="1702817538342" duration="7482000" />
-      <workItem from="1702919719640" duration="114953000" />
+      <workItem from="1702919719640" duration="137290000" />
     </task>
     <task id="LOCAL-00001" summary="print succed">
       <created>1699875368090</created>
@@ -151,7 +174,14 @@
       <option name="project" value="LOCAL" />
       <updated>1704812410255</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="finitions de paramettre3">
+      <created>1704829697282</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1704829697283</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -180,6 +210,7 @@
     <MESSAGE value="enregistrement EMPLOYES" />
     <MESSAGE value="finitions de paramettre" />
     <MESSAGE value="finitions de paramettre2" />
-    <option name="LAST_COMMIT_MESSAGE" value="finitions de paramettre2" />
+    <MESSAGE value="finitions de paramettre3" />
+    <option name="LAST_COMMIT_MESSAGE" value="finitions de paramettre3" />
   </component>
 </project>

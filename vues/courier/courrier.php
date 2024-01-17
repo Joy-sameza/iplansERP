@@ -1101,5 +1101,5 @@ foreach ($d as $pack) {
 
 <?php
 $content = ob_get_clean();
-include 'layout.php';
+include './vues/layout.php';
 ?>
