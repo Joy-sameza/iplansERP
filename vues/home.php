@@ -261,7 +261,7 @@ ob_start();
     </button>
 
 
-    <button type="button" class="func">
+    <button type="button" class="func" >
         <img src="<?= SITE_URL ?>/assets/img/conversation.png" alt=""
             style="width: 40px; height: 40px; margin-right:7px">GED
     </button>

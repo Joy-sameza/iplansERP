@@ -314,7 +314,7 @@ foreach ($d as $pack) {
     </button>
   </div>
   <div class="encours">
-    <h2>Courrier en cours</h2>
+    <h2>Redaction Pro</h2>
     <section>
       <button>Nbre total de Courrier : <strong><?= $enc ?? '0' ?></strong></button>
       <button>Aujourd'hui : <strong><?= $enc_auj ?></strong></button>
@@ -348,17 +348,28 @@ foreach ($d as $pack) {
 </style>
 
 <div class="modal  my-4" data-modal1 style='border-radius:4px'>
-  <div class="container cont-modal my-3 pt-4" style='width:800px;position: relative;border-radius:4px'>
+  <div class="container cont-modal my-3 pt-4" style='width:800px;position: relative;border-radius:14px'>
     <button data-close>&times;</button>
     <h3 class="title">Nouveau Courrier</h3>
     <form data-form enctype="multipart/form-data" method="post" action="<?= SITE_URL ?>/forms/formdata.php">
-      <fieldset>
-        <legend>Type de courrier</legend>
-        <label for="entrant"><input type="radio" name="type" id="entrant" value="Entrant" required />Courrier Entrant</label>
-        <label for="sortant"><input type="radio" name="type" id="sortant" value="Sortant" required />Courrier Sortant</label>
-      </fieldset>
-      <fieldset>
-        <legend class='mt-5'>Info Courrier</legend>
+      <div class='d-flex justify-content-center mt-4' style='align-items: center;'>
+        <div class='mx-4'>Type de courrier</div>
+
+        <div>
+              <div for="entrant"><input type="radio" name="type" id="entrant" value="Entrant" required />     Courrier   Entrant
+        </div>
+        <div for="sortant"><input type="radio" name="type" id="sortant" value="Sortant" required />   Courrier Sortant
+        </div>
+        </div>
+      </div>
+      <fieldset >
+        <style>
+          .modal > .container > form > fieldset:last-of-type > div {
+    width: 60%;
+ 
+}
+        </style>
+        <h4 class='mt-3' >Info Courrier</h4>
         <div class="group">
           <label for="ref">Reference</label>
           <input type="text" name="ref" id="ref" required />
@@ -383,8 +394,8 @@ foreach ($d as $pack) {
           <label for="heure">Heure de depot</label>
           <input type="time" name="heure" id="heure" value="<?= date('H:i') ?>" required />
         </div>
-        <section>
-          <fieldset>
+        <section class='mt-4'>
+          <!-- <fieldset>
             <legend>Pièces jointes</legend>
             <span class="icons">
               <a title="pièces jointes" data-firstPiece>
@@ -403,10 +414,202 @@ foreach ($d as $pack) {
               </thead>
               <tbody data-tbody></tbody>
             </table>
-          </fieldset>
-          <fieldset style='display:block'>
+          </fieldset> -->
+
           
-            <legend>Niveau d'importance</legend>
+               <div class="custom-form mt-0 mx-2 " style='height: 350px;'>
+                        <!-- ceci ne concerne que text divider -->
+                        <div class="text-divider-container">
+                            <div class="text-divider">
+                                <span>Pièce jointe</span>
+                            </div>
+                        </div>
+                        <!-- le tableau a lintereieur -->
+                        <div class="option-boutton d-flex justify-content-end ">
+                            <div class="tooltip47">
+                                <input type="file" id="fileInput" data-rupload style="display: none;">
+                                <button id="piece_add" data-upload>
+                                    
+                                    <img src="<?= SITE_URL ?>/assets/img/plus.png" alt="" style="width: max-content; height: 20px;">
+                                    <span class="tooltiptext1">Charger une pièce jointe</span>
+                                </button>
+                            </div>
+                            <div class="tooltip47">
+                                <button id="piece_remove">
+                                    <img src="<?= SITE_URL ?>/assets/img/minus.png" alt="" style="width: max-content; height: 20px;">
+                                    <span class="tooltiptext47">Supprimer pièce jointe</span>
+                                </button>
+                            </div>
+                            <div class="tooltip47">
+                                <button id="remove_all">
+                                    <img src="<?= SITE_URL ?>/assets/img/close.png" alt="" style="width: max-content; height: 20px;">
+                                    <span class="tooltiptext1">Supprimer tous</span>
+
+                                </button>
+                            </div>
+                        </div>
+                        <div class="table-container debut_tableau" style='height: 350px;'>
+                            <style>
+                                   .custom-form {
+                                    border: 1px solid #ccc;
+                                    border-radius: 10px;
+                                    height: 175px;
+                                    position: relative;
+                                }
+                                .option-boutton button {
+                                    border: 1px solid gray;
+                                    padding: 4px;
+                                }
+                                
+                                .text-divider-container2 {
+                                    position: absolute;
+                                    top: 0%;
+                                    left: 25%;
+                                    transform: translate(-50%, -50%);
+                                    background-color: #f4f6f6;
+                                    padding: 0 10px;
+                                    font-size: 16px;
+                                    z-index: 20;
+                                }
+                                .tooltip47 {
+                                    position: relative;
+                                    display: inline-block;
+                                    cursor: pointer;
+                                }
+
+                                .tooltip47 .tooltiptext47 {
+                                    visibility: hidden;
+                                    width: 140px;
+                                    background-color: #f0f004;
+                                    color: #080808;
+                                    text-align: center;
+                                    border-radius: 6px;
+                                    padding: 5px;
+                                    position: absolute;
+                                    z-index: 10;
+                                    top: 125%;
+                                    left: 50%;
+                                    margin-left: -60px;
+                                    opacity: 0;
+                                    transition: opacity 0.3s;
+                                    font-size: 14px;
+                                }
+
+                                .tooltip47 .tooltiptext1 {
+                                    visibility: hidden;
+                                    width: 180px;
+                                    background-color: #f0f004;
+                                    color: #080808;
+                                    text-align: center;
+                                    border-radius: 6px;
+                                    padding: 5px;
+                                    position: absolute;
+                                    z-index: 10;
+                                    top: 125%;
+                                    left: 50%;
+                                    margin-left: -60px;
+                                    opacity: 0;
+                                    transition: opacity 0.3s;
+                                    font-size: 14px;
+                                }
+
+                                .tooltip47:hover .tooltiptext47 {
+                                    visibility: visible;
+                                    opacity: 1;
+                                }
+
+                                .tooltip47:hover .tooltiptext1 {
+                                    visibility: visible;
+                                    opacity: 1;
+                                }
+                                 .text-divider-container {
+                                        position: absolute;
+                                        top: 0%;
+                                        left: 17%;
+                                        transform: translate(-50%, -50%);
+                                        background-color: #DDF3FF;
+                                        padding: 0 10px;
+                                        font-size: 16px;
+                                    }
+
+
+                                    .text-divider {
+
+                                        padding: 5px 0;
+                                        text-align: center;
+                                    }
+                                  .debut_tableau {
+
+                            border-bottom: none;
+                            overflow-x: auto;
+
+
+                            &::-webkit-scrollbar {
+                                height: 15px;
+                                /* Ajuster la hauteur de la barre de défilement horizontale */
+                            }
+
+                            &::-webkit-scrollbar-thumb {
+                                background-color: #3498db;
+                                /* Couleur du curseur de défilement */
+                            }
+
+                            &::-webkit-scrollbar-track {
+                                background-color: #ecf0f1;
+                                /* Couleur de la piste de défilement */
+                            }
+
+                            &:hover {
+                                &::-webkit-scrollbar-thumb {
+                                    background-color: #0b9444;
+                                    /* Changement de couleur au survol */
+                                }
+                            }
+                        }
+                            </style>
+                            <table class="table table-bordered">
+                                <a title="pièces jointes" >
+                                    
+                                    
+                                </a>
+                                <thead>
+                                    <tr class="table-dark">
+                                        <th width=2% class="text-center">Type</th>
+                                        <th text-center class="text-center">Pièce jointe </th>
+                                        <th width=20% class="text-center">Taille</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tableau">
+                                    <tr class="table-primary custom-row">
+                                        <td style='background-color:#0D6EFD;'>
+                                            <p></p>
+                                        </td>
+                                        <td style='background-color:#0D6EFD;'>
+                                            <p></p>
+                                        </td>
+                                        <td style='background-color:#0D6EFD;'>
+                                            <p></p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div> <!--  fin de la partie gauche -->
+
+
+          
+
+
+
+
+
+
+
+
+
+          <fieldset style='' class='px-4 d-flex'>
+          
+            <h5>Niveau d'importance</h5>
             <div class="options">
               <label for="exceptionnel"><input required data-select type="radio" name="niveau" id="exceptionnel" value="Exceptionnel"> Exceptionnel</label>
               <label for="tres_haut"><input required data-select type="radio" name="niveau" id="tres_haut" value="Très haute"> Très haut</label>
@@ -431,7 +634,7 @@ foreach ($d as $pack) {
       <div class="btn">
         <button type="reset" title="Annuler" data-reset><img src="<?= SITE_URL ?>/assets/img/icons/solid/xmark.svg" height="32px"></button>
         <button type="submit" title="Envoyer" name="iplans_submit"><img src="<?= SITE_URL ?>/assets/img/icons/solid/paper-plane.svg" height="32px"></button>
-        <button id="fermer2" style='border:none'>
+        <button id="ferm" style='border:none' >
                     Fermer
                     <img src="<?= SITE_URL ?>/assets/img/close.png" alt="" style="width: max-content; height: 20px;">
 
@@ -771,15 +974,7 @@ foreach ($d as $pack) {
     <!-- ramene la page en haut  -->
 
 
- <script>
-        
-      const boutTop = document.querySelector('.btn');
-          boutTop.addEventListener("click", (e) => {
-              e.preventDefault();
-     
-        document.documentElement.scrollTop = 0;
-    });
-</script>
+
 
  <script>
         
@@ -790,6 +985,119 @@ foreach ($d as $pack) {
         document.documentElement.scrollTop = 0;
     });
 </script>
+
+<script>
+    const ferm = document.getElementById("ferm");
+    const conteneur0 = document.querySelector(".cont-modal");
+
+    if (conteneur0) {
+        ferm.forEach((bouton) => {
+            bouton.addEventListener("click", (e) => {
+                e.preventDefault();
+                conteneur0.style.display = "none";
+            });
+        });
+    }
+</script>
+
+
+<script>
+  const ferm = document.getElementById("ferm");
+  const conteneur0 = document.querySelector(".cont-modal");
+  
+    ferm.addEventListener("click", (e) => {
+        e.preventDefault();
+       conteneur0.style.display = "none";
+       console.log('yoyo')
+    })
+</script>
+
+
+
+
+
+<script>
+    $(document).ready(function () {
+      $("#piece_add").click(function () {
+        $("#fileInput").click();
+      });
+
+      $("#fileInput").change(function (event) {
+        var files = event.target.files;
+
+     
+
+        if (files.length > 0) {
+
+               let type;
+             const filename = files[0].name;
+             const fileExtension = filename.lastIndexOf(".");
+             fileExtension !== -1
+                    ? (type = filename.substring(fileExtension, filename.length))
+                    : undefined;
+                type = type?.split(".").pop().toUpperCase();
+          var pieceJointe = {
+           type: type ?? "???",
+            nom: files[0].name,
+            taille: formatSize(files[0].size)
+          };
+
+          // Ajout de la pièce jointe au tableau avec animation
+          var newRow = $("<tr class='table-primary custom-row'>"
+            + "<td>" + pieceJointe.type + "</td>"
+            + "<td><a href='#' onclick='telechargerPieceJointe(\"" + pieceJointe.nom + "\")'>" + pieceJointe.nom + "</a></td>"
+            + "<td>" + pieceJointe.taille + "</td>"
+            + "</tr>").hide().fadeIn();
+
+          $("#tableau").append(newRow);
+
+          // Effacer la valeur du champ de fichier pour permettre le téléchargement du même fichier plusieurs fois
+          $("#fileInput").val("");
+        }
+      });
+
+      $("#piece_remove").click(function () {
+        $("#tableau tr:last").fadeOut("slow", function () {
+          $(this).remove();
+        });
+      });
+
+      $("#remove_all").click(function () {
+        $("#tableau tr").fadeOut("slow", function () {
+          $(this).remove();
+        });
+      });
+
+      // Fonction pour formater la taille du fichier
+      function formatSize(bytes) {
+        var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+        if (bytes == 0) return '0 Byte';
+        var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+        return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
+      }
+
+      // Fonction pour télécharger la pièce jointe
+     // Fonction pour télécharger la pièce jointe
+    window.telechargerPieceJointe = function (nomPieceJointe) {
+    var chemin = SITE_URL + '/assets/documents/' + nomPieceJointe;
+
+    // Créer un lien de téléchargement et déclencher le téléchargement
+    var link = document.createElement('a');
+    link.href = chemin;
+    link.download = nomPieceJointe;
+    link.target = '_blank';
+
+    // Ajouter le lien à la page et déclencher le téléchargement
+    document.body.appendChild(link);
+    link.click();
+
+    // Retirer le lien de la page
+    document.body.removeChild(link);
+           };
+
+    });
+</script> 
+  
 
 <?php
 $content = ob_get_clean();

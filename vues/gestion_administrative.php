@@ -445,7 +445,7 @@ ob_start();
     </script>
 
 
-     <script>
+<script>
     $(document).ready(function () {
       $("#piece_add").click(function () {
         $("#fileInput").click();
@@ -522,11 +522,11 @@ ob_start();
 
     // Retirer le lien de la page
     document.body.removeChild(link);
-};
+           };
 
     });
-  </script> 
-  <
+</script> 
+  
   <script>
         function redirectToRH() {
        

@@ -444,7 +444,7 @@ ob_start();
         });
     </script>
 
-     <script>
+<script>
     $(document).ready(function () {
       $("#piece_add").click(function () {
         $("#fileInput").click();
@@ -453,9 +453,19 @@ ob_start();
       $("#fileInput").change(function (event) {
         var files = event.target.files;
 
+     
+
         if (files.length > 0) {
+
+               let type;
+             const filename = files[0].name;
+             const fileExtension = filename.lastIndexOf(".");
+             fileExtension !== -1
+                    ? (type = filename.substring(fileExtension, filename.length))
+                    : undefined;
+                type = type?.split(".").pop().toUpperCase();
           var pieceJointe = {
-            type: "Fichier",
+           type: type ?? "???",
             nom: files[0].name,
             taille: formatSize(files[0].size)
           };
@@ -497,7 +507,7 @@ ob_start();
       // Fonction pour télécharger la pièce jointe
      // Fonction pour télécharger la pièce jointe
     window.telechargerPieceJointe = function (nomPieceJointe) {
-    var chemin = SITE_URL + '/chemin/vers/votre/dossier/' + nomPieceJointe;
+    var chemin = SITE_URL + '/assets/documents/' + nomPieceJointe;
 
     // Créer un lien de téléchargement et déclencher le téléchargement
     var link = document.createElement('a');
@@ -511,10 +521,10 @@ ob_start();
 
     // Retirer le lien de la page
     document.body.removeChild(link);
-};
+           };
 
     });
-  </script>
+</script> 
 
   <script>
         function redirectToRH() {
