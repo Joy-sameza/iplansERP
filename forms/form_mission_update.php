@@ -16,7 +16,6 @@ if (array_key_exists('iplans_submit', $_POST)) {
     $personne_id = (int)$_POST['personne'];
     $destination = $_POST['destination'];
     $via = $_POST['via'];
-    $duree = $_POST['heuredebut'];
     $deplacement = $_POST['deplacement'];
     $immatriculation = $_POST['immatriculation'];
     $cadre = $_POST['cadre'];
@@ -98,7 +97,7 @@ if (array_key_exists('iplans_submit', $_POST)) {
         'site' => $site,
         'dateDebut' => $dateDebut,
         'Lieux' => $destination,
-        'duree' => $duree,
+        'duree' => $joursEcart,
         'dateFin' => $dateFin,
         'nature' => $nature,
         'PriseEnCharge' => $prise,
@@ -262,4 +261,40 @@ function sendFraisData($data): array
     } else {
         return json_decode($response, true);
     }
+}
+
+
+/**
+ * Sends data using cURL.
+ *
+ * @param string $data The data to be sent.
+ * @throws Exception If there is an error while sending the data.
+ * @return array The response received after sending the data.
+ */
+function sendDataUsingCurl(string $data): array
+{
+    $curlHandle = curl_init();
+
+    $curlOptions = [
+        CURLOPT_URL => MISSION_API_URL . $_REQUEST['id'],
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "PATCH",
+        CURLOPT_POSTFIELDS => $data,
+        CURLOPT_HTTPHEADER => [
+            "Content-Type: application/json"
+        ],
+    ];
+
+    curl_setopt_array($curlHandle, $curlOptions);
+
+    $response = curl_exec($curlHandle);
+    $error = curl_error($curlHandle);
+
+    curl_close($curlHandle);
+
+    return $error ? ["errors " => $error] : (array)json_decode($response, true);
 }

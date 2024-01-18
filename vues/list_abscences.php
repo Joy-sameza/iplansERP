@@ -858,9 +858,6 @@ ob_start();
         });
         if (!response.ok) return showAlert("L'absence n'a pas pu être supprimé", "error");
         return showAlert("L'absence a été supprimé avec succès", "success");
-
-        // if (response["rows"] >= 1 && response["message"])
-        // return showAlert("L'absence n'a pas pu être supprimé", "error");
     }
 </script>
 

@@ -418,19 +418,46 @@ ob_start();
     </style>
 </body>
 
-
 <script>
-    const openMission = document.getElementById("open");
-
-    let missionDataAction = '';
-    openMission.addEventListener("click", function(event) {
-
-    })
-</script>
-
-<script>
-    const deleteMission = document.getElementById("delete");
-    deleteMission.addEventListener("click", () => missionDataAction = "delete");
+    /**
+     * @param {number} id The id of the abscence to delete
+     * @returns {Promise<void>}
+     */
+    async function deleteAbscence(id) {
+        const val = await swal({
+            icon: "warning",
+            title: "Etes-vous sûr de vouloir supprimer?",
+            text: "Cette action est irreversible!",
+            dangerMode: true,
+            closeOnClickOutside: false,
+            closeOnEsc: false,
+            buttons: {
+                cancel: {
+                    text: "Non!",
+                    value: false,
+                    visible: true,
+                    className: "",
+                    closeModal: true,
+                },
+                confirm: {
+                    text: "Oui, supprimer!",
+                    value: true,
+                    className: "",
+                    closeModal: true,
+                },
+            },
+        });
+        if (!val) return;
+        const formData = new FormData();
+        formData.append("id", id);
+        formData.append("iplans_submit", "");
+        const response = await fetch("<?= SITE_URL ?>/forms/formdeleteabsence.php", {
+            method: "POST",
+            body: formData,
+        });
+        if (!response.ok) return showAlert("La mission n'a pas pu être supprimé", "error");
+        return showAlert("La mission a été supprimé avec succès", "success");
+    }
 </script>
 
 <!-- les script de la page -->
@@ -543,6 +570,70 @@ ob_start();
     tbl.innerHTML = "";
     for (let rowData of missions)
         updateMISSIONTable(tbl, rowData, listTemplate);
+
+
+    let missionDataAction = '';
+    const openMission = document.getElementById("open");
+    const deleteMission = document.getElementById("delete");
+    const allRows = document.getElementsByTagName("tr");
+
+    deleteMission.addEventListener("click", () => missionDataAction = "delete");
+    openMission.addEventListener("click", () => missionDataAction = "open");
+
+    Array.from(allRows).forEach(function(row) {
+        row.addEventListener("click", async function(event) {
+            const targetRow = event.target.parentNode;
+            const extractedData = extractDataFromRow(targetRow);
+            switch (missionDataAction) {
+                case "open":
+                    missionDataAction = "";
+                    localStorage.setItem("extractedData", JSON.stringify(extractedData));
+                    window.open("<?= SITE_URL ?>/mission", "_self");
+                    break;
+                case "delete":
+                    missionDataAction = "";
+                    await deleteAbscence(parseInt(extractedData.neng));
+                    setTimeout(() => {}, 1500);
+                    window.location.href = "<?= SITE_URL ?>/list_mission";
+                    break;
+                default:
+                    break;
+            }
+        });
+    });
+
+    /** 
+     * Extract data from a row
+     * @param {HTMLTableRowElement} row Row from which data is to be extracted
+     * @returns {Object} The extracted data
+     */
+    function extractDataFromRow(row) {
+        const pers = {
+            nom: "nom",
+            prenom: "prenom",
+            dat: "depart",
+            duree: "duree",
+            Lieux: "destination",
+            site: "site",
+            cadre: "cadre",
+            Departement: "departement",
+            via: "passant",
+            "duree_travail": "duree_de_travail",
+            motor: "vehicule",
+            // immatriculation: "",
+            charge: "chargement",
+            PriseEnCharge: "priseencharge",
+            matricule: "matricule",
+            NumeroDossier: "numerodedossier",
+            NumeroBL_LTA: "numerobl_lta",
+            NEng: "neng",
+        };
+        let obj = {};
+        for (const [, value] of Object.entries(pers)) {
+            obj[value] = row.querySelector(`[data-${value}]`)?.textContent;
+        }
+        return obj;
+    }
 </script>
 
 <script>
@@ -556,17 +647,6 @@ ob_start();
         event.preventDefault();
         localStorage.clear();
         close();
-    });
-</script>
-
-<script>
-    const allRows = document.getElementsByTagName("tr");
-    console.log(allRows);
-    Array.from(allRows).forEach(function(row) {
-        row.addEventListener("click", function(event) {
-            console.log(event.target);
-
-        });
     });
 </script>
 

@@ -40,7 +40,7 @@ ob_start();
 <body>
     <div class="container-fluid conteneur my-5 conteneur0  border border-primary border-4" style='width:75%'>
 
-        <form id="main_form" enctype="multipart/form-data" method="post">
+        <form id="main_form" enctype="multipart/form-data" method="post" action="<?= SITE_URL ?>/forms/form_mission.php">
             <div class="row bg-primary border-1 ">
                 <div class="cont_titre d-flex justify-content-between  p-1" style='align-items: center;'>
                     <div style="display: flex;">
@@ -194,8 +194,8 @@ ob_start();
                                 <input type="checkbox" class="form-check-input" name="check1" id="check1" name="option1" value="something" checked>
                                 <label class="form-check-label " id='text-reduire' for="check1">Bloquer le pointage?</label>
                             </div>
-                            <label for="immatriculation" class="form-label  mt-3 " id='text-reduire' style='width:25%;'>No Dossier</label>
-                            <input type="text" class="form-control" style='width:15%'>
+                            <label for="dossier" class="form-label  mt-3 " id='text-reduire' style='width:25%;'>No Dossier</label>
+                            <input type="text" class="form-control" style='width:15%' name="dossier" id="dossier">
                         </div>
                     </div>
                     <div class="custom-form mt-4 ">
@@ -305,6 +305,9 @@ ob_start();
                 </div>
                 <!--  css du haut  -->
             </div>
+            <!--  NE PAS SUPPRIMER  -->
+            <input type="text" name="id" id="id" style="display: none;">
+            <!--  NE PAS SUPPRIMER  -->
         </form>
 
     </div>
@@ -649,6 +652,52 @@ ob_start();
     </script>
 
     <script>
+        const extractedData = localStorage.getItem('extractedData');
+        if (extractedData) {
+            const data = JSON.parse(extractedData);
+            // localStorage.removeItem('extractedData');
+            console.log(data);
+            const loopObject = {
+                depart: "dateDebut",
+                duree: "heuredebut",
+                destination: "destination",
+                site: "site",
+                cadre: "cadre",
+                // departement: "",
+                passant: "via",
+                duree_de_travail: "joursEcart",
+                vehicule: "deplacement",
+                chargement: "nature",
+                priseencharge: "prise",
+                // matricule: "",
+                numerodedossier: "dossier",
+                numerobl_lta: "nobl_lta",
+                neng: "id",
+            }
+            // set the data in the form
+            const form = document.querySelector('form');
+            form.action = '<?= SITE_URL ?>/forms/form_mission_update.php';
+            form.setAttribute('success', 'L\'abscence à été mis à jour avec succès!');
+            for (let [key, value] of Object.entries(data)) {
+                for (const [k, v] of Object.entries(loopObject)) {
+                    if (key === k) {
+                        if (key == 'depart' || key == 'fin') {
+                            //format the value to date format (yyyy-MM-dd)
+                            value = value.split('/')?.reverse()?.join('-');
+                        }
+                        const input = form.querySelector(`[name="${v}"]`);
+                        if (input) {
+                            input.value = value;
+                        } else {
+                            console.error(`Input with name "${key}" not found in the form.`);
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script>
         // Submit main form to the sever
         const form = document.querySelector("form");
         form.addEventListener("submit", async function(event) {
@@ -664,10 +713,10 @@ ob_start();
             }
             const formData = new FormData(this);
             formData.append('totalFees', JSON.stringify(totalFees));
-            formData.append('iplans_submit', '');
+            formData.append('iplans_submit_', '');
 
             // submit data using fetch
-            const response = await fetch("<?= SITE_URL ?>/forms/form_mission.php", {
+            const response = await fetch(form.action, {
                 method: 'POST',
                 body: formData,
             });
@@ -689,6 +738,7 @@ ob_start();
             }
         });
     </script>
+
     <script>
         const btns = document.querySelectorAll('button:not([type="submit"])');
         for (const btn of btns) {

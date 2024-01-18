@@ -10,7 +10,7 @@ class Database
      * @param string $name The name of the database.
      * @param string $port The port number for the database connection. Default is "3306".
      */
-    public function __construct(private string $host, private string $user, private string $password, private string $name, private string $port="5785")
+    public function __construct(private string $host, private string $user, private string $password, private string $name, private string $port="3306")
     {
     }
 
@@ -34,7 +34,7 @@ class Database
                 PDO::ATTR_STRINGIFY_FETCHES => false
             ]);
         } catch (PDOException $e) {
-            echo 'Connectio Error: ' . $e->getMessage();
+            echo 'Connection Error: ' . $e->getMessage();
         }
 
         return $conn;

@@ -1817,6 +1817,12 @@ $d = (array)json_decode($response, true);
         cont_emp.style.display = "flex";
     });
 </script>
+<script>
+    const btns = document.querySelectorAll('button:not([type="submit"])');
+    for (const btn of btns) {
+        btn.type = 'button';
+    }
+</script>
 <!-- <script>
     const close_window = document.querySelector(".close_window");
     
@@ -1856,8 +1862,8 @@ $d = (array)json_decode($response, true);
     }
 </script>
 <script>
-    const boutonsFermer = document.querySelectorAll("#fermer");
-    const conteneur0 = document.querySelector(".cont_employer");
+    // const boutonsFermer = document.querySelectorAll("#fermer");
+    // const conteneur0 = document.querySelector(".cont_employer");
 
     if (conteneur0) {
         boutonsFermer.forEach((bouton) => {
