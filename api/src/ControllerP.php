@@ -125,7 +125,9 @@ class controllerP
                     break;
                 }
                 http_response_code(404);
-                echo json_encode(["errors" => "Path not found"]);
+                echo json_encode([
+                    "response" => false,
+                    "errors" => "Path not found"]);
                 break;
 
             case "POST":
@@ -135,18 +137,23 @@ class controllerP
 
                 if (!empty($errors)) {
                     http_response_code(422); // Unprocessable request
-                    echo json_encode(["errors" => $errors]);
+                    echo json_encode([
+                        "response" => false,
+                        "errors" => $errors]);
                     break;
                 }
 
                 $id = $this->cour->create($data);
                 if (!$id) {
                     http_response_code(409); // Conflict
-                    echo json_encode(["errors" => "A personne already exists with that name"]);
+                    echo json_encode([
+                        "response" => false,
+                        "errors" => "A personne already exists with that name"]);
                     break;
                 }
                 http_response_code(201); // Created
                 echo json_encode([
+                    "response" => true,
                     "message" => "Personne Inserted",
                     "id" => $id
                 ]);

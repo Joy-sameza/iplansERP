@@ -1,6 +1,7 @@
 
 <?php
 $title = 'accueil';
+ob_start();
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -26,7 +27,7 @@ if ($query == "lang=en") {
 }
 
 // traitement des informations des employers
-if (isset($_POST['ajouter_pers'])) {
+if (isset($_POST['ajouter_pers_vrai'])) {
 
 // Get the form data
     $civilite = $_POST['civilite'];
@@ -147,36 +148,30 @@ if (isset($_POST['ajouter_pers'])) {
         ],
     ]);
 
-    $response = curl_exec($curl);
-    var_dump($response);
-    header('Location: '.'/Iplans/employes');
-    if ($response) {
+    $response = (array)json_decode(curl_exec($curl));
 
-        echo "<script>
-             swal({
-             icon: 'success',
-             text: 'employes enregistree avec succès...',
-             timer: 1000,
-             onOpen: function(){
-             swal.showLoading()
-             }
-             }).then(function(){
-                 window.open('" . SITE_URL . "/employees','_self');
-             });
-            </script>";
-
-    } else {
+    if($response['response']==true){
         echo "<script>
                     swal({
-                        icon: 'error',
-                        text: 'une erreur s est produite',
+                        icon: 'success',
+                        text: 'enregistrer avec success!',
+                    }).then(function(){
+                 window.open('" . SITE_URL . "/employes','_self');
+             });
+                </script>";
+    }else{
+        echo "<script>
+                    swal({
+                        icon: 'warning',
+                        text: 'Désolé! errreur d enregistrement',
                     });
                 </script>";
+
     }
 }
 
 
-ob_start();
+
 
 ?>
 <?php
@@ -1519,7 +1514,7 @@ ini_set("date.timezone", "Africa/Douala");
 
             <div class="option47 py-2">
                 <div style="width: 50%; padding-left: 30px;">
-                    <button type="submit" name="ajouter_pers">Ajouter<img src="<?= SITE_URL ?>/assets/img/accept.png" alt="" style="width: max-content; height: 20px;"></button>
+                    <button type="submit" name="ajouter_pers_vrai">Ajouter<img src="<?= SITE_URL ?>/assets/img/accept.png" alt="" style="width: max-content; height: 20px;"></button>
                 </div>
 
 
@@ -1899,7 +1894,7 @@ ini_set("date.timezone", "Africa/Douala");
 
                     <div class="option47">
                         <div style="width: 50%; padding-left: 30px;">
-                            <button type="submit" name="ajouter_pers">Ajouter<img src="<?= SITE_URL ?>/assets/img/accept.png" alt="" style="width: max-content; height: 20px;"></button>
+                            <button type="submit" name="ajouter_pers_vrai">Ajouter<img src="<?= SITE_URL ?>/assets/img/accept.png" alt="" style="width: max-content; height: 20px;"></button>
                         </div>
 
 
