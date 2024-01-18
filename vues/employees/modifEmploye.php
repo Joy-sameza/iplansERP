@@ -29,8 +29,7 @@ if ($query == "lang=en") {
     if (isset($_POST['modif_pers'])) {
 
         $test = (array)$_SESSION['formData'];
-        $id = $test['NEng'];
-
+        $id = $test['civilite'];
         // Get the form data
         $civilite = $_POST['civilite'] ?? $test['civilite'];
         $genre = $_POST['genre'] ?? 0;
@@ -151,6 +150,7 @@ if ($query == "lang=en") {
         ]);
 
         $response = (array)json_decode(curl_exec($curl));
+
         if($response['response']==true){
             echo "<script>
                     swal({
@@ -455,11 +455,11 @@ if ($query == "lang=en") {
                             </div>
                             <div class="idntite12">
                                 <label class="mt-3" for="">Departement </label>
-                                <input type="text" class="form-control mt-3" name="nom" id='departement1' value="0000">
+                                <input type="text" class="form-control mt-3" name="depart" id='departement1' value="0000">
                             </div>
                             <div class="idntite13">
                                 <label class="mt-3" for="">Poste Occupé </label>
-                               <input type="text" class="form-control mt-3" name="nom" id='fonction' value="0000">
+                               <input type="text" class="form-control mt-3" name="depart1" id='fonction' value="0000">
                             </div>
                             <style>
                                 .form-vert {

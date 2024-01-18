@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7d0e5bba-8be3-4af7-9bd3-b337ff71621c" name="Changes" comment="finitions de paramettre3">
-      <change afterPath="$PROJECT_DIR$/vues/acceuil.php" afterDir="false" />
+    <list default="true" id="7d0e5bba-8be3-4af7-9bd3-b337ff71621c" name="Changes" comment="dernier modification sur employes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/ControllerP.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/ControllerP.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vues/accueil.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/vues/employees/modifEmploye.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/employees/modifEmploye.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vues/employees/tableau.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/employees/tableau.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +82,7 @@
       <workItem from="1702298799756" duration="18235000" />
       <workItem from="1702817538342" duration="7482000" />
       <workItem from="1702919719640" duration="137290000" />
-      <workItem from="1705496257451" duration="8486000" />
+      <workItem from="1705496257451" duration="11980000" />
     </task>
     <task id="LOCAL-00001" summary="print succed">
       <created>1699875368090</created>
@@ -172,7 +168,14 @@
       <option name="project" value="LOCAL" />
       <updated>1704829697283</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="dernier modification sur employes">
+      <created>1705504997982</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1705504997982</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -202,6 +205,7 @@
     <MESSAGE value="finitions de paramettre" />
     <MESSAGE value="finitions de paramettre2" />
     <MESSAGE value="finitions de paramettre3" />
-    <option name="LAST_COMMIT_MESSAGE" value="finitions de paramettre3" />
+    <MESSAGE value="dernier modification sur employes" />
+    <option name="LAST_COMMIT_MESSAGE" value="dernier modification sur employes" />
   </component>
 </project>
