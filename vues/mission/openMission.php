@@ -40,7 +40,7 @@ ob_start();
 <body>
     <div class="container-fluid conteneur my-5 conteneur0  border border-primary border-4" style='width:75%'>
 
-        <form id="main_form" enctype="multipart/form-data" method="post" action="<?= SITE_URL ?>/forms/form_mission.php">
+        <form id="main_form" enctype="multipart/form-data" method="post" class="was-validated">
             <div class="row bg-primary border-1 ">
                 <div class="cont_titre d-flex justify-content-between  p-1" style='align-items: center;'>
                     <div style="display: flex;">
@@ -56,7 +56,8 @@ ob_start();
                 <div class="col-sm-7 p-2" style='background-color: #f4f6f6  ;'>
                     <div class="d-flex justify-content-between  mb-3">
                         <div class="zone1" style='width:15%'>
-                            <img src="<?= SITE_URL ?>/assets/image/merveille.png" alt="" style='width: 100%'>
+                            <!-- <img src="<?= SITE_URL ?>/assets/image/merveille.png" alt="" style='width: 100%'> -->
+                            <h1 style='font-size:70px;color: #d7c80c ;text-shadow: 4px 4px 2px rgba(0,0,0,0.6);'>RH</h1>
                         </div>
                         <div class="zone2  text-center" style='width:70%'>
                             <h2 class='text-mission mt-3' style='font-weight:bold; color: #2c3e50; '>NOUVELLE MISSION</h2>
@@ -64,7 +65,7 @@ ob_start();
                         <div class="zone3" style="display: flex; justify-content: center; align-items:center; flex-direction: column;width: 25%;">
                             <img src="<?= SITE_URL ?>/assets/img/avatar.png" alt="" style='width: 100px;height: 100px;' class='border border-secondary border-1'>
                             <!-- <button type="button" class="bout" display='none'><i class="fas fa-search"></i></button> -->
-                            <select id='personne' name="personne" required aria-required="true" class="form-select-sm" style='width:80%'>
+                            <select id='personne' name="personne" required aria-required="true" class="form-select-sm" style='width:80%' required>
                                 <option></option>
                             </select>
                         </div>
@@ -76,6 +77,7 @@ ob_start();
                             </label>
                             <div style="display: flex; justify-content: left;width: 51%; ">
                                 <select class="form-control-sm" style='width:100%' id="destination" name="destination" required>
+                                    
                                     <option value=""></option>
                                     <option value="DOUALA">DOUALA</option>
                                     <option value="YAOUNDE">YAOUNDE</option>
@@ -87,7 +89,7 @@ ob_start();
                         </div>
                         <div style="width: 39%;display: flex;justify-content: space-between;">
                             <label for="via" class="form-label " style='margin-left: 16%;'>Via</label>
-                            <select class="form-select-sm" id='via' name="via">
+                            <select class="form-select-sm" id='via' name="via" required>
                                 <option value=""></option>
                                 <option value="EDEA">EDEA</option>
                                 <option value="BONABERIE">BONABERIE</option>
@@ -100,7 +102,7 @@ ob_start();
                         <div style="display: flex; justify-content:space-between; align-items: center;  width: 96%; ">
                             <label for="deplacement" class="form-label">Mode de déplacement </label>
                             <span style='display: flex; justify-content: flex-end;'>
-                                <select class="form-select-sm" style='width:72%' name="deplacement" id='deplacement'>
+                                <select class="form-select-sm" style='width:72%' name="deplacement" id='deplacement'required>
                                     <option value=""></option>
                                     <option value="FDSFDS">FDSFDS</option>
                                     <option value="CAMION">CAMION</option>
@@ -111,25 +113,29 @@ ob_start();
                         </div>
                         <div style="width: 48% ; display: flex;  ">
                             <label for="immatriculation" class="form-label mx-1 " id='text-reduire'>Immatriculation</label>
-                            <select class="form-select-sm" style='width:75%' name="immatriculation" id='immatriculation'>
+                            <select class="form-select-sm" style='width:75%' name="immatriculation" id='immatriculation'required>
                                 <option value=""></option>
                                 <option value="LT 893BG">LT 893BG</option>
                                 <option value="LT 126 IA">LT 126 IA</option>
                                 <option value="LT 278 EN">LT 278 EN</option>
                             </select>
+                            
                         </div>
                     </div>
                     <!-- 2eme ligne -->
                     <div class='mt-3'>
                         <div>
                             <label for="cadre" class="form-label" style='width:34%;'>Cadre/Objectif de la Mission </label>
-                            <select class="form-select-sm" style='width:36%;margin-left:1px;' name="cadre" id='cadre' required aria-required="true">
+                            <select class="form-select-sm" style='width:36%;margin-left:1px;' name="cadre" id='cadre' required aria-required="true"required>
                                 <option value=""></option>
                                 <option value="FDSFDS">FDSFDS</option>
                                 <option value="INTEGRATION IPLANS">INTEGRATION IPLANS</option>
                                 <option value="LIVRAISON MARCHANDISE">LIVRAISON MARCHANDISE</option>
                             </select>
+                            
                         </div>
+                         <div class="valid-feedback">Valid.</div>
+                                 <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
                     <div class='mt-3' style=" display: flex;  width:100% ">
                         <div style=" display: flex; width:35% ">
@@ -143,6 +149,8 @@ ob_start();
                                 <option value="DEPOT YAOUNDE">DEPOT YAOUNDE</option>
                                 <option value="FDSFDSFDSFDS">FDSFDSFDSFDS</option>
                             </select>
+                             <div class="valid-feedback">Valid.</div>
+                                 <div class="invalid-feedback">Please fill out this field.</div>
                         </div>
                     </div>
                     <!-- fin 3eme ligne -->
@@ -170,6 +178,7 @@ ob_start();
                                 <option>LT 126 IA</option>
                                 <option>LT 278 EN</option>
                             </select>
+                            
                         </div>
                     </div>
                     <div class='mt-3' style="display: flex; justify-content: space-between; align-items: center;">
@@ -182,20 +191,24 @@ ob_start();
                         <label for="prise" class="form-label" style="display: flex; justify-content: space-between; align-items: center; width: 35%; ">Prise en charge</label>
                         <select class="form-select-sm" style='width:65%' name="prise" id='prise'>
                             <option selected>SURÉE PAR LA SOCIÉTÉ DEMO SUIVANT LE BARÈME EN VIGUEUR.</option>
+                             
                         </select>
+                        
+                           
                     </div>
+                    
                     <div class='mt-3' style="display: flex; justify-content: center; align-items: center;" class='mt-3'>
-                        <div style="display: flex; justify-content: space-between; align-items: center; width: 52%; ">
+                        <div style="display: flex; justify-content: space-between; align-items: center; width:81%; ">
                             <label for="heuredebut">Durée travail par jour</label>
-                            <input type="time" name="heuredebut" class='form-control' name="heurededebut" id="heurededebut" value="<?= date('H:i:s') ?>" style='width:33%'>
+                            <input type="time" name="heuredebut" class='form-control' name="heurededebut" id="heurededebut" value="" style='width:39%'>
                         </div>
-                        <div style="display: flex; justify-content: right;width: 48%; ">
-                            <div class="form-check mt-2" style='width:58%;'>
+                        <div style="display: flex; justify-content: right;width: 63%; ">
+                            <div class="form-check mt-2" style='width:43%;'>
                                 <input type="checkbox" class="form-check-input" name="check1" id="check1" name="option1" value="something" checked>
-                                <label class="form-check-label " id='text-reduire' for="check1">Bloquer le pointage?</label>
+                                <label class="form-check-label " id='text-reduire' for="check1">Bloquer le <br>pointage?</label>
                             </div>
-                            <label for="dossier" class="form-label  mt-3 " id='text-reduire' style='width:25%;'>No Dossier</label>
-                            <input type="text" class="form-control" style='width:15%' name="dossier" id="dossier">
+                            <label for="immatriculation" class="form-label  mt-3 " id='text-reduire' style='width:29%;'>No Dossier</label>
+                            <input type="text" class="form-control" style='width:35%'>
                         </div>
                     </div>
                     <div class="custom-form mt-4 ">
@@ -208,31 +221,67 @@ ob_start();
                         <!-- le tableau a lintereieur -->
                         <div class="option-boutton d-flex justify-content-end ">
                             <div class="tooltip47">
-                                <button id="piece_add" onclick="document.getElementById('added_file').click()">
-                                    <input type="file" name="file" id="added_file" hidden>
+                                <input type="file" id="fileInput" style="display: none;">
+                                <button id="piece_add">
+                                    
                                     <img src="<?= SITE_URL ?>/assets/img/plus.png" alt="" style="width: max-content; height: 20px;">
                                     <span class="tooltiptext1">Charger une pièce jointe</span>
                                 </button>
                             </div>
                             <div class="tooltip47">
-                                <button>
+                                <button id="piece_remove">
                                     <img src="<?= SITE_URL ?>/assets/img/minus.png" alt="" style="width: max-content; height: 20px;">
-                                    <span class="tooltiptext47">Verrouiller</span>
+                                    <span class="tooltiptext47">Supprimer pièce jointe</span>
                                 </button>
                             </div>
                             <div class="tooltip47">
-                                <button onclick="document.getElementById('added_file').value = ''; document.getElementById('added_file').files = null;">
+                                <button id="remove_all">
                                     <img src="<?= SITE_URL ?>/assets/img/close.png" alt="" style="width: max-content; height: 20px;">
-                                    <span class="tooltiptext1">Supprimer pièce jointe</span>
+                                    <span class="tooltiptext1">Supprimer tous</span>
+
                                 </button>
                             </div>
                         </div>
-                        <div class="table-container">
+                        <div class="table-container debut_tableau" style='height: 150px;'>
+                            <style>
+                                  .debut_tableau {
+
+                            border-bottom: none;
+                            overflow-x: auto;
+
+
+                            &::-webkit-scrollbar {
+                                height: 15px;
+                                /* Ajuster la hauteur de la barre de défilement horizontale */
+                            }
+
+                            &::-webkit-scrollbar-thumb {
+                                background-color: #3498db;
+                                /* Couleur du curseur de défilement */
+                            }
+
+                            &::-webkit-scrollbar-track {
+                                background-color: #ecf0f1;
+                                /* Couleur de la piste de défilement */
+                            }
+
+                            &:hover {
+                                &::-webkit-scrollbar-thumb {
+                                    background-color: #0b9444;
+                                    /* Changement de couleur au survol */
+                                }
+                            }
+                        }
+                            </style>
                             <table class="table table-bordered">
+                                <a title="pièces jointes" >
+                                    
+                                    
+                                </a>
                                 <thead>
                                     <tr class="table-dark">
-                                        <th width=2% class="text-center">T</th>
-                                        <th text-center class="text-center">pièce jointe </th>
+                                        <th width=2% class="text-center">Type</th>
+                                        <th text-center class="text-center">Pièce jointe </th>
                                         <th width=20% class="text-center">Taille</th>
                                     </tr>
                                 </thead>
@@ -275,21 +324,21 @@ ob_start();
                             </div>
                         </div>
                         <div class="commentaire mt-1">
-                            <textarea class="form-control no-focus-outline zone-commentaire mt-3" name="comment" placeholder="Merci d'ecrire votre rapport de mission ci..." rows="28" style="resize: none;" id="comment" name="text"></textarea>
+                            <textarea class="form-control no-focus-outline zone-commentaire mt-3" name="comment" placeholder="Merci d'ecrire votre rapport de mission ci..." rows="30" style="resize: none;" id="comment" name="text" ></textarea>
                         </div>
                     </div>
                 </div><!--  fin de la partie ou div droite -->
             </div>
             <div class="row d-flex justify-content-between bg-primary bout-bas p-2 ">
                 <div style='width:10%;'>
-                    <button type="submit" name="iplans_submit">Valider<img src="<?= SITE_URL ?>/assets/img/accept.png" alt="" style="width: max-content; height: 20px;"></button>
+                    <button type="submit" id='valider' onclick="saveDonnees()" name="iplans_submit">Valider<img src="<?= SITE_URL ?>/assets/img/accept.png" alt="" style="width: max-content; height: 20px;"></button>
                 </div>
                 <!--  c2eme -->
                 <div style='width:57%;'>
                     <button>Supprimer
                         <img src="<?= SITE_URL ?>/assets/img/bin.png" alt="" style="width: max-content; height: 20px;">
                     </button>
-                    <button>Imprimer
+                    <button id="printData">Imprimer
                         <img src="<?= SITE_URL ?>/assets/img/printer.png" alt="" style="width: max-content; height: 20px;">
                     </button>
                     <button id='fees' onclick="transfererDonnees()">Frais
@@ -305,9 +354,6 @@ ob_start();
                 </div>
                 <!--  css du haut  -->
             </div>
-            <!--  NE PAS SUPPRIMER  -->
-            <input type="text" name="id" id="id" style="display: none;">
-            <!--  NE PAS SUPPRIMER  -->
         </form>
 
     </div>
@@ -613,12 +659,48 @@ ob_start();
 
             document.getElementById("fees").addEventListener("click", function() {
                 var personne = document.getElementById("personne").value;
+                var destination = document.getElementById("destination").value;
                 var joursEcart = document.getElementById("joursEcart").value;
+                var via = document.getElementById("via").value;
+                var heurededebut = document.getElementById("heurededebut").value;
 
-                if (personne.trim() !== '' && joursEcart.trim() !== '') {
+                if (personne.trim() !== '' && joursEcart.trim() !== '' && destination.trim() !== '' && via.trim() !== '') {
+                    //envoie des donnes au 
 
                     localStorage.setItem('joursEcart', joursEcart);
+                    localStorage.setItem('destination', destination);
+                    localStorage.setItem('via', via);
+                    localStorage.setItem('heurededebut', heurededebut);
                     window.open("<?= SITE_URL ?>/details_mission");
+                    // window.location.href = "<?= SITE_URL ?>/details_mission";
+                } else {
+
+                    swal({
+                        icon: 'error',
+                        text: 'Veuillez remplir tous les champs svp !!!',
+                    });
+
+
+                }
+
+            })
+        }
+    </script>
+    <script>
+        function saveDonnees() {
+
+            document.getElementById("valider").addEventListener("click", function() {
+                var personne = document.getElementById("personne").value;
+                var joursEcart = document.getElementById("joursEcart").value;
+                
+                var destination = document.getElementById("destination").value;
+                var joursEcart = document.getElementById("joursEcart").value;
+                var via = document.getElementById("via").value;
+
+                if (personne.trim() !== '' && joursEcart.trim() !== '' && destination.trim() !== '' && via.trim() !== '') {
+
+                    //code ici pour enregistrer dans la BD
+                    window.open("<?= SITE_URL ?>/list_mission");
                     // window.location.href = "<?= SITE_URL ?>/details_mission";
                 } else {
 
@@ -652,52 +734,6 @@ ob_start();
     </script>
 
     <script>
-        const extractedData = localStorage.getItem('extractedData');
-        if (extractedData) {
-            const data = JSON.parse(extractedData);
-            // localStorage.removeItem('extractedData');
-            console.log(data);
-            const loopObject = {
-                depart: "dateDebut",
-                duree: "heuredebut",
-                destination: "destination",
-                site: "site",
-                cadre: "cadre",
-                // departement: "",
-                passant: "via",
-                duree_de_travail: "joursEcart",
-                vehicule: "deplacement",
-                chargement: "nature",
-                priseencharge: "prise",
-                // matricule: "",
-                numerodedossier: "dossier",
-                numerobl_lta: "nobl_lta",
-                neng: "id",
-            }
-            // set the data in the form
-            const form = document.querySelector('form');
-            form.action = '<?= SITE_URL ?>/forms/form_mission_update.php';
-            form.setAttribute('success', 'L\'abscence à été mis à jour avec succès!');
-            for (let [key, value] of Object.entries(data)) {
-                for (const [k, v] of Object.entries(loopObject)) {
-                    if (key === k) {
-                        if (key == 'depart' || key == 'fin') {
-                            //format the value to date format (yyyy-MM-dd)
-                            value = value.split('/')?.reverse()?.join('-');
-                        }
-                        const input = form.querySelector(`[name="${v}"]`);
-                        if (input) {
-                            input.value = value;
-                        } else {
-                            console.error(`Input with name "${key}" not found in the form.`);
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-
-    <script>
         // Submit main form to the sever
         const form = document.querySelector("form");
         form.addEventListener("submit", async function(event) {
@@ -713,10 +749,10 @@ ob_start();
             }
             const formData = new FormData(this);
             formData.append('totalFees', JSON.stringify(totalFees));
-            formData.append('iplans_submit_', '');
+            formData.append('iplans_submit', '');
 
             // submit data using fetch
-            const response = await fetch(form.action, {
+            const response = await fetch("<?= SITE_URL ?>/forms/form_mission.php", {
                 method: 'POST',
                 body: formData,
             });
@@ -738,13 +774,140 @@ ob_start();
             }
         });
     </script>
-
     <script>
         const btns = document.querySelectorAll('button:not([type="submit"])');
         for (const btn of btns) {
             btn.type = 'button';
         }
     </script>
+
+
+   <!-- envoie des donnees du formulaire a la page frais mission  -->
+
+   <script>
+  function sendData(){
+        document.getElementById("main_form").addEventListener("submit", function (event) {
+    // Empêcher le comportement par défaut du formulaire (envoi direct)
+    event.preventDefault();
+
+    // Récupérer les valeurs des champs du formulaire
+    var joursEcart = document.getElementById("joursEcart").value;
+    var heurededebut = document.getElementById("heurededebut").value;
+    var destination = document.getElementById("destination").value;
+    var via = document.getElementById("via").value;
+    // Ajouter d'autres champs selon vos besoins
+
+    // Créer un objet FormData pour faciliter l'envoi des données
+    var formData = new FormData();
+    formData.append("joursEcart", joursEcart);
+    formData.append("destination", destination);
+    formData.append("via", via);
+    formData.append("heurededebut", heurededebut);
+    
+    // Ajouter d'autres champs selon vos besoins
+
+    // Utiliser Fetch pour envoyer les données à la page souhaitée
+    fetch("<?= SITE_URL ?>/details_mission", {
+         
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.json())  // Vous pouvez ajuster cela en fonction du format de réponse attendu
+    .then(data => {
+        // Gérer la réponse si nécessaire
+        console.log(data);
+    })
+    .catch(error => {
+        console.error("Erreur lors de l'envoi des données :", error);
+    });
+});
+  }
+
+   </script>
+
+   <script>
+    function executerDeuxFonctions() {
+    transfererDonnees()
+    sendData()
+}
+   </script>
+
+  
+ <script>
+    $(document).ready(function () {
+      $("#piece_add").click(function () {
+        $("#fileInput").click();
+      });
+
+      $("#fileInput").change(function (event) {
+        var files = event.target.files;
+
+        if (files.length > 0) {
+          var pieceJointe = {
+            type: "Fichier",
+            nom: files[0].name,
+            taille: formatSize(files[0].size)
+          };
+
+          // Ajout de la pièce jointe au tableau avec animation
+          var newRow = $("<tr class='table-primary custom-row'>"
+            + "<td>" + pieceJointe.type + "</td>"
+            + "<td><a href='#' onclick='telechargerPieceJointe(\"" + pieceJointe.nom + "\")'>" + pieceJointe.nom + "</a></td>"
+            + "<td>" + pieceJointe.taille + "</td>"
+            + "</tr>").hide().fadeIn();
+
+          $("#tableau").append(newRow);
+
+          // Effacer la valeur du champ de fichier pour permettre le téléchargement du même fichier plusieurs fois
+          $("#fileInput").val("");
+        }
+      });
+
+      $("#piece_remove").click(function () {
+        $("#tableau tr:last").fadeOut("slow", function () {
+          $(this).remove();
+        });
+      });
+
+      $("#remove_all").click(function () {
+        $("#tableau tr").fadeOut("slow", function () {
+          $(this).remove();
+        });
+      });
+
+      // Fonction pour formater la taille du fichier
+      function formatSize(bytes) {
+        var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+        if (bytes == 0) return '0 Byte';
+        var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+        return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
+      }
+
+      // Fonction pour télécharger la pièce jointe
+     // Fonction pour télécharger la pièce jointe
+    window.telechargerPieceJointe = function (nomPieceJointe) {
+    var chemin = SITE_URL + '/chemin/vers/votre/dossier/' + nomPieceJointe;
+
+    // Créer un lien de téléchargement et déclencher le téléchargement
+    var link = document.createElement('a');
+    link.href = chemin;
+    link.download = nomPieceJointe;
+    link.target = '_blank';
+
+    // Ajouter le lien à la page et déclencher le téléchargement
+    document.body.appendChild(link);
+    link.click();
+
+    // Retirer le lien de la page
+    document.body.removeChild(link);
+};
+
+    });
+  </script>
+
+
+
+   
 
 </body>
 
@@ -753,5 +916,5 @@ ob_start();
 <?php
 
 $content = ob_get_clean();
-include 'layout.php';
+include './vues/layout.php';
 ?>

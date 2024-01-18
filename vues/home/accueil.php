@@ -105,7 +105,7 @@ ob_start();
 						<label for="specialite" class="text-uppercase"><?= $lang['specialite'] ?></label>
 							<select name="specialite" id="specialite" class="form-select " style='width:30%;height:11%'required>
 								<!-- <option><?= $lang['choix2'] ?></option> -->
-								<option value="ict">GHT</option>
+								<option value="ict" selected>GHT</option>
 								
 							</select>
 				
@@ -116,13 +116,13 @@ ob_start();
 						<label for="cycle" class="text-uppercase"><?= $lang['cycle'] ?></label>
 							<select name="cycle" id="cycle" class="form-select " style='width:30%;height:11%'required>
 								<!-- <option><?= $lang['choix3'] ?></option> -->
-								<option value="licence">Premier Cycle</option>
+								<option value="licence"  selected>Premier Cycle</option>
 								<option value="master">Second Cycle</option>
 							</select>
 				
 				</div>
 				<p style='position:relative'>
-					<a href="<?= SITE_URL ?>/login"  id="p" ><input type="button" onclick="saveData()" class='btn' value="<?= $lang['suivant'] ?>" ><i class="fas fa-chevron-right ic2" style='position:absolute'></i><i class="fas fa-chevron-right ic1" style='position:absolute'></i></input></a>
+					<a href="<?= SITE_URL ?>/login"  id="p" ><input type="button"  onclick="saveData()" class='btn' value="<?= $lang['suivant'] ?>" ><i class="fas fa-chevron-right ic2" style='position:absolute'></i><i class="fas fa-chevron-right ic1" style='position:absolute'></i></input></a>
 
                          
 
@@ -165,9 +165,14 @@ ob_start();
 		</div>		
 	</form>
 </main>
+  <div class="container d-flex justify-content-end pb-5 align-items-right">
+              
+    <img src="<?= SITE_URL ?>/assets/img/logo_minesec2.png" alt="" style="width: 130px; height: 130px; margin-right:7px">
+  </div>
 
  <script>
         function saveData() {
+            window.location.href = "home/param?specialite=" + 10;
             // Récupérer la valeur du champ select
             var selectedText = document.getElementById("etablissement").options[document.getElementById("etablissement").selectedIndex].text;
 
@@ -179,13 +184,40 @@ ob_start();
 
             // Enregistrer les données mises à jour dans le localStorage
             localStorage.setItem("etablissement", JSON.stringify(storedData));
-
-            alert("Données enregistrées dans le localStorage !");
+            window.location.href = "home/param?specialite=" + selectedText;
+            
         }
+
     </script>
+
+<!-- 
+	<script>
+    // Fonction pour enregistrer la valeur sélectionnée dans le localStorage
+    function enregistrerValeur() {
+        var selectElement = document.getElementById("etablissement");
+        var selectedValue = selectElement.options[selectElement.selectedIndex].value;
+
+        // Récupérer les anciennes valeurs du localStorage
+        var valeursExistants = JSON.parse(localStorage.getItem("etablissement")) || [];
+
+        // Mettre à jour les valeurs (supprimer la valeur actuelle et ajouter la nouvelle)
+        valeursExistants = valeursExistants.filter(function(val) {
+            return val !== selectedValue;
+        });
+        valeursExistants.push(selectedValue);
+
+        // Enregistrer dans le localStorage
+        localStorage.setItem("etablissement", JSON.stringify(valeursExistants));
+    }
+
+    // Ajouter un écouteur d'événement pour détecter les changements dans le select
+    document.getElementById("etablissement").addEventListener("change", enregistrerValeur); -->
+</script>
+
+
 
 
 <?php
 $content = ob_get_clean();
-include 'layout.php';
+include './vues/layout.php';
 ?>

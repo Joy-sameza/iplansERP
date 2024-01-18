@@ -90,9 +90,10 @@ ob_start();
         <!-- fin de la zone date -->
         <!-- debut de la zone de tableau -->
         <div class="row " style='border:1px solid gray; overflow: scroll scroll !important; height: clamp(400px, 90%, 65vh);'>
-            <table class="table table-bordered " style="position: relative; text-align: center;">
-                <thead style="position: sticky; top: 0;">
+            <table class="table table-bordered " style="position: relative; text-align: center;" id="mytable_mission">
+                <thead style="position: sticky; top: 0; z-index:9999" class='mt-1'>
                     <tr class="table-secondary text-center table-dark ">
+                        <th style='font-size:13px;' class='px-5'>Option</th>
                         <th style='font-size:13px;' class='px-5'>Nom</th>
                         <th style='font-size:13px;' class='px-5'>Prenom</th>
                         <th style='font-size:13px;' class='px-5'>Depart</th>
@@ -113,93 +114,66 @@ ob_start();
                     </tr>
                 </thead>
                 <tbody id="tbody">
-                    <tr class="table-primary custom-row" style='background-color:#0D6EFD;'>
-
-                        <td style='background-color:#0D6EFD;'>
-                            <p></p>
-                        </td>
-                        <td style='background-color:#0D6EFD;'>
-                            <p></p>
-                        </td>
-                        <td style='background-color:#0D6EFD;'>
-                            <p></p>
-                        </td>
-                        <td style='background-color:#0D6EFD;'>
-                            <p></p>
-                        </td>
-                        <td style='background-color:#0D6EFD;'>
-                            <p></p>
-                        </td>
-                        <td style='background-color:#0D6EFD;'>
-                            <p></p>
-                        </td>
-                        <td style='background-color:#0D6EFD;'>
-                            <p></p>
-                        </td>
-                        <td style='background-color:#0D6EFD;'>
-                            <p></p>
-                        </td>
-                        <td style='background-color:#0D6EFD;'>
-                            <p></p>
-                        </td>
-                        <td style='background-color:#0D6EFD;'>
-                            <p></p>
-                        </td>
-                        <td style='background-color:#0D6EFD;'>
-                            <p></p>
-                        </td>
-                        <td style='background-color:#0D6EFD;'>
-                            <p></p>
-                        </td>
-                        <td style='background-color:#0D6EFD;'>
-                            <p></p>
-                        </td>
-                        <td style='background-color:#0D6EFD;'>
-                            <p></p>
-                        </td>
-                        <td style='background-color:#0D6EFD;'>
-                            <p></p>
-                        </td>
-                        <td style='background-color:#0D6EFD;'>
-                            <p></p>
-                        </td>
-                        <td style='background-color:#0D6EFD;'>
-                            <p></p>
-                        </td>
-                    </tr>
+                    
                 </tbody>
             </table>
         </div>
 
         <style>
-            .debut_tableau {
+              /* scrollbar du tableau */
 
-                border-bottom: none;
-                overflow-x: auto;
+        ::-webkit-scrollbar {
+            width: 15px;
+        }
 
 
-                &::-webkit-scrollbar {
-                    height: 15px;
-                    /* Ajuster la hauteur de la barre de défilement horizontale */
-                }
 
+        /* Track */
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px grey;
+            border-radius: 10px;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #238fce;
+            border-radius: 10px;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0b9444;
+        }
+
+
+        .debut_tableau {
+
+            border-bottom: none;
+            overflow-x: auto;
+
+
+            &::-webkit-scrollbar {
+                height: 15px;
+                /* Ajuster la hauteur de la barre de défilement horizontale */
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background-color: #3498db;
+                /* Couleur du curseur de défilement */
+            }
+
+            &::-webkit-scrollbar-track {
+                background-color: #ecf0f1;
+                /* Couleur de la piste de défilement */
+            }
+
+            &:hover {
                 &::-webkit-scrollbar-thumb {
-                    background-color: #3498db;
-                    /* Couleur du curseur de défilement */
-                }
-
-                &::-webkit-scrollbar-track {
-                    background-color: #ecf0f1;
-                    /* Couleur de la piste de défilement */
-                }
-
-                &:hover {
-                    &::-webkit-scrollbar-thumb {
-                        background-color: #0b9444;
-                        /* Changement de couleur au survol */
-                    }
+                    background-color: #0b9444;
+                    /* Changement de couleur au survol */
                 }
             }
+        }
         </style>
 
         <!-- debut des boutton du bas -->
@@ -211,11 +185,11 @@ ob_start();
                     <img src="<?= SITE_URL ?>/assets/img/add-file.png" alt="" style="width: max-content; height: 20px;">
                 </button>
 
-                <button id="open">
+                <button id="modify">
                     Ouvrir
                     <img src="<?= SITE_URL ?>/assets/img/folder.png" alt="" style="width: max-content; height: 20px;">
                 </button>
-                <button>Imprimer
+                <button ID="printData">Imprimer
                     <img src="<?= SITE_URL ?>/assets/img/printer.png" alt="" style="width: max-content; height: 20px;">
                 </button>
 
@@ -244,6 +218,89 @@ ob_start();
 
     <template id="listTemplate">
         <tr class="table-primary custom-row" style='background-color:#0D6EFD; pointer-events: all !important; cursor: pointer;'>
+         
+
+                 
+        <td id='option' style='background-color:#0D6EFD; color: #FFF;'>
+            <div class="d-flex">
+
+                <!-- <button class="bouton bg-success "  id="set">
+                    <i class="fas fa-edit"></i>
+
+                </button> -->
+                <div class="tooltip47">
+                    <button class="bouton bg-success btn-modif"><i class="fas fa-edit"></i>
+                
+                      <span class="tooltiptext47">Modifier</span>
+                    </button>
+                </div>
+
+                <div class="tooltip47 mx-1">
+                    <button class="bouton btn-open "  id="open">
+                        <i class="fas fa-folder-open "></i>
+                           <span class="tooltiptext47">Ouvrir</span>
+                    </button>
+                </div> 
+                
+                <div class="tooltip47">
+                    <button class="bouton bg-danger" onclick='supprimerLigne(this)'  id='delete'>
+                        <i class="fas fa-trash "></i>
+                            <span class="tooltiptext47">Supprimer</span>        
+                    </button>
+                </div>   
+
+                <style>
+                   #option .bouton {
+                        background-color: #238fce;
+                        color: #fff;
+                         padding: 8px 20px;
+                        font-size: 17px;
+
+                        border: none;
+                        border-radius: 5px;
+                        cursor: pointer;
+                        transition: background-color 0.4s ease;
+                        width: max-content;
+                        height: 43px;
+
+
+                    }
+                    
+        .tooltip47 {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+             z-index: 9999;
+        }
+
+        .tooltip47 .tooltiptext47 {
+            visibility: hidden;
+            width: 90px;
+            background-color: #f0f004;
+            color: #080808;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 9999;
+            top: 116%;
+            left: 50%;
+            margin-left: -32px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 14px;
+        }
+
+        
+        .tooltip47:hover .tooltiptext47 {
+            visibility: visible;
+            opacity: 1;
+             z-index: 9999;
+        }
+                </style>
+            </div>
+
+        </td>
             <td style='background-color:#0D6EFD; color: #FFF;'>
                 <p data-nom></p>
             </td>
@@ -340,7 +397,7 @@ ob_start();
             position: absolute;
             z-index: 10;
             top: 125%;
-            left: 50%;
+            left: 110%;
             margin-left: -60px;
             opacity: 0;
             transition: opacity 0.3s;
@@ -418,46 +475,19 @@ ob_start();
     </style>
 </body>
 
+
 <script>
-    /**
-     * @param {number} id The id of the abscence to delete
-     * @returns {Promise<void>}
-     */
-    async function deleteAbscence(id) {
-        const val = await swal({
-            icon: "warning",
-            title: "Etes-vous sûr de vouloir supprimer?",
-            text: "Cette action est irreversible!",
-            dangerMode: true,
-            closeOnClickOutside: false,
-            closeOnEsc: false,
-            buttons: {
-                cancel: {
-                    text: "Non!",
-                    value: false,
-                    visible: true,
-                    className: "",
-                    closeModal: true,
-                },
-                confirm: {
-                    text: "Oui, supprimer!",
-                    value: true,
-                    className: "",
-                    closeModal: true,
-                },
-            },
-        });
-        if (!val) return;
-        const formData = new FormData();
-        formData.append("id", id);
-        formData.append("iplans_submit", "");
-        const response = await fetch("<?= SITE_URL ?>/forms/formdeleteabsence.php", {
-            method: "POST",
-            body: formData,
-        });
-        if (!response.ok) return showAlert("La mission n'a pas pu être supprimé", "error");
-        return showAlert("La mission a été supprimé avec succès", "success");
-    }
+    // const openMission = document.getElementById("open");
+    //
+    // let missionDataAction = '';
+    // openMission.addEventListener("click", function(event) {
+    //
+    // })
+</script>
+
+<script>
+    // const deleteMission = document.getElementById("delete");
+    // deleteMission.addEventListener("click", () => missionDataAction = "delete");
 </script>
 
 <!-- les script de la page -->
@@ -553,8 +583,8 @@ ob_start();
         table.appendChild(element);
     }
 
-    const persData = await fetch("<?= PERS_API_URL ?>");
-    const pers = await persData.json();
+    const persData1 = await fetch("<?= PERS_API_URL ?>");
+    const pers = await persData1.json();
 
     const response = await fetch("<?= MISSION_API_URL ?>");
     const missions = await response.json();
@@ -572,27 +602,81 @@ ob_start();
         updateMISSIONTable(tbl, rowData, listTemplate);
 
 
-    let missionDataAction = '';
-    const openMission = document.getElementById("open");
-    const deleteMission = document.getElementById("delete");
-    const allRows = document.getElementsByTagName("tr");
 
-    deleteMission.addEventListener("click", () => missionDataAction = "delete");
-    openMission.addEventListener("click", () => missionDataAction = "open");
+        const site = document.getElementById("site");
 
-    Array.from(allRows).forEach(function(row) {
-        row.addEventListener("click", async function(event) {
-            const targetRow = event.target.parentNode;
+
+        document.getElementById("new").addEventListener("click",
+        () => window.location.href = "<?= SITE_URL ?>/mission");
+   // const extractedData = localStorage.getItem('extractedData');
+    const extractedData = localStorage.getItem('extractedData');
+    if (extractedData) {
+        const data = JSON.parse(extractedData);
+        localStorage.removeItem('extractedData');
+        const loopObject = {
+            nom: "nom",
+            prenom: "prenom",
+            dat: "depart",
+            duree: "duree",
+            Lieux: "destination",
+            site: "site",
+            cadre: "cadre",
+            Departement: "departement",
+            via: "passant",
+            duree_travail: "duree_de_travail",
+            motor: "vehicule",
+            // immatriculation: "",
+            charge: "chargement",
+            PriseEnCharge: "priseencharge",
+            matricule: "matricule",
+            NumeroDossier: "numerodedossier",
+            NumeroBL_LTA: "numerobl_lta",
+            NEng: "neng",
+        }
+        // set the data in the form
+        const form = document.querySelector('form');
+        form.action = '<?= SITE_URL ?>/forms/formmissionupdate.php';
+        form.setAttribute('success', 'La\'mission à été mis à jour avec succès!');
+        for (let [key, value] of Object.entries(data)) {
+            for (const [k, v] of Object.entries(loopObject)) {
+                if (key === k) {
+                    if (key == 'depart' ) {
+                        //format the value to date format (yyyy-MM-dd)
+                        value = value.split('/').reverse().join('-');
+                    }
+
+                    const input = form.querySelector(`[name="${v}"]`);
+                    if (input) {
+                        input.value = value;
+                    } else {
+                        console.error(`Input with name "${key}" not found in the form.`);
+                    }
+                }
+            }
+        }
+    }
+
+        const allRows = document.querySelectorAll("tr");
+        let missionDataAction = "";
+        const openBtn = document.getElementById("modify");
+        const deleteBtn = document.getElementById("delete");
+
+        openBtn.addEventListener("click", () => missionDataAction = "modify");
+       // deleteBtn.addEventListener("click", () => actionData = "delete");
+    deleteBtn.addEventListener("click", () => missionDataAction = "delete");
+        Array.from(allRows).forEach((row) => {
+        row.addEventListener("click", async (e) => {
+            const targetRow = e.target.parentNode;
             const extractedData = extractDataFromRow(targetRow);
             switch (missionDataAction) {
-                case "open":
+                case "modify":
                     missionDataAction = "";
                     localStorage.setItem("extractedData", JSON.stringify(extractedData));
-                    window.open("<?= SITE_URL ?>/mission", "_self");
+                    window.open("<?= SITE_URL ?>/list_mission", "_self");
                     break;
                 case "delete":
                     missionDataAction = "";
-                    await deleteAbscence(parseInt(extractedData.neng));
+                    await deleteMission(parseInt(extractedData.neng));
                     setTimeout(() => {}, 1500);
                     window.location.href = "<?= SITE_URL ?>/list_mission";
                     break;
@@ -602,12 +686,12 @@ ob_start();
         });
     });
 
-    /** 
-     * Extract data from a row
-     * @param {HTMLTableRowElement} row Row from which data is to be extracted
-     * @returns {Object} The extracted data
-     */
-    function extractDataFromRow(row) {
+        /**
+        * Extract data from a row
+        * @param {HTMLTableRowElement} row Row from which data is to be extracted
+        * @returns {Object} The extracted data
+        */
+        function extractDataFromRow(row) {
         const pers = {
             nom: "nom",
             prenom: "prenom",
@@ -618,7 +702,7 @@ ob_start();
             cadre: "cadre",
             Departement: "departement",
             via: "passant",
-            "duree_travail": "duree_de_travail",
+            duree_travail: "duree_de_travail",
             motor: "vehicule",
             // immatriculation: "",
             charge: "chargement",
@@ -627,15 +711,119 @@ ob_start();
             NumeroDossier: "numerodedossier",
             NumeroBL_LTA: "numerobl_lta",
             NEng: "neng",
-        };
+    };
         let obj = {};
         for (const [, value] of Object.entries(pers)) {
-            obj[value] = row.querySelector(`[data-${value}]`)?.textContent;
-        }
+        obj[value] = row.querySelector(`[data-${value}]`);
+    }
         return obj;
     }
-</script>
 
+
+
+
+
+
+/**
+     * @param {number} id The id of the abscence to delete
+     * @returns {Promise<void>}
+     */
+    async function deleteMission(id) {
+        const val = await swal({
+            icon: "warning",
+            title: "Etes-vous sûr de vouloir supprimer?",
+            text: "Cette action est irreversible!",
+            dangerMode: true,
+            closeOnClickOutside: false,
+            closeOnEsc: false,
+            buttons: {
+                cancel: {
+                    text: "Non!",
+                    value: false,
+                    visible: true,
+                    className: "",
+                    closeModal: true,
+                },
+                confirm: {
+                    text: "Oui, supprimer!",
+                    value: true,
+                    className: "",
+                    closeModal: true,
+                },
+            },
+        });
+        if (!val) return;
+        const formData = new FormData();
+        formData.append("id", id);
+        formData.append("iplans_submit", "");
+        const response = await fetch("<?= SITE_URL ?>/forms/formdeletemission.php", {
+            method: "POST",
+            body: formData,
+        });
+        if (!response.ok) return showAlert("la mission n'a pas pu être supprimé", "error");
+        return showAlert("La mission a été supprimé avec succès", "success");
+
+        // if (response["rows"] >= 1 && response["message"])
+        // return showAlert("L'absence n'a pas pu être supprimé", "error");
+    }
+</script>
+<script>
+    document.getElementById('printData').addEventListener('click', printDataAction);
+
+    function printDataAction() {
+        const pdf = new jspdf.jsPDF({
+            orientation: "landscape",
+            format: "a4"
+        });
+        pdf.addImage(
+            SITE_URL + "/assets/img/iplans logo.png",
+            "PNG",
+            10,
+            10,
+            2.969 * 50 * 0.25,
+            1 * 50 * 0.25
+        );
+        const iplans = "\nLISTE DES MISSIONS";
+        pdf.setFontSize(10);
+        pdf.text(iplans, 10, 25);
+        const jsonData = pdf.autoTableHtmlToJson(
+            document.getElementById("mytable_mission"),
+            false
+        );
+        const printableRowsMission = {
+            Nom: 0,
+            Prenom: 1,
+            Depart: 2,
+            Duree: 3,
+            Destination: 4,
+            'Duree de travail/Jour': 10,
+            Site: 5,
+            'Passant Par': 9,
+        };
+
+        const filteredData = [];
+        const headings = [];
+
+        Object.entries(printableRowsMission).forEach(([key]) => headings.push(key));
+
+        for (const row of jsonData.data) {
+            let filteredRow = [];
+            Object.entries(printableRowsMission).forEach(([, value]) => {
+                filteredRow.push(row[value]);
+            });
+            filteredData.push(filteredRow);
+        }
+        pdf.autoTable({
+            head: [headings],
+            body: filteredData,
+            styles: {
+                fontSize: 10,
+            },
+            startY: 35,
+        });
+        pdf.save("LISTE_MISSION.pdf");
+    }
+</script>
 <script>
     document.getElementById("new").addEventListener("click", function() {
         // Ouvrir la nouvelle page dans une nouvelle fenêtre
@@ -650,12 +838,151 @@ ob_start();
     });
 </script>
 
+<script>
+    const allRows = document.getElementsByTagName("tr");
+    console.log(allRows);
+    Array.from(allRows).forEach(function(row) {
+        row.addEventListener("click", function(event) {
+            console.log(event.target);
+
+        });
+    });
+</script>
+
 <!-- rendre le lien accessible seulement par click sur le boutton  -->
+
+
+
+
+<!-- liste des foction sur le tableau  -->
+
+
+<script>
+      
+        function supprimerLigne(button) {
+
+            const row = button.closest('tr');
+
+            const neng = row.querySelector("[data-neng]").textContent;
+            console.log('id:',neng)
+
+
+            const url = `http://localhost/mission/${neng}`;
+           // row.remove();
+         
+
+            // Effectuer la requête DELETE
+            fetch(url, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Erreur de suppression : ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Suppression réussie :', data);
+                // Mettez à jour l'interface utilisateur ou effectuez d'autres actions nécessaires
+                // par exemple, supprimer la ligne du tableau
+                row.remove();
+                showAlert('Suppression réussie', 'success', 'L\'élément a été supprimé avec succès.');
+
+            })
+            .catch(error => {
+                console.error('Erreur lors de la suppression :', error);
+                // Gérer les erreurs ou informer l'utilisateur
+            });
+        }
+</script>
+ <script>
+    $(document).ready(function() {
+        $('#mytable_mission').on('click', '.btn-modif', function(event) {
+
+            const targetRow = event.target.closest("tr");
+
+            var neng = targetRow.querySelector('[data-neng]').textContent;
+            var prenom = targetRow.querySelector('[data-prenom]').textContent;
+            var nom = targetRow.querySelector('[data-nom]').textContent;
+            var depart = targetRow.querySelector('[data-depart]').textContent;
+            var duree = targetRow.querySelector('[data-duree]').textContent;
+            var destination = targetRow.querySelector('[data-destination]').textContent;
+            var site = targetRow.querySelector('[data-site]').textContent;
+            var cadre = targetRow.querySelector('[data-cadre]').textContent;
+            var departement = targetRow.querySelector('[data-departement]').textContent;
+            var passant = targetRow.querySelector('[data-passant]').textContent;
+            var duree_de_travail = targetRow.querySelector('[data-duree_de_travail]').textContent;
+            var vehicule = targetRow.querySelector('[data-vehicule]').textContent;
+            var immatriculation = targetRow.querySelector('[data-immatriculation]').textContent;
+            var chargement = targetRow.querySelector('[data-chargement]').textContent;
+            var priseencharge = targetRow.querySelector('[data-priseencharge]').textContent;
+            var matricule = targetRow.querySelector('[data-matricule]').textContent;
+            var numerodossier = targetRow.querySelector('[data-numerodossier]').textContent;
+            var  numerobl_lta = targetRow.querySelector('[ data-numerobl_lta]').textContent;
+           
+
+
+
+            var formData_Mission = {
+                neng:neng,
+                nom: nom,
+                prenom: prenom,
+              
+       
+                matricule: matricule,
+                depart:depart,
+                duree:duree,
+                destination:destination,
+                site:site,
+                cadre:cadre,
+                departement:departement,
+                passant:passant,
+                duree_de_travail:duree_de_travail,
+                vehicule:vehicule,
+                immatriculation:immatriculation,
+                chargement:chargement,
+                priseencharge:priseencharge,
+                numerodossier:numerodossier,
+                numerobl_lta:numerobl_lta
+
+
+
+            };
+           
+
+            sessionStorage.setItem('formData_Mission', JSON.stringify(formData_Mission));
+            $.ajax({
+                    type: "POST",
+                    url: "http://localhost/Iplans/openMission", 
+                    data: { formData_Mission: JSON.stringify(formData_Mission) },
+                    success: function(response) {
+                        
+                        console.log(response);
+                        console.log('reussi donc ok')
+                    },
+                    error: function(error) {
+                       
+                        console.error(error);
+                        console.error('des erreurs');
+                    }
+                });
+
+
+           window.location.href = 'http://localhost/Iplans/openMission';
+
+
+
+        });
+    });
+</script> 
 
 </html>
 
 <?php
 
 $content = ob_get_clean();
-include 'layout.php';
+include './vues/layout.php';
 ?>

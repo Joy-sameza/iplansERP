@@ -31,7 +31,7 @@ if ('/login' == $uri) {
 if ('/home' == $uri) {
     spider();
 }
-if ('/resource_humaine' == $uri) {
+if ('/home/resource_humaine' == $uri) {
     rhrhrh();
 }
 if ('/tester' == $uri) {
@@ -61,8 +61,44 @@ if ('/fiche_message' == $uri) {
 if ('/permi_con' == $uri) {
     permi_con();
 }
+if ('/openEmployer' == $uri) {
+    openEmployer();
+}
+if ('/home/list-visit-rdv' == $uri) {
+    list_visit_rdv();
+}
+if ('/modifEmploye' == $uri) {
+    modifEmploye();
+}
+if ('/visit-rdv' == $uri) {
+    fiche_visite_rdv();
+}
+if ('/home/acceuil' == $uri) {
+    acceuil();
+}
+if ('/openMission' == $uri) {
+    openMission();
+}
+if ('/openAbscence' == $uri) {
+    openAbscence();
+}
+if ('/home/com_pro' == $uri) {
+    com_pro();
+}
+if ('/home/gestion_administrative' == $uri) {
+    gestion_administrative();
+}
+if ('/home/param' == $uri) {
+    param();
+}
+if ('/home/param/utilisateurs' == $uri) {
+    utilisateurs();
+}
+if ('/home/param/societe' == $uri) {
+   societe();
+}
 if ('/employes' == $uri) {
     tableau();
-} elseif (!empty($uri) and !in_array($uri, ['/', '/accueil', '/details_mission', '/list_abscences', '/mission', '/list_mission', '/courrier', '/login', '/home', '/resource_humaine', '/employes', '/gestion_abscences', '/selection_salarie', '/fiche_message', '/tester','/permi_con'])) {
+} elseif (!empty($uri) and !in_array($uri, ['/', '/accueil', '/details_mission', '/list_abscences', '/mission', '/list_mission', '/courrier', '/login', '/home', '/home/resource_humaine', '/employes', '/home/gestion_abscences', '/selection_salarie', '/fiche_message', '/tester','/permi_con','/openEmployer','/home/list-visit-rdv','/visit-rdv','/modifEmploye','/home/acceuil','/openMission','/gestion_abscences','/openAbscence','/home/com_pro','/home/gestion_administrative','/home/param','/home/param/utilisateurs','/home/param/societe'])) {
     show404();
 }

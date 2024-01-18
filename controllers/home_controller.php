@@ -13,19 +13,19 @@ function see_dashboard()
 {
     $dirs=__DIR__;
     $dirs=str_replace("controllers", "", $dirs);
-    require $dirs.'vues/accueil.php';
+    require $dirs.'vues/home/accueil.php';
 }
 function courrier()
 {
     $dirs=__DIR__;
     $dirs=str_replace("controllers", "", $dirs);
-    require $dirs.'vues/courrier.php';
+    require $dirs.'vues/courier/courrier.php';
 }
 function loginlogin()
 {
     $dirs=__DIR__;
     $dirs=str_replace("controllers", "", $dirs);
-    require $dirs.'vues/login.php';
+    require $dirs.'vues/home/login.php';
 }
 function spider()
 {
@@ -43,7 +43,7 @@ function tableau()
 {
     $dirs=__DIR__;
     $dirs=str_replace("controllers", "", $dirs);
-    require $dirs.'vues/tableau.php';
+    require $dirs.'vues/employees/tableau.php';
 }
 function tester()
 {
@@ -61,32 +61,32 @@ function mission()
 {
     $dirs=__DIR__;
     $dirs=str_replace("controllers", "", $dirs);
-    require $dirs.'vues/mission.php';
+    require $dirs.'vues/mission/mission.php';
 }
 function list_mission()
 {
     $dirs=__DIR__;
     $dirs=str_replace("controllers", "", $dirs);
-    require $dirs.'vues/list_mission.php';
+    require $dirs.'vues/mission/list_mission.php';
 }
 function details_mission()
 {
     $dirs=__DIR__;
     $dirs=str_replace("controllers", "", $dirs);
-    require $dirs.'vues/details_mission.php';
+    require $dirs.'vues/mission/details_mission.php';
 }
 function list_abscences()
 {
     $dirs=__DIR__;
     $dirs=str_replace("controllers", "", $dirs);
-    require $dirs.'vues/list_abscences.php';
+    require $dirs.'vues/absence/list_abscences.php';
 }
 
 function gestion_abscences()
 {
     $dirs=__DIR__;
     $dirs=str_replace("controllers", "", $dirs);
-    require $dirs.'vues/gestion_abscences.php';
+    require $dirs.'vues/absence/gestion_abscences.php';
 }
 function selection_salarie()
 {
@@ -105,6 +105,78 @@ function permi_con()
     $dirs=__DIR__;
     $dirs=str_replace("controllers", "", $dirs);
     require $dirs.'vues/permi_con.php';
+}
+function openEmployer()
+{
+    $dirs=__DIR__;
+    $dirs=str_replace("controllers", "", $dirs);
+    require $dirs.'vues/employees/openEmployer.php';
+}
+function list_visit_rdv()
+{
+    $dirs=__DIR__;
+    $dirs=str_replace("controllers", "", $dirs);
+    require $dirs.'vues/list_visit_rdv.php';
+}
+function fiche_visite_rdv()
+{
+    $dirs=__DIR__;
+    $dirs=str_replace("controllers", "", $dirs);
+    require $dirs.'vues/fiche_visite_rdv.php';
+}
+function modifEmploye()
+{
+    $dirs=__DIR__;
+    $dirs=str_replace("controllers", "", $dirs);
+    require $dirs.'vues/employees/modifEmploye.php';
+}
+function acceuil()
+{
+    $dirs=__DIR__;
+    $dirs=str_replace("controllers", "", $dirs);
+    require $dirs.'vues/acceuil.php';
+}
+function openMission()
+{
+    $dirs=__DIR__;
+    $dirs=str_replace("controllers", "", $dirs);
+    require $dirs.'vues/mission/openMission.php';
+}
+function com_pro()
+{
+    $dirs=__DIR__;
+    $dirs=str_replace("controllers", "", $dirs);
+    require $dirs.'vues/com_pro.php';
+}
+function openAbscence()
+{
+    $dirs=__DIR__;
+    $dirs=str_replace("controllers", "", $dirs);
+    require $dirs.'vues/absence/openAbscence.php';
+}
+function gestion_administrative()
+{
+    $dirs=__DIR__;
+    $dirs=str_replace("controllers", "", $dirs);
+    require $dirs.'vues/gestion_administrative.php';
+}
+function param()
+{
+    $dirs=__DIR__;
+    $dirs=str_replace("controllers", "", $dirs);
+    require $dirs.'vues/parametre/param.php';
+}
+function utilisateurs()
+{
+    $dirs=__DIR__;
+    $dirs=str_replace("controllers", "", $dirs);
+    require $dirs.'vues/parametre/utilisateurs.php';
+}
+function societe()
+{
+    $dirs=__DIR__;
+    $dirs=str_replace("controllers", "", $dirs);
+    require $dirs.'vues/parametre/societe.php';
 }
 ?>
 

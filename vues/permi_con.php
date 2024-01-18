@@ -28,6 +28,13 @@ ob_start();
 ?>
 <link href="<?= SITE_URL ?>/assets/css/index5.css" rel="stylesheet">
 <link href="<?= SITE_URL ?>/assets/css/styleRH.css" rel="stylesheet">
+<div class="container-fluid" style='position:relative;'>
+     <button id="retour" class='ferme bout-bas' style='position:absolute;right: 60px;top:25px;'>
+                        Retour
+           <img src="<?= SITE_URL ?>/assets/img/previous.png" alt="" style="width: max-content; height: 20px;">
+      </button>
+     
+</div>
     <div class="container">
 
       
@@ -66,6 +73,12 @@ ob_start();
 
             </div>
         </div>
+</div>
+   <div class="container-fluid d-flex justify-content-end mt-5 my-3 px-4 align-items-right">
+                        
+                <img src="<?= SITE_URL ?>/assets/img/logo_minesec2.png" alt=""style="width: 170px; height: 170px; margin-right:7px">
+            </div> 
+       
 <!-- 
         <div class='espace'  style='height:100px'>
            
@@ -79,6 +92,19 @@ ob_start();
 
 
       <style>
+          #retour{
+            width: 120px;
+            height: 45px;
+            border-radius: 5px;
+            border: 1px solid gray;
+             transition: background-color 0.3s, color 0.3s;
+           
+            
+            }
+             #retour:hover {
+            background-color: #45a049;
+            color: #fff;
+            }
          .bout-bas  {
             width: 130px;
             height: 49px;
@@ -87,7 +113,7 @@ ob_start();
             margin-right:28px;
         }
      
-
+        
      	.lange{
 			font-size: 25px;
             margin-top: 47px;
@@ -96,6 +122,7 @@ ob_start();
 		.lang{
 			    margin-top: 0px!important;
 				padding-top: 43px;
+                display:none;
 		}
 	    .lang	img{
 				height: 24px;
@@ -209,15 +236,24 @@ ob_start();
         
         boutonFermer.addEventListener("click", (e) => {
             e.preventDefault();
-           window.location.href = "<?= SITE_URL ?>/resource_humaine";
+           window.location.href = "<?= SITE_URL ?>/home/resource_humaine";
+        });
+    </script>
+
+       <!-- script pour le boutton retour  -->
+         <script>
+        const bouton = document.getElementById("retour");
+       
+
+        bouton.addEventListener("click", (e) => {
+            e.preventDefault();
+           window.location.href = "<?= SITE_URL ?>/home/resource_humaine";
         });
     </script>
 
 
-     
-      
-    
-    </div>
+
+  
 
 
 

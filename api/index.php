@@ -107,3 +107,13 @@ if ($part[1] == 'siteiplans') {
 
     $controllersite->processRequest($method, $id, $path);
 }
+if ($part[1] == 'user') {
+    ini_set("date.timezone", "Africa/Douala");
+
+    $database = new Database(HOST_NAME, USER_NAME, USER_PASSWORD, DB_NAME);
+    $user= new User($database);
+
+    $controllersite = new ControllerUser($user);
+
+    $controllersite->processRequest($method, $id, $path);
+}

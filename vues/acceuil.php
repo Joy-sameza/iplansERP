@@ -58,38 +58,37 @@ ob_start();
      
 </div>
     <div class="container   d-flex justify-content-center align-items-center">
-                <h2 class='text-uppercase text-muted  mt-4'><b><ul id="displayData"></ul></b></h2>
+                <h2 class='text-uppercase text-muted  mt-4'><b><ul id="displayData">accueil</ul></b></h2>
     </div>
     <div class="container">
        
          <div class="row text-center">
             <div class="col p-5 d-flex justify-content-center align-items-center   text-white">
                  
-                  <a href="<?= SITE_URL ?>/employes">
-                        <button type="button" class="func">
-                            <img src="<?= SITE_URL ?>/assets/img/staff1.png" alt=""style="width: 40px; height: 40px; margin-right:7px">
-                            Employés
-                        </button>
-                  </a>
+                     <button type="button" class="func">
+                            <img src="<?= SITE_URL ?>/assets/img/message.png" alt=""
+                                style="width: 40px; height: 40px; margin-right:7px">Messagerie
+                     </button>
             </div>
             <div class="col p-5 d-flex justify-content-center align-items-center    text-white">
 
-               <a href="<?= SITE_URL ?>/tableau">
-                        <button type="button" class="func">
-                            <img src="<?= SITE_URL ?>/assets/img/timetable.png" alt=""style="width: 40px; height: 40px; margin-right:7px">
-                            Pointage
-                        </button>
-                  </a>
 
+             
+                <button type="button" class="func" data-courrier>
+                    <img src="<?= SITE_URL ?>/assets/img/food.png" alt="" style="width: 40px; height: 40px; margin-right:7px">
+                    Courrier&nbsp;E/S
+                </button>
             </div>
             <div class="col p-5 d-flex justify-content-center align-items-center     text-white">
              
-             <a href="<?= SITE_URL ?>/tableau">
-                        <button type="button" class="func">
-                            <img src="<?= SITE_URL ?>/assets/img/evaluation.png" alt=""style="width: 40px; height: 40px; margin-right:7px">
-                            Plannings Horaires
-                        </button>
-                  </a>
+             
+              
+    <button type="button" class="func" data-hotel onclick="redirectToRA()">
+                   
+           <img src="<?= SITE_URL ?>/assets/img/receptionist.png" alt=""
+            style="width: 40px; height: 40px; margin-right:7px">Réception/Accueil
+       
+    </button>
 
             </div>
         </div>
@@ -99,30 +98,26 @@ ob_start();
 
         <div class="row text-center d-flex justify-content-center align-items-center">
             <div class="col p-5 text-center  d-flex justify-content-center align-items-center d-flex justify-content-center align-items-center     text-white">
+                 <button type="button" class="func" id="rhumain" onclick="redirectToRH()">
+                    
+                            <img src="<?= SITE_URL ?>/assets/img/human.png" alt="" style="width: 40px; height: 40px; margin-right:7px">GRH
+                   
+                 </button>
 
-                 <a href="<?= SITE_URL ?>/permi_con">
-                        <button type="button" class="func">
-                            <img src="<?= SITE_URL ?>/assets/img/permission.png" alt=""style="width: 40px; height: 40px; margin-right:7px">
-                            Permissions/Congés
-                        </button>
-                  </a>
+                
             </div>
             <div class="col p-5 d-flex justify-content-center align-items-centertext-white">
-                  <a href="<?= SITE_URL ?>/tableau">
-                        <button type="button" class="func">
-                            <img src="<?= SITE_URL ?>/assets/img/business-credit-score.png" alt=""style="width: 40px; height: 40px; margin-right:7px">
-                            Accompte/Déduction
-                        </button>
-                  </a>
+                  <button type="button" class="func">
+        <img src="<?= SITE_URL ?>/assets/img/video.png" alt=""
+            style="width: 40px; height: 40px; margin-right:7px">Médiathèque
+    </button>
             </div>
             <div class="col p-5 d-flex justify-content-center align-items-center text-white">
                
-               <a href="<?= SITE_URL ?>/tableau">
-                        <button type="button" class="func">
-                            <img src="<?= SITE_URL ?>/assets/img/payment.png" alt=""style="width: 40px; height: 40px; margin-right:7px">
-                            Paie
-                        </button>
-                  </a>
+             <button type="button" class="func">
+        <img src="<?= SITE_URL ?>/assets/img/conversation.png" alt=""
+            style="width: 40px; height: 40px; margin-right:7px">GED
+    </button>
 
             </div>
         </div>
@@ -135,7 +130,9 @@ ob_start();
      <div class="container-fluid">
                <div class="row">
                   <div class="col-sm-12  p-2 d-flex justify-content-center align-items-left">
-                    <h1 class='text-uppercase mt-4'><b>gestion des ressources humaines</b></h1>
+                    <button type="button" class="func" style='bottom: 1%;'>
+                         <img src="<?= SITE_URL ?>/assets/img/setting.png" alt="" style="width: 40px; height: 40px; margin-right:7px">Paramètres
+                    </button>
                   </div>
                   <div class="col-sm-12  d-flex justify-content-end align-items-center  text-white">
                     <img src="<?= SITE_URL ?>/assets/img/logo_minesec2.png" alt=""style="width: 170px; height: 170px; margin-right:0px">
@@ -181,7 +178,7 @@ ob_start();
         }
 
         /* Styles pour le survol du bouton */
-        .func:hover {
+       .func:hover {
             background-color: #0D6EFD !important;
             /* Nouvelle couleur de fond au survol */
             color: #fff !important;
@@ -193,6 +190,7 @@ ob_start();
         a {
 
             color: black !important;
+            text-decoration:none;
         }
 
         a:hover {
@@ -268,18 +266,6 @@ ob_start();
 
 
 
-   <script>
-        // Récupérer la dernière valeur depuis le localStorage
-        var storedData = JSON.parse(localStorage.getItem("etablissement"));
-
-        // Afficher la dernière valeur sur la page
-        var displayElement = document.getElementById("displayData");
-
-        if (storedData && storedData.length > 0) {
-            var lastSelectedValue = storedData[storedData.length - 1];
-            displayElement.textContent = lastSelectedValue;
-        } 
-    </script>
    <!-- script pour le boutton retour  -->
      <script>
         const bouton = document.getElementById("retour");
@@ -289,6 +275,27 @@ ob_start();
             e.preventDefault();
            window.location.href = "<?= SITE_URL ?>/home";
         });
+    </script>
+    
+ <!-- gestion des clique sur les boutton -->
+
+    <script>
+        function redirectToRH() {
+       
+            window.location.href = '<?= SITE_URL ?>/home/resource_humaine';
+        }
+    </script>
+    <script>
+        function redirectToRA() {
+       
+            window.location.href = '<?= SITE_URL ?>/home/list-visit-rdv';
+        }
+    </script>
+    <script>
+        function redirectToACC() {
+       
+            window.location.href = '<?= SITE_URL ?>/home/acceuil';
+        }
     </script>
 
 

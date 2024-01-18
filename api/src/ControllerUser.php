@@ -1,12 +1,12 @@
 <?php
-class Controllersite
+class ControllerUser
 {
     /**
      * Constructs a new instance of the class.
      *
-     * @param Courrier $cour The Courrier object.
+     * @param User $cour The Courrier object.
      */
-    public function __construct(private Siteiplans $cour)
+    public function __construct(private User $cour)
     {
     }
     /**
@@ -45,7 +45,7 @@ class Controllersite
 
         if (!$courrier) {
             http_response_code(404);
-            echo json_encode(["message" => "Courrier not found"]);
+            echo json_encode(["message" => "user not found"]);
             return;
         }
 
@@ -73,12 +73,12 @@ class Controllersite
                 $rows = $this->cour->update($courrier, $data);
 
                 if ($rows === false) {
-                    echo json_encode(["message" => "Le courrier ne peut pas être modifier"]);
+                    echo json_encode(["message" => "user ne peut pas être modifier"]);
                     break;
                 } else {
 
                     echo json_encode([
-                        "message" => "Courrier $id à été mis à jour",
+                        "message" => "User $id à été mis à jour",
                         "rows" => $rows
                     ]);
                 }
@@ -88,12 +88,12 @@ class Controllersite
                 $rows = $this->cour->delete($id);
                 if ($rows === false) {
                     echo json_encode([
-                        "message" => "Le site n'a pas été supprimer"
+                        "message" => "l User n'as pas été supprimer"
                     ]);
                     break;
                 }
                 echo json_encode([
-                    "message" => "site $id à été supprimer",
+                    "message" => "User $id à été supprimer",
                     "rows" => $rows
                 ]);
                 break;
@@ -141,12 +141,12 @@ class Controllersite
                 $id = $this->cour->create($data);
                 if (!$id) {
                     http_response_code(409); // Conflict
-                    echo json_encode(["errors" => "site already exists with that name"]);
+                    echo json_encode(["errors" => "A User already exists with that name"]);
                     break;
                 }
                 http_response_code(201); // Created
                 echo json_encode([
-                    "message" => "site Inserted",
+                    "message" => "User Inserted",
                     "id" => $id
                 ]);
                 break;
@@ -169,11 +169,8 @@ class Controllersite
 
         if (
             $is_new &&
-            (trim($data["InOutCourier"]) == "" ||
-                trim($data["ReferenceCourier"]) == "" ||
-                trim($data["Destinataire"]) == "" ||
-                trim($data["ObjetCourier"]) == "" ||
-                trim($data["SourceCourier"]) == ""
+            (trim($data["nom"]) == "" ||
+                trim($data["passwords"]) == ""
             )
         ) {
             $errors[] = 'les information sont requis';
@@ -181,11 +178,9 @@ class Controllersite
 
         if (
             $is_new &&
-            (empty(trim($data["InOutCourier"])) ||
-                empty(trim($data["SourceCourier"])) ||
-                empty(trim($data["Destinataire"]) ||
-                    empty(trim($data["ReferenceCourier"])) ||
-                    empty(trim($data["ObjetCourier"])))
+            (empty(trim($data["nom"])) ||
+                empty(trim($data["passwords"]))
+
             )
         ) {
             $errors[] = "Tout les champs sont requis";

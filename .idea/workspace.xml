@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7d0e5bba-8be3-4af7-9bd3-b337ff71621c" name="Changes" comment="mise a jour d accueil">
+    <list default="true" id="7d0e5bba-8be3-4af7-9bd3-b337ff71621c" name="Changes" comment="finition employes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Database.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Database.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/ControllerP.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/ControllerP.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vues/employees/tableau.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/employees/tableau.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,6 +13,14 @@
   </component>
   <component name="ComposerSettings">
     <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -36,11 +44,24 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/xampp/htdocs/localisation",
+    "last_opened_file_path": "C:/xampp/htdocs/iplans/vues",
     "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\PhpStorm 2022.2.2\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\iplans\vues" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\iplans\vues\parametre" />
+      <recent name="C:\xampp\htdocs\iplans\vues\absence" />
+      <recent name="C:\xampp\htdocs\iplans\vues\mission" />
+      <recent name="C:\xampp\htdocs\iplans\vues\employees" />
+      <recent name="C:\xampp\htdocs\iplans\vues\courier" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -57,7 +78,12 @@
       <workItem from="1701156363999" duration="570000" />
       <workItem from="1701158336499" duration="3318000" />
       <workItem from="1701242662389" duration="9436000" />
-      <workItem from="1701520979144" duration="39258000" />
+      <workItem from="1701520979144" duration="53654000" />
+      <workItem from="1702020741543" duration="7490000" />
+      <workItem from="1702298799756" duration="18235000" />
+      <workItem from="1702817538342" duration="7482000" />
+      <workItem from="1702919719640" duration="137290000" />
+      <workItem from="1705496257451" duration="13679000" />
     </task>
     <task id="LOCAL-00001" summary="print succed">
       <created>1699875368090</created>
@@ -94,7 +120,70 @@
       <option name="project" value="LOCAL" />
       <updated>1701654162232</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="verification">
+      <created>1701675493731</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1701675493731</updated>
+    </task>
+    <task id="LOCAL-00007" summary="enregistrement employes">
+      <created>1702924214998</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1702924214998</updated>
+    </task>
+    <task id="LOCAL-00008" summary="enregistrement employes2">
+      <created>1702946133719</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1702946133719</updated>
+    </task>
+    <task id="LOCAL-00009" summary="enregistrement EMPLOYES">
+      <created>1703221797623</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1703221797633</updated>
+    </task>
+    <task id="LOCAL-00010" summary="finitions de paramettre">
+      <created>1704811809439</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1704811809439</updated>
+    </task>
+    <task id="LOCAL-00011" summary="finitions de paramettre2">
+      <created>1704812410255</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1704812410255</updated>
+    </task>
+    <task id="LOCAL-00012" summary="finitions de paramettre3">
+      <created>1704829697282</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1704829697283</updated>
+    </task>
+    <task id="LOCAL-00013" summary="dernier modification sur employes">
+      <created>1705504997982</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1705504997982</updated>
+    </task>
+    <task id="LOCAL-00014" summary="finition employes">
+      <created>1705592339536</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1705592339536</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -117,6 +206,15 @@
     <MESSAGE value="mission et abscence" />
     <MESSAGE value="enregistrement d un employes" />
     <MESSAGE value="mise a jour d accueil" />
-    <option name="LAST_COMMIT_MESSAGE" value="mise a jour d accueil" />
+    <MESSAGE value="verification" />
+    <MESSAGE value="enregistrement employes" />
+    <MESSAGE value="enregistrement employes2" />
+    <MESSAGE value="enregistrement EMPLOYES" />
+    <MESSAGE value="finitions de paramettre" />
+    <MESSAGE value="finitions de paramettre2" />
+    <MESSAGE value="finitions de paramettre3" />
+    <MESSAGE value="dernier modification sur employes" />
+    <MESSAGE value="finition employes" />
+    <option name="LAST_COMMIT_MESSAGE" value="finition employes" />
   </component>
 </project>
