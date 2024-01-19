@@ -358,6 +358,14 @@ ob_start();
                             </div>
                         </div>
                     </div>
+                    <div class=' d-flex justify-content-center' style='width:20%;padding:0px;margin:0px;position:relative;align-items:center'>
+                       
+                        <b><span>0.0</span></b>
+                    </div>
+                    <div class=' d-flex justify-content-center' style='width:20%;padding:0px;margin:0px;position:relative;align-items:center'>
+                       
+                         <input type="checkbox" class="form-check-input" id=""value=""><b>Inclure Les Archives</b>
+                    </div>
                   
                    
       

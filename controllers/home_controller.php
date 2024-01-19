@@ -184,6 +184,12 @@ function client_societe()
     $dirs=str_replace("controllers", "", $dirs);
     require $dirs.'vues/hotellerie/client_societe.php';
 }
+function fiche_client()
+{
+    $dirs=__DIR__;
+    $dirs=str_replace("controllers", "", $dirs);
+    require $dirs.'vues/hotellerie/fiche_client.php';
+}
 ?>
 
 
