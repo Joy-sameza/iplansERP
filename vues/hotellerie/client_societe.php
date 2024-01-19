@@ -42,13 +42,13 @@ ob_start();
 </head>
 
 <body>
-    <div class="container-fluid conteneur0 my-5 border border-2 border-primary" style='width:75%;border-bottom:none;'>
+    <div class="container-fluid conteneur0  border border-2 border-primary" style='width:100%;border-bottom:none;'>
 
         <div class="row bg-primary border-1 ">
-            <div class="cont_titre d-flex justify-content-between  p-1" style='align-items: center;'>
+            <div class="cont_titre d-flex justify-content-between  " style='align-items: center;'>
                 <div style="display: flex;">
                     <img src="<?= SITE_URL ?>/assets/img/iplans-icon.png" alt="" class="ico_emplye">
-                    <h6 class="fiche_sala" style='color:white;'>List des demandes d'abscences</h6>
+                    <h6 class="fiche_sala" style='color:white;'>List des clients</h6>
 
                 </div>
 
@@ -58,14 +58,34 @@ ob_start();
             </div>
         </div>
         <!-- fin du header  -->
+        <div class="container-fluid bout d-flex justify-content-start">
+          
+
+             <button type="button" class="bouton active" id='selection1' > Selection1
+                    </button>
+                   
+                     <button type="button" class="bouton" id='selection2'
+                      >
+                        Selection2
+                    </button>
+                    <style>
+                         .bouton.active {
+                        background-color: gray;
+                        color:white;
+                       
+                        }
+                    </style>
+           
+
+        </div>
         <div>
             <form id="filterForm">
                 <div class="row d-flex ">
-                    <div class='englobe' style='width:25%;padding:0px;margin:0px;position:relative;'>
+                    <div class='englobe' style='width:19%;padding:0px;margin:0px;position:relative;'>
                         <div style='width:100%;height: 91px;' class='p-1 pt-2 border border-2 mt-3 border-secondary option_cont'>
                             <div class="text-divider-container1">
                                 <div class="text-divider">
-                                    <span>Periode</span>
+                                    <span>Periode Enregistrement</span>
                                 </div>
                             </div>
                             <div style="display: flex; justify-content: space-between; align-items: center; ">
@@ -78,7 +98,7 @@ ob_start();
                             </div>
                         </div>
                     </div>
-                    <div class='englobe mx-1' style='width:27%;padding:0px;margin:0px;position:relative;'>
+                    <div class='englobe mx-1' style='width:18%;padding:0px;margin:0px;position:relative;'>
                         <div style='width:100%; height: 91px;' class='p-2 border border-1 option_cont border-2 mt-3 border-secondary'>
                             <div class="text-divider-container2">
                                 <div class="text-divider">
@@ -88,117 +108,107 @@ ob_start();
                             <div style="display: flex; justify-content: space-between; align-items: center; ">
                                 <label for="site" class="form-label">Site </label>
                                 <select class="form-select-sm " style='width:50%' id="site">
-                                    <option SELECTED>TOUS</option>
+                                    <option SELECTED>DEMO</option>
+                                    <option value="">DEPOT DOUCHE</option>
+                                    <option value="">DEPOT YASSA</option>
+                                    <option value="">DEPOT NGAOUNDERE</option>
                                 </select>
                             </div>
                             <div style="display: flex; justify-content: space-between; align-items: center;" class='mt-1'>
-                                <label for="departement" class="form-label">Departement </label>
+                                <label for="departement" class="form-label">Zone/Quartier </label>
                                 <select class="form-select-sm " style='width:50%' id="departement">
-                                    <option SELECTED value="TOUS">TOUS</option>
-                                    <option value="ADMINISTRATIF">ADMINISTRATIF</option>
-                                    <option value="ADMINISTRATIION">ADMINISTRATION</option>
-                                    <option value="APPLICATION">APPLICATION</option>
-                                    <option value="COMMERCIAL">COMMERCIAL</option>
-                                    <option value="ENTREPOT">ENTREPOT</option>
-                                    <option value="TECHNIQUE">TECHNIQUE</option>
-                                    <option value="PEDIATRIE">PEDIATRIE</option>
-                                    <option value="CHAUFEUR">CHAUFEUR</option>
-                                    <option value=" ">INCONNU</option>
+                                    <option SELECTED value="TOUS">TOUTES</option>
+                                    <option value="ADMINISTRATIF">BAMENDA</option>
+                                    <option value="ADMINISTRATIION">NGAOUNDERE</option>
+                                    <option value="APPLICATION">BONAMOUSSADI</option>
+                                    <option value="COMMERCIAL">MAKEPE</option>
+                                    <option value="ENTREPOT">AKWA</option>
+                                   
                                 </select>
                             </div>
                         </div>
                     </div>
-                    <div class='englobe' style='width:31%;padding:0px;margin:0px;position:relative;'>
-                        <div style='width:100%;height: 91px;' class='p-2 border border-1 option_cont border-2 mt-3 border-secondary'>
-                            <div class="text-divider-container3">
+                    <div class='englobe mx-1' style='width:18%;padding:0px;margin:0px;position:relative;'>
+                        <div style='width:100%; height: 91px;' class='p-2 border border-1 option_cont border-2 mt-3 border-secondary'>
+                            <div class="text-divider-container2">
                                 <div class="text-divider">
-                                    <span>Etats</span>
+                                    <span>Selection</span>
                                 </div>
                             </div>
                             <div style="display: flex; justify-content: space-between; align-items: center; ">
-                                <div class="form-check" style='width:60%'>
-                                    <input type="radio" class="form-check-input" id="check1" name="etat" value="toutes">
-                                    <label class="form-check-label" for="check1">Toutes</label>
-                                </div>
-                                <div class="form-check" style='width:40%'>
-                                    <input type="radio" class="form-check-input" id="check2" name="etat" value="en_attentes">
-                                    <label class="form-check-label" for="check2">En Attentes</label>
-                                </div>
+                                <label for="site" class="form-label">Type </label>
+                                <select class="form-select-sm " style='width:50%' id="site">
+                                    <option SELECTED>TOUS</option>
+                                    <option value="">NORMAL</option>
+                                    <option value="">HANDICAPE</option>
+                                    <option value="">PASSAGE</option>
+                                    <option value="">VIP</option>
+                                </select>
                             </div>
-                            <div style="display: flex; justify-content: space-between; align-items: center; " class='mt-2'>
-                                <div class="form-check" style='width:60%'>
-                                    <input type="radio" class="form-check-input" id="check1" name="etat" value="archivees">
-                                    <label class="form-check-label" for="check1">Archivees(Accordees)</label>
-                                </div>
-                                <div class="form-check" style='width:40%'>
-                                    <input type="radio" class="form-check-input" id="check2" value="accordees" name="etat">
-                                    <label class="form-check-label" for="check2">Accordees</label>
-                                </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;" class='mt-1'>
+                                <label for="departement" class="form-label">Categorie </label>
+                                <select class="form-select-sm " style='width:50%' id="departement">
+                                    <option SELECTED value="TOUS">TOUTES</option>
+                                    <option value="">AGE MOYEN </option>
+                                    <option value="">JEUNE</option>
+                                    <option value="">VIELLIARD</option>
+                                   
+                                   
+                                </select>
                             </div>
                         </div>
                     </div>
-                    <div class='englobe1' style='width:16%;padding:0px;margin:0px;position:relative;'>
-                        <select class="form-select-sm  " style='width:100%;margin-top:30px;float:left' id="salaire">
-                            <option SELECTED>TOUS</option>
-                            <option>UN SALAIRE</option>
-                        </select>
 
 
-                        <!-- zone de recherche -->
-                        <div class="container-fluid text-center mt-2" id="zone_recherche">
-                            <form>
-                                <input type="text" id="myInput" class='form-control ' onkeyup="myFunction()" name="search" placeholder="Nom..." style='margin-left: -13px;'>
-                            </form>
+                    <div class='englobe' style='width:9%;padding:0px;margin:0px;position:relative;margin-right:5px'>
+                        <div style='width:100%;height: 91px;' class='p-2 border border-1 option_cont border-2 mt-3 border-secondary'>
+                            <div class="text-divider-container3">
+                                <div class="text-divider">
+                                    <span>Sexe</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;flex-direction: column;">
+                                <div class="form-check" >
+                                    <input type="checkbox" class="form-check-input" id="Masculin"value="toutes">
+                                    <label class="form-check-label" for="Masculin">Masculin</label>
+                                </div>
+                                <div class="form-check" >
+                                    <input type="checkbox" class="form-check-input" id="Feminin" name="Feminin" value="Feminin">
+                                    <label class="form-check-label" for="check2">Feminin</label>
+                                </div>
+                                <div class="form-check" >
+                                    <input type="checkbox" class="form-check-input" id="Tous" name="Tous" value="Tous">
+                                    <label class="form-check-label" for="check2">Tous</label>
+                                </div>
+                            </div>
+                           
                         </div>
-                        <!-- style de ma zone de recherche  -->
-                        <style>
-                            #myInput {
-                                width: 165px;
-                                box-sizing: border-box;
-                                border: 2px solid #ccc;
-                                border-radius: 8px;
-                                font-size: 15px;
-                                background-color: white;
-                                background-image: url('<?= SITE_URL ?>/assets/img/searchicon.png');
-                                background-position: 10px 5px;
-                                background-repeat: no-repeat;
-                                padding: 3px 20px 5px 40px;
-                                -webkit-transition: width 0.4s ease-in-out;
-                                transition: width 0.4s ease-in-out;
-                            }
-                        </style>
-
-
-                        <script>
-                            function myFunction() {
-                                var input, filter, table, tr, td, i, txtValue;
-                                input = document.getElementById("myInput");
-                                filter = input.value.toUpperCase();
-                                table = document.getElementById("myTable");
-                                tr = table.getElementsByTagName("tr");
-                                for (i = 0; i < tr.length; i++) {
-                                    td = tr[i].getElementsByTagName("td")[3];
-                                    if (td) {
-                                        txtValue = td.textContent || td.innerText;
-                                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                                            tr[i].style.display = "";
-                                        } else {
-                                            tr[i].style.display = "none";
-                                        }
-                                    }
-                                }
-                            }
-                        </script>
-
-
-
-
-
-                        <button class='boutton'>
-                            <img src="<?= SITE_URL ?>/assets/img/padlock.png" alt="" style="width: max-content; height: 20px;">
-                        </button>
-
                     </div>
+                    <div class='englobe' style='width:9%;padding:0px;margin:0px;position:relative;'>
+                        <div style='width:100%;height: 91px;' class='p-2 border border-1 option_cont border-2 mt-3 border-secondary'>
+                            <div class="text-divider-container4">
+                                <div class="text-divider">
+                                    <span>Prospect</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;flex-direction: column;">
+                                <div class="form-check" >
+                                    <input type="checkbox" class="form-check-input" id="Masculin"value="toutes">
+                                    <label class="form-check-label" for="Masculin">Non</label>
+                                </div>
+                                <div class="form-check" >
+                                    <input type="checkbox" class="form-check-input" id="Feminin" name="Feminin" value="Feminin">
+                                    <label class="form-check-label" for="check2">Oui</label>
+                                </div>
+                                <div class="form-check" >
+                                    <input type="checkbox" class="form-check-input" id="Tous" name="Tous" value="Tous">
+                                    <label class="form-check-label" for="check2">Tous</label>
+                                </div>
+                            </div>
+                           
+                        </div>
+                    </div>
+                   
                 </div>
             </form>
         </div>
@@ -206,7 +216,7 @@ ob_start();
 
 
         <div class="row " >
-            <div class="table-responsive debut_tableau w-100 " style='height:400px;'>
+            <div class="table-responsive debut_tableau w-100 " style='height:300px;'>
                 <table class="table table-bordered " id='myTable' style="position: relative; text-align: center;">
                     <thead style="position: sticky; top: 0; z-index:999">
                         <tr class="table-secondary text-center table-dark">
@@ -240,6 +250,12 @@ ob_start();
         <!-- debut de la div tableau -->
 
         <style>
+              .bout button {
+            padding: 10px 15px;
+            border-radius: none;
+            border:0;
+            background:white;
+        } 
             table>tbody>tr:nth-of-type(2n +1)>td {
                 color: #000 !important;
                 background-color: #FFF !important;
@@ -276,52 +292,128 @@ ob_start();
             }
         </style>
         <!-- fin div tableau  -->
+        
+               <div class="row d-flex mx-0 ">
+                    <div class='englobe' style='width:19%;padding:0px;margin:0px;position:relative;'>
+                       
+                        <div style='width:100%;height: 50px;' class='p-1 pt-2 border border-2 mt-3 border-secondary option_cont'>
+                            <div class="text-divider-container7">
+                                <div class="text-divider">
+                                    <span>Selection</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; ">
+                              
+                                 <label for="" class="form-label">Rechercher </label>
+                                   <input type="text" id="myInput" class='form-control-sm ' name="search" style='width:58%;background:pink'>
+                                   <button style='height: 33px;'>GO
+                                        <!-- <img src="<?= SITE_URL ?>/assets/img/arrow-right.png" alt="" style="width: 20px; height: 20px;"> -->
+                                    </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='englobe mx-2' style='width:19%;padding:0px;margin:0px;position:relative;'>
+                       
+                        <div style='width:100%;height: 50px;' class='p-1 pt-2 border border-2 mt-3 border-secondary option_cont'>
+                            <div class="text-divider-container7">
+                                <div class="text-divider">
+                                    <span>Selection</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; ">
+                              
+                                 <label for="" class="form-label">Representant </label>
+                                     <select class="form-select-sm " style='width:62%;background:yellow' id="departement">
+                                    <option SELECTED value="TOUS">TOUS</option>
+                                    <option value="">DR NONO YANNICK </option>
+                                    <option value="">EVINA CHRISTINE</option>
+                              
+                                   
+                                   
+                                </select>
+                                   
+                            </div>
+                        </div>
+                    </div>
+                    <div class='englobe' style='width:19%;padding:0px;margin:0px;position:relative;'>
+                       
+                        <div style='width:100%;height: 50px;' class='p-1 pt-2 border border-2 mt-3 border-secondary option_cont'>
+                            <div class="text-divider-container7">
+                                <div class="text-divider">
+                                    <span>Selection</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; ">
+                              
+                                 <label for="" class="form-label">Bureau </label>
+                                  <select class="form-select-sm " style='width:62%;background:yellow' id="departement">
+                                    <option SELECTED value="TOUS">TOUTES</option>
+                                    <option value="">ECOLE CEBEC </option>
+                                    <option value="">ECOLE PUBLIQUE</option>
+                                    <option value="">SANTA BARBARA</option>
+                                   
+                                   
+                                </select>
+                                  
+                            </div>
+                        </div>
+                    </div>
+                  
+                   
+      
+               </div>
         <!-- la div du footer  -->
         <div class="row d-flex justify-content-between bg-primary bout-bas p-2 m-0">
-            <div style='width:87%;' class=' d-flex justify-content-between'>
+            <div style='width:35%;' class=' d-flex justify-content-between'>
                 <button class='taille_boutton' id='new'>
                     Nouveau
                     <img src="<?= SITE_URL ?>/assets/img/add-file.png" alt="" style="width: max-content; height: 20px;">
                 </button>
 
-                <button class='taille_boutton' id="modify">
-                    Modifier
-                    <img src="<?= SITE_URL ?>/assets/img/set.png" alt="" style="width: max-content; height: 20px;">
-                </button>
 
                 <button id="delete">
                     Supprimer
                     <img src="<?= SITE_URL ?>/assets/img/bin.png" alt="" style="width: max-content; height: 20px;">
                 </button>
+                
+                <button class='taille_boutton' id="modify">
+                    Options
+                    <img src="<?= SITE_URL ?>/assets/img/set.png" alt="" style="width: max-content; height: 20px;">
+                </button>
                 <button id="printData">
-                    Imprimer Liste
+                    Imprimer 
                     <img src="<?= SITE_URL ?>/assets/img/printer.png" alt="" style="width: max-content; height: 20px;">
                 </button>
-                <button>
-                    Voir Pointages
-                    <img src="<?= SITE_URL ?>/assets/img/saving.png" alt="" style="width: max-content; height: 20px;">
-                </button>
-                <button class='taille_boutton'>
-                    Conges
-                    <img src="<?= SITE_URL ?>/assets/img/question.png" alt="" style="width: max-content; height: 20px;">
-                </button>
-                <button>
-                    Planning
-                    <img src="<?= SITE_URL ?>/assets/img/pc.png" alt="" style="width: max-content; height: 20px;">
-                </button>
+           
+             
+              
             </div>
             <!--  css du haut  -->
-            <div style='width:12%;justify-content:flex-end;' class=' d-flex '>
-                <button id="fermer">
-                    Fermer
-                    <img src="<?= SITE_URL ?>/assets/img/close.png" alt="" style="width: max-content; height: 20px;">
-                </button>
+            <div style='width:35%;' class=' d-flex justify-content-between'>
+                 
+
+                            <button id="rdv" onclick='redirectToRDV()'>
+                                RDV
+                                <img src="<?= SITE_URL ?>/assets/img/timetable.png" alt="" style="width: max-content; height: 20px;">
+                            </button>
+                        
+                        
+                            <button id="fermer">
+                                Fermer
+                                <img src="<?= SITE_URL ?>/assets/img/close.png" alt="" style="width: max-content; height: 20px;">
+                            </button>
+                        
+                     
+            </div>
+
 
             </div>
             <!--  css du haut  -->
         </div>
 
         <!-- fin div footer  -->
+
+       
 
     </div>
     <!-- fin de la grande div  -->
@@ -361,6 +453,16 @@ ob_start();
                 </div>   
 
                 <style>
+
+                      .englobe,
+                            .option_cont {
+                                background-color: #edf1f1;
+                            }
+
+                            .option_cont {
+                                border-radius: 6px;
+                                
+                            }
                    #option .bouton {
                         background-color: #238fce;
                         color: #fff;
@@ -454,8 +556,17 @@ ob_start();
     /* Styles CSS personnalisés pour le séparateur de texte */
     .text-divider-container1 {
         position: absolute;
-        top: 10%;
-        left: 17%;
+        top: 13%;
+        left: 35%;
+        transform: translate(-50%, -50%);
+        background-color: #EBEDEF;
+        padding: 0 7px;
+        font-size: 14px;
+    }
+    .text-divider-container7 {
+        position: absolute;
+        top: 19%;
+        left: 19%;
         transform: translate(-50%, -50%);
         background-color: #EBEDEF;
         padding: 0 7px;
@@ -464,7 +575,7 @@ ob_start();
 
     .text-divider-container2 {
         position: absolute;
-        top: 10%;
+        top: 13%;
         left: 17%;
         transform: translate(-50%, -50%);
         background-color: #EBEDEF;
@@ -475,7 +586,16 @@ ob_start();
     .text-divider-container3 {
         position: absolute;
         top: 12%;
-        left: 10%;
+        left: 24%;
+        transform: translate(-50%, -50%);
+        background-color: #EBEDEF;
+        padding: 0 7px;
+        font-size: 14px;
+    }
+    .text-divider-container4 {
+        position: absolute;
+        top: 12%;
+        left: 37%;
         transform: translate(-50%, -50%);
         background-color: #EBEDEF;
         padding: 0 7px;
@@ -620,7 +740,7 @@ ob_start();
 
     ferme.addEventListener("click", (e) => {
         e.preventDefault()
-        window.location.href = "<?= SITE_URL ?>/permi_con";
+        window.location.href = "<?= SITE_URL ?>/home";
 
     });
 </script>
@@ -630,7 +750,7 @@ ob_start();
 
     boutonFermer.addEventListener("click", (e) => {
         e.preventDefault();
-        window.location.href = "<?= SITE_URL ?>/permi_con";
+        window.location.href = "<?= SITE_URL ?>/home";
     });
 </script>
 </script>
@@ -1115,7 +1235,35 @@ ob_start();
 
         });
     });
-</script> 
+</script>
+
+<script>
+              document.addEventListener('DOMContentLoaded', function() {
+                var bouton1 = document.getElementById('selection1');
+                var bouton2 = document.getElementById('selection2');
+
+                    bouton1.addEventListener('click', function() {
+                        bouton1.classList.add('active');
+                        bouton2.classList.remove('active');
+                    });
+
+                    bouton2.addEventListener('click', function() {
+                        bouton2.classList.add('active');
+                        bouton1.classList.remove('active');
+                    });
+                });
+
+</script>
+
+
+
+<script>
+    function redirectToRDV() {
+       
+            window.location.href = '<?= SITE_URL ?>/home/list-visit-rdv';
+        }
+</script>
+
 
 </html>
 

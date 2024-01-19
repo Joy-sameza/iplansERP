@@ -343,7 +343,7 @@ ob_start();
 
         bouton.addEventListener("click", (e) => {
             e.preventDefault();
-           window.location.href = "<?= SITE_URL ?>/home";
+           window.location.href = "<?= SITE_URL ?>/home/list-visit-rdv";
         });
     </script>
    <script>
@@ -352,7 +352,7 @@ ob_start();
 
         boutonRetour.addEventListener("click", (e) => {
             e.preventDefault();
-           window.location.href = "<?= SITE_URL ?>/home";
+           window.location.href = "<?= SITE_URL ?>/home/list-visit-rdv";
         });
     </script>
 

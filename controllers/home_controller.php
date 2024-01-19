@@ -178,6 +178,12 @@ function societe()
     $dirs=str_replace("controllers", "", $dirs);
     require $dirs.'vues/parametre/societe.php';
 }
+function client_societe()
+{
+    $dirs=__DIR__;
+    $dirs=str_replace("controllers", "", $dirs);
+    require $dirs.'vues/hotellerie/client_societe.php';
+}
 ?>
 
 

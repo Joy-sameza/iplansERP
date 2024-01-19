@@ -329,12 +329,12 @@ ob_start();
                             </div>
                         </div>
                     </div>
-                </div>
+        </div>
 
 
        <div class="row d-flex justify-content-between bg-primary bout-bas p-2 ">
                 <div style='width:57%;'>
-                    <button type="submit" id='valider'  name="iplans_submit">Nouveau
+                    <button type="submit" id='newRDV' onclick='redirectToFICHERDV()'  name="iplans_submit">Nouveau
                         <img src="<?= SITE_URL ?>/assets/img/add-file.png" alt="" style="width: max-content; height: 20px;"></button>
                      <button>Ouvrir
                         <img src="<?= SITE_URL ?>/assets/img/folder.png" alt="" style="width: max-content; height: 20px;">
@@ -587,7 +587,7 @@ ob_start();
 
         bouton.addEventListener("click", (e) => {
             e.preventDefault();
-           window.location.href = "<?= SITE_URL ?>/home";
+           window.location.href = "<?= SITE_URL ?>/home/client_societe";
         });
     </script>
    <script>
@@ -596,8 +596,15 @@ ob_start();
 
         boutonRetour.addEventListener("click", (e) => {
             e.preventDefault();
-           window.location.href = "<?= SITE_URL ?>/home";
+           window.location.href = "<?= SITE_URL ?>/home/client_societe";
         });
+    </script>
+   <script>
+        
+         function redirectToFICHERDV() {
+       
+            window.location.href = '<?= SITE_URL ?>/visit-rdv';
+        }
     </script>
 
 
