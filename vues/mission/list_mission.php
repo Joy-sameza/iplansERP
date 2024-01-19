@@ -91,9 +91,9 @@ ob_start();
         <!-- debut de la zone de tableau -->
         <div class="row " style='border:1px solid gray; overflow: scroll scroll !important; height: clamp(400px, 90%, 65vh);'>
             <table class="table table-bordered " style="position: relative; text-align: center;" id="mytable_mission">
-                <thead style="position: sticky; top: 0; z-index:9999" class='mt-1'>
-                    <tr class="table-secondary text-center table-dark ">
-                        <th style='font-size:13px;' class='px-5'>Option</th>
+                <thead style="position: sticky; top: 0; z-index:9999;overflow: scroll scroll !" class='mt-1'>
+                    <tr class="table-secondary text-center table-dark " >
+                        <th style='font-size:13px;' class='px-5'>Options</th>
                         <th style='font-size:13px;' class='px-5'>Nom</th>
                         <th style='font-size:13px;' class='px-5'>Prenom</th>
                         <th style='font-size:13px;' class='px-5'>Depart</th>

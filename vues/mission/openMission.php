@@ -157,7 +157,7 @@ ob_start();
                     <div class='mt-3' style="display: flex; justify-content: space-between; align-items: center;">
                         <div style="display: flex; justify-content: space-between; align-items: center; width: 61%; ">
                             <label for="deplacement" class="form-label">Date de départ </label>
-                            <input type="date" class="form-control-sm" id="dateDebut" value="<?= date('Y-m-d') ?>" name="dateDebut" onchange="calculerJours()">
+                            <input type="date" class="form-control-sm" id="dateDebut" value="" name="dateDebut" onchange="calculerJours()">
                         </div>
                         <div style="display: flex; justify-content: right;width: 42%; gap: 7px;">
                             <label for="immatriculation" class="form-label">Nombre de jour(s)</label>
@@ -168,7 +168,7 @@ ob_start();
                     <div class='mt-3' style="display: flex; justify-content: space-between; align-items: center;">
                         <div style="display: flex; justify-content: space-between; align-items: center; width: 61%; ">
                             <label for="deplacement" class="form-label">Date de rétour</label>
-                            <input type="date" class="form-control-sm" id="dateFin" value="<?= date('Y-m-d') ?>" name="dateFin" onchange="calculerJours()">
+                            <input type="date" class="form-control-sm" id="dateFin" value="" name="dateFin" onchange="calculerJours()">
                         </div>
                         <div style="display: flex; justify-content: right;width: 42%; gap: 7px;">
                             <label for="immatriculation" class="form-label">No BL/LTA</label>
@@ -208,7 +208,7 @@ ob_start();
                                 <label class="form-check-label " id='text-reduire' for="check1">Bloquer le <br>pointage?</label>
                             </div>
                             <label for="immatriculation" class="form-label  mt-3 " id='text-reduire' style='width:29%;'>No Dossier</label>
-                            <input type="text" class="form-control" style='width:35%'>
+                            <input type="text" class="form-control" style='width:35%' id='num_do'>
                         </div>
                     </div>
                     <div class="custom-form mt-4 ">
@@ -783,8 +783,7 @@ ob_start();
 
 
    <!-- envoie des donnees du formulaire a la page frais mission  -->
-
-   <script>
+<script>
   function sendData(){
         document.getElementById("main_form").addEventListener("submit", function (event) {
     // Empêcher le comportement par défaut du formulaire (envoi direct)
@@ -904,6 +903,77 @@ ob_start();
 
     });
   </script>
+
+  <!-- code pour remplir le formulaire  -->
+
+  <script>
+     document.addEventListener('DOMContentLoaded', function() {
+        // Récupérer les données du formulaire depuis sessionStorage
+        var formData = JSON.parse(sessionStorage.getItem('formData_Mission'));
+        console.log(formData)
+
+        // Vérifier si les données existent
+        if (formData) {
+            // Récupérer le champ select
+            const selectOptions = document.getElementById('destination');
+            const dateInput = document.getElementById('dateDebut');
+            //const joursEcart = document.getElementById('joursEcart');
+
+            // Ajouter l'option au champ select
+            const optionElement = document.createElement('option');
+            optionElement.value = formData.destination;
+            optionElement.textContent = formData.destination;
+            optionElement.selected = true; // Sélectionner l'option par défaut
+            selectOptions.appendChild(optionElement);
+
+            // pour la date
+
+            const dateValue = formData.depart;
+            const dateParts = dateValue.split('/');
+             const formattedDate = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
+            dateInput.value = formattedDate;
+
+            // pour les jour decart
+
+            document.getElementById("joursEcart").value = formData.duree;
+            document.getElementById("heurededebut").value = formData.duree_de_travail;
+            document.getElementById("num_do").value = formData.numerodossier;
+
+            //champs select site
+            const select = document.getElementById('site');
+            const optionEle = document.createElement('option');
+            optionEle.value = formData.site;
+            optionEle.textContent = formData.site;
+            optionEle.selected = true; 
+            select.appendChild(optionEle);
+            //champs select cadre
+            const select_cadre = document.getElementById('cadre');
+            const option_cadre = document.createElement('option');
+            option_cadre.value = formData.cadre;
+            option_cadre.textContent = formData.cadre;
+            option_cadre.selected = true; 
+            select_cadre.appendChild(option_cadre);
+            //champs select numero BLT
+            const select_numere_ima = document.getElementById('numere_ima');
+            const option_numere_ima = document.createElement('option');
+            option_numere_ima.value = formData.numerobl_lta;
+            option_numere_ima.textContent = formData.numerobl_lta;
+            option_numere_ima.selected = true; 
+            select_numere_ima.appendChild(option_numere_ima);
+            //champs select numero BLT
+            const select_immatriculation = document.getElementById('immatriculation');
+            const option_immatriculation = document.createElement('option');
+            option_immatriculation.value = formData.immatriculation;
+            option_immatriculation.textContent = formData.immatriculation;
+            option_immatriculation.selected = true; 
+            select_immatriculation.appendChild(option_immatriculation);
+           
+            
+
+        }
+
+        });
+    </script>
 
 
 

@@ -40,11 +40,7 @@ ob_start();
 <body>
     <div class="container-fluid conteneur my-5 conteneur0  border border-primary border-4" style='width:75%'>
 
-<<<<<<< HEAD:vues/mission.php
-        <form id="main_form" enctype="multipart/form-data" method="post" action="<?= SITE_URL ?>/forms/form_mission.php">
-=======
         <form id="main_form" enctype="multipart/form-data" method="post" class="was-validated">
->>>>>>> c22c43c2a2130310d730984ddda8e55ffc5a4533:vues/mission/mission.php
             <div class="row bg-primary border-1 ">
                 <div class="cont_titre d-flex justify-content-between  p-1" style='align-items: center;'>
                     <div style="display: flex;">
@@ -211,13 +207,8 @@ ob_start();
                                 <input type="checkbox" class="form-check-input" name="check1" id="check1" name="option1" value="something" checked>
                                 <label class="form-check-label " id='text-reduire' for="check1">Bloquer le <br>pointage?</label>
                             </div>
-<<<<<<< HEAD:vues/mission.php
-                            <label for="dossier" class="form-label  mt-3 " id='text-reduire' style='width:25%;'>No Dossier</label>
-                            <input type="text" class="form-control" style='width:15%' name="dossier" id="dossier">
-=======
                             <label for="immatriculation" class="form-label  mt-3 " id='text-reduire' style='width:29%;'>No Dossier</label>
                             <input type="text" class="form-control" style='width:35%'>
->>>>>>> c22c43c2a2130310d730984ddda8e55ffc5a4533:vues/mission/mission.php
                         </div>
                     </div>
                     <div class="custom-form mt-4 ">
@@ -899,7 +890,8 @@ ob_start();
 
 
    <!-- le tableau pour affichage des fichiers  -->
- <script>
+
+<script>
     $(document).ready(function () {
       $("#piece_add").click(function () {
         $("#fileInput").click();
@@ -908,9 +900,19 @@ ob_start();
       $("#fileInput").change(function (event) {
         var files = event.target.files;
 
+     
+
         if (files.length > 0) {
+
+               let type;
+             const filename = files[0].name;
+             const fileExtension = filename.lastIndexOf(".");
+             fileExtension !== -1
+                    ? (type = filename.substring(fileExtension, filename.length))
+                    : undefined;
+                type = type?.split(".").pop().toUpperCase();
           var pieceJointe = {
-            type: "Fichier",
+           type: type ?? "???",
             nom: files[0].name,
             taille: formatSize(files[0].size)
           };
@@ -952,7 +954,7 @@ ob_start();
       // Fonction pour télécharger la pièce jointe
      // Fonction pour télécharger la pièce jointe
     window.telechargerPieceJointe = function (nomPieceJointe) {
-    var chemin = SITE_URL + '/chemin/vers/votre/dossier/' + nomPieceJointe;
+    var chemin = SITE_URL + '/assets/documents/' + nomPieceJointe;
 
     // Créer un lien de téléchargement et déclencher le téléchargement
     var link = document.createElement('a');
@@ -966,10 +968,10 @@ ob_start();
 
     // Retirer le lien de la page
     document.body.removeChild(link);
-};
+           };
 
     });
-  </script>
+</script> 
 
 
 

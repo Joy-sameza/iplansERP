@@ -1163,7 +1163,7 @@ ob_start();
 </script>
 
 
-</script>
+
  <script>
     $(document).ready(function() {
         $('#myTable').on('click', '.btn-modif', function(event) {
@@ -1244,7 +1244,7 @@ ob_start();
         });
     });
 </script>
-
+<!-- pour les 2 boutton stwich  -->
 <script>
               document.addEventListener('DOMContentLoaded', function() {
                 var bouton1 = document.getElementById('selection1');
