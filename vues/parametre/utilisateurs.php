@@ -703,6 +703,8 @@ $response= (array)json_decode(curl_exec($curl));
 
                             <table class="table table-striped table-hover  container" id="myTable_user">
                                 <thead class="table-success">
+                                <td role="columnheader">option</td>
+                                <td role="columnheader">id</td>
                                     <td role="columnheader">Nom</td>
                                     <td role="columnheader">Prenom</td>
                                     <td role="columnheader">matricule</td>
@@ -710,16 +712,7 @@ $response= (array)json_decode(curl_exec($curl));
 
                                 </thead>
                                 <tbody id="user_table">
-                                <?php foreach ($response as $respons){?>
-                                <tr> <td><?php echo $respons->nom?></td>
-                                    <td><?php echo $respons->prenom?></td>
 
-                                    <td><?php echo $respons->matricule?></td>
-
-                                    <td><?php echo  $respons->groupe?></td>
-
-                                </tr>
-                                <?php }?>
                                 </tbody>
                             </table>
 

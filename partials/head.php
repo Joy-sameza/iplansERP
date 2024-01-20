@@ -30,6 +30,7 @@
 
 <script src="<?= SITE_URL ?>/assets/js/iplans.courrier.js" defer></script>
 <script src="<?= SITE_URL ?>/assets/js/iplans.pers.js" type="module" defer></script>
+<script src="<?= SITE_URL ?>/assets/js/iplans.user.js" type="module" defer></script>
 <script src="<?= SITE_URL ?>/assets/js/jspdf.umd.min.js" defer></script>
 <script src="<?= SITE_URL ?>/assets/js/jspdf.plugin.autotable.min.js" defer></script>
 

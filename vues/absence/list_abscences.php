@@ -284,7 +284,7 @@ ob_start();
                     <img src="<?= SITE_URL ?>/assets/img/add-file.png" alt="" style="width: max-content; height: 20px;">
                 </button>
 
-                <button class='taille_boutton' id="modify">
+                <button class='taille_boutton' id="">
                     Modifier
                     <img src="<?= SITE_URL ?>/assets/img/set.png" alt="" style="width: max-content; height: 20px;">
                 </button>
@@ -340,9 +340,9 @@ ob_start();
 
                 </button> -->
                 <div class="tooltip47">
-                    <button class="bouton bg-success btn-modif"><i class="fas fa-edit"></i>
+                    <button class="bouton bg-success " id="modify"><i class="fas fa-edit"></i>
                 
-                      <span class="tooltiptext47">Modifier</span>
+                      <span class="tooltiptext47" >Modifier</span>
                     </button>
                 </div>
 

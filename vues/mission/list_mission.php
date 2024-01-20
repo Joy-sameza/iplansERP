@@ -229,7 +229,7 @@ ob_start();
 
                 </button> -->
                 <div class="tooltip47">
-                    <button class="bouton bg-success btn-modif"><i class="fas fa-edit"></i>
+                    <button class="bouton bg-success btn-modif" id="modify"><i class="fas fa-edit"></i>
                 
                       <span class="tooltiptext47">Modifier</span>
                     </button>
@@ -662,14 +662,14 @@ ob_start();
         const deleteBtn = document.getElementById("delete");
 
         openBtn.addEventListener("click", () => missionDataAction = "modify");
-       // deleteBtn.addEventListener("click", () => actionData = "delete");
     deleteBtn.addEventListener("click", () => missionDataAction = "delete");
-        Array.from(allRows).forEach((row) => {
-        row.addEventListener("click", async (e) => {
+        Array.from(allRows).forEach((rows) => {
+        rows.addEventListener("click", async (e) => {
             const targetRow = e.target.parentNode;
             const extractedData = extractDataFromRow(targetRow);
             switch (missionDataAction) {
                 case "modify":
+                    alert("hello")
                     missionDataAction = "";
                     localStorage.setItem("extractedData", JSON.stringify(extractedData));
                     window.open("<?= SITE_URL ?>/list_mission", "_self");
