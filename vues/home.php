@@ -1,4 +1,7 @@
+
+
 <?php
+ob_start();
 $title = 'accueil';
 if (session_status() == PHP_SESSION_NONE) {
   session_start();
@@ -22,7 +25,7 @@ if ($query == "lang=en") {
     include_once "./lang/fr.php";
   }
 }
-ob_start();
+
 ?>
 
 <!---------------- Main section ------------------------>
@@ -215,7 +218,72 @@ ob_start();
 
 
     </div>
+    <?php if($_SESSION["specialite"] == "GHT"){ ?>
+        <button type="button" class="func" style='top:1%'  onclick="redirectToACC()">
+            <img src="<?= SITE_URL ?>/assets/img/house.png" alt=""
+                 style="width: 40px; height: 40px; margin-right:7px">Accueil
+        </button>
 
+
+        <button type="button" class="func cent-bout" onclick="redirectToCP()">
+            <img src="<?= SITE_URL ?>/assets/img/debate.png" alt=""
+                 style="width: 40px; height: 40px; margin-right:7px">Client/societe
+        </button>
+
+
+        <button type="button" class="func">
+            <img src="<?= SITE_URL ?>/assets/img/message.png" alt=""
+                 style="width: 40px; height: 40px; margin-right:7px">Exploitation
+        </button>
+
+        <button type="button" class="func" >
+            <img src="<?= SITE_URL ?>/assets/img/food.png" alt="" style="width: 40px; height: 40px; margin-right:7px">
+            Tourisrme
+        </button>
+
+
+        <button type="button" class="func" data-hotel onclick="redirectToRA()">
+
+
+            <a href="<?= SITE_URL ?>/home/list-visit-rdv"style="width: 40px; height: 40px; margin-right:7pxlor: black">
+                <img src="<?= SITE_URL ?>/assets/img/receptionist.png" alt=""
+                     style="width: 40px; height: 40px; margin-right:7px">Passerelle
+            </a>
+        </button>
+
+        <?php if($_SESSION['login'] =="SUPERVISEUR"){?>
+            <button type="button" class="func" style='bottom: 1%;' onclick='redirectToParam()'>
+                <img src="<?= SITE_URL ?>/assets/img/setting.png" alt=""
+                     style="width: 40px; height: 40px; margin-right:7px">Paramètres
+            </button>
+        <?php }?>
+
+        <button type="button" class="func">
+            <img src="<?= SITE_URL ?>/assets/img/video.png" alt=""
+                 style="width: 40px; height: 40px; margin-right:7px">Hebergement
+        </button>
+
+
+        <button type="button" class="func" >
+            <img src="<?= SITE_URL ?>/assets/img/conversation.png" alt=""
+                 style="width: 40px; height: 40px; margin-right:7px">Salon/Banquet
+        </button>
+
+        <button type="button" class="func" >
+            <img src="<?= SITE_URL ?>/assets/img/human.png" alt=""
+                 style="width: 40px; height: 40px; margin-right:7px">Buffet
+        </button>
+
+
+
+        <button type="button" class="func" id="rhumain" onclick="redirectToRH()">
+            <a href="<?= SITE_URL ?>/home/resource_humaine"style="width: 40px; height: 40px; margin-right:7pxlor: black">
+                <img src="<?= SITE_URL ?>/assets/img/human.png" alt="" style="width: 40px; height: 40px; margin-right:7px">Personnel
+            </a>
+        </button>
+
+    <?php } ?>
+  <?php if($_SESSION["specialite"] == "GAAME"){ ?>
     <button type="button" class="func" style='top:1%'  onclick="redirectToACC()">
         <img src="<?= SITE_URL ?>/assets/img/house.png" alt=""
             style="width: 40px; height: 40px; margin-right:7px">Accueil
@@ -266,7 +334,6 @@ ob_start();
             style="width: 40px; height: 40px; margin-right:7px">GED
     </button>
 
-
     <button type="button" class="func" id="rhumain" onclick="redirectToRH()">
        <a href="<?= SITE_URL ?>/home/resource_humaine"style="width: 40px; height: 40px; margin-right:7pxlor: black">
             <img src="<?= SITE_URL ?>/assets/img/human.png" alt="" style="width: 40px; height: 40px; margin-right:7px">GRH
@@ -274,9 +341,15 @@ ob_start();
     </button>
 
 
+
     <button type="button" class="func cent-bout" onclick="redirectToGA()">
         <img src="<?= SITE_URL ?>/assets/img/data-management.png" alt=""style="width: 40px; height: 40px; margin-right:7px">Gestion Administrative
     </button>
+    <?php } ?>
+
+
+
+
 </main>
 
   <div class="container-fluid d-flex justify-content-end pb-5 align-items-right">
@@ -290,7 +363,6 @@ ob_start();
     <script>
         // Récupérer la dernière valeur depuis le localStorage
         var storedData = JSON.parse(localStorage.getItem("etablissement"));
-
         // Afficher la dernière valeur sur la page
         var displayElement = document.getElementById("displayData");
 

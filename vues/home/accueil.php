@@ -1,6 +1,7 @@
 
 
 <?php
+
 $title = 'accueil';
 if (session_status() == PHP_SESSION_NONE) {
 	session_start();
@@ -24,8 +25,18 @@ if ($query == "lang=en") {
 		include_once "./lang/fr.php";
 	}
 }
-ob_start();
 
+//$_SESSION['lang']=10;
+if(isset($_POST['p'])){
+
+    $_SESSION["specialite"]=$_POST['specialite'];
+//    var_dump($_SESSION["specialite"]);
+//    exit();
+    header('location: http://localhost/Iplans/login');
+}
+
+
+ob_start();
 ?>
 <link rel="stylesheet" type="text/css" href="<?= SITE_URL ?>/assets/css/accueil.css">
 <link href="<?= SITE_URL ?>/assets/css/style.css" rel="stylesheet">
@@ -58,17 +69,17 @@ ob_start();
 
 	</style>
 		<div class="container-fluid conteneur0  border border-primary border-4 p-4" style='width:50%;margin-top:-70px'>
-	<form method="psot" action="" class="was-validated">
+	<form method="post" action="" class="was-validated">
 
 		
 				<div id="etablissemt" class='container d-flex justify-content-between mb-3'>
 					   
 						
-							<label for="etablissemt" class="text-uppercase"><?= $lang['etablissement'] ?></label>
+							<label for="etablissemt" class="text-uppercase">etablissement</label>
 					
 							<select name="Etablissement" id="etablissement" class="form-select" style='width:30%;height:11%'required>
 
-								<!-- <option><?= $lang['choix1'] ?></option> -->
+								<!-- <option>choix1</option> -->
                                 <?php
                                 // Get site from database through API
                                 $curl = curl_init();
@@ -102,27 +113,27 @@ ob_start();
 
 				<div id="specialite" class='container d-flex justify-content-between mb-3'>
 					
-						<label for="specialite" class="text-uppercase"><?= $lang['specialite'] ?></label>
+						<label for="specialite" class="text-uppercase">specialite</label>
 							<select name="specialite" id="specialite" class="form-select " style='width:30%;height:11%'required>
-								<!-- <option><?= $lang['choix2'] ?></option> -->
-								<option value="ict" selected>GHT</option>
-								
+								<!-- <option>choix2</option> -->
+								<option value="GHT" selected>GESTION HOTELIERE ET DU TOURISME (GHT)</option>
+								<option value="GAAME">GESTION DES ACTIVITES ADMINISTRATIVES ET DES METIERS DE L'ECRIT (GAAME)</option>
 							</select>
 				
 				</div>
 
 				<div id="cycle" class='container d-flex justify-content-between mb-3'>
 					 
-						<label for="cycle" class="text-uppercase"><?= $lang['cycle'] ?></label>
+						<label for="cycle" class="text-uppercase">cycle</label>
 							<select name="cycle" id="cycle" class="form-select " style='width:30%;height:11%'required>
-								<!-- <option><?= $lang['choix3'] ?></option> -->
+								<!-- <option>choix3</option> -->
 								<option value="licence"  selected>Premier Cycle</option>
 								<option value="master">Second Cycle</option>
 							</select>
 				
 				</div>
 				<p style='position:relative'>
-					<a href="<?= SITE_URL ?>/login"  id="p" ><input type="button"  onclick="saveData()" class='btn' value="<?= $lang['suivant'] ?>" ><i class="fas fa-chevron-right ic2" style='position:absolute'></i><i class="fas fa-chevron-right ic1" style='position:absolute'></i></input></a>
+					<a href="<?= SITE_URL ?>/login"  id="p" ><input type="submit" name="p" onclick="saveData()" class='btn' value="suivant" ><i class="fas fa-chevron-right ic2" style='position:absolute'></i><i class="fas fa-chevron-right ic1" style='position:absolute'></i></input></a>
 
                          
 
@@ -213,7 +224,6 @@ ob_start();
     // Ajouter un écouteur d'événement pour détecter les changements dans le select
     document.getElementById("etablissement").addEventListener("change", enregistrerValeur); -->
 </script>
-
 
 
 

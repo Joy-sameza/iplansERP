@@ -284,7 +284,7 @@ ob_start();
                     <img src="<?= SITE_URL ?>/assets/img/add-file.png" alt="" style="width: max-content; height: 20px;">
                 </button>
 
-                <button class='taille_boutton' id="">
+                <button class='taille_boutton' id="modify">
                     Modifier
                     <img src="<?= SITE_URL ?>/assets/img/set.png" alt="" style="width: max-content; height: 20px;">
                 </button>
@@ -340,7 +340,7 @@ ob_start();
 
                 </button> -->
                 <div class="tooltip47">
-                    <button class="bouton bg-success " id="modify"><i class="fas fa-edit"></i>
+                    <button class="bouton bg-success " data-modify ><i class="fas fa-edit"></i>
                 
                       <span class="tooltiptext47" >Modifier</span>
                     </button>
@@ -354,7 +354,7 @@ ob_start();
                 </div> 
                 
                 <div class="tooltip47">
-                    <button class="bouton bg-danger" onclick='supprimerLigne(this)'  id='delete'>
+                    <button class="bouton bg-danger" data-delete>
                         <i class="fas fa-trash "></i>
                             <span class="tooltiptext47">Supprimer</span>        
                     </button>
@@ -830,32 +830,30 @@ ob_start();
     document.getElementById("new").addEventListener("click",
         () => window.location.href = "<?= SITE_URL ?>/gestion_abscences");
 
-    const allRows = document.querySelectorAll("tr");
-    let actionData = "";
-    const modifyBtn = document.getElementById("modify");
-    const deleteBtn = document.getElementById("delete");
+    const allRows = fillTableau.querySelectorAll("tr");
+    // let actionData = "";
+    // const modifyBtn = document.getElementById("modify");
+    // const deleteBtn = document.getElementById("delete");
 
-    modifyBtn.addEventListener("click", () => actionData = "modify");
-    deleteBtn.addEventListener("click", () => actionData = "delete");
     Array.from(allRows).forEach((row) => {
-        row.addEventListener("click", async (e) => {
-            const targetRow = e.target.parentNode;
+        console.log(row);
+        const modifyBtn = row.querySelector('[data-modify]');
+        const deleteBtn = row.querySelector('[data-delete]');
+
+        modifyBtn.addEventListener("click", (e) => {
+
+            const targetRow = e.target.parentNode.parentNode.parentNode.parentNode;
             const extractedData = extractDataFromRow(targetRow);
-            switch (actionData) {
-                case "modify":
-                    actionData = "";
-                    localStorage.setItem("extractedData", JSON.stringify(extractedData));
-                    window.open("<?= SITE_URL ?>/gestion_abscences", "_self");
-                    break;
-                case "delete":
-                    actionData = "";
-                    await deleteAbscence(parseInt(extractedData.neng));
-                    setTimeout(() => {}, 1500);
-                    window.location.href = "<?= SITE_URL ?>/list_abscences";
-                    break;
-                default:
-                    break;
-            }
+            localStorage.setItem("extractedData", JSON.stringify(extractedData));
+            window.open("<?= SITE_URL ?>/gestion_abscences", "_self");
+        });
+
+        deleteBtn.addEventListener("click", async (e) => {
+            const targetRow = e.target.parentNode.parentNode.parentNode.parentNode;
+            const extractedData = extractDataFromRow(targetRow);
+            await deleteAbscence(parseInt(extractedData.neng));
+            setTimeout(() => {}, 1500);
+            window.location.href = "<?= SITE_URL ?>/list_abscences";
         });
     });
 

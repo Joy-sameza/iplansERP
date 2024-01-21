@@ -77,10 +77,10 @@ ob_start();
         <div class="interface mx-4">
             
             <div class='container d-flex justify-content-between mb-4 ' style='align-items:center'>
-                 <?= $lang['login'] ?> <input type="text" class='form-control' name="email" required>
+                 login<input type="text" class='form-control' name="email" required>
             </div>
             <div class='container d-flex justify-content-between mb-4' style='align-items:center'>
-                <?= $lang['pass'] ?> <input type="password" class='form-control'  name="motdepasse" required>
+                pass<input type="password" class='form-control'  name="motdepasse" required>
             </div>
             <div class='container d-flex justify-content-around mb-4'  style='align-items:center'>
                  <label>Change password</label>
@@ -182,10 +182,10 @@ ob_start();
         </style>
         <div class="envoie justify-content-around text-center mt-6">
 
-                <input type="submit" name="send1" class='bout' value="<?= $lang['se_connecter'] ?>">
+                <input type="submit" name="send1" class='bout' value="se connecter">
            
            
-                <input type="reset" value="<?= $lang['annuler'] ?>">
+                <input type="reset" value="annuler">
            
             
         </div>
