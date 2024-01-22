@@ -1,4 +1,5 @@
 <?php
+ob_start();
 $title = 'accueil';
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
@@ -25,30 +26,18 @@ if ($query == "lang=en") {
 }
 
 
-ob_start();
+
 
 ?>
 
 
-
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>List Abscences</title>
-</head>
-
-<body>
     <div class="container-fluid conteneur0  border border-2 border-primary" style='width:100%;border-bottom:none;'>
 
         <div class="row bg-primary border-1 ">
             <div class="cont_titre d-flex justify-content-between  " style='align-items: center;'>
                 <div style="display: flex;">
                     <img src="<?= SITE_URL ?>/assets/img/iplans-icon.png" alt="" class="ico_emplye">
-                    <h6 class="fiche_sala" style='color:white;'>List des clients</h6>
+                    <h6 class="fiche_sala" style='color:white;'>Liste des clients</h6>
 
                 </div>
 
@@ -217,30 +206,33 @@ ob_start();
 
         <div class="row " >
             <div class="table-responsive debut_tableau w-100 " style='height:300px;'>
-                <table class="table table-bordered " id='myTable' style="position: relative; text-align: center;">
+                <table class="table table-bordered " id="" style="position: relative; text-align: center;">
                     <thead style="position: sticky; top: 0; z-index:999">
                         <tr class="table-secondary text-center table-dark">
-                            <th style='font-size:13px;' class='px-5'>Options</th>
-                            <th style='font-size:13px;' class='px-5'>Site</th>
-                            <th style='font-size:13px;' class='px-5'>Departement</th>
+                            <th style='font-size:13px;' class='px-5'>Option</th>
                             <th style='font-size:13px;' class='px-5'>Civilite</th>
                             <th style='font-size:13px;' class='px-5'>Nom</th>
                             <th style='font-size:13px;' class='px-5'>Prenom</th>
-                            <th style='font-size:13px;' class='px-5'>Motif</th>
-                            <th style='font-size:13px;' class='px-5'>Debut</th>
-                            <th style='font-size:13px;' class='px-5'>Fin</th>
-                            <th style='font-size:13px;' class='px-5'>justification</th>
-                            <th style='font-size:13px;' class='px-5'>Block_pointage</th>
-                            <th style='font-size:13px;' class='px-5'>Recupereble</th>
-                            <th style='font-size:13px;' class='px-5'>DeduireSurConges</th>
-                            <th style='font-size:13px;' class='px-5'>AnneeComptable</th>
-                            <th style='font-size:13px;' class='px-5'>Matricule</th>
-                            <th style='font-size:13px;' class='px-5'>CreePar</th>
-                            <th style='font-size:13px;' class='px-5'>AccordeePar</th>
-                            <th style='font-size:13px;' class='px-5'>Archive</th>
+                            <th style='font-size:13px;' class='px-5'>TypeClient</th>
+                            <th style='font-size:13px;' class='px-5'>Province</th>
+                            <th style='font-size:13px;' class='px-5'>Societe</th>
+                            <th style='font-size:13px;' class='px-5'>Site</th>
+                            <th style='font-size:13px;' class='px-5'>Telephone</th>
+                            <th style='font-size:13px;' class='px-5'>Departement</th>
+                            <th style='font-size:13px;' class='px-5'>Arrondissement</th>
+                            <th style='font-size:13px;' class='px-5'>District</th>
+                            <th style='font-size:13px;' class='px-5'>CodePostale</th>
+                            <th style='font-size:13px;' class='px-5'>Ville</th>
+                            <th style='font-size:13px;' class='px-5'>Pays</th>
+                            <th style='font-size:13px;' class='px-5'>Adresse</th>
+                            <th style='font-size:13px;' class='px-5'>Email</th>
+                            <th style='font-size:13px;' class='px-5'>DateContact</th>
+                            <th style='font-size:13px;' class='px-5'>Nationalite</th>
+                            <th style='font-size:13px;' class='px-5'>NumeroContribuable</th>
+                            <th style='font-size:13px;' class='px-5'>Profession</th>
                         </tr>
                     </thead>
-                    <tbody id="fillTableau">
+                    <tbody id="client_table">
                        
                     </tbody>
                 </table>
@@ -426,7 +418,7 @@ ob_start();
     </div>
     <!-- fin de la grande div  -->
 
-    <template id="absTemplate">
+    <template id="client_table_template">
         <tr class="table-primary custom-row text-center text-white" style="pointer-events: all !important;">
             <td class='text-white' style='background-color:#0D6EFD;'id='option' >
         
@@ -521,29 +513,32 @@ ob_start();
 
       
         </td>
-            <td class='text-white' style='background-color:#0D6EFD;' data-site></td>
-            <td class='text-white' style='background-color:#0D6EFD;' data-departement></td>
-            <td class='text-white' style='background-color:#0D6EFD;' data-civilite></td>
-            <td class='text-white' style='background-color:#0D6EFD;' data-nom></td>
-            <td class='text-white' style='background-color:#0D6EFD;' data-prenom></td>
-            <td class='text-white' style='background-color:#0D6EFD;' data-motif></td>
-            <td class='text-white' style='background-color:#0D6EFD;' data-debut></td>
-            <td class='text-white' style='background-color:#0D6EFD;' data-fin></td>
-            <td class='text-white' style='background-color:#0D6EFD;' data-justification></td>
-            <td class='text-white' style='background-color:#0D6EFD;' data-block_pointage></td>
-            <td class='text-white' style='background-color:#0D6EFD;' data-recuperable></td>
-            <td class='text-white' style='background-color:#0D6EFD;' data-deduiresurconges></td>
-            <td class='text-white' style='background-color:#0D6EFD;' data-anneecomptable></td>
-            <td class='text-white' style='background-color:#0D6EFD;' data-matricule></td>
-            <td class='text-white' style='background-color:#0D6EFD;' data-creepar></td>
-            <td class='text-white' style='background-color:#0D6EFD;' data-accordeepar></td>
-            <td class='text-white' style='background-color:#0D6EFD;' data-archive></td>
-            <td class='text-white' style='background-color:#0D6EFD; display:none;' data-neng></td>
+            <td class='text-white' style='background-color:#0D6EFD;' data-Options></td>
+            <td class='text-white' style='background-color:#0D6EFD;' data-Civilite></td>
+            <td class='text-white' style='background-color:#0D6EFD;' data-Nom></td>
+            <td class='text-white' style='background-color:#0D6EFD;' data-Prenom></td>
+            <td class='text-white' style='background-color:#0D6EFD;' data-TypeClient></td>
+            <td class='text-white' style='background-color:#0D6EFD;' data-Province></td>
+            <td class='text-white' style='background-color:#0D6EFD;' data-Societe></td>
+            <td class='text-white' style='background-color:#0D6EFD;' data-Site></td>
+            <td class='text-white' style='background-color:#0D6EFD;' data-Telephone></td>
+            <td class='text-white' style='background-color:#0D6EFD;' data-Departement></td>
+            <td class='text-white' style='background-color:#0D6EFD;' data-Arrondissement></td>
+            <td class='text-white' style='background-color:#0D6EFD;' data-District></td>
+            <td class='text-white' style='background-color:#0D6EFD;' data-CodePostale></td>
+            <td class='text-white' style='background-color:#0D6EFD;' data-Ville></td>
+            <td class='text-white' style='background-color:#0D6EFD;' data-Pays></td>
+            <td class='text-white' style='background-color:#0D6EFD;' data-Adresse></td>
+            <td class='text-white' style='background-color:#0D6EFD;' data-Email></td>
+            <td class='text-white' style='background-color:#0D6EFD;' data-DateContact></td>
+            <td class='text-white' style='background-color:#0D6EFD;' data-Nationalite></td>
+            <td class='text-white' style='background-color:#0D6EFD;' data-NumeroContribuable></td>
+            <td class='text-white' style='background-color:#0D6EFD;' data-Profession></td>
         </tr>
+
     </template>
 
 
-</body>
 <!-- debut du css  -->
 <style>
     /* css du header pour le futur */
@@ -761,302 +756,283 @@ ob_start();
         window.location.href = "<?= SITE_URL ?>/home";
     });
 </script>
-</script>
+
+    <script type="module">
+        const Template = document.getElementById("client_table_template");
+        const Tableau = document.getElementById("client_table");
+        const site = document.getElementById("site");
+
+        /**
+         * Updates the table with the given data by cloning an element and setting its values.
+         *
+         * @param {Element} table - The table element to update.
+         * @param {Object} data - The data object containing the values to set.
+         * @param {DocumentFragment} elementClone - The cloned element to update with the data values.
+         */
+        function updatePERMISSIONTable(table, data = {}, elementClone) {
+            const element = elementClone.content.cloneNode(true);
+            const pers = {
+                Civilite:"Civilite",
+                Nom: "Nom",
+                Prenom:"Prenom",
+                TypeClient:"TypeClient",
+                Province:"Province",
+                Societe:"Societe",
+                Site:"Site",
+                Telephone:"Telephone",
+                Departement:"Departement",
+                Arrondissement:"Arrondissement",
+                District:"District",
+                CodePostale:"CodePostale",
+                Ville:"Ville",
+                Pays:"Pays",
+                Adresse:"Adresse",
+                Email:"Email",
+                DateContact:"DateContact",
+                Nationalite:"Nationalite",
+                NumeroContribuable:"NumeroContribuable",
+                Profession:"Profession"
+            };
+
+            Object.entries(data).forEach(([key, value]) => {
+                if (key in pers) {
+                    setValue(pers[key], value, {
+                        parent: element
+                    });
+                }
+            });
+            table.appendChild(element);
+        }
+
+        /**
+         * Sets the value of an element with a specific data attribute.
+         *
+         * @param {string} dataAttribute - The data attribute to search for.
+         * @param {any} value - The value to set on the element.
+         * @param {Object} options - The options object.
+         * @param {HTMLElement} options.parent - The parent element to search within (default: document).
+         */
+        function setValue(dataAttribute, value, {
+            parent = document
+        } = {}) {
+            const element = parent.querySelector(`[data-${dataAttribute}]`);
+            if (element) {
+                element.textContent = value;
+            }
+        }
 
 
+
+        const response = await fetch(api_url_client);
+       const absences = await response.json();
+
+
+
+        Tableau.innerHTML = '';
+        for (const absence of absences) {
+            updatePERMISSIONTable(Tableau, absence, Template);
+        }
+
+        let siteFiltre, departementFiltre, etatFiltre, salaireFiltre;
+
+        const filterForm = document.getElementById("filterForm");
+        const dateDebut = document.getElementById("date_debut");
+        const dateFin = document.getElementById("date_fin");
+
+        filterForm.addEventListener("change", (event) => {
+            let absOutput = absences;
+            const start = filterForm.querySelector("#date_debut").value;
+            const end = filterForm.querySelector("#date_fin").value;
+            if (event.target.id === "date_debut" || event.target.id === "date_fin")
+                absOutput = useDateFiltre(start, end, absOutput);
+            if (event.target.id === "site") siteFiltre = event.target.value;
+            if (event.target.id === "departement") departementFiltre = event.target.value;
+            if (event.target.name === "etat") etatFiltre = event.target.value;
+            if (event.target.id === "salaire") salaireFiltre = event.target.value;
+
+            if (siteFiltre) absOutput = useSiteFiltre(siteFiltre, absOutput)
+            if (departementFiltre) absOutput = useDepartementFiltre(departementFiltre, absOutput);
+            if (etatFiltre) absOutput = useEtatFiltre(etatFiltre, absOutput);
+            if (salaireFiltre) absOutput = useSalaireFiltre(salaireFiltre, absOutput);
+
+            fillTableau.innerHTML = '';
+            for (const absence2 of absOutput) {
+                updatePERMISSIONTable(fillTableau, absence2, absTemplate);
+            }
+        });
+
+        /**
+         * @param {string} start
+         * @param {string} end
+         * @param {Array} data
+         */
+        function useDateFiltre(start, end, data) {
+            if (start && end) {
+                return data.filter(
+                    (absence, index) => {
+                        absence.debut = absence.debut.split('/').reverse().join('-');
+                        absence.fin = absence.fin.split('/').reverse().join('-');
+                        const dateDebut = new Date(absence.debut);
+                        const dateFin = new Date(absence.fin);
+                        return dateDebut >= new Date(start) && dateFin <= new Date(end);
+                    }
+                )
+            }
+        }
+
+        /**
+         * @param {string} site
+         * @param {Array} data
+         * @returns {Array}
+         */
+        function useSiteFiltre(site, data) {
+            if (!site) return data
+            if (site === "TOUS") return data
+            return data.filter((absence) => absence?.Site === site)
+        }
+        /**
+         * @param {string} departement
+         * @param {Array} data
+         * @returns {Array}
+         */
+        function useDepartementFiltre(departement, data) {
+            if (!departement) return data
+            if (departement === "TOUS") return data
+            return data.filter((absence) => absence?.departement === departement);
+        }
+        /**
+         * @param {string} etat
+         * @param {Array} data
+         * @returns {Array}
+         */
+        function useEtatFiltre(etat, data) {
+            if (etat === "toutes") return data
+            if (etat === "archivees") {
+                return data.filter(
+                    (absence) => absence?.Archive > 0
+                )
+            } else {
+                return data.filter(
+                    (absence) => absence?.etat === etat
+                )
+            }
+        }
+        /**
+         * @param {string} salaire
+         * @param {Array} data
+         * @returns {Array}
+         */
+        function useSalaireFiltre(salaire, data) {
+            if (!salaire) return data
+            if (salaire === "TOUS") return data
+            return data.filter(
+                (absence) => absence?.salaire === salaire
+            )
+        }
+
+        document.getElementById("new").addEventListener("click",
+            () => window.location.href = "<?= SITE_URL ?>/gestion_abscences");
+
+        const allRows = fillTableau.querySelectorAll("tr");
+        // let actionData = "";
+        // const modifyBtn = document.getElementById("modify");
+        // const deleteBtn = document.getElementById("delete");
+
+        Array.from(allRows).forEach((row) => {
+            console.log(row);
+            const modifyBtn = row.querySelector('[data-modify]');
+            const deleteBtn = row.querySelector('[data-delete]');
+
+            modifyBtn.addEventListener("click", (e) => {
+
+                const targetRow = e.target.parentNode.parentNode.parentNode.parentNode;
+                const extractedData = extractDataFromRow(targetRow);
+                localStorage.setItem("extractedData", JSON.stringify(extractedData));
+                window.open("<?= SITE_URL ?>/gestion_abscences", "_self");
+            });
+
+            deleteBtn.addEventListener("click", async (e) => {
+                const targetRow = e.target.parentNode.parentNode.parentNode.parentNode;
+                const extractedData = extractDataFromRow(targetRow);
+                await deleteAbscence(parseInt(extractedData.neng));
+                setTimeout(() => {}, 1500);
+                window.location.href = "<?= SITE_URL ?>/list_abscences";
+            });
+        });
+
+        /**
+         * Extract data from a row
+         * @param {HTMLTableRowElement} row Row from which data is to be extracted
+         * @returns {Object} The extracted data
+         */
+        function extractDataFromRow(row) {
+            const pers = {
+                Site: "site",
+                departement: "departement",
+                type: "motif",
+                debut: "debut",
+                fin: "fin",
+                Notes: "justification",
+                block_pointage: "block_pointage",
+                reccuperable: "recuperable",
+                deduireSurConges: "deduiresurconges",
+                anneeComptable: "anneecomptable",
+                matricule: "matricule",
+                CreePar: "creepar",
+                AccordeePar: "accordeepar",
+                Archive: "archive",
+                NEng: "neng",
+            };
+            let obj = {};
+            for (const [, value] of Object.entries(pers)) {
+                obj[value] = row.querySelector(`[data-${value}]`).textContent;
+            }
+            return obj;
+        }
+
+        /**
+         * @param {number} id The id of the abscence to delete
+         * @returns {Promise<void>}
+         */
+        async function deleteAbscence(id) {
+            const val = await swal({
+                icon: "warning",
+                title: "Etes-vous sûr de vouloir supprimer?",
+                text: "Cette action est irreversible!",
+                dangerMode: true,
+                closeOnClickOutside: false,
+                closeOnEsc: false,
+                buttons: {
+                    cancel: {
+                        text: "Non!",
+                        value: false,
+                        visible: true,
+                        className: "",
+                        closeModal: true,
+                    },
+                    confirm: {
+                        text: "Oui, supprimer!",
+                        value: true,
+                        className: "",
+                        closeModal: true,
+                    },
+                },
+            });
+            if (!val) return;
+            const formData = new FormData();
+            formData.append("id", id);
+            formData.append("iplans_submit", "");
+            const response = await fetch("<?= SITE_URL ?>/forms/formdeleteabsence.php", {
+                method: "POST",
+                body: formData,
+            });
+            if (!response.ok) return showAlert("L'absence n'a pas pu être supprimé", "error");
+            return showAlert("L'absence a été supprimé avec succès", "success");
+        }
+    </script>
 <!-- evenement sur les bouttons  -->
 
-<script type="module">
-    const absTemplate = document.getElementById("absTemplate");
-    const fillTableau = document.getElementById("fillTableau");
-    const site = document.getElementById("site");
 
-    /**
-     * Updates the table with the given data by cloning an element and setting its values.
-     *
-     * @param {Element} table - The table element to update.
-     * @param {Object} data - The data object containing the values to set.
-     * @param {DocumentFragment} elementClone - The cloned element to update with the data values.
-     */
-    function updatePERMISSIONTable(table, data = {}, elementClone) {
-        const element = elementClone.content.cloneNode(true);
-        const pers = {
-            Site: "site",
-            departement: "departement",
-            type: "motif",
-            debut: "debut",
-            nom: "nom",
-            prenom: "prenom",
-            Civilite: "civilite",
-            fin: "fin",
-            Notes: "justification",
-            block_pointage: "block_pointage",
-            reccuperable: "recuperable",
-            deduireSurConges: "deduiresurconges",
-            anneeComptable: "anneecomptable",
-            matricule: "matricule",
-            CreePar: "creepar",
-            AccordeePar: "accordeepar",
-            Archive: "archive",
-            NEng: "neng",
-        };
-
-        Object.entries(data).forEach(([key, value]) => {
-            if (key in pers) {
-                setValue(pers[key], value, {
-                    parent: element
-                });
-            }
-        });
-        table.appendChild(element);
-    }
-
-    /**
-     * Sets the value of an element with a specific data attribute.
-     *
-     * @param {string} dataAttribute - The data attribute to search for.
-     * @param {any} value - The value to set on the element.
-     * @param {Object} options - The options object.
-     * @param {HTMLElement} options.parent - The parent element to search within (default: document).
-     */
-    function setValue(dataAttribute, value, {
-        parent = document
-    } = {}) {
-        const element = parent.querySelector(`[data-${dataAttribute}]`);
-        if (element) {
-            element.textContent = value;
-        }
-    }
-
-    const responseSitesIplans = await fetch("<?= COURRIER_API_URL . "site" ?>");
-    const sitesIplans = await responseSitesIplans.json();
-    for (const siteIplan of sitesIplans) {
-        const option = document.createElement("option");
-        option.value = siteIplan;
-        option.text = siteIplan;
-        site.appendChild(option);
-    }
-
-    const persData = await fetch("<?= PERS_API_URL ?>");
-    const pers = await persData.json();
-
-    const response = await fetch("<?= PERMISSION_API_URL ?>");
-    const absences = await response.json();
-
-    for (const person of pers) {
-        for (const abs of absences) {
-            if (abs.matricule === person.Indexe) {
-                abs.nom = person.nom;
-                abs.prenom = person.prenom;
-                abs.Civilite = person.civilite;
-            }
-        }
-    }
-
-    fillTableau.innerHTML = '';
-    for (const absence of absences) {
-        updatePERMISSIONTable(fillTableau, absence, absTemplate);
-    }
-
-    let siteFiltre, departementFiltre, etatFiltre, salaireFiltre;
-
-    const filterForm = document.getElementById("filterForm");
-    const dateDebut = document.getElementById("date_debut");
-    const dateFin = document.getElementById("date_fin");
-
-    filterForm.addEventListener("change", (event) => {
-        let absOutput = absences;
-        const start = filterForm.querySelector("#date_debut").value;
-        const end = filterForm.querySelector("#date_fin").value;
-        if (event.target.id === "date_debut" || event.target.id === "date_fin")
-            absOutput = useDateFiltre(start, end, absOutput);
-        if (event.target.id === "site") siteFiltre = event.target.value;
-        if (event.target.id === "departement") departementFiltre = event.target.value;
-        if (event.target.name === "etat") etatFiltre = event.target.value;
-        if (event.target.id === "salaire") salaireFiltre = event.target.value;
-
-        if (siteFiltre) absOutput = useSiteFiltre(siteFiltre, absOutput)
-        if (departementFiltre) absOutput = useDepartementFiltre(departementFiltre, absOutput);
-        if (etatFiltre) absOutput = useEtatFiltre(etatFiltre, absOutput);
-        if (salaireFiltre) absOutput = useSalaireFiltre(salaireFiltre, absOutput);
-
-        fillTableau.innerHTML = '';
-        for (const absence2 of absOutput) {
-            updatePERMISSIONTable(fillTableau, absence2, absTemplate);
-        }
-    });
-
-    /**
-     * @param {string} start
-     * @param {string} end
-     * @param {Array} data 
-     */
-    function useDateFiltre(start, end, data) {
-        if (start && end) {
-            return data.filter(
-                (absence, index) => {
-                    absence.debut = absence.debut.split('/').reverse().join('-');
-                    absence.fin = absence.fin.split('/').reverse().join('-');
-                    const dateDebut = new Date(absence.debut);
-                    const dateFin = new Date(absence.fin);
-                    return dateDebut >= new Date(start) && dateFin <= new Date(end);
-                }
-            )
-        }
-    }
-
-    /**
-     * @param {string} site
-     * @param {Array} data
-     * @returns {Array}
-     */
-    function useSiteFiltre(site, data) {
-        if (!site) return data
-        if (site === "TOUS") return data
-        return data.filter((absence) => absence?.Site === site)
-    }
-    /**
-     * @param {string} departement
-     * @param {Array} data
-     * @returns {Array}
-     */
-    function useDepartementFiltre(departement, data) {
-        if (!departement) return data
-        if (departement === "TOUS") return data
-        return data.filter((absence) => absence?.departement === departement);
-    }
-    /**
-     * @param {string} etat
-     * @param {Array} data
-     * @returns {Array}
-     */
-    function useEtatFiltre(etat, data) {
-        if (etat === "toutes") return data
-        if (etat === "archivees") {
-            return data.filter(
-                (absence) => absence?.Archive > 0
-            )
-        } else {
-            return data.filter(
-                (absence) => absence?.etat === etat
-            )
-        }
-    }
-    /**
-     * @param {string} salaire
-     * @param {Array} data
-     * @returns {Array}
-     */
-    function useSalaireFiltre(salaire, data) {
-        if (!salaire) return data
-        if (salaire === "TOUS") return data
-        return data.filter(
-            (absence) => absence?.salaire === salaire
-        )
-    }
-
-    document.getElementById("new").addEventListener("click",
-        () => window.location.href = "<?= SITE_URL ?>/gestion_abscences");
-
-    const allRows = document.querySelectorAll("tr");
-    let actionData = "";
-    const modifyBtn = document.getElementById("modify");
-    const deleteBtn = document.getElementById("delete");
-
-    modifyBtn.addEventListener("click", () => actionData = "modify");
-    deleteBtn.addEventListener("click", () => actionData = "delete");
-    Array.from(allRows).forEach((row) => {
-        row.addEventListener("click", async (e) => {
-            const targetRow = e.target.parentNode;
-            const extractedData = extractDataFromRow(targetRow);
-            switch (actionData) {
-                case "modify":
-                    actionData = "";
-                    localStorage.setItem("extractedData", JSON.stringify(extractedData));
-                    window.open("<?= SITE_URL ?>/gestion_abscences", "_self");
-                    break;
-                case "delete":
-                    actionData = "";
-                    await deleteAbscence(parseInt(extractedData.neng));
-                    setTimeout(() => {}, 1500);
-                    window.location.href = "<?= SITE_URL ?>/list_abscences";
-                    break;
-                default:
-                    break;
-            }
-        });
-    });
-
-    /** 
-     * Extract data from a row
-     * @param {HTMLTableRowElement} row Row from which data is to be extracted
-     * @returns {Object} The extracted data
-     */
-    function extractDataFromRow(row) {
-        const pers = {
-            Site: "site",
-            departement: "departement",
-            type: "motif",
-            debut: "debut",
-            fin: "fin",
-            Notes: "justification",
-            block_pointage: "block_pointage",
-            reccuperable: "recuperable",
-            deduireSurConges: "deduiresurconges",
-            anneeComptable: "anneecomptable",
-            matricule: "matricule",
-            CreePar: "creepar",
-            AccordeePar: "accordeepar",
-            Archive: "archive",
-            NEng: "neng",
-        };
-        let obj = {};
-        for (const [, value] of Object.entries(pers)) {
-            obj[value] = row.querySelector(`[data-${value}]`).textContent;
-        }
-        return obj;
-    }
-
-    /**
-     * @param {number} id The id of the abscence to delete
-     * @returns {Promise<void>}
-     */
-    async function deleteAbscence(id) {
-        const val = await swal({
-            icon: "warning",
-            title: "Etes-vous sûr de vouloir supprimer?",
-            text: "Cette action est irreversible!",
-            dangerMode: true,
-            closeOnClickOutside: false,
-            closeOnEsc: false,
-            buttons: {
-                cancel: {
-                    text: "Non!",
-                    value: false,
-                    visible: true,
-                    className: "",
-                    closeModal: true,
-                },
-                confirm: {
-                    text: "Oui, supprimer!",
-                    value: true,
-                    className: "",
-                    closeModal: true,
-                },
-            },
-        });
-        if (!val) return;
-        const formData = new FormData();
-        formData.append("id", id);
-        formData.append("iplans_submit", "");
-        const response = await fetch("<?= SITE_URL ?>/forms/formdeleteabsence.php", {
-            method: "POST",
-            body: formData,
-        });
-        if (!response.ok) return showAlert("L'absence n'a pas pu être supprimé", "error");
-        return showAlert("L'absence a été supprimé avec succès", "success");
-    }
-</script>
 
 
 <script>
@@ -1164,86 +1140,7 @@ ob_start();
 
 
 </script>
- <script>
-    $(document).ready(function() {
-        $('#myTable').on('click', '.btn-modif', function(event) {
 
-            const targetRow = event.target.closest("tr");
-
-            // var neng = targetRow.querySelector('[data-neng]').textContent;
-            // var site = targetRow.querySelector('[data-site]').textContent;
-            // var departement = targetRow.querySelector('[data-departement]').textContent;
-            // var civilite = targetRow.querySelector('[data-civilite]').textContent;
-            // var block_pointage = targetRow.querySelector('[data-block_pointage]').textContent;
-            // var prenom = targetRow.querySelector('[data-prenom]').textContent;
-            // var motif = targetRow.querySelector('[data-motif]').textContent;
-            // var fin = targetRow.querySelector('[data-fin]').textContent;
-            // var justification = targetRow.querySelector('[data-justification]').textContent;
-            // var recuperable = targetRow.querySelector('[data-recuperable]').textContent;
-            // var deduiresurconges = targetRow.querySelector('[data-deduiresurconges]').textContent;
-            // var anneecomptable = targetRow.querySelector('[data-anneecomptable]').textContent;
-            // var matricule = targetRow.querySelector('[data-matricule]').textContent;
-            // var creepar = targetRow.querySelector('[data-creepar]').textContent;
-            // var accordeepar  = targetRow.querySelector('[data-accordeepar]').textContent;
-            // var archive = targetRow.querySelector('[data-archive]').textContent;
-          
-           
-
-
-
-            var formData_Abs = {
-                // neng:neng,
-                // nom: nom,
-                // prenom: prenom,          
-                // civilite:civilite,
-                // matricule: matricule,
-                // archive:archive,
-                // accordeepar:accordeepar,
-                // creepar:creepar,
-                // anneecomptable:anneecomptable,
-                // deduiresurconges:deduiresurconges,
-                // recuperable:
-
-                // destination:destination,
-                // site:site,
-                // cadre:cadre,
-                // departement:departement,
-                // passant:passant,
-                // duree_de_travail:duree_de_travail,
-                // vehicule:vehicule,
-                // immatriculation:immatriculation,
-            
-
-
-
-            };
-           
-
-            sessionStorage.setItem('formData_Abs', JSON.stringify(formData_Abs));
-            $.ajax({
-                    type: "POST",
-                    url: "http://localhost/Iplans/openAbscence", 
-                    data: { formData_Abs: JSON.stringify(formData_Abs) },
-                    success: function(response) {
-                        
-                        console.log(response);
-                        console.log('reussi donc ok')
-                    },
-                    error: function(error) {
-                       
-                        console.error(error);
-                        console.error('des erreurs');
-                    }
-                });
-
-
-           window.location.href = 'http://localhost/Iplans/openAbscence';
-
-
-
-        });
-    });
-</script>
 
 <script>
               document.addEventListener('DOMContentLoaded', function() {
@@ -1272,8 +1169,6 @@ ob_start();
         }
 </script>
 
-
-</html>
 
 <?php
 

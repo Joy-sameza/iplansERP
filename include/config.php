@@ -11,5 +11,6 @@
 @define("MISSION_API_URL", "http://localhost/mission/");
 @define("PERMISSION_API_URL", "http://localhost/permission/");
 @define("siteiplans_API_URL", "http://localhost/siteiplans/");
+@define("CLIENT_API_URL", "http://localhost/client/");
 @define("FRAIS_MISSION_API_URL", "http://localhost/fraismission/");
 @define("USER_API_URL", "http://localhost/user/");

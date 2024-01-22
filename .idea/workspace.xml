@@ -2,10 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7d0e5bba-8be3-4af7-9bd3-b337ff71621c" name="Changes" comment="mise a jour du user">
-      <change beforePath="$PROJECT_DIR$/vues/absence/list_abscences.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/absence/list_abscences.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/Client.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/ControllerClient.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/js/iplans.client.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/iplans.courrier.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/iplans.courrier.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/iplans.pers.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/iplans.pers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/partials/head.php" beforeDir="false" afterPath="$PROJECT_DIR$/partials/head.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vues/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/home.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vues/home/accueil.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/home/accueil.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vues/home/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/home/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vues/hotellerie/fiche_client.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/hotellerie/fiche_client.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,6 +93,8 @@
       <workItem from="1702817538342" duration="7482000" />
       <workItem from="1702919719640" duration="137290000" />
       <workItem from="1705496257451" duration="13679000" />
+      <workItem from="1705915500278" duration="344000" />
+      <workItem from="1705917918786" duration="9333000" />
     </task>
     <task id="LOCAL-00001" summary="print succed">
       <created>1699875368090</created>

@@ -225,7 +225,7 @@ if ($query == "lang=en") {
         </button>
 
 
-        <button type="button" class="func cent-bout" onclick="redirectToCP()">
+        <button type="button" class="func cent-bout" onclick=" redirectClient()">
             <img src="<?= SITE_URL ?>/assets/img/debate.png" alt=""
                  style="width: 40px; height: 40px; margin-right:7px">Client/societe
         </button>
@@ -382,6 +382,12 @@ if ($query == "lang=en") {
             window.location.href = '<?= SITE_URL ?>/home/resource_humaine';
         }
     </script>
+<script>
+    function redirectClient() {
+
+        window.location.href = '<?= SITE_URL ?>/home/fiche_client';
+    }
+</script>
     <script>
         function redirectToRA() {
        

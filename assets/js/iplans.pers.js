@@ -179,7 +179,7 @@ function handleChangeEvent(event) {
  * @param {Event} event The triggering event
  */
 function handlePrintTableClick() {
-  const print="imprimer le"
+  const print="Imprimer le"
   const displayDateTime = new Date().toLocaleDateString(pdfLang, {
     weekday: "long",
     year: "numeric",
@@ -191,18 +191,18 @@ function handlePrintTableClick() {
   const nothing=" ";
   const pdf = new jspdf.jsPDF({ orientation: "landscape", format: "a4" });
   pdf.addImage(
-    SITE_URL + "/assets/img/iplans logo.png",
-    "PNG",
-    10,
-    10,
-    2.969 * 50 * 0.25,
-    1 * 50 * 0.25
+      SITE_URL + "/assets/img/iplans logo.png",
+      "PNG",
+      10,
+      10,
+      2.969 * 50 * 0.25,
+      1 * 50 * 0.25
   );
   const iplans = "\nREGISTRE DES EMPLOYEES";
 
   const jsonData = pdf.autoTableHtmlToJson(
-    document.getElementById("myTable"),
-    false
+      document.getElementById("myTable"),
+      false
   );
 
   const printableRows = {
@@ -216,8 +216,10 @@ function handlePrintTableClick() {
     date_entree: 33,
     date_sortie: 32,
   };
+  pdf.setFontSize(25);
+  pdf.text(iplans+nothing, 80, 35);
   pdf.setFontSize(10);
-  pdf.text(iplans+nothing+print+nothing+displayDateTime, 10, 25);
+  pdf.text(print + nothing + displayDateTime, 200, 25);
   const filteredData = [];
   const headings = [];
 
@@ -236,10 +238,9 @@ function handlePrintTableClick() {
     styles: {
       fontSize: 10,
     },
-    startY: 35,
+    startY: 60,
   });
   pdf.save("registre employees.pdf");
-  return;
 }
 function handleNewDataClick() { }
 

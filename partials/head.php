@@ -31,6 +31,7 @@
 <script src="<?= SITE_URL ?>/assets/js/iplans.courrier.js" defer></script>
 <script src="<?= SITE_URL ?>/assets/js/iplans.pers.js" type="module" defer></script>
 <script src="<?= SITE_URL ?>/assets/js/iplans.user.js" type="module" defer></script>
+
 <script src="<?= SITE_URL ?>/assets/js/jspdf.umd.min.js" defer></script>
 <script src="<?= SITE_URL ?>/assets/js/jspdf.plugin.autotable.min.js" defer></script>
 
@@ -50,6 +51,7 @@ header("Expires: Thu, 01 Jan 1970 00:00:00 GMT", true);
     const SITE_URL = "<?= SITE_URL ?>";
     const api_url_pers = "<?php echo PERS_API_URL; ?>";
     const api_url_user = "<?php echo USER_API_URL; ?>";
+    const api_url_client = "<?php echo CLIENT_API_URL; ?>";
     const api_url_siteiplans = "<?php echo siteiplans_API_URL; ?>";
     let lang = localStorage.getItem('lang') || 'fr';
     const pdfLang = lang === "fr" ? "fr-FR" : "en-UK";

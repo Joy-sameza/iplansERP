@@ -514,7 +514,7 @@ function modifyData(tableRow, id) {
       heure: frm.querySelector("#heure").value,
       type: getRadioInputValue("type", frm),
       niveau: getRadioInputValue("niveau", frm),
-      userfiles: frm.querySelector("[name='userfiles'][type='file']").files[0],
+      //userfiles: frm.querySelector("[name='userfiles'][type='file']").files[0],
     };
     const response = await postData(frm.action, dt, id);
     if (

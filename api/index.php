@@ -117,3 +117,13 @@ if ($part[1] == 'user') {
 
     $controllersite->processRequest($method, $id, $path);
 }
+if ($part[1] == 'client') {
+    ini_set("date.timezone", "Africa/Douala");
+
+    $database = new Database(HOST_NAME, USER_NAME, USER_PASSWORD, DB_NAME);
+    $client= new Client($database);
+
+    $controllerclient = new ControllerClient($client);
+
+    $controllerclient->processRequest($method, $id, $path);
+}
